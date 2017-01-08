@@ -8,11 +8,7 @@ env:
     - BYOND_MINOR="1345"
     matrix:
     - DM_MAPFILE="tgstation"
-    - DM_MAPFILE="metaclub"
-    - DM_MAPFILE="defficiency"
-    - DM_MAPFILE="taxistation"
-    - DM_MAPFILE="test_box"
-    - DM_MAPFILE="test_tiny"
+    - DM_MAPFILE="mini2"
 
 cache:
   directories:
@@ -36,9 +32,6 @@ before_script:
   - ./install-byond.sh
 
 script:
-  - cat maps/*.dmm | awk '/step_x =/ { exit 1 }'
-  - cat maps/*.dmm | awk '/step_y =/ { exit 1 }'
-  - cat maps/*.dmm | awk '/layer =/  { exit 1 }'
   - python tools/ss13_genchangelog.py html/changelog.html html/changelogs --dry-run
   - source $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/byondsetup
   - ./dm.sh -M${DM_MAPFILE} vgstation13.dme
@@ -46,7 +39,7 @@ script:
 notifications:
   irc:
     channels:
-      - "irc.rizon.net#vgstation"
+      - "irc.rizon.net#lanstation13"
     template:
       - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
       - "Change view : %{compare_url}"

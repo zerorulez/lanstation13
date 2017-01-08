@@ -46,9 +46,17 @@ turf/unsimulated/wall/splashscreen
 	New()
 		var/path = "icons/splashworks/"
 		var/list/filenames = flist(path)
+
+		if(!filenames)
+			qdel(src)
+			return
+
 		for(var/filename in filenames)
 			if(copytext(filename, length(filename)) == "/")
 				filenames -= filename
+			if(findtext(lowertext(filename), "readme"))
+				filenames -= filename
+
 		icon = file("[path][pick(filenames)]")
 
 /turf/unsimulated/wall/other

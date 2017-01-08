@@ -10,10 +10,10 @@ ALERT_RED_DOWNTO The self-destruct mechanism has been deactivated, there is stil
 ALERT_DELTA The station's self-destruct mechanism has been engaged. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.
 
 ## Add a # infront of this if you want to use the SQL based admin system, the legacy system uses admins.txt. You need to set up your database to use the SQL based system.
-ADMIN_LEGACY_SYSTEM
+#ADMIN_LEGACY_SYSTEM
 
 ## Add a # infront of this if you want to use the SQL based banning system. The legacy systems use the files in the data folder. You need to set up your database to use the SQL based system.
-BAN_LEGACY_SYSTEM
+#BAN_LEGACY_SYSTEM
 
 ## Add a # here if you wish to use the setup where jobs have more access. This is intended for servers with low populations - where there are not enough players to fill all roles, so players need to do more than just one job. Also for servers where they don't want people to hide in their own departments.
 JOBS_HAVE_MINIMAL_ACCESS
@@ -82,25 +82,25 @@ LOG_PDA
 ## set to 0 to disable that mode
 ## Cult mode is in alpha test, enable at your own risk
 PROBABILITY EXTENDED 0
-PROBABILITY TRAITOR 2
+PROBABILITY TRAITOR 5
 PROBABILITY METEOR 0
-PROBABILITY MALFUNCTION 2
-PROBABILITY BLOB 2
-PROBABILITY NUCLEAR 0
+PROBABILITY MALFUNCTION 1
+PROBABILITY BLOB 1
+PROBABILITY NUCLEAR 2
 PROBABILITY SANDBOX 0
-PROBABILITY WIZARD 0
+PROBABILITY WIZARD 3
 PROBABILITY RESTRUCTURING 0
-PROBABILITY REVOLUTION 5
-PROBABILITY CHANGELING 0
+PROBABILITY REVOLUTION 2
+PROBABILITY CHANGELING 3
 PROBABILITY CULT 1
 PROBABILITY MONKEY 0
-PROBABILITY TRAITORCHAN 0
+PROBABILITY TRAITORCHAN 2
 PROBABILITY EXTEND-A-TRAITORMONGOUS 0
-PROBABILITY EPIDEMIC 1
+PROBABILITY EPIDEMIC 0
 PROBABILITY MEME 0
 PROBABILITY HEIST 0
 PROBABILITY MIXED 0
-PROBABILITY RAGINMAGES 0
+PROBABILITY RAGINMAGES 1
 
 ## Hash out to disable random events during the round.
 ALLOW_RANDOM_EVENTS
@@ -109,7 +109,7 @@ ALLOW_RANDOM_EVENTS
 TRAITOR_SCALING
 
 ## If security is prohibited from being most antagonists
-#PROTECT_ROLES_FROM_ANTAGONIST
+PROTECT_ROLES_FROM_ANTAGONIST
 
 ## Comment this out to stop admins being able to choose their personal ooccolor
 ALLOW_ADMIN_OOCCOLOR
@@ -146,7 +146,7 @@ ALLOW_AI
 # DONT_DEL_NEWMOB
 
 ## set a hosted by name for unix platforms
-HOSTEDBY Yournamehere
+HOSTEDBY morph
 
 ## Set to jobban "Guest-" accounts from Captain, HoS, HoP, CE, RD, CMO, Warden, Security, Detective, and AI positions.
 ## Set to 1 to jobban them from those positions, set to 0 to allow them.
@@ -165,7 +165,7 @@ GUEST_BAN
 # FORUMURL http://example.com
 
 ## Wiki address
-# WIKIURL http://example.com
+WIKIURL https://lanstation.miraheze.org/
 
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
 # BANAPPEALS http://example.com
@@ -205,7 +205,7 @@ SOCKET_TALK 0
 GATEWAY_DELAY 18000
 
 ## Remove the # to give assistants maint access.
-#ASSISTANT_MAINT
+ASSISTANT_MAINT
 
 ## Remove the # to enable assistant limiting.
 #ASSISTANT_LIMIT
@@ -230,7 +230,7 @@ RESPAWN_AS_MOMMI
 #NO_RESPAWN_AS_MOUSE
 
 ##Remove the # to let ghosts spin chairs
-#GHOST_INTERACTION
+GHOST_INTERACTION
 
 ## Uncomment to use the paperwork library
 #PAPERWORK_LIBRARY
@@ -288,7 +288,7 @@ RENDERS_URL http://ss13.pomf.se/img/map-renders
 
 ## SKIP_MINIMAP_GENERATION
 ## Uncomment to disable generation of minimaps (makes the server start faster!)
-SKIP_MINIMAP_GENERATION
+#SKIP_MINIMAP_GENERATION
 
 ## SHUT_UP_AUTOMATIC_DIAGNOSTIC_AND_ANNOUNCEMENT_SYSTEM
 ## Uncomment to disable the lovely robotic voice that tells you the time at the start of every shift.
@@ -311,7 +311,7 @@ SKIP_MINIMAP_GENERATION
 
 ## ENABLE_WAGES
 ## Comment out to disable wages being enabled by default.
-ENABLE_WAGES
+# ENABLE_WAGES
 
 # HTTP URL to send Discord messages to.
 # DISCORD_URL
