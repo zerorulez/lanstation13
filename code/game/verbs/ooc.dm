@@ -46,6 +46,14 @@
 				return
 	log_ooc("[mob.name]/[key] (@[mob.x],[mob.y],[mob.z]): [msg]")
 
+	// Greentext - lanstation13
+	// RIP Elefantinho - 2014 - 2014
+
+	var/msg_style = ""
+
+	if(findtext(trim_left(msg), "&gt;", 1, 5))
+		msg_style = "style='color: #00c000;'"
+
 	var/display_colour = config.default_ooc_color
 	if(holder && !holder.fakekey)
 		display_colour = "#0099cc"	//light blue
@@ -68,7 +76,7 @@
 						display_name = "[holder.fakekey]/([src.key])"
 					else
 						display_name = holder.fakekey
-			to_chat(C, "<font color='[display_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
+			to_chat(C, "<font color='[display_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[display_name]:</EM> <span class='message' [msg_style]>[msg]</span></span></font>")
 			/*
 			if(holder)
 				if(!holder.fakekey || C.holder)
