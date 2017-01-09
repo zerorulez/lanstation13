@@ -375,15 +375,26 @@
 	access = list(access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
 
+	alt_titles = list("Maid") // just like my animes
+
 	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/janitor
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)
 			return 0
-		H.equip_or_collect(new /obj/item/clothing/under/rank/janitor(H), slot_w_uniform)
-		H.equip_or_collect(new /obj/item/clothing/shoes/black(H), slot_shoes)
+		if(H.mind.role_alt_title)
+			switch(H.mind.role_alt_title)
+				if("Janitor")
+					H.equip_or_collect(new /obj/item/clothing/under/rank/janitor(H), slot_w_uniform)
+					H.equip_or_collect(new /obj/item/clothing/shoes/black(H), slot_shoes)
+				if("Maid")
+					H.equip_or_collect(new /obj/item/clothing/head/maidhat(H), slot_head)
+					H.equip_or_collect(new /obj/item/clothing/under/maid(H), slot_w_uniform)
+					H.equip_or_collect(new /obj/item/clothing/shoes/kneesocks(H), slot_shoes)
+
 		//H.equip_or_collect(new /obj/item/device/pda/janitor(H), slot_belt)
+
 		if(H.backbag == 1)
 			H.put_in_hand(GRASP_RIGHT_HAND, new H.species.survival_gear(H))
 		else
