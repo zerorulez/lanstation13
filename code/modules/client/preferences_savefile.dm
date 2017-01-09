@@ -96,6 +96,7 @@
 	space_dust		=	text2num(preference_list_client["space_dust"])
 	parallax_speed	=	text2num(preference_list_client["parallax_speed"])
 	stumble			=	text2num(preference_list_client["stumble"])
+	viu_regras      =	text2num(preference_list_client["viu_regras"])
 
 	ooccolor		= 	sanitize_hexcolor(ooccolor, initial(ooccolor))
 	lastchangelog	= 	sanitize_text(lastchangelog, initial(lastchangelog))
@@ -860,7 +861,6 @@ AND players.player_slot = ? ;"}, ckey, slot)
 //	S["skin_style"]            << skin_style
 
 	return 1
-
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

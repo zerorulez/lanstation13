@@ -38,10 +38,18 @@
 
 #define RULES_FILE "config/rules.html"
 /client/verb/rules()
-	set name = "Rules"
-	set desc = "Show Server Rules."
-	set hidden = 1
-	src << browse(file(RULES_FILE), "window=rules;size=480x320")
+	set name = "Regras"
+	set desc = "Mostra as regras do servidor."
+
+	src << browse(file(RULES_FILE), "window=rules;size=1280x720")
+
+	if(!prefs.viu_regras)
+		var/database/query/q = new
+
+		q.Add("UPDATE client SET viu_regras = ? WHERE ckey = ?", 1, ckey)
+		q.Execute(prefs.db)
+
+		prefs.viu_regras = 1
 #undef RULES_FILE
 
 /client/verb/hotkeys_help()

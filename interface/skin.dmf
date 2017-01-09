@@ -901,8 +901,8 @@ window "rpane"
 		anchor1 = none
 		anchor2 = none
 		saved-params = "is-checked"
-		text = "Rules"
-		command = "rules"
+		text = "Regras"
+		command = "regras"
 		group = "rpanemode"
 	elem "changelog"
 		type = BUTTON

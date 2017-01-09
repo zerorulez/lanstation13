@@ -58,4 +58,8 @@
 				client.prefs.lastchangelog = changelog_hash
 				client.prefs.save_preferences()
 				winset(client, "rpane.changelog", "background-color=none;font-style=;")
+
+			if(!client.prefs.viu_regras)
+				client.rules()
+
 			client.playtitlemusic()

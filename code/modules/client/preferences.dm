@@ -186,6 +186,7 @@ var/const/MAX_SAVE_SLOTS = 8
 	var/progress_bars = 1 //Whether to show progress bars when doing delayed actions.
 	var/client/client
 	var/saveloaded = 0
+	var/viu_regras = 0 //Jogador já viu as regras do servidor ao menos uma vez?
 
 /datum/preferences/New(client/C)
 	client=C
