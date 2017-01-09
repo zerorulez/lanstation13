@@ -46,11 +46,24 @@ var/global/datum/controller/gameticker/ticker
 #define LOBBY_TICKING 1
 #define LOBBY_TICKING_RESTARTED 2
 /datum/controller/gameticker/proc/pregame()
-	var/oursong = file(pick(
-		"sound/music/gentemenandladies.ogg",
-		"sound/music/1.ogg",
-		))
+	var/path = "sound/lobbysongs/"
+	var/list/filenames = flist(path)
+
+	if(!filenames)
+		qdel(src)
+		return
+
+	for(var/filename in filenames)
+		if(copytext(filename, length(filename)) == "/")
+			filenames -= filename
+
+		if(findtext(lowertext(filename), "readme"))
+			filenames -= filename
+
+	var/oursong = file("[path][pick(filenames)]")
+
 	login_music = fcopy_rsc(oursong)
+
 	// Wait for MC to get its shit together
 	while(!master_controller.initialized)
 		sleep(1) // Don't thrash the poor CPU
