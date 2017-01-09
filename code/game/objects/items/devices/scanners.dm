@@ -129,7 +129,7 @@ Damage Specifics: <font color='blue'>0</font> - <font color='green'>0</font> - <
 <span class='notice'>Localized Damage, Brute/Burn:</span>
 <span class='notice'>No limb damage detected.</span>
 Subject bloodstream oxygen level normal | Subject bloodstream toxin level normal | Subject burn injury status clear | Subject brute injury status clear
-Blood Level Unknown: ???% ???cl
+Blood Level Unknown: ???%25 ???cl
 Subject's pulse: ??? BPM"})
 			return
 	if(!silent)
@@ -145,7 +145,7 @@ Subject's pulse: ??? BPM"})
 		OX = fake_oxy > 50 ? "<b>[fake_oxy]</b>" : fake_oxy
 		message += "<span class='notice'>Analyzing Results for [M]:<br>Overall Status: Dead</span><br>"
 	else
-		message += "<br><span class='notice'>Analyzing Results for [M]:<br>Overall Status: [M.stat > 1 ? "Dead" : "[M.health - M.halloss]% Healthy"]</span>"
+		message += "<br><span class='notice'>Analyzing Results for [M]:<br>Overall Status: [M.stat > 1 ? "Dead" : "[M.health - M.halloss]%25 Healthy"]</span>"
 	message += "<br>Key: <font color='blue'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font>"
 	message += "<br>Damage Specifics: <font color='blue'>[OX]</font> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>"
 	message += "<br>[(M.undergoing_hypothermia()) ?  "<span class='warning'>" : "<span class='notice'>"]Body Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span>"
@@ -245,15 +245,15 @@ Subject's pulse: ??? BPM"})
 			var/blood_percent =  round((blood_volume / 560) * 100)
 			switch(blood_volume)
 				if(BLOOD_VOLUME_SAFE to 1000000000)
-					message += "<br><span class='notice'>Blood Level Normal: [blood_percent]% ([blood_volume]cl)</span>"
+					message += "<br><span class='notice'>Blood Level Normal: [blood_percent]%25 ([blood_volume]cl)</span>"
 				if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-					message += "<br><span class='warning'>Warning: Blood Level Low: [blood_percent]% [blood_volume]cl</span>" //Still about fine
+					message += "<br><span class='warning'>Warning: Blood Level Low: [blood_percent]%25 [blood_volume]cl</span>" //Still about fine
 				if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-					message += "<br><span class='danger'>Danger: Blood Level Serious: [blood_percent]% [blood_volume]cl</span>"
+					message += "<br><span class='danger'>Danger: Blood Level Serious: [blood_percent]%25 [blood_volume]cl</span>"
 				if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-					message += "<br><span class='danger'>Danger: Blood Level Critical: [blood_percent]% [blood_volume]cl</span>"
+					message += "<br><span class='danger'>Danger: Blood Level Critical: [blood_percent]%25 [blood_volume]cl</span>"
 				if(-1000000000 to BLOOD_VOLUME_SURVIVE)
-					message += "<br><span class='danger'>Danger: Blood Level Fatal: [blood_percent]% [blood_volume]cl</span>"
+					message += "<br><span class='danger'>Danger: Blood Level Fatal: [blood_percent]%25 [blood_volume]cl</span>"
 		message += "<br><span class='notice'>Subject's pulse: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse(GETPULSE_TOOL)] BPM</font></span>"
 	to_chat(user, message)//Here goes
 
@@ -328,15 +328,15 @@ Subject's pulse: ??? BPM"})
 		var/unknown_concentration =  1 - (o2_concentration + n2_concentration + co2_concentration + plasma_concentration)
 
 		if(n2_concentration > 0.01)
-			message += "<br>[human_standard && abs(n2_concentration - N2STANDARD) > 20 ? "<span class='bad'>" : "<span class='notice'>"] Nitrogen: [round(scanned.nitrogen, 0.1)] mol, [round(n2_concentration*100)]%</span>"
+			message += "<br>[human_standard && abs(n2_concentration - N2STANDARD) > 20 ? "<span class='bad'>" : "<span class='notice'>"] Nitrogen: [round(scanned.nitrogen, 0.1)] mol, [round(n2_concentration*100)]%25</span>"
 		if(o2_concentration > 0.01)
-			message += "<br>[human_standard && abs(o2_concentration - O2STANDARD) > 2 ? "<span class='bad'>" : "<span class='notice'>"] Oxygen: [round(scanned.oxygen, 0.1)] mol, [round(o2_concentration*100)]%</span>"
+			message += "<br>[human_standard && abs(o2_concentration - O2STANDARD) > 2 ? "<span class='bad'>" : "<span class='notice'>"] Oxygen: [round(scanned.oxygen, 0.1)] mol, [round(o2_concentration*100)]%25</span>"
 		if(co2_concentration > 0.01)
-			message += "<br>[human_standard ? "<span class='bad'>" : "<span class='notice'>"] CO2: [round(scanned.carbon_dioxide, 0.1)] mol, [round(co2_concentration*100)]%</span>"
+			message += "<br>[human_standard ? "<span class='bad'>" : "<span class='notice'>"] CO2: [round(scanned.carbon_dioxide, 0.1)] mol, [round(co2_concentration*100)]%25</span>"
 		if(plasma_concentration > 0.01)
-			message += "<br>[human_standard ? "<span class='bad'>" : "<span class='notice'>"] Plasma: [round(scanned.toxins, 0.1)] mol, [round(plasma_concentration*100)]%</span>"
+			message += "<br>[human_standard ? "<span class='bad'>" : "<span class='notice'>"] Plasma: [round(scanned.toxins, 0.1)] mol, [round(plasma_concentration*100)]%25</span>"
 		if(unknown_concentration > 0.01)
-			message += "<br><span class='notice'>Unknown: [round(unknown_concentration*100)]%</span>"
+			message += "<br><span class='notice'>Unknown: [round(unknown_concentration*100)]%25</span>"
 
 		message += "<br>[human_standard && !(scanned.temperature in range(BODYTEMP_COLD_DAMAGE_LIMIT, BODYTEMP_HEAT_DAMAGE_LIMIT)) ? "<span class='bad'>" : "<span class='notice'>"] Temperature: [round(scanned.temperature-T0C)]&deg;C"
 		message += "<br><span class='notice'>Heat capacity: [round(heat_capacity, 0.01)]</span>"
@@ -461,7 +461,7 @@ Subject's pulse: ??? BPM"})
 		if(O.reagents.reagent_list.len)
 			for(var/datum/reagent/R in O.reagents.reagent_list)
 				var/reagent_percent = (R.volume/O.reagents.total_volume)*100
-				dat += "<br><span class='notice'>[R] [details ? "([R.volume] units, [reagent_percent]%)" : ""]</span>"
+				dat += "<br><span class='notice'>[R] [details ? "([R.volume] units, [reagent_percent]%25)" : ""]</span>"
 		if(dat)
 			to_chat(user, "<span class='notice'>Chemicals found in \the [O]:[dat]</span>")
 		else
