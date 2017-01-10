@@ -4,8 +4,6 @@
 
 [IRC](irc://irc.rizon.net/lanstation13) (irc.rizon.net #lanstation13), link direto:  [![IRC](https://kiwiirc.com/buttons/irc.rizon.net/lanstation13.png)](https://kiwiirc.com/client/irc.rizon.net/?nick=Newcomer|?&theme=basic#lanstation13)
 
-[Discord Coding Server Invite Link](https://discord.gg/afVXAyq)
-
 ---
 
 ### GETTING THE CODE
