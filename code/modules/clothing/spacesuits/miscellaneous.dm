@@ -15,7 +15,7 @@
 	item_state = "paramedic-eva"
 	desc = "A paramedic space suit. Used in the recovery of bodies from space."
 	species_restricted = list("exclude",VOX_SHAPED)
-	slowdown = 1
+	slowdown = 0.3
 
 //Space santa outfit suit
 /obj/item/clothing/head/helmet/space/santahat
@@ -86,7 +86,7 @@
 	item_state = "clown-eva"
 	species_restricted = list("exclude",VOX_SHAPED)
 	allowed = list(/obj/item/weapon/reagent_containers/food/snacks/grown/banana, /obj/item/weapon/bananapeel, /obj/item/weapon/soap, /obj/item/weapon/reagent_containers/spray, /obj/item/weapon/tank)
-	slowdown = 1
+	slowdown = 0.3
 
 	var/step_sound = "clownstep"
 	var/footstep = 1	//used for squeeks whilst walking

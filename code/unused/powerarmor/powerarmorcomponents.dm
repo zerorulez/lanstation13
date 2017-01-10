@@ -23,7 +23,7 @@
 	plasma
 		name = "Miniaturized plasma generator"
 		desc = "Runs on plasma."
-		slowdown = 1
+		slowdown = 0.3
 		var/fuel = 0
 
 		process()
@@ -61,7 +61,7 @@
 	nuclear
 		name = "Miniaturized nuclear generator"
 		desc = "For all your radioactive needs."
-		slowdown = 1.5
+		slowdown = 0.3.5
 
 		process()
 			if(!crit_fail)
@@ -118,7 +118,7 @@
 		name = "CentComm power armor reactive plating"
 		desc = "Pretty effective against everything, not perfect though."
 		togglearmor = list(melee = 90, bullet = 70, laser = 60,energy = 40, bomb = 75, bio = 75, rad = 75)
-		slowdown = 2
+		slowdown = 1
 
 
 /obj/item/powerarmor/servos
@@ -139,7 +139,7 @@
 /obj/item/powerarmor/atmoseal
 	name = "Power armor atmospheric seals"
 	desc = "Keeps the bad stuff out."
-	slowdown = 1
+	slowdown = 0.3
 	var/sealed = 0
 
 	toggle(sudden = 0)

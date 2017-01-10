@@ -41,7 +41,7 @@
 	icon_state = "riot"
 	item_state = "swat_suit"
 	body_parts_covered = ARMS|LEGS|FULL_TORSO|FEET|HANDS|IGNORE_INV
-	slowdown = 1
+	slowdown = 0.3
 	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.5
 
@@ -52,7 +52,7 @@
  	icon_state = "knight_green"
  	item_state = "knight_green"
  	body_parts_covered = ARMS|LEGS|FULL_TORSO|FEET|HANDS
- 	slowdown = 1
+ 	slowdown = 0.3
  	armor = list(melee = 40, bullet = 5, laser = 5, energy = 5, bomb = 0, bio = 0, rad = 0)
 
 
@@ -98,7 +98,7 @@
 	item_state = "xcomarmor1"
 	body_parts_covered = ARMS|LEGS|FULL_TORSO|FEET|HANDS
 	armor = list(melee = 50, bullet = 10, laser = 10, energy = 0, bomb = 0, bio = 0, rad = 0)
-	slowdown = 1
+	slowdown = 0.3
 	siemens_coefficient = 0.5
 
 
@@ -157,7 +157,7 @@
 	icon_state = "reactiveoff"
 	item_state = "reactiveoff"
 	blood_overlay_type = "armor"
-	slowdown = 1
+	slowdown = 0.3
 	clothing_flags = ONESIZEFITSALL
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 

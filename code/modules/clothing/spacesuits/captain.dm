@@ -24,7 +24,7 @@
 	pressure_resistance = 200 * ONE_ATMOSPHERE
 	body_parts_covered = ARMS|LEGS|FULL_TORSO|FEET
 	allowed = list(/obj/item/weapon/tank, /obj/item/device/flashlight,/obj/item/weapon/gun/energy, /obj/item/weapon/gun/projectile, /obj/item/ammo_storage, /obj/item/ammo_casing, /obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs)
-	slowdown = 1.5
+	slowdown = 0.6
 	armor = list(melee = 65, bullet = 50, laser = 50, energy = 25, bomb = 50, bio = 100, rad = 50)
 	siemens_coefficient = 0.7
 	heat_conductivity = SPACESUIT_HEAT_CONDUCTIVITY

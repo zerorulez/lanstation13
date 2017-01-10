@@ -1005,7 +1005,7 @@ var/global/list/arena_spawnpoints = list()//used by /mob/dead/observer/Logout()
 		B.hurt_players = 0
 	B.destroy_environnement = 0
 	M.equip_to_slot_or_del(B, slot_s_store)
-	bombsuit.slowdown = 1
+	bombsuit.slowdown = 0.3
 	for(var/obj/item/clothing/C in M)
 		C.canremove = 0
 		if(violence)
