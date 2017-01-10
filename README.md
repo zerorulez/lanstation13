@@ -1,8 +1,8 @@
-# vgstation ![](https://travis-ci.org/d3athrow/vgstation13.svg?branch=Bleeding-Edge)
+# lanstation13 ![](https://travis-ci.org/mph55/lanstation13.svg?branch=master)
 
-[Website](http://ss13.moe) - [Code](https://github.com/d3athrow/vgstation13)
+[Website](https://lanstation.miraheze.org/wiki/Pá1gina_principal) - [Code](https://github.com/d3athrow/vgstation13)
 
-[IRC](irc://irc.rizon.net/vgstation) (irc.rizon.net #vgstation), here is an embedded link to it:  [![Visit our IRC channel](https://kiwiirc.com/buttons/irc.rizon.net/vgstation.png)](https://kiwiirc.com/client/irc.rizon.net/?nick=Newcomer|?&theme=basic#vgstation)
+[IRC](irc://irc.rizon.net/lanstation13) (irc.rizon.net #lanstation13), link direto:  [![IRC](https://kiwiirc.com/buttons/irc.rizon.net/lanstation13.png)](https://kiwiirc.com/client/irc.rizon.net/?nick=Newcomer|?&theme=basic#lanstation13)
 
 [Discord Coding Server Invite Link](https://discord.gg/afVXAyq)
 
