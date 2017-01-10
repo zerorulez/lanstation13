@@ -127,7 +127,7 @@ proc/process_adminbus_teleport_locs()
 	power_light = 0
 	power_environ = 0
 	always_unpowered = 0
-	dynamic_lighting = 1
+	//lighting_use_dynamic = 1
 	shuttle_can_crush = TRUE
 
 /area/arrival
@@ -154,7 +154,7 @@ proc/process_adminbus_teleport_locs()
 
 /area/shuttle
 	requires_power = 0
-	dynamic_lighting = 1 //Lighting STILL disabled, even with the new bay engine, because lighting doesn't play nice with our shuttles, might just be our shuttle code, or the small changes in the lighting engine we have from bay.
+	lighting_use_dynamic = 1 //Lighting STILL disabled, even with the new bay engine, because lighting doesn't play nice with our shuttles, might just be our shuttle code, or the small changes in the lighting engine we have from bay.
 	//haha fuck you we dynamic lights now
 	shuttle_can_crush = FALSE
 
@@ -305,7 +305,7 @@ proc/process_adminbus_teleport_locs()
 
 /area/shuttle/thunderdome
 	name = "honk"
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 
 /area/shuttle/thunderdome/grnshuttle
 	name = "\improper Thunderdome GRN Shuttle"
@@ -471,7 +471,7 @@ proc/process_adminbus_teleport_locs()
 	name = "start area"
 	icon_state = "start"
 	requires_power = 0
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 	has_gravity = 1
 
 // === end remove
@@ -487,7 +487,7 @@ proc/process_adminbus_teleport_locs()
 	name = "\improper Centcom"
 	icon_state = "centcom"
 	requires_power = 0
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 	shuttle_can_crush = FALSE
 
 /area/centcom/control
@@ -526,7 +526,7 @@ proc/process_adminbus_teleport_locs()
 	name = "\improper Syndicate Mothership"
 	icon_state = "syndie-ship"
 	requires_power = 0
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 	shuttle_can_crush = FALSE
 
 /area/syndicate_mothership/control
@@ -572,7 +572,7 @@ proc/process_adminbus_teleport_locs()
 	name = "\improper Thunderdome"
 	icon_state = "thunder"
 	requires_power = 0
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 	shuttle_can_crush = FALSE
 
 /area/tdome/tdome1
@@ -598,7 +598,7 @@ proc/process_adminbus_teleport_locs()
 	name = "\improper Syndicate Shuttle"
 	icon_state = "yellow"
 	requires_power = 0
-	dynamic_lighting = 1
+	//lighting_use_dynamic = 1
 	shuttle_can_crush = FALSE
 
 /area/syndicate_station/start
@@ -640,7 +640,7 @@ proc/process_adminbus_teleport_locs()
 	name = "\improper Wizard's Den"
 	icon_state = "yellow"
 	requires_power = 0
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 	shuttle_can_crush = FALSE
 
 /area/vox_station
@@ -1105,7 +1105,7 @@ proc/process_adminbus_teleport_locs()
 /area/holodeck
 	name = "\improper Holodeck"
 	icon_state = "Holodeck"
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 	shuttle_can_crush = FALSE
 
 /area/holodeck/alphadeck
@@ -1242,7 +1242,7 @@ proc/process_adminbus_teleport_locs()
 
 /area/solar
 	requires_power = 0
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 	holomap_color = HOLOMAP_AREACOLOR_ENGINEERING
 	shuttle_can_crush = FALSE
 
@@ -2033,22 +2033,22 @@ proc/process_adminbus_teleport_locs()
 /area/turret_protected/AIsatextFP
 	name = "\improper AI Sat Ext"
 	icon_state = "storage"
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 
 /area/turret_protected/AIsatextFS
 	name = "\improper AI Sat Ext"
 	icon_state = "storage"
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 
 /area/turret_protected/AIsatextAS
 	name = "\improper AI Sat Ext"
 	icon_state = "storage"
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 
 /area/turret_protected/AIsatextAP
 	name = "\improper AI Sat Ext"
 	icon_state = "storage"
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 
 /area/turret_protected/NewAIMain
 	name = "\improper AI Main New"
@@ -2164,7 +2164,7 @@ proc/process_adminbus_teleport_locs()
 	name = "\improper Vox Solar Array"
 	icon_state = "panelsS"
 	requires_power = 0
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 	holomap_color = HOLOMAP_AREACOLOR_ENGINEERING
 
 /area/vox_trading_post/solars
@@ -2334,7 +2334,7 @@ proc/process_adminbus_teleport_locs()
 /area/awaymission/beach
 	name = "Beach"
 	icon_state = "null"
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 	requires_power = 0
 
 /area/awaymission/leviathan
@@ -2428,7 +2428,7 @@ var/list/the_station_areas = list (
 /area/beach/
 	name = "The metaclub's private beach"
 	icon_state = "null"
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 	requires_power = 0
 	var/sound/mysound = null
 	shuttle_can_crush = FALSE

@@ -52,6 +52,8 @@
 
 	var/explosion_block = 0
 
+	var/dynamic_lighting = 1
+
 	//For shuttles - if 1, the turf's underlay will never be changed when moved
 	//See code/datums/shuttle.dm @ 544
 	var/preserve_underlay = 0
@@ -80,6 +82,11 @@
 		spawn( 0 )
 			src.Entered(AM)
 			return
+
+	var/area/A = loc
+
+	if(!dynamic_lighting || !A.lighting_use_dynamic)
+		luminosity = 1
 
 /turf/proc/initialize()
 	return
@@ -273,6 +280,7 @@
 		L = null
 
 //Creates a new turf
+//Creates a new turf
 /turf/proc/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0, var/allow = 1)
 	if(loc)
 		var/area/A = loc
@@ -305,15 +313,12 @@
 
 	var/old_opacity = opacity
 	var/old_dynamic_lighting = dynamic_lighting
-	var/old_affecting_lights = affecting_lights
+	var/list/old_affecting_lights = affecting_lights
 	var/old_lighting_overlay = lighting_overlay
-	var/old_corners = corners
-
 	var/old_holomap = holomap_data
 //	to_chat(world, "Replacing [src.type] with [N]")
 
-	if(connections)
-		connections.erase_all()
+	if(connections) connections.erase_all()
 
 	if(istype(src,/turf/simulated))
 		//Yeah, we're just going to rebuild the whole thing.
@@ -321,8 +326,7 @@
 		//the zone will only really do heavy lifting once.
 		var/turf/simulated/S = src
 		env = S.air //Get the air before the change
-		if(S.zone)
-			S.zone.rebuild()
+		if(S.zone) S.zone.rebuild()
 	if(istype(src,/turf/simulated/floor))
 		var/turf/simulated/floor/F = src
 		if(F.floor_tile)
@@ -373,19 +377,19 @@
 
 		. = W
 
-	recalc_atom_opacity()
 	lighting_overlay = old_lighting_overlay
 	affecting_lights = old_affecting_lights
-	corners = old_corners
+
 	if((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting) || force_lighting_update)
 		reconsider_lights()
+
 	if(dynamic_lighting != old_dynamic_lighting)
 		if(dynamic_lighting)
-			lighting_build_overlay()
+			lighting_build_overlays()
 		else
-			lighting_clear_overlay()
+			lighting_clear_overlays()
 
-	holomap_data = old_holomap // Holomap persists through everything...
+	holomap_data = old_holomap // Holomap persists through everything.
 	update_holomap_planes() // But we might need to recalculate it.
 
 /turf/proc/AddDecal(const/image/decal)
@@ -712,3 +716,11 @@
 	.=..()
 
 	src.map_element = ME
+
+/turf/change_area(var/area/old_area, var/area/new_area)
+	if (new_area.lighting_use_dynamic != old_area.lighting_use_dynamic)
+		if (new_area.lighting_use_dynamic)
+			lighting_build_overlays()
+		else
+			lighting_clear_overlays()
+

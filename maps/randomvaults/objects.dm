@@ -8,7 +8,7 @@
 	name = "mysterious structure"
 	requires_power = 0
 	icon_state = "firingrange"
-	dynamic_lighting = 1
+	lighting_use_dynamic = 1
 
 /area/vault/holomapAlwaysDraw()
 	return 0
@@ -32,7 +32,7 @@
 
 /area/vault/automap/no_light
 	icon_state = "ME_vault_lit"
-	dynamic_lighting = FALSE
+	lighting_use_dynamic = FALSE
 
 /area/vault/icetruck
 
@@ -190,25 +190,25 @@
 	name = "\improper Engine Storage Bay"
 	icon_state = "engine"
 	requires_power = 0
-	
+
 /area/vault/lightship/cockpit
-	name = "\improper Cockpit"	
-	
+	name = "\improper Cockpit"
+
 /area/vault/lightship/dronebay
-	name = "\improper Drone Bay"	
-	
+	name = "\improper Drone Bay"
+
 /area/vault/lightship/Doormaint
-	name = "\improper Airlock Maintenance"	
-	
+	name = "\improper Airlock Maintenance"
+
 /area/vault/lightship/cameraroom
-	name = "\improper Surveillance Room"	
-	
+	name = "\improper Surveillance Room"
+
 /area/vault/lightship/shieldbattery
-	name = "\improper Shield Battery"	
-	
+	name = "\improper Shield Battery"
+
 /area/vault/lightship/Medbay
-	name = "\improper Medical Bay"	
-	
+	name = "\improper Medical Bay"
+
 /area/vault/lightship/lounge
 	name = "\improper Lounge"
 
@@ -235,7 +235,7 @@
 
 /area/vault/lightship/weaponsroom
 	name = "\improper Weapon Systems"
-	
+
 
 /area/vault/icecomet
 	jammed = 2

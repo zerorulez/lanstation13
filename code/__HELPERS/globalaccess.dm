@@ -21,8 +21,6 @@
 			return global.sent_spiders_to_station;
 		if("lighting_update_lights")
 			return global.lighting_update_lights;
-		if("lighting_update_corners")
-			return global.lighting_update_corners;
 		if("lighting_update_overlays")
 			return global.lighting_update_overlays;
 		if("exclude")
@@ -35,10 +33,6 @@
 			return global.error_cooldown;
 		if("html_interfaces")
 			return global.html_interfaces;
-		if("all_lighting_corners")
-			return global.all_lighting_corners;
-		if("LIGHTING_CORNER_DIAGONAL")
-			return global.LIGHTING_CORNER_DIAGONAL;
 		if("all_lighting_overlays")
 			return global.all_lighting_overlays;
 		if("cargo_telepads")
@@ -1766,8 +1760,6 @@
 			global.sent_spiders_to_station=newval;
 		if("lighting_update_lights")
 			global.lighting_update_lights=newval;
-		if("lighting_update_corners")
-			global.lighting_update_corners=newval;
 		if("lighting_update_overlays")
 			global.lighting_update_overlays=newval;
 		if("exclude")
@@ -1780,10 +1772,6 @@
 			global.error_cooldown=newval;
 		if("html_interfaces")
 			global.html_interfaces=newval;
-		if("all_lighting_corners")
-			global.all_lighting_corners=newval;
-		if("LIGHTING_CORNER_DIAGONAL")
-			global.LIGHTING_CORNER_DIAGONAL=newval;
 		if("all_lighting_overlays")
 			global.all_lighting_overlays=newval;
 		if("cargo_telepads")
