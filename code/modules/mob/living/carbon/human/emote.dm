@@ -232,7 +232,6 @@
 
 		if ("deathgasp")
 			if(M_ELVIS in mutations)
-				src.emote("fart")
 				msg = "<B>[src]</B> has left the building..."
 			if(M_HARDCORE in mutations)
 				msg = "<B>[src]</B> whispers with his final breath, <i>'i told u i was hardcore..'</i>"
@@ -594,7 +593,7 @@
 						msg = "<B>[src]</B> makes a very loud noise."
 						m_type = HEARABLE
 
-		// Needed for M_TOXIC_FART
+/*fffuck you		// Needed for M_TOXIC_FART
 		if("fart")
 			if(src.op_stage.butt != 4)
 				if(world.time-lastFart >= 400)
@@ -746,6 +745,7 @@
 			else
 				msg = "<b>[src]</b> lets out a [pick("disgusting","revolting","horrible","strangled","god awful")] noise out of \his mutilated asshole."
 				m_type = HEARABLE
+		*/
 		if ("help")
 			to_chat(src, "blink, blink_r, blush, bow-(none)/mob, burp, choke, chuckle, clap, collapse, cough,\ncry, custom, deathgasp, drool, eyebrow, frown, gasp, giggle, groan, grumble, handshake, hug-(none)/mob, glare-(none)/mob,\ngrin, laugh, look-(none)/mob, moan, mumble, nod, pale, point-atom, raise, salute, shake, shiver, shrug,\nsigh, signal-#1-10, smile, sneeze, sniff, snore, stare-(none)/mob, tremble, twitch, twitch_s, whimper,\nwink, yawn")
 
