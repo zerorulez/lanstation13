@@ -37,9 +37,9 @@
 	restricted_jobs = list("Chaplain","AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Internal Affairs Agent", "Mobile MMI", "Head of Personnel")
 	protected_jobs = list()
 	required_players = 5
-	required_players_secret = 15
-	required_enemies = 3
-	recommended_enemies = 4
+	required_players_secret = 10
+	required_enemies = 2
+	recommended_enemies = 3
 
 	uplink_welcome = "Nar-Sie Uplink Console:"//what?
 	uplink_uses = 20//whaaaat?

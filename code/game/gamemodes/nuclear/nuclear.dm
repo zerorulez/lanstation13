@@ -6,8 +6,8 @@
 	name = "nuclear emergency"
 	config_tag = "nuclear"
 	required_players = 6
-	required_players_secret = 25 // 25 players - 5 players to be the nuke ops = 20 players remaining
-	required_enemies = 5
+	required_players_secret = 10 // 25 players - 5 players to be the nuke ops = 20 players remaining
+	required_enemies = 1
 	recommended_enemies = 5
 
 	uplink_welcome = "Corporate Backed Uplink Console:"
@@ -43,9 +43,9 @@
 	else
 		agent_number = possible_syndicates.len
 
-	var/n_players = num_players()
-	if(agent_number > n_players)
-		agent_number = n_players/2
+	agent_number = round((recommended_enemies * num_players()) / 25)
+	required_enemies    = agent_number
+	recommended_enemies = agent_number
 
 	while(agent_number > 0)
 		var/datum/mind/new_syndicate = pick(possible_syndicates)
