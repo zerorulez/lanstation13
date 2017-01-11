@@ -24,7 +24,7 @@
 				if(1)
 					emote("twitch")
 				if(2 to 3)
-					say("[prob(50) ? ";" : ""][pick("SHIT", "PISS", "FUCK", "CUNT", "COCKSUCKER", "MOTHERFUCKER", "TITS")]")
+					say("[prob(50) ? ";" : ""][pick("MERDA", "BOSTA", "PUTA QUE PARIU", "FILHO DA PUTA", "SUGADOR DE CARALHOS", "PORRA", "BUCETA", "CORNO", "QUEIJIN MINAS", "CÚ", "EU QUERO É FUDER", "EMERSON EDUARDO RODRIGUES SETIM MATOU ROGÉRIO GASPAR!", "VAGABUNDA", "VOCÊS NÃO CONSEGUEM PENETRAR EM MEU PROLAPSO TÃO RÁPIDO QUANTO EU GOSTARIA")]")
 
 			var/x_offset_change = rand(-2,2) * PIXEL_MULTIPLIER
 			var/y_offset_change = rand(-1,1) * PIXEL_MULTIPLIER
