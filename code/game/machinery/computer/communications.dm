@@ -565,7 +565,7 @@ var/shuttle_call/shuttle_calls[0]
 	return
 
 /proc/recall_shuttle(var/mob/user)
-	if ((!( ticker ) || emergency_shuttle.location || emergency_shuttle.direction == 0 || emergency_shuttle.timeleft() < 300))
+	if ((!( ticker ) || emergency_shuttle.location || emergency_shuttle.direction == 0 || emergency_shuttle.timeleft() < 150))
 		return
 	if( ticker.mode.name == "blob" || ticker.mode.name == "meteor")
 		return

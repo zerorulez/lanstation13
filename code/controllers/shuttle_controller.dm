@@ -5,7 +5,7 @@
 
 // these define the time taken for the shuttle to get to SS13
 // and the time before it leaves again
-#define SHUTTLEARRIVETIME  600		// 10 minutes = 600 seconds
+#define SHUTTLEARRIVETIME  300		// 5 minutes = 300 seconds
 #define SHUTTLELEAVETIME   180		// 3 minutes = 180 seconds
 #define SHUTTLETRANSITTIME 120		// 2 minutes = 120 seconds
 
