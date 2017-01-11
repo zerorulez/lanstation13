@@ -71,6 +71,7 @@
 		to_chat(user, "It has bullet markings on it.")
 
 /turf/proc/process()
+	set waitfor = FALSE
 	universe.OnTurfTick(src)
 
 /turf/New()
@@ -377,17 +378,16 @@
 
 		. = W
 
-	lighting_overlay = old_lighting_overlay
-	affecting_lights = old_affecting_lights
-
-	if((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting) || force_lighting_update)
-		reconsider_lights()
-
-	if(dynamic_lighting != old_dynamic_lighting)
-		if(dynamic_lighting)
-			lighting_build_overlays()
-		else
-			lighting_clear_overlays()
+	if (SSlighting && SSlighting.initialized)
+		lighting_overlay = old_lighting_overlay
+		affecting_lights = old_affecting_lights
+		if((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting) || force_lighting_update)
+			reconsider_lights()
+		if(dynamic_lighting != old_dynamic_lighting)
+			if(dynamic_lighting)
+				lighting_build_overlays()
+			else
+				lighting_clear_overlays()
 
 	holomap_data = old_holomap // Holomap persists through everything.
 	update_holomap_planes() // But we might need to recalculate it.

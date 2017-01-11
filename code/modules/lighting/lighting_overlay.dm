@@ -63,7 +63,19 @@
 
 	if(!needs_update && should_update)
 		needs_update = 1
-		lighting_update_overlays |= src
+		lighting_update_overlays += src
+
+// Standard reference removal stuff.
+/atom/movable/lighting_overlay/Destroy()
+	all_lighting_overlays -= src
+	lighting_update_overlays -= src
+
+	var/turf/T = loc
+	if(istype(T))
+		T.lighting_overlay = null
+		T.luminosity = 1
+
+	..()
 
 // This proc changes the colour of us (the actual "colour" the light emits).
 /atom/movable/lighting_overlay/proc/update_overlay()
