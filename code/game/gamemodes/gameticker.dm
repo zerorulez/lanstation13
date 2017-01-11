@@ -49,9 +49,8 @@ var/datum/controller/gameticker/ticker
 	var/path = "sound/lobbysongs/"
 	var/list/filenames = flist(path)
 
-	if(!filenames)
-		qdel(src)
-		return
+	if(!filenames.len)
+		filenames = null
 
 	for(var/filename in filenames)
 		if(copytext(filename, length(filename)) == "/")
