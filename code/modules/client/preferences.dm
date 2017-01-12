@@ -98,9 +98,9 @@ var/const/MAX_SAVE_SLOTS = 8
 	var/toggles = TOGGLES_DEFAULT
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
-	var/space_parallax = 1
-	var/space_dust = 1
-	var/parallax_speed = 2
+//	var/space_parallax = 1
+//	var/space_dust = 1
+//	var/parallax_speed = 2
 	var/special_popup = 0
 	var/tooltips = 1
 	var/stumble = 0						//whether the player pauses after their first step
@@ -304,12 +304,6 @@ var/const/MAX_SAVE_SLOTS = 8
 	<h1>General Settings</h1>
 <div id="container" style="border:1px solid #000; width:96; padding-left:2%; padding-right:2%; overflow:auto; padding-top:5px; padding-bottom:5px;">
   <div id="leftDiv" style="width:50%;height:100%;float:left;">
-	<b>Space Parallax:</b>
-	<a href='?_src_=prefs;preference=parallax'><b>[space_parallax ? "Enabled" : "Disabled"]</b></a><br>
-	<b>Parallax Speed:</b>
-	<a href='?_src_=prefs;preference=p_speed'><b>[parallax_speed]</b></a><br>
-	<b>Space Dust:</b>
-	<a href='?_src_=prefs;preference=dust'><b>[space_dust ? "Yes" : "No"]</b></a><br>
 	<b>Play admin midis:</b>
 	<a href='?_src_=prefs;preference=hear_midis'><b>[(toggles & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>
 	<b>Play lobby music:</b>
@@ -1396,7 +1390,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 					if(!UI_style_alpha_new | !(UI_style_alpha_new <= 255 && UI_style_alpha_new >= 50))
 						return
 					UI_style_alpha = UI_style_alpha_new
-
+/*	parallax removal
 				if("parallax")
 					space_parallax = !space_parallax
 					if(user && user.hud_used)
@@ -1409,7 +1403,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 
 				if("p_speed")
 					parallax_speed = min(max(input(user, "Enter a number between 0 and 5 included (default=2)","Parallax Speed Preferences",parallax_speed),0),5)
-
+*/
 				if("name")
 					be_random_name = !be_random_name
 

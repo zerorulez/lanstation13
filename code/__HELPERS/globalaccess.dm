@@ -555,14 +555,6 @@
 			return global.ventcrawl_machinery;
 		if("catcher")
 			return global.catcher;
-		if("parallax_on_clients")
-			return global.parallax_on_clients;
-		if("parallax_initialized")
-			return global.parallax_initialized;
-		if("space_color")
-			return global.space_color;
-		if("parallax_icon")
-			return global.parallax_icon;
 		if("unstackable_pipes")
 			return global.unstackable_pipes;
 		if("bent_dirs")
@@ -2374,14 +2366,6 @@
 			global.ventcrawl_machinery=newval
 		if("catcher")
 			global.catcher=newval
-		if("parallax_on_clients")
-			global.parallax_on_clients=newval
-		if("parallax_initialized")
-			global.parallax_initialized=newval
-		if("space_color")
-			global.space_color=newval
-		if("parallax_icon")
-			global.parallax_icon=newval
 		if("unstackable_pipes")
 			global.unstackable_pipes=newval
 		if("bent_dirs")

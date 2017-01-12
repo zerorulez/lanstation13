@@ -40,16 +40,15 @@
 		if(prob(3))
 			switch(pick(1,2,3)) //All of those REALLY ought to be variable lists, but that would be too smart I guess
 				if(1)
-					say(pick("haha esquece eu gosto de chupar pintos", \
+					say(pick("haha, esquece, eu gosto de chupar pintos", \
 					"se a terra eh uma esferica por que a agua naum cai?", \
-					"O CAPITÃO É UM PRESERVATIVO", "[pick("", "manda chamar o viado do)] [pick("somelia", "milha", "mirolha", "esmeralha")]", \
+					"O CAPITÃO É UM PRESERVATIVO", "[pick("", "manda chamar o viado do")] [pick("somelia", "milha", "mirolha", "esmeralha")]", \
 					"alguém mim dá [pick("telikesis","huque","epilapsia", "choquito")]?", \
 					"me vê 2 kilos de muçarela, por favor", "bis são os melhores de todos os mundos>", \
 					"macaquinho bonitinho", "NÃO TOCA EM MIM!!!!", \
 					"SAI DAQUI CARALHO REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"))
 				if(2)
-					say(pick("", \
-						"EMERSON EDUARDO RODRIGUES SETIM MATOU ROGÉRIO GASPAR!!", \
+					say(pick("EMERSON EDUARDO RODRIGUES SETIM MATOU ROGÉRIO GASPAR!!", \
 						"VOCÊS NÃO CONSEGUEM PENETRAR MEU PROLAPSO TÃO RÁPIDO QUANTO EU GOSTARIA!", \
 						"minha cara quando", \
 						"deixem o macaco em paz", \

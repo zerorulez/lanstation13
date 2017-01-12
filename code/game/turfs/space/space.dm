@@ -19,11 +19,11 @@
 		var/area/A = loc
 		A.area_turfs += src
 	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
-	var/image/I = image('icons/turf/space_parallax1.dmi',"[icon_state]")
-	I.plane = PLANE_SPACE_DUST
+/*	var/image/I = image('icons/turf/space_parallax1.dmi',"[icon_state]")
+	I.plane = PLANE_SPACE_BACKGROUND
 	I.alpha = 80
 	I.blend_mode = BLEND_ADD
-	overlays += I
+	overlays += I*/
 
 /turf/space/attack_paw(mob/user as mob)
 	return src.attack_hand(user)
@@ -180,7 +180,7 @@
 	name = "the void"
 	icon_state = "void"
 	desc = "The final final frontier."
-	plane = PLANE_ABOVE_PARALLAX
+	plane = PLANE_ABOVE_SPACE
 
 /turf/space/void/New()
 	return

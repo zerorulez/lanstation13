@@ -92,9 +92,9 @@
 	usenanoui		=	text2num(preference_list_client["usenanoui"])
 	tooltips		=	text2num(preference_list_client["tooltips"])
 	progress_bars	=	text2num(preference_list_client["progress_bars"])
-	space_parallax	=	text2num(preference_list_client["space_parallax"])
-	space_dust		=	text2num(preference_list_client["space_dust"])
-	parallax_speed	=	text2num(preference_list_client["parallax_speed"])
+//	space_parallax	=	text2num(preference_list_client["space_parallax"])
+//	space_dust		=	text2num(preference_list_client["space_dust"])
+//	parallax_speed	=	text2num(preference_list_client["parallax_speed"])
 	stumble			=	text2num(preference_list_client["stumble"])
 	viu_regras      =	text2num(preference_list_client["viu_regras"])
 
@@ -112,9 +112,9 @@
 	special_popup	= 	sanitize_integer(special_popup, 0, 1, initial(special_popup))
 	usenanoui		= 	sanitize_integer(usenanoui, 0, 1, initial(usenanoui))
 	progress_bars	= 	sanitize_integer(progress_bars, 0, 1, initial(progress_bars))
-	space_parallax	=	sanitize_integer(space_parallax, 0, 1, initial(space_parallax))
-	space_dust		=	sanitize_integer(space_dust, 0, 1, initial(space_dust))
-	parallax_speed	=	sanitize_integer(parallax_speed, 0, 5, initial(parallax_speed))
+//	space_parallax	=	sanitize_integer(space_parallax, 0, 1, initial(space_parallax))
+//	space_dust		=	sanitize_integer(space_dust, 0, 1, initial(space_dust))
+//	parallax_speed	=	sanitize_integer(parallax_speed, 0, 5, initial(parallax_speed))
 	stumble			= 	sanitize_integer(stumble, 0, 1, initial(stumble))
 	return 1
 
@@ -179,15 +179,15 @@
 	check.Add("SELECT ckey FROM client WHERE ckey = ?", ckey)
 	if(check.Execute(db))
 		if(!check.NextRow())
-			q.Add("INSERT into client (ckey, ooc_color, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",\
-			ckey, ooccolor, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special_popup, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble)
+			q.Add("INSERT into client (ckey, ooc_color, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special, usenanoui, tooltips, progress_bars, stumble) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",\
+			ckey, ooccolor, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special_popup, usenanoui, tooltips, progress_bars, stumble)
 			if(!q.Execute(db))
 				message_admins("Error #: [q.Error()] - [q.ErrorMsg()]")
 				WARNING("Error #:[q.Error()] - [q.ErrorMsg()]")
 				return 0
 		else
-			q.Add("UPDATE client SET ooc_color=?,lastchangelog=?,UI_style=?,default_slot=?,toggles=?,UI_style_color=?,UI_style_alpha=?,warns=?,warnbans=?,randomslot=?,volume=?,usewmp=?,special=?,usenanoui=?,tooltips=?,progress_bars=?,space_parallax=?,space_dust=?,parallax_speed=?, stumble=? WHERE ckey = ?",\
-			ooccolor, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special_popup, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, ckey)
+			q.Add("UPDATE client SET ooc_color=?,lastchangelog=?,UI_style=?,default_slot=?,toggles=?,UI_style_color=?,UI_style_alpha=?,warns=?,warnbans=?,randomslot=?,volume=?,usewmp=?,special=?,usenanoui=?,tooltips=?,progress_bars=?, stumble=? WHERE ckey = ?",\
+			ooccolor, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special_popup, usenanoui, tooltips, progress_bars, stumble, ckey)
 			if(!q.Execute(db))
 				message_admins("Error #: [q.Error()] - [q.ErrorMsg()]")
 				WARNING("Error #:[q.Error()] - [q.ErrorMsg()]")
@@ -223,9 +223,9 @@
 	S["warnbans"]       << warnbans
 	S["randomslot"]     << randomslot
 	S["volume"]         << volume
-	S["space_parallax"] << space_parallax
-	S["space_dust"]		<< space_dust
-	S["parallax_speed"]	<< parallax_speed
+//	S["space_parallax"] << space_parallax parallax removal
+//	S["space_dust"]		<< space_dust
+//	S["parallax_speed"]	<< parallax_speed
 	return 1
 
 //saving volume changes

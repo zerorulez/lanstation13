@@ -244,7 +244,7 @@ var/global/obj/screen/clicker/catcher = new()
 	mymob.client.screen += src.holomap_obj
 
 	reload_fullscreen()
-	update_parallax_existence()
+//	update_parallax_existence()
 
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()
