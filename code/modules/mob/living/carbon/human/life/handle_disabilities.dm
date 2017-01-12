@@ -76,7 +76,9 @@
 						"Por favor nao tire a vida dos seus filho(a) Dê a chance deles viver como vc teve a sua.", \
 						"comotira as augemas", \
 						"prendi o sapato", \
-						"pelo amor de deus alguém chama a segurança"))
+						"pelo amor de deus alguém chama a segurança", \
+						"alguma coisa ta destruindo a nave", \
+						"alguei mudou meu nome era ezequielBR agora e getulho vargas"))
 				if(3)
 					emote("começa a babar")
 
