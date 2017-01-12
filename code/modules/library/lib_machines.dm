@@ -38,6 +38,7 @@
 	id = row["id"]
 	author = row["author"]
 	title = row["title"]
+	content = row["content"]
 	category = row["category"]
 	ckey = row["ckey"]
 	if("content" in row)
@@ -73,6 +74,7 @@
 		var/datum/cachedbook/CB = new()
 		CB.forbidden=B.forbidden
 		CB.title = B.name
+		CB.content = B.dat
 		CB.author = B.author
 		CB.programmatic=1
 		CB.path=typepath
@@ -101,7 +103,7 @@
 	var/sqlid = text2num(id)
 	if(!sqlid)
 		return
-	var/DBQuery/query = dbcon_old.NewQuery("SELECT  id, author, title, category, ckey  FROM library WHERE id=[sqlid]")
+	var/DBQuery/query = dbcon_old.NewQuery("SELECT  id, author, title, content, category, ckey  FROM library WHERE id=[sqlid]")
 	query.Execute()
 
 	var/list/results=list()
@@ -111,8 +113,9 @@
 			"id"      =query.item[1],
 			"author"  =query.item[2],
 			"title"   =query.item[3],
-			"category"=query.item[4],
-			"ckey"    =query.item[5]
+			"content" =query.item[4],
+			"category"=query.item[5],
+			"ckey"    =query.item[6]
 		))
 		results += CB
 		cached_books["[id]"]=CB

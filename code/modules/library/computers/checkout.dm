@@ -451,18 +451,13 @@
 /obj/machinery/computer/library/checkout/proc/make_external_book(var/datum/cachedbook/newbook)
 	if(!newbook || !newbook.id)
 		return
+
 	var/obj/item/weapon/book/B = new newbook.path(src.loc)
 
-	if (!newbook.programmatic)
-		var/list/_http = world.Export("http://ss13.moe/index.php/book?id=[newbook.id]")
-		if(!_http || !_http["CONTENT"])
-			return
-		var/http = file2text(_http["CONTENT"])
-		if(!http)
-			return
-		B.name = "Book: [newbook.title]"
-		B.title = newbook.title
-		B.author = newbook.author
-		B.dat = http
-		B.icon_state = "book[rand(1,9)]"
-	src.visible_message("[src]'s printer hums as it produces a completely bound book. How did it do that?")
+	B.name = "Book: [newbook.title]"
+	B.title = newbook.title
+	B.dat = newbook.content
+	B.author = newbook.author
+	B.icon_state = "book[rand(1,9)]"
+
+	visible_message("[src]'s printer hums as it produces a completely bound book. How did it do that?")
