@@ -41,7 +41,7 @@
 			switch(pick(1,2,3)) //All of those REALLY ought to be variable lists, but that would be too smart I guess
 				if(1)
 					say(pick("haha, esquece, eu gosto de chupar pintos", \
-					"se a terra eh uma esferica por que a agua naum cai?", \
+					"se a terra eh uma esfera por que a agua naum cai?", \
 					"O CAPITÃO É UM PRESERVATIVO", "[pick("", "manda chamar o viado do")] [pick("somelia", "milha", "mirolha", "esmeralha")]", \
 					"alguém mim dá [pick("telikesis","huque","epilapsia", "choquito")]?", \
 					"me vê 2 kilos de muçarela, por favor", "bis são os melhores de todos os mundos>", \
