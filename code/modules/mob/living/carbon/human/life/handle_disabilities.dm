@@ -3,7 +3,7 @@
 /mob/living/carbon/human/proc/handle_disabilities()
 	if(disabilities & EPILEPSY)
 		if((prob(1)) && (paralysis < 1))
-			visible_message("<span class='danger'>\[src] começa a ter um ataque epiléptico!</span>", \
+			visible_message("<span class='danger'>[src.name] começa a ter um ataque epiléptico!</span>", \
 							"<span class='warning'>Você tem um ataque!</span>")
 			Paralyse(10)
 			Jitter(1000) //Godness
@@ -78,7 +78,8 @@
 						"prendi o sapato", \
 						"pelo amor de deus alguém chama a segurança", \
 						"alguma coisa ta destruindo a nave", \
-						"alguei mudou meu nome era ezequielBR agora e getulho vargas"))
+						"alguei mudou meu nome era ezequielBR agora e getulho vargas", \
+						"Estou te robustando"))
 				if(3)
 					emote("começa a babar")
 
