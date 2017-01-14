@@ -516,6 +516,12 @@ var/const/MAX_SAVE_SLOTS = 8
 				prefUpperLevel = 0
 				prefLowerLevel = 0
 
+		if(!job.spawn_positions)
+			prefLevelLabel = "Unavailable"
+			prefLevelColor = "gray"
+			prefUpperLevel = 0
+			prefLowerLevel = 0
+
 		HTML += "<a class='white' onmouseup='javascript:return mouseUp(event,[prefUpperLevel],[prefLowerLevel], \"[rank]\");' oncontextmenu='javascript:return mouseDown(event,[prefUpperLevel],[prefLowerLevel], \"[rank]\");'>"
 
 

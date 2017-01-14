@@ -33,17 +33,22 @@
 	..()
 	total_positions = 4
 	spawn_positions = 4
-
+	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+	minimal_access = list(access_medical, access_morgue, access_surgery)
 
 /datum/job/chemist/New()
 	..()
 	total_positions = 1
 	spawn_positions = 1
+	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+	minimal_access = list(access_medical, access_morgue, access_surgery)
 
 /datum/job/geneticist/New()
 	..()
 	total_positions = 1
 	spawn_positions = 1
+	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+	minimal_access = list(access_medical, access_morgue, access_surgery)
 
 // Science
 

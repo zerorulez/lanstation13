@@ -16,19 +16,19 @@
 
 # Airflow - Medium Movement Threshold %
 #   Percent of 1 Atm. at which items with the medium weight classes will move.
-/datum/ZAS_Setting/airflow_light_pressure 30
+/datum/ZAS_Setting/airflow_light_pressure 35
 
 # Airflow - Heavy Movement Threshold %
 #   Percent of 1 Atm. at which items with the largest weight classes will move.
-/datum/ZAS_Setting/airflow_medium_pressure 40
+/datum/ZAS_Setting/airflow_medium_pressure 50
 
 # Airflow - Mob Movement Threshold %
 #   Percent of 1 Atm. at which mobs will move.
-/datum/ZAS_Setting/airflow_heavy_pressure 50
+/datum/ZAS_Setting/airflow_heavy_pressure 65
 
 # Airflow - Dense Movement Threshold %
 #   Percent of 1 Atm. at which items with canisters and closets will move.
-/datum/ZAS_Setting/airflow_dense_pressure 60
+/datum/ZAS_Setting/airflow_dense_pressure 85
 
 # Airflow - Mob Stunning Threshold %
 #   Percent of 1 Atm. at which mobs will be stunned by airflow.
@@ -36,31 +36,31 @@
 
 # Aiflow Stunning - Cooldown
 #   How long, in tenths of a second, to wait before stunning them again.
-/datum/ZAS_Setting/airflow_stun_cooldown 40
+/datum/ZAS_Setting/airflow_stun_cooldown 60
 
 # Airflow Impact - Stunning
 #   How much a mob is stunned when hit by an object.
-/datum/ZAS_Setting/airflow_stun 3
+/datum/ZAS_Setting/airflow_stun 1
 
 # Airflow Impact - Damage
 #   Damage from airflow impacts.
-/datum/ZAS_Setting/airflow_damage 4
+/datum/ZAS_Setting/airflow_damage 2
 
 # Airflow Speed Decay
 #   How rapidly the speed gained from airflow decays.
-/datum/ZAS_Setting/airflow_speed_decay 1
+/datum/ZAS_Setting/airflow_speed_decay 1.5
 
 # Airflow Retrigger Delay
 #   Time in deciseconds before things can be moved by airflow again.
-/datum/ZAS_Setting/airflow_delay 20
+/datum/ZAS_Setting/airflow_delay 30
 
 # Airflow Slowdown
 #   Time in tenths of a second to add as a delay to each movement by a mob if they are fighting the pull of the airflow.
-/datum/ZAS_Setting/airflow_mob_slowdown 3
+/datum/ZAS_Setting/airflow_mob_slowdown 1
 
 # Airflow - Push
 #   1=yes please rape my server, 0=no
-/datum/ZAS_Setting/airflow_push 1
+/datum/ZAS_Setting/airflow_push 0
 
 # Connections - Insulation
 #   How insulative a connection is, in terms of heat transfer.  1 is perfectly insulative, and 0 is perfectly conductive.
