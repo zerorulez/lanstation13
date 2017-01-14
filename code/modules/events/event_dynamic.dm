@@ -11,11 +11,11 @@ var/list/event_last_fired = list()
 		message_admins("Too early to trigger random event, aborting.")
 		return
 
-	var/living = 0
+/*	var/living = 0 not using this for now so we're commenting it out
 	for(var/mob/living/M in player_list)
 		if(M.stat == CONSCIOUS)
 			living++
-
+*/
 	if(universe.name != "Normal")
 		message_admins("Universe isn't normal, aborting random event spawn.")
 		return
@@ -38,13 +38,13 @@ var/list/event_last_fired = list()
 	//It is this coder's thought that weighting events on job counts is dumb and predictable as hell. 10 Engies ? Hope you like Meteors
 	//Instead, weighting goes from 100 (boring and common) to 10 (exceptional)
 
-	possibleEvents[/datum/event/pda_spam] = 50
+	possibleEvents[/datum/event/pda_spam] = 30
 	possibleEvents[/datum/event/money_lotto] = 20
 	if(account_hack_attempted)
 		possibleEvents[/datum/event/money_hacker] = 30
 
 	possibleEvents[/datum/event/carp_migration] = 40
-	possibleEvents[/datum/event/brand_intelligence] = 30
+	possibleEvents[/datum/event/brand_intelligence] = 40
 	possibleEvents[/datum/event/rogue_drone] = 25
 	possibleEvents[/datum/event/infestation] = 50
 	possibleEvents[/datum/event/communications_blackout] = 25
@@ -58,31 +58,33 @@ var/list/event_last_fired = list()
 	possibleEvents[/datum/event/wallrot] = 30
 
 	if(!spacevines_spawned)
-		possibleEvents[/datum/event/spacevine] = 15
+		possibleEvents[/datum/event/spacevine] = 20
 
 	if(active_with_role["Engineer"] > 1)
 		possibleEvents[/datum/event/meteor_wave] = 15
-		possibleEvents[/datum/event/meteor_shower] = 40
+		possibleEvents[/datum/event/meteor_shower] = 30
 		possibleEvents[/datum/event/immovable_rod] = 15
 		possibleEvents[/datum/event/thing_storm/blob_shower] = 15//Blob Cluster
 
-	if((active_with_role["Engineer"] > 1) && (active_with_role["Security"] > 1) && (living >= BLOB_CORE_PROPORTION))
-		possibleEvents[/datum/event/thing_storm/blob_storm] = 10//Blob Conglomerate
+//	if((active_with_role["Engineer"] > 1) && (active_with_role["Security"] > 1) && (living >= BLOB_CORE_PROPORTION))
+//		possibleEvents[/datum/event/thing_storm/blob_storm] = 10//Blob Conglomerate
 
-	possibleEvents[/datum/event/radiation_storm] = 50
+	possibleEvents[/datum/event/radiation_storm] = 40
+
 	if(active_with_role["Medical"] > 1)
-		possibleEvents[/datum/event/viral_infection] = 30
-		possibleEvents[/datum/event/spontaneous_appendicitis] = 50
-		possibleEvents[/datum/event/viral_outbreak] = 20
+//		possibleEvents[/datum/event/viral_infection] = 30
+		possibleEvents[/datum/event/spontaneous_appendicitis] = 30
+//		possibleEvents[/datum/event/viral_outbreak] = 20
 		possibleEvents[/datum/event/organ_failure] = 30
 
 	possibleEvents[/datum/event/prison_break] = 25
-	if(active_with_role["Security"] > 1)
-		if(!sent_spiders_to_station)
-			possibleEvents[/datum/event/spider_infestation] = 15
-		if(aliens_allowed && !sent_aliens_to_station)
-			possibleEvents[/datum/event/alien_infestation] = 10
-		possibleEvents[/datum/event/hostile_infestation] = 25
+
+	if(!sent_spiders_to_station)
+		possibleEvents[/datum/event/spider_infestation] = 25
+	if(aliens_allowed && !sent_aliens_to_station)
+		possibleEvents[/datum/event/alien_infestation] = 15
+	possibleEvents[/datum/event/hostile_infestation] = 35
+
 	for(var/event_type in event_last_fired) if(possibleEvents[event_type])
 		var/time_passed = world.time - event_last_fired[event_type]
 		var/full_recharge_after = 60 * 60 * 10 // Was 3 hours, changed to 1 hour since rounds rarely last that long anyways
