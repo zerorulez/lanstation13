@@ -22,12 +22,8 @@
 			//Stun(10)
 			switch(rand(1, 9))
 				if(1)
-					emote("pigarreia")
-				if(2)
-					emote("começa a tremer")
-				if(3)
-					emote("faz barulhos estranhos")
-				if(4 to 9)
+					emote("twitch")
+				if(2 to 9)
 					say("[prob(50) ? ";" : ""][pick("MERDA", "BOSTA", "PUTA QUE PARIU", "FILHO DA PUTA", "SUGADOR DE CARALHOS", "PORRA", "BUCETA", "CORNO", "QUEIJIN MINAS", "CÚ", "EU QUERO É FUDER", "MERDALHER", "VAGABUNDA", "COMPLETAMENTE RIVOTRILADO", "CUCKOLD")]")
 
 			var/x_offset_change = rand(-2,2) * PIXEL_MULTIPLIER
