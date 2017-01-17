@@ -1,14 +1,13 @@
 //Hostile Infestation: A variant of the infestation event that spawns small numbers of hostile mobs.
 //Currently only fires if there are 2 or more security officers
 
-#define LOC_KITCHEN 0
-#define LOC_ATMOS 1
-#define LOC_INCIN 2
-#define LOC_CHAPEL 3
-#define LOC_LIBRARY 4
+#define LOC_BAR 0
+#define LOC_ENGINEERING 1
+#define LOC_CHAPEL 2
+#define LOC_BRIDGE 3
 #define LOC_HYDRO 5
-#define LOC_VAULT 6
-#define LOC_TECH 7
+#define LOC_SEC 6
+#define LOC_SCIENCE 7
 
 #define MONSTER_BEAR    0
 #define MONSTER_CREATURE 1
@@ -33,34 +32,31 @@
 			if(T.z == z_level)
 				M << 'sound/effects/bumpinthenight.ogg'
 
-	var/location = pick(LOC_KITCHEN, LOC_ATMOS, LOC_INCIN, LOC_CHAPEL, LOC_LIBRARY, LOC_HYDRO, LOC_VAULT, LOC_TECH)
+	var/location = pick(LOC_BAR, LOC_ENGINEERING, LOC_CHAPEL, LOC_BRIDGE, LOC_HYDRO, LOC_SEC, LOC_SCIENCE)
 	var/spawn_area_type
 
 	switch(location)
-		if(LOC_KITCHEN)
-			spawn_area_type = /area/crew_quarters/kitchen
-			localestring = "the Kitchen"
-		if(LOC_ATMOS)
-			spawn_area_type = /area/engineering/atmos
-			localestring = "Atmospherics"
-		if(LOC_INCIN)
-			spawn_area_type = /area/maintenance/incinerator
-			localestring = "the Incinerator"
+		if(LOC_BAR)
+			spawn_area_type = /area/crew_quarters/bar
+			localestring = "no Bar"
+		if(LOC_ENGINEERING)
+			spawn_area_type = /area/engineering
+			localestring = "na Engenharia"
 		if(LOC_CHAPEL)
-			spawn_area_type = /area/chapel/main
-			localestring = "the Chapel"
-		if(LOC_LIBRARY)
-			spawn_area_type = /area/library
-			localestring = "the Library"
+			spawn_area_type = /area/chapel/office
+			localestring = "na Igreja"
+		if(LOC_BRIDGE)
+			spawn_area_type = /area/bridge
+			localestring = "na Bridge"
 		if(LOC_HYDRO)
 			spawn_area_type = /area/hydroponics
-			localestring = "Hydroponics"
-		if(LOC_VAULT)
-			spawn_area_type = /area/storage/nuke_storage
-			localestring = "the Vault"
-		if(LOC_TECH)
-			spawn_area_type = /area/storage/tech
-			localestring = "Technical Storage"
+			localestring = "na Hydroponics"
+		if(LOC_SEC)
+			spawn_area_type = /area/security/brig
+			localestring = "na Segurança"
+		if(LOC_SCIENCE)
+			spawn_area_type = /area/science/lab
+			localestring = "na Ciência"
 
 	var/spawn_monster_type
 	var/max_number
@@ -101,31 +97,31 @@
 
 	var/number = rand(1, max_number)
 
-	for(var/i = 1, i <= number, i++)
-		var/area/A = locate(spawn_area_type)
-		var/list/turf/simulated/floor/valid = list()
-		//Loop through each floor in the supply drop area
-		for(var/turf/simulated/floor/F in A)
-			if(!F.has_dense_content())
-				valid.Add(F)
+	spawn(300)	// should be plenty for everyone in those areas to leave
+		for(var/i = 1, i <= number, i++)
+			var/area/A = locate(spawn_area_type)
+			var/list/turf/simulated/floor/valid = list()
+			//Loop through each floor in the supply drop area
+			for(var/turf/simulated/floor/F in A)
+				if(!F.has_dense_content())
+					valid.Add(F)
 
-		var/chosen = pick(valid)
-		var/monster_spawn = pick(spawn_monster_type)
-		new monster_spawn(chosen)
+			var/chosen = pick(valid)
+			var/monster_spawn = pick(spawn_monster_type)
+			new monster_spawn(chosen)
 
 
 /datum/event/hostile_infestation/announce()
 	command_alert(new /datum/command_alert/hostile_creatures(localestring, monsterstring))
 
 
-#undef LOC_KITCHEN
-#undef LOC_ATMOS
-#undef LOC_INCIN
+#undef LOC_BAR
+#undef LOC_ENGINEERING
 #undef LOC_CHAPEL
-#undef LOC_LIBRARY
+#undef LOC_BRIDGE
 #undef LOC_HYDRO
-#undef LOC_VAULT
-#undef LOC_TECH
+#undef LOC_SEC
+#undef LOC_SCIENCE
 
 #undef MONSTER_BEAR
 #undef MONSTER_CREATURE
