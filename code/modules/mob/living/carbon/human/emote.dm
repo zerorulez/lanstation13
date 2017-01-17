@@ -23,15 +23,15 @@
 	switch(act)
 		if ("airguitar")
 			if (!src.restrained())
-				msg = "<B>[src]</B> is strumming the air and headbanging like a safari chimp."
+				msg = "<B>[src]</B> balança os braços e a cabeça fingindo que está tocando guitarra."
 				m_type = VISIBLE
 
 		if ("blink")
-			msg = "<B>[src]</B> blinks."
+			msg = "<B>[src]</B> pisca."
 			m_type = VISIBLE
 
 		if ("blink_r")
-			msg = "<B>[src]</B> blinks rapidly."
+			msg = "<B>[src]</B> pisca rapidamente."
 			m_type = VISIBLE
 
 		if ("bow")
@@ -46,9 +46,9 @@
 					param = null
 
 				if (param)
-					msg = "<B>[src]</B> bows to [param]."
+					msg = "<B>[src]</B> se curva para [param]."
 				else
-					msg = "<B>[src]</B> bows."
+					msg = "<B>[src]</B> se curva."
 			m_type = VISIBLE
 
 		if ("custom")
@@ -94,32 +94,32 @@
 					param = null
 
 				if (param)
-					msg = "<B>[src]</B> salutes to [param]."
+					msg = "<B>[src]</B> saúda [param]."
 				else
-					msg = "<B>[src]</b> salutes."
+					msg = "<B>[src]</b> faz uma saudação."
 			m_type = VISIBLE
 
 		if ("choke")
 			if(miming)
-				msg = "<B>[src]</B> clutches his throat desperately!"
+				msg = "<B>[src]</B> agarra sua garganta desesperadamente!"
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> chokes!"
+					msg = "<B>[src]</B> sufoca!"
 					m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> makes a strong noise."
+					msg = "<B>[src]</B> faz um forte barulho."
 					m_type = HEARABLE
 
 		if ("clap")
 			if (!src.restrained())
-				msg = "<B>[src]</B> claps."
+				msg = "<B>[src]</B> aplaude."
 				m_type = HEARABLE
 				if(miming)
 					m_type = VISIBLE
 		if ("flap")
 			if (!src.restrained())
-				msg = "<B>[src]</B> flaps \his wings."
+				msg = "<B>[src]</B> balança suas asas."
 				m_type = HEARABLE
 				if(miming)
 					m_type = VISIBLE
@@ -133,7 +133,7 @@
 
 		if ("aflap")
 			if (!src.restrained())
-				msg = "<B>[src]</B> flaps \his wings ANGRILY!"
+				msg = "<B>[src]</B> banlança suas asas FURIOSAMENTE!"
 				m_type = HEARABLE
 				if(miming)
 					m_type = VISIBLE
@@ -146,35 +146,35 @@
 						update_inv_wear_suit(1)
 
 		if ("drool")
-			msg = "<B>[src]</B> drools."
+			msg = "<B>[src]</B> começa a babar."
 			m_type = VISIBLE
 
 		if ("eyebrow")
-			msg = "<B>[src]</B> raises an eyebrow."
+			msg = "<B>[src]</B> levanta uma sombrancelha."
 			m_type = VISIBLE
 
 		if ("chuckle")
 			if(miming)
-				msg = "<B>[src]</B> appears to chuckle."
+				msg = "<B>[src]</B> aparenta estar rindo."
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> chuckles."
+					msg = "<B>[src]</B> ri."
 					m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> makes a noise."
+					msg = "<B>[src]</B> faz um barulho."
 					m_type = HEARABLE
 
 		if ("twitch")
-			msg = "<B>[src]</B> twitches violently."
+			msg = "<B>[src]</B> se contrai violentamente."
 			m_type = VISIBLE
 
 		if ("twitch_s")
-			msg = "<B>[src]</B> twitches."
+			msg = "<B>[src]</B> sofre de espasmos."
 			m_type = VISIBLE
 
 		if ("faint")
-			msg = "<B>[src]</B> faints."
+			msg = "<B>[src]</B> desmaia."
 			if(src.sleeping)
 				return //Can't faint while asleep
 			src.sleeping += 10 //Short-short nap
@@ -182,7 +182,7 @@
 
 		if ("cough")
 			if(miming)
-				msg = "<B>[src]</B> appears to cough!"
+				msg = "<B>[src]</B> aparenta tossir!"
 				m_type = VISIBLE
 			else
 				if (!muzzled)
@@ -196,62 +196,60 @@
 							playsound(get_turf(src), coughSound, 20, 0)
 							last_emote_sound = world.time
 
-						msg = "<B>[src]</B> coughs!"
+						msg = "<B>[src]</B> tosse!"
 						m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> makes a strong noise."
+					msg = "<B>[src]</B> faz um forte barulho."
 					m_type = HEARABLE
 
 		if ("frown")
-			msg = "<B>[src]</B> frowns."
+			msg = "<B>[src]</B> franze a testa."
 			m_type = VISIBLE
 
 		if ("nod")
-			msg = "<B>[src]</B> nods."
+			msg = "<B>[src]</B> acena com a cabeça."
 			m_type = VISIBLE
 
 		if ("blush")
-			msg = "<B>[src]</B> blushes."
+			msg = "<B>[src]</B> fica corado."
 			m_type = VISIBLE
 
 		if ("wave")
-			msg = "<B>[src]</B> waves."
+			msg = "<B>[src]</B> acena."
 			m_type = VISIBLE
 
 		if ("gasp")
 			if(miming)
-				msg = "<B>[src]</B> appears to be gasping!"
+				msg = "<B>[src]</B> aparenta esgasgar!"
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> gasps!"
+					msg = "<B>[src]</B> engasga!"
 					m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> makes a weak noise."
+					msg = "<B>[src]</B> faz um fraco barulho."
 					m_type = HEARABLE
 
 		if ("deathgasp")
-			if(M_ELVIS in mutations)
-				msg = "<B>[src]</B> has left the building..."
 			if(M_HARDCORE in mutations)
-				msg = "<B>[src]</B> whispers with his final breath, <i>'i told u i was hardcore..'</i>"
+				msg = "<B>[src]</B> sussura com o que sobrou do seu folego, <i>'estou te robustando...'</i>"
 			else
 				if(isgolem(src))
-					msg = "<B>[src]</B> crumbles into dust..."
+					msg = "<B>[src]</B> desfa-se em pó..."
 				else
-					msg = "<B>[src]</B> seizes up and falls limp, \his eyes dead and lifeless..."
+					msg = "<B>[src]</B> desiste de lutar e abraça a morte, seus olhos ficam sem vida..."
 			m_type = VISIBLE
 
 		if ("giggle")
 			if(miming)
-				msg = "<B>[src]</B> giggles silently!"
+				msg = "<B>[src]</B> ri silenciosamente!"
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> giggles."
+					msg = "<B>[src]</B> dá uma risadinha."
 					m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> makes a noise."
+					msg = "<B>[src]</B> faz um barulho."
 					m_type = HEARABLE
 
 		if ("glare")
@@ -265,9 +263,9 @@
 				param = null
 
 			if (param)
-				msg = "<B>[src]</B> glares at [param]."
+				msg = "<B>[src]</B> deslumbra-se com [param]."
 			else
-				msg = "<B>[src]</B> glares."
+				msg = "<B>[src]</B> deslumbra-se."
 
 		if ("stare")
 			var/M = null
@@ -280,9 +278,9 @@
 				param = null
 
 			if (param)
-				msg = "<B>[src]</B> stares at [param]."
+				msg = "<B>[src]</B> olha fixamente para [param]."
 			else
-				msg = "<B>[src]</B> stares."
+				msg = "<B>[src]</B> olha fixamente."
 
 		if ("look")
 			var/M = null
@@ -296,101 +294,87 @@
 				param = null
 
 			if (param)
-				msg = "<B>[src]</B> looks at [param]."
+				msg = "<B>[src]</B> olha para [param]."
 			else
-				msg = "<B>[src]</B> looks."
+				msg = "<B>[src]</B> observa."
 			m_type = VISIBLE
 
 		if ("grin")
-			msg = "<B>[src]</B> grins."
+			msg = "<B>[src]</B> sorri."
 			m_type = VISIBLE
 
 		if ("cry")
 			if(miming)
-				msg = "<B>[src]</B> cries."
+				msg = "<B>[src]</B> chora."
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> cries."
+					msg = "<B>[src]</B> chora."
 					m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> makes a weak noise. \He frowns."
+					msg = "<B>[src]</B> faz um fraco barulho.  [src.gender == MALE ? "Ele" : "Ela"] entristece."
 					m_type = HEARABLE
 
 		if ("sigh")
 			if(miming)
-				msg = "<B>[src]</B> sighs."
+				msg = "<B>[src]</B> suspira."
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> sighs."
+					msg = "<B>[src]</B> suspira."
 					m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> makes a weak noise."
+					msg = "<B>[src]</B> faz um fraco barulho."
 					m_type = HEARABLE
 
 		if ("laugh")
 			if(miming)
-				msg = "<B>[src]</B> acts out a laugh."
+				msg = "<B>[src]</B> imita uma gargalhada."
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> laughs."
+					msg = "<B>[src]</B> gargalha."
 					m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> makes a noise."
+					msg = "<B>[src]</B> faz um barulho."
 					m_type = HEARABLE
 
 		if ("mumble")
-			msg = "<B>[src]</B> mumbles!"
+			msg = "<B>[src]</B> resmunga!"
 			m_type = HEARABLE
 			if(miming)
 				m_type = VISIBLE
 
 		if ("grumble")
 			if(miming)
-				msg = "<B>[src]</B> grumbles!"
+				msg = "<B>[src]</B> resmunga!"
 				m_type = VISIBLE
 			if (!muzzled)
-				msg = "<B>[src]</B> grumbles!"
+				msg = "<B>[src]</B> resmunga!"
 				m_type = HEARABLE
 			else
-				msg = "<B>[src]</B> makes a noise."
+				msg = "<B>[src]</B> faz um barulho."
 				m_type = HEARABLE
 
 		if ("groan")
 			if(miming)
-				msg = "<B>[src]</B> appears to groan!"
+				msg = "<B>[src]</B> aparenta lamentar!"
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> groans!"
+					msg = "<B>[src]</B> geme de lementação!"
 					m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> makes a loud noise."
+					msg = "<B>[src]</B> faz um forte barulho."
 					m_type = HEARABLE
 
 		if ("moan")
 			if(miming)
-				msg = "<B>[src]</B> appears to moan!"
+				msg = "<B>[src]</B> aparenta gemer!"
 				m_type = VISIBLE
 			else
-				msg = "<B>[src]</B> moans!"
+				msg = "<B>[src]</B> dá um gemidinho!"
 				m_type = HEARABLE
-
-		if ("johnny")
-			var/M
-			if (param)
-				M = param
-			if (!M)
-				param = null
-			else
-				if(miming)
-					msg = "<B>[src]</B> takes a drag from a cigarette and blows \"[M]\" out in smoke."
-					m_type = VISIBLE
-				else
-					msg = "<B>[src]</B> says, \"[M], please. He had a family.\" [src.name] takes a drag from a cigarette and blows his name out in smoke."
-					m_type = HEARABLE
 
 		if ("point")
 			if (!src.restrained())
@@ -403,7 +387,7 @@
 							break
 
 				if(isnull(object_pointed))
-					msg = "<B>[src]</B> points."
+					msg = "<B>[src]</B> aponta."
 				else
 					pointed(object_pointed)
 
@@ -411,15 +395,15 @@
 
 		if ("raise")
 			if (!src.restrained())
-				msg = "<B>[src]</B> raises a hand."
+				msg = "<B>[src]</B> levanta a mão."
 			m_type = VISIBLE
 
 		if("shake")
-			msg = "<B>[src]</B> shakes \his head."
+			msg = "<B>[src]</B> balança sua cabeça."
 			m_type = VISIBLE
 
 		if ("shrug")
-			msg = "<B>[src]</B> shrugs."
+			msg = "<B>[src]</B> encolhe os ombros."
 			m_type = VISIBLE
 
 		if ("signal")
@@ -435,87 +419,87 @@
 					t1 = Clamp(t1, 0, maximum_finger_amount)
 
 					if(t1 > 0)
-						msg = "<B>[src]</B> raises [t1] finger\s."
+						msg = "<B>[src]</B> levanta [t1] dedo\s."
 			m_type = VISIBLE
 
 		if ("smile")
-			msg = "<B>[src]</B> smiles."
+			msg = "<B>[src]</B> sorri."
 			m_type = VISIBLE
 
 		if ("shiver")
-			msg = "<B>[src]</B> shivers."
+			msg = "<B>[src]</B> se arrepia."
 			m_type = HEARABLE
 			if(miming)
 				m_type = VISIBLE
 
 		if ("pale")
-			msg = "<B>[src]</B> goes pale for a second."
+			msg = "<B>[src]</B> fica palido por momento."
 			m_type = VISIBLE
 
 		if ("tremble")
-			msg = "<B>[src]</B> trembles in fear!"
+			msg = "<B>[src]</B> treme de medo!"
 			m_type = VISIBLE
 
 		if ("sneeze")
 			if (miming)
-				msg = "<B>[src]</B> sneezes."
+				msg = "<B>[src]</B> espirra."
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> sneezes."
+					msg = "<B>[src]</B> espirra."
 					m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> makes a strange noise."
+					msg = "<B>[src]</B> faz um forte barulho."
 					m_type = HEARABLE
 
 		if ("sniff")
-			msg = "<B>[src]</B> sniffs."
+			msg = "<B>[src]</B> funga."
 			m_type = HEARABLE
 			if(miming)
 				m_type = VISIBLE
 
 		if ("snore")
 			if (miming)
-				msg = "<B>[src]</B> sleeps soundly."
+				msg = "<B>[src]</B> dorme de forma barulhenta."
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> snores."
+					msg = "<B>[src]</B> ronca."
 					m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> makes a noise."
+					msg = "<B>[src]</B> faz barulho."
 					m_type = HEARABLE
 
 		if ("whimper")
 			if (miming)
-				msg = "<B>[src]</B> appears hurt."
+				msg = "<B>[src]</B> aparenta se machucar."
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> whimpers."
+					msg = "<B>[src]</B> choraminga."
 					m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> makes a weak noise."
+					msg = "<B>[src]</B> faz um fraco barulho."
 					m_type = HEARABLE
 
 		if ("wink")
-			msg = "<B>[src]</B> winks."
+			msg = "<B>[src]</B> dá uma piscadela."
 			m_type = VISIBLE
 
 		if ("spin")
-			msg = "<B>[src]</B> spins out of control!"
+			msg = "<B>[src]</B> gira fora de controle!"
 			m_type = VISIBLE
 
 		if ("yawn")
 			if (!muzzled)
-				msg = "<B>[src]</B> yawns."
+				msg = "<B>[src]</B> boceja."
 				m_type = HEARABLE
 				if(miming)
 					m_type = VISIBLE
 
 		if ("collapse")
 			Paralyse(2)
-			msg = "<B>[src]</B> collapses!"
+			msg = "<B>[src]</B> cai no chão!"
 			m_type = HEARABLE
 			if(miming)
 				m_type = VISIBLE
@@ -533,9 +517,9 @@
 					M = null
 
 				if (M)
-					msg = "<B>[src]</B> hugs [M]."
+					msg = "<B>[src]</B> abraça [M]."
 				else
-					msg = "<B>[src]</B> hugs \himself."
+					msg = "<B>[src]</B> abraça a si mesmo."
 
 		if ("handshake")
 			m_type = VISIBLE
@@ -551,34 +535,20 @@
 
 				if (M)
 					if (M.canmove && !M.get_held_item_by_index(GRASP_RIGHT_HAND) && !M.restrained())
-						msg = "<B>[src]</B> shakes hands with [M]."
+						msg = "<B>[src]</B> dá um aperto de mão em [M]."
 					else
-						msg = "<B>[src]</B> holds out \his hand to [M]."
-
-		if("dap")
-			m_type = VISIBLE
-			if (!src.restrained())
-				var/M = null
-				if (param)
-					for (var/mob/A in view(1, null))
-						if (param == A.name)
-							M = A
-							break
-				if (M)
-					msg = "<B>[src]</B> gives daps to [M]."
-				else
-					msg = "<B>[src]</B> sadly can't find anybody to give daps to, and daps \himself. Shameful."
+						msg = "<B>[src]</B> segura a mão de [M]."
 
 		if ("scream")
 			if (miming)
-				msg = "<B>[src]</B> acts out a scream!"
+				msg = "<B>[src]</B> simula um escandalo!"
 				m_type = VISIBLE
 			else
 				if(!stat)
 					if (!muzzled)
 						if (auto == 1)
 							if(world.time-last_emote_sound >= 30)//prevent scream spam with things like poly spray
-								msg = "<B>[src]</B> screams in agony!"
+								msg = "<B>[src]</B> grita em agonia!"
 								var/list/screamSound = list('sound/misc/malescream1.ogg', 'sound/misc/malescream2.ogg', 'sound/misc/malescream3.ogg', 'sound/misc/malescream4.ogg', 'sound/misc/malescream5.ogg', 'sound/misc/wilhelm.ogg', 'sound/misc/goofy.ogg')
 								if (src.gender == FEMALE) //Females have their own screams. Trannys be damned.
 									screamSound = list('sound/misc/femalescream1.ogg', 'sound/misc/femalescream2.ogg', 'sound/misc/femalescream3.ogg', 'sound/misc/femalescream4.ogg', 'sound/misc/femalescream5.ogg')
@@ -587,10 +557,10 @@
 								m_type = HEARABLE
 								last_emote_sound = world.time
 						else
-							msg = "<B>[src]</B> screams!"
+							msg = "<B>[src]</B> grita!"
 							m_type = HEARABLE
 					else
-						msg = "<B>[src]</B> makes a very loud noise."
+						msg = "<B>[src]</B> faz um barulho muito alto."
 						m_type = HEARABLE
 
 /*fffuck you		// Needed for M_TOXIC_FART
