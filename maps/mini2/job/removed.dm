@@ -10,11 +10,6 @@
 	total_positions = 0
 	spawn_positions = 0
 
-/datum/job/mining
-	..()
-	total_positions = 0
-	spawn_positions = 0
-
 /datum/job/mime
 	..()
 	total_positions = 0
