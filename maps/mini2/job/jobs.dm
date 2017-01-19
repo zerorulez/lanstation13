@@ -18,7 +18,7 @@
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mint, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mining, access_mint, access_mining_station, access_mailsorting)
 
-/datum/job/mining
+/datum/job/mining/New()
 	..()
 	total_positions = 2
 	spawn_positions = 2
