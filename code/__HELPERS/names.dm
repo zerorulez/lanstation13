@@ -115,7 +115,8 @@ var/religion_name = null
 
 /proc/station_name()
 	if(!station_name)
-		station_name = new_station_name()
+		station_name = "LanStation 13"
+//		station_name = new_station_name()
 	return station_name
 
 /proc/set_world_name(var/name)
