@@ -624,7 +624,6 @@
 	to_spawn = /obj/item/stack/sheet/mineral/plasma
 	..()
 
-
 /datum/chemical_reaction/solidification/iron
 	name = "Solid Metal"
 	id = "solidmetal"
@@ -2074,6 +2073,14 @@
 	result = HELL_RAMEN
 	required_reagents = list(CAPSAICIN = 1, HOT_RAMEN = 6)
 	result_amount = 6
+
+/datum/chemical_reaction/ice
+	name = "Ice"
+	id = ICE
+	result = ICE
+	required_reagents = list(WATER = 10)
+	required_catalysts = list(FROSTOIL = 5)
+	result_amount = 11
 
 ////////////////////////////////////////// COCKTAILS //////////////////////////////////////
 
