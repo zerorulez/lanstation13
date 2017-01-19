@@ -243,6 +243,7 @@ Subject's pulse: ??? BPM"})
 		if(H.vessel)
 			var/blood_volume = round(H.vessel.get_reagent_amount(BLOOD))
 			var/blood_percent =  round((blood_volume / 560) * 100)
+			message += "<br><span class='notice'>Blood Type: [H.dna.b_type]</span>"
 			switch(blood_volume)
 				if(BLOOD_VOLUME_SAFE to 1000000000)
 					message += "<br><span class='notice'>Blood Level Normal: [blood_percent]% ([blood_volume]cl)</span>"
