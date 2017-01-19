@@ -32,6 +32,9 @@ var/global/datum/controller/occupations/job_master
 			if(!map.enabled_jobs.Find(job.type))
 				continue
 
+		if(!job.spawn_positions || !job.total_positions)
+			continue
+
 		occupations += job
 
 
