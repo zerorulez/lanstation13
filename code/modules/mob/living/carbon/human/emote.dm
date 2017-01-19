@@ -237,7 +237,7 @@
 				if(isgolem(src))
 					msg = "<B>[src]</B> desfa-se em pó..."
 				else
-					msg = "<B>[src]</B> desiste de lutar e abraça a morte, seus olhos ficam sem vida..."
+					msg = "<B>[src]</B> desiste de lutar e abraça a morte, seus olhos perdendo a vida..."
 			m_type = VISIBLE
 
 		if ("giggle")
