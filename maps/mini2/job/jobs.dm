@@ -41,21 +41,39 @@
 	total_positions = 3
 	spawn_positions = 3
 	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
-	minimal_access = list(access_medical, access_morgue, access_surgery)
+	minimal_access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+
+/datum/job/doctor/get_access()
+	var/datum/job/chemist = job_master.GetJob("Chemist")
+
+	if(chemist.current_positions > 0)
+		access = list(access_medical, access_morgue, access_surgery, access_virology, access_genetics)
+		minimal_access = list(access_medical, access_morgue, access_surgery, access_virology, access_genetics)
+
+	return ..()
 
 /datum/job/chemist/New()
 	..()
 	total_positions = 1
 	spawn_positions = 1
 	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
-	minimal_access = list(access_medical, access_morgue, access_surgery)
+	minimal_access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
 
 /datum/job/geneticist/New()
 	..()
 	total_positions = 1
 	spawn_positions = 1
 	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
-	minimal_access = list(access_medical, access_morgue, access_surgery)
+	minimal_access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+
+/datum/job/geneticist/get_access()
+	var/datum/job/chemist = job_master.GetJob("Chemist")
+
+	if(chemist.current_positions > 0)
+		access = list(access_medical, access_morgue, access_surgery, access_virology, access_genetics)
+		minimal_access = list(access_medical, access_morgue, access_surgery, access_virology, access_genetics)
+
+	return ..()
 
 // Science
 
