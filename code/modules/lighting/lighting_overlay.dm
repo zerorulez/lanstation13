@@ -121,10 +121,10 @@
 	else
 		// PANIC.
 		if(loc)
-			warning("A lighting overlay realised its loc was NOT a turf (actual loc: [loc], [loc.type]) in update_overlay() and got pooled!")
+			warning("A lighting overlay realised its loc was NOT a turf (actual loc: [loc], [loc.type]) in update_overlay() and was qdeleted!")
 		else
-			warning("A lighting overlay realised it was in nullspace in update_overlay() and got pooled!")
-		returnToPool(src)
+			warning("A lighting overlay realised it was in nullspace in update_overlay() and was qdeleted!")
+		qdel(src)
 
 // Special override of resetVariables() in the interest of speed.
 /atom/movable/lighting_overlay/resetVariables()
@@ -148,7 +148,6 @@
 	var/turf/T = loc
 	if(istype(T))
 		T.lighting_overlay = null
-		T.luminosity = 1
 	..()
 
 // Variety of overrides so the overlays don't get affected by weird things.
@@ -174,5 +173,4 @@
 
 // Override here to prevent things accidentally moving around overlays.
 /atom/movable/lighting_overlay/forceMove(atom/destination, var/harderforce = 0)
-	if(harderforce)
-		. = ..()
+	return 0

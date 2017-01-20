@@ -11,20 +11,18 @@
 /turf/proc/lighting_clear_overlays()
 //	testing("Clearing lighting overlays on \the [src]")
 	if(lighting_overlay)
-		returnToPool(lighting_overlay)
+		qdel(lighting_overlay)
 
 // Builds a lighting overlay for us, but only if our area is dynamic.
 /turf/proc/lighting_build_overlays()
 	if(lighting_overlay)
 		return
 
-	var/atom/movable/lighting_overlay/O
 	var/area/A = loc
 
 	if(A.lighting_use_dynamic)
-		O = getFromPool(/atom/movable/lighting_overlay, src)
+		var/atom/movable/lighting_overlay/O = new /atom/movable/lighting_overlay(src)
 		lighting_overlay = O
-		all_lighting_overlays |= O
 
 	// Make the light sources recalculate us so the lighting overlay updates INSTANTLY.
 	for(var/datum/light_source/L in affecting_lights)
@@ -59,3 +57,8 @@
 
 	if(Obj && Obj.opacity)
 		reconsider_lights()
+
+/turf/set_opacity(new_opacity)
+	if(opacity != new_opacity)
+		opacity = new_opacity
+		src.reconsider_lights()

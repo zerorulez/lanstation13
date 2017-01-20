@@ -62,6 +62,11 @@
 
 
 /obj/machinery/recycler/Cross(var/atom/movable/AM)
+	if(!istype(AM))
+		return 0
+
+	if(isturf(AM)) // shouldn't happen
+		return 0
 
 	if(stat & (BROKEN|NOPOWER))
 		return 0

@@ -60,11 +60,11 @@
 // Should always be used to change the opacity of an atom.
 // It notifies (potentially) affected light sources so they can update (if needed).
 /atom/proc/set_opacity(new_opacity)
-	var/old_opacity = opacity
-	opacity = new_opacity
-	var/turf/T = loc
-	if(old_opacity != new_opacity && istype(T))
-		T.reconsider_lights()
+	if(opacity != new_opacity)
+		opacity = new_opacity
+		var/turf/T = loc
+		if(istype(T))
+			T.reconsider_lights()
 
 // These could probably be axed.
 /obj/item/equipped()

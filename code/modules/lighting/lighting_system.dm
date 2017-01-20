@@ -12,8 +12,7 @@
 			if(T.dynamic_lighting)
 				A = T.loc // Get the area.
 				if(A.lighting_use_dynamic)
-					var/atom/movable/lighting_overlay/O = getFromPool(/atom/movable/lighting_overlay, T)
-					all_lighting_overlays |= O
+					var/atom/movable/lighting_overlay/O = new /atom/movable/lighting_overlay(T)
 					T.lighting_overlay = O
 
 	else
@@ -23,6 +22,5 @@
 				if(T.dynamic_lighting)
 					A = T.loc // Get the area.
 					if(A.lighting_use_dynamic)
-						var/atom/movable/lighting_overlay/O = getFromPool(/atom/movable/lighting_overlay, T)
-						all_lighting_overlays |= O
+						var/atom/movable/lighting_overlay/O = new /atom/movable/lighting_overlay(T)
 						T.lighting_overlay = O
