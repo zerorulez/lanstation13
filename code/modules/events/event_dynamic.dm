@@ -43,10 +43,10 @@ var/list/event_last_fired = list()
 	if(account_hack_attempted)
 		possibleEvents[/datum/event/money_hacker] = 30
 
-	possibleEvents[/datum/event/carp_migration] = 40
-	possibleEvents[/datum/event/brand_intelligence] = 40
+	possibleEvents[/datum/event/carp_migration] = 30
+	possibleEvents[/datum/event/brand_intelligence] = 30
 	possibleEvents[/datum/event/rogue_drone] = 25
-	possibleEvents[/datum/event/infestation] = 50
+	possibleEvents[/datum/event/infestation] = 40
 	possibleEvents[/datum/event/communications_blackout] = 25
 	possibleEvents[/datum/event/thing_storm/meaty_gore] = 25
 	possibleEvents[/datum/event/unlink_from_centcomm] = 10
@@ -69,21 +69,21 @@ var/list/event_last_fired = list()
 //	if((active_with_role["Engineer"] > 1) && (active_with_role["Security"] > 1) && (living >= BLOB_CORE_PROPORTION))
 //		possibleEvents[/datum/event/thing_storm/blob_storm] = 10//Blob Conglomerate
 
-	possibleEvents[/datum/event/radiation_storm] = 40
+	possibleEvents[/datum/event/radiation_storm] = 30
 
 	if(active_with_role["Medical"] > 1)
 //		possibleEvents[/datum/event/viral_infection] = 30
-		possibleEvents[/datum/event/spontaneous_appendicitis] = 30
+		possibleEvents[/datum/event/spontaneous_appendicitis] = 10
 //		possibleEvents[/datum/event/viral_outbreak] = 20
-		possibleEvents[/datum/event/organ_failure] = 30
+		possibleEvents[/datum/event/organ_failure] = 10
 
-	possibleEvents[/datum/event/prison_break] = 25
+	possibleEvents[/datum/event/prison_break] = 20
 
 	if(!sent_spiders_to_station)
-		possibleEvents[/datum/event/spider_infestation] = 25
+		possibleEvents[/datum/event/spider_infestation] = 20
 	if(aliens_allowed && !sent_aliens_to_station)
 		possibleEvents[/datum/event/alien_infestation] = 15
-	possibleEvents[/datum/event/hostile_infestation] = 35
+	possibleEvents[/datum/event/hostile_infestation] = 25
 
 	for(var/event_type in event_last_fired) if(possibleEvents[event_type])
 		var/time_passed = world.time - event_last_fired[event_type]
