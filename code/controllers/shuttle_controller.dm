@@ -193,9 +193,9 @@ datum/shuttle_controller/emergency_shuttle/process()
 
 			/* --- Shuttle is in transit to Central Command from SS13 --- */
 			if(direction == 2)
-				for(var/obj/structure/shuttle/engine/propulsion/P in shuttle.linked_area)
-					spawn()
-						P.shoot_exhaust(backward = 3)
+//				for(var/obj/structure/shuttle/engine/propulsion/P in shuttle.linked_area)
+//					spawn()
+//						P.shoot_exhaust(backward = 3)
 				if(timeleft>0)
 					return 0
 
