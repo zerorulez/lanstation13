@@ -1,13 +1,11 @@
 # lanstation13 ![](https://travis-ci.org/mph55/lanstation13.svg?branch=master)
 
-[Website](https://lanstation.miraheze.org/wiki/Pá1gina_principal) - [Code](https://github.com/d3athrow/vgstation13)
-
-[IRC](irc://irc.rizon.net/lanstation13) (irc.rizon.net #lanstation13), link direto:  [![IRC](https://kiwiirc.com/buttons/irc.rizon.net/lanstation13.png)](https://kiwiirc.com/client/irc.rizon.net/?nick=Newcomer|?&theme=basic#lanstation13)
+[Website](https://lanstation.miraheze.org/wiki/Página_principal) - [Code](https://github.com/mph55/lanstation13)
 
 ---
 
 ### GETTING THE CODE
-The simplest but least useful way to obtain the code is using the Github .zip feature. You can click [here](https://gitlab.com/vgstation/vgstation/repository/archive.zip?ref=Bleeding-Edge) to get the latest stable code as a .zip file, then unzip it to wherever you want. Alternatively, a much more useful method is to use a git client, the process for getting and using one is described below, (for more information our coders in IRC can tell you how to use one).
+The simplest but least useful way to obtain the code is using the Github .zip feature. You can click [here](https://github.com/mph55/lanstation13/repository/archive.zip?ref=master) to get the latest stable code as a .zip file, then unzip it to wherever you want. Alternatively, a much more useful method is to use a git client, the process for getting and using one is described below, (for more information our coders in IRC can tell you how to use one).
 
 ### Git client
 
@@ -15,7 +13,7 @@ The more complicated but infinitely more useful way is to use a 'git' client.
 
 We recommend and support our users using the smartgit client, obtainable at [smartgit](http://www.syntevo.com/smartgit/). After installing it, create a new file folder where you want to host the code, right click on that folder and click on "Open in Smartgit".  
 
-When that opens, click repository at the top left and choose 'clone'. You can either use the link for the main repository https://github.com/d3athrow/vgstation13.git, or to clone your own fork the format is https://github.com/USERNAME/REPONAME.git, just copy the URL at your fork and add .git.
+When that opens, click repository at the top left and choose 'clone'. You can either use the link for the main repository https://github.com/mph55/lanstation13.git, or to clone your own fork the format is https://github.com/USERNAME/REPONAME.git, just copy the URL at your fork and add .git.
 
 #### Updating the Code
 
@@ -36,11 +34,11 @@ Keep in mind that we have multiple branches for various purposes.
 
 First-time installation should be fairly straightforward.  First, you'll need BYOND installed.  You can get it from [here](http://www.byond.com/).
 
-This is a sourcecode-only release, so the next step is to compile the server files.  Open vgstation13.dme by double-clicking it, open the Build menu, and click compile.  This'll take a little while, and if everything's done right you'll get a message like this:
+This is a sourcecode-only release, so the next step is to compile the server files.  Open lanstation13.dme by double-clicking it, open the Build menu, and click compile.  This'll take a little while, and if everything's done right you'll get a message like this:
 
-    saving vgstation13.dmb (DEBUG mode)
+    saving lanstation13.dmb (DEBUG mode)
 
-    vgstation13.dmb - 0 errors, 0 warnings
+    lanstation13.dmb - 0 errors, 0 warnings
 
 If you see any errors or warnings, something has gone wrong - possibly a corrupt download or the files extracted wrong, or a code issue on the main repo.  Ask on IRC.
 
@@ -56,7 +54,7 @@ You'll also want to edit admins.txt to remove the default admins and add your ow
 
 where the BYOND key must be in lowercase and the admin rank must be properly capitalized.  There are a bunch more admin ranks, but these two should be enough for most servers, assuming you have trustworthy admins.
 
-Finally, to start the server, run Dream Daemon and enter the path to your compiled vgstation13.dmb file.  Make sure to set the port to the one you  specified in the config.txt, and set the Security box to 'Trusted'.  Then press GO and the server should start up and be ready to join.
+Finally, to start the server, run Dream Daemon and enter the path to your compiled lanstation13.dmb file.  Make sure to set the port to the one you  specified in the config.txt, and set the Security box to 'Trusted'.  Then press GO and the server should start up and be ready to join.
 
 ---
 
@@ -68,7 +66,7 @@ For a basic setup, simply copy every file from config-example/ to config/ and th
 
 ### SQL Setup
 
-The SQL backend for the library and stats tracking requires a MySQL server.  (Linux servers will need to put libmysql.so into the same directory as vgstation13.dme.)  Your server details go in /config/dbconfig.txt.
+The SQL backend for the library and stats tracking requires a MySQL server.  (Linux servers will need to put libmysql.so into the same directory as lanstation13.dme.)  Your server details go in /config/dbconfig.txt.
 
 The database is automatically installed during server startup, but you need to ensure the database and user are present and have necessary permissions.
 

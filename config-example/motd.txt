@@ -1,8 +1,0 @@
-<meta charset="UTF-8">
-<h1>Bem-vindos %C3%A0%0A /lan/station 13!</h1>
-<br>
-<b>Github:</b><a href="https://github.com/mph55/lanstation13"> https://github.com/mph55/lanstation13</a>
-<strong>Wiki:</strong> <a href="https://lanstation.miraheze.org/">https://lanstation.miraheze.org/</a>
-<strong>Regras:</strong> <a href="https://lanstation.miraheze.org/wiki/Regras">https://lanstation.miraheze.org/wiki/Regras</a> ou o comando Regras.
-<strong>Guia para Novos Jogadores:</strong> <a href="https://lanstation.miraheze.org/wiki/Guia_para_novos_jogadores">https://lanstation.miraheze.org/wiki/Guia_para_novos_jogadores</a>
-<br><br>

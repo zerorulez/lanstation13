@@ -40,6 +40,7 @@
 /client/verb/rules()
 	set name = "Regras"
 	set desc = "Mostra as regras do servidor."
+	set category = "OOC"
 
 	src << browse(file(RULES_FILE), "window=rules;size=1280x720")
 

@@ -7,7 +7,7 @@
 //3. the game will handle the rest
 
 #define MINIMUM_VAULT_AMOUNT 5 //Amount of guaranteed vault spawns
-#define MAXIMUM_VAULT_AMOUNT 15
+#define MAXIMUM_VAULT_AMOUNT 5
 
 #define MAX_VAULT_WIDTH  80 //Vaults bigger than that have a slight chance of overlapping with other vaults
 #define MAX_VAULT_HEIGHT 80
@@ -141,7 +141,7 @@
 					var/y1 = max(1, T.y - new_height- 1)
 					var/turf/t1 = locate(x1, y1, T.z) //Corner #1: Old vault's coordinates minus new vault's dimensions (width and height)
 					var/turf/t2 = locate(T.x + conflict.width, T.y + conflict.height, T.z) //Corner #2: Old vault's coordinates plus old vault's dimensions
-					
+
 					//A rectangle defined by corners #1 and #2 is marked as invalid spawn area
 					valid_spawn_points.Remove(block(t1, t2))
 
@@ -154,7 +154,7 @@
 				//Since POPULATION_SCARCE assumes that every vault is the same size, if we ran out of spawn points we know for sure that we can't create any more vaults
 				message_admins("<span class='info'>Ran out of free space for vaults.</span>")
 				break
-			
+
 			//POPULATION_DENSE respects every vault's true size, so it's possible that another vault may fit in there - continue trying to place vaults
 			continue
 
