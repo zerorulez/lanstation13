@@ -1,8 +1,10 @@
-<meta charset="UTF-8">
-<h1>Bem-vindos %C3%A0%0A /lan/station 13!</h1>
+<h1>Bem-vindos &#224; /lan/station 13!</h1>
 <br>
 <b>Github:</b><a href="https://github.com/mph55/lanstation13"> https://github.com/mph55/lanstation13</a>
 <strong>Wiki:</strong> <a href="https://lanstation.miraheze.org/">https://lanstation.miraheze.org/</a>
 <strong>Regras:</strong> <a href="https://lanstation.miraheze.org/wiki/Regras">https://lanstation.miraheze.org/wiki/Regras</a> ou o comando Regras.
 <strong>Guia para Novos Jogadores:</strong> <a href="https://lanstation.miraheze.org/wiki/Guia_para_novos_jogadores">https://lanstation.miraheze.org/wiki/Guia_para_novos_jogadores</a>
 <br><br>
+Se voc&#234; n&#227;o conseguir ver a ilumina&#231;&#227;o do jogo ou estiver com quadrados de arco-&#237;ris espalhados pela tela, <a href="https://www.microsoft.com/en-us/download/details.aspx?id=6812">baixe o SDK do DirectX.</a>
+<br>
+Usem o bot&#227;o "Reportar Bug" no canto superior direito da tela para criar um issue no nosso GitHub. Voc&#234; tamb&#233;m pode usar o comando para propor novas features ou mudan&#231;as no mapa.

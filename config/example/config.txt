@@ -2,12 +2,12 @@
 # SERVERNAME tgstation
 
 ## Alert levels
-ALERT_GREEN All Todas as ameaças a estação foram eliminadas. A segurança não pode carregar armas letais e as leis de privacidade são respeitadas novamente.
-ALERT_BLUE_UPTO A estação recebeu a informação de uma possível ou confirmada ameaça hostil na estação. A segurança pode carregar armas letais consigo e fazer vistorias aleatórias nos tripulantes suspeitos.
-ALERT_BLUE_DOWNTO A ameaça imediata a estação foi eliminada, porém, ainda existem resquícios dela pela estação. A segurança pode carregar armas letais consigo e fazer vistorias aleatórias nos tripulantes suspeitos.
-ALERT_RED_UPTO Há uma ameaça capaz de causar sério e/ou irreparável dano à estação. A segurança pode carregar armas letais a vista em todos os momentos e vistorias aleatórias não são só permitidas como incentivadas.
-ALERT_RED_DOWNTO O mecânismo de auto-destruíção da estação foi desativado, mas uma grande ameaça ainda aflige a estação. A segurança pode carregar armas letais a vista em todos os momentos e vistorias aleatórias não são só permitidas como incentivadas.
-ALERT_DELTA O mecânismo de auto-destruíção da estação foi ativado. Toda a tripulação deve obedecer as ordens da equipe do comando e da segurança. Qualquer violação da lei espacial ou das ordens do comando e da segurança pode ser punida com a morte. 
+ALERT_GREEN Todas as amea&#231;as a esta&#231;&#227;o foram eliminadas. A seguran&#231;a n&#227;o pode carregar armas letais e as leis de privacidade s&#227;o respeitadas novamente.
+ALERT_BLUE_UPTO A esta&#231;&#227;o recebeu a informa&#231;&#227;o de uma poss&#237;vel ou confirmada amea&#231;a hostil na esta&#231;&#227;o. A seguran&#231;a pode carregar armas letais consigo e fazer vistorias aleat&#243;rias nos tripulantes suspeitos.
+ALERT_BLUE_DOWNTO A amea&#231;a imediata a esta&#231;&#227;o foi eliminada, por&#233;m, ainda existem resqu&#237;cios dela pela esta&#231;&#227;o. A seguran&#231;a pode carregar armas letais consigo e fazer vistorias aleat&#243;rias nos tripulantes suspeitos.
+ALERT_RED_UPTO H&#225; uma amea&#231;a capaz de causar s&#233;rio e/ou irrepar&#225;vel dano a esta&#231;&#227;o. A seguran&#231;a pode carregar armas letais a vista em todos os momentos e vistorias aleat&#243;rias n&#227;o s&#227;o s&#243; permitidas como incentivadas.
+ALERT_RED_DOWNTO O mec&#226;nismo de auto-destru&#237;&#231;&#227;o da esta&#231;&#227;o foi desativado, mas uma grande amea&#231;a ainda aflige a esta&#231;&#227;o. A seguran&#231;a pode carregar armas letais a vista em todos os momentos e vistorias aleat&#243;rias n&#227;o s&#227;o s&#243; permitidas como incentivadas.
+ALERT_DELTA O mec&#226;nismo de auto-destru&#237;&#231;&#227;o da esta&#231;&#227;o foi ativado. Toda a tripula&#231;&#227;o deve obedecer as ordens da equipe do comando e da seguran&#231;a. Qualquer viola&#231;&#227;o da lei espacial ou das ordens do comando e da seguran&#231;a pode ser punida com a morte. 
 
 ## Add a # infront of this if you want to use the SQL based admin system, the legacy system uses admins.txt. You need to set up your database to use the SQL based system.
 ADMIN_LEGACY_SYSTEM
