@@ -3,7 +3,7 @@
 <script type=\"text/javascript\" src=\"libraries.min.js\"></script>\
 <link rel=\"stylesheet\" type=\"text/css\" href=\"html_interface_icons.css\" />\
 <link rel=\"stylesheet\" type=\"text/css\" href=\"map_shared.css\" />\
-<script type=\"text/javascript\" src=\"map_shared.js\">"
+<script type=\"text/javascript\" src=\"map_shared.js\"></script>"
 
 #define MAPCONTENT \
 "<div id='switches'>\
@@ -14,7 +14,7 @@
 <div id=\"uiMap\" unselectable=\"on\"></div></div>\
 <div id=\"textbased\"></div>"
 // Base datum for html_interface interactive maps.
-var/const/MAX_ICON_DIMENSION = 2000
+var/const/MAX_ICON_DIMENSION = 1024
 var/const/ICON_SIZE = 4
 var/const/ALLOW_CENTCOMM = FALSE
 
@@ -94,7 +94,7 @@ var/const/ALLOW_CENTCOMM = FALSE
 		C << browse_rsc(file("[getMinimapFile(z)].png"), "[map.nameShort][z].png")
 
 /proc/getMinimapFile(z)
-	return "data/minimaps/map_[map.nameLong][z]"
+	return "data/minimaps/map_[map.nameShort][z]"
 
 // Activate this to debug tile mismatches in the minimap.
 // This will store the full information on each tile and compare it the next time you run the minimap.
@@ -164,7 +164,7 @@ var/const/ALLOW_CENTCOMM = FALSE
 		ASSERT(x2 <= world.maxx)
 		ASSERT(y2 <= world.maxy)
 
-		var/icon/map_icon = new/icon('html/mapbase2000.png')
+		var/icon/map_icon = new/icon('html/mapbase1024.png')
 
 		// map_icon is fine and contains only 1 direction at this point.
 
@@ -185,7 +185,7 @@ var/const/ALLOW_CENTCOMM = FALSE
 		for(var/s = x1 to x2)
 			for(var/r = y1 to y2)
 				var/turf/tile = locate(s, r, z)
-				if (tile.flags & NO_MINIMAP)
+				if (tile.turf_flags & NO_MINIMAP)
 					continue
 
 				if (tile.loc.type != /area/start && (tile.type != /turf/space || (locate(/obj/structure/lattice) in tile) || (locate(/obj/structure/transit_tube) in tile)) && !istype(tile, /turf/space/transit) && !istype(tile.loc, /area/vault))

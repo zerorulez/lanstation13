@@ -15,5 +15,6 @@ var/datum/subsystem/minimap/SSminimap
 	if (!config.skip_minimap_generation)
 		generateMiniMaps()
 	else
+		minimapinit = 1
 		log_startup_progress("Not generating minimaps - SKIP_MINIMAP_GENERATION found in config/config.txt")
 	..()

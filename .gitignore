@@ -36,6 +36,10 @@ players2.sqlite
 # New CMC Minimap images.
 /data/minimaps/*
 
+# Statfiles
+
+/data/statfiles/*
+
 # Map rendering
 /maprendering/renderoutput/*
 

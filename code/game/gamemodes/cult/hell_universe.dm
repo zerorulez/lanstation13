@@ -110,13 +110,13 @@ In short:
 			T.underlays += "hell01"
 		CHECK_TICK
 
-	for(var/atom/movable/lighting_overlay/L in all_lighting_overlays)
+	for(var/datum/lighting_corner/C in global.all_lighting_corners)
 		count++
 		if(!(count % 200000))
 			sleep(world.tick_lag)
 
-		L.update_lumcount(0.5, 0, 0)
-		tcheck(80,1)
+		C.update_lumcount(0.5, 0, 0)
+		CHECK_TICK
 
 /datum/universal_state/hell/proc/MiscSet()
 	for (var/obj/machinery/firealarm/alm in machines)

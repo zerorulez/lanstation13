@@ -8,7 +8,7 @@
 	name = "mysterious structure"
 	requires_power = 0
 	icon_state = "firingrange"
-	lighting_use_dynamic = 1
+	dynamic_lighting = 1
 
 /area/vault/holomapAlwaysDraw()
 	return 0
@@ -32,7 +32,7 @@
 
 /area/vault/automap/no_light
 	icon_state = "ME_vault_lit"
-	lighting_use_dynamic = FALSE
+	dynamic_lighting = FALSE
 
 /area/vault/icetruck
 
