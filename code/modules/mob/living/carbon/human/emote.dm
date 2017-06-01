@@ -46,7 +46,7 @@
 					param = null
 
 				if (param)
-					msg = "<B>[src]</B> se curva para [param]."
+					msg = "<B>[src]</B> se curva diante [param]."
 				else
 					msg = "<B>[src]</B> se curva."
 			m_type = VISIBLE
@@ -113,7 +113,7 @@
 
 		if ("clap")
 			if (!src.restrained())
-				msg = "<B>[src]</B> aplaude."
+				msg = "<B>[src]</B> [pick("aplaude.", "bate palmas.")]"
 				m_type = HEARABLE
 				if(miming)
 					m_type = VISIBLE
@@ -146,7 +146,7 @@
 						update_inv_wear_suit(1)
 
 		if ("drool")
-			msg = "<B>[src]</B> começa a babar."
+			msg = "<B>[src]</B> [pick("começa a babar.","baba.")]"
 			m_type = VISIBLE
 
 		if ("eyebrow")
@@ -220,11 +220,11 @@
 
 		if ("gasp")
 			if(miming)
-				msg = "<B>[src]</B> aparenta esgasgar!"
+				msg = "<B>[src]</B> aparenta se esgasgar!"
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> engasga!"
+					msg = "<B>[src]</B> [pick("se engasga!", "não consegue respirar!")]"
 					m_type = HEARABLE
 				else
 					msg = "<B>[src]</B> faz um fraco barulho."
@@ -235,7 +235,7 @@
 				msg = "<B>[src]</B> sussura com o que sobrou do seu folego, <i>'estou te robustando...'</i>"
 			else
 				if(isgolem(src))
-					msg = "<B>[src]</B> desfa-se em pó..."
+					msg = "<B>[src]</B> se desfaz em pó..."
 				else
 					msg = "<B>[src]</B> desiste de lutar e abraça a morte, seus olhos perdendo a vida..."
 			m_type = VISIBLE
@@ -278,9 +278,9 @@
 				param = null
 
 			if (param)
-				msg = "<B>[src]</B> olha fixamente para [param]."
+				msg = "<B>[src]</B> encara [param]."
 			else
-				msg = "<B>[src]</B> olha fixamente."
+				msg = "<B>[src]</B> fica encarando."
 
 		if ("look")
 			var/M = null
@@ -333,7 +333,7 @@
 				m_type = VISIBLE
 			else
 				if (!muzzled)
-					msg = "<B>[src]</B> gargalha."
+					msg = "<B>[src]</B> [pick("dá uma gargalhada.", "gargalha.", "dá uma risada.")]"
 					m_type = HEARABLE
 				else
 					msg = "<B>[src]</B> faz um barulho."
@@ -373,7 +373,7 @@
 				msg = "<B>[src]</B> aparenta gemer!"
 				m_type = VISIBLE
 			else
-				msg = "<B>[src]</B> dá um gemidinho!"
+				msg = "<B>[src]</B> [pick("geme!", "dá um gemidinho!")]"
 				m_type = HEARABLE
 
 		if ("point")
@@ -433,7 +433,7 @@
 				m_type = VISIBLE
 
 		if ("pale")
-			msg = "<B>[src]</B> fica palido por momento."
+			msg = "<B>[src]</B> fica pálido por momento."
 			m_type = VISIBLE
 
 		if ("tremble")
@@ -483,7 +483,7 @@
 					m_type = HEARABLE
 
 		if ("wink")
-			msg = "<B>[src]</B> dá uma piscadela."
+			msg = "<B>[src]</B> [pick("dá uma piscadela.","pisca")]"
 			m_type = VISIBLE
 
 		if ("spin")
