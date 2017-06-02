@@ -202,7 +202,7 @@ with open(args.targetFile.replace('.htm', '.dry.htm') if args.dryRun else args.t
                     continue
                 write_entry = True
                 changes_added += [change]
-                author_htm += '\t\t\t\t<li class="{css_class}">{change}</li>\n'.format(css_class=css_class, change=change.strip())
+                author_htm += '\t\t\t\t<li class="{css_class}">{change}</li>\n'.format(css_class=css_class, change=change.encode('utf8').strip())
             author_htm += '\t\t\t</ul>\n'
             if len(changes_added) > 0:
                 entry_htm += author_htm
