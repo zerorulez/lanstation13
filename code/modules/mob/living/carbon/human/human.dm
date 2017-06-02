@@ -168,6 +168,7 @@
 
 	if(dna)
 		dna.real_name = real_name
+		dna.flavor_text = flavor_text
 
 	prev_gender = gender // Debug for plural genders
 	make_blood()

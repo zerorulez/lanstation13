@@ -29,8 +29,11 @@
 			if(!(P in src.verbs))
 				verb_holder.verbs += P.verbpath
 
-	mind.changeling.absorbed_dna |= dna
+
 	var/mob/living/carbon/human/H = src
+	dna.flavor_text = H.flavor_text
+	mind.changeling.absorbed_dna |= dna
+
 	if(istype(H))
 		mind.changeling.absorbed_species |= H.species.name
 	for(var/language in languages)
@@ -312,6 +315,7 @@
 	add_attacklogs(src, T, "absorbed")
 
 	T.dna.real_name = T.real_name //Set this again, just to be sure that it's properly set.
+	T.dna.flavor_text = T.flavor_text
 	changeling.absorbed_dna |= T.dna
 
 	if(istype(src,/mob/living/carbon/human))
@@ -405,6 +409,7 @@
 	var/oldspecies = src.dna.species
 	src.dna = chosen_dna.Clone()
 	src.real_name = chosen_dna.real_name
+	src.flavor_text = chosen_dna.flavor_text
 	src.UpdateAppearance()
 	var/mob/living/carbon/human/H = src
 	if(istype(H) && oldspecies != dna.species)
@@ -508,6 +513,7 @@
 	O.dna = C.dna.Clone()
 	C.dna = null
 	O.real_name = chosen_dna.real_name
+	O.flavor_text = chosen_dna.flavor_text
 	C.remove_changeling_verb()
 
 	for(var/obj/item/W in src)
@@ -1093,6 +1099,7 @@ var/list/datum/dna/hivemind_bank = list()
 	target.visible_message("<span class='warning'>[target] transforms!</span>")
 	target.dna = chosen_dna.Clone()
 	target.real_name = chosen_dna.real_name
+	target.flavor_text = chosen_dna.flavor_text
 	target.UpdateAppearance()
 	domutcheck(target, null)
 	feedback_add_details("changeling_powers","TS")
@@ -1165,6 +1172,7 @@ var/list/datum/dna/hivemind_bank = list()
 		return
 
 	target.dna.real_name = target.real_name
+	target.dna.flavor_text = target.flavor_text
 	changeling.absorbed_dna |= target.dna
 	if(target.species && !(changeling.absorbed_species.Find(target.species.name)))
 		changeling.absorbed_species += target.species.name

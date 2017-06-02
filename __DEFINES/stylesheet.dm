@@ -45,13 +45,13 @@ h1.alert, h2.alert		{color: #000000;}
 .passive				{color: #660000;}
 .danger					{color: #ff0000;	font-weight: bold;}
 .userdanger				{color: #ff0000;	font-weight: bold;	font-size: 120%}
-.warning				{color: #ff0000;	font-style: italic;}
+.warning				{color: #ff0000;}
 .sinister				{color: #800080;	font-weight: bold;	font-style: italic;} /* /vg/ */
 .blob					{color: #006221;	font-weight: bold;	font-style: italic;}
 .numb					{color: transparent;font-weight: bold;	text-shadow: 0 0 2px rgba(0,161,161,0.5);} /* blurry text */
 .confirm				{color: #00af3b;}
 .rose					{color: #ff5050;}
-.info					{color: #0000CC;}
+.info					{}
 .notice					{color: #000099;}
 .bnotice				{color: #000099; 	font-weight: bold;}
 .sans					{font-family: 'Comic Sans MS', cursive, sans-serif;}

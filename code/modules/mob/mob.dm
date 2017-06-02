@@ -1080,6 +1080,20 @@ var/list/slot_equipment_priority = list( \
 	face_atom(I)
 	I.verb_pickup(src)
 
+/mob/proc/print_flavor_text(user)
+    if(flavor_text)
+        var/msg = replacetext(flavor_text, "\n", "<br />")
+        if (ishuman(src))
+            var/mob/living/carbon/human/H = src
+            var/datum/organ/external/head/limb_head = H.get_organ(LIMB_HEAD)
+            if((wear_mask && (is_slot_hidden(wear_mask.body_parts_covered,HIDEFACE))) || (H.head && (is_slot_hidden(H.head.body_parts_covered,HIDEFACE))) || !limb_head || limb_head.disfigured || (limb_head.status & ORGAN_DESTROYED) || !real_name || (M_HUSK in mutations) ) //Wearing a mask, having no head, being disfigured, or being a husk means no flavor text for you.
+                return
+
+            if(length(msg) <= 32)
+                return "<b>[msg]</b>"
+            else
+                return "<b>[copytext(msg, 1, 32)]...<a href='?src=\ref[user];flavor_text=[flavor_text];target_name=[name]'>\More</a></b>"
+
 /mob/verb/abandon_mob()
 	set name = "Respawn"
 	set category = "OOC"
@@ -1278,10 +1292,16 @@ var/list/slot_equipment_priority = list( \
 		var/t1 = text("window=[href_list["mach_close"]]")
 		unset_machine()
 		src << browse(null, t1)
+
 	if (href_list["joinresponseteam"])
 		if(usr.client)
 			var/client/C = usr.client
 			C.JoinResponseTeam()
+
+	if((href_list["flavor_text"]) && (href_list["target_name"]))
+		var/datum/browser/popup = new(src, "\ref[src]", href_list["target_name"], 500, 200)
+		popup.set_content(replacetext(href_list["flavor_text"], "\n", "<br>"))
+		popup.open()
 
 /mob/proc/pull_damage()
 	if(ishuman(src))
