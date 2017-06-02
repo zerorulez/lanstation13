@@ -32,11 +32,14 @@
 	if(target.disarmed_by(src))
 		return
 
+	do_attack_animation(target, src)
+
 	var/datum/organ/external/affecting = get_organ(ran_zone(zone_sel.selecting))
 	if(prob(40)) //40% miss chance
 		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 		visible_message("<span class='danger'>[src] has attempted to disarm [target]!</span>")
 		return
+
 
 	if(prob(40)) //True chance of something happening per click is hit_chance*event_chance, so in this case the stun chance is actually 0.6*0.4=24%
 		target.apply_effect(4, WEAKEN, run_armor_check(affecting, "melee"))

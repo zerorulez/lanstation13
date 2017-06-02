@@ -241,6 +241,7 @@
 			stat("Spacepod Integrity", "[!S.health ? "0" : "[(S.health / initial(S.health)) * 100]"]%")
 
 /mob/living/carbon/human/attack_animal(mob/living/simple_animal/M as mob)
+	M.do_attack_animation(src, M)
 	M.unarmed_attack_mob(src)
 
 /mob/living/carbon/human/proc/is_loyalty_implanted(mob/living/carbon/human/M)
@@ -252,6 +253,7 @@
 	return 0
 
 /mob/living/carbon/human/attack_slime(mob/living/carbon/slime/M as mob)
+	M.do_attack_animation(src, M)
 	M.unarmed_attack_mob(src)
 
 /mob/living/carbon/human/restrained()

@@ -141,6 +141,7 @@
 
 		if(I_DISARM)
 			if(!lying)
+				M.do_attack_animation(src, M)
 				if(prob(5)) //Very small chance to push an alien down.
 					Knockdown(2)
 					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)

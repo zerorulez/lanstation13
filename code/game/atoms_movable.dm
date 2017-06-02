@@ -720,3 +720,48 @@
 
 /atom/movable/proc/can_apply_inertia()
 	return (!src.anchored && !(src.pulledby && src.pulledby.Adjacent(src)))
+
+
+/atom/movable/proc/do_attack_animation(atom/target, atom/tool)
+	set waitfor = 0
+
+	ASSERT(tool) //If no tool, shut down the proc and call the coder police
+
+	if(target == src)
+		return
+	var/horizontal = 0
+	var/vertical = 0
+
+	var/direction = get_dir(src, target)
+
+	if(direction & NORTH)
+		vertical = 1
+	else if(direction & SOUTH)
+		vertical = -1
+
+	if(direction & EAST)
+		horizontal = 1
+	else if(direction & WEST)
+		horizontal = -1
+
+//Attack animation that looks like person being pixel shifted
+	spawn()
+		var/image/override_image = image(icon = icon, icon_state = icon_state) //only because byond will not create an image if you do not give it some values
+		override_image.appearance = appearance
+		override_image.override = 1
+		override_image.loc = src
+		override_image.pixel_x = pixel_x
+		override_image.pixel_y = pixel_y
+		override_image.dir = dir
+
+		var/adjusted_x = pixel_x + horizontal * 3 * PIXEL_MULTIPLIER
+		var/adjusted_y = pixel_y + vertical * 3 * PIXEL_MULTIPLIER
+		var/viewers = person_animation_viewers.Copy()
+		for(var/client/C in viewers)
+			C.images += override_image
+
+		animate(override_image, pixel_x = adjusted_x, pixel_y = adjusted_y, time = 1)
+		animate(pixel_x = pixel_x, pixel_y = pixel_y, time = 1)
+		sleep(2)
+		for(var/client/C in viewers)
+			C.images -= override_image

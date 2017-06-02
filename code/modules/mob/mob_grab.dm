@@ -18,7 +18,6 @@
 	item_state = "nothing"
 	w_class = W_CLASS_HUGE
 
-
 /obj/item/weapon/grab/New(atom/loc, mob/victim)
 	..()
 	assailant = loc

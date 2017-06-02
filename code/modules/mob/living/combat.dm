@@ -24,6 +24,7 @@
 	return
 
 /mob/living/proc/disarm_mob(mob/living/target)
+	do_attack_animation(target, src)
 	return
 
 /mob/living/proc/disarmed_by(mob/living/disarmer)
@@ -95,6 +96,7 @@
 	if(attack_sound)
 		playsound(loc, attack_sound, 25, 1, -1)
 
+	do_attack_animation(target, src)
 	visible_message(get_attack_message(target, attack_verb))
 
 	var/damage_done = target.apply_damage(damage, damage_type, affecting, armor_block)
@@ -109,6 +111,7 @@
 	return
 
 /mob/living/proc/unarmed_attacked(mob/living/attacker, damage, damage_type, zone)
+	attacker.do_attack_animation(src, attacker)
 	return
 
 //Affects the chance of getting stunned by a punch

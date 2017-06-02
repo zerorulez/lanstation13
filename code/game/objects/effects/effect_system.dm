@@ -907,9 +907,11 @@ steam.start() -- spawns the effect
 	attack_hand(user)
 	return
 
-/obj/structure/foamedmetal/attack_hand(var/mob/user)
+/obj/structure/foamedmetal/attack_hand(var/mob/living/user)
 	user.delayNextAttack(10)
+	user.do_attack_animation(src, user)
 	if ((M_HULK in user.mutations) || (prob(75 - metal*25)))
+		user.do_attack_animation(src, user)
 		user.visible_message("<span class='warning'>[user] smashes through \the [src].</span>","<span class='notice'>You smash through \the [src].</span>")
 		qdel(src)
 	else
@@ -922,7 +924,7 @@ steam.start() -- spawns the effect
 	if(prob(75 - metal*25))
 		qdel(src)
 
-/obj/structure/foamedmetal/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/foamedmetal/attackby(var/obj/item/I, var/mob/living/user)
 	user.delayNextAttack(10)
 	if (istype(I, /obj/item/weapon/grab))
 		var/obj/item/weapon/grab/G = I
@@ -934,9 +936,11 @@ steam.start() -- spawns the effect
 
 	if(prob(I.force*20 - metal*25))
 		user.visible_message("<span class='warning'>[user] smashes through \the [src].</span>","<span class='notice'>You smash through \the [src] with \the [I].</span>")
+		user.do_attack_animation(src, I)
 		qdel(src)
 	else
 		to_chat(user, "<span class='notice'>You hit \the [src] to no effect.</span>")
+		user.do_attack_animation(src, I)
 
 /obj/structure/foamedmetal/Cross(atom/movable/mover, turf/target, height=1.5, air_group = 0)
 	if(air_group)

@@ -74,3 +74,5 @@
 	var/obj/screen/plane_master/parallax_master/parallax_master = null
 	var/obj/screen/plane_master/parallax_dustmaster/parallax_dustmaster = null
 	var/obj/screen/plane_master/parallax_spacemaster/parallax_spacemaster = null*/
+
+var/list/person_animation_viewers = list()

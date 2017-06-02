@@ -172,11 +172,12 @@
 	src.add_hiddenprint(user)
 	return src.attack_hand(user)
 
-/obj/machinery/door/window/attack_paw(mob/user as mob)
+/obj/machinery/door/window/attack_paw(mob/living/user as mob)
 	if(istype(user, /mob/living/carbon/alien/humanoid) || istype(user, /mob/living/carbon/slime/adult))
 		if(src.operating)
 			return
 		user.delayNextAttack(8)
+		user.do_attack_animation(src, user)
 		src.health = max(0, src.health - 25)
 		playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)
 		visible_message("<span class='warning'>\The [user] smashes against \the [src.name].</span>", 1)
@@ -188,13 +189,14 @@
 		return src.attack_hand(user)
 
 
-/obj/machinery/door/window/attack_animal(mob/user as mob)
+/obj/machinery/door/window/attack_animal(mob/living/user as mob)
 	if(src.operating)
 		return
 	var/mob/living/simple_animal/M = user
 	if(M.melee_damage_upper <= 0)
 		return
 	user.delayNextAttack(8)
+	user.do_attack_animation(src, user)
 	src.health = max(0, src.health - M.melee_damage_upper)
 	playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)
 	visible_message("<span class='warning'>\The [M] [M.attacktext] against \the [src.name].</span>", 1)
@@ -207,7 +209,7 @@
 /obj/machinery/door/window/attack_hand(mob/user as mob)
 	return src.attackby(user, user)
 
-/obj/machinery/door/window/attackby(obj/item/weapon/I as obj, mob/user as mob)
+/obj/machinery/door/window/attackby(obj/item/weapon/I as obj, mob/living/user as mob)
 	// Make emagged/open doors able to be deconstructed
 	if (!src.density && src.operating != 1 && iscrowbar(I))
 		user.visible_message("[user] removes the electronics from the windoor assembly.", "You start to remove the electronics from the windoor assembly.")
@@ -227,6 +229,7 @@
 	if(src.density && istype(I, /obj/item/weapon) && !istype(I, /obj/item/weapon/card))
 		var/aforce = I.force
 		user.delayNextAttack(8)
+		user.do_attack_animation(src, I)
 		if(I.damtype == BRUTE || I.damtype == BURN)
 			src.health = max(0, src.health - aforce)
 		playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)
