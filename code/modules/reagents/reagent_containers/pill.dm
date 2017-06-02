@@ -25,6 +25,12 @@
 /obj/item/weapon/reagent_containers/pill/attack(mob/M as mob, mob/user as mob, def_zone)
 	// Feeding others needs time to succeed
 	if (user != M && (ishuman(M) || ismonkey(M)))
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(H.check_body_part_coverage(MOUTH))
+				to_chat(user, "<span class='notice'><B>Remove their [H.get_body_part_coverage(MOUTH)]!</B></span>")
+				return
+
 		user.visible_message("<span class='warning'>[user] attempts to force [M] to swallow \the [src].</span>", "<span class='notice'>You attempt to force [M] to swallow \the [src].</span>")
 
 		if (!do_mob(user, M))
@@ -33,6 +39,11 @@
 		user.visible_message("<span class='warning'>[user] forces [M] to swallow \the [src].</span>", "<span class='notice'>You force [M] to swallow \the [src].</span>")
 		add_attacklogs(user, M, "fed", object = src, addition = "Reagents: [english_list(list(reagentlist(src)))]", admin_warn = TRUE)
 	else if (user == M)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(H.check_body_part_coverage(MOUTH))
+				to_chat(H, "<span class='notice'><B>Remove your [H.get_body_part_coverage(MOUTH)]!</B></span>")
+				return
 		user.visible_message("<span class='notice'>[user] swallows \the [src].</span>", "<span class='notice'>You swallow \the [src].</span>")
 	else
 		return 0

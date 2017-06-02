@@ -106,20 +106,25 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
 		return 1
 
 	else if(ishuman(M))
-		user.visible_message("<span class='danger'>[user] attempts to feed [M] \the [src].</span>", "<span class='danger'>You attempt to feed [M] \the [src].</span>")
+		var/mob/living/carbon/human/H = M
+		if(H.check_body_part_coverage(MOUTH))
+			to_chat(user, "<span class='notice'><B>Remove their [H.get_body_part_coverage(MOUTH)]!</B></span>")
+			return
 
-		if(!do_mob(user, M, 30))
+		user.visible_message("<span class='danger'>[user] attempts to feed [H] \the [src].</span>", "<span class='danger'>You attempt to feed [H] \the [src].</span>")
+
+		if(!do_mob(user, H, 30))
 			return 1
 
-		user.visible_message("<span class='danger'>[user] feeds [M] \the [src].</span>", "<span class='danger'>You feed [M] \the [src].</span>")
+		user.visible_message("<span class='danger'>[user] feeds [H] \the [src].</span>", "<span class='danger'>You feed [H] \the [src].</span>")
 
-		add_attacklogs(user, M, "force-fed", src, "amount:[amount_per_imbibe], container containing [reagentlist(src)]", adminwarn = FALSE)
+		add_attacklogs(user, H, "force-fed", src, "amount:[amount_per_imbibe], container containing [reagentlist(src)]", adminwarn = FALSE)
 		/*M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [reagentlist(src)]</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [M.name] ([M.ckey]) Reagents: [reagentlist(src)]</font>")
 		log_attack("<font color='red'>[user.name] ([user.ckey]) fed [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>")*/
 
 		if(reagents.total_volume)
-			imbibe(M)
+			imbibe(H)
 
 			return 0
 
@@ -338,6 +343,11 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
 	return 0
 
 /obj/item/weapon/reagent_containers/proc/imbibe(mob/user) //Drink the liquid within
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.check_body_part_coverage(MOUTH))
+			to_chat(H, "<span class='notice'><B>Remove your [H.get_body_part_coverage(MOUTH)]!</B></span>")
+			return
 	to_chat(user, "<span  class='notice'>You swallow a gulp of \the [src].</span>")
 	playsound(user.loc,'sound/items/drink.ogg', rand(10,50), 1)
 

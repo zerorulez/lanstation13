@@ -82,6 +82,11 @@
 	return
 
 /obj/item/weapon/reagent_containers/food/snacks/attack_self(mob/user)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.check_body_part_coverage(MOUTH))
+			to_chat(H, "<span class='notice'><B>Remove your [H.get_body_part_coverage(MOUTH)]!</B></span>")
+			return
 	if(can_consume(user, user))
 		consume(user, 1)
 
@@ -106,6 +111,11 @@
 	if(istype(M, /mob/living/carbon)) //Avoid messing with simple mobs
 		var/mob/living/carbon/target = M //First definition to avoid colons
 		if(target == user)	//If you're eating it yourself
+			if(ishuman(target))
+				var/mob/living/carbon/human/H = target
+				if(H.check_body_part_coverage(MOUTH))
+					to_chat(H, "<span class='notice'><B>Remove your [H.get_body_part_coverage(MOUTH)]!</B></span>")
+					return
 			if(!can_consume(M, user))
 				return 0
 
@@ -125,7 +135,11 @@
 				"<span class='notice'>You unwillingly [eatverb] some of \the [src].</span>")
 
 		else //Feeding someone else, target is eating, user is feeding
-
+			if(ishuman(target))
+				var/mob/living/carbon/human/H = target
+				if(H.check_body_part_coverage(MOUTH))
+					to_chat(user, "<span class='notice'><B>Remove their [H.get_body_part_coverage(MOUTH)]!</B></span>")
+					return
 			var/fullness = target.nutrition + (target.reagents.get_reagent_amount(NUTRIMENT) * 25)
 
 			if(fullness <= (550 * (1 + M.overeatduration / 1000))) //The mob will accept
