@@ -590,17 +590,18 @@
 		var/obj/item/weapon/storage/B = back
 
 		// Do I have a plastic bag?
-		if(!B)
-			var/index = find_held_item_by_type(/obj/item/weapon/storage/bag/plasticbag)
-			if(index)
-				B = held_items[index]
+//		if(!B)
+//			var/index = find_held_item_by_type(/obj/item/weapon/storage/bag/plasticbag)
+//			if(index)
+//				B = held_items[index]
 
-		if(!B)
-			// Gimme one.
-			B=new /obj/item/weapon/storage/bag/plasticbag(null) // Null in case of failed equip.
-			if(!put_in_hands(B,slot_back))
-				return // Fuck it
-		B.handle_item_insertion(W,1)
+//		if(!B)
+//			// Gimme one.
+//			B=new /obj/item/weapon/storage/bag/plasticbag(null) // Null in case of failed equip.
+//			if(!put_in_hands(B,slot_back))
+//				return // Fuck it
+		if(B)
+			B.handle_item_insertion(W,1)
 
 //The list of slots by priority. equip_to_appropriate_slot() uses this list. Doesn't matter if a mob type doesn't have a slot.
 var/list/slot_equipment_priority = list( \
