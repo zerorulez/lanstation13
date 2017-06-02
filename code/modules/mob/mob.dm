@@ -1092,7 +1092,7 @@ var/list/slot_equipment_priority = list( \
             if(length(msg) <= 32)
                 return "<b>[msg]</b>"
             else
-                return "<b>[copytext(msg, 1, 32)]...<a href='?src=\ref[user];flavor_text=[flavor_text];target_name=[name]'>\More</a></b>"
+                return "<b>[copytext(msg, 1, 32)]...<a href='?src=\ref[user];flavor_text=[flavor_text];target_name=[name]'>\[+]</a></b>"
 
 /mob/verb/abandon_mob()
 	set name = "Respawn"
