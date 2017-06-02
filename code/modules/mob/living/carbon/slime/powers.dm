@@ -1,9 +1,10 @@
 /mob/living/carbon/slime/verb/Feed()
 	set category = "Slime"
 	set desc = "This will let you feed on any valid creature in the surrounding area. This should also be used to halt the feeding process."
+
 	if(Victim)
 		Feedstop()
-		return
+		return 1
 
 	if(stat)
 		to_chat(src, "<i>I must be conscious to do this...</i>")
@@ -15,8 +16,10 @@
 			choices += C
 
 	var/mob/living/carbon/M = input(src,"Who do you wish to feed on?") in null|choices
+
 	if(!M)
 		return
+
 	if(M in view(1, src))
 
 		if(!istype(src, /mob/living/carbon/brain))
@@ -49,6 +52,9 @@
 	canmove = 0
 	anchored = 1
 	var/lastnut = nutrition
+
+	var/mob/living/PF = Victim.LAssailant // possible friend
+
 //	to_chat(if(M.client) M, "<span class='warning'>You legs become paralyzed!</span>")
 	if(istype(src, /mob/living/carbon/slime/adult))
 		icon_state = "[colour] adult slime eat"
@@ -132,28 +138,15 @@
 	canmove = 1
 	anchored = 0
 
-	if(M)
-		if(M.health <= -70)
-			M.canmove = 0
-			if(!client)
-				if(Victim && !attacked)
-					if(Victim.LAssailant && Victim.LAssailant != Victim)
-						if(prob(50))
-							if(!(Victim.LAssailant in Friends))
-								Friends.Add(Victim.LAssailant) // no idea why i was using the |= operator
-
-			if(M.client && istype(src, /mob/living/carbon/human))
-				if(prob(85))
-					rabid() // UUUNNBGHHHH GONNA EAT JUUUUUU
-
-			if(client)
-				to_chat(src, "<i>This subject does not have a strong enough life energy anymore...</i>")
-		else
-			M.update_canmove()
-
-			if(client)
-				to_chat(src, "<i>I have stopped feeding...</i>")
+	if(M && M.health <= -70)
+		if(!client && !attacked)
+			if(PF && (PF != Victim) && !(PF in Friends))
+				Friends.Add(PF)
+		if(client)
+			to_chat(src, "<i>This subject does not have a strong enough life energy anymore...</i>")
 	else
+		M.update_canmove()
+
 		if(client)
 			to_chat(src, "<i>I have stopped feeding...</i>")
 
