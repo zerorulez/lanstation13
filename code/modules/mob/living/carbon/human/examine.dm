@@ -65,7 +65,33 @@
 	if(istype(user, /mob/dead/observer) || user.stat == 2) // ghosts can see anything
 		distance = 1
 
-	msg += "<b>[src.name]</b>, <b>[src.age - rand(0,3)] ~ [src.age + rand(0,3)]</b> anos.\n"
+	// below we have fluff text to help determining the mob looks for immersions purpose
+
+	var/fluff_age = age_fluff	// can't use age_fluff itself because we're nulling this var if we can't see the mob's head
+								// and we want to cache age_fluff instead of changing it every time the mob is examined
+
+	if(!fluff_age)				// will only run once per round for each mob if they are examined
+		switch(age)
+			if(15 to 17)
+				age_fluff = "[gender == MALE ? "um adolescente" : "uma adolescente"]"
+			if(18 to 24)
+				age_fluff = "[gender == MALE ? "um jovem" : "uma jovem"]"
+			if(25 to 29)
+				age_fluff = "[gender == MALE ? "um jovem adulto" : "uma jovem adulta"]"
+			if(30 to 39)
+				age_fluff = "[gender == MALE ? "um adulto" : "uma adulta"]"
+			if(40 to 60)
+				age_fluff = "[gender == MALE ? "um homem de meia-idade" : "uma mulher de meia-idade"]"
+			else
+				age_fluff = "[gender == MALE ? "um idoso" : "uma idosa"]"
+
+		fluff_age = age_fluff
+
+	var/datum/organ/external/head/limb_head = get_organ(LIMB_HEAD)
+	if((wear_mask && (is_slot_hidden(wear_mask.body_parts_covered,HIDEFACE))) || (head && (is_slot_hidden(head.body_parts_covered,HIDEFACE))) || !limb_head || limb_head.disfigured || (limb_head.status & ORGAN_DESTROYED) || !real_name || (M_HUSK in mutations) ) //Wearing a mask, having no head, being disfigured, or being a husk means no flavor text for you.
+		fluff_age = null
+
+	msg += "<b>[src.name]</b>[fluff_age ? ", [fluff_age]." : null]\n"
 
 	//uniform
 	if(w_uniform && !(slot_w_uniform in obscured))
