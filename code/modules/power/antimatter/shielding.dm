@@ -257,7 +257,7 @@ proc/cardinalrange(var/center)
 /obj/item/device/am_shielding_container/attackby(var/obj/item/I, var/mob/user)
 	if(ismultitool(I) && isturf(loc))
 		if(locate(/obj/machinery/am_shielding/) in loc)
-			to_chat(user, "<span class='warning'>[bicon(src)]There is already an antimatter reactor section there.</span>")
+			to_chat(user, "<span class='warning'>\icon[src]There is already an antimatter reactor section there.</span>")
 			return
 
 		//Search for shielding first
@@ -273,7 +273,7 @@ proc/cardinalrange(var/center)
 			new/obj/machinery/am_shielding(src.loc, AMC)
 			qdel(src)
 		else //Stranded & Alone
-			to_chat(user, "<span class='warning'>[bicon(src)]Couldn't connect to an Antimatter Control Unit.</span>")
+			to_chat(user, "<span class='warning'>\icon[src]Couldn't connect to an Antimatter Control Unit.</span>")
 			return
 
 	..()

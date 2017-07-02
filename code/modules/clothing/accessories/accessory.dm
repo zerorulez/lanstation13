@@ -84,7 +84,7 @@
 	if(accessories.len)
 		. = list()
 		for(var/obj/item/clothing/accessory/accessory in accessories)
-			. += "<b>[bicon(accessory)] \a [accessory]</b>"
+			. += "<b>\icon[accessory] \a [accessory]</b>"
 		return " It has [english_list(.)]."
 
 /obj/item/clothing/accessory/pinksquare

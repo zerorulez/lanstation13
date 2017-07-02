@@ -1614,3 +1614,6 @@ Game Mode config tags:
 	if(!istype(B))
 		T2 = get_turf(B)
 	return sqrt(((T2.x - T1.x) ** 2) + ((T2.y - T1.y) ** 2))
+
+/proc/to_chat(var/thing, var/output)
+	thing << output

@@ -641,8 +641,8 @@
 	if(declare_cooldown)
 		return
 	var/area/location = get_area(src)
-	declare_message = "<span class='info'>[bicon(src)] Medical emergency! A patient is in critical condition at [location]!</span>"
-	visible_message("<span class='info'>[bicon(src)] Medical emergency! A patient is in critical condition at [location]!</span>")
+	declare_message = "<span class='info'>\icon[src] Medical emergency! A patient is in critical condition at [location]!</span>"
+	visible_message("<span class='info'>\icon[src] Medical emergency! A patient is in critical condition at [location]!</span>")
 	..()
 	declare_cooldown = 1
 	spawn(100) //Ten seconds

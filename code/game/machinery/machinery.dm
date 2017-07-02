@@ -477,7 +477,7 @@ Class Procs:
 		dropFrame()
 		spillContents()
 		user.visible_message(	"<span class='notice'>[user] successfully pries out the circuitboard from \the [src]!</span>",
-								"<span class='notice'>[bicon(src)] You successfully pry out the circuitboard from \the [src]!</span>")
+								"<span class='notice'>\icon[src] You successfully pry out the circuitboard from \the [src]!</span>")
 		return 1
 	return -1
 
@@ -495,7 +495,7 @@ Class Procs:
 		icon_state = icon_state_open
 	else
 		icon_state = initial(icon_state)
-	to_chat(user, "<span class='notice'>[bicon(src)] You [panel_open ? "open" : "close"] the maintenance hatch of \the [src].</span>")
+	to_chat(user, "<span class='notice'>\icon[src] You [panel_open ? "open" : "close"] the maintenance hatch of \the [src].</span>")
 	if(isscrewdriver(toggleitem))
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 	update_icon()
@@ -523,7 +523,7 @@ Class Procs:
 				if(2)
 					state = 1
 			user.visible_message(	"[user.name] [state - 1 ? "weld" : "unweld"]s \the [src] [state - 1 ? "to" : "from"] the floor.",
-									"[bicon(src)] You [state - 1 ? "weld" : "unweld"] \the [src] [state - 1 ? "to" : "from"] the floor."
+									"\icon[src] You [state - 1 ? "weld" : "unweld"] \the [src] [state - 1 ? "to" : "from"] the floor."
 								)
 			return 1
 	else
@@ -646,13 +646,13 @@ Class Procs:
 /obj/machinery/proc/alert_noise(var/notice_state = "ping")
 	switch(notice_state)
 		if("ping")
-			src.visible_message("<span class='notice'>[bicon(src)] \The [src] pings.</span>")
+			src.visible_message("<span class='notice'>\icon[src] \The [src] pings.</span>")
 			playsound(get_turf(src), 'sound/machines/notify.ogg', 50, 0)
 		if("beep")
-			src.visible_message("<span class='notice'>[bicon(src)] \The [src] beeps.</span>")
+			src.visible_message("<span class='notice'>\icon[src] \The [src] beeps.</span>")
 			playsound(get_turf(src), 'sound/machines/twobeep.ogg', 50, 0)
 		if("buzz")
-			src.visible_message("<span class='notice'>[bicon(src)] \The [src] buzzes.</span>")
+			src.visible_message("<span class='notice'>\icon[src] \The [src] buzzes.</span>")
 			playsound(get_turf(src), 'sound/machines/buzz-two.ogg', 50, 0)
 
 /obj/machinery/proc/check_rebuild()

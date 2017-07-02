@@ -410,13 +410,13 @@ trans_to_atmos(var/datum/gas_mixture/target, var/amount=1, var/multiplier=1, var
 							add_reagent(S, C.result_amount * C.secondary_results[S] * multiplier)
 
 					if	(istype(my_atom, /obj/item/weapon/grenade/chem_grenade))
-						my_atom.visible_message("<span class='caution'>[bicon(my_atom)] Something comes out of \the [my_atom].</span>")
+						my_atom.visible_message("<span class='caution'>\icon[my_atom] Something comes out of \the [my_atom].</span>")
 						//Logging inside chem_grenade.dm, prime()
 					else if	(istype(my_atom, /mob/living/carbon/human))
 						my_atom.visible_message("<span class='notice'>[my_atom] shudders a little.</span>","<span class='notice'>You shudder a little.</span>")
 						//Since the are no fingerprints to be had here, we'll trust the attack logs to log this
 					else
-						my_atom.visible_message("<span class='notice'>[bicon(my_atom)] The solution begins to bubble.</span>")
+						my_atom.visible_message("<span class='notice'>\icon[my_atom] The solution begins to bubble.</span>")
 						C.log_reaction(src, created_volume)
 
 					if(istype(my_atom, /obj/item/slime_extract))
@@ -424,7 +424,7 @@ trans_to_atmos(var/datum/gas_mixture/target, var/amount=1, var/multiplier=1, var
 						ME2.Uses--
 						if(ME2.Uses <= 0) // give the notification that the slime core is dead
 							if (!istype(ME2.loc, /obj/item/weapon/grenade/chem_grenade))
-								ME2.visible_message("<span class='notice'>[bicon(my_atom)] \The [my_atom]'s power is consumed in the reaction.</span>")
+								ME2.visible_message("<span class='notice'>\icon[my_atom] \The [my_atom]'s power is consumed in the reaction.</span>")
 							ME2.name = "used slime extract"
 							ME2.desc = "This extract has been used up."
 

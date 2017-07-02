@@ -64,9 +64,6 @@
 		completed_asset_jobs += job
 		return
 
-	if(href_list["_src_"] == "chat") // Oh god the ping hrefs.
-		return chatOutput.Topic(href, href_list)
-
 	//Logs all hrefs
 	if(config && config.log_hrefs && investigations[I_HREFS])
 		var/datum/log_controller/I = investigations[I_HREFS]
@@ -124,7 +121,7 @@
 	///////////
 /client/New(TopicData)
 	// world.log << "creating chatOutput"
-	chatOutput = new /datum/chatOutput(src) // Right off the bat.
+	//chatOutput = new /datum/chatOutput(src) // Right off the bat.
 	// world.log << "Done creating chatOutput"
 	if(config)
 		winset(src, null, "outputwindow.output.style=[config.world_style_config];")
@@ -181,7 +178,6 @@
 	prefs.initialize_preferences(client_login = 1)
 
 	. = ..()	//calls mob.Login()
-	chatOutput.start()
 
 	if(custom_event_msg && custom_event_msg != "")
 		to_chat(src, "<h1 class='alert'>Custom Event</h1>")

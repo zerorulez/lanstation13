@@ -490,7 +490,7 @@ proc/is_blind(A)
 	for(var/mob/M in targets)
 		var/turf/targetturf = get_turf(M)
 		if((targetturf.z == sourceturf.z))
-			M.show_message("<span class='info'>[bicon(I)] [message]</span>", 1)
+			M.show_message("<span class='info'>\icon[I] [message]</span>", 1)
 
 /mob/proc/get_survive_objective()
 	return new /datum/objective/survive

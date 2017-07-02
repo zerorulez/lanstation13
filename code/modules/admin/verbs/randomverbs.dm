@@ -860,7 +860,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	for (var/content in get_contents_in_object(L))
 		if (content)
-			to_chat(usr, "[bicon(content)] [content]")
+			to_chat(usr, "\icon[content] [content]")
 
 	feedback_add_details("admin_verb","CC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

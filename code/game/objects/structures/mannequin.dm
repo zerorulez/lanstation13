@@ -160,9 +160,9 @@
 
 	for(var/obj/item/I in held_items)
 		if(I.blood_DNA && I.blood_DNA.len)
-			msg += "<span class='warning'>It's holding [bicon(I)] [I.gender==PLURAL?"some":"a"] blood-stained [I.name] in its [get_index_limb_name(is_holding_item(I))]!</span>\n"
+			msg += "<span class='warning'>It's holding \icon[I] [I.gender==PLURAL?"some":"a"] blood-stained [I.name] in its [get_index_limb_name(is_holding_item(I))]!</span>\n"
 		else
-			msg += "It's holding [bicon(I)] \a [I] in its [get_index_limb_name(is_holding_item(I))].\n"
+			msg += "It's holding \icon[I] \a [I] in its [get_index_limb_name(is_holding_item(I))].\n"
 
 	for(var/slot_cloth in clothing)
 		var/obj/item/clothToExamine = clothing[slot_cloth]
@@ -188,9 +188,9 @@
 					slot_examine = " on its ears"
 
 			if(clothToExamine.blood_DNA && clothToExamine.blood_DNA.len)
-				msg += "<span class='warning'>It's wearing [bicon(clothToExamine)] [clothToExamine.gender==PLURAL?"some":"a"] blood-stained [clothToExamine][slot_examine]![clothToExamine.description_accessories()]</span>\n"
+				msg += "<span class='warning'>It's wearing \icon[clothToExamine] [clothToExamine.gender==PLURAL?"some":"a"] blood-stained [clothToExamine][slot_examine]![clothToExamine.description_accessories()]</span>\n"
 			else
-				msg += "It's wearing [bicon(clothToExamine)] \a [clothToExamine][slot_examine].[clothToExamine.description_accessories()] \n"
+				msg += "It's wearing \icon[clothToExamine] \a [clothToExamine][slot_examine].[clothToExamine.description_accessories()] \n"
 
 	to_chat(user, msg)
 
@@ -926,9 +926,9 @@
 				return
 			locked = !locked
 			if(!locked)
-				to_chat(user, "[bicon(src)] <span class='notice'>\The [src] clicks as locks release, and it slowly opens for you.</span>")
+				to_chat(user, "\icon[src] <span class='notice'>\The [src] clicks as locks release, and it slowly opens for you.</span>")
 			else
-				to_chat(user, "[bicon(src)] <span class='notice'>You close \the [src] and swipe your card, locking it.</span>")
+				to_chat(user, "\icon[src] <span class='notice'>You close \the [src] and swipe your card, locking it.</span>")
 			update_icon()
 	else if(iscrowbar(W) && (!locked || destroyed))
 		user.visible_message("[user.name] pries \the [src] apart.", \

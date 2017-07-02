@@ -15,7 +15,7 @@
 
 /obj/effect/mine/Crossed(mob/living/carbon/AM)
 	if(istype(AM))
-		visible_message("<font color='red'>[AM] triggered the [bicon(src)] [src]</font>")
+		visible_message("<font color='red'>[AM] triggered the \icon[src] [src]</font>")
 		trigger(AM)
 
 /obj/effect/mine/proc/trigger(mob/living/carbon/AM)

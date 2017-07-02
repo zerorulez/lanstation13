@@ -394,7 +394,7 @@ var/global/list/pillIcon2Name = list("oblong purple-pink", "oblong green-white",
 /obj/machinery/chem_master/proc/generate_pill_icon_cache()
 	pill_icon_cache = list()
 	for(var/i = 1 to MAX_PILL_SPRITE)
-		pill_icon_cache += "<img src='data:image/png;base64,[icon2base64(icon('icons/obj/chemical.dmi', "pill" + num2text(i)))]'>"
+		pill_icon_cache += "<img src='data:image/png;base64,[icon('icons/obj/chemical.dmi', "pill" + num2text(i))]'>"
 		//This is essentially just bicon(). Ideally we WOULD use just bicon(), but right now it's fucked up when used on icons because it goes by their \ref.
 
 /obj/machinery/chem_master/attack_hand(mob/user as mob)

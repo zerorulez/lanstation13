@@ -284,7 +284,7 @@
 		del covered_turfs
 
 		for(var/mob/M in view(5,src))
-			to_chat(M, "[bicon(src)] You hear heavy droning start up.")
+			to_chat(M, "\icon[src] You hear heavy droning start up.")
 	else
 		for(var/obj/effect/energy_field/D in field)
 			field.Remove(D)
@@ -292,7 +292,7 @@
 			D = null
 
 		for(var/mob/M in view(5,src))
-			to_chat(M, "[bicon(src)] You hear heavy droning fade out.")
+			to_chat(M, "\icon[src] You hear heavy droning fade out.")
 
 //grab the border tiles in a circle around this machine
 /obj/machinery/shield_gen/proc/get_shielded_turfs()

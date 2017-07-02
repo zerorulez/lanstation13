@@ -283,7 +283,7 @@
 /mob/living/simple_animal/spiderbot/examine(mob/user)
 	..()
 	if(src.held_item)
-		to_chat(user, "It is carrying \a [src.held_item] [bicon(src.held_item)].")
+		to_chat(user, "It is carrying \a [src.held_item] \icon[held_item].")
 
 /mob/living/simple_animal/spiderbot/CheckSlip()
 	return -1

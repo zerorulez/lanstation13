@@ -176,7 +176,7 @@ var/list/forbidden_varedit_object_types = list(
 
 	else if(isicon(variable))
 		to_chat(usr, "Variable appears to be <b>ICON</b>.")
-		variable = "[bicon(variable)]"
+		variable = "\icon[variable]"
 		default = "icon"
 
 	else if(istype(variable,/atom) || istype(variable,/datum))
@@ -368,7 +368,7 @@ var/list/forbidden_varedit_object_types = list(
 
 			else if(isicon(var_value))
 				to_chat(usr, "Variable appears to be <b>ICON</b>.")
-				var_value = "[bicon(var_value)]"
+				var_value = "\icon[var_value]"
 				class = "icon"
 
 			else if(ismatrix(var_value))
@@ -429,7 +429,7 @@ var/list/forbidden_varedit_object_types = list(
 
 		else if(isicon(var_value))
 			to_chat(usr, "Variable appears to be <b>ICON</b>.")
-			var_value = "[bicon(var_value)]"
+			var_value = "\icon[var_value]"
 			default = "icon"
 
 		else if(ismatrix(var_value))

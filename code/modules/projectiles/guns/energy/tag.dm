@@ -40,7 +40,7 @@
 	usr.visible_message("<span class='warning'>\The [usr] is resetting \the [src]'s score!</span>")
 	if(do_after(usr, src, 2 SECONDS))
 		score = 0
-		to_chat(usr, "<span class='info'>[bicon(src)] You reset the score.</span>")
+		to_chat(usr, "<span class='info'>\icon[src] You reset the score.</span>")
 
 /obj/item/weapon/gun/energy/tag/blue
 	icon_state = "bluetag"
@@ -58,13 +58,13 @@
 	projectile_type = laser_projectile
 	fire_sound = 'sound/weapons/Laser.ogg'
 	if(user)
-		to_chat(user, "<span class='warning'>[bicon(src)] Set to laser tag!</span>")
+		to_chat(user, "<span class='warning'>\icon[src] Set to laser tag!</span>")
 
 /obj/item/weapon/gun/energy/tag/proc/makeTaser(var/mob/user)
 	projectile_type = taser_projectile
 	fire_sound = 'sound/weapons/Taser.ogg'
 	if(user)
-		to_chat(user, "<span class='warning'>[bicon(src)] Set to taser tag!</span>")
+		to_chat(user, "<span class='warning'>\icon[src] Set to taser tag!</span>")
 
 /obj/item/weapon/gun/energy/tag/attack_self(var/mob/user)
     if(projectile_type != laser_projectile)
