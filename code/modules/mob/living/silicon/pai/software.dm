@@ -38,7 +38,7 @@
 	if(temp)
 		left_part = temp
 	else if(src.stat == 2)						// Show some flavor text if the pAI is dead
-		left_part = "<b><font color=red>√àRr√ñR √êa‚Ä†√Ñ √á√ñRr√ö√æ‚Ä†√åo√±</font></b>"
+		left_part = "<b><font color=red>»Rr÷R –aÜƒ «÷Rr⁄˛ÜÃoÒ</font></b>"
 		right_part = "<pre>Program index hash not found</pre>"
 
 	else
@@ -363,7 +363,7 @@
 		if(s == SOFT_WJ)
 			dat += "<a href='byond://?src=\ref[src];software=wirejack;sub=0'>Wire Jack</a> <br>"
 		if(s == SOFT_UT)
-			dat += "<a href='byond://?src=\ref[src];software=translator;sub=0'>Universal Translator</a>[(universal_understand) ? "<font color=#55FF55>ÔøΩ</font>" : "<font color=#FF5555>ÔøΩ</font>"] <br>"
+			dat += "<a href='byond://?src=\ref[src];software=translator;sub=0'>Universal Translator</a>[(universal_understand) ? "<font color=#55FF55>?</font>" : "<font color=#FF5555>?</font>"] <br>"
 		if(s == SOFT_CS)
 			dat += "<a href='byond://?src=\ref[src];software=chemsynth;sub=0'>Chemical Synthesizer</a> <br>"
 		if(s == SOFT_FS)
@@ -536,7 +536,12 @@
 		else
 			dat += "<pre>Requested security record not found,</pre><BR>"
 		if ((istype(src.securityActive2, /datum/data/record) && data_core.security.Find(src.securityActive2)))
-			dat += text("<BR>\nSecurity Data<BR>\nCriminal Status: []<BR>\n<BR>\nMinor Crimes: <A href='?src=\ref[];field=mi_crim'>[]</A><BR>\nDetails: <A href='?src=\ref[];field=mi_crim_d'>[]</A><BR>\n<BR>\nMajor Crimes: <A href='?src=\ref[];field=ma_crim'>[]</A><BR>\nDetails: <A href='?src=\ref[];field=ma_crim_d'>[]</A><BR>\n<BR>\nImportant Notes:<BR>\n\t<A href='?src=\ref[];field=notes'>[]</A><BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>", src.securityActive2.fields["criminal"], src, src.securityActive2.fields["mi_crim"], src, src.securityActive2.fields["mi_crim_d"], src, src.securityActive2.fields["ma_crim"], src, src.securityActive2.fields["ma_crim_d"], src, src.securityActive2.fields["notes"])
+			dat += text("<BR>\nSecurity Data<BR>\nCriminal Status: []<BR>\n<BR>\nImportant Notes:<BR>\n\t<A href='?src=\ref[];field=notes'>[]</A><BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>", src.securityActive2.fields["criminal"], src, src.securityActive2.fields["notes"])
+			var/counter = 1
+			while(src.securityActive2.fields["com_[counter]"])
+				dat += "[securityActive2.fields["com_[counter]"]]<BR>"
+				counter++
+
 		else
 			dat += "<pre>Requested security record not found,</pre><BR>"
 		dat += text("<BR>\n<A href='?src=\ref[];software=securitysupplement;sub=0'>Back</A><BR>", src)
