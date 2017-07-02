@@ -259,16 +259,16 @@ var/global/datum/controller/vote/vote = new()
 		switch(vote_type)
 			if("restart")
 				choices.Add("Restart Round","Continue Playing")
-				question = "Restart the round?"
+				question = "Reiniciar a partida?"
 			if("gamemode")
 				if(ticker.current_state >= 2)
 					return 0
 				choices.Add(config.votable_modes)
-				question = "What gamemode?"
+				question = "Gamemode?"
 			if("crew_transfer")
 				if(ticker.current_state <= 2)
 					return 0
-				question = "End the shift?"
+				question = "Acabar com o expediente?"
 				choices.Add("Initiate Crew Transfer", "Continue The Round")
 			if("custom")
 				question = html_encode(input(usr,"What is the vote for?") as text|null)
@@ -280,7 +280,7 @@ var/global/datum/controller/vote/vote = new()
 						break
 					choices.Add(option)
 			if("map")
-				question = "What should the next map be?"
+				question = "Qual deve ser o mapa da próxima partida?"
 				var/list/maps = get_maps()
 				for(var/key in maps)
 					choices.Add(key)
@@ -308,7 +308,7 @@ var/global/datum/controller/vote/vote = new()
 			if(istype(usr) && usr.client)
 				interact(usr.client)
 
-		to_chat(world, "<font color='purple'><b>[text]</b><br>Type vote to place your votes.<br>You have [ismapvote && ismapvote.len ? "60" : config.vote_period/10] seconds to vote.</font>")
+		to_chat(world, "<font color='purple'><b>[text]</b><br><a href='?src=\ref[vote]'>Clique aqui</a> ou use o verbo Vote para votar. <br>Você tem [ismapvote && ismapvote.len ? "60" : config.vote_period/10] segundos para votar.</font>")
 		switch(vote_type)
 			if("crew_transfer")
 				world << sound('sound/voice/Serithi/Shuttlehere.ogg')
