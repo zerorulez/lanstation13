@@ -101,7 +101,7 @@ var/list/freqtoname = list(
 	var/radioicon = ""
 	if(speech.frequency)
 		if(speech.radio)
-			radioicon = "\[\icon[speech.radio]]"
+			radioicon = "\icon[speech.radio]"
 		freqpart = " [radioicon]\[[get_radio_name(speech.frequency)]\]"
 		speech.wrapper_classes.Add(get_radio_span(speech.frequency))
 	var/pooled=0
