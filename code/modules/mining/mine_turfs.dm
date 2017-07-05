@@ -196,11 +196,11 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 
 /turf/unsimulated/mineral/proc/UpdateMineral()
 	icon_state = "rock"
-	if(!mineral)
-		name = "\improper Rock"
-		return
-	name = "\improper [mineral.display_name] deposit"
-	icon_state = "rock_[mineral.name]"
+//	if(!mineral)
+//		name = "\improper Rock"
+//		return
+//	name = "\improper [mineral.display_name] deposit"
+//	icon_state = "rock_[mineral.name]"
 
 /turf/unsimulated/mineral/proc/updateMineralOverlays()
 	// TODO: Figure out what this is supposed to do.
@@ -256,7 +256,7 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 
 		last_act = world.time
 
-		playsound(user, P.drill_sound, 20, 1)
+		playsound(user, pick(P.drill_sound), 20, 1)
 
 		var/fail_message = ""
 		//handle any archaeological finds we might uncover
@@ -502,9 +502,10 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 	name = "Asteroid"
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
-	oxygen = 0.01
-	nitrogen = 0.01
-	temperature = TCMB
+	carbon_dioxide = MOLES_O2STANDARD
+	nitrogen = MOLES_N2STANDARD
+	temperature = 114
+	oxygen = 0
 	//icon_plating = "asteroid"
 	var/dug = 0       //0 = has not yet been dug, 1 = has already been dug
 
@@ -851,8 +852,8 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 
 ////////////////////////////////Gibtonite
 /turf/unsimulated/mineral/gibtonite
-	name = "Diamond deposit" //honk
-	icon_state = "rock_Gibtonite"
+	name = "Mineral deposit" //honk
+	icon_state = "rock"
 	mineral = new /mineral/gibtonite
 	scan_state = "rock_Gibtonite"
 	var/det_time = 8 //Countdown till explosion, but also rewards the player for how close you were to detonation when you defuse it
@@ -861,7 +862,6 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 	var/activated_name = null
 
 /turf/unsimulated/mineral/gibtonite/New()
-	icon_state="rock_Diamond"
 	det_time = rand(8,10) //So you don't know exactly when the hot potato will explode
 	..()
 

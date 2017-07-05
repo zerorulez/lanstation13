@@ -60,6 +60,16 @@
 	category = "Mining"
 	build_path = /obj/item/clothing/glasses/scanner/meson
 
+/datum/design/mesons
+	name = "Optical Ore Scanners"
+	desc = "Permite detectar minérios através das paredes."
+	id = "miningglasses"
+	req_tech = list(Tc_ENGINEERING = 2)
+	build_type = PROTOLATHE
+	materials = list(MAT_IRON = 50, MAT_GLASS = 50)
+	category = "Mining"
+	build_path = /obj/item/clothing/glasses/scanner/mining_glasses
+
 /datum/design/excavationdrill
 	name = "Excavation Drill"
 	desc = "Advanced archaeological drill combining ultrasonic excitation and bluespace manipulation to provide extreme precision. The diamond tip is adjustable from 1 to 30 cms."

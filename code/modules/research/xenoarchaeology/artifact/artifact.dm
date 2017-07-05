@@ -78,15 +78,15 @@
 			busy = 0
 		return
 
-	if (istype(W, /obj/item/weapon/pickaxe))
+	if (istype(W, /obj/item/weapon/pickaxe) && !busy)
 		var/obj/item/weapon/pickaxe/P = W
 
 		if(!(P.diggables & DIG_ROCKS))
 			return
 
-		to_chat(user, "<span class='rose'>You start [P.drill_verb] [src].</span>")
-
 		busy = 1
+
+		playsound(user, pick(P.drill_sound), 20, 1)
 
 		if(do_after(user,src, P.digspeed))
 
@@ -94,6 +94,8 @@
 
 			to_chat(user, "<span class='notice'>You finish [P.drill_verb] [src].</span>")
 			excavation_level += P.excavation_amount
+
+			playsound(src, 'sound/items/shovel.ogg', 50, 1)
 
 			if(excavation_level > 100)
 				//failure

@@ -132,6 +132,47 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 	if(processed_name=="")
 		processed_name=name
 
+/datum/material/diamond
+	name="Diamond"
+	id=MAT_DIAMOND
+	value=50
+	cc_per_sheet = 1750
+	oretype=/obj/item/weapon/ore/diamond
+	sheettype=/obj/item/stack/sheet/mineral/diamond
+	cointype=/obj/item/weapon/coin/diamond
+
+/datum/material/gold
+	name="Gold"
+	id=MAT_GOLD
+	value=30
+	oretype=/obj/item/weapon/ore/gold
+	sheettype=/obj/item/stack/sheet/mineral/gold
+	cointype=/obj/item/weapon/coin/gold
+
+/datum/material/silver
+	name="Silver"
+	id=MAT_SILVER
+	value=25
+	oretype=/obj/item/weapon/ore/silver
+	sheettype=/obj/item/stack/sheet/mineral/silver
+	cointype=/obj/item/weapon/coin/silver
+
+/datum/material/uranium
+	name="Uranium"
+	id=MAT_URANIUM
+	value=20
+	oretype=/obj/item/weapon/ore/uranium
+	sheettype=/obj/item/stack/sheet/mineral/uranium
+	cointype=/obj/item/weapon/coin/uranium
+
+/datum/material/plasma
+	name="Plasma"
+	id=MAT_PLASMA
+	value=10
+	oretype=/obj/item/weapon/ore/plasma
+	sheettype=/obj/item/stack/sheet/mineral/plasma
+	cointype=/obj/item/weapon/coin/plasma
+
 /datum/material/iron
 	name="Iron"
 	id=MAT_IRON
@@ -149,47 +190,6 @@ var/global/list/initial_materials	//Stores all the matids = 0 in helping New
 	cc_per_sheet=CC_PER_SHEET_GLASS
 	oretype=/obj/item/weapon/ore/glass
 	sheettype=/obj/item/stack/sheet/glass/glass
-
-/datum/material/diamond
-	name="Diamond"
-	id=MAT_DIAMOND
-	value=40
-	cc_per_sheet = 1750
-	oretype=/obj/item/weapon/ore/diamond
-	sheettype=/obj/item/stack/sheet/mineral/diamond
-	cointype=/obj/item/weapon/coin/diamond
-
-/datum/material/plasma
-	name="Plasma"
-	id=MAT_PLASMA
-	value=40
-	oretype=/obj/item/weapon/ore/plasma
-	sheettype=/obj/item/stack/sheet/mineral/plasma
-	cointype=/obj/item/weapon/coin/plasma
-
-/datum/material/gold
-	name="Gold"
-	id=MAT_GOLD
-	value=20
-	oretype=/obj/item/weapon/ore/gold
-	sheettype=/obj/item/stack/sheet/mineral/gold
-	cointype=/obj/item/weapon/coin/gold
-
-/datum/material/silver
-	name="Silver"
-	id=MAT_SILVER
-	value=20
-	oretype=/obj/item/weapon/ore/silver
-	sheettype=/obj/item/stack/sheet/mineral/silver
-	cointype=/obj/item/weapon/coin/silver
-
-/datum/material/uranium
-	name="Uranium"
-	id=MAT_URANIUM
-	value=20
-	oretype=/obj/item/weapon/ore/uranium
-	sheettype=/obj/item/stack/sheet/mineral/uranium
-	cointype=/obj/item/weapon/coin/uranium
 
 /datum/material/clown
 	name="Bananium"

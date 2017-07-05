@@ -34,7 +34,7 @@
 	new /obj/item/device/flashlight/lantern(src)
 	new /obj/item/weapon/pickaxe/shovel(src)
 	new /obj/item/weapon/pickaxe(src)
-	new /obj/item/clothing/glasses/scanner/meson(src)
+	new /obj/item/clothing/glasses/scanner/mining_glasses(src)
 	new /obj/item/device/gps/mining(src)
 	new /obj/item/weapon/storage/belt/mining(src)
 
@@ -192,14 +192,22 @@ proc/move_mining_shuttle()
 	sharpness_flags = SHARP_TIP
 	starting_materials = list(MAT_IRON = 3750) //one sheet, but where can you make them?
 	w_type = RECYK_METAL
-	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
+	var/digspeed = 30 //moving the delay to an item var so R&D can make improved picks. --NEO
 	origin_tech = Tc_MATERIALS + "=1;" + Tc_ENGINEERING + "=1"
 	attack_verb = list("hits", "pierces", "slices", "attacks")
-	var/drill_sound = 'sound/weapons/Genhit.ogg'
+
+	hitsound = 'sound/weapons/toolbox.ogg'
+
+	var/drill_sound
+
 	var/drill_verb = "picking"
 	var/diggables = DIG_ROCKS
 
 	var/excavation_amount = 100
+
+/obj/item/weapon/pickaxe/New()
+	..()
+	drill_sound = list('sound/mining/pickaxe1.wav', 'sound/mining/pickaxe2.wav','sound/mining/pickaxe3.wav','sound/mining/pickaxe4.wav')
 
 /obj/item/weapon/pickaxe/hammer
 	name = "sledgehammer"
@@ -211,7 +219,7 @@ proc/move_mining_shuttle()
 	name = "silver pickaxe"
 	icon_state = "spickaxe"
 	item_state = "spickaxe"
-	digspeed = 30
+	digspeed = 25
 	origin_tech = Tc_MATERIALS + "=3"
 	desc = "This makes no metallurgic sense."
 
@@ -224,11 +232,13 @@ proc/move_mining_shuttle()
 	desc = "Cracks rocks with sonic blasts, perfect for killing cave lizards."
 	drill_verb = "hammering"
 
+	hitsound = 'sound/weapons/circsawhit.ogg'
+
 /obj/item/weapon/pickaxe/gold
 	name = "golden pickaxe"
 	icon_state = "gpickaxe"
 	item_state = "gpickaxe"
-	digspeed = 20
+	digspeed = 15
 	origin_tech = Tc_MATERIALS + "=4"
 	desc = "This makes no metallurgic sense."
 
@@ -239,7 +249,7 @@ proc/move_mining_shuttle()
 	w_class = W_CLASS_MEDIUM //it is smaller than the pickaxe
 	damtype = "fire"
 	heat_production = 3800
-	digspeed = 20 //Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
+	digspeed = 10 //Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
 	sharpness = 1.0
 	sharpness_flags = SHARP_BLADE | HOT_EDGE | INSULATED_EDGE
 	origin_tech = Tc_MATERIALS + "=4;" + Tc_PLASMATECH + "=3;" + Tc_ENGINEERING + "=3"
@@ -264,12 +274,14 @@ proc/move_mining_shuttle()
 	name = "mining drill" // Can dig sand as well!
 	icon_state = "handdrill"
 	item_state = "jackhammer"
-	digspeed = 30
+	digspeed = 20
 	origin_tech = Tc_MATERIALS + "=2;" + Tc_POWERSTORAGE + "=3;" + Tc_ENGINEERING + "=2"
 	desc = "Yours is the drill that will pierce through the rock walls."
 	drill_verb = "drilling"
 
 	diggables = DIG_ROCKS | DIG_SOIL //drills are multipurpose
+
+	hitsound = 'sound/weapons/circsawhit.ogg'
 
 /obj/item/weapon/pickaxe/drill/diamond //When people ask about the badass leader of the mining tools, they are talking about ME!
 	name = "diamond mining drill"
@@ -285,7 +297,7 @@ proc/move_mining_shuttle()
 	name = "cyborg mining drill"
 	icon_state = "diamonddrill"
 	item_state = "jackhammer"
-	digspeed = 15
+	digspeed = 10
 	desc = ""
 
 /*****************************Shovel********************************/
@@ -304,8 +316,9 @@ proc/move_mining_shuttle()
 	origin_tech = Tc_MATERIALS + "=1;" + Tc_ENGINEERING + "=1"
 	attack_verb = list("bashes", "bludgeons", "thrashes", "whacks")
 
+	hitsound = 'sound/weapons/genhit1.ogg'
 
-	digspeed = 40
+	digspeed = 20
 	diggables = DIG_SOIL //soil only
 
 /obj/item/weapon/pickaxe/shovel/spade
@@ -318,7 +331,7 @@ proc/move_mining_shuttle()
 	throwforce = 7.0
 	w_class = W_CLASS_SMALL
 
-	digspeed = 60 //slower than the large shovel
+	digspeed = 40 //slower than the large shovel
 
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/
@@ -839,7 +852,7 @@ proc/move_mining_shuttle()
 /**********************Mining Scanner**********************/
 
 /obj/item/device/mining_scanner
-	desc = "A scanner that checks surrounding rock for useful minerals, it can also be used to stop gibtonite detonations. Requires you to wear mesons to use optimally."
+	desc = "A scanner that checks surrounding rock for useful minerals, it can also be used to stop gibtonite detonations."
 	name = "mining scanner"
 	icon_state = "mining"
 	item_state = "analyzer"
@@ -847,33 +860,6 @@ proc/move_mining_shuttle()
 	flags = 0
 	siemens_coefficient = 1
 	slot_flags = SLOT_BELT
-	var/cooldown = 0
-
-/obj/item/device/mining_scanner/attack_self(mob/user)
-	if(!user.client)
-		return
-	if(!cooldown)
-		cooldown = 1
-		spawn(40)
-			cooldown = 0
-		var/client/C = user.client
-		var/list/L = list()
-		var/turf/unsimulated/mineral/M
-		for(M in range(7, user))
-			if(M.scan_state)
-				L += M
-		if(!L.len)
-			to_chat(user, "<span class='notice'>\The [src] reports that nothing was detected nearby.</span>")
-			return
-		else
-			for(M in L)
-				var/turf/T = get_turf(M)
-				var/image/I = image('icons/turf/walls.dmi', loc = T, icon_state = M.scan_state, layer = UNDER_HUD_LAYER)
-				I.plane = HUD_PLANE
-				C.images += I
-				spawn(30)
-					if(C)
-						C.images -= I
 
 /**********************Xeno Warning Sign**********************/
 

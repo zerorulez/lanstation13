@@ -84,7 +84,7 @@
 /obj/item/clothing/glasses/scanner/proc/disable(var/mob/C)
 	on = FALSE
 	to_chat(C, "You turn \the [src] off.")
-	if(iscarbon(loc))
+	if(iscarbon(loc) && color_matrix)
 		if(istype(loc, /mob/living/carbon/monkey))
 			var/mob/living/carbon/monkey/M = C
 			if(M.glasses && (M.glasses == src))
@@ -96,7 +96,7 @@
 
 /obj/item/clothing/glasses/scanner/night
 	name = "night vision goggles"
-	desc = "You can totally see in the dark now!"
+	desc = "Agora você pode olhar no escuro!"
 	icon_state = "night"
 	item_state = "glasses"
 	origin_tech = Tc_MAGNETS + "=2"
@@ -125,7 +125,7 @@
 
 /obj/item/clothing/glasses/scanner/meson
 	name = "optical meson scanner"
-	desc = "Used for seeing walls, floors, and stuff through anything."
+	desc = "Utilizado para olhar através de paredes. Também protege os olhos contra radiação."
 	icon_state = "meson"
 	origin_tech = Tc_MAGNETS + "=2;" + Tc_ENGINEERING + "=2"
 	vision_flags = SEE_TURFS
@@ -150,7 +150,7 @@
 
 /obj/item/clothing/glasses/scanner/material
 	name = "optical material scanner"
-	desc = "Allows one to see the original layout of the pipe and cable network."
+	desc = "Permite ver o layout original da fiação e tubulação da estação."
 	icon_state = "material"
 	origin_tech = Tc_MAGNETS + "=3;" + Tc_ENGINEERING + "=3"
 	action_button_name = "Toggle Material Scanner"
@@ -233,3 +233,58 @@
 	for (var/turf/TT in trange(view, T))
 		if (TT.holomap_data)
 			. += TT.holomap_data
+
+
+// Mining Glasses
+
+/obj/item/clothing/glasses/scanner/mining_glasses
+	name = "optical ore scanner"
+	desc = "Permite detectar minérios através das paredes."
+	icon_state = "night"
+	origin_tech = Tc_ENGINEERING + "=2"
+	action_button_name = "Toggle Ore Scanner"
+	on = FALSE
+
+	var/delay = 5 SECONDS
+	var/last_processed
+
+	var/mob/living/carbon/user
+
+/obj/item/clothing/glasses/scanner/mining_glasses/enable(var/mob/living/carbon/C)
+	user = C
+	processing_objects.Add(src)
+	..()
+
+/obj/item/clothing/glasses/scanner/mining_glasses/disable()
+	user = null
+	processing_objects.Remove(src)
+	..()
+
+/obj/item/clothing/glasses/scanner/mining_glasses/dropped()
+	disable()
+
+/obj/item/clothing/glasses/scanner/mining_glasses/process()
+	if(!on || !user || !user.client || loc != user)
+		disable()
+		return null
+
+	if(world.time > last_processed + delay)
+		last_processed = world.time
+
+		var/turf/OT = get_turf(user)
+
+		for(var/turf/unsimulated/mineral/R in range(7, OT))
+			if(!R.mineral || istype(R.mineral, /mineral/iron))
+				continue
+			spawn()
+				var/image/I = image('icons/turf/ores.dmi', loc= OT, icon_state = "rock_[R.mineral.name]", layer = UNDER_HUD_LAYER)
+				I.plane = HUD_PLANE
+				I.alpha = 0
+				I.pixel_x = (R.x - OT.x) * WORLD_ICON_SIZE
+				I.pixel_y = (R.y - OT.y) * WORLD_ICON_SIZE
+				user.client.images += I
+				animate(I, alpha = 150, time = 15)
+				animate(alpha = 0, time = 15)
+				spawn(30)
+					user.client.images -= I
+		return TRUE
