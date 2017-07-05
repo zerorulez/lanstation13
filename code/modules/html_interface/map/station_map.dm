@@ -77,12 +77,15 @@
 /proc/generateHoloMinimap(var/zLevel=1)
 	var/icon/canvas = icon('icons/480x480.dmi', "blank")
 
+	var/list/asteroid_areas_list = list()
+	asteroid_areas_list.Add(typesof(/area/mine) + typesof(/area/asteroid))
+
 	if(zLevel != map.zCentcomm)
 		for(var/i = 1 to ((2 * world.view + 1)*WORLD_ICON_SIZE))
 			for(var/r = 1 to ((2 * world.view + 1)*WORLD_ICON_SIZE))
 				var/turf/tile = locate(i, r, zLevel)
 				if(tile && tile.loc.holomapAlwaysDraw())
-					if((!istype(tile, /turf/space) && istype(tile.loc, /area/mine/unexplored)) || istype(tile, /turf/simulated/wall) || istype(tile, /turf/unsimulated/mineral) || istype(tile, /turf/unsimulated/wall) || (locate(/obj/structure/grille) in tile) || (locate(/obj/structure/window/full) in tile))
+					if((!istype(tile, /turf/space) && is_type_in_list(tile.loc, asteroid_areas_list) || istype(tile, /turf/simulated/wall) || istype(tile, /turf/unsimulated/mineral) || istype(tile, /turf/unsimulated/wall) || (locate(/obj/structure/grille) in tile) || (locate(/obj/structure/window/full) in tile)))
 						if(map.holomap_offset_x.len >= zLevel)
 							canvas.DrawBox(HOLOMAP_OBSTACLE, min(i+map.holomap_offset_x[zLevel],((2 * world.view + 1)*WORLD_ICON_SIZE)), min(r+map.holomap_offset_y[zLevel],((2 * world.view + 1)*WORLD_ICON_SIZE)))
 						else
