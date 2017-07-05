@@ -1,37 +1,34 @@
 ################################
-# Example Changelog File
+# Arquivo Exemplo para Changelogs
 #
-# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read.  If you change this file, you will look really dumb.
+# Para fazer o seu changelog, copie e cole este arquivo na mesma pasta, renomeie ele e adicione suas mudanças. 
+# Seu changelog será automaticamente processado pelo servidor, você não precisa fazer mais nada além disto.
 #
-# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
-# When it is, any changes listed below will disappear.
-#
-# Valid Prefixes: 
+# Prefixos válidos: 
 #   bugfix
-#   wip (For works in progress)
-#   tweak
+#   wip (work in progress)
 #   soundadd
 #   sounddel
-#   rscdel (general deleting of nice things)
-#   rscadd (general adding of nice things)
+#   tweak (algo que foi modificado)   //
+#   rscdel (algo que foi excluído)    // Estes três são os mais utilizados, além do bugfix.
+#   rscadd (algo que foi adicionado)  //
+#   spellcheck (correção gramática e de typos)
 #   imageadd
 #   imagedel
-#   spellcheck (typo fixes)
 #   experiment
-#   tgs (TG-ported fixes?)
 #################################
 
-# Your name.
-author: Ghost of N3X15
+# Seu nome.
+author: morphi
 
-# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+# Apagar este arquivo depois que o servidor gerar o changelog? Mude para "false" caso queira manter o seu arquivo .yml
+# no GitHub para facilitar a próxima vez que for fazer um novo changelog.
 delete-after: True
 
-# Any changes you've made.  See valid prefix list above.
-# There needs to be a space after the - and before the prefix. Don't use tabs anywhere in this file.
-# Also, this gets changed to [] after reading.  Just remove the brackets when you add new shit.
-# If you're using characters such as # ' : - or the like in your changelog, surround the entire change with quotes as shown in the second example. These quotes don't show up on the changelog once it's merged and prevent errors.
-# SCREW ANY OF THIS UP AND IT WON'T WORK.
+# As mudanças que você fez. Veja a lista de prefixos válidos acima.
+# É necessário um espaço depois do -, antes do prefixo. Não use tabs nesse arquivo.
+# Coloque a sua mensagem entre parênteses.
+
 changes: 
-- rscadd: Added a changelog editing system that should cause fewer conflicts and more accurate timestamps.
-- rscdel: "Killed innocent kitten #394."
+- rscadd: "Um novo sistema de changelogs foi roubado da /vg/station. Use ele em suas mudanças!"
+- rscdel: "O servidor perdeu um pouco de sua melanina."
