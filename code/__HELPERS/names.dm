@@ -115,7 +115,7 @@ var/religion_name = null
 
 /proc/station_name()
 	if(!station_name)
-		station_name = "LanStation 13"
+		station_name = "/lan/station 13"
 //		station_name = new_station_name()
 	return station_name
 
