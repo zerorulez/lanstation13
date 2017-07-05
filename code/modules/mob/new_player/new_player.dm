@@ -412,8 +412,11 @@ Round Duration: [round(hours)]h [round(mins)]m<br>"}
 			dat += "<a href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions]) (Active: [active])</a><br>"
 
 	dat += "</center>"
-	src << browse(dat, "window=latechoices;size=300x640;can_close=1")
 
+	var/datum/browser/popup = new(src, "latechoices", "Choose Profession", 280, 500)
+	popup.add_stylesheet("playeroptions", 'html/browser/playeroptions.css')
+	popup.set_content(dat)
+	popup.open(0)
 
 /mob/new_player/proc/create_character()
 	spawning = 1
