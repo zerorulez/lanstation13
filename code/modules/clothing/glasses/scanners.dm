@@ -273,7 +273,7 @@
 
 		var/turf/OT = get_turf(user)
 
-		for(var/turf/unsimulated/mineral/R in range(7, OT))
+		for(var/turf/unsimulated/mineral/R in trange(7, OT))
 			if(!R.mineral || istype(R.mineral, /mineral/iron))
 				continue
 			spawn()
@@ -282,9 +282,11 @@
 				I.alpha = 0
 				I.pixel_x = (R.x - OT.x) * WORLD_ICON_SIZE
 				I.pixel_y = (R.y - OT.y) * WORLD_ICON_SIZE
+				I.mouse_opacity = 0
 				user.client.images += I
 				animate(I, alpha = 150, time = 15)
 				animate(alpha = 0, time = 15)
 				spawn(30)
-					user.client.images -= I
+					if(user)
+						user.client.images -= I
 		return TRUE
