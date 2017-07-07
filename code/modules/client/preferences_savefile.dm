@@ -797,17 +797,11 @@ AND players.player_slot = ? ;"}, ckey, slot)
 		WARNING("Error #:[q.Error()] - [q.ErrorMsg()]")
 		return 0
 
-	check.Add("DELETE FROM client_roles WHERE ckey=? AND slot=?", ckey, slot)
-	if(!check.Execute(db))
-		message_admins("Error #: [check.Error()] - [check.ErrorMsg()]")
-		WARNING("Error #:[q.Error()] - [q.ErrorMsg()]")
-		return 0
-
 	for(var/role_id in roles)
 		if(!(roles[role_id] & ROLEPREF_SAVE))
 			continue
 		q = new
-		q.Add("INSERT INTO client_roles (ckey, slot, role, preference) VALUES (?,?,?,?)", ckey, slot, role_id, (roles[role_id] & ROLEPREF_VALMASK))
+		q.Add("INSERT OR REPLACE INTO client_roles (ckey, slot, role, preference) VALUES (?,?,?,?)", ckey, slot, role_id, (roles[role_id] & ROLEPREF_VALMASK))
 		//testing("INSERT INTO client_roles (ckey, slot, role, preference) VALUES ('[ckey]',[slot],'[role_id]',[roles[role_id] & ROLEPREF_VALMASK])")
 		if(!q.Execute(db)) // This never triggers on error, for some reason.
 			message_admins("Error #: [q.Error()] - [q.ErrorMsg()]")
