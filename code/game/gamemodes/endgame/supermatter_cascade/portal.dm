@@ -10,6 +10,7 @@
 	announce=0
 	narnar=0
 
+	plane = LIGHTING_PLANE
 	layer = SUPER_PORTAL_LAYER
 
 	consume_range = 6
@@ -25,24 +26,23 @@
 	for(var/mob/M in player_list)
 		if(M.client)
 			M.see_rift(src)
-	consume()
+	eat()
 
 /obj/machinery/singularity/narsie/large/exit/acquire(var/mob/food)
 	return
 
 /obj/machinery/singularity/narsie/large/exit/consume(const/atom/A)
-
 	if (istype(A, /mob/living/))
 		var/mob/living/L = A
-		if(L.locked_to && istype(L.locked_to,/obj/structure/bed/))
-			var/turf/O = L.locked_to
-			do_teleport(O, pick(endgame_safespawns))
-			L.forceMove(O.loc)
+		if(L.locked_to)
+			L.locked_to.loc = pick(endgame_safespawns)
+			L.loc = L.locked_to.loc
 		else
-			do_teleport(L, pick(endgame_safespawns)) //dead-on precision
+			L.loc = pick(endgame_safespawns)
 
 	else if (istype(A, /obj/mecha/))
-		do_teleport(A, pick(endgame_safespawns)) //dead-on precision
+		var/obj/mecha/M = A
+		M.loc = pick(endgame_safespawns)
 
 	else if (isturf(A))
 		var/turf/T = A
