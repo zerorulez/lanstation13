@@ -9,7 +9,7 @@ proc/SetupMinerals()
 		name_to_mineral[new_mineral.name] = new_mineral
 	return 1
 
-mineral
+/mineral
 	///What am I called?
 	var/name
 	var/display_name
@@ -19,123 +19,123 @@ mineral
 	var/spread = 1
 	///Chance of spreading in any direction
 	var/spread_chance
-
 	///Path to the resultant ore.
 	var/ore
 
-	New()
-		. = ..()
-		if(!display_name)
-			display_name = name
+/mineral/New()
+	. = ..()
 
-	proc/UpdateTurf(var/turf/unsimulated/mineral/T)
-		T.UpdateMineral()
+	if(!display_name)
+		display_name = name
 
-mineral/uranium
-	name = "Uranium"
-	result_amount = 5
-	spread_chance = 10
-	ore = /obj/item/weapon/ore/uranium
+/mineral/proc/UpdateTurf(var/turf/unsimulated/mineral/T)
+	T.UpdateMineral()
 
-mineral/iron
-	name = "Iron"
-	result_amount = 5
-	spread_chance = 25
-	ore = /obj/item/weapon/ore/iron
-
-mineral/diamond
+/mineral/diamond
 	name = "Diamond"
 	result_amount = 5
 	spread_chance = 10
 	ore = /obj/item/weapon/ore/diamond
 
-mineral/gold
+/mineral/uranium
+	name = "Uranium"
+	result_amount = 5
+	spread_chance = 15
+	ore = /obj/item/weapon/ore/uranium
+
+/mineral/gold
 	name = "Gold"
 	result_amount = 5
-	spread_chance = 10
+	spread_chance = 15
 	ore = /obj/item/weapon/ore/gold
 
-mineral/silver
+/mineral/silver
 	name = "Silver"
 	result_amount = 5
-	spread_chance = 10
+	spread_chance = 15
 	ore = /obj/item/weapon/ore/silver
 
-mineral/plasma
+/mineral/plasma
 	name = "Plasma"
 	result_amount = 5
-	spread_chance = 25
+	spread_chance = 20
 	ore = /obj/item/weapon/ore/plasma
 
-mineral/clown
+/mineral/iron
+	name = "Iron"
+	result_amount = 5
+	spread_chance = 30
+	ore = /obj/item/weapon/ore/iron
+
+/mineral/clown
 	display_name = "Bananium"
 	name = "Clown"
 	result_amount = 3
 	spread = 0
 	ore = /obj/item/weapon/ore/clown
 
-mineral/phazon
+/mineral/phazon
 	display_name = "Phazon"
 	name = "Phazon"
 	result_amount = 2 // 1
 	spread = 0
 	ore = /obj/item/weapon/ore/phazon
 
-mineral/pharosium
+/mineral/pharosium
 	name = "Pharosium"
 	result_amount = 5
 	spread_chance = 5
 	ore = /obj/item/weapon/ore/pharosium
 
-mineral/char
+/mineral/char
 	name = "Char"
 	result_amount = 5
 	spread_chance = 5
 	ore = /obj/item/weapon/ore/char
 
-mineral/claretine
+/mineral/claretine
 	name = "Claretine"
 	result_amount = 5
 	spread_chance = 5
 	ore = /obj/item/weapon/ore/claretine
 
-mineral/bohrum
+/mineral/bohrum
 	name = "Bohrum"
 	result_amount = 5
 	spread_chance = 5
 	ore = /obj/item/weapon/ore/bohrum
 
-mineral/syreline
+/mineral/syreline
 	name = "Syreline"
 	result_amount = 5
 	spread_chance = 5
 	ore = /obj/item/weapon/ore/syreline
 
-mineral/erebite
+/mineral/erebite
 	name = "Erebite"
 	result_amount = 5
 	spread_chance = 5
 	ore = /obj/item/weapon/ore/erebite
 
-mineral/cytine
+/mineral/cytine
 	name = "Cytine"
 	result_amount = 5
 	spread_chance = 5
 	ore = /obj/item/weapon/ore/cytine
 
-mineral/uqill
+/mineral/uqill
 	name = "Uqill"
 	result_amount = 5
 	spread_chance = 5
 	ore = /obj/item/weapon/ore/uqill
 
-mineral/telecrystal
+/mineral/telecrystal
 	name = "Telecrystal"
 	result_amount = 5
 	spread_chance = 5
 	ore = /obj/item/weapon/ore/telecrystal
 
-mineral/mauxite
+/mineral/mauxite
 	name = "Mauxite"
 	result_amount = 5
 	spread_chance = 5
@@ -147,19 +147,19 @@ mineral/cobryl
 	spread_chance = 5
 	ore = /obj/item/weapon/ore/cobryl
 
-mineral/cerenkite
+/mineral/cerenkite
 	name = "Cerenkite"
 	result_amount = 5
 	spread_chance = 5
 	ore = /obj/item/weapon/ore/cerenkite
 
-mineral/molitz
+/mineral/molitz
 	name = "Molitz"
 	result_amount = 5
 	spread_chance = 5
 	ore = /obj/item/weapon/ore/molitz
 
-mineral/gibtonite
+/mineral/gibtonite
 	display_name = "Gibtonite"
 	name = "Gibtonite"
 	result_amount = 1
@@ -171,7 +171,7 @@ mineral/gibtonite
 		else
 			..()
 
-mineral/cave
+/mineral/cave
 	display_name = "Cave"
 	name = "Cave"
 	result_amount = 1

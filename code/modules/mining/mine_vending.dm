@@ -20,7 +20,7 @@
 		/obj/item/weapon/mining_drone_cube = 5,
 		/obj/item/device/wormhole_jaunter = 10,
 		/obj/item/weapon/resonator = 5,
-		/obj/item/weapon/gun/energy/kinetic_accelerator = 3,
+		/obj/item/weapon/gun/energy/kinetic_accelerator = 5,
 		/obj/item/weapon/tank/jetpack/carbondioxide = 3,
 		/obj/item/weapon/gun/hookshot = 3,
 		/obj/item/weapon/lazarus_injector/advanced = 4,

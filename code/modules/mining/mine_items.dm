@@ -192,7 +192,7 @@ proc/move_mining_shuttle()
 	sharpness_flags = SHARP_TIP
 	starting_materials = list(MAT_IRON = 3750) //one sheet, but where can you make them?
 	w_type = RECYK_METAL
-	var/digspeed = 30 //moving the delay to an item var so R&D can make improved picks. --NEO
+	var/digspeed = 25 //moving the delay to an item var so R&D can make improved picks. --NEO
 	origin_tech = Tc_MATERIALS + "=1;" + Tc_ENGINEERING + "=1"
 	attack_verb = list("hits", "pierces", "slices", "attacks")
 
@@ -207,7 +207,8 @@ proc/move_mining_shuttle()
 
 /obj/item/weapon/pickaxe/New()
 	..()
-	drill_sound = list('sound/mining/pickaxe1.wav', 'sound/mining/pickaxe2.wav','sound/mining/pickaxe3.wav','sound/mining/pickaxe4.wav')
+	if(!drill_sound)
+		drill_sound = list('sound/mining/pickaxe1.wav', 'sound/mining/pickaxe2.wav','sound/mining/pickaxe3.wav','sound/mining/pickaxe4.wav')
 
 /obj/item/weapon/pickaxe/hammer
 	name = "sledgehammer"
@@ -219,7 +220,7 @@ proc/move_mining_shuttle()
 	name = "silver pickaxe"
 	icon_state = "spickaxe"
 	item_state = "spickaxe"
-	digspeed = 25
+	digspeed = 20
 	origin_tech = Tc_MATERIALS + "=3"
 	desc = "This makes no metallurgic sense."
 
@@ -227,7 +228,7 @@ proc/move_mining_shuttle()
 	name = "sonic jackhammer"
 	icon_state = "jackhammer"
 	item_state = "jackhammer"
-	digspeed = 20 //faster than drill, but cannot dig
+	digspeed = 20
 	origin_tech = Tc_MATERIALS + "=3;" + Tc_POWERSTORAGE + "=2;" + Tc_ENGINEERING + "=2"
 	desc = "Cracks rocks with sonic blasts, perfect for killing cave lizards."
 	drill_verb = "hammering"
@@ -297,7 +298,7 @@ proc/move_mining_shuttle()
 	name = "cyborg mining drill"
 	icon_state = "diamonddrill"
 	item_state = "jackhammer"
-	digspeed = 10
+	digspeed = 15
 	desc = ""
 
 /*****************************Shovel********************************/
@@ -850,7 +851,7 @@ proc/move_mining_shuttle()
 						break
 
 /**********************Mining Scanner**********************/
-
+/******* see glasses/scanners.dm for mining glasses *******/
 /obj/item/device/mining_scanner
 	desc = "A scanner that checks surrounding rock for useful minerals, it can also be used to stop gibtonite detonations."
 	name = "mining scanner"

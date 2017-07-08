@@ -36,6 +36,7 @@
 	return
 
 /turf/unsimulated/mineral/New()
+	dir = pick(NORTH, SOUTH, EAST, WEST)
 	mineral_turfs += src
 	. = ..()
 	MineralSpread()
