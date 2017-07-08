@@ -207,6 +207,7 @@
 		if(!H)
 			return 0
 		H.equip_or_collect(new /obj/item/device/radio/headset/headset_sec(H), slot_ears)
+		H.equip_or_collect(new /obj/item/clothing/head/beret/sec(H), slot_head)
 		switch(H.backbag)
 			if(2)
 				H.equip_or_collect(new /obj/item/weapon/storage/backpack/security(H), slot_back)

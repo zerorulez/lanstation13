@@ -21,7 +21,7 @@
 	name = "security armor"
 	desc = "An armored vest that protects against some damage. This one has Nanotrasen corporate badge."
 	icon_state = "armorsec"
-	item_state = "armor"
+	item_state = "armorsec"
 
 /obj/item/clothing/suit/armor/vest/warden
 	name = "Warden's jacket"
