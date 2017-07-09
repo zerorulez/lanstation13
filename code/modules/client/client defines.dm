@@ -59,9 +59,9 @@
 	var/haszoomed = 0
 	var/updating_colour = 0
 
-	// Their chat window, sort of important.
-	// See /goon/code/datums/browserOutput.dm
-	var/datum/chatOutput/chatOutput
+	// Fullscreen
+	// See /interface/interface.dm
+	var/fullscreen = FALSE
 
 		////////////
 		//PARALLAX//

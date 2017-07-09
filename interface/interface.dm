@@ -107,6 +107,7 @@ Any-Mode: (hotkey doesn't need to be on)
 \tPGUP = swap-hand
 \tPGDN = activate held object
 \tEND = throw
+\tALT+ENTER = modo fullscreen
 
 For an exhaustive list please visit http://ss13.moe/wiki/index.php/Shortcuts
 </font>"}
@@ -137,3 +138,21 @@ Admin:
 	set hidden = 1
 
 	src << browse(round_end_info, "window=roundstats;size=1000x600")
+
+/client/verb/fullscreen()
+	set name = "Fullscreen"
+	set desc = "Ligar/desligar o modo fullscreen."
+	set category = "OOC"
+
+	fullscreen = !fullscreen
+	to_chat(src, "<span class ='warning'>Modo fullscreen [fullscreen ? "ligado" : "desligado"].</span>")
+
+	winset(src, "mainwindow", {"
+				titlebar     = [fullscreen ? "false" : "true"];
+				statusbar    = [fullscreen ? "false" : "true"];
+				can-resize   = [fullscreen ? "false" : "true"];
+				is-maximized = false;
+				"})
+	winset(src, "mainwindow",{"
+				is-maximized=true;
+				"})

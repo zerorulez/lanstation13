@@ -164,6 +164,9 @@ macro "macro"
 	elem "CTRL+SHIFT+UP"
 		name = "CTRL+SHIFT+UP"
 		command = ".fillmouse_released"
+	elem "ALT+Return"
+		name = "ALT+Return"
+		command = "fullscreen"
 
 macro "hotkeymode"
 	elem "WEST"
@@ -382,7 +385,9 @@ macro "hotkeymode"
 	elem "CTRL+SHIFT+UP"
 		name = "CTRL+SHIFT+UP"
 		command = ".fillmouse_released"
-
+	elem "ALT+Return"
+		name = "ALT+Return"
+		command = "fullscreen"
 
 menu "menu"
 	elem "client_menu"
@@ -781,7 +786,7 @@ window "mainwindow"
 		anchor1 = 100,100
 		anchor2 = none
 		saved-params = "is-checked"
-		text = "Chat"
+		text = "Say"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\"\"saybutton.is-checked=true?mebutton.is-checked=false\"\"saybutton.is-checked=true?oocbutton.is-checked=false\""
 		button-type = pushbox
 	elem "tooltip"
