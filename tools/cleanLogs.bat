@@ -1,0 +1,1 @@
+python cleanLogs.py ../data/logs/ ../data/cleaned_logs/
