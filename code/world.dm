@@ -301,17 +301,13 @@ var/savefile/panicfile
 			'sound/misc/RoundEndSounds/castlevania.ogg',
 			)) // random end sounds!! - LastyBatsy
 
-	sleep(5)//should fix the issue of players not hearing the restart sound.
+	sleep(10)//should fix the issue of players not hearing the restart sound.
 
-	for(var/client/C in clients)
-		if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+	if(config.server)//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+		for(var/client/C in clients)
 			C << link("byond://[config.server]")
 
-		else
-			C << link("byond://[world.address]:[world.port]")
-
-
-	..()
+	..(reason)
 
 
 #define INACTIVITY_KICK	6000	//10 minutes in ticks (approx.)
