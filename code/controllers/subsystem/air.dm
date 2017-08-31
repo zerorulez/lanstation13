@@ -7,11 +7,12 @@ var/air_processing_killed = FALSE
 	name          = "Air"
 	init_order    = SS_INIT_AIR
 	priority      = SS_PRIORITY_AIR
-	wait          = 2 SECONDS
+	wait          = 1 SECONDS
 	flags         = SS_NO_TICK_CHECK
 	display_order = SS_DISPLAY_AIR
 
 /datum/subsystem/air/New()
+	wait = world.tick_lag
 	NEW_SS_GLOBAL(SSair)
 
 
