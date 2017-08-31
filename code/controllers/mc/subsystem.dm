@@ -13,6 +13,7 @@
 	var/can_fire = TRUE
 
 	// Bookkeeping variables; probably shouldn't mess with these.
+	var/initialized = FALSE // Tracks if Initialize() has been called yet.
 	var/last_fire = 0     // Last world.time we called fire()
 	var/next_fire = 0     // Scheduled world.time for next fire()
 	var/cost = 0          // Average time to execute
@@ -155,6 +156,7 @@
 	var/time = (world.timeofday - start_timeofday) / 10
 	var/msg = "Initialized [name] subsystem within [time] seconds!"
 	to_chat(world, "<span class='danger'>[msg]</span>")
+	initialized = TRUE
 	return time
 
 //hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.

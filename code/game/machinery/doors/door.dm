@@ -356,7 +356,7 @@ var/list/all_doors = list()
 	return 1
 
 /obj/machinery/door/proc/update_nearby_tiles(var/turf/T)
-	if(!air_master)
+	if(!SS_READY(SSair))
 		return 0
 
 	if(!T)
@@ -365,7 +365,7 @@ var/list/all_doors = list()
 		return 0
 
 	update_heat_protection(T)
-	air_master.mark_for_update(T)
+	SSair.mark_for_update(T)
 
 	update_freelok_sight()
 	return 1
