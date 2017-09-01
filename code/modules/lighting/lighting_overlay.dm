@@ -28,7 +28,7 @@
 
 	var/turf/T         = loc // If this runtimes atleast we'll know what's creating overlays in things that aren't turfs.
 	T.lighting_overlay = src
-	T.luminosity       = 0
+//	T.luminosity       = 0
 
 	if (no_update)
 		return
