@@ -25,8 +25,6 @@
 
 	explosion_block = 1
 
-	luminosity = TRUE
-
 /turf/simulated/wall/examine(mob/user)
 	..()
 	if(rotting)
