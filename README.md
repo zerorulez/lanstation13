@@ -1,6 +1,8 @@
-# lanstation13 ![](https://travis-ci.org/mph55/lanstation13.svg?branch=master)
+# /lan/station13 ![](https://travis-ci.org/mph55/lanstation13.svg?branch=master)
 
-[Website](https://lanstation.miraheze.org/wiki/Página_principal) - [Code](https://github.com/mph55/lanstation13)
+*"Not to be confused with ianstation"*
+
+[Wiki ](https://lanstation.miraheze.org/wiki/Página_principal) - [Code](https://github.com/mph55/lanstation13)
 
 ---
 
@@ -23,13 +25,6 @@ You can then create new branches of code directly from our Bleeding-Edge branch 
 
 Warning: If you checkout different branches or update the code while Dream Maker is open, this can cause problems when someone adds/removes files or when one of the files changed is currently open.
 
-#### Branches
-
-Keep in mind that we have multiple branches for various purposes.
-
-* *master* - "stable" but ancient code, it was used on the main server until we realized we like living on the edge  :sunglasses:.
-* *Bleeding-Edge* - The latest code, this code is run on the main server.  _Please do any development against this branch!_
-
 ### INSTALLATION
 
 First-time installation should be fairly straightforward.  First, you'll need BYOND installed.  You can get it from [here](http://www.byond.com/).
@@ -41,8 +36,6 @@ This is a sourcecode-only release, so the next step is to compile the server fil
     lanstation13.dmb - 0 errors, 0 warnings
 
 If you see any errors or warnings, something has gone wrong - possibly a corrupt download or the files extracted wrong, or a code issue on the main repo.  Ask on IRC.
-
-To use the SQLite preferences, rename players2_empty.sqlite to players2.sqlite
 
 Next, copy everything from config-example/ to config/ so you have some default configuration.
 
@@ -60,13 +53,13 @@ Finally, to start the server, run Dream Daemon and enter the path to your compil
 
 ### Configuration
 
-For a basic setup, simply copy every file from config-example/ to config/ and then add yourself as admin via `admins.txt`.
+For a basic setup, simply copy every file from config/config-example/ to config/ and then add yourself as admin via `admins.txt`.
 
 ---
 
 ### SQL Setup
 
-The SQL backend for the library and stats tracking requires a MySQL server.  (Linux servers will need to put libmysql.so into the same directory as lanstation13.dme.)  Your server details go in /config/dbconfig.txt.
+The SQL backend for the library and stats tracking requires a MySQL server.  (Linux servers will need to put libmariadb.so into the same directory as lanstation13.dme.)  Your server details go in /config/dbconfig.txt.
 
 The database is automatically installed during server startup, but you need to ensure the database and user are present and have necessary permissions.
 
