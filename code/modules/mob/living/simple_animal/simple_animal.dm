@@ -355,7 +355,7 @@ var/global/list/animal_count = list() //Stores types, and amount of animals of t
 		var/mob/living/simple_animal/mouse/M=src
 		to_chat(M, "<span class='warning'>What would probably not kill a human completely overwhelms your tiny body.</span>")
 		M.splat()
-		return 0
+		return
 	adjustBruteLoss(Proj.damage)
 	Proj.on_hit(src, 0)
 	return 0
@@ -469,6 +469,7 @@ var/global/list/animal_count = list() //Stores types, and amount of animals of t
 		user.delayNextAttack(8)
 		if(O.force)
 			user.do_attack_animation(src, O)
+
 			var/damage = O.force
 			if (O.damtype == HALLOSS)
 				damage = 0
@@ -476,9 +477,11 @@ var/global/list/animal_count = list() //Stores types, and amount of animals of t
 				damage *= 2
 				purge = 3
 			adjustBruteLoss(damage)
-			for(var/mob/M in viewers(src, null))
-				if ((M.client && !( M.blinded )))
-					M.show_message("<span class='danger'>[src] has been attacked with the [O] by [user]. </span>")
+
+			if(O.hitsound)
+				playsound(loc, O.hitsound, 50, 1, -1)
+
+			visible_message("<span class='danger'>[user.name] [pick(O.attack_verb)] [src] with \the [O].</span> </span>")
 		else
 			to_chat(usr, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 			for(var/mob/M in viewers(src, null))

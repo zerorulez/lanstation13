@@ -21,6 +21,7 @@
 	if(!no_delay)
 		user.delayNextAttack(10)
 	if(istype(I) && ismob(user))
+		user.do_attack_animation(src, I)
 		if(originator)
 			I.attack(src, user, null, originator)
 		else

@@ -121,6 +121,7 @@ var/list/impact_master = list()
 		super_speed = 1
 
 /obj/item/projectile/proc/on_hit(var/atom/atarget, var/blocked = 0)
+	playsound(loc, hitsound, 35, 1)
 	if(blocked >= 2)
 		return 0//Full block
 	if(!isliving(atarget))
@@ -139,7 +140,6 @@ var/list/impact_master = list()
 	L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, blocked) // add in AGONY!
 	if(jittery)
 		L.Jitter(jittery)
-	playsound(loc, hitsound, 35, 1)
 	return 1
 
 /obj/item/projectile/proc/check_fire(var/mob/living/target as mob, var/mob/living/user as mob)  //Checks if you can hit them or not.
