@@ -41,7 +41,7 @@ var/global/list/ghdel_profiling = list()
 	var/ignoreinvert = 0
 	var/timestopped
 
-	appearance_flags = 0
+	appearance_flags = TILE_BOUND
 
 /atom/proc/beam_connect(var/obj/effect/beam/B)
 	if(!last_beamchecks)
