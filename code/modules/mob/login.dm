@@ -51,7 +51,7 @@
 
 	delayNextMove(0)
 
-	change_sight(adding = SEE_SELF|SEE_BLACKNESS)
+	change_sight(adding = SEE_SELF|SEE_PIXELS)
 
 	..()
 

@@ -277,13 +277,9 @@
 			if(!R.mineral || istype(R.mineral, /mineral/iron))
 				continue
 			spawn()
-				var/image/I = image('icons/turf/ores.dmi', loc= OT, icon_state = "rock_[R.mineral.name]", layer = UNDER_HUD_LAYER, dir = R.dir)
-				I.plane = HUD_PLANE
+				var/image/I = image('icons/turf/ores.dmi', loc= get_turf(R), icon_state = "rock_[R.mineral.name]", layer = MINERAL_IMAGES_LAYER, dir = R.dir)
+				I.plane = BELOWFULLSCREEN_PLANE
 				I.alpha = 0
-				I.pixel_x = (R.x - OT.x) * WORLD_ICON_SIZE
-				I.pixel_y = (R.y - OT.y) * WORLD_ICON_SIZE
-				I.mouse_opacity = 0
-
 				user.client.images += I
 				animate(I, alpha = 150, time = 15)
 				animate(alpha = 0, time = 15)

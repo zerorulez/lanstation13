@@ -206,7 +206,12 @@ What is the naming convention for planes or layers?
 
 #define STATIC_PLANE 			2		// For AI's static.
 
-#define FULLSCREEN_PLANE		3		// for fullscreen overlays that do not cover the hud.
+#define BELOWFULLSCREEN_PLANE	3
+
+	#define VENTCRAWLINGPIPES_LAYER 1
+	#define MINERAL_IMAGES_LAYER	2
+
+#define FULLSCREEN_PLANE		4		// for fullscreen overlays that do not cover the hud.
 
 	#define FULLSCREEN_LAYER	 	0
 	#define DAMAGE_LAYER 			1
@@ -215,7 +220,7 @@ What is the naming convention for planes or layers?
 	#define CRIT_LAYER 				4
 	#define HALLUCINATION_LAYER 	5
 
-#define HUD_PLANE 				4		// For the Head-Up Display
+#define HUD_PLANE 				5		// For the Head-Up Display
 
 	#define UNDER_HUD_LAYER 		0
 	#define HUD_BASE_LAYER		 	1
