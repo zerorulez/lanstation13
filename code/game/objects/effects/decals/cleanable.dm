@@ -108,32 +108,24 @@
 /obj/effect/decal/cleanable/proc/add_blood_to(var/mob/living/carbon/human/perp, var/amount)
 	if (!istype(perp))
 		return
+
 	if(amount < 1)
 		return
+
 	if(perp.shoes)
 		var/obj/item/clothing/shoes/S = perp.shoes
-		S.track_blood = max(0, amount, S.track_blood)                //Adding blood to shoes
-
-		if(!blood_overlays[S.type]) //If there isn't a precreated blood overlay make one
-			S.generate_blood_overlay()
-
-		if(S.blood_overlay != null) // Just if(blood_overlay) doesn't work.  Have to use isnull here.
-			S.overlays.Remove(S.blood_overlay)
-		else
-			S.blood_overlay = blood_overlays[S.type]
-
-		S.blood_overlay.color = basecolor
-		S.overlays += S.blood_overlay
-		S.blood_color=basecolor
-
-		if(!S.blood_DNA)
-			S.blood_DNA = list()
-		if(blood_DNA)
-			S.blood_DNA |= blood_DNA.Copy()
-		perp.update_inv_shoes(1)
-
+		S.track_blood = max(0, amount, S.track_blood)	//Adding blood to the item
+		add_blood_overlay_to_clothing(perp.shoes, amount)
+		perp.update_inv_shoes(TRUE)
+	else if(perp.lying)
+		if(perp.wear_suit)
+			add_blood_overlay_to_clothing(perp.wear_suit, amount)
+			perp.update_inv_wear_suit(TRUE)
+		else if(perp.w_uniform)
+			add_blood_overlay_to_clothing(perp.w_uniform, amount)
+			perp.update_inv_w_uniform(TRUE)
 	else
-		perp.track_blood = max(amount, 0, perp.track_blood)                                //Or feet
+		perp.track_blood = max(amount, 0, perp.track_blood) //Or feet
 		if(!perp.feet_blood_DNA)
 			perp.feet_blood_DNA = list()
 		if(!istype(blood_DNA, /list))
@@ -143,3 +135,21 @@
 		perp.feet_blood_color=basecolor
 
 	amount--
+
+/obj/effect/decal/cleanable/proc/add_blood_overlay_to_clothing(var/obj/item/clothing/C, var/amount)
+	if(!blood_overlays[C.type]) //If there isn't a precreated blood overlay make one
+		C.generate_blood_overlay()
+
+	if(C.blood_overlay != null) // Just if(blood_overlay) doesn't work.  Have to use isnull here.
+		C.overlays.Remove(C.blood_overlay)
+	else
+		C.blood_overlay = blood_overlays[C.type]
+
+	C.blood_overlay.color = basecolor
+	C.overlays += C.blood_overlay
+	C.blood_color=basecolor
+
+	if(!C.blood_DNA)
+		C.blood_DNA = list()
+	if(blood_DNA)
+		C.blood_DNA |= blood_DNA.Copy()

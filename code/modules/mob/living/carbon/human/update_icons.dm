@@ -490,6 +490,23 @@ var/global/list/damage_icon_parts = list()
 
 /* --------------------------------------- */
 //vvvvvv UPDATE_INV PROCS vvvvvv
+/* ---------------------------------------
+		update_inv_head()
+		update_inv_wear_suit()
+		update_inv_gloves()
+		update_inv_shoes()
+		update_inv_w_uniform()
+		update_inv_glasse()
+		update_inv_hand()
+		update_inv_belt()
+		update_inv_wear_id()
+		update_inv_ears()
+		update_inv_s_store()
+		update_inv_pockets()
+		update_inv_back()
+		update_inv_handcuffed()
+		update_inv_wear_mask()
+ ---------------------------------------   */
 
 /mob/living/carbon/human/update_inv_w_uniform(var/update_icons=1)
 

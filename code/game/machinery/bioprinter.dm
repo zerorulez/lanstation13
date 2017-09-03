@@ -23,12 +23,8 @@
 	var/list/products = list(
 		"heart"            = list(/obj/item/organ/heart,  50),
 		"human lungs"      = list(/obj/item/organ/lungs,  30),
-		"vox lungs"        = list(/obj/item/organ/lungs/vox,  30),
-		"plasmaman lungs"  = list(/obj/item/organ/lungs/plasmaman,  30),
 		"kidneys"          = list(/obj/item/organ/kidneys,20),
 		"human eyes"       = list(/obj/item/organ/eyes,   30),
-		"grey eyes"        = list(/obj/item/organ/eyes/grey,   30),
-		"vox eyes"        = list(/obj/item/organ/eyes/vox,   30),
 		"liver"            = list(/obj/item/organ/liver,  50)
 	)
 
@@ -77,9 +73,11 @@
 			//TODO: Copy DNA hash or donor reference over to new organ.
 
 		visible_message("<span class='notice'>\The [src] spits out a brand new organ.</span>")
+		playsound(get_turf(src), 'sound/machines/ping.ogg', 50, 0)
 
 	else
 		visible_message("<span class='warning'>\The [src]'s error light flickers. It can't make new organs out of thin air, fill it up first.</span>")
+		playsound(get_turf(src), 'sound/machines/buzz-sigh.ogg', 50, 0)
 
 /obj/machinery/bioprinter/attackby(obj/item/weapon/W, mob/user)
 

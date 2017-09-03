@@ -1,7 +1,7 @@
 /obj/machinery/iv_drip
 	name = "\improper IV drip"
 	icon = 'icons/obj/iv_drip.dmi'
-	icon_state = "unhooked_inject"
+	icon_state = "unhooked_empty_inject"
 	anchored = 0
 	density = 0 //Tired of these blocking up the station
 
@@ -11,10 +11,7 @@
 /obj/machinery/iv_drip/var/obj/item/weapon/reagent_containers/beaker = null
 
 /obj/machinery/iv_drip/update_icon()
-	if(src.attached)
-		icon_state = "hooked[mode ? "_inject" : "_draw"]"
-	else
-		icon_state = "unhooked[mode ? "_inject" : "_draw"]"
+	icon_state = "[attached ? "hooked" : "unhooked"][beaker ? "_filled" : "_empty"][mode ? "_inject" : "_draw"]"
 
 	overlays = null
 
@@ -59,10 +56,13 @@
 
 	if(in_range(src, usr) && ishuman(over_object) && get_dist(over_object, src) <= 1)
 		var/mob/living/carbon/human/H = over_object
+		if(!beaker)
+			to_chat(usr, "<span class='warning'>\The [src] has no reagent container. It's pointless trying to attach it to \the [H].</span>")
+			return
 		if(H.species && (H.species.chem_flags & NO_INJECT))
 			H.visible_message("<span class='warning'>[usr] struggles to place the IV into [H] but fails.</span>","<span class='notice'>[usr] tries to place the IV into your arm but is unable to.</span>")
 			return
-		visible_message("[usr] attaches \the [src] to \the [over_object].")
+		visible_message("[usr] attaches \the [src] to \the [H].")
 		src.attached = over_object
 		src.update_icon()
 
@@ -129,6 +129,7 @@
 			if(amount == 0)
 				if(prob(5))
 					visible_message("\The [src] pings.")
+					playsound(get_turf(src), 'sound/machines/ping.ogg', 50, 0)
 				return
 
 			var/mob/living/carbon/human/T = attached
@@ -143,7 +144,8 @@
 			// If the human is losing too much blood, beep.
 			if(T.vessel.get_reagent_amount(BLOOD) < BLOOD_VOLUME_SAFE)
 				if(prob(5))
-					visible_message("\The [src] beeps loudly.")
+					visible_message("\The [src] buzzes loudly.")
+					playsound(get_turf(src), 'sound/machines/buzz-sigh.ogg', 50, 0)
 
 			var/datum/reagent/blood/B = T.take_blood(beaker,amount)
 

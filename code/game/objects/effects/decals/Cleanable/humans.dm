@@ -11,7 +11,7 @@ var/global/list/blood_list = list()
 	anchored = 1
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "mfloor1"
-	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
+	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7", "floor8", "floor9", "floor10", "floor11", "floor12")
 	plane = ABOVE_TURF_PLANE
 	layer = BLOOD_LAYER
 	appearance_flags = TILE_BOUND
@@ -30,10 +30,10 @@ var/global/list/blood_list = list()
 
 /obj/effect/decal/cleanable/blood/cultify()
 	return
-
+/*
 /obj/effect/decal/cleanable/blood/update_icon()
-	if(basecolor == "rainbow")
-		basecolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
+//	if(basecolor == "rainbow")
+//		basecolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
 	color = basecolor
 	if(basecolor == "#FF0000"||basecolor == DEFAULT_BLOOD) // no dirty dumb vox scum allowed
 		plane = NOIR_BLOOD_PLANE
@@ -43,9 +43,9 @@ var/global/list/blood_list = list()
 	blood.Blend(basecolor,ICON_MULTIPLY)
 
 	icon = blood
+*/
 
 /obj/effect/decal/cleanable/blood/splatter
-	random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
 	amount = 2
 
 /obj/effect/decal/cleanable/blood/drip

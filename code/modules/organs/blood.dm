@@ -169,16 +169,20 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/carbon/human/proc/drip(var/amt as num)
-
-
 	if(species && species.anatomy_flags & NO_BLOOD) //TODO: Make drips come from the reagents instead.
 		return
 
 	if(!amt)
 		return
 
-	vessel.remove_reagent(BLOOD,amt)
-	blood_splatter(src,src)
+	var/large = FALSE
+
+	if(prob(10))
+		large = TRUE
+		amt *= 2
+
+	vessel.remove_reagent(BLOOD, amt)
+	blood_splatter(src, src, large)
 	stat_collection.blood_spilled += amt
 
 /****************************************************
@@ -366,11 +370,11 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
 	if(!source)
 		return B
 
-	// Update appearance.
+/*	// Update appearance.
 	if(source.data["blood_colour"])
 		B.basecolor = source.data["blood_colour"]
 		B.update_icon()
-
+*/
 	// Update blood information.
 	if(source.data["blood_DNA"])
 		B.blood_DNA = list()
