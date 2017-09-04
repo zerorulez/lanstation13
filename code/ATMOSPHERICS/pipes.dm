@@ -11,7 +11,7 @@
 
 /obj/machinery/atmospherics/pipe/New()
 	..()
-	plane = ABOVE_PLATING_PLANE
+	update_planes_and_layers()
 
 /obj/machinery/atmospherics/pipe/node_plane()
 	return FLOAT_PLANE
