@@ -3,11 +3,15 @@
 	var/datum/pipeline/parent
 	var/volume = 0
 	force = 20
-	plane = ABOVE_PLATING_PLANE
+	plane = MAPPING_PLANE
 	layer = PIPE_LAYER
 	use_power = 0
 	var/alert_pressure = 80*ONE_ATMOSPHERE
 	var/baseicon=""
+
+/obj/machinery/atmospherics/pipe/New()
+	..()
+	plane = ABOVE_PLATING_PLANE
 
 /obj/machinery/atmospherics/pipe/node_plane()
 	return FLOAT_PLANE
