@@ -136,7 +136,7 @@ var/savefile/panicfile
 
 	src.update_status()
 
-	sleep_offline = 1
+	//sleep_offline = 1
 
 	send2mainirc("Server starting up on [config.server? "byond://[config.server]" : "byond://[world.address]:[world.port]"]")
 	send2maindiscord("**Server starting up** on `[config.server? "byond://[config.server]" : "byond://[world.address]:[world.port]"]`. Map is **[map.nameLong]**")

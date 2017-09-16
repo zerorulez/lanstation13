@@ -141,7 +141,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 	// Sort subsystems by display setting for easy access.
 	sortTim(subsystems, /proc/cmp_subsystem_display)
 	// Set world options.
-	world.sleep_offline = 1
+//	world.sleep_offline = 1
 	world.tick_lag = config.Ticklag
 	sleep(1)
 	// Loop.
