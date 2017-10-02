@@ -1106,28 +1106,28 @@ var/default_colour_matrix = list(1,0,0,0,\
 #define STAGE_SUPER	11
 
 //Human Overlays Indexes/////////THIS DEFINES WHAT LAYERS APPEARS ON TOP OF OTHERS
-#define FIRE_LAYER				1		//If you're on fire (/tg/ shit)
-#define MUTANTRACE_LAYER		2		//TODO: make part of body?
-#define MUTATIONS_LAYER			3
-#define DAMAGE_LAYER			4
-#define UNIFORM_LAYER			5
-#define SHOES_LAYER				6
-#define GLOVES_LAYER			7
-#define EARS_LAYER				8
-#define SUIT_LAYER				9
-#define GLASSES_LAYER			10
-#define BELT_LAYER				11		//Possible make this an overlay of somethign required to wear a belt?
-#define SUIT_STORE_LAYER		12
-#define HAIR_LAYER				13		//TODO: make part of head layer?
-#define GLASSES_OVER_HAIR_LAYER	14
-#define FACEMASK_LAYER			15
-#define HEAD_LAYER				16
-#define BACK_LAYER				17		//Back should be above head so that headgear doesn't hides backpack when facing north
-#define ID_LAYER				18		//IDs should be visible above suits and backpacks
-#define HANDCUFF_LAYER			19
-#define LEGCUFF_LAYER			20
-#define HAND_LAYER				21
-#define TAIL_LAYER				22		//bs12 specific. this hack is probably gonna come back to haunt me
+#define MUTANTRACE_LAYER		1		//TODO: make part of body?
+#define MUTATIONS_LAYER			2
+#define DAMAGE_LAYER			3
+#define UNIFORM_LAYER			4
+#define SHOES_LAYER				5
+#define GLOVES_LAYER			6
+#define EARS_LAYER				7
+#define SUIT_LAYER				8
+#define GLASSES_LAYER			9
+#define BELT_LAYER				10		//Possible make this an overlay of somethign required to wear a belt?
+#define SUIT_STORE_LAYER		11
+#define HAIR_LAYER				12		//TODO: make part of head layer?
+#define GLASSES_OVER_HAIR_LAYER	13
+#define FACEMASK_LAYER			14
+#define HEAD_LAYER				15
+#define BACK_LAYER				16		//Back should be above head so that headgear doesn't hides backpack when facing north
+#define ID_LAYER				17		//IDs should be visible above suits and backpacks
+#define HANDCUFF_LAYER			18
+#define LEGCUFF_LAYER			19
+#define HAND_LAYER				20
+#define TAIL_LAYER				21		//bs12 specific. this hack is probably gonna come back to haunt me
+#define FIRE_LAYER				22		//If you're on fire (/tg/ shit)
 #define TARGETED_LAYER			23		//BS12: Layer for the target overlay from weapon targeting system
 #define TOTAL_LAYERS			23
 //////////////////////////////////
