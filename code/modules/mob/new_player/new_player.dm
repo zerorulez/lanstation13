@@ -67,9 +67,10 @@
 /mob/new_player/Stat()
 	..()
 
-	if(statpanel("Status") && ticker)
-		if (ticker.current_state != GAME_STATE_PREGAME)
-			stat(null, "Station Time: [worldtime2text()]")
+	if(ticker && ticker.current_state != GAME_STATE_PREGAME)
+		statpanel("Status")
+		stat(null, "Station Time: [worldtime2text()]")
+
 	statpanel("Lobby")
 	if(statpanel("Lobby") && ticker)
 		if(ticker.hide_mode)
@@ -86,11 +87,17 @@
 			stat("Time To Start:", "LOADING...")
 
 		if(SSticker.initialized && ticker.current_state == GAME_STATE_PREGAME)
-			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
+			stat("Players:", "[totalPlayers]")
+
+			if(client.holder)
+				stat("--- ADMIN ONLY BELOW ---", null)
+				stat("Players Ready:", "[totalPlayersReady]")
+
 			totalPlayers = 0
 			totalPlayersReady = 0
 			for(var/mob/new_player/player in player_list)
-				stat("[player.key]", (player.ready)?("(Playing)"):(null))
+				if(client.holder)
+					stat("[player.key]", (player.ready)?("(Playing)"):(null))
 				totalPlayers++
 				if(player.ready)
 					totalPlayersReady++
