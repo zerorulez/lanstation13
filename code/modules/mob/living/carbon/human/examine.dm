@@ -78,7 +78,7 @@
 				age_fluff = "[gender == MALE ? "um jovem adulto" : "uma jovem adulta"]"
 			if(30 to 39)
 				age_fluff = "[gender == MALE ? "um adulto" : "uma adulta"]"
-			if(40 to 60)
+			if(40 to 55)
 				age_fluff = "[gender == MALE ? "um homem de meia-idade" : "uma mulher de meia-idade"]"
 			else
 				age_fluff = "[gender == MALE ? "um idoso" : "uma idosa"]"
@@ -89,7 +89,7 @@
 	if((wear_mask && (is_slot_hidden(wear_mask.body_parts_covered,HIDEFACE))) || (head && (is_slot_hidden(head.body_parts_covered,HIDEFACE))) || !limb_head || limb_head.disfigured || (limb_head.status & ORGAN_DESTROYED) || !real_name || (M_HUSK in mutations) ) //Wearing a mask, having no head, being disfigured, or being a husk means no flavor text for you.
 		fluff_age = null
 
-	msg += "\icon[icon]<b>[src.name]</b>[fluff_age ? ", [fluff_age]." : null]\n"
+	msg += "<b>[src.name]</b>[fluff_age ? ", [fluff_age]." : null]\n"
 
 	//uniform
 	if(w_uniform && !(slot_w_uniform in obscured))
@@ -256,7 +256,7 @@
 		if(!key)
 			msg += "<span class='deadsay'>[t_He] [t_is] totally catatonic. The stresses of life in deep space must have been too much for [t_him]. Any recovery is unlikely.</span>\n"
 		else if(!client)
-			msg += "[t_He] [t_has] a vacant, braindead stare...\n"
+			msg += "<span class='deadsay'>[t_He] [t_has] a vacant, braindead stare...</span>\n"
 
 	var/list/wound_flavor_text = list()
 	var/list/is_destroyed = list()
