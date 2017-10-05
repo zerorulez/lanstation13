@@ -96,7 +96,9 @@ var/list/impact_master = list()
 	var/initial_pixel_x = 0
 	var/initial_pixel_y = 0
 
-	animate_movement = 0
+	animate_movement = SLIDE_STEPS
+	appearance_flags = LONG_GLIDE
+
 	var/linear_movement = 1
 
 	var/projectile_slowdown = 0 //The extra time spent sleeping after each step. Increasing this will make the projectile move more slowly.
@@ -108,10 +110,15 @@ var/list/impact_master = list()
 	var/super_speed = 0 //This exists just for proper functionality
 	var/travel_range = 0	//if set, the projectile will be deleted when its distance from the firing location exceeds this
 
+	var/is_beam = FALSE
+
 /obj/item/projectile/New()
 	..()
+
+
 	initial_pixel_x = pixel_x
 	initial_pixel_y = pixel_y
+
 	if(superspeed)
 		super_speed = 1
 
@@ -337,8 +344,6 @@ var/list/impact_master = list()
 		src.forceMove(get_step(src.loc,dir))
 		if(linear_movement)
 			update_pixel()
-			pixel_x = PixelX
-			pixel_y = PixelY
 		if(penetration > 0)//a negative penetration value means that the projectile can keep moving through obstacles
 			penetration = max(0, penetration - A.penetration_dampening)
 		if(isturf(A))				//if the bullet goes through a wall, we leave a nice mark on it
@@ -410,20 +415,19 @@ var/list/impact_master = list()
 	return 1
 
 /obj/item/projectile/proc/process_step()
-	var/sleeptime = 1
+	var/sleeptime = 10
 	if(src.loc)
 		if(dist_x > dist_y)
 			sleeptime = bresenham_step(dist_x,dist_y,dx,dy)
 		else
 			sleeptime = bresenham_step(dist_y,dist_x,dy,dx)
-		if(linear_movement)
-			update_pixel()
-			pixel_x = PixelX
-			pixel_y = PixelY
-
-		bumped = 0
 
 		sleeptime += projectile_slowdown
+
+		if(linear_movement)
+			update_pixel()
+
+		bumped = 0
 
 		sleep(sleeptime)
 
@@ -476,10 +480,11 @@ var/list/impact_master = list()
 
 /obj/item/projectile/proc/update_pixel()
 	if(src && starting && target)
-		var/AX = (override_starting_X - src.x)*WORLD_ICON_SIZE
-		var/AY = (override_starting_Y - src.y)*WORLD_ICON_SIZE
-		var/BX = (override_target_X - src.x)*WORLD_ICON_SIZE
-		var/BY = (override_target_Y - src.y)*WORLD_ICON_SIZE
+		var/multiplier = is_beam ? WORLD_ICON_SIZE : 1
+		var/AX = (override_starting_X - src.x) * multiplier
+		var/AY = (override_starting_Y - src.y) * multiplier
+		var/BX = (override_target_X - src.x) * multiplier
+		var/BY = (override_target_Y - src.y) * multiplier
 		var/XXcheck = ((BX-AX)*(BX-AX))+((BY-AY)*(BY-AY))
 		if(!XXcheck)
 			return
@@ -499,6 +504,9 @@ var/list/impact_master = list()
 
 		PixelX += initial_pixel_x
 		PixelY += initial_pixel_y
+
+		pixel_x = PixelX
+		pixel_y = PixelY
 	return
 
 /obj/item/projectile/proc/bullet_die()

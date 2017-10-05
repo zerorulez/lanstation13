@@ -29,6 +29,8 @@ var/list/beam_master = list()
 	var/wait = 0
 	var/beam_color= null
 
+	is_beam = TRUE
+
 
 /obj/item/projectile/beam/OnFired()	//if assigned, allows for code when the projectile gets fired
 	target = get_turf(original)

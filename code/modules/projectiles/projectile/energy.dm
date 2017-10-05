@@ -8,7 +8,6 @@
 	fire_sound = 'sound/weapons/Taser.ogg'
 	plane = EFFECTS_PLANE
 
-
 /obj/item/projectile/energy/electrode
 	name = "electrode"
 	icon_state = "spark"
@@ -23,6 +22,13 @@
 	damage_type = HALLOSS
 */
 	//Damage will be handled on the MOB side, to prevent window shattering.
+
+/obj/item/projectile/energy/electrode/Destroy()
+	var/turf/T = loc
+	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	s.set_up(3, 1, T)
+	s.start()
+	..()
 
 /obj/item/projectile/energy/tag
 	name = "tag electrode"
@@ -184,3 +190,5 @@
 	s.start()
 	T.turf_animation('icons/obj/projectiles_impacts.dmi',"dark_explosion",0, 0, 13, 'sound/weapons/osipr_altexplosion.ogg')
 	..()
+
+
