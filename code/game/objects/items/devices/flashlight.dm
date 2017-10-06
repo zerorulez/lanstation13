@@ -165,6 +165,9 @@
 
 	light_color = LIGHT_COLOR_FLARE
 
+/obj/item/device/flashlight/flare/is_hot()
+	return on * produce_heat
+
 /obj/item/device/flashlight/flare/New()
 	fuel = rand(300, 500) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
 	..()
@@ -177,13 +180,14 @@
 	if(!fuel || !on)
 		turn_off()
 		if(!fuel)
-			src.icon_state = "[initial(icon_state)]-empty"
+			icon_state = "[initial(icon_state)]-empty"
 		processing_objects -= src
 
 /obj/item/device/flashlight/flare/proc/turn_off()
 	on = 0
 	src.force = initial(src.force)
 	src.damtype = initial(src.damtype)
+	item_state = "[initial(item_state)][on]"
 	if(ismob(loc))
 		var/mob/U = loc
 		update_brightness(U)
@@ -203,24 +207,60 @@
 	Light(user)
 
 /obj/item/device/flashlight/flare/proc/Light(var/mob/user as mob)
-	if(user)
-		if(!isturf(user.loc))
-			to_chat(user, "You cannot turn the light on while in this [user.loc].")//To prevent some lighting anomalities.
+	if(user && !isturf(user.loc))
+		to_chat(user, "You cannot turn the light on while in this [user.loc].") //To prevent some lighting anomalities.
+		return 0
 
-			return 0
-	on = 1
-	src.force = on_damage
-	src.damtype = "fire"
+	on = TRUE
+	force = on_damage
+	damtype = "fire"
+
+	item_state = "[item_state][on]"
+
 	processing_objects += src
 	if(user)
 		update_brightness(user)
 	else
 		update_brightness()
 
+	update_icon()
+
 /obj/item/device/flashlight/flare/ever_bright/New()
 	. = ..()
 	fuel = INFINITY
 	Light()
+
+
+// TORCHS
+
+/obj/item/device/flashlight/flare/torch
+	name = "torch"
+	desc = "An old fashioned way to produce light."
+	w_class = W_CLASS_LARGE
+
+	icon_state = "torch"
+	item_state = "torch"
+
+	sound_on = 'sound/items/torch_light.ogg'
+	sound_off = 'sound/items/torch_snuff.ogg'
+
+	light_color = LIGHT_COLOR_FIRE
+
+	force = 6
+	on_damage = 12
+
+	produce_heat = 10000
+
+//	var/maxfuel = 1000
+
+/obj/item/device/flashlight/flare/torch/attack_self()
+	return
+
+/obj/item/device/flashlight/flare/torch/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	..()
+	if(W.is_hot())
+		user.visible_message("<span class='notice'>[user] lights [src] with [W].</span>", "<span class='notice'>You light [src] with [W].</span>")
+		Light()
 
 // SLIME LAMP
 /obj/item/device/flashlight/lamp/slime
