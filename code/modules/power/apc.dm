@@ -97,6 +97,8 @@
 
 	var/make_alerts = TRUE // Should this APC make power alerts to the area?
 
+	var/lon_range = 1.5
+
 	machine_flags = WIREJACK
 	holomap = TRUE
 	auto_holomap = TRUE
@@ -279,6 +281,21 @@
 				overlays += status_overlays_lighting[lighting+1]
 				overlays += status_overlays_environ[environ+1]
 
+	// And now, seperately for cleanness, the lighting changing
+	if(update_state & UPSTATE_ALLGOOD)
+		switch(charging)
+			if(0)
+				light_color = LIGHT_COLOR_RED
+			if(1)
+				light_color = LIGHT_COLOR_BLUE
+			if(2)
+				light_color = LIGHT_COLOR_GREEN
+		set_light(lon_range)
+	else if(update_state & UPSTATE_BLUESCREEN)
+		light_color = LIGHT_COLOR_BLUE
+		set_light(lon_range)
+	else
+		set_light(0)
 
 /obj/machinery/power/apc/proc/check_updates()
 
