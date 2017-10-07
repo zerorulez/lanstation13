@@ -1497,3 +1497,5 @@ var/proccalls = 1
 //Changing the order of these needlessly will break functionality of the client holding lists
 #define NO_ANIMATION 0
 #define PERSON_ANIMATION 1
+
+#define SCREEN_GENERIC 'icons/mob/screen_gen.dmi'
