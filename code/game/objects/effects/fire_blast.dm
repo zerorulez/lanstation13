@@ -13,6 +13,8 @@
 	var/spread_start = 100
 	var/spread_chance = 20
 
+	light_color = LIGHT_COLOR_FIRE
+
 /obj/effect/fire_blast/New(atom/A, var/damage = 0, var/current_step = 0, var/age = 1, var/pressure = 0, var/blast_temperature = 0, var/fire_duration)
 	..(A)
 	icon_state = "[rand(1,3)]"
@@ -109,6 +111,7 @@
 
 /obj/effect/fire_blast/blue
 	icon = 'icons/effects/fireblue.dmi'
+	light_color = LIGHT_COLOR_BLUE
 
 /obj/effect/fire_blast/blue/New(T, var/damage = 0, var/current_step = 0, var/age = 1, var/pressure = 0, var/blast_temperature = 0, var/fire_duration)
 	..(T, damage, current_step, age, pressure, blast_temperature, fire_duration)
