@@ -199,13 +199,13 @@
 
 /client/proc/vampire_disease()
 	set category = "Vampire"
-	set name = "Diseased Touch (50)"
+	set name = "Diseased Touch (100)"
 	set desc = "Touches your victim with infected blood giving them the Shutdown Syndrome which quickly shutsdown their major organs resulting in a quick painful death."
 	var/datum/mind/M = usr.mind
 	if(!M)
 		return
 
-	var/mob/living/carbon/C = M.current.vampire_active(50, 0, 1)
+	var/mob/living/carbon/C = M.current.vampire_active(100, 0, 1)
 	if(!C)
 		return
 	if(!M.current.vampire_can_reach(C, 1))
@@ -624,22 +624,39 @@
 		C.Dizzy(20)
 		to_chat(C, "<span class='sinister'>Your heart is filled with dread, and you shake uncontrollably.</span>")
 
-/client/proc/vampire_spawncape()
+/client/proc/vampire_spawnclothing()
 	set category = "Vampire"
-	set name = "Spawn Cape"
-	set desc = "Acquire a fabulous, yet fearsome cape."
+	set name = "Spawn Clothing"
+	set desc = "Acquire a fabulous, yet fearsome clothing."
 
 	var/datum/mind/M = usr.mind
+
 	if(!M)
 		return
 
+	var/options = list("vampire coat", "vampiress suit")
+
+	var/clothing_choice = input(M.current, "What do you want to make?", "Clothing") as null|anything in options
+
+	var/choosen_type = null
+
+	switch(clothing_choice)
+		if("vampire coat")
+			choosen_type = /obj/item/clothing/suit/storage/draculacoat
+		if("vampiress suit")
+			choosen_type = /obj/item/clothing/under/draculass_suit
+		else
+			return
+
 	if(M.current.vampire_power(0, 0))
-		var/obj/item/clothing/suit/storage/draculacoat/D = new /obj/item/clothing/suit/storage/draculacoat(M.current.loc, M.current)
-		M.current.put_in_any_hand_if_possible(D)
-		M.current.verbs -= /client/proc/vampire_spawncape
+		var/obj/item/clothing/C = çnew choosen_type(M.current.loc, M.current)
+
+		M.current.put_in_any_hand_if_possible(C)
+
+		M.current.verbs -= /client/proc/vampire_spawnclothing
 		sleep(300)
 		if(M && M.current)
-			M.current.verbs += /client/proc/vampire_spawncape
+			M.current.verbs += /client/proc/vampire_spawnclothing
 
 /mob/proc/remove_vampire_blood(amount = 0)
 	var/bloodold

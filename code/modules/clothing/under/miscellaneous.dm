@@ -707,3 +707,11 @@
 	item_state = "rottensuit"
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/clothing.dmi', "right_hand" = 'icons/mob/in-hand/right/clothing.dmi')
 	_color = "rottensuit"
+
+/obj/item/clothing/under/draculass_suit
+	name = "vampiress suit"
+	desc = "What is a waifu? A miserable little pile of secrets."
+	icon_state = "draculass"
+	item_state = "draculass"
+	_color = "draculass"
+	armor = list(melee = 20, bullet = 20, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)

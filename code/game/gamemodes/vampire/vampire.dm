@@ -343,10 +343,9 @@ You are weak to holy things and starlight. Don't go into space and avoid the Cha
 			if(VAMP_SHADOW)
 				verbs += /client/proc/vampire_shadowmenace
 			if(VAMP_CHARISMA)
-				continue
+				verbs += /client/proc/vampire_spawnclothing
 			if(VAMP_UNDYING)
 				verbs += /client/proc/vampire_undeath
-				verbs += /client/proc/vampire_spawncape
 /mob/proc/remove_vampire_powers()
 	for(var/handler in typesof(/client/proc))
 		if(findtext("[handler]","vampire_"))
@@ -527,16 +526,15 @@ You are weak to holy things and starlight. Don't go into space and avoid the Cha
 					to_chat(src, "[msg]")
 					verbs += /client/proc/vampire_shadowmenace //also buffs Cloak of Shadows
 				if(VAMP_CHARISMA)
-					msg = "<span class='sinister'>You develop an uncanny charismatic aura that makes you difficult to disobey. Hypnotise and Enthrall take less time to perform, and Enthrall works on implanted targets.</span>"
+					msg = "<span class='sinister'>You develop an uncanny charismatic aura that makes you difficult to disobey. Hypnotise and Enthrall take less time to perform, and Enthrall works on implanted targets. You can also spawn a rather nice clothes.</span>"
 					to_chat(src, "[msg]")
 					src.mind.store_memory("<font size = 1>[msg]</font>")
-					//no verb
+					verbs += /client/proc/vampire_spawnclothing
 				if(VAMP_UNDYING)
-					msg = "<span class='sinister'>You have reached the absolute peak of your power. Your abilities cannot be nullified very easily, and you may return from the grave so long as your body is not burned, destroyed or sanctified. You can also spawn a rather nice cape.</span>"
+					msg = "<span class='sinister'>You have reached the absolute peak of your power. Your abilities cannot be nullified very easily, and you may return from the grave so long as your body is not burned, destroyed or sanctified.</span>"
 					to_chat(src, "[msg]")
 					src.mind.store_memory("<font size = 1>[msg]</font>")
 					verbs += /client/proc/vampire_undeath
-					verbs += /client/proc/vampire_spawncape
 
 //prepare for copypaste
 /datum/game_mode/proc/update_vampire_icons_added(datum/mind/vampire_mind)
