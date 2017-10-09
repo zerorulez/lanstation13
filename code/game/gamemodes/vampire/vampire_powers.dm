@@ -649,7 +649,7 @@
 			return
 
 	if(M.current.vampire_power(0, 0))
-		var/obj/item/clothing/C = çnew choosen_type(M.current.loc, M.current)
+		var/obj/item/clothing/C = new choosen_type(M.current.loc, M.current)
 
 		M.current.put_in_any_hand_if_possible(C)
 
