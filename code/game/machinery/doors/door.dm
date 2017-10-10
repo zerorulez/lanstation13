@@ -43,7 +43,7 @@ var/list/all_doors = list()
 	var/prefix = null
 
 	// TODO: refactor to best :(
-	var/animation_delay = 10
+	var/animation_delay = 5
 	var/animation_delay_2 = null
 
 	// turf animation
