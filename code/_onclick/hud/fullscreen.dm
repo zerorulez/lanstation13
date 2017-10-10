@@ -133,3 +133,20 @@
 	icon = 'icons/mob/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "druggy"
+
+/obj/screen/fullscreen/lighting_backdrop
+	icon = 'icons/mob/screen_gen.dmi'
+	icon_state = "flash"
+	transform = matrix(200, 0, 0, 0, 200, 0)
+	plane = LIGHTING_PLANE
+	blend_mode = BLEND_OVERLAY
+
+//Provides darkness to the back of the lighting plane
+/obj/screen/fullscreen/lighting_backdrop/lit
+	invisibility = INVISIBILITY_LIGHTING
+	layer = BACKGROUND_LAYER+1
+	color = "#000"
+
+//Provides whiteness in case you don't see lights so everything is still visible
+/obj/screen/fullscreen/lighting_backdrop/unlit
+	layer = BACKGROUND_LAYER

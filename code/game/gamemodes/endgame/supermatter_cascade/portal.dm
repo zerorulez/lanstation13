@@ -10,7 +10,7 @@
 	announce=0
 	narnar=0
 
-	plane = LIGHTING_PLANE
+	plane = ABOVE_LIGHTING_PLANE
 	layer = SUPER_PORTAL_LAYER
 
 	consume_range = 6

@@ -331,7 +331,7 @@
 /mob/living/simple_animal/construct/proc/updateicon()
 	overlays = 0
 	var/overlay_layer = ABOVE_LIGHTING_LAYER
-	var/overlay_plane = LIGHTING_PLANE
+	var/overlay_plane = ABOVE_LIGHTING_PLANE
 	if(layer != MOB_LAYER) // ie it's hiding
 		overlay_layer = FLOAT_LAYER
 		overlay_plane = FLOAT_PLANE

@@ -30,11 +30,17 @@ var/global/obj/screen/clicker/catcher = new()
 	var/list/obj/screen/hotkeybuttons
 
 	var/list/obj/screen/item_action/item_action_list = list()	//Used for the item action ui buttons.
+	var/list/obj/screen/plane_master/plane_masters = list() // see "appearance_flags" in the ref, assoc list of "[plane]" = object
 
 /datum/hud/New(mob/owner)
 	mymob = owner
+
+	for(var/mytype in subtypesof(/obj/screen/plane_master))
+		var/obj/screen/plane_master/instance = new mytype()
+		plane_masters["[instance.plane]"] = instance
+		instance.backdrop(mymob)
+
 	instantiate()
-	..()
 
 /datum/hud/Destroy()
 	..()
@@ -52,6 +58,11 @@ var/global/obj/screen/clicker/catcher = new()
 	hotkeybuttons = null
 	item_action_list = null
 	mymob = null
+
+	if(plane_masters.len)
+		for(var/thing in plane_masters)
+			qdel(plane_masters[thing])
+		plane_masters.Cut()
 
 
 /datum/hud/proc/hidden_inventory_update()
@@ -242,6 +253,9 @@ var/global/obj/screen/clicker/catcher = new()
 	holomap_obj.alpha = 255
 
 	mymob.client.screen += src.holomap_obj
+
+	for(var/thing in plane_masters)
+		mymob.client.screen += plane_masters[thing]
 
 	reload_fullscreen()
 //	update_parallax_existence()

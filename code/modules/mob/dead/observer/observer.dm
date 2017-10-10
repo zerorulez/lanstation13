@@ -18,7 +18,7 @@
 	universal_understand = 1
 	universal_speak = 1
 	//languages = ALL
-	plane = LIGHTING_PLANE
+	plane = GHOST_PLANE
 	layer = GHOST_LAYER
 	// For Aghosts dicking with telecoms equipment.
 	var/obj/item/device/multitool/ghostMulti = null

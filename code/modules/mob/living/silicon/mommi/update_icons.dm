@@ -35,7 +35,8 @@
 	// Add the MoMMI eyes
 	// Put our eyes just on top of the lighting, so it looks emissive in maint tunnels.
 	var/overlay_layer = ABOVE_LIGHTING_LAYER
-	var/overlay_plane = LIGHTING_PLANE
+	var/overlay_plane = ABOVE_LIGHTING_PLANE
+
 	if(plane == HIDING_MOB_PLANE)	// ie it's hiding
 		overlay_plane = FLOAT_PLANE
 		overlay_layer = FLOAT_LAYER

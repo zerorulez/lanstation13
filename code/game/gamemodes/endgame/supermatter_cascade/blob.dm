@@ -6,7 +6,7 @@
 	icon_state = "bluespace"
 
 	layer = SUPERMATTER_WALL_LAYER
-	plane = LIGHTING_PLANE
+	plane = ABOVE_LIGHTING_PLANE
 
 	light_range = 4
 	light_power = 2

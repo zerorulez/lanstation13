@@ -77,6 +77,8 @@
 	if(loc)
 		var/area/A = loc
 		A.area_turfs += src
+		if(!A.dynamic_lighting || !dynamic_lighting)
+			overlays.Add(/obj/effect/fullbright)
 	for(var/atom/movable/AM as mob|obj in src)
 		spawn( 0 )
 			src.Entered(AM)

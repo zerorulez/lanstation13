@@ -2169,7 +2169,7 @@ var/global/num_vending_terminals = 1
 		emagged = 1
 		overlays = 0
 		var/image/dangerlay = image(icon,"[icon_state]-dangermode", ABOVE_LIGHTING_LAYER)
-		dangerlay.plane = LIGHTING_PLANE
+		dangerlay.plane = ABOVE_LIGHTING_PLANE
 		overlays_vending[2] = dangerlay
 		update_icon()
 		return 1
@@ -2199,7 +2199,7 @@ var/global/num_vending_terminals = 1
 	emagged = 1
 	overlays = 0
 	var/image/dangerlay = image(icon,"[icon_state]-dangermode", ABOVE_LIGHTING_LAYER)
-	dangerlay.plane = LIGHTING_PLANE
+	dangerlay.plane = ABOVE_LIGHTING_PLANE
 	overlays_vending[2] = dangerlay
 	update_icon()
 
@@ -2243,7 +2243,7 @@ var/global/num_vending_terminals = 1
 		emagged = 1
 		overlays = 0
 		var/image/dangerlay = image(icon,"[icon_state]-dangermode", ABOVE_LIGHTING_LAYER)
-		dangerlay.plane = LIGHTING_PLANE
+		dangerlay.plane = ABOVE_LIGHTING_PLANE
 		overlays_vending[2] = dangerlay
 		update_icon()
 		return 1
@@ -2277,7 +2277,7 @@ var/global/num_vending_terminals = 1
 	emagged = 1
 	overlays = 0
 	var/image/dangerlay = image(icon,"[icon_state]-dangermode", ABOVE_LIGHTING_LAYER)
-	dangerlay.plane = LIGHTING_PLANE
+	dangerlay.plane = ABOVE_LIGHTING_PLANE
 	overlays_vending[2] = dangerlay
 	update_icon()
 

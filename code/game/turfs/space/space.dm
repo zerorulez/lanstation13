@@ -18,6 +18,9 @@
 	if(loc)
 		var/area/A = loc
 		A.area_turfs += src
+		if(!A.dynamic_lighting || !dynamic_lighting)
+			overlays.Add(/obj/effect/fullbright)
+
 	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 /*	var/image/I = image('icons/turf/space_parallax1.dmi',"[icon_state]")
 	I.plane = PLANE_SPACE_BACKGROUND

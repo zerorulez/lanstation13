@@ -16,7 +16,7 @@
 	name = "arrow"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "arrow"
-	plane = LIGHTING_PLANE
+	plane = ABOVE_LIGHTING_PLANE
 	layer = POINTER_LAYER
 	anchored = 1
 	mouse_opacity = 0

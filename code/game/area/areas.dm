@@ -39,6 +39,9 @@ var/area/space_area
 		power_equip = 1
 		power_environ = 1
 
+	if(!dynamic_lighting)
+		overlays.Add()
+
 	..()
 
 //	spawn(15)

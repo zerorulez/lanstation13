@@ -170,6 +170,7 @@ What is the naming convention for planes or layers?
 	// OBJ_LAYER 	 				3
 	// ABOVE_OBJ_LAYER				4
 	#define CLOSED_CURTAIN_LAYER	5
+	#define LIGHTBULB_LAYER			6
 
 #define BLOB_PLANE 				-3			// For Blobs, which are above humans.
 
@@ -190,23 +191,27 @@ What is the naming convention for planes or layers?
 	#define ABOVE_SINGULO_LAYER 	7
 	#define GRAVITYGRID_LAYER 		8
 
-#define LIGHTING_PLANE 			-1			// For Lighting. - The highest plane.
-
-	#define LIGHTBULB_LAYER 		0
-	#define POINTER_LAYER 			1
-	#define GHOST_LAYER 			2
-	#define LIGHTING_LAYER 			3
-	#define ABOVE_LIGHTING_LAYER 	4
-	#define SUPERMATTER_WALL_LAYER 	5
-	#define SUPER_PORTAL_LAYER		6
-	#define NARSIE_GLOW 			7
-
 #define BASE_PLANE 				0		// Not for anything, but this is the default.
 	#define AREA_LAYER_MEME_NAME_BECAUSE_CELT_IS_A_FUCKING_RETARD 999
 
-#define STATIC_PLANE 			2		// For AI's static.
+#define GHOST_PLANE				14
+	#define GHOST_LAYER	1
 
-#define FULLSCREEN_PLANE		3		// for fullscreen overlays that do not cover the hud.
+#define LIGHTING_PLANE 			15
+	#define LIGHTING_LAYER 			1
+
+#define ABOVE_LIGHTING_PLANE	16
+
+	#define ABOVE_LIGHTING_LAYER 	1
+	#define SUPER_PORTAL_LAYER		2
+	#define SUPERMATTER_WALL_LAYER 	3
+	#define NARSIE_GLOW 			4
+	#define SUPER_PORTAL_LAYER		5
+	#define POINTER_LAYER 			6
+
+#define STATIC_PLANE 			17		// For AI's static.
+
+#define FULLSCREEN_PLANE		18		// for fullscreen overlays that do not cover the hud.
 
 	#define FULLSCREEN_LAYER	 	0
 	#define DAMAGE_LAYER 			1
@@ -215,7 +220,7 @@ What is the naming convention for planes or layers?
 	#define CRIT_LAYER 				4
 	#define HALLUCINATION_LAYER 	5
 
-#define HUD_PLANE 				4		// For the Head-Up Display
+#define HUD_PLANE 				19		// For the Head-Up Display
 
 	#define UNDER_HUD_LAYER 		0
 	#define HUD_BASE_LAYER		 	1

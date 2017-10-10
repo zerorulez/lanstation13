@@ -1087,7 +1087,7 @@
 	overlays.len = 0
 	if(stat == 0 && cell != null)
 		var/image/eyes = image(icon,"eyes-[icon_state]", ABOVE_LIGHTING_LAYER)
-		eyes.plane = LIGHTING_PLANE
+		eyes.plane = ABOVE_LIGHTING_PLANE
 		overlays += eyes
 
 	if(opened)

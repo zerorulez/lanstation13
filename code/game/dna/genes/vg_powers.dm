@@ -110,22 +110,6 @@ Obviously, requires DNA2.
 
 // NOIR
 
-/obj/screen/plane_master/noir_master
-	plane = NOIR_BLOOD_PLANE
-	color = list(1,0,0,0,
-				 0,1,0,0,
-				 0,0,1,0,
-				 0,0,0,1)
-	appearance_flags = NO_CLIENT_COLOR|PLANE_MASTER
-
-/obj/screen/plane_master/noir_dummy
-	// this avoids a bug which means plane masters which have nothing to control get angry and mess with the other plane masters out of spite
-	alpha = 0
-	appearance_flags = 0
-	plane = NOIR_BLOOD_PLANE
-
-var/noir_master = list(new /obj/screen/plane_master/noir_master(),new /obj/screen/plane_master/noir_dummy())
-
 /datum/dna/gene/basic/noir
 	name="Noir"
 	desc = "In recent years, there's been a real push towards 'Detective Noir' movies, but since the last black and white camera was lost many centuries ago, Scientists had to develop a way to turn any movie noir."
@@ -141,9 +125,7 @@ var/noir_master = list(new /obj/screen/plane_master/noir_master(),new /obj/scree
 /datum/dna/gene/basic/noir/activate(var/mob/M)
 	..()
 	M.update_colour()
-	M.client.screen += noir_master
 
 /datum/dna/gene/basic/noir/deactivate(var/mob/M,var/connected,var/flags)
 	if(..())
 		M.update_colour()
-		M.client.screen -= noir_master
