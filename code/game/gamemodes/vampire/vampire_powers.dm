@@ -343,12 +343,12 @@
 
 /client/proc/vampire_enthrall()
 	set category = "Vampire"
-	set name = "Enthrall (150)"
+	set name = "Enthrall (100)"
 	set desc = "You use a large portion of your power to sway those loyal to none to be loyal to you only."
 	var/datum/mind/M = usr.mind
 	if(!M)
 		return
-	var/mob/living/carbon/C = M.current.vampire_active(150, 0, 1)
+	var/mob/living/carbon/C = M.current.vampire_active(100, 0, 1)
 	if(!C)
 		return
 	if(!ishuman(C))
@@ -358,8 +358,8 @@
 		M.current.visible_message("<span class='warning'>[M.current.name] bites [C.name]'s neck!</span>", "<span class='warning'>You bite [C.name]'s neck and begin the flow of power.</span>")
 		to_chat(C, "<span class='sinister'>You feel the tendrils of evil [(VAMP_CHARISMA in M.vampire.powers) ? "aggressively" : "slowly"] invade your mind.</span>")
 		if(do_mob(M.current, C, (VAMP_CHARISMA in M.vampire.powers) ? 150 : 300))
-			if(M.current.vampire_power(150, 0)) // recheck
-				M.current.remove_vampire_blood(150)
+			if(M.current.vampire_power(100, 0)) // recheck
+				M.current.remove_vampire_blood(100)
 				M.current.handle_enthrall(C)
 				M.current.verbs -= /client/proc/vampire_enthrall
 				sleep((VAMP_CHARISMA in M.vampire.powers) ? 600 : 1800)
