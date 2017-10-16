@@ -35,6 +35,8 @@
 	desc = "A wrench with common uses. Can be found in your hand."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "wrench"
+	item_state = "wrench"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/tools_lefthand.dmi', "right_hand" = 'icons/mob/in-hand/right/tools_righthand.dmi')
 	hitsound = "sound/weapons/smash.ogg"
 	flags = FPRINT
 	siemens_coefficient = 1
@@ -78,6 +80,8 @@
 	desc = "You can be totally screwy with this."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "screwdriver"
+	item_state = "screwdriver"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/tools_lefthand.dmi', "right_hand" = 'icons/mob/in-hand/right/tools_righthand.dmi')
 	hitsound = 'sound/weapons/toolhit.ogg'
 	flags = FPRINT
 	siemens_coefficient = 1
@@ -105,25 +109,25 @@
 	switch(pick("red","blue","purple","brown","green","cyan","yellow"))
 		if ("red")
 			icon_state = "screwdriver2"
-			item_state = "screwdriver"
+//			item_state = "screwdriver"
 		if ("blue")
 			icon_state = "screwdriver"
-			item_state = "screwdriver_blue"
+//			item_state = "screwdriver_blue"
 		if ("purple")
 			icon_state = "screwdriver3"
-			item_state = "screwdriver_purple"
+//			item_state = "screwdriver_purple"
 		if ("brown")
 			icon_state = "screwdriver4"
-			item_state = "screwdriver_brown"
+//			item_state = "screwdriver_brown"
 		if ("green")
 			icon_state = "screwdriver5"
-			item_state = "screwdriver_green"
+//			item_state = "screwdriver_green"
 		if ("cyan")
 			icon_state = "screwdriver6"
-			item_state = "screwdriver_cyan"
+//			item_state = "screwdriver_cyan"
 		if ("yellow")
 			icon_state = "screwdriver7"
-			item_state = "screwdriver_yellow"
+//			item_state = "screwdriver_yellow"
 
 	if (prob(75))
 		src.pixel_y = rand(0, 16) * PIXEL_MULTIPLIER
@@ -169,6 +173,8 @@
 	desc = "This cuts wires."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "cutters"
+	item_state = "cutters_red"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/tools_lefthand.dmi', "right_hand" = 'icons/mob/in-hand/right/tools_righthand.dmi')
 	hitsound = 'sound/weapons/toolhit.ogg'
 	flags = FPRINT
 	siemens_coefficient = 1
@@ -575,6 +581,8 @@
 	desc = "Used to hit floors"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "crowbar"
+	item_state = "crowbar"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/tools_lefthand.dmi', "right_hand" = 'icons/mob/in-hand/right/tools_righthand.dmi')
 	hitsound = "sound/weapons/toolhit.ogg"
 	flags = FPRINT
 	siemens_coefficient = 1
@@ -595,7 +603,6 @@
 
 /obj/item/weapon/crowbar/red
 	desc = "Rise and shine."
-	icon = 'icons/obj/items.dmi'
 	icon_state = "red_crowbar"
 	item_state = "crowbar_red"
 

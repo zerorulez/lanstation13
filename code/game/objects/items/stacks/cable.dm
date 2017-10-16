@@ -18,6 +18,8 @@ var/global/list/datum/stack_recipe/cable_recipes = list ( \
 	name = "cable coil"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "coil_red"
+	item_state = "coil_red"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/tools_lefthand.dmi', "right_hand" = 'icons/mob/in-hand/right/tools_righthand.dmi')
 	gender = NEUTER
 	amount = MAXCOIL
 	restock_amount = 2
@@ -106,6 +108,8 @@ var/global/list/datum/stack_recipe/cable_recipes = list ( \
 	else
 		icon_state = "coil_[_color]"
 		name = "cable coil"
+
+	item_state = "coil_[_color]"
 
 /obj/item/stack/cable_coil/examine()
 	set src in view(1)
