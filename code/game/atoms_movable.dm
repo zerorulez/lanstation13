@@ -26,7 +26,7 @@
 	var/obj/effect/overlay/chain/tether = null
 	var/tether_pull = 0
 
-	glide_size = 8
+	//glide_size = 8
 
 	//Material datums - the fun way of doing things in a laggy manner
 	var/datum/materials/materials = null
@@ -147,19 +147,21 @@
 	if(timestopped)
 		if(!pulledby || pulledby.timestopped) //being moved by our wizard maybe?
 			return 0
-/*	var/move_delay = max(5 * world.tick_lag, 1)
+	var/move_delay = max(5 * world.tick_lag, 1)
 	if(ismob(src))
 		var/mob/M = src
 		if(M.client)
 			move_delay = (3+(M.client.move_delayer.next_allowed - world.time))*world.tick_lag
-*/
+
 	var/can_pull_tether = 0
 	if(tether)
 		if(tether.attempt_to_follow(src,newLoc))
 			can_pull_tether = 1
 		else
 			return 0
-	//glide_size = Ceiling(WORLD_ICON_SIZE / move_delay * world.tick_lag) - 1 //We always split up movements into cardinals for issues with diagonal movements.
+	
+	glide_size = Ceiling(WORLD_ICON_SIZE / move_delay * world.tick_lag) - 1 //We always split up movements into cardinals for issues with diagonal movements.
+	
 	var/atom/oldloc = loc
 	if((bound_height != WORLD_ICON_SIZE || bound_width != WORLD_ICON_SIZE) && (loc == newLoc))
 		. = ..()
