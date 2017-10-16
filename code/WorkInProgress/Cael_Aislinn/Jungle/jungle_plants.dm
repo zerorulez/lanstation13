@@ -17,7 +17,7 @@
 	if(prob(20))
 		opacity = 1
 
-/obj/structure/bush/Bumped(M as mob)
+/obj/structure/bush/to_bumped(M as mob)
 	if (istype(M, /mob/living/simple_animal))
 		var/mob/living/simple_animal/A = M
 		A.forceMove(get_turf(src))

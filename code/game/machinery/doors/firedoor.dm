@@ -177,7 +177,7 @@ var/global/list/alert_overlays_global = list()
 		to_chat(user, "These people have opened \the [src] during an alert: [users_to_open_string].")
 
 
-/obj/machinery/door/firedoor/Bumped(atom/AM)
+/obj/machinery/door/firedoor/to_bumped(atom/AM)
 	if(panel_open || operating)
 		return
 	if(!density)
@@ -492,7 +492,7 @@ var/global/list/alert_overlays_global = list()
 				return !density
 		else if(mover.dir == dir) //Or are we using move code
 			if(density)
-				mover.Bump(src)
+				mover.to_bump(src)
 			return !density
 	return 1
 

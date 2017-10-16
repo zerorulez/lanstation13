@@ -52,7 +52,7 @@ var/list/poddoors = list()
 	poddoors -= src
 	..()
 
-/obj/machinery/door/poddoor/Bumped(atom/AM)
+/obj/machinery/door/poddoor/to_bumped(atom/AM)
 	if(!density)
 		return ..()
 	else

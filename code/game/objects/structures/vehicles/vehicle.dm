@@ -267,7 +267,7 @@
 	icon_state = "pussywagon_destroyed"
 	unlock_atom(occupant)
 
-/obj/structure/bed/chair/vehicle/Bump(var/atom/movable/obstacle)
+/obj/structure/bed/chair/vehicle/to_bump(var/atom/movable/obstacle)
 	if(obstacle == src || (is_locking(/datum/locking_category/buckle/chair/vehicle, subtypes=TRUE) && obstacle == get_locked(/datum/locking_category/buckle/chair/vehicle, subtypes=TRUE)[1]))
 		return
 

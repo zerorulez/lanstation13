@@ -3,7 +3,7 @@
 	var/locked = 0
 
 
-/obj/machinery/door/unpowered/Bumped(atom/AM)
+/obj/machinery/door/unpowered/to_bumped(atom/AM)
 	if(locked)
 		return
 

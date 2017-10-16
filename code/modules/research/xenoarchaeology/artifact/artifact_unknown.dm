@@ -135,7 +135,7 @@ var/list/valid_secondary_effect_types = list(\
 				pulledby.stop_pulling()
 			pulledby = null
 		else
-			Bumped(pulledby)
+			to_bumped(pulledby)
 
 	//if either of our effects rely on environmental factors, work that out
 	var/trigger_cold = 0
@@ -338,7 +338,7 @@ var/list/valid_secondary_effect_types = list(\
 			src.investigation_log(I_ARTIFACT, "|| secondary effect([secondary_effect]) triggered by FORCE([secondary_effect.trigger]) || [W] || attacked by [key_name(user)].")
 			secondary_effect.ToggleActivate(0)
 
-/obj/machinery/artifact/Bumped(M as mob|obj)
+/obj/machinery/artifact/to_bumped(M as mob|obj)
 	..()
 	if(istype(M,/obj))
 		if(M:throwforce >= 10)

@@ -3,7 +3,7 @@
 	update_hud()
 	return
 
-/mob/living/carbon/Bump(var/atom/movable/AM)
+/mob/living/carbon/to_bump(var/atom/movable/AM)
 	if(now_pushing)
 		return
 	..()
@@ -14,7 +14,7 @@
 		var/mob/living/carbon/C = AM
 		C.handle_symptom_on_touch(src, AM, BUMP)
 
-/mob/living/carbon/Bumped(var/atom/movable/AM)
+/mob/living/carbon/to_bumped(var/atom/movable/AM)
 	..()
 	if(!istype(AM, /mob/living/carbon))
 		handle_symptom_on_touch(AM, src, BUMP)

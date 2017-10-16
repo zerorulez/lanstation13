@@ -25,7 +25,7 @@
 		spawn()
 			src.teleport(user)
 /*
-/obj/effect/portal/Bumped(mob/M as mob|obj)
+/obj/effect/portal/to_bumped(mob/M as mob|obj)
 	spawn()
 		src.teleport(M)
 */

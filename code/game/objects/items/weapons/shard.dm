@@ -13,7 +13,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	force = 5.0
 	throwforce = 15.0
-	
+
 	item_state = "shard-glassnew"
 	starting_materials = list(MAT_GLASS = 3750)
 	w_type = RECYK_GLASS
@@ -83,7 +83,7 @@
 /obj/item/weapon/shard/resetVariables()
 	..("icon_state", "pixel_y", "pixel_x")
 
-/obj/item/weapon/shard/Bump()
+/obj/item/weapon/shard/to_bump()
 
 	spawn( 0 )
 		if (prob(20))

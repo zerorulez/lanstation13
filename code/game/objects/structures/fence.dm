@@ -149,7 +149,7 @@
 			icon_state = "straight_cut3"
 			density = 0
 
-/obj/structure/fence/Bumped(atom/user)
+/obj/structure/fence/to_bumped(atom/user)
 	if(ismob(user))
 		shock(user, 60)
 

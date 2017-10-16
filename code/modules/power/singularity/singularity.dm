@@ -85,10 +85,10 @@
 /obj/machinery/singularity/bullet_act(obj/item/projectile/P)
 	return 0 //Will there be an impact? Who knows. Will we see it? No.
 
-/obj/machinery/singularity/Bump(atom/A)
+/obj/machinery/singularity/to_bump(atom/A)
 	consume(A)
 
-/obj/machinery/singularity/Bumped(atom/A)
+/obj/machinery/singularity/to_bumped(atom/A)
 	consume(A)
 
 /obj/machinery/singularity/Crossed(atom/movable/A)

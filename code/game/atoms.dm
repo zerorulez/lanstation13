@@ -169,11 +169,11 @@ var/global/list/ghdel_profiling = list()
 /atom/proc/on_reagent_change()
 	return
 
-/atom/proc/Bumped(AM as mob|obj)
+/atom/proc/to_bumped(AM as mob|obj)
 	return
 
 /atom/proc/bumped_by_firebird(var/obj/structure/bed/chair/vehicle/wizmobile/W)
-	return Bumped(W)
+	return to_bumped(W)
 
 // Convenience proc to see if a container is open for chemistry handling
 // returns true if open
@@ -809,3 +809,6 @@ its easier to just keep the beam vertical.
 /atom/proc/toggle_timeless()
 	flags ^= TIMELESS
 	return flags & TIMELESS
+
+/atom/proc/to_bump()
+	return

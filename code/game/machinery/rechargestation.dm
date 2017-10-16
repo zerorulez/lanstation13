@@ -322,7 +322,7 @@
 		return -1
 	return ..()
 
-/obj/machinery/recharge_station/Bumped(atom/AM as mob|obj)
+/obj/machinery/recharge_station/to_bumped(atom/AM as mob|obj)
 	if(!issilicon(AM) || isAI(AM))
 		return
 	var/mob/living/silicon/robot/R = AM

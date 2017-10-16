@@ -112,12 +112,12 @@
 	// Disconnect and re-emit.
 	disconnect()
 
-/obj/effect/beam/Bumped(var/atom/movable/AM)
+/obj/effect/beam/to_bumped(var/atom/movable/AM)
 	if(!master || !AM)
 		return
 	if(istype(AM, /obj/effect/beam) || !AM.density)
 		return
-	beam_testing("Bumped by [AM]")
+	beam_testing("to_bumped by [AM]")
 	am_connector=1
 	var/obj/effect/beam/OB = master
 	if(!OB)
@@ -268,7 +268,7 @@
 
 		density = 0
 		if(bumped)
-			beam_testing("\ref[src] Bumped")
+			beam_testing("\ref[src] to_bumped")
 			//BEAM_DEL(src)
 			src._re_emit = 0
 			qdel(src)
@@ -300,12 +300,12 @@
 		B.master.children.Add(B)
 	return B
 
-/obj/effect/beam/Bump(var/atom/A as mob|obj|turf|area)
+/obj/effect/beam/to_bump(var/atom/A as mob|obj|turf|area)
 	if(!master)
 		return
 	bumped = 1
 	if(A)
-		beam_testing("\ref[get_master()] - Bumped [A]!")
+		beam_testing("\ref[get_master()] - to_bumped [A]!")
 		connect_to(A)
 		am_connector=1 // Prevents disconnecting after stepping into target.
 	return 1

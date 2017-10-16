@@ -187,7 +187,7 @@
 	damage = 5
 	damage_type = BRUTE
 
-/obj/item/projectile/web/Bump(atom/A)
+/obj/item/projectile/web/to_bump(atom/A)
 	if(!(locate(/obj/effect/spider/stickyweb) in get_turf(src)))
 		new /obj/effect/spider/stickyweb(get_turf(src))
 	qdel(src)

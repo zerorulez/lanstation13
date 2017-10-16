@@ -159,9 +159,9 @@
 			can_pull_tether = 1
 		else
 			return 0
-	
+
 	glide_size = Ceiling(WORLD_ICON_SIZE / move_delay * world.tick_lag) - 1 //We always split up movements into cardinals for issues with diagonal movements.
-	
+
 	var/atom/oldloc = loc
 	if((bound_height != WORLD_ICON_SIZE || bound_width != WORLD_ICON_SIZE) && (loc == newLoc))
 		. = ..()
@@ -363,13 +363,13 @@
 /atom/movable/Crossed(atom/movable/AM)
 	return
 
-/atom/movable/Bump(atom/Obstacle)
+/atom/movable/to_bump(atom/Obstacle)
 	if(src.throwing)
 		src.throw_impact(Obstacle)
 		src.throwing = 0
 
 	if (Obstacle)
-		Obstacle.Bumped(src)
+		Obstacle.to_bumped(src)
 
 // harderforce is for things like lighting overlays which should only be moved in EXTREMELY specific sitations.
 /atom/movable/proc/forceMove(atom/destination,var/no_tp=0, var/harderforce = FALSE)

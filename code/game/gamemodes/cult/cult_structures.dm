@@ -98,7 +98,7 @@
 	anchored = 1.0
 	var/spawnable = null
 
-/obj/effect/gateway/Bumped(mob/M as mob|obj)
+/obj/effect/gateway/to_bumped(mob/M as mob|obj)
 	spawn(0)
 		return
 	return

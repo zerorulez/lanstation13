@@ -132,7 +132,7 @@
 	return tally+config.slime_delay
 
 
-/mob/living/carbon/slime/Bump(atom/movable/AM as mob|obj)
+/mob/living/carbon/slime/to_bump(atom/movable/AM as mob|obj)
 	if(now_pushing)
 		return
 	now_pushing = 1

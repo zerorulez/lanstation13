@@ -166,7 +166,7 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 			GetDrilled()
 
 
-/turf/unsimulated/mineral/Bumped(AM)
+/turf/unsimulated/mineral/to_bumped(AM)
 	. = ..()
 	if(istype(AM,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM
@@ -866,7 +866,7 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 	det_time = rand(8,10) //So you don't know exactly when the hot potato will explode
 	..()
 
-/turf/unsimulated/mineral/gibtonite/Bumped(AM)
+/turf/unsimulated/mineral/gibtonite/to_bumped(AM)
 	var/bump_reject = 0
 	if(istype(AM,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM

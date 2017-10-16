@@ -84,7 +84,7 @@ obj/machinery/door/airlock/close(surpress_send)
 		send_status()
 
 
-obj/machinery/door/airlock/Bumped(atom/AM)
+obj/machinery/door/airlock/to_bumped(atom/AM)
 	..(AM)
 	if(istype(AM, /obj/mecha))
 		var/obj/mecha/mecha = AM

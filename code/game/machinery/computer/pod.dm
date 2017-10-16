@@ -382,7 +382,7 @@
 	var/id_tag = ""
 
 
-/obj/structure/deathsquad_tele/Bumped(var/atom/movable/AM)
+/obj/structure/deathsquad_tele/to_bumped(var/atom/movable/AM)
 	if(!ztarget)
 		return ..()
 	var/y = AM.y

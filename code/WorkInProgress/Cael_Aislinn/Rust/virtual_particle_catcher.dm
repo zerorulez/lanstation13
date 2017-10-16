@@ -42,7 +42,7 @@
 		update_icon()
 	return 0
 
-/obj/effect/rust_particle_catcher/Bumped(atom/AM)
+/obj/effect/rust_particle_catcher/to_bumped(atom/AM)
 	if(ismob(AM) && density && prob(10))
 		to_chat(AM, "<span class='warning'>A powerful force pushes you back.</span>")
 	..()

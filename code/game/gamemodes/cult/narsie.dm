@@ -102,7 +102,7 @@ var/global/list/narsie_list = list()
 				M.apply_effect(3, STUN)
 
 
-/obj/machinery/singularity/narsie/large/Bump(atom/A)
+/obj/machinery/singularity/narsie/large/to_bump(atom/A)
 	if(!narnar)
 		return
 	if(isturf(A))
@@ -110,7 +110,7 @@ var/global/list/narsie_list = list()
 	else if(istype(A, /obj/structure/cult))
 		qdel(A)
 
-/obj/machinery/singularity/narsie/large/Bumped(atom/A)
+/obj/machinery/singularity/narsie/large/to_bumped(atom/A)
 	if(!narnar)
 		return
 	if(isturf(A))

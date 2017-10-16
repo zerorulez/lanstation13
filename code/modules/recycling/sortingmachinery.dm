@@ -129,7 +129,7 @@
 /obj/machinery/disposal/deliveryChute/update_icon()
 	return
 
-/obj/machinery/disposal/deliveryChute/Bumped(var/atom/movable/AM) //Go straight into the chute
+/obj/machinery/disposal/deliveryChute/to_bumped(var/atom/movable/AM) //Go straight into the chute
 	if(istype(AM, /obj/item/projectile) || istype(AM, /obj/item/weapon/dummy))
 		return
 

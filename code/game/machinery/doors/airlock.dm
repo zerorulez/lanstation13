@@ -372,7 +372,7 @@ About the new airlock wires panel:
 			return
 	..(user)
 
-/obj/machinery/door/Bumped(atom/AM)
+/obj/machinery/door/to_bumped(atom/AM)
 	if (panel_open)
 		return
 

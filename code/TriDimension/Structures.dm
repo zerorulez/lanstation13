@@ -183,7 +183,7 @@
 			return ..()
 
 
-	Bumped(var/atom/movable/M)
+	to_bumped(var/atom/movable/M)
 		if(target.z > z && istype(src, /obj/multiz/stairs/active) && !locate(/obj/multiz/stairs) in M.loc)
 			return //If on bottom, only let them go up stairs if they've moved to the entry tile first.
 		//If it's the top, they can fall down just fine.

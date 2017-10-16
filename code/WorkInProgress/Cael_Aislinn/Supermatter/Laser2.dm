@@ -96,7 +96,7 @@
 		else
 			UpdateDamage()
 
-/obj/beam/e_beam/Bump(atom/Obstacle)
+/obj/beam/e_beam/to_bump(atom/Obstacle)
 	Obstacle.laser_act(src)
 	del(src)
 	return
@@ -107,7 +107,7 @@
 	if(src.next)
 		src.next.setpower(powera)
 
-/obj/beam/e_beam/Bumped()
+/obj/beam/e_beam/to_bumped()
 	src.hit()
 	return
 

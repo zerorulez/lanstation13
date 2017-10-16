@@ -119,7 +119,7 @@
 	radiate()
 	..()
 
-/turf/simulated/wall/mineral/uranium/Bumped(AM as mob|obj)
+/turf/simulated/wall/mineral/uranium/to_bumped(AM as mob|obj)
 	radiate()
 	..()
 

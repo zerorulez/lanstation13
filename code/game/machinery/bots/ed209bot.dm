@@ -800,7 +800,7 @@ Auto Patrol: []"},
 
 	return threatcount
 
-/obj/machinery/bot/ed209/Bump(M as mob|obj) //Leave no door unopened!
+/obj/machinery/bot/ed209/to_bump(M as mob|obj) //Leave no door unopened!
 	if ((istype(M, /obj/machinery/door)) && (!isnull(src.botcard)))
 		var/obj/machinery/door/D = M
 		if (!istype(D, /obj/machinery/door/firedoor) && D.check_access(src.botcard))
@@ -812,7 +812,7 @@ Auto Patrol: []"},
 	return
 
 /* terrible
-/obj/machinery/bot/ed209/Bumped(atom/movable/M as mob|obj)
+/obj/machinery/bot/ed209/to_bumped(atom/movable/M as mob|obj)
 	spawn(0)
 		if (M)
 			var/turf/T = get_turf(src)

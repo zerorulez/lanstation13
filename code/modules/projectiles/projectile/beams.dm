@@ -498,7 +498,7 @@ var/list/beam_master = list()
 						else
 							tang += 180
 						icon_state = "[tang]"
-					Bump(original)
+					to_bump(original)
 			first = 0
 			if(broken)
 //				to_chat(world, "breaking")
@@ -534,7 +534,7 @@ var/list/beam_master = list()
 	var/spell/lightning/our_spell
 	weaken = 0
 	stun = 0
-/obj/item/projectile/beam/lightning/spell/Bump(atom/A as mob|obj|turf|area)
+/obj/item/projectile/beam/lightning/spell/to_bump(atom/A as mob|obj|turf|area)
 	. = ..()
 	if(.)
 		our_spell.lastbumped = A
@@ -721,7 +721,7 @@ var/list/beam_master = list()
 				if(loc == target)
 					if(!(original in permutated))
 						draw_ray(target)
-						Bump(original)
+						to_bump(original)
 
 	else
 		error = dist_y/2 - dist_x
@@ -757,7 +757,7 @@ var/list/beam_master = list()
 				if(loc == get_turf(original))
 					if(!(original in permutated))
 						draw_ray(target)
-						Bump(original)
+						to_bump(original)
 
 /obj/item/projectile/beam/bison/bullet_die()
 	draw_ray(loc)
@@ -855,7 +855,7 @@ var/list/beam_master = list()
 		if(TT == firer.loc)
 			continue
 
-/obj/item/projectile/beam/bison/Bump(atom/A as mob|obj|turf|area)
+/obj/item/projectile/beam/bison/to_bump(atom/A as mob|obj|turf|area)
 	//Heat Rays go through mobs
 	if(A == firer)
 		loc = A.loc

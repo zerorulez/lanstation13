@@ -256,12 +256,12 @@ obj/machinery/gibber/New()
 	overlays = null
 
 /obj/machinery/gibber/autogibber/attack_hand(mob/user as mob)
-	Bumped(user)
+	to_bumped(user)
 
 /obj/machinery/gibber/autogibber/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	Bumped(user)
+	to_bumped(user)
 
-/obj/machinery/gibber/autogibber/Bumped(var/atom/A)
+/obj/machinery/gibber/autogibber/to_bumped(var/atom/A)
 	if(stat & (BROKEN | NOPOWER))
 		return
 	use_power(100)

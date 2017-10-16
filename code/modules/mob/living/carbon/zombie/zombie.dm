@@ -52,7 +52,7 @@
 	for (var/mob/O in hearers(src, null))
 		O.show_message(act, 2)
 
-/mob/living/carbon/human/zombie/Bumped(AM as mob|obj)
+/mob/living/carbon/human/zombie/to_bumped(AM as mob|obj)
 //	..()
 	if(istype(AM, /mob/living/carbon/human/zombie))
 		return
@@ -64,7 +64,7 @@
 			var/turf/T = get_turf(src)
 			AM:forceMove(T)
 
-/mob/living/carbon/human/zombie/Bump(atom/A)
+/mob/living/carbon/human/zombie/to_bump(atom/A)
 	if(istype(A, /mob/living/carbon/human/zombie))
 		return
 	if(ismob(A) && (ishuman(A) || ismonkey(A)))
@@ -280,7 +280,7 @@
 
 
 	for(var/obj/machinery/door/D in oview(1))
-		D.Bumped(src)
+		D.to_bumped(src)
 
 
 

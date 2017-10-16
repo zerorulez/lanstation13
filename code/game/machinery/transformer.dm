@@ -35,7 +35,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/transformer/Bumped(var/atom/movable/AM)
+/obj/machinery/transformer/to_bumped(var/atom/movable/AM)
 	if(cooldown_state)
 		return
 

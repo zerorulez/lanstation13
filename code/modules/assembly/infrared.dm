@@ -200,7 +200,7 @@
 		var/obj/effect/beam/infrared/B=next
 		B.set_visible(v)
 
-/obj/effect/beam/infrared/Bumped()
+/obj/effect/beam/infrared/to_bumped()
 	hit()
 	..()
 

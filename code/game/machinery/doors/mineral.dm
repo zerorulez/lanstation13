@@ -20,7 +20,7 @@
 	icon_state = "[prefix]door_closed"
 	name = "[prefix] door"
 
-/obj/machinery/door/mineral/Bumped(atom/user)
+/obj/machinery/door/mineral/to_bumped(atom/user)
 	if(operating)
 		return
 

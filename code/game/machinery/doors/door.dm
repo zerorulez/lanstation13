@@ -59,7 +59,7 @@ var/list/all_doors = list()
 	else
 		return PROJREACT_WINDOWS
 
-/obj/machinery/door/Bumped(atom/AM)
+/obj/machinery/door/to_bumped(atom/AM)
 	if (ismob(AM))
 		var/mob/M = AM
 

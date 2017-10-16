@@ -121,7 +121,7 @@ obj/machinery/gateway/centerstation/process()
 
 
 //okay, here's the good teleporting stuff
-/obj/machinery/gateway/centerstation/Bumped(atom/movable/M as mob|obj)
+/obj/machinery/gateway/centerstation/to_bumped(atom/movable/M as mob|obj)
 	if(!ready)
 		return
 	if(!active)
@@ -173,7 +173,7 @@ obj/machinery/gateway/centerstation/process()
 
 /obj/machinery/gateway/centeraway/Destroy()
 	gateways.Remove(src)
-	
+
 	..()
 
 /obj/machinery/gateway/centeraway/initialize()
@@ -242,7 +242,7 @@ obj/machinery/gateway/centerstation/process()
 	toggleoff()
 
 
-/obj/machinery/gateway/centeraway/Bumped(atom/movable/M as mob|obj)
+/obj/machinery/gateway/centeraway/to_bumped(atom/movable/M as mob|obj)
 	if(!ready)
 		return
 	if(!active)
@@ -267,7 +267,7 @@ obj/machinery/gateway/centerstation/process()
 			return
 
 /obj/machinery/gateway/centerstation/attack_ghost(mob/user as mob)
-	return src.Bumped(user)
+	return src.to_bumped(user)
 
 /obj/machinery/gateway/centeraway/attack_ghost(mob/user as mob)
-	return src.Bumped(user)
+	return src.to_bumped(user)

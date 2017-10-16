@@ -55,10 +55,10 @@
 	icon_state = icon_name + "[is_powered]" + "[(blood ? "bld" : "")]" // add the blood tag at the end
 
 // This is purely for admin possession !FUN!.
-/obj/machinery/recycler/Bump(var/atom/movable/AM)
+/obj/machinery/recycler/to_bump(var/atom/movable/AM)
 	..()
 	if(AM)
-		Bumped(AM)
+		to_bumped(AM)
 
 
 /obj/machinery/recycler/Cross(var/atom/movable/AM)

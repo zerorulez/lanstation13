@@ -39,7 +39,7 @@
 	if(secure)
 		to_chat(user, "It is a secure windoor, it is stronger and closes more quickly.")
 
-/obj/machinery/door/window/Bumped(atom/movable/AM as mob|obj)
+/obj/machinery/door/window/to_bumped(atom/movable/AM as mob|obj)
 	if (!ismob(AM))
 		var/obj/machinery/bot/bot = AM
 		if(istype(bot))
@@ -93,7 +93,7 @@
 				return !density
 		else if(mover.dir == dir) //Or are we using move code
 			if(density)
-				mover.Bump(src)
+				mover.to_bump(src)
 			return !density
 	return 1
 

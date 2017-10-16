@@ -361,7 +361,7 @@
 	 playsound(src, get_sfx("mechstep"),40,1)
 	return result
 
-/obj/mecha/Bump(var/atom/obstacle)
+/obj/mecha/to_bump(var/atom/obstacle)
 //	src.inertia_dir = null
 	if(src.throwing)//high velocity mechas in your face!
 		var/breakthrough = 0
@@ -428,11 +428,11 @@
 		else if(!O.anchored)
 			step(obstacle,src.dir)
 		else //I have no idea why I disabled this
-			obstacle.Bumped(src)
+			obstacle.to_bumped(src)
 	else if(istype(obstacle, /mob))
 		step(obstacle,src.dir)
 	else
-		obstacle.Bumped(src)
+		obstacle.to_bumped(src)
 	return
 
 ///////////////////////////////////
