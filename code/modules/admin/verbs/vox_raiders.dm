@@ -19,7 +19,7 @@ var/global/vox_tick = 1
 			equip_to_slot_or_del(new /obj/item/clothing/suit/space/vox/carapace(src), slot_wear_suit)
 			equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/vox/carapace(src), slot_head)
 			equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton(src), slot_belt)
-			equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/monocle(src), slot_glasses) // REPLACE WITH CODED VOX ALTERNATIVE.
+			equip_to_slot_or_del(new /obj/item/clothing/glasses/scanner/thermal/monocle(src), slot_glasses) // REPLACE WITH CODED VOX ALTERNATIVE.
 			equip_to_slot_or_del(new /obj/item/device/chameleon(src), slot_l_store)
 
 			var/obj/item/weapon/crossbow/W = new(src)
@@ -44,7 +44,7 @@ var/global/vox_tick = 1
 			equip_to_slot_or_del(new /obj/item/clothing/suit/space/vox/carapace(src), slot_wear_suit)
 			equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/vox/carapace(src), slot_head)
 			equip_to_slot_or_del(new /obj/item/weapon/storage/belt/utility/full(src), slot_belt)
-			equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/monocle(src), slot_glasses) // REPLACE WITH CODED VOX ALTERNATIVE.
+			equip_to_slot_or_del(new /obj/item/clothing/glasses/scanner/thermal/monocle(src), slot_glasses) // REPLACE WITH CODED VOX ALTERNATIVE.
 			equip_to_slot_or_del(new /obj/item/weapon/card/emag(src), slot_l_store)
 			put_in_hands(new /obj/item/weapon/gun/dartgun/vox/raider(src))
 			put_in_hands(new /obj/item/device/multitool(src))

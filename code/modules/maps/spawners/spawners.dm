@@ -667,7 +667,7 @@
 		/obj/item/bluespace_crystal,
 		/obj/item/bodybag/cryobag,
 		/obj/item/borg/upgrade/syndicate,
-		/obj/item/clothing/glasses/thermal,
+		/obj/item/clothing/glasses/scanner/thermal,
 		/obj/item/device/aicard,
 		/obj/item/device/ano_scanner,
 		/obj/item/device/flashlight/lantern,

@@ -138,7 +138,7 @@ var/global/sent_strike_team = 0
 	equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(src), slot_gloves)
 	equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/rig/deathsquad(src), slot_head)
 	equip_to_slot_or_del(new /obj/item/clothing/mask/gas/swat(src), slot_wear_mask)
-	equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal(src), slot_glasses)
+	equip_to_slot_or_del(new /obj/item/clothing/glasses/scanner/thermal(src), slot_glasses)
 
 	equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/security(src), slot_back)
 	equip_to_slot_or_del(new /obj/item/weapon/storage/box(src), slot_in_backpack)

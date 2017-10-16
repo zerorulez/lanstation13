@@ -517,7 +517,7 @@ var/list/uplink_items = list()
 /datum/uplink_item/device_tools/thermal
 	name = "Thermal Imaging Glasses"
 	desc = "These glasses are thermals disguised as engineers' optical meson scanners. Allows you to see organisms through walls and regardless of light."
-	item = /obj/item/clothing/glasses/thermal/syndi
+	item = /obj/item/clothing/glasses/scanner/thermal/syndi
 	cost = 6
 
 /datum/uplink_item/device_tools/surveillance

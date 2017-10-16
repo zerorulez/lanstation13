@@ -17,7 +17,7 @@
 		new /obj/item/weapon/storage/belt/security/full(src)
 		new /obj/item/weapon/gun/energy/ionrifle(src)
 		new /obj/item/weapon/gun/energy/gun/nuclear(src)
-		new /obj/item/clothing/glasses/thermal(src)
+		new /obj/item/clothing/glasses/scanner/thermal(src)
 		new /obj/item/weapon/lighter/zippo(src)
 		new /obj/item/weapon/pinpointer(src)
 		return
@@ -41,7 +41,7 @@
 		new /obj/item/weapon/storage/belt/security/full(src)
 		new /obj/item/weapon/gun/energy/ionrifle(src)
 		new /obj/item/weapon/gun/energy/gun/nuclear(src)
-		new /obj/item/clothing/glasses/thermal(src)
+		new /obj/item/clothing/glasses/scanner/thermal(src)
 		return
 
 

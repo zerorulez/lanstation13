@@ -70,7 +70,7 @@
 
 /obj/item/clothing/glasses/scanner/proc/enable(var/mob/C)
 	on = TRUE
-	to_chat(C, "You turn \the [src] on.")
+	to_chat(C, "<span class = 'warning'>You turn \the [src] on.</span>")
 	if(iscarbon(loc))
 		if(istype(loc, /mob/living/carbon/monkey))
 			var/mob/living/carbon/monkey/M = C
@@ -83,7 +83,7 @@
 
 /obj/item/clothing/glasses/scanner/proc/disable(var/mob/C)
 	on = FALSE
-	to_chat(C, "You turn \the [src] off.")
+	to_chat(C, "<span class = 'warning'>You turn \the [src] off.</span>")
 	if(iscarbon(loc) && color_matrix)
 		if(istype(loc, /mob/living/carbon/monkey))
 			var/mob/living/carbon/monkey/M = C
@@ -125,7 +125,7 @@
 
 /obj/item/clothing/glasses/scanner/meson
 	name = "optical meson scanner"
-	desc = "Utilizado para olhar através de paredes. Também protege os olhos contra radiação."
+	desc = "Utilizado para observar através de paredes. Também protege os olhos contra radiação, principalmente quando emitida pela Supermatter."
 	icon_state = "meson"
 	origin_tech = Tc_MAGNETS + "=2;" + Tc_ENGINEERING + "=2"
 	vision_flags = SEE_TURFS
@@ -150,7 +150,7 @@
 
 /obj/item/clothing/glasses/scanner/material
 	name = "optical material scanner"
-	desc = "Permite ver o layout original da fiação e tubulação da estação."
+	desc = "Permite ver o layout original da fiação e tubulação da estação. Ótimo para quando tudo dá errado."
 	icon_state = "material"
 	origin_tech = Tc_MAGNETS + "=3;" + Tc_ENGINEERING + "=3"
 	action_button_name = "Toggle Material Scanner"
@@ -239,10 +239,10 @@
 
 /obj/item/clothing/glasses/scanner/mining_glasses
 	name = "optical ore scanner"
-	desc = "Permite detectar minérios através das paredes."
-	icon_state = "night"
+	desc = "Permite detectar minérios através das paredes por meio dos espectros eletromagnéticos emitidos por eles."
+	icon_state = "mining"
 	origin_tech = Tc_ENGINEERING + "=2"
-	action_button_name = "Toggle Ore Scanner"
+	action_button_name = "Toggle Optical Ore Scanner"
 	on = FALSE
 
 	var/delay = 3 SECONDS
@@ -265,29 +265,111 @@
 
 /obj/item/clothing/glasses/scanner/mining_glasses/process()
 	if(!on || !user || !user.client || loc != user)
-		disable()
-		return null
+		return
 
 	if(world.time > last_processed + delay)
 		last_processed = world.time
 
 		var/turf/OT = get_turf(user)
+		OT.mouse_opacity = 0
+
+		var/animation_time = delay / 2
 
 		for(var/turf/unsimulated/mineral/R in trange(7, OT))
 			if(!R.mineral || istype(R.mineral, /mineral/iron))
 				continue
 			spawn()
-				var/image/I = image('icons/turf/ores.dmi', loc= OT, icon_state = "rock_[R.mineral.name]", layer = UNDER_HUD_LAYER, dir = R.dir)
+				var/image/I = image('icons/turf/ores.dmi', loc = OT, icon_state = "rock_[R.mineral.name]", dir = R.dir)
 				I.plane = HUD_PLANE
+				I.layer = UNDER_HUD_LAYER
 				I.alpha = 0
 				I.pixel_x = (R.x - OT.x) * WORLD_ICON_SIZE
 				I.pixel_y = (R.y - OT.y) * WORLD_ICON_SIZE
-				I.mouse_opacity = 0
 
 				user.client.images += I
-				animate(I, alpha = 150, time = 15)
-				animate(alpha = 0, time = 15)
-				spawn(30)
+
+				animate(I, alpha = 150, time = animation_time)
+				animate(alpha = 0, time =  animation_time)
+
+				spawn(delay)
 					if(user)
 						user.client.images -= I
-		return TRUE
+						if(!OT.mouse_opacity)
+							OT.mouse_opacity = 1
+
+// Thermals
+
+/obj/item/clothing/glasses/scanner/thermal
+	name = "optical thermal scanner"
+	desc = "Thermals in the shape of glasses."
+	icon_state = "thermal"
+	item_state = "glasses"
+	origin_tech = Tc_MAGNETS + "=3"
+	vision_flags = SEE_MOBS
+	see_invisible = SEE_INVISIBLE_MINIMUM
+	eyeprot = -2 //prepare for your eyes to get shit on
+
+/obj/item/clothing/glasses/scanner/thermal/toggle()
+	return
+
+/obj/item/clothing/glasses/scanner/thermal/emp_act(severity)
+	if(istype(src.loc, /mob/living/carbon/human))
+		var/mob/living/carbon/human/M = src.loc
+		to_chat(M, "<span class='warning'>The Optical Thermal Scanner overloads and blinds you!</span>")
+		if(M.glasses == src)
+			M.eye_blind = 3
+			M.eye_blurry = 5
+			M.disabilities |= NEARSIGHTED
+			spawn(100)
+				M.disabilities &= ~NEARSIGHTED
+	..()
+
+/obj/item/clothing/glasses/scanner/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
+	name = "optical meson scanner"
+	desc = "Used for seeing walls, floors, and stuff through anything."
+	icon_state = "meson"
+	origin_tech = Tc_MAGNETS + "=3;" + Tc_SYNDICATE + "=4"
+	species_fit = list(VOX_SHAPED)
+
+/obj/item/clothing/glasses/scanner/thermal/monocle
+	name = "Thermonocle"
+	desc = "A monocle thermal."
+	icon_state = "thermoncle"
+	flags = 0 //doesn't protect eyes because it's a monocle, duh
+	min_harm_label = 3
+	harm_label_examine = list("<span class='info'>A tiny label is on the lens.</span>","<span class='warning'>A label covers the lens!</span>")
+
+/obj/item/clothing/glasses/scanner/thermal/monocle/harm_label_update()
+	if(harm_labeled < min_harm_label)
+		vision_flags |= SEE_MOBS
+		see_invisible |= SEE_INVISIBLE_MINIMUM
+		invisa_view = 2
+	else
+		vision_flags &= ~SEE_MOBS
+		see_invisible &= ~SEE_INVISIBLE_MINIMUM
+		invisa_view = 0
+
+/obj/item/clothing/glasses/scanner/thermal/eyepatch
+	name = "optical thermal eyepatch"
+	desc = "An eyepatch with built-in thermal optics."
+	icon_state = "eyepatch"
+	item_state = "eyepatch"
+	min_harm_label = 3
+	harm_label_examine = list("<span class='info'>A tiny label is on the lens.</span>","<span class='warning'>A label covers the lens!</span>")
+
+/obj/item/clothing/glasses/scanner/thermal/eyepatch/harm_label_update()
+	if(harm_labeled < min_harm_label)
+		vision_flags |= SEE_MOBS
+		see_invisible |= SEE_INVISIBLE_MINIMUM
+		invisa_view = 2
+	else
+		vision_flags &= ~SEE_MOBS
+		see_invisible &= ~SEE_INVISIBLE_MINIMUM
+		invisa_view = 0
+
+/obj/item/clothing/glasses/scanner/thermal/jensen
+	name = "optical thermal implants"
+	desc = "A set of implantable lenses designed to augment your vision."
+	icon_state = "thermalimplants"
+	item_state = "syringe_kit"
+	species_fit = list(VOX_SHAPED)

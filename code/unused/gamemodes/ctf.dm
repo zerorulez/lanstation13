@@ -42,7 +42,7 @@
 					M.wear_mask.layer = 20
 					M.gloves = new /obj/item/clothing/gloves/swat(M)
 					M.gloves.layer = 20
-					M.glasses = new /obj/item/clothing/glasses/thermal(M)
+					M.glasses = new /obj/item/clothing/glasses/scanner/thermal(M)
 					M.glasses.layer = 20
 					var/obj/item/device/radio/headset/H = new /obj/item/device/radio/headset(M)
 					H.set_frequency(1465)
@@ -82,7 +82,7 @@
 					M.wear_mask.layer = 20
 					M.gloves = new /obj/item/clothing/gloves/swat(M)
 					M.gloves.layer = 20
-					M.glasses = new /obj/item/clothing/glasses/thermal(M)
+					M.glasses = new /obj/item/clothing/glasses/scanner/thermal(M)
 					M.glasses.layer = 20
 					var/obj/item/device/radio/headset/H = new /obj/item/device/radio/headset(M)
 					H.set_frequency(1449)

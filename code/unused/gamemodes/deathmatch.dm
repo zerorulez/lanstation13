@@ -45,7 +45,7 @@
 					M.equip_to_slot_or_del(new /obj/item/clothing/suit/swat_suit/death_commando(M), slot_wear_suit)
 					M.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/death_commando(M), slot_wear_mask)
 					M.equip_to_slot_or_del(new /obj/item/clothing/gloves/swat(M), slot_gloves)
-					M.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal(M), slot_glasses)
+					M.equip_to_slot_or_del(new /obj/item/clothing/glasses/scanner/thermal(M), slot_glasses)
 					M.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/pulse_rifle(M), slot_l_hand)
 					M.equip_to_slot_or_del(new /obj/item/weapon/m_pill/cyanide(M), slot_l_store)
 					M.equip_to_slot_or_del(new /obj/item/weapon/flashbang(M), slot_r_store)
