@@ -101,16 +101,17 @@
 
 /obj/item/weapon/p_folded/plane
 	name = "paper airplane"
-	icon_state = "plane_east"
+	icon_state = "paper_plane"
 	attack_verb = list("stabs", "jabs")
 
 	desc = "Not terribly intimidating, but just might put someone's eye out."
 	throw_range = 12
 	throw_speed = 1
+
 /obj/item/weapon/p_folded/plane/throw_impact(var/atom/target, speed, mob/user)
 	..()
 	if(user) //runtimes not allowed
-		if(ishuman(target) && (user.zone_sel.selecting == "eyes" || prob(20)))
+		if(ishuman(target) && (user.zone_sel.selecting == "eyes" || prob(40)))
 			var/mob/living/carbon/human/H = target
 			if (H.check_body_part_coverage(EYES))
 				to_chat(H, "<span class='warning'>\The [src] flies right into your eyes! Luckily your eyewear protects you.</span>")
@@ -126,6 +127,8 @@
 					to_chat(H, "<span class='warning'>\The [src] flies right into your [pick("right","left")] eye!</span>")
 					H.eye_blurry = max(H.eye_blurry, rand(3,6))
 					H.eye_blind = max(H.eye_blind, src.nano)
+
+/*
 //at last, my block at a rest, bereft of all mortal doubts, I have been enlightened, touched by the sage wisdom, my undying gratitude goes to Comic in this emotional moment
 /obj/item/weapon/p_folded/plane/throw_at(var/atom/A, throw_range, throw_speed)
 	if (A.x > src.x)
@@ -133,6 +136,7 @@
 	else
 		src.icon_state = "plane_west"
 	return ..()
+*/
 
 /obj/item/weapon/p_folded/ball
 	name = "ball of paper"
