@@ -14,14 +14,17 @@
 
 /atom/movable/attackby(obj/item/W, mob/user)
 	if(W && !(W.flags&NO_ATTACK_MSG))
-		user.do_attack_animation(src, W)
+		if(W.force)	
+			user.do_attack_animation(src, W)
+		playsound(loc, 'sound/weapons/tap.ogg', 50, 1, -1)
 		visible_message("<span class='danger'>[src] has been hit by [user] with [W].</span>")
 
 /mob/living/attackby(obj/item/I, mob/user, var/no_delay = 0, var/originator = null)
 	if(!no_delay)
 		user.delayNextAttack(10)
 	if(istype(I) && ismob(user))
-		user.do_attack_animation(src, I)
+		if(I.force)	
+			user.do_attack_animation(src, I)
 		if(originator)
 			I.attack(src, user, null, originator)
 		else
