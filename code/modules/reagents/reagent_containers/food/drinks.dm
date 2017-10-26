@@ -923,7 +923,7 @@
 	reagents.add_reagent(GIN, 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey
-	name = "Uncle Git's Special Reserve"
+	name = "Uncle Git's Special Reserve Whiskey"
 	desc = "A premium single-malt whiskey, gently matured inside the tunnels of a nuclear shelter. TUNNEL WHISKEY RULES."
 	icon_state = "whiskeybottle"
 	vending_cat = "spirits"
@@ -934,7 +934,7 @@
 	reagents.add_reagent(WHISKEY, 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/vodka
-	name = "Tunguska Triple Distilled"
+	name = "Tunguska Triple Distilled Vodka"
 	desc = "Aah, vodka. Prime choice of drink AND fuel by Russians worldwide."
 	icon_state = "vodkabottle"
 	vending_cat = "spirits"
@@ -1000,7 +1000,7 @@
 	reagents.add_reagent(VERMOUTH, 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua
-	name = "Robert Robust's Coffee Liqueur"
+	name = "Robert Robust's Coffee Liqueur Kahlua"
 	desc = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936, HONK"
 	icon_state = "kahluabottle"
 	vending_cat = "fermented"
