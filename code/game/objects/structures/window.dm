@@ -31,6 +31,8 @@
 	var/fire_temp_threshold = 800
 	var/fire_volume_mod = 100
 
+	var/can_construct = TRUE
+
 /obj/structure/window/New(loc)
 
 	..(loc)
@@ -278,7 +280,7 @@
 
 	//Start construction and deconstruction, absolute priority over the other object interactions to avoid hitting the window
 
-	if(reinforced) //Steps for all reinforced window types
+	if(reinforced && can_construct) //Steps for all reinforced window types
 
 		switch(d_state)
 
@@ -362,7 +364,7 @@
 						to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 						return
 
-	else if(!reinforced) //Normal window steps
+	else if(!reinforced && can_construct) //Normal window steps
 
 		if(isscrewdriver(W))
 			playsound(loc, 'sound/items/Screwdriver.ogg', 75, 1)
