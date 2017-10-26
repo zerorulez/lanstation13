@@ -149,20 +149,26 @@ emp_act
 
 /mob/living/carbon/human/proc/attacked_by(var/obj/item/I, var/mob/living/user, var/def_zone, var/originator = null)
 	. = 1
+
 	if(!I || !user)
 		return 0
+
 	var/target_zone = null
+
 	if(originator)
 		if(ismob(originator))
 			var/mob/M = originator
 			target_zone = get_zone_with_miss_chance(M.zone_sel.selecting, src)
 	else
 		target_zone = get_zone_with_miss_chance(user.zone_sel.selecting, src)
+
 	if(user == src) // Attacking yourself can't miss
 		target_zone = user.zone_sel.selecting
+
 	if(!target_zone && !src.stat)
 		visible_message("<span class='danger'>[user] misses [src] with \the [I]!</span>")
 		return 0
+
 	if(istype(I, /obj/item/weapon/kitchen/utensil/knife/large/butch/meatcleaver) && src.stat == DEAD && user.a_intent == I_HURT)
 		var/obj/item/weapon/reagent_containers/food/snacks/meat/human/newmeat = new /obj/item/weapon/reagent_containers/food/snacks/meat/human(get_turf(src.loc))
 		newmeat.name = src.real_name + newmeat.name
@@ -183,15 +189,17 @@ emp_act
 				LAssailant = user
 			qdel(src)
 			return
+
 	var/datum/organ/external/affecting = get_organ(target_zone)
 	if (!affecting)
 		return
 	if(affecting.status & ORGAN_DESTROYED)
 		if(originator)
-			to_chat(originator, "What [affecting.display_name]?")
+			to_chat(originator, "\The [src.name] has no [affecting.display_name]!")
 		else
-			to_chat(user, "What [affecting.display_name]?")
+			to_chat(user, "\The [src.name] has no [affecting.display_name]!")
 		return
+
 	var/hit_area = affecting.display_name
 
 	if((user != src) && check_shields(I.force, "the [I.name]"))
@@ -224,21 +232,13 @@ emp_act
 		return 1
 
 	//Knocking teeth out!
-	var/knock_teeth = 0
-	if(originator)
-		if(ismob(originator))
-			var/mob/M = originator
-			if(M.zone_sel.selecting == "mouth" && target_zone == LIMB_HEAD)
-				knock_teeth = 1
-		else if(user.zone_sel.selecting == "mouth" && target_zone == LIMB_HEAD)
-			knock_teeth = 1
-	else if(user.zone_sel.selecting == "mouth" && target_zone == LIMB_HEAD)
-		knock_teeth = 1
+	var/knock_teeth = (target_zone == LIMB_HEAD)
+
 	if(knock_teeth) //You can't actually hit people in the mouth - this checks if the user IS targetting mouth, and if he didn't miss!
-		if((!armor) && (I.force >= 8 || I.w_class >= W_CLASS_SMALL) && (I.is_sharp() < 1))//Minimum force=8, minimum w_class=2. Sharp items can't knock out teeth. Armor prevents this completely!
+		if((!armor) && (I.force >= 8 || I.w_class >= W_CLASS_SMALL) && (I.damtype != BURN) && (I.is_sharp() < 1))//Minimum force=8, minimum w_class=2. Sharp items can't knock out teeth. Armor prevents this completely!
 			var/datum/butchering_product/teeth/T = locate(/datum/butchering_product/teeth) in src.butchering_drops
 			if(T && T.amount > 0) //If the guy has some teeth
-				var/chance = min(I.force * I.w_class, 40) //an item with w_class = W_CLASS_MEDIUM and force of 10 has a 30% chance of knocking a few teeth out. Chance is capped at 40%
+				var/chance = min(I.force * I.w_class, 30) //an item with w_class = W_CLASS_MEDIUM and force of 10 has a 30% chance of knocking a few teeth out. Chance is capped at 30%
 				if(prob(chance))
 					knock_out_teeth(user)
 
