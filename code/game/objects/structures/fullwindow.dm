@@ -4,9 +4,7 @@
 #define WINDOWSECURE 3
 
 /obj/structure/window/full
-
 	name = "window"
-	var/base_state = "window" //Base icon for update_icon
 	icon_state = "window0" //Specifically for the map
 	sheetamount = 2
 	mouse_opacity = 2 // Complete opacity //What in the name of everything is this variable ?
@@ -14,35 +12,30 @@
 
 	penetration_dampening = 1
 
-
 	cracked_base = "fcrack"
 
-/obj/structure/window/full/New(loc)
+	var/base_state = "window" //Base icon for update_icon
 
+/obj/structure/window/full/New(loc)
 	..(loc)
 	flags |= ON_BORDER
 
 /obj/structure/window/full/Uncross(atom/movable/O as mob|obj, target as turf)
-
 	return 1
 
 /obj/structure/window/full/Cross(atom/movable/mover, turf/target, height = 1.5, air_group = 0)
-
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return 1
 	return 0
 
 /obj/structure/window/full/can_be_reached(mob/user)
-
 	return 1 //That about it Captain
 
 /obj/structure/window/full/is_fulltile()
-
 	return 1
 
 //Merges adjacent full-tile windows into one (blatant ripoff from game/smoothwall.dm)
 /obj/structure/window/full/update_icon()
-
 	//A little cludge here, since I don't know how it will work with slim windows. Most likely VERY wrong.
 	//This way it will only update full-tile ones
 	//This spawn is here so windows get properly updated when one gets deleted.
@@ -70,7 +63,6 @@
 	reinforced = 1
 
 /obj/structure/window/full/plasma
-
 	name = "plasma window"
 	desc = "A window made out of a plasma-silicate alloy. It looks insanely tough to break and burn through."
 	icon_state = "plasmawindow0"
@@ -106,7 +98,6 @@
 	sheettype = /obj/item/stack/sheet/glass/rglass //A glass type for this window doesn't seem to exist, so here's to you
 
 /obj/structure/window/full/reinforced/tinted/frosted
-
 	name = "frosted window"
 	desc = "A window with a rod matrice. Its surface is completely tinted, making it opaque, and it's frosty. Why not an ice wall ?"
 	icon_state = "fwindow0"
@@ -114,7 +105,16 @@
 	health = 30
 	sheettype = /obj/item/stack/sheet/glass/rglass //Ditto above
 
+/obj/structure/window/full/reinforced/shuttle
+	name = "shuttle window"
+	icon = 'icons/obj/podwindows.dmi'
+	icon_state = "0"
+	base_state = ""
+
+	can_construct = FALSE
+
 #undef WINDOWLOOSE
 #undef WINDOWLOOSEFRAME
 #undef WINDOWUNSECUREFRAME
 #undef WINDOWSECURE
+
