@@ -317,10 +317,74 @@
 /obj/structure/flora/pottedplant/attack_paw(mob/user)
 	return attack_hand(user)
 
-// /vg/
 /obj/structure/flora/pottedplant/random/New()
 	..()
 	icon_state = "plant-[rand(1,26)]"
+
+/obj/structure/flora/pottedplant/cyberplant
+	name = "holographic plant"
+	desc = "Add to your Space a bit of the comfort from old Earth, by buying this blue buddy. A nuclear battery and a rugged case guarantee that your flower will survive journey to another galaxy, and variety of plant types won't let you to get bored along the way!"
+	icon = 'icons/obj/cyberplants.dmi'
+	icon_state = "holopot"
+	light_color = "#3C94C5"
+	light_power = 1.5
+	light_range = 1.5
+	var/autostripes = TRUE
+	var/emaged = FALSE
+	var/interference = FALSE
+	var/icon/plant = null
+	var/global/list/possible_plants = list(
+		"plant-1",
+		"plant-10",
+		"plant-09",
+		"plant-15",
+		"plant-13",
+		"plant-xmas",
+	)
+
+/obj/structure/flora/pottedplant/cyberplant/New()
+	..()
+	icon_state = "holopot"
+	plant = prepare_icon(plant)
+	overlays += plant
+	set_light(light_range)
+
+/obj/structure/flora/pottedplant/cyberplant/proc/prepare_icon(var/state)
+	if(!state)
+		state = pick(possible_plants)
+	if(autostripes)
+		var/plant_icon = icon(icon, state)
+		return getHologramIcon(plant_icon, 0)
+	else
+		return image(icon, state)
+
+/obj/structure/flora/pottedplant/cyberplant/emag_act()
+	if(emaged)
+		return
+	name = "holographic skeleton"
+	desc = "A holographic skeleton and a malfunctioning holographic plant. It sends shivers down your spine."
+	emaged = TRUE
+	overlays -= plant
+	plant = prepare_icon("emaged")
+	overlays += plant
+
+/obj/structure/flora/pottedplant/cyberplant/Crossed(var/mob/living/L)
+	if(!interference && istype(L))
+		interference = TRUE
+		spawn(0)
+			overlays.Cut()
+			set_light(FALSE)
+			sleep(3)
+			overlays += plant
+			set_light(initial(light_range))
+			sleep(3)
+			overlays -= plant
+			set_light(FALSE)
+			sleep(3)
+			overlays += plant
+			set_light(initial(light_range))
+			interference = FALSE
+
 
 /obj/structure/flora/pottedplant/claypot
 	name = "clay pot"
