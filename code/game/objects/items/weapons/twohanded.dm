@@ -116,12 +116,16 @@
 	origin_tech = Tc_MAGNETS + "=3;" + Tc_SYNDICATE + "=4"
 	attack_verb = list("attacks", "slashes", "stabs", "slices", "tears", "rips", "dices", "cuts")
 
+	var/state_string = "dualsaber"
+
 /obj/item/weapon/dualsaber/update_wield(mob/user)
 	..()
-	icon_state = "dualsaber[wielded ? 1 : 0]"
-	item_state = "dualsaber[wielded ? 1 : 0]"
+	icon_state = "[state_string][wielded ? 1 : 0]"
+	item_state = "[state_string][wielded ? 1 : 0]"
 	force = wielded ? 30 : 3
-	w_class = wielded ? 5 : 2
+	w_class = wielded ? W_CLASS_LARGE : W_CLASS_SMALL
+	hitsound = wielded ? 'sound/weapons/blade1.ogg' : FALSE
+
 	if(user)
 		user.update_inv_hands()
 	playsound(get_turf(src), wielded ? 'sound/weapons/saberon.ogg' : 'sound/weapons/saberoff.ogg', 50, 1)
@@ -129,8 +133,11 @@
 
 /obj/item/weapon/dualsaber/attack(target as mob, mob/living/user as mob)
 	..()
-	if(clumsy_check(user) && (wielded) &&prob(40))
+	if(clumsy_check(user) && (wielded) && prob(40))
 		to_chat(user, "<span class='warning'>You twirl around a bit before losing your balance and impaling yourself on the [src].</span>")
+		spawn for(var/i=1, i<=8, i++)
+			user.dir = turn(user.dir, 45)
+			sleep(1)
 		user.take_organ_damage(20,25)
 		return
 	if((wielded) && prob(50))
@@ -139,10 +146,7 @@
 			sleep(1)
 
 /obj/item/weapon/dualsaber/IsShield()
-	if(wielded)
-		return 1
-	else
-		return 0
+	return wielded
 /*
  * Banana Bunch
  */
@@ -160,16 +164,7 @@
 	origin_tech = Tc_MAGNETS + "=3;" + Tc_SYNDICATE + "=4"
 	attack_verb = list("attacks", "slashes", "stabs", "slices", "tears", "rips", "dices", "cuts")
 
-/obj/item/weapon/dualsaber/bananabunch/update_wield(mob/user)
-	..()
-	icon_state = "bananabunch[wielded ? 1 : 0]"
-	item_state = "bananabunch[wielded ? 1 : 0]"
-	force = wielded ? 30 : 3
-	w_class = wielded ? 5 : 2
-	if(user)
-		user.update_inv_hands()
-	playsound(get_turf(src), wielded ? 'sound/weapons/saberon.ogg' : 'sound/weapons/saberoff.ogg', 50, 1)
-	return
+	state_string = "bananabunch"
 
 /obj/item/weapon/dualsaber/bananabunch/attack(target as mob, mob/living/user as mob)
 	if(user.mind && !(user.mind.assigned_role == "Clown"))
@@ -181,12 +176,6 @@
 		spawn for(var/i=1, i<=8, i++)
 			user.dir = turn(user.dir, 45)
 			sleep(1)
-
-/obj/item/weapon/dualsaber/bananabunch/IsShield()
-	if(wielded)
-		return 1
-	else
-		return 0
 
 /obj/item/weapon/dualsaber/bananabunch/Crossed(AM as mob|obj)
 	if (istype(AM, /mob/living/carbon))
