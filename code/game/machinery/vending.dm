@@ -1022,6 +1022,7 @@ var/global/num_vending_terminals = 1
 	icon_state = "boozeomat"        //////////////18 drink entities below, plus the glasses, in case someone wants to edit the number of bottles
 	icon_deny = "boozeomat-deny"
 	products = list(
+		/obj/item/weapon/reagent_containers/food/condiment/enzyme = 1,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/gin = 5,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey = 5,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/tequila = 5,
