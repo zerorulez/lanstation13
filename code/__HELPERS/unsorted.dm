@@ -1606,6 +1606,11 @@ Game Mode config tags:
 /proc/stack_trace(message = "Getting a stack trace.")
 	CRASH(message)
 
+/proc/area_in_map(var/area/A)
+	for(var/turf/T in A.area_turfs)
+		return TRUE
+	return FALSE
+
 /proc/get_exact_dist(atom/A, atom/B)	//returns the coordinate distance between the coordinates of the turfs of A and B
 	var/turf/T1 = A
 	var/turf/T2 = B

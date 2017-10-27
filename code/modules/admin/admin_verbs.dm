@@ -187,7 +187,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/cmd_admin_find_bad_blood_tracks,
 	/client/proc/debugNatureMapGenerator,
 	/client/proc/callatomproc,
-	/client/proc/view_runtimes
+	/client/proc/view_runtimes,
+	/client/proc/emergency_shuttle_panel,
 	)
 var/list/admin_verbs_possess = list(
 	/proc/possess,
