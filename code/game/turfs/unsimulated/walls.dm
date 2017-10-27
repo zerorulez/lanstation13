@@ -40,7 +40,7 @@ turf/unsimulated/wall/splashscreen
 	name = "Space Station 13"
 	icon = null
 	icon_state = null
-	plane = EFFECTS_PLANE
+	plane = ABOVE_LIGHTING_PLANE
 	canSmoothWith = null
 
 	New()
