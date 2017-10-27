@@ -474,6 +474,9 @@
 	slowdown = 10
 	var/bearpelt = 0
 
+	extinguishingProb = 70
+
+
 /obj/item/clothing/suit/spaceblanket/attackby(obj/item/W,mob/user)
 	..()
 	if(istype(W,/obj/item/clothing/head/bearpelt) && !bearpelt)
