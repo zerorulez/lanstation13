@@ -115,6 +115,9 @@
 
 	lock_atom(M, lock_type)
 
+	if(M.pulledby)
+		M.pulledby.start_pulling(src)
+
 /*
  * Roller beds
  */
