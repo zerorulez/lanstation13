@@ -2,6 +2,7 @@
 	desc = "A cheap Martian knock-off of a Smith & Wesson Model 10. Uses .38-Special rounds."
 	name = "revolver"
 	icon_state = "detective"
+	item_state = "gun"
 	max_shells = 6
 	caliber = list("38" = 1, "357" = 1)
 	origin_tech = Tc_COMBAT + "=2;" + Tc_MATERIALS + "=2"
@@ -98,6 +99,7 @@
 /obj/item/weapon/gun/projectile/russian
 	name = "russian revolver"
 	desc = "A Russian made revolver. Uses .357 ammo. It has six slots for ammo."
+	item_state = "blackgun"
 	max_shells = 6
 	origin_tech = Tc_COMBAT + "=2;" + Tc_MATERIALS + "=2"
 	fire_delay = 1

@@ -1518,6 +1518,8 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 				if("open_load_dialog")
 					if(!IsGuestKey(user.key))
 						open_load_dialog(user)
+						// DO NOT update window as it'd steal focus.
+						return
 
 				if("close_load_dialog")
 					close_load_dialog(user)
@@ -1676,8 +1678,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 		message_admins("Error #: [q.Error()] - [q.ErrorMsg()]")
 		warning("Error #:[q.Error()] - [q.ErrorMsg()]")
 		return 0
-	var/dat = {"<body><tt><center>"}
-	dat += "<b>Select a character slot to load</b><hr>"
+	var/dat = "<center><b>Select a character slot to load</b><hr>"
 	var/counter = 1
 	while(counter <= MAX_SAVE_SLOTS)
 		if(counter==default_slot)
@@ -1689,10 +1690,11 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 				dat += "<a href='?_src_=prefs;preference=changeslot;num=[counter];'>[name_list[counter]]</a><br>"
 		counter++
 
-	dat += {"<hr>
-		<a href='byond://?src=\ref[user];preference=close_load_dialog'>Close</a><br>
-		</center></tt>"}
-	user << browse(dat, "window=saves;size=300x390")
+	dat += "</center>"
+
+	var/datum/browser/browser = new(user, "saves", null, 300, 340)
+	browser.set_content(dat)
+	browser.open(use_onclose=FALSE)
 
 /datum/preferences/proc/close_load_dialog(mob/user)
 	user << browse(null, "window=saves")

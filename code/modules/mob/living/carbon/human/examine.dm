@@ -207,7 +207,7 @@
 			msg += "<span class='warning'>[t_He] [t_is] twitching ever so slightly.</span>\n"
 
 	if(getOxyLoss() > 30 && !skipface)
-		msg += "<span class='info'>[t_He] [t_has] a bluish discoloration to their skin.</span>\n"
+		msg += "<span class='warning'>[t_He] [t_has] a bluish discoloration to their skin.</span>\n"
 	if(getToxLoss() > 30 && !skipface)
 		msg += "<span class='warning'>[t_He] looks sickly.</span>\n"
 	//splints
@@ -217,7 +217,7 @@
 			msg += "<span class='warning'>[t_He] [t_has] a splint on [t_his] [o.display_name]!</span>\n"
 
 	if(suiciding)
-		msg += "<span class='warning'>[t_He] appears to have committed suicide... there is no hope of recovery.</span>\n"
+		msg += "<span class='deadsay'>[t_He] appears to have committed suicide... there is no hope of recovery.</span>\n"
 
 	if(M_DWARF in mutations)
 		msg += "[t_He] [t_is] a short, sturdy creature fond of drink and industry.\n"

@@ -25,6 +25,10 @@
 	to_chat(viewers(user), "<span class='danger'>[user] is licking the electrodes of the [src.name]! It looks like \he's trying to commit suicide.</span>")
 	return (FIRELOSS)
 
+/obj/item/weapon/cell/empty/New()
+	..()
+	charge = 0
+
 /obj/item/weapon/cell/crap
 	name = "\improper Nanotrasen brand rechargeable AA battery"
 	desc = "You can't top the plasma top." //TOTALLY TRADEMARK INFRINGEMENT

@@ -681,7 +681,7 @@ Thanks.
 						if (locate(/obj/item/weapon/grab, M.grabbed_by))
 							if (prob(75))
 								var/obj/item/weapon/grab/G = pick(M.grabbed_by)
-								if (istype(G, /obj/item/weapon/grab))
+								if (istype(G, /obj/item/weapon/grab) && src != G.assailant)
 									visible_message("<span class='danger'>[src] has pulled [G.affecting] from [G.assailant]'s grip.</span>",
 										drugged_message="<span class='danger'>[src] has pulled [G.affecting] from [G.assailant]'s hug.</span>")
 									qdel(G)
@@ -921,6 +921,8 @@ Thanks.
 						else
 							C.simple_message("<span class='warning'>Your unbuckling attempt was interrupted.</span>", \
 								"<span class='warning'>Your attempt to regain control of your legs was interrupted. Damn it!</span>")
+				else
+					B.manual_unbuckle(C)
 			else
 				B.manual_unbuckle(L)
 		//release from kudzu

@@ -1,164 +1,130 @@
 #define SAFETY_COOLDOWN 100
 
-/obj/machinery/recycler
-	name = "crusher"
-	desc = "A large crushing machine which is used to recycle small items ineffeciently; there are lights on the side of it."
+/obj/machinery/mineral/processing_unit/recycle/recycler
+	name = "recycler"
+	desc = "A large crushing machine which is used to recycle objects. There are lights on the side of it."
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "grinder-o0"
 	plane = ABOVE_HUMAN_PLANE
-	anchored = 1
-	density = 1
-	var/safety_mode = 0 // Temporality stops the machine if it detects a mob
-	var/grinding = 0
-	var/icon_name = "grinder-o"
-	var/blood = 0
-	var/eat_dir = WEST
+	anchored = TRUE
+	density = TRUE
+	in_dir = WEST // Input direction of the to be recycled atoms, can be changed on the map
+	out_dir = EAST // Output direction
 
-/obj/machinery/recycler/New()
-	// On us
+	var/safety_mode = FALSE // Used for temporarily stopping the machine if it detects a mob
+	var/icon_name = "grinder-o" // Used in update_icon()
+	var/blood = FALSE // Used in update_icon() for a bloody icon when it grinds a mob
+
+/obj/machinery/mineral/processing_unit/recycle/recycler/New()
 	..()
 	update_icon()
 
-/obj/machinery/recycler/examine(var/mob/user)
+// Warnings about the machine.
+// Ought to be visual changes in the machine's sprite as well
+/obj/machinery/mineral/processing_unit/recycle/recycler/examine(var/mob/user)
 	..()
 	to_chat(user, "The power light is [(stat & NOPOWER) ? "off" : "on"].")
 	to_chat(user, "The safety-mode light is [safety_mode ? "on" : "off"].")
 	to_chat(user, "The safety-sensors status light is [emagged ? "off" : "on"].")
 
-/obj/machinery/recycler/power_change()
-	..()
+
+// Proc used when the machine is hacked or emagged, allowing to grind mobs
+/obj/machinery/mineral/processing_unit/recycle/recycler/proc/toggle_safety_protocols(var/hacked = FALSE, var/mob/M)
+	emagged = hacked
 	update_icon()
 
+	if(M)
+		to_chat(M, "<span class='notice'>You [emagged ? "disable": "enable"] \the [src] safety protocols.</span>")
 
-/obj/machinery/recycler/attackby(var/obj/item/I, var/mob/user)
+	playsound(loc, "sparks", 75, 1, -1)
+	var/datum/effect/effect/system/spark_spread/S = new /datum/effect/effect/system/spark_spread
+	S.set_up(3, 1, loc)
+	S.start()
+
+/obj/machinery/mineral/processing_unit/recycle/recycler/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/weapon/card/emag) && !emagged)
-		emagged = 1
-		if(safety_mode)
-			safety_mode = 0
-			update_icon()
-		playsound(src.loc, "sparks", 75, 1, -1)
-	else if(istype(I, /obj/item/weapon/screwdriver) && emagged)
-		emagged = 0
-		update_icon()
-		playsound(src.loc, "sparks", 75, 1, -1)
-		to_chat(user, "<span class='notice'>You reset the crusher to its default factory settings.</span>")
-	else
-		..()
+		toggle_safety_protocols(hacked = TRUE, user)
 		return
-	add_fingerprint(user)
-
-/obj/machinery/recycler/update_icon()
+	else if(istype(I, /obj/item/weapon/screwdriver) && emagged)
+		playsound(get_turf(user), 'sound/items/Screwdriver.ogg', 50, 1)
+		toggle_safety_protocols(hacked = FALSE, user)
+		return
 	..()
-	var/is_powered = !(stat & (BROKEN|NOPOWER))
+
+/obj/machinery/mineral/processing_unit/recycle/recycler/update_icon()
+	var/is_powered = (!(stat & (BROKEN|NOPOWER)) && on)
+
 	if(safety_mode)
-		is_powered = 0
-	icon_state = icon_name + "[is_powered]" + "[(blood ? "bld" : "")]" // add the blood tag at the end
+		is_powered = FALSE
 
-// This is purely for admin possession !FUN!.
-/obj/machinery/recycler/to_bump(var/atom/movable/AM)
-	..()
-	if(AM)
-		to_bumped(AM)
+	icon_state = icon_name + "[is_powered]" + "[(blood ? "bld" : "")]" // Add the blood tag at the end
 
-
-/obj/machinery/recycler/Cross(var/atom/movable/AM)
+/obj/machinery/mineral/processing_unit/recycle/recycler/Cross(var/atom/movable/AM)
 	if(!istype(AM))
 		return 0
 
-	if(isturf(AM)) // shouldn't happen
-		return 0
-
-	if(stat & (BROKEN|NOPOWER))
+	if(stat & (BROKEN|NOPOWER) || !on)
 		return 0
 
 	if(safety_mode)
 		return 0
-	// If we're not already grinding something.
-	if(!grinding)
-		grinding = 1
-		spawn(1)
-			grinding = 0
-	else
+
+	if(isliving(AM))
+		emagged ? eat(AM) : stop(AM) // Will only eat mobs when emagged
 		return 0
 
-	var/move_dir = get_dir(loc, AM.loc)
-	if(move_dir == eat_dir)
-		if(isliving(AM))
-			if(emagged)
-				eat(AM)
-			else
-				stop(AM)
-		else if(istype(AM, /obj/item))
-			_recycle(AM)
-		else // Can't recycle
-			playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
-			AM.loc = src.loc
-
-/obj/machinery/recycler/proc/_recycle(var/obj/item/I, var/sound = 1)
-	I.forceMove(loc)
-
-	if(!istype(I, /obj/item/weapon/disk/nuclear))
-		qdel(I)
-		if(prob(25))
-			new /obj/item/stack/sheet/metal(loc)
-		if(prob(20))
-			new /obj/item/stack/sheet/glass/glass(loc)
-		if(prob(5))
-			new /obj/item/stack/sheet/plasteel(loc)
-		if(prob(5))
-			new /obj/item/stack/sheet/glass/rglass(loc)
-		if(sound)
-			playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
-
-
-/obj/machinery/recycler/proc/stop(var/mob/living/L)
-	playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
-	safety_mode = 1
-	update_icon()
-	L.forceMove(loc)
-
-	spawn(SAFETY_COOLDOWN)
-		playsound(src.loc, 'sound/machines/ping.ogg', 50, 0)
-		safety_mode = 0
-		update_icon()
-
-/obj/machinery/recycler/proc/eat(var/mob/living/L)
-
-	L.forceMove(loc)
-
-	if(issilicon(L))
+	if(istype(AM, /obj/item)) // Ignores structures and machinery
 		playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
-	else
-		playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
+		AM.recycle(ore)
+		qdel(AM)
 
-	var/gib = 1
-	// By default, the emagged recycler will gib all non-carbons. (human simple animal mobs don't count)
-	if(iscarbon(L))
-		gib = 0
-		if(L.stat == CONSCIOUS)
-			L.audible_scream()
-		add_blood(L)
+	return 0
 
-	if(!blood && !issilicon(L))
-		blood = 1
-		update_icon()
+// Overrides parent's proc since it's function is handled by Cross() with better performance
+/obj/machinery/mineral/processing_unit/recycle/recycler/grab_ores()
+	return
 
-	// Remove and recycle the equipped items.
-	for(var/obj/item/I in L.get_equipped_items())
-		L.drop_from_inventory(I)
-		_recycle(I, 0)
+/obj/machinery/mineral/processing_unit/recycle/recycler/proc/stop(var/mob/living/L)
+	playsound(loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
+	safety_mode = TRUE
+	update_icon()
 
-	// Instantly lie down, also go unconscious from the pain, before you die.
+	sleep(SAFETY_COOLDOWN)
+
+	playsound(loc, 'sound/machines/ping.ogg', 50, 0)
+	safety_mode = FALSE
+	update_icon()
+
+/obj/machinery/mineral/processing_unit/recycle/recycler/proc/eat(var/mob/living/L)
+	// We move the mob to our location so it can get out on the other side
+	L.forceMove(loc)
+
+	// Instantly lie down and also go unconscious from the pain before you die
 	L.Paralyse(5)
 
-	// For admin fun, var edit emagged to 2.
+	var/issilicon = issilicon(L) // Using the proc only once
+	var/sound = issilicon ? 'sound/items/Welder.ogg' : 'sound/effects/splat.ogg'
+	playsound(loc, sound, 50, 1)
+
+	var/gib = TRUE	// By default, the emagged recycler will gib all non-carbons. (human simple animal mobs don't count)
+
+	if(iscarbon(L))
+		gib = FALSE
+		L.audible_scream()
+		add_blood(L)
+
+	if(!blood && !issilicon)
+		blood = TRUE
+		update_icon()
+
+	// Drops all items from the mob
+	for(var/obj/item/I in L.get_equipped_items())
+		L.drop_from_inventory(I)
+
+	// Var edit emagged to 2 for admin fun!
 	if(gib || emagged == 2)
 		L.gib()
-	else if(emagged == 1)
-		L.adjustBruteLoss(1000)
+	else if(emagged)
+		L.adjustBruteLoss(300) // Certain death and has a small chance of beheading humans
 
 #undef SAFETY_COOLDOWN
-
-/obj/item/weapon/paper/recycler
-	name = "paper - 'instruções'"
-	info = "<h2>Novo Zelador</h2> O seu trabalho é coletar o lixo da estação encontrado nas lixeiras e o reciclar no reciclador na manutenção ao lado de sua sala. Os tripulantes colocarão o lixo nas lixeiras e você terá de coletar.<br><br>Use a máquina de reciclagem na manutenção a direita de sua sala para conseguir minérios e delivere esses pra cargo ou pra engenharia quando tiver bastante. Você é a nossa última esperança para uma estação limpa! Contamos com você!"

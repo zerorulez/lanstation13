@@ -13,11 +13,11 @@ var/global/list/all_money_accounts = list()
 
 /proc/create_station_account()
 	if(!station_account)
-		next_account_number = rand(11111, 99999)
+		next_account_number = rand(111, 999)
 		station_account = new()
 		station_account.owner_name = "[station_name()] Station Account"
-		station_account.account_number = rand(11111, 99999)
-		station_account.remote_access_pin = rand(1111, 9999)
+		station_account.account_number = rand(111, 999)
+		station_account.remote_access_pin = rand(11, 99)
 		station_account.money = DEPARTMENT_START_FUNDS
 		station_account.wage_gain = DEPARTMENT_START_WAGE
 
@@ -35,12 +35,12 @@ var/global/list/all_money_accounts = list()
 		all_money_accounts.Add(station_account)
 
 /proc/create_department_account(department, var/recieves_wage = 0)
-	next_account_number = rand(111111, 999999)
+	next_account_number = rand(111, 999)
 
 	var/datum/money_account/department_account = new()
 	department_account.owner_name = "[department] Account"
-	department_account.account_number = rand(11111, 99999)
-	department_account.remote_access_pin = rand(1111, 9999)
+	department_account.account_number = rand(111, 999)
+	department_account.remote_access_pin = rand(11, 99)
 	department_account.money = DEPARTMENT_START_FUNDS
 	if(recieves_wage == 1)
 		department_account.wage_gain = DEPARTMENT_START_WAGE
@@ -69,7 +69,7 @@ var/global/list/all_money_accounts = list()
 	//create a new account
 	var/datum/money_account/M = new()
 	M.owner_name = new_owner_name
-	M.remote_access_pin = rand(1111, 9999)
+	M.remote_access_pin = rand(11, 99)
 	M.money = starting_funds
 	M.wage_gain = wage_payout
 
@@ -85,7 +85,7 @@ var/global/list/all_money_accounts = list()
 		T.time = "[rand(0,24)]:[rand(11,59)]"														//prompting everyone to get a new account one day prior.
 		T.source_terminal = "NTGalaxyNet Terminal #[multinum_display(rand(111,1111),4)]"								//The point being to partly to justify the transaction history being empty at the beginning of the round.
 
-		M.account_number = rand(11111, 99999)
+		M.account_number = rand(111, 999)
 	else
 		T.date = current_date_string
 		T.time = worldtime2text()

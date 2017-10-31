@@ -95,19 +95,18 @@ What is the naming convention for planes or layers?
 	#define HOLOMAP_LAYER				1
 	#define RUNE_LAYER					2
 	#define DECAL_LAYER					3
-	#define TURF_FIRE_LAYER				4
-	#define ABOVE_TILE_LAYER			5
-	#define UNARY_PIPE_LAYER			6
-	#define TRINARY_PIPE_LAYER			7
-	#define BINARY_PIPE_LAYER			8
-	#define EXPOSED_PIPE_LAYER			9
-	#define EXPOSED_UNARY_PIPE_LAYER	10
-	#define EXPOSED_TRINARY_PIPE_LAYER	11
-	#define EXPOSED_BINARY_PIPE_LAYER	12
-	#define SNOW_LAYER					13
-	#define MOUSETRAP_LAYER 			14
-	#define FIREAXE_LOCKER_LAYER		15
-	#define BLOOD_LAYER					16
+	#define ABOVE_TILE_LAYER			4
+	#define UNARY_PIPE_LAYER			5
+	#define TRINARY_PIPE_LAYER			6
+	#define BINARY_PIPE_LAYER			7
+	#define EXPOSED_PIPE_LAYER			8
+	#define EXPOSED_UNARY_PIPE_LAYER	9
+	#define EXPOSED_TRINARY_PIPE_LAYER	10
+	#define EXPOSED_BINARY_PIPE_LAYER	11
+	#define SNOW_LAYER					12
+	#define MOUSETRAP_LAYER 			13
+	#define FIREAXE_LOCKER_LAYER		14
+	#define BLOOD_LAYER					15
 	#define WEED_LAYER					420
 
 #define NOIR_BLOOD_PLANE 		-17		 	// For blood which is red, will appear to people under the influence of the noir colour matrix. -if changing this, make sure that the blood layer changes too.
@@ -171,6 +170,7 @@ What is the naming convention for planes or layers?
 	// ABOVE_OBJ_LAYER				4
 	#define CLOSED_CURTAIN_LAYER	5
 	#define LIGHTBULB_LAYER			6
+	#define TURF_FIRE_LAYER			7
 
 #define BLOB_PLANE 				-3			// For Blobs, which are above humans.
 

@@ -581,7 +581,9 @@
 		/obj/structure/bed/chair/vehicle/wheelchair/multi_people,
 		/obj/item/stack/package_wrap/syndie,
 		/obj/item/weapon/storage/toolbox/syndicate,
-		/obj/item/weapon/switchtool/swiss_army_knife
+		/obj/item/weapon/switchtool/swiss_army_knife,
+		/obj/item/weapon/razor,
+		/obj/item/device/flashlight/flare/torch
 		)
 
 /obj/map/spawner/highrisk

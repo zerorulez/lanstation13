@@ -179,7 +179,7 @@ var/datum/nanomanager/nanomanager = new()
 #define MAX_BROADCAST_LEN		512
 
 #define shuttle_time_in_station 1800 // 3 minutes in the station
-#define shuttle_time_to_arrive 6000 // 10 minutes to arrive
+#define shuttle_time_to_arrive 3000 // 5 minutes to arrive
 
 	// MySQL configuration
 
@@ -339,9 +339,8 @@ var/adminblob_icon = null
 var/adminblob_size = 64
 var/adminblob_beat = 'sound/effects/blob_pulse.ogg'
 
-// ECONOMY
 // Account default values
-#define DEPARTMENT_START_FUNDS 5000
+#define DEPARTMENT_START_FUNDS 1000
 #define DEPARTMENT_START_WAGE 500
 #define PLAYER_START_WAGE 50
 

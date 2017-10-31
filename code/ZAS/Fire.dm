@@ -130,7 +130,7 @@ Attach to transfer valve and open. BOOM.
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "1"
 	layer = TURF_FIRE_LAYER
-	plane = ABOVE_TURF_PLANE
+	plane = ABOVE_HUMAN_PLANE
 
 	light_color = LIGHT_COLOR_FIRE
 

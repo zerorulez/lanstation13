@@ -338,7 +338,7 @@
 
 		// COMPLEX MOVE DELAY SHIT
 		////////////////////////////
-		var/move_delay=0 // set move delay
+		var/move_delay = 0 // set move delay
 		mob.last_move_intent = world.time + 10
 		switch(mob.m_intent)
 			if("run")
@@ -346,12 +346,12 @@
 					move_delay += 6
 				move_delay += 1+config.run_speed
 			if("walk")
-				move_delay += 7+config.walk_speed
+				move_delay += 4+config.walk_speed
 		move_delay += mob.movement_delay()
 
 		var/obj/item/weapon/grab/Findgrab = locate() in mob
 		if(Findgrab)
-			move_delay += 7
+			move_delay += 4
 
 		//We are now going to move
 		var/old_dir = mob.dir

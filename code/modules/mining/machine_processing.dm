@@ -69,7 +69,7 @@
 	var/dat = {"
 	<div style="overflow:hidden;">
 	<div class="block">
-	The ore processor is currently <A href='?src=\ref[src];toggle_power=1' class='[smelter_data["on"] ? "linkOn" : "linkDanger"]'>[smelter_data["on"] ? "processing" : "disabled"]</a>
+	\The [src] is currently <A href='?src=\ref[src];toggle_power=1' class='[smelter_data["on"] ? "linkOn" : "linkDanger"]'>[smelter_data["on"] ? "processing" : "disabled"]</a>
 	"}
 
 	if(smelter_data["credits"] != -1)

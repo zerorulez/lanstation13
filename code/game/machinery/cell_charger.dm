@@ -10,7 +10,7 @@
 	active_power_usage = 10 //Power is already drained to charge batteries
 	power_channel = EQUIP
 	var/obj/item/weapon/cell/charging = null
-	var/transfer_rate = 200 //How much power do we output every process tick ?
+	var/transfer_rate = 1500 //How much power do we output every process tick ?
 	var/transfer_efficiency = 0.7 //How much power ends up in the battery in percentage ?
 	var/transfer_rate_coeff = 1 //What is the quality of the parts that transfer energy (capacitators) ?
 	var/transfer_efficiency_bonus = 0 //What is the efficiency "bonus" (additive to percentage) from the parts used (scanning module) ?
@@ -62,7 +62,7 @@
 	..()
 	to_chat(user, "There's [charging ? "a" : "no"] cell in the charger.")
 	if(charging)
-		to_chat(user, "Current charge: [charging.charge]")
+		to_chat(user, "Current charge: [round(charging.percent())]%")
 
 /obj/machinery/cell_charger/attackby(obj/item/weapon/W, mob/user)
 	if(stat & BROKEN)
