@@ -21,6 +21,7 @@
 #include "__DEFINES\limb_defines.dm"
 #include "__DEFINES\math_physics.dm"
 #include "__DEFINES\MC.dm"
+#include "__DEFINES\nanoui.dm"
 #include "__DEFINES\pipes.dm"
 #include "__DEFINES\planes+layers.dm"
 #include "__DEFINES\reagents.dm"

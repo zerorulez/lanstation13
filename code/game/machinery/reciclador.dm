@@ -29,7 +29,7 @@
 
 
 // Proc used when the machine is hacked or emagged, allowing to grind mobs
-/obj/machinery/mineral/processing_unit/recycle/recycler/proc/toggle_safety_protocols(var/hacked = FALSE, var/mob/M)
+/obj/machinery/mineral/processing_unit/recycle/recycler/proc/toggle_safety_protocols(var/hacked, var/mob/M)
 	emagged = hacked
 	update_icon()
 
@@ -43,11 +43,11 @@
 
 /obj/machinery/mineral/processing_unit/recycle/recycler/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/weapon/card/emag) && !emagged)
-		toggle_safety_protocols(hacked = TRUE, user)
+		toggle_safety_protocols(TRUE, user)
 		return
 	else if(istype(I, /obj/item/weapon/screwdriver) && emagged)
 		playsound(get_turf(user), 'sound/items/Screwdriver.ogg', 50, 1)
-		toggle_safety_protocols(hacked = FALSE, user)
+		toggle_safety_protocols(FALSE, user)
 		return
 	..()
 

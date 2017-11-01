@@ -86,7 +86,7 @@ var/global/list/atmos_controllers = list()
 		return
 	return ..()
 
-/obj/machinery/computer/atmoscontrol/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
+/obj/machinery/computer/atmoscontrol/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open=NANOUI_FOCUS)
 	if(user.stat && !isobserver(user))
 		return
 

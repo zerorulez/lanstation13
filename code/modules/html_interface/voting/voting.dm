@@ -66,7 +66,7 @@ var/global/datum/controller/vote/vote = new()
 			qdel(vote)
 
 		vote = src
-//datum/controller/vote/proc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+//datum/controller/vote/proc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 //	return
 
 /datum/controller/vote/proc/process()	//called by master_controller

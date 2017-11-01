@@ -390,11 +390,24 @@ var/global/list/pillIcon2Name = list("oblong purple-pink", "oblong green-white",
 /obj/machinery/chem_master/attack_paw(mob/user as mob)
 	return src.attack_hand(user)
 
+/var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons for the chemmaster
+
+//Converts an icon to base64. Operates by putting the icon in the iconCache savefile,
+// exporting it as text, and then parsing the base64 from that.
+// (This relies on byond automatically storing icons in savefiles as base64)
+/proc/icon2base64(var/icon/icon, var/iconKey = "misc")
+	if (!isicon(icon))
+		return 0
+
+	iconCache[iconKey] << icon
+	var/iconData = iconCache.ExportText(iconKey)
+	var/list/partial = splittext(iconData, "{")
+	return replacetext(copytext(partial[2], 3, -5), "\n", "")
 
 /obj/machinery/chem_master/proc/generate_pill_icon_cache()
 	pill_icon_cache = list()
 	for(var/i = 1 to MAX_PILL_SPRITE)
-		pill_icon_cache += "<img src='data:image/png;base64,[icon('icons/obj/chemical.dmi', "pill" + num2text(i))]'>"
+		pill_icon_cache += "<img src='data:image/png;base64,[icon2base64(icon('icons/obj/chemical.dmi', "pill" + num2text(i)))]'>"
 		//This is essentially just bicon(). Ideally we WOULD use just bicon(), but right now it's fucked up when used on icons because it goes by their \ref.
 
 /obj/machinery/chem_master/attack_hand(mob/user as mob)

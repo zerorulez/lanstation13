@@ -21,7 +21,7 @@
 		<li>[format_tag("Exterior","tag_exterior_sensor")]</li>
 		</ul>"}
 
-/obj/machinery/embedded_controller/radio/advanced_airlock_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
+/obj/machinery/embedded_controller/radio/advanced_airlock_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open=NANOUI_FOCUS)
 	if(!program)//we need to initialize the controller to get a program
 		initialize()
 	var/data[0]
@@ -35,7 +35,7 @@
 		"secure" = program.memory["secure"]
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data)
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "advanced_airlock_console.tmpl", name, 470, 290)
@@ -127,10 +127,10 @@
 		if(DPV.id_tag == tag_airpump)
 			tag_airpump = null
 			return 1
-		
+
 
 /obj/machinery/embedded_controller/radio/advanced_airlock_controller/isLinkedWith(var/obj/O)
-	
+
 	var/obj/machinery/door/airlock/D = O
 	if(istype(D))
 		if(tag_interior_door  == D.id_tag)
@@ -153,7 +153,7 @@
 		return 1
 
 /obj/machinery/embedded_controller/radio/advanced_airlock_controller/linkWith(var/mob/user, var/obj/O, var/list/context)
-	
+
 	var/obj/machinery/atmospherics/binary/dp_vent_pump/DP
 	if(istype(DP) && DP.id_tag == tag_airpump)
 		tag_airpump = DP.id_tag
@@ -162,7 +162,7 @@
 	if(istype(UV) && UV.id_tag == tag_airpump)
 		tag_airpump = UV.id_tag
 		return 1
-	
+
 	var/obj/machinery/door/airlock/D = O
 	if(istype(D))
 		if(context["slot"] == "int")
@@ -171,7 +171,7 @@
 		if(context["slot"] == "ext")
 			tag_exterior_door = D.id_tag
 			return 1
-	
+
 	var/obj/machinery/airlock_sensor/S = O
 	if(istype(S))
 		if(context["slot"] == "int")
@@ -209,7 +209,7 @@
 		<li>[format_tag("Chamber","tag_chamber_sensor")]</li>
 		</ul>"}
 
-/obj/machinery/embedded_controller/radio/airlock_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
+/obj/machinery/embedded_controller/radio/airlock_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open=NANOUI_FOCUS)
 	if(!program)//we need to initialize the controller to get a program
 		initialize()
 	var/data[0]
@@ -221,7 +221,7 @@
 		"processing" = program.memory["processing"],
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data)
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "simple_airlock_console.tmpl", name, 470, 290)
@@ -320,7 +320,7 @@
 		return 1
 
 /obj/machinery/embedded_controller/radio/airlock_controller/linkWith(var/mob/user, var/obj/O, var/list/context)
-	
+
 	var/obj/machinery/atmospherics/binary/dp_vent_pump/DP
 	if(istype(DP) && DP.id_tag == tag_airpump)
 		tag_airpump = DP.id_tag
@@ -329,7 +329,7 @@
 	if(istype(UV) && UV.id_tag == tag_airpump)
 		tag_airpump = UV.id_tag
 		return 1
-	
+
 	var/obj/machinery/door/airlock/D = O
 	if(istype(D))
 		if(context["slot"] == "int")
@@ -338,7 +338,7 @@
 		if(context["slot"] == "ext")
 			tag_exterior_door = D.id_tag
 			return 1
-	
+
 	var/obj/machinery/airlock_sensor/S = O
 	if(istype(S))
 		if(context["slot"] == "chamber")
@@ -377,7 +377,7 @@
 	else
 		icon_state = "access_control_off"
 
-/obj/machinery/embedded_controller/radio/access_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
+/obj/machinery/embedded_controller/radio/access_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open=NANOUI_FOCUS)
 	if(!program)//we need to initialize the controller to get a program
 		initialize()
 	var/data[0]
@@ -388,7 +388,7 @@
 		"processing" = program.memory["processing"]
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data)
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "door_access_console.tmpl", name, 330, 220)
