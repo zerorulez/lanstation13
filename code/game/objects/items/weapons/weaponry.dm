@@ -47,7 +47,7 @@
 	hitsound = "sound/weapons/bloodyslice.ogg"
 	flags = FPRINT
 	siemens_coefficient = 1
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT | SLOT_BACK
 	force = 40
 	throwforce = 10
 	w_class = W_CLASS_MEDIUM
@@ -93,7 +93,7 @@
 	return(BRUTELOSS)
 
 /obj/item/weapon/katana/IsShield()
-		return 1
+	return 1
 
 /obj/item/weapon/katana/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	playsound(loc, 'sound/weapons/bloodyslice.ogg', 50, 1, -1)
