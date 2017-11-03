@@ -205,21 +205,6 @@ var/list/uplink_items = list()
 	cost = 2
 	job = list("Botanist")
 
-//Chef
-/datum/uplink_item/jobspecific/specialsauce
-	name = "Chef Excellence's Special Sauce"
-	desc = "A custom made sauce made from the toxin glands of many space carp. If one ingests enough, he or she will be dead in 3 minutes or less."
-	item = /obj/item/weapon/reagent_containers/food/condiment/syndisauce
-	cost = 2
-	job = list("Chef")
-
-/datum/uplink_item/jobspecific/meatcleaver
-	name = "Meat Cleaver"
-	desc = "A mean looking meat cleaver that does damage comparable to an Energy Sword but with the added benefit of chopping your victim into hunks of meat after they've died and the chance to stun when thrown."
-	item = /obj/item/weapon/kitchen/utensil/knife/large/butch/meatcleaver
-	cost = 10
-	job = list("Chef")
-
 //Janitor
 /datum/uplink_item/jobspecific/cautionsign
 	name = "Proximity Mine"
@@ -241,7 +226,7 @@ var/list/uplink_items = list()
 	name = "Greytide Implant"
 	desc = "A box containing an implanter filled with a greytide implant when injected into another person makes them loyal to the greytide and your cause, unless they're already implanted by someone else. Loyalty ends if he or she no longer has the implant."
 	item = /obj/item/weapon/storage/box/syndie_kit/greytide
-	cost = 14
+	cost = 10
 	job = list("Assistant")
 
 //Bartender
@@ -252,13 +237,27 @@ var/list/uplink_items = list()
 	cost = 6
 	job = list("Bartender")
 
+/datum/uplink_item/jobspecific/specialsauce
+	name = "Chef Excellence's Special Sauce"
+	desc = "A custom made sauce made from the toxin glands of many space carp. If one ingests enough, he or she will be dead in 3 minutes or less."
+	item = /obj/item/weapon/reagent_containers/food/condiment/syndisauce
+	cost = 2
+	job = list("Bartender", "Chef")
+
+/datum/uplink_item/jobspecific/meatcleaver
+	name = "Meat Cleaver"
+	desc = "A mean looking meat cleaver that does damage comparable to an Energy Sword but with the added benefit of chopping your victim into hunks of meat after they've died and the chance to stun when thrown."
+	item = /obj/item/weapon/kitchen/utensil/knife/large/butch/meatcleaver
+	cost = 12
+	job = list("Bartender", "Chef")
+
 //Chemist
 /datum/uplink_item/jobspecific/chemsprayer
 	name = "Chemical Sprayer"
 	desc = "A powerful industrial spraygun that holds 600 units of any liquid and can cover large areas faster than a standard spray bottle."
 	item = /obj/item/weapon/reagent_containers/spray/chemsprayer
 	cost = 8
-	job = list("Chemist", "Chief Medical Officer")
+	job = list("Chemist", "Medical Doctor", "Chief Medical Officer")
 
 /datum/uplink_item/jobspecific/antisocial
 	name = "Explosive Hug Chemical"
@@ -273,22 +272,29 @@ var/list/uplink_items = list()
 	desc = "A combat-modified motorized wheelchair. Forward thrust is sufficient to knock down and run over victims."
 	item = /obj/item/syndicate_wheelchair_kit
 	cost = 12
-	job = list("Medical Doctor", "Chief Medical Officer")
+	job = list("Chemist", "Medical Doctor", "Chief Medical Officer")
 
 //Engineer
 /datum/uplink_item/jobspecific/powergloves
 	name = "Power Gloves"
 	desc = "Insulated gloves that can utilize the power of the station to deliver a short arc of electricity at a target. Must be standing on a powered cable to use."
 	item = /obj/item/clothing/gloves/yellow/power
-	cost = 12
+	cost = 8
 	job = list("Station Engineer", "Chief Engineer")
 
-//Atmos Tech
 /datum/uplink_item/jobspecific/contortionist
 	name = "Contortionist's Jumpsuit"
 	desc = "A highly flexible jumpsuit that will help you navigate the ventilation loops of the station internally. Comes with pockets and ID slot, but can't be used without stripping off most gear, including backpack, belt, helmet, and exosuit. Free hands are also necessary to crawl around inside."
 	item = /obj/item/clothing/under/contortionist
 	cost = 6
+	job = list("Station Engineer", "Atmospheric Technician", "Chief Engineer")
+
+//Atmospheric Technician
+/datum/uplink_item/jobspecific/flaregun
+	name = "Modified Flaregun"
+	desc = "A modified flaregun, identical in most appearances to the regular kind, as well as 7 rounds of flare ammunition. Capable of firing flares at lethal velocity, as well as firing shotgun ammunition."
+	item = /obj/item/weapon/storage/box/syndie_kit/flaregun
+	cost = 12
 	job = list("Atmospheric Technician", "Chief Engineer")
 
 //Geneticist
@@ -296,16 +302,8 @@ var/list/uplink_items = list()
 	name = "Radgun"
 	desc = "An experimental energy gun that fires radioactive projectiles that burn, irradiate, and scramble DNA, giving the victim a different appearance and name, and potentially harmful or beneficial mutations. Recharges on its own."
 	item = /obj/item/weapon/gun/energy/radgun
-	cost = 12
+	cost = 14
 	job = list("Geneticist", "Chief Medical Officer")
-
-//Atmospheric Technician
-/datum/uplink_item/jobspecific/flaregun
-	name = "Modified Flaregun"
-	desc = "A modified flaregun, identical in most appearances to the regular kind, as well as 7 rounds of flare ammunition. Capable of firing flares at lethal velocity, as well as firing shotgun ammunition."
-	item = /obj/item/weapon/storage/box/syndie_kit/flaregun
-	cost = 8
-	job = list("Atmospheric Technician", "Chief Engineer")
 
 //Mechanic
 /datum/uplink_item/jobspecific/dev_analyser

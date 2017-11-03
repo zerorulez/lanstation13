@@ -183,10 +183,8 @@
 							user.update_mutations()
 							to_chat(user, "<span class=danger><B>You've gone blind, deaf and mute! </span></B>")
 						if(2)
-							for(var/datum/organ/external/l_arm/E in h.organs)
+							for(var/datum/organ/external/E in h.get_organs(LIMB_LEFT_ARM, LIMB_RIGHT_ARM))
 								E.droplimb(1)
-							for(var/datum/organ/external/r_arm/E in h.organs)
-								E.droplimb(2)
 						if(3)
 							if(h.species.name != "Tajaran") //someone who was made a catbeast by the dice can't become a different species by getting lucky
 								switch(pick(1,2,3))
@@ -206,9 +204,7 @@
 												h.regenerate_icons()
 											to_chat(user, "<span class=danger><B>You have been turned into a disgusting squidman! </span></B>")
 										else
-											for(var/datum/organ/external/l_arm/E in h.organs) //Someone who has already become a squid can't get out of recieving a curse and so they lose their arms instead
-												E.droplimb(1)
-											for(var/datum/organ/external/r_arm/E in h.organs)
+											for(var/datum/organ/external/E in h.get_organs(LIMB_LEFT_ARM, LIMB_RIGHT_ARM)) //Someone who has already become a squid can't get out of recieving a curse and so they lose their arms instead
 												E.droplimb(1)
 									if(3)
 										if(h.species.name != "Vox")
@@ -216,9 +212,7 @@
 												h.regenerate_icons()
 											to_chat(user, "<span class=danger><B>You have been turned into a dumb, diseased bird! </span></B>")
 										else
-											for(var/datum/organ/external/l_arm/E in h.organs) //Someone who is a vox can't get out of recieving a curse and so they lose their arms instead
-												E.droplimb(1)
-											for(var/datum/organ/external/r_arm/E in h.organs)
+											for(var/datum/organ/external/E in h.get_organs(LIMB_LEFT_ARM, LIMB_RIGHT_ARM)) //Someone who is a vox can't get out of recieving a curse and so they lose their arms instead
 												E.droplimb(1)
 						if(4)
 							h.adjustBrainLoss(200)

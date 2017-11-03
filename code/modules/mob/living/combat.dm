@@ -49,6 +49,9 @@
 /mob/living/proc/get_unarmed_damage(mob/living/victim)
 	return rand(0,10)
 
+/mob/living/proc/get_unarmed_sharpness(mob/living/victim)
+	return 0
+
 /mob/living/proc/get_unarmed_verb(mob/living/victim)
 	return "hits"
 
@@ -90,6 +93,7 @@
 	var/datum/organ/external/affecting = target.get_organ(zone)
 	var/armor_block = target.run_armor_check(affecting, "melee")
 	var/damage_type = get_unarmed_damage_type(target)
+	var/sharpness = get_unarmed_sharpness(target)
 	var/attack_verb = get_unarmed_verb(target)
 	var/attack_sound = get_unarmed_hit_sound(target)
 
@@ -99,7 +103,12 @@
 	do_attack_animation(target, src)
 	visible_message(get_attack_message(target, attack_verb))
 
-	var/damage_done = target.apply_damage(damage, damage_type, affecting, armor_block)
+	var/damage_done
+	if(ishuman(target))
+		damage_done = target.apply_damage(damage, damage_type, affecting, armor_block, sharpness)
+	else
+		damage += sharpness
+		damage_done = target.apply_damage(damage, damage_type, affecting, armor_block)
 	target.unarmed_attacked(src, damage, damage_type, zone)
 	after_unarmed_attack(target, damage, damage_type, affecting, armor_block)
 

@@ -66,11 +66,13 @@
 /mob/living/carbon/human/golem/New(var/new_loc, delay_ready_dna = 0)
 	h_style = "Bald"
 	..(new_loc, "Golem")
-	gender = NEUTER
 
 /mob/living/carbon/human/grue/New(var/new_loc, delay_ready_dna = 0)
 	h_style = "Bald"
 	..(new_loc, "Grue")
+
+/mob/living/carbon/human/slime/New(var/new_loc, delay_ready_dna = 0)
+	..(new_loc, "Slime")
 
 /mob/living/carbon/human/frankenstein/New(var/new_loc, delay_ready_dna = 0) //Just fuck my shit up: the mob
 	f_style = pick(facial_hair_styles_list)
@@ -112,6 +114,11 @@
 
 	if(new_species_name)
 		s_tone = random_skin_tone(new_species_name)
+
+	multicolor_skin_r = rand(0,255)	//Only used when the human has a species datum with the MULTICOLOR anatomical flag
+	multicolor_skin_g = rand(0,255)
+	multicolor_skin_b = rand(0,255)
+
 
 	if(!src.species)
 		if(new_species_name)
@@ -950,7 +957,7 @@
 
 	var/datum/organ/internal/brain/BBrain = internal_organs_by_name["brain"]
 	if(!BBrain)
-		var/obj/item/weapon/organ/head/B = decapitated
+		var/obj/item/organ/external/head/B = decapitated
 		if(B)
 			var/datum/organ/internal/brain/copied
 			if(B.organ_data)
@@ -1230,6 +1237,9 @@
 
 	src.species = new S.type
 	src.species.myhuman = src
+
+	if(S.gender)
+		gender = S.gender
 
 	for(var/L in species.known_languages)
 		add_language(L)
@@ -1648,3 +1658,13 @@
 	if(pain_numb)
 		return FALSE
 	return TRUE
+
+/mob/living/carbon/human/throw_item(var/atom/target,var/atom/movable/what=null)
+	var/atom/movable/item = get_active_hand()
+	if(what)
+		item=what
+	var/success = ..()
+	if(success)
+		if(istype(gloves))
+			var/obj/item/clothing/gloves/G = gloves
+			G.on_wearer_threw_item(src,target,item)

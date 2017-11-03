@@ -4,7 +4,7 @@
 	if(disabilities & EPILEPSY)
 		if((prob(1)) && (paralysis < 1))
 			visible_message("<span class='danger'>[src.name] começa a ter um ataque epiléptico!</span>", \
-							"<span class='warning'>Você tem um ataque!</span>")
+							"<span class='warning'>Você tem um ataque epiléptico!</span>")
 			Paralyse(10)
 			Jitter(1000) //Godness
 
@@ -24,7 +24,7 @@
 				if(1)
 					emote("twitch")
 				if(2 to 9)
-					say("[prob(50) ? ";" : ""][pick("MERDA", "BOSTA", "PUTA QUE PARIU", "FILHO DA PUTA", "SUGADOR DE CARALHOS", "PORRA", "BUCETA", "CORNO", "QUEIJIN MINAS", "CÚ", "EU QUERO É FUDER", "MERDALHER", "VAGABUNDA", "COMPLETAMENTE RIVOTRILADO", "CUCKOLD")]")
+					say("[prob(50) ? ";" : ""][pick("MERDA", "BOSTA", "PUTA QUE PARIU", "FILHO DA PUTA", "SUGADOR DE CARALHOS", "PORRA", "BUCETA", "CORNO", "QUEIJIM MINAS", "CU", "EU QUERO É FUDER", "MERDALHER", "VAGABUNDA", "COMPLETAMENTE RIVOTRILADO", "CUCKOLD", "CORNO", "NEGRO")]")
 
 			var/x_offset_change = rand(-2,2) * PIXEL_MULTIPLIER
 			var/y_offset_change = rand(-1,1) * PIXEL_MULTIPLIER
@@ -77,7 +77,7 @@
 						"alguei mudou meu nome era ezequielBR agora e getulho vargas", \
 						"Estou te robustando"))
 				if(3)
-					emote("começa a babar")
+					emote("drool")
 
 	if(species.name == "Tajaran")
 		if(prob(1)) //Was 3

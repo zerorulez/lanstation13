@@ -40,7 +40,6 @@
 	#define MAP_OVERRIDE_FILES
 	#include "mini2\misc.dm"
 	#include "mini2\telecomms.dm"
-	#include "mini2\uplink.dm"
 	#include "mini2\job\jobs.dm"
 	#include "mini2\job\removed.dm"
 

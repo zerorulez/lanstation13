@@ -67,6 +67,12 @@
 	on_uattack = null
 	on_damaged = null
 
+	if(transmogged_from)
+		qdel(transmogged_from)
+		transmogged_from = null
+	if(transmogged_to)
+		qdel(transmogged_to)
+		transmogged_to = null
 	..()
 
 /mob/projectile_check()
@@ -1778,5 +1784,113 @@ mob/proc/on_foot()
 /mob/acidable()
 	return 1
 
+/mob/proc/transmogrify(var/target_type, var/offer_revert_spell = FALSE)	//transforms the mob into a new member of the given mob type, while preserving the mob's body
+	if(!target_type)
+		if(transmogged_from)
+			var/obj/transmog_body_container/tC = transmogged_from
+			if(tC.contained_mob)
+				tC.contained_mob.forceMove(loc)
+				if(key)
+					tC.contained_mob.key = key
+				tC.contained_mob.timestopped = 0
+				if(istype(tC.contained_mob, /mob/living/carbon))
+					var/mob/living/carbon/C = tC.contained_mob
+					if(istype(C.get_item_by_slot(slot_wear_mask), /obj/item/clothing/mask/morphing))
+						C.drop_item(C.wear_mask, force_drop = 1)
+				var/mob/returned_mob = tC.contained_mob
+				returned_mob.transmogged_to = null
+				tC.get_rid_of()
+				transmogged_from = null
+				for(var/atom/movable/AM in contents)
+					AM.forceMove(get_turf(src))
+				forceMove(null)
+				qdel(src)
+				return returned_mob
+		return
+	if(!ispath(target_type, /mob))
+		EXCEPTION(target_type)
+		return
+	var/mob/M = new target_type(loc)
+	var/obj/transmog_body_container/C = new (M)
+	M.transmogged_from = C
+	transmogged_to = M
+	if(key)
+		M.key = key
+	if(offer_revert_spell)
+		var/spell/change_back
+		if(ispath(offer_revert_spell)) //I don't like this but I'm not rewriting the whole system for a hotfix
+			change_back = new offer_revert_spell
+		else
+			change_back = new /spell/aoe_turf/revert_form
+		M.add_spell(change_back)
+	C.set_contained_mob(src)
+	timestopped = 1
+	return M
+
+/mob/proc/completely_untransmogrify()	//Reverts a mob through all layers of transmogrification, back down to the base mob. Returns this mob.
+	var/mob/top_level = get_top_transmogrification()
+	while(top_level)
+		top_level = top_level.transmogrify()
+		if(top_level)
+			. = top_level
+
+/mob/proc/get_top_transmogrification()	//Returns the mob at the highest level of transmogrification, the one which contains the player.
+	var/mob/M = src
+	while(M.transmogged_to)
+		M = M.transmogged_to
+	return M
+
+/mob/proc/get_bottom_transmogrification()	//Returns the mob at the lowest level of transmogrification, the original mob.
+	var/mob/M = src
+	while(M.transmogged_from)
+		M = M.transmogged_from.contained_mob
+	return M
+
+/spell/aoe_turf/revert_form
+	name = "Revert Form"
+	desc = "Morph back into your previous form."
+	spell_flags = GHOSTCAST
+	abbreviation = "RF"
+	charge_max = 1
+	invocation = "none"
+	invocation_type = SpI_NONE
+	range = 0
+	hud_state = "wiz_mindswap"
+
+/spell/aoe_turf/revert_form/cast(var/list/targets, mob/user)
+	user.transmogrify()
+	user.remove_spell(src)
+
+/spell/aoe_turf/revert_form/no_z2 //Used if you don't want it reverting on Z2. So far only important for ghosts.
+	spell_flags = GHOSTCAST | Z2NOCAST
+
+/obj/transmog_body_container
+	name = "transmog body container"
+	desc = "You should not be seeing this."
+	flags = TIMELESS
+	var/mob/contained_mob
+
+/obj/transmog_body_container/proc/set_contained_mob(var/mob/M)
+	ASSERT(M)
+	M.forceMove(src)
+	contained_mob = M
+
+/obj/transmog_body_container/proc/get_rid_of()
+	for(var/atom/movable/AM in contents)
+		AM.forceMove(get_turf(src))
+	contained_mob = null
+	qdel(src)
+
+/obj/transmog_body_container/Destroy()
+	contained_mob = null
+	for(var/i in contents)
+		qdel(i)
+	..()
+
+/mob/proc/apply_vision_overrides()
+	if(see_in_dark_override)
+		see_in_dark = see_in_dark_override
+	if(see_invisible_override)
+		see_invisible = see_invisible_override
 #undef MOB_SPACEDRUGS_HALLUCINATING
 #undef MOB_MINDBREAKER_HALLUCINATING

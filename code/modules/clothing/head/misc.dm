@@ -323,6 +323,7 @@
 	icon_state = "jesterhat"
 	item_state = "jesterhat"
 	flags = FPRINT
+	body_parts_covered = EARS|HEAD
 
 /obj/item/clothing/head/libertyhat
 	name = "liberty top hat"

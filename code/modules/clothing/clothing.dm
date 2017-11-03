@@ -327,6 +327,17 @@ BLIND     // can't see anything
 
 	var/bonus_knockout = 0 //Knockout chance is multiplied by (1 + bonus_knockout) and is capped at 1/2. 0 = 1/12 chance, 1 = 1/6 chance, 2 = 1/4 chance, 3 = 1/3 chance, etc.
 	var/damage_added = 0 //Added to unarmed damage, doesn't affect knockout chance
+	var/sharpness_added = 0 //Works like weapon sharpness for unarmed attacks, affects bleeding and limb severing.
+	var/hitsound_added = "punch"	//The sound that plays for an unarmed attack while wearing these gloves.
+
+/obj/item/clothing/gloves/proc/get_sharpness_added()
+	return sharpness_added
+
+/obj/item/clothing/gloves/proc/get_hitsound_added()
+	return hitsound_added
+
+/obj/item/clothing/gloves/proc/on_wearer_threw_item(mob/user, atom/target, atom/movable/thrown)	//Called when the mob wearing the gloves successfully throws either something or nothing.
+	return
 
 /obj/item/clothing/gloves/emp_act(severity)
 	if(cell)
@@ -396,10 +407,10 @@ BLIND     // can't see anything
 		usr.update_inv_wear_mask()
 
 /obj/item/clothing/mask/New()
-	..()
 	if(!can_flip /*&& !istype(/obj/item/clothing/mask/gas/voice)*/) //the voice changer has can_flip = 1 anyways but it's worth noting that it exists if anybody changes this in the future
 		action_button_name = null
 		verbs -= /obj/item/clothing/mask/verb/togglemask
+	..()
 
 
 /obj/item/clothing/mask/attack_self()

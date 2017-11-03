@@ -31,6 +31,8 @@
 	holder_type = /obj/item/weapon/holder/animal/mouse
 	held_items = list()
 
+	var/base_state = "mouse_gray"
+
 /mob/living/simple_animal/mouse/Life()
 	if(timestopped)
 		return 0 //under effects of time magick
@@ -62,10 +64,11 @@
 		name = "[name] ([rand(1, 1000)])"
 	real_name = name
 	if(!_color)
-		_color = pick( list("brown","gray","white") )
+		_color = pick( list("brown","gray","white","black") )
 	icon_state = "mouse_[_color]"
 	icon_living = "mouse_[_color]"
 	icon_dead = "mouse_[_color]_dead"
+	base_state = "mouse_[_color]"
 	desc = "It's a small [_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
 	add_language(LANGUAGE_MOUSE)
 	default_language = all_languages[LANGUAGE_MOUSE]

@@ -115,6 +115,12 @@
 
 /obj/machinery/power/apc/New(loc, var/ndir, var/building=0)
 	..(loc)
+
+	if(areaMaster.areaapc)
+		world.log << "Second APC detected in area: [areaMaster.name]. Deleting the second APC."
+		qdel(src)
+		return
+
 	wires = new(src)
 	// offset 24 pixels in direction of dir
 	// this allows the APC to be embedded in a wall, yet still inside an area
@@ -1312,25 +1318,23 @@ obj/machinery/power/apc/proc/autoset(var/val, var/on)
 				sleep(1)
 
 /obj/machinery/power/apc/Destroy()
-	areaMaster.remove_apc(src)
-	if(malfai && operating)
-		if (ticker.mode.config_tag == "malfunction")
-			if (STATION_Z == z)
-				ticker.mode:apcs--
-	areaMaster.power_light = 0
-	areaMaster.power_equip = 0
-	areaMaster.power_environ = 0
-	areaMaster.power_change()
+	if(areaMaster.areaapc == src)
+		areaMaster.remove_apc(src)
+		if(malfai && operating)
+			if (ticker.mode.config_tag == "malfunction")
+				if (STATION_Z == z)
+					ticker.mode:apcs--
+		areaMaster.power_light = 0
+		areaMaster.power_equip = 0
+		areaMaster.power_environ = 0
+		areaMaster.power_change()
+
 	if(occupant)
 		malfvacate(1)
 
 	if(cell)
 		cell.forceMove(loc)
 		cell = null
-
-	if(terminal)
-		terminal.master = null
-		terminal = null
 
 	if(wires)
 		qdel(wires)

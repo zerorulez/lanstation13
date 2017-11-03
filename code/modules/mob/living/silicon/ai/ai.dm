@@ -79,6 +79,7 @@ var/list/ai_list = list()
 	add_language(LANGUAGE_MONKEY, 1)
 	add_language(LANGUAGE_VOX, 1)
 	add_language(LANGUAGE_GOLEM, 1)
+	add_language(LANGUAGE_SLIME, 1)
 	add_language(LANGUAGE_TRADEBAND, 1)
 	add_language(LANGUAGE_MOUSE, 1)
 	add_language(LANGUAGE_HUMAN, 1)
@@ -280,8 +281,8 @@ var/list/ai_list = list()
 			icon_state = "ai-royal"
 		if("Heartline")
 			icon_state = "ai-heartline"
-		if("Hades") 
-			icon_state = "ai-hades"	
+		if("Hades")
+			icon_state = "ai-hades"
 		if("Helios")
 			icon_state = "ai-helios"
 		if("Syndicat")

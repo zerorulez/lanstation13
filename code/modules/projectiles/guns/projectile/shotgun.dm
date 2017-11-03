@@ -116,7 +116,8 @@
 			loaded -= loaded_shell
 		i++
 
-	to_chat(user, "<span class='notice'>You break \the [src].</span>")
+	playsound(user, 'sound/weapons/shotgun_break.wav', 50, 1)
+	user.visible_message("<span class='warning'>[user] breaks the [src].</span>", "<span class='notice'>You break \the [src].</span>")
 	update_icon()
 
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel/attackby(var/obj/item/A as obj, mob/user as mob)
@@ -124,7 +125,7 @@
 	A.update_icon()
 	update_icon()
 	if(istype(A, /obj/item/weapon/circular_saw) || istype(A, /obj/item/weapon/melee/energy) || istype(A, /obj/item/weapon/pickaxe/plasmacutter))
-		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] begins to shorten the barrel of \the [src].</span>", "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
 		if(getAmmo())
 			afterattack(user, user)	//will this work?
 			afterattack(user, user)	//it will. we call it twice, for twice the FUN
@@ -139,7 +140,7 @@
 			slot_flags |= SLOT_BELT		//but you can wear it on your belt (poorly concealed under a trenchcoat, ideally)
 			name = "sawn-off shotgun"
 			desc = "Omar's coming!"
-			to_chat(user, "<span class='warning'>You shorten the barrel of \the [src]!</span>")
+			user.visible_message("<span class='notice'>[user] shortens the barrel of \the [src]!</span>", "<span class='warning'>You shorten the barrel of \the [src]!</span>")
 			if(istype(user, /mob/living/carbon/human) && src.loc == user)
 				var/mob/living/carbon/human/H = user
 				H.update_inv_hands()

@@ -1,7 +1,7 @@
 //Space bears!
 /mob/living/simple_animal/hostile/bear
 	name = "space bear"
-	desc = "RawrRawr!!"
+	desc = "Play dead..."
 	icon_state = "bear"
 	icon_living = "bear"
 	icon_dead = "bear_dead"
@@ -10,8 +10,8 @@
 	speak_emote = list("growls", "roars")
 	emote_hear = list("rawrs","grumbles","grawls")
 	emote_see = list("stares ferociously", "stomps")
-	var/default_icon_space = "bear"
-	var/default_icon_floor = "bearfloor"
+//	var/default_icon_space = "bear"
+//	var/default_icon_floor = "bearfloor"
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -44,10 +44,6 @@
 //SPACE BEARS! SQUEEEEEEEE~     OW! FUCK! IT BIT MY HAND OFF!!
 /mob/living/simple_animal/hostile/bear/Hudson
 	name = "Hudson"
-	desc = ""
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "hits"
 
 /mob/living/simple_animal/hostile/bear/panda
 	name = "space panda"
@@ -55,8 +51,8 @@
 	icon_state = "panda"
 	icon_living = "panda"
 	icon_dead = "panda_dead"
-	default_icon_floor = "panda"
-	default_icon_space = "panda"
+//	default_icon_floor = "panda"
+//	default_icon_space = "panda"
 	maxHealth = 50
 	health = 50
 	melee_damage_lower=10
@@ -68,13 +64,13 @@
 	icon_state = "polarbear"
 	icon_living = "polarbear"
 	icon_dead = "polarbear_dead"
-	default_icon_floor = "polarbear"
-	default_icon_space = "polarbear"
+//	default_icon_floor = "polarbear"
+//	default_icon_space = "polarbear"
 	maxHealth = 75
 	health = 75
 	melee_damage_lower=10
 	melee_damage_upper=40
-
+/*
 /mob/living/simple_animal/hostile/bear/Move()
 	..()
 	if(stat != DEAD)
@@ -82,7 +78,7 @@
 			icon_state = default_icon_space
 		else
 			icon_state = default_icon_floor
-
+*/
 
 /mob/living/simple_animal/hostile/bear/Life()
 	if(timestopped)

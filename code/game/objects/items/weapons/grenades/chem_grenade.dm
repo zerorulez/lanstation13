@@ -51,6 +51,23 @@
 			var/mob/living/carbon/C = user
 			C.throw_mode_on()
 
+/obj/item/weapon/grenade/chem_grenade/proc/eject_contents()
+	var/turf/T = get_turf(src)
+
+	for(var/obj/item/I in beakers)
+		I.forceMove(T)
+	beakers = list()
+
+	if(firstExtract)
+		firstExtract.forceMove(T)
+		firstExtract = null
+	if(secondExtract)
+		secondExtract.forceMove(T)
+		secondExtract = null
+	if(reservoir)
+		reservoir.forceMove(T)
+		reservoir = null
+
 /obj/item/weapon/grenade/chem_grenade/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/device/assembly_holder) && (!stage || stage==1) && path != 2)
 		var/obj/item/device/assembly_holder/det = W

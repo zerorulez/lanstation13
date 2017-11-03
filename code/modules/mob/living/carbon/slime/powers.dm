@@ -15,7 +15,12 @@
 		if(C!=src && !istype(C,/mob/living/carbon/slime))
 			choices += C
 
-	var/mob/living/carbon/M = input(src,"Who do you wish to feed on?") in null|choices
+	var/mob/living/carbon/M
+
+	if (choices.len)
+		M = choices[1]
+		if(choices.len > 1)
+			input(src,"Who do you wish to feed on?") in null|choices
 
 	if(!M)
 		return
@@ -142,6 +147,10 @@
 		if(!client && !attacked)
 			if(PF && (PF != Victim) && !(PF in Friends))
 				Friends.Add(PF)
+				to_chat(PF, "<span class='info'>You have gained \the [src]'s trust.</span>")
+				var/image/heart = image('icons/mob/animal.dmi', src,"heart-ani2")
+				heart.plane = ABOVE_HUMAN_PLANE
+				flick_overlay(heart, list(PF.client), 20)
 		if(client)
 			to_chat(src, "<i>This subject does not have a strong enough life energy anymore...</i>")
 	else
@@ -173,6 +182,24 @@
 		return
 	if(!istype(src, /mob/living/carbon/slime/adult))
 		if(amount_grown >= 10)
+			if(istype(src, /mob/living/carbon/slime/pygmy))
+				var/mob/living/carbon/human/slime/S = new (loc)
+				if(mind)
+					mind.transfer_to(S)
+				else
+					S.key = key
+				transferImplantsTo(S)
+				transferBorers(S)
+				qdel(src)
+				var/i
+				while(!i)
+					var/randomname = S.species.makeName()
+					if(findname(randomname))
+						continue
+					else
+						S.real_name = randomname
+						i++
+				return
 			var/mob/living/carbon/slime/adult/new_slime = new adulttype(loc)
 			new_slime.nutrition = nutrition
 			new_slime.powerlevel = max(0, powerlevel-1)
@@ -219,6 +246,9 @@
 				if(prob(70))
 					newslime = primarytype
 				else
+					newslime = slime_mutation[rand(1,4)]
+
+				if(i == 4)
 					newslime = slime_mutation[rand(1,4)]
 
 				var/mob/living/carbon/slime/M = new newslime(loc)

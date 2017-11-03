@@ -242,10 +242,13 @@
 /obj/item/mecha_parts/mecha_equipment/tool/scythe
 	name = "\improper Heavy Duty Pneumatic Scythe"
 	desc = "An extremely heavy-duty pneumatic scythe. The \"giant robot\" approach to weed control. (Can be attached to: Engineering Exosuits)"
-	icon_state = "mecha_extremelylazyscythecopypaste"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "scythe0"
 	equip_cooldown = 20
 	energy_drain = 15
 	var/dam_force = 20
+
+	hitsound = 'sound/weapons/bladeslice.ogg'
 
 /obj/item/mecha_parts/mecha_equipment/tool/scythe/can_attach(obj/mecha/working/M as obj)
 	if(..())

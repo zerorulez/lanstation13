@@ -106,26 +106,28 @@ obj/item/device/mmi/Destroy()
 /obj/item/device/mmi/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(try_handling_mommi_construction(O,user))
 		return
-	if(istype(O,/obj/item/organ/brain) && !brainmob) //Time to stick a brain in it --NEO
+	if(istype(O,/obj/item/organ/internal/brain) && !brainmob) //Time to stick a brain in it --NEO
 		// MaMIs inherit from brain, but they shouldn't be insertable into a MMI
-		if (istype(O, /obj/item/organ/brain/mami))
+		if (istype(O, /obj/item/organ/internal/brain/mami))
 			to_chat(user, "<span class='warning'>You are only able to fit organic brains on a MMI. [src] won't work.</span>")
 			return TRUE
 
-		var/obj/item/organ/brain/BO = O
+		var/obj/item/organ/internal/brain/BO = O
 		if(!BO.brainmob)
 			to_chat(user, "<span class='warning'>You aren't sure where this brain came from, but you're pretty sure it's a useless brain.</span>")
 			return TRUE
 		// Checking to see if the ghost has been moused/borer'd/etc since death.
 		var/mob/living/carbon/brain/BM = BO.brainmob
 		if(!BM.client)
-			var/mob/dead/observer/ghost = get_ghost_from_mind(BM.mind)
-			if(ghost && ghost.client && ghost.can_reenter_corpse)
-				to_chat(user, "<span class='warning'>\The [src] indicates that \the [O] seems slow to respond. Try again in a few seconds.</span>")
-				ghost << 'sound/effects/adminhelp.ogg'
-				to_chat(ghost, "<span class='interface big'><span class='bold'>Someone is trying to put your brain in a MMI. Return to your body if you want to be resurrected!</span> \
-					(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)</span>")
-				return TRUE
+			var/mob/dead/observer/ghost = mind_can_reenter(BM.mind)
+			if(ghost)
+				var/mob/ghostmob = ghost.get_top_transmogrification()
+				if(ghostmob)
+					to_chat(user, "<span class='warning'>\The [src] indicates that \the [O] seems slow to respond. Try again in a few seconds.</span>")
+					ghostmob << 'sound/effects/adminhelp.ogg'
+					to_chat(ghostmob, "<span class='interface big'><span class='bold'>Someone is trying to put your brain in a MMI. Return to your body if you want to be resurrected!</span> \
+						(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)</span>")
+					return TRUE
 			to_chat(user, "<span class='warning'>\The [src] indicates that \the [O] is completely unresponsive; there's no point.</span>")
 			return TRUE
 		if(!user.drop_item(O))
@@ -174,7 +176,7 @@ obj/item/device/mmi/Destroy()
 		to_chat(user, "<span class='warning'>You upend \the [src], but the brain is clamped into place.")
 	else
 		to_chat(user, "<span class='notice'>You upend \the [src], spilling the brain onto the floor.</span>")
-		var/obj/item/organ/brain/brain = new(user.loc)
+		var/obj/item/organ/internal/brain/brain = new(user.loc)
 		brain.transfer_identity(brainmob)
 		qdel(brainmob)
 		brainmob = null//Set mmi brainmob var to null

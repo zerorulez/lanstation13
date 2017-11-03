@@ -76,6 +76,8 @@ h1.alert, h2.alert		{color: #000000;}
 .red					{color: #FF0000;}
 .grey					{color: #585858; font-family: Dotum, sans-serif;}
 .skeleton				{color: #585858; font-weight: bold; font-style: italic;}
+.golem					{color: #B4DBCB; font-weight: bold;}
+.slime					{color: #96FFC5;}
 .gutter					{color: #61380B; font-style: italic;}
 .orange					{color: #ffa500;}
 .maroon					{color: #800000;}

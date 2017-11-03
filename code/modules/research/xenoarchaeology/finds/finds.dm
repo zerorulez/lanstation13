@@ -96,7 +96,7 @@
 	if(new_item_type)
 		find_type = new_item_type
 	else
-		find_type = rand(1,39)	//update this when you add new find types
+		find_type = rand(1, MAX_ARCHAEO) // Update this at archaeo_defines.dm when you add new find types
 
 	var/anomaly_factor = 1		//anomaly origin_tech
 	var/item_type = "object"
@@ -378,7 +378,9 @@
 				new_item = new_gun
 				new_item.icon = 'icons/obj/xenoarchaeology.dmi'
 				new_item.icon_state = "egun[rand(1,6)]"
+				new_item.item_state = new_item.icon_state
 				new_gun.desc = "This is an antique energy weapon, you're not sure if it will fire or not."
+				new_item.inhand_states = list("left_hand" = 'icons/mob/in-hand/left/xenoarch.dmi', "right_hand" = 'icons/mob/in-hand/right/xenoarch.dmi')
 				new_gun.charge_states = 0 //let's prevent it from losing that great icon if we charge it
 
 				//5% chance to explode when first fired
@@ -401,6 +403,9 @@
 			new_item = new_gun
 			new_item.icon_state = "gun[rand(1,4)]"
 			new_item.icon = 'icons/obj/xenoarchaeology.dmi'
+			new_item.item_state = new_item.icon_state
+			new_gun.desc = "This is an antique projectile weapon, you're not sure if it will fire or not."
+			new_item.inhand_states = list("left_hand" = 'icons/mob/in-hand/left/xenoarch.dmi', "right_hand" = 'icons/mob/in-hand/right/xenoarch.dmi')
 
 			//let's get some ammunition in this gun : weighted to pick available ammo
 			new_gun.caliber = pick(50;list("357" = 1),

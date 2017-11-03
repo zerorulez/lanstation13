@@ -28,7 +28,7 @@
 	req_tech = list(Tc_PROGRAMMING = 2, Tc_BIOTECH = 4)
 	build_type = PROTOLATHE | MECHFAB
 	materials = list(MAT_IRON = 2000, MAT_GLASS = 500)
-	build_path = /obj/item/organ/lungs/filter
+	build_path = /obj/item/organ/internal/lungs/filter
 	category = "Robotics"
 
 /datum/design/adv_eyes
@@ -38,7 +38,7 @@
 	req_tech = list(Tc_PROGRAMMING = 2, Tc_BIOTECH = 4)
 	build_type = PROTOLATHE | MECHFAB
 	materials = list(MAT_IRON = 500, MAT_GLASS = 2000)
-	build_path = /obj/item/organ/eyes/adv_1
+	build_path = /obj/item/organ/internal/eyes/adv_1
 	category = "Robotics"
 
 /datum/design/mmi_radio
@@ -60,7 +60,7 @@
 	req_tech = list(Tc_PROGRAMMING = 4, Tc_BIOTECH = 4)
 	build_type = PROTOLATHE
 	materials = list(MAT_IRON = 5000, MAT_GLASS = 500, MAT_GOLD = 500, MAT_SILVER = 500)
-	build_path = /obj/item/organ/brain/mami
+	build_path = /obj/item/organ/internal/brain/mami
 */
 
 /datum/design/synthetic_flash

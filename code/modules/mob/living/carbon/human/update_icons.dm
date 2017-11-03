@@ -189,7 +189,7 @@ var/global/list/damage_icon_parts = list()
 
 	var/husk = (M_HUSK in src.mutations)  //100% unnecessary -Agouri	//nope, do you really want to iterate through src.mutations repeatedly? -Pete
 	var/fat = (M_FAT in src.mutations) && (species && species.anatomy_flags & CAN_BE_FAT)
-	var/hulk = (M_HULK in src.mutations) && !ishorrorform(src) && !isgrue(src) && mind.special_role != HIGHLANDER // Part of the species.
+	var/hulk = (M_HULK in src.mutations) && !ishorrorform(src) && !isgrue(src) && mind && mind.special_role != HIGHLANDER // Part of the species.
 	var/skeleton = (SKELETON in src.mutations)
 
 	var/g = "m"
@@ -250,11 +250,14 @@ var/global/list/damage_icon_parts = list()
 				stand_icon.Blend(temp, ICON_OVERLAY)
 
 	//Skin tone
-	if(!skeleton && !husk && !hulk && (species.anatomy_flags & HAS_SKIN_TONE))
-		if(s_tone >= 0)
-			stand_icon.Blend(rgb(s_tone, s_tone, s_tone), ICON_ADD)
-		else
-			stand_icon.Blend(rgb(-s_tone,  -s_tone,  -s_tone), ICON_SUBTRACT)
+	if(!skeleton && !husk && !hulk)
+		if(species.anatomy_flags & MULTICOLOR)
+			stand_icon.Blend(rgb(multicolor_skin_r, multicolor_skin_g, multicolor_skin_b), ICON_ADD)
+		else if(species.anatomy_flags & HAS_SKIN_TONE)
+			if(s_tone >= 0)
+				stand_icon.Blend(rgb(s_tone, s_tone, s_tone), ICON_ADD)
+			else
+				stand_icon.Blend(rgb(-s_tone,  -s_tone,  -s_tone), ICON_SUBTRACT)
 
 	if(husk)
 		var/icon/mask = new(stand_icon)
@@ -311,8 +314,18 @@ var/global/list/damage_icon_parts = list()
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]
 		if((facial_hair_style) && (src.species.name in facial_hair_style.species_allowed))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
+
+			var/r_color_facial = r_facial
+			var/g_color_facial = g_facial
+			var/b_color_facial = b_facial
+
+			if(species.anatomy_flags & MULTICOLOR)
+				r_color_facial = multicolor_skin_r
+				g_color_facial = multicolor_skin_g
+				b_color_facial = multicolor_skin_b
+
 			if(facial_hair_style.do_colouration)
-				facial_s.Blend(rgb(r_facial, g_facial, b_facial), ICON_ADD)
+				facial_s.Blend(rgb(r_color_facial, g_color_facial, b_color_facial), ICON_ADD)
 			face_standing.Blend(facial_s, ICON_OVERLAY)
 		else
 			warning("Invalid f_style for [species.name]: [f_style]")
@@ -321,8 +334,18 @@ var/global/list/damage_icon_parts = list()
 		var/datum/sprite_accessory/hair_style = hair_styles_list[h_style]
 		if((hair_style) && (src.species.name in hair_style.species_allowed))
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
+
+			var/r_color_hair = r_hair
+			var/g_color_hair = g_hair
+			var/b_color_hair = b_hair
+
+			if(species.anatomy_flags & MULTICOLOR)
+				r_color_hair = multicolor_skin_r
+				g_color_hair = multicolor_skin_g
+				b_color_hair = multicolor_skin_b
+
 			if(hair_style.do_colouration)
-				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_ADD)
+				hair_s.Blend(rgb(r_color_hair, g_color_hair, b_color_hair), ICON_ADD)
 			if(hair_style.additional_accessories)
 				hair_s.Blend(icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_acc"), ICON_OVERLAY)
 

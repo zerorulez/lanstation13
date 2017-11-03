@@ -293,7 +293,13 @@
 	if(INVOKE_EVENT(on_damaged, list("type" = TOX, "amount" = amount)))
 		return 0
 
-	toxloss = min(max(toxloss + (amount * tox_damage_modifier), 0),(maxHealth*2))
+	var/mult = 1
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		if(H.species.tox_mod)
+			mult = H.species.tox_mod
+
+	toxloss = min(max(toxloss + (amount * tox_damage_modifier * mult), 0),(maxHealth*2))
 
 /mob/living/proc/setToxLoss(var/amount)
 	if(status_flags & GODMODE)
@@ -322,6 +328,11 @@
 
 	if(INVOKE_EVENT(on_damaged, list("type" = CLONE, "amount" = amount)))
 		return 0
+
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		if(isslimeperson(H))
+			amount = 0
 
 	cloneloss = min(max(cloneloss + (amount * clone_damage_modifier), 0),(maxHealth*2))
 
@@ -438,6 +449,11 @@
 
 /mob/living/proc/get_organ(zone)
 	return
+
+//A proc that turns organ strings into a list of organ datums
+//The organ strings can be fed in as arguments, or as a list
+/mob/living/proc/get_organs(organs)
+	return list()
 
 /mob/living/proc/get_organ_target()
 	var/t = src.zone_sel.selecting
@@ -1343,7 +1359,7 @@ Thanks.
 		else
 			speed_mod = 0.0
 
-		if(M_BEAK in H.mutations)
+		if(H.organ_has_mutation(LIMB_HEAD, M_BEAK))
 			if(istype(H.wear_mask))
 				var/obj/item/clothing/mask/M = H.wear_mask
 				if(!(M.body_parts_covered & MOUTH)) //If our mask doesn't cover mouth, we can use our beak to help us while butchering
@@ -1355,7 +1371,7 @@ Thanks.
 				if(!tool_name)
 					tool_name = "beak"
 
-		if(M_CLAWS in H.mutations)
+		if(H.organ_has_mutation(H.get_active_hand_organ(), M_CLAWS))
 			if(!istype(H.gloves))
 				speed_mod += 0.25
 				if(!tool_name)

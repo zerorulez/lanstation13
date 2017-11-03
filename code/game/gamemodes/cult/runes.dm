@@ -921,8 +921,8 @@
 					I.on_fire = 1
 					I.ashify()
 //Brain
-		else if(istype(A, /obj/item/organ/brain))
-			var/obj/item/organ/brain/R = A
+		else if(istype(A, /obj/item/organ/internal/brain))
+			var/obj/item/organ/internal/brain/R = A
 			var/mob/living/carbon/brain/N = R.brainmob
 			if(N)//the brain is a player's
 				if(cult_round && (N.mind == cult_round.sacrifice_target))

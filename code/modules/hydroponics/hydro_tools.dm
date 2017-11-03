@@ -416,9 +416,7 @@
 	origin_tech = Tc_MATERIALS + "=2;" + Tc_COMBAT + "=1"
 	attack_verb = list("chops", "tears", "cuts")
 
-/obj/item/weapon/hatchet/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 50, 1, -1)
-	return ..()
+	hitsound = 'sound/weapons/bladeslice.ogg'
 
 //If it's a hatchet it goes here. I guess
 /obj/item/weapon/hatchet/unathiknife
@@ -443,6 +441,8 @@
 	slot_flags = SLOT_BACK
 	origin_tech = Tc_MATERIALS + "=2;" + Tc_COMBAT + "=2"
 	attack_verb = list("chops", "slices", "cuts", "reaps")
+
+	hitsound = 'sound/weapons/bladeslice.ogg'
 
 /obj/item/weapon/scythe/afterattack(atom/A, mob/user as mob, proximity)
 	if(!proximity)

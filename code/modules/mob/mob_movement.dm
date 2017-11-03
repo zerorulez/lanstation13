@@ -344,14 +344,14 @@
 			if("run")
 				if(mob.drowsyness > 0)
 					move_delay += 6
-				move_delay += 1+config.run_speed
+				move_delay += 1 + config.run_speed
 			if("walk")
-				move_delay += 4+config.walk_speed
+				move_delay += 3 + config.walk_speed
 		move_delay += mob.movement_delay()
 
 		var/obj/item/weapon/grab/Findgrab = locate() in mob
 		if(Findgrab)
-			move_delay += 4
+			move_delay += 2
 
 		//We are now going to move
 		var/old_dir = mob.dir

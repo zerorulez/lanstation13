@@ -82,6 +82,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 	var/channeling_bone_shield = 0
 	var/channeling_bone_hammer = 0
 	var/channeling_bone_cocoon = 0
+	var/channeling_night_vision = 0
 
 	var/obj/item/weapon/gun/hookshot/flesh/extend_o_arm = null
 	var/extend_o_arm_unlocked = 0
@@ -540,7 +541,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 	chemicals -= chem.cost*units
 
 // We've been moved to someone's head.
-/mob/living/simple_animal/borer/proc/infest_limb(var/obj/item/weapon/organ/limb)
+/mob/living/simple_animal/borer/proc/infest_limb(var/obj/item/organ/external/limb)
 	detach()
 	limb.borer=src
 	forceMove(limb)
@@ -552,7 +553,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 	set name = "Abandon Host"
 	set desc = "Slither out of your host."
 
-	var/severed = istype(loc, /obj/item/weapon/organ)
+	var/severed = istype(loc, /obj/item/organ/external)
 	if(!host && !severed)
 		to_chat(src, "<span class='warning'>You are not inside a host body.</span>")
 		return
@@ -581,7 +582,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 		return
 
 	if(severed)
-		if(istype(loc, /obj/item/weapon/organ/head))
+		if(istype(loc, /obj/item/organ/external/head))
 			to_chat(src, "<span class='info'>You begin disconnecting from \the [loc]'s synapses and prodding at its internal ear canal.</span>")
 		else
 			to_chat(src, "<span class='info'>You begin disconnecting from \the [loc]'s nerve endings and prodding at the surface of its skin.</span>")
@@ -617,7 +618,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 			return
 
 		if(severed)
-			if(istype(loc, /obj/item/weapon/organ/head))
+			if(istype(loc, /obj/item/organ/external/head))
 				to_chat(src, "<span class='info'>You wiggle out of the ear of \the [loc] and plop to the ground.</span>")
 			else
 				to_chat(src, "<span class='info'>You wiggle out of \the [loc] and plop to the ground.</span>")

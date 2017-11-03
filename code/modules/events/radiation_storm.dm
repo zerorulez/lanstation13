@@ -30,7 +30,8 @@
 			if(A.z != map.zMainStation || is_safe_zone(A))
 				continue
 			var/area/ma = get_area_master(A)
-			ma.radiation_alert()
+			if(ma && istype(ma))
+				ma.radiation_alert()
 
 		make_maint_all_access()
 

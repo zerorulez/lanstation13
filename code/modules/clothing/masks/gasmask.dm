@@ -61,6 +61,7 @@
 	species_fit = list(VOX_SHAPED)
 	can_flip = 0
 	canstage = 0
+	body_parts_covered = HEAD|FACE|EARS|EYES
 
 /obj/item/clothing/mask/gas/swat
 	name = "\improper SWAT mask"

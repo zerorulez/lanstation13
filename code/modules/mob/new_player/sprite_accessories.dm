@@ -29,7 +29,7 @@
 	var/gender = NEUTER
 
 	// Restrict some styles to specific species
-	var/list/species_allowed = list("Human")
+	var/list/species_allowed = list("Human", "Slime", "Evolved Slime")
 
 	// Whether or not the accessory can be affected by colouration
 	var/do_colouration = 1
@@ -493,7 +493,7 @@
 		name = "Shaved"
 		icon_state = "bald"
 		gender = NEUTER
-		species_allowed = list("Human","Unathi","Tajaran","Skrell","Vox","Grey","Plasmaman","Skellington","Diona","Muton","Golem","Skeletal Vox")
+		species_allowed = list("Human","Slime","Evolved Slime","Unathi","Tajaran","Skrell","Vox","Grey","Plasmaman","Skellington","Diona","Muton","Golem","Skeletal Vox")
 
 	watson
 		name = "Watson Mustache"

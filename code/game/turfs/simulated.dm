@@ -37,7 +37,7 @@
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 
-/*			// Tracking blood
+			// Tracking blood
 			var/list/bloodDNA = null
 			var/bloodcolor=""
 
@@ -61,7 +61,7 @@
 					from.AddTracks(H.get_footprint_type(),bloodDNA,0,H.dir,bloodcolor) // Going
 
 			bloodDNA = null
-*/
+
 
 			// Floorlength braids?  Enjoy your tripping.
 			if(H.h_style && !H.check_hidden_head_flags(HIDEHEADHAIR))

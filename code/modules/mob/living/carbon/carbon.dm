@@ -103,7 +103,8 @@
 	if(damage <= 0)
 		damage = 0
 
-	if(dna.mutantrace == "slime")
+	var/mob/living/carbon/human/H = src
+	if(istype(H) && H.species && (H.species.flags & ELECTRIC_HEAL))
 		heal_overall_damage(damage/2, damage/2)
 		Jitter(10)
 		Stun(5)
@@ -276,6 +277,10 @@
 
 //Throwing stuff
 
+#define FAILED_THROW 0
+#define THREW_SOMETHING 1
+#define THREW_NOTHING -1
+
 /mob/living/carbon/proc/toggle_throw_mode()
 	if (in_throw_mode)
 		throw_mode_off()
@@ -300,27 +305,27 @@
 /mob/living/carbon/throw_item(var/atom/target,var/atom/movable/what=null)
 	src.throw_mode_off()
 	if(usr.stat || !target)
-		return
+		return FAILED_THROW
 
 	if(!istype(loc,/turf))
 		to_chat(src, "<span class='warning'>You can't do that now!</span>")
-		return
+		return FAILED_THROW
 
 	if(target.type == /obj/screen)
-		return
+		return FAILED_THROW
 
 	var/atom/movable/item = src.get_active_hand()
 	if(what)
 		item=what
 
 	if(!item)
-		return
+		return FAILED_THROW
 
 	if (istype(item, /obj/item/offhand))
 		var/obj/item/offhand/offhand = item
 		if(offhand.wielding)
 			src.throw_item(target, offhand.wielding)
-			return
+			return FAILED_THROW
 
 	else if (istype(item, /obj/item/weapon/grab))
 		var/obj/item/weapon/grab/G = item
@@ -343,12 +348,12 @@
 					M.LAssailant = usr
 				returnToPool(G)
 	if(!item)
-		return //Grab processing has a chance of returning null
+		return FAILED_THROW //Grab processing has a chance of returning null
 
 	var/obj/item/I = item
 	if(istype(I) && I.cant_drop > 0)
 		to_chat(usr, "<span class='warning'>It's stuck to your hand!</span>")
-		return
+		return FAILED_THROW
 
 	remove_from_mob(item)
 
@@ -376,6 +381,7 @@
 			if(M_HULK in H.mutations || M_STRONG in H.mutations)
 				throw_mult+=0.5
 		item.throw_at(target, item.throw_range*throw_mult, item.throw_speed*throw_mult)
+		return THREW_SOMETHING
 
 /*mob/living/carbon/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	..()

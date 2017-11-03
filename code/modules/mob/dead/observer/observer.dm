@@ -385,7 +385,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/reenter_corpse()
 	set category = "Ghost"
 	set name = "Re-enter Corpse"
-	if(!client)
+
+	var/mob/M = get_top_transmogrification()
+	if(!M.client)
 		return
 	if(!(mind && mind.current && can_reenter_corpse))
 		to_chat(src, "<span class='warning'>You have no body.</span>")
@@ -401,6 +403,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(mind && mind.current && mind.current.ajourn)
 		mind.current.ajourn.ajourn = null
 		mind.current.ajourn = null
+	completely_untransmogrify()
 	mind.current.key = key
 	mind.isScrying = 0
 	return 1
@@ -857,9 +860,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/Topic(href, href_list)
 	if (href_list["reentercorpse"])
-		if(istype(usr, /mob/dead/observer))
-			var/mob/dead/observer/A = usr
-			A.reenter_corpse()
+		var/mob/dead/observer/A
+		if(ismob(usr))
+			var/mob/M = usr
+			A = M.get_bottom_transmogrification()
+			if(istype(A))
+				A.reenter_corpse()
 
 	//BEGIN TELEPORT HREF CODE
 	if(usr != src)

@@ -236,6 +236,8 @@
 			else
 				if(isgolem(src))
 					msg = "<B>[src]</B> se desfaz em pó..."
+				else if(isslimeperson(src))
+					msg = "<B>[src]</B> perde a consistência e se torna uma poça."
 				else
 					msg = "<B>[src]</B> desiste de lutar e abraça a morte, seus olhos perdendo a vida..."
 			m_type = VISIBLE
