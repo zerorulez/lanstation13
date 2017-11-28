@@ -286,9 +286,9 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	for (var/atom/movable/listener in listeners)
 		if (listener)
 			//listeners_sent++
-//			if(istype(listener, /mob/living) && speech.speaker != listener)
-//				var/mob/living/L = listener
-//				L.playsound_local(get_turf(L), 'sound/effects/radio_chatter.ogg', 75)
+			if(istype(listener, /mob/living) && speech.speaker != listener)
+				var/mob/living/L = listener
+				L.playsound_local(get_turf(L), 'sound/effects/radio_chatter.ogg', 75)
 			listener.Hear(speech, rendered)
 
 	if (length(listeners))
