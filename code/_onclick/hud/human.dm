@@ -363,16 +363,10 @@
 	mymob.bodytemp.screen_loc = ui_temp
 
 	mymob.healths = getFromPool(/obj/screen)
-	mymob.healths.icon = SCREEN_GENERIC
+	mymob.healths.icon = ui_style
 	mymob.healths.icon_state = "health0"
 	mymob.healths.name = "health"
 	mymob.healths.screen_loc = ui_health
-
-	mymob.healthdoll = getFromPool(/obj/screen)
-	mymob.healthdoll.icon = SCREEN_GENERIC
-	mymob.healthdoll.icon_state = "healthdoll_OVERLAY"
-	mymob.healthdoll.name = "pain meter"
-	mymob.healthdoll.screen_loc = ui_healthdoll
 
 	mymob.nutrition_icon = getFromPool(/obj/screen)
 	mymob.nutrition_icon.icon = ui_style
@@ -418,7 +412,7 @@
 
 	mymob.client.reset_screen()
 
-	mymob.client.screen += list( mymob.throw_icon, mymob.kick_icon, mymob.bite_icon, mymob.zone_sel, mymob.oxygen, mymob.pressure, mymob.toxin, mymob.bodytemp, mymob.internals, mymob.fire, mymob.healths, mymob.healthdoll, mymob.nutrition_icon, mymob.pullin, mymob.gun_setting_icon) //, mymob.hands, mymob.rest, mymob.sleep) //, mymob.mach )
+	mymob.client.screen += list( mymob.throw_icon, mymob.kick_icon, mymob.bite_icon, mymob.zone_sel, mymob.oxygen, mymob.pressure, mymob.toxin, mymob.bodytemp, mymob.internals, mymob.fire, mymob.healths, mymob.nutrition_icon, mymob.pullin, mymob.gun_setting_icon) //, mymob.hands, mymob.rest, mymob.sleep) //, mymob.mach )
 	mymob.client.screen += src.adding + src.hotkeybuttons
 	inventory_shown = 0
 

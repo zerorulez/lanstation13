@@ -137,97 +137,51 @@
 
 		if(healths)
 			healths.overlays.len = 0
-			switch(hal_screwyhud)
-				if(1)
-					healths.icon_state = "health6"
-				if(2)
-					healths.icon_state = "health7"
-				else
-					switch(health - halloss)
-						if(100 to INFINITY)
-							healths.icon_state = "health0"
-						if(80 to 100)
-							healths.icon_state = "health1"
-						if(60 to 80)
-							healths.icon_state = "health2"
-						if(40 to 60)
-							healths.icon_state = "health3"
-						if(20 to 40)
-							healths.icon_state = "health4"
-						if(0 to 20)
-							healths.icon_state = "health5"
-						else
-							healths.icon_state = "health6"
-
-		if(healthdoll)
-			healthdoll.overlays.len = 0
-			if((stat != DEAD || stat != UNCONSCIOUS) && !pain_numb)
-				healthdoll.icon_state = "healthdoll_OVERLAY"
-				var/ruptured = is_lung_ruptured()
-
-				for(var/datum/organ/external/e in organs)
-					if(!e.is_existing() || e.is_broken())
-						healthdoll.overlays.Add(image('icons/mob/screen_gen.dmi', "[e.name]6"))
-						continue
-
-					if(istype(e, /datum/organ/external/chest))
-						if(ruptured)
-							healthdoll.overlays.Add(image('icons/mob/screen_gen.dmi', "[e.name]6"))
-							continue
-
-					var/damage = e.get_damage()
-					var/comparison = ((e.max_damage > 100 ? 100 : e.max_damage)/10)
-					var/icon_num = 0
-
-					if(damage)
-						icon_num = 1
-					if(damage > (comparison))
-						icon_num = 2
-					if(damage > (comparison*2))
-						icon_num = 3
-					if(damage > (comparison*3))
-						icon_num = 4
-					if(damage > (comparison*4))
-						icon_num = 5
-
-					if(hal_screwyhud)
-						icon_num = pick(1,2,3,4,5,6)
-
-					if(icon_num)
-						healthdoll.overlays.Add(image('icons/mob/screen_gen.dmi', "[e.name][icon_num]"))
-
-			else if(pain_numb)
-				healthdoll.icon_state = "healthdoll_numb"
-
-			else
-				healthdoll.icon_state = "healthdoll_DEAD"
-		/*
-			healthdoll.overlays.len = 0
 			if (pain_numb)
 				healths.icon_state = "health_numb"
 			else
 				var/ruptured = is_lung_ruptured()
 				if(hal_screwyhud)
 					for(var/i = 1; i <= 3; i++)
-						healthdoll.overlays.Add(pick(organ_damage_overlays))
+						healths.overlays.Add(pick(organ_damage_overlays))
 				else
 					for(var/datum/organ/external/e in organs)
 						if(istype(e, /datum/organ/external/chest))
 							if(ruptured)
-								healthdoll.overlays.Add(organ_damage_overlays["[e.name]_max"])
+								healths.overlays.Add(organ_damage_overlays["[e.name]_max"])
 								continue
 						var/total_damage = e.get_damage()
 						if(!e.is_existing())
-							healthdoll.overlays.Add(organ_damage_overlays["[e.name]_gone"])
+							healths.overlays.Add(organ_damage_overlays["[e.name]_gone"])
 						else
 							switch(total_damage)
 								if(30 to INFINITY)
-									healthdoll.overlays.Add(organ_damage_overlays["[e.name]_max"])
+									healths.overlays.Add(organ_damage_overlays["[e.name]_max"])
 								if(15 to 30)
-									healthdoll.overlays.Add(organ_damage_overlays["[e.name]_mid"])
+									healths.overlays.Add(organ_damage_overlays["[e.name]_mid"])
 								if(5 to 15)
-									healthdoll.overlays.Add(organ_damage_overlays["[e.name]_min"])*/
-
+									healths.overlays.Add(organ_damage_overlays["[e.name]_min"])
+				switch(hal_screwyhud)
+					if(1)
+						healths.icon_state = "health6"
+					if(2)
+						healths.icon_state = "health7"
+					else
+						switch(health - halloss)
+							if(100 to INFINITY)
+								healths.icon_state = "health0"
+							if(80 to 100)
+								healths.icon_state = "health1"
+							if(60 to 80)
+								healths.icon_state = "health2"
+							if(40 to 60)
+								healths.icon_state = "health3"
+							if(20 to 40)
+								healths.icon_state = "health4"
+							if(0 to 20)
+								healths.icon_state = "health5"
+							else
+								healths.icon_state = "health6"
 		if(nutrition_icon)
 			switch(nutrition)
 				if(450 to INFINITY)
