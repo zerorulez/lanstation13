@@ -47,7 +47,7 @@ turf/unsimulated/wall/splashscreen
 		var/path = "icons/splashworks/"
 		var/list/filenames = flist(path)
 
-		if(!filenames)
+		if(!filenames.len)
 			qdel(src)
 			return
 
@@ -58,6 +58,7 @@ turf/unsimulated/wall/splashscreen
 				filenames -= filename
 
 		icon = file("[path][pick(filenames)]")
+		..()
 
 /turf/unsimulated/wall/other
 	icon_state = "r_wall"

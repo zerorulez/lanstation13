@@ -55,6 +55,7 @@
 	seed = plant_controller.create_random_seed()
 	seed_type = seed.name
 	update_seed()
+	..()
 
 //the vegetable/fruit categories are made from a culinary standpoint. many of the "vegetables" in there are technically fruits. (tomatoes, pumpkins...)
 
@@ -378,7 +379,7 @@
 	name = "packet of cinnamomum seeds"
 	seed_type = "cinnamomum"
 	vending_cat = "trees"
-	
+
 /obj/item/seeds/test
 	name = "packet of testing data seed"
 	seed_type = "test"

@@ -292,7 +292,7 @@
 				animate(alpha = 0, time =  animation_time)
 
 				spawn(delay)
-					if(user)
+					if(user.client)
 						user.client.images -= I
 						if(!OT.mouse_opacity)
 							OT.mouse_opacity = 1

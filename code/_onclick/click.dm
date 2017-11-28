@@ -111,10 +111,8 @@
 				resolved = A.attackby(W,src, params)
 				if(ismob(A) || istype(A, /obj/mecha) || istype(W, /obj/item/weapon/grab))
 					delayNextAttack(item_attack_delay)
-				if(!resolved && A && W)
+				if(!resolved && A && !A.gcDestroyed && W)
 					W.afterattack(A,src,1,params) // 1 indicates adjacency
-				else
-					delayNextAttack(item_attack_delay)
 		else
 			if(ismob(A) || istype(W, /obj/item/weapon/grab))
 				delayNextAttack(10)

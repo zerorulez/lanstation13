@@ -23,8 +23,6 @@
 		"On" = "on;number"
 	)
 
-	New() del(src)
-
 
 ///obj/item/device/assembly/infra/describe()
 //	return "The infrared trigger is [on?"on":"off"]."

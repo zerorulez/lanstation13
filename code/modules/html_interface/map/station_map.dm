@@ -155,6 +155,9 @@
 	centcommMiniMaps["[filter]"] = canvas
 
 /proc/generateStationMinimap(var/StationZLevel)
+	if(StationZLevel > world.maxz)
+		return 1
+
 	var/icon/canvas = icon('icons/480x480.dmi', "blank")
 
 	for(var/i = 1 to ((2 * world.view + 1)*WORLD_ICON_SIZE))

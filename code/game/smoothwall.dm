@@ -12,7 +12,7 @@
 	var/junction = 0
 	for(var/cdir in cardinal)
 		var/turf/T = get_step(src,cdir)
-		if(isSmoothableNeighbor(T))
+		if(T && T.canSmoothWith && isSmoothableNeighbor(T))
 			junction |= cdir
 			continue // NO NEED FOR FURTHER SEARCHING IN THIS TILE
 		for(var/atom/A in T)
@@ -76,6 +76,17 @@
 			for(var/atom/A in T)
 				if(isSmoothableNeighbor(A))
 					A.relativewall()
+
+/atom/proc/update_near_walls(var/at)
+	if(!at)
+		at = get_turf(src)
+
+	for(var/cdir in cardinal)
+		var/turf/T = get_step(src,cdir)
+		if(istype(T, /turf))
+			T.relativewall()
+			for(var/atom/A in T)
+				A.relativewall()
 
 /turf/simulated/wall/New()
 	..()
