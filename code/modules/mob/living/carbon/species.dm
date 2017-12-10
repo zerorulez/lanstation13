@@ -429,7 +429,7 @@ var/global/list/whitelisted_species = list("Human")
 
 	flesh_color = "#AFA59E"
 
-	var/datum/speech_filter/filter = new
+	var/datum/speech_filter/s_filter = new
 
 	has_organ = list(
 		"heart" =    /datum/organ/internal/heart,
@@ -446,7 +446,7 @@ var/global/list/whitelisted_species = list("Human")
 
 	// Note: Comes BEFORE other stuff.
 	// Trying to remember all the stupid fucking furry memes is hard
-	filter.addPickReplacement("\\b(asshole|comdom|shitter|shitler|retard|dipshit|dipshit|greyshirt|nigger)\\b",
+	s_filter.addPickReplacement("\\b(asshole|comdom|shitter|shitler|retard|dipshit|dipshit|greyshirt|nigger)\\b",
 		list(
 			"silly rabbit",
 			"sandwich", // won't work too well with plurals OH WELL
@@ -454,14 +454,14 @@ var/global/list/whitelisted_species = list("Human")
 			"party pooper"
 		)
 	)
-	filter.addWordReplacement("me","meow")
-	filter.addWordReplacement("I","meow") // Should replace with player's first name.
-	filter.addReplacement("fuck","yiff")
-	filter.addReplacement("shit","scat")
-	filter.addReplacement("scratch","scritch")
-	filter.addWordReplacement("(help|assist)\\smeow","kill meow") // help me(ow) -> kill meow
-	filter.addReplacement("god","gosh")
-	filter.addWordReplacement("(ass|butt)", "rump")
+	s_filter.addWordReplacement("me","meow")
+	s_filter.addWordReplacement("I","meow") // Should replace with player's first name.
+	s_filter.addReplacement("fuck","yiff")
+	s_filter.addReplacement("shit","scat")
+	s_filter.addReplacement("scratch","scritch")
+	s_filter.addWordReplacement("(help|assist)\\smeow","kill meow") // help me(ow) -> kill meow
+	s_filter.addReplacement("god","gosh")
+	s_filter.addWordReplacement("(ass|butt)", "rump")
 
 /datum/species/tajaran/handle_speech(var/datum/speech/speech, mob/living/carbon/human/H)
 	if (prob(15))
@@ -474,7 +474,7 @@ var/global/list/whitelisted_species = list("Human")
 
 		return ..()
 
-	speech.message = filter.FilterSpeech(speech.message)
+	speech.message = s_filter.FilterSpeech(speech.message)
 	return ..()
 
 /datum/species/grey // /vg/

@@ -539,10 +539,10 @@
 		if(usr.machine == src)
 			usr.unset_machine()
 		return 1
-	var/datum/topic_input/filter = new /datum/topic_input(href,href_list)
+	var/datum/topic_input/t_filter = new /datum/topic_input(href,href_list)
 
 	if(href_list["remove_from_queue"])
-		remove_from_queue(filter.getNum("remove_from_queue"))
+		remove_from_queue(t_filter.getNum("remove_from_queue"))
 		return 1
 
 	if(href_list["eject"])
@@ -622,57 +622,7 @@
 		return
 
 	..()
-/*
-/obj/machinery/r_n_d/fabricator/mech/Topic(href, href_list)
 
-	if(href_list["process_queue"])
-		spawn(-1)
-			if(processing_queue || being_built)
-				return 0
-			processing_queue = 1
-			process_queue()
-			processing_queue = 0
-
-	if(href_list["clear_temp"])
-		temp = null
-	if(href_list["screen"])
-		src.screen = href_list["screen"]
-
-	if(href_list["queue_move"] && href_list["index"])
-		var/index = filter.getNum("index")
-		var/new_index = index + filter.getNum("queue_move")
-		if(isnum(index) && isnum(new_index))
-			if(IsInRange(new_index,1,queue.len))
-				queue.Swap(index,new_index)
-		return update_queue_on_page()
-
-	if(href_list["clear_queue"])
-		queue = list()
-		return update_queue_on_page()
-	if(href_list["sync"])
-		queue = list()
-		temp = "Updating local R&D database..."
-		src.updateUsrDialog()
-		spawn(30)
-			src.sync()
-		return update_queue_on_page()
-	if(href_list["part_desc"])
-		var/obj/part = filter.getObj("part_desc")
-
-		// critical exploit prevention, do not remove unless you replace it -walter0o
-		if(src.exploit_prevention(part, usr, 1))
-			return
-
-		if(part)
-			temp = {"<h1>[part] description:</h1>
-						[part.desc]<br>
-						<a href='?src=\ref[src];clear_temp=1'>Return</a>
-						"}
-	if(href_list["remove_mat"] && href_list["material"])
-		temp = "Ejected [remove_material(href_list["material"],text2num(href_list["remove_mat"]))] of [href_list["material"]]<br><a href='?src=\ref[src];clear_temp=1'>Return</a>"
-	src.updateUsrDialog()
-	return
-*/
 /obj/machinery/r_n_d/fabricator/proc/remove_material(var/matID, var/amount)
 
 

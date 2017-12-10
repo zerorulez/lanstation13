@@ -274,8 +274,8 @@
 
 /obj/mecha/combat/Topic(href,href_list)
 	..()
-	var/datum/topic_input/filter = new (href,href_list)
-	if(filter.get("close"))
+	var/datum/topic_input/t_filter = new (href,href_list)
+	if(t_filter.get("close"))
 		am = null
 		return
 	/*
