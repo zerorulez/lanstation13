@@ -4,7 +4,7 @@ var/datum/subsystem/garbage/SSgarbage
 /datum/subsystem/garbage
 	name          = "Garbage"
 	init_order    = SS_INIT_GARBAGE
-	wait          = 5 SECONDS
+	wait          = 2 SECONDS
 	display_order = SS_DISPLAY_GARBAGE
 	priority      = SS_DISPLAY_GARBAGE
 	flags         = SS_BACKGROUND | SS_NO_TICK_CHECK | SS_FIRE_IN_LOBBY
