@@ -349,6 +349,7 @@
 	return 1
 
 /obj/mecha/proc/mechstep(direction)
+	set_glide_size(DELAY2GLIDESIZE(step_in))
 	var/result = step(src,direction)
 	if(result)
 	 playsound(src, get_sfx("mechstep"),40,1)
@@ -356,6 +357,7 @@
 
 
 /obj/mecha/proc/mechsteprand()
+	set_glide_size(DELAY2GLIDESIZE(step_in))
 	var/result = step_rand(src)
 	if(result)
 	 playsound(src, get_sfx("mechstep"),40,1)

@@ -492,8 +492,6 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 
 	if(prob(20))
 		icon_state = "asteroid[rand(0,12)]"
-	if(ticker)
-		initialize()
 
 /turf/unsimulated/floor/asteroid/initialize()
 	updateMineralOverlays()

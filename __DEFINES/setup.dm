@@ -1288,8 +1288,9 @@ var/proccalls = 1
 //incorporeal_move values
 #define INCORPOREAL_DEACTIVATE	0
 #define INCORPOREAL_GHOST		1
-#define INCORPOREAL_NINJA		2
-#define INCORPOREAL_ETHEREAL	3
+#define INCORPOREAL_ETHEREAL	2
+#define GHOST_MOVEDELAY 1
+#define ETHEREAL_MOVEDELAY 2
 
 
 //MALFUNCTION FLAGS
@@ -1504,3 +1505,13 @@ var/proccalls = 1
 #define PERSON_ANIMATION 1
 
 #define SCREEN_GENERIC 'icons/mob/screen_gen.dmi'
+
+
+#define INERTIA_MOVEDELAY 5
+
+#define FRACTIONAL_GLIDESIZES 1
+#ifdef FRACTIONAL_GLIDESIZES
+#define DELAY2GLIDESIZE(delay) (WORLD_ICON_SIZE / max(Ceiling(delay / world.tick_lag), 1))
+#else
+#define DELAY2GLIDESIZE(delay) (Ceiling(WORLD_ICON_SIZE / max(Ceiling(delay / world.tick_lag), 1)))
+#endif

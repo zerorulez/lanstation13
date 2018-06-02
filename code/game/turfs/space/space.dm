@@ -14,19 +14,24 @@
 	luminosity = 1
 	can_border_transition = 1
 
-/turf/space/New()
+/*	var/image/I = image('icons/turf/space_parallax1.dmi',"[icon_state]")
+	I.plane = PLANE_SPACE_BACKGROUND
+	I.alpha = 80
+	I.blend_mode = BLEND_ADD
+	overlays += I*/
+
+/turf/space/initialize()
+	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+
 	if(loc)
 		var/area/A = loc
 		A.area_turfs += src
 		if(!A.dynamic_lighting || !dynamic_lighting)
 			overlays.Add(/obj/effect/fullbright)
 
-	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
-/*	var/image/I = image('icons/turf/space_parallax1.dmi',"[icon_state]")
-	I.plane = PLANE_SPACE_BACKGROUND
-	I.alpha = 80
-	I.blend_mode = BLEND_ADD
-	overlays += I*/
+/turf/space/spawned_by_map_element(var/datum/map_element/ME, var/list/objects)
+	initialize()
+
 
 /turf/space/attack_paw(mob/user as mob)
 	return src.attack_hand(user)

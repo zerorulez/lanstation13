@@ -175,7 +175,7 @@
 			to_chat(user, "<span class='info'>The gauge on \the [src]'s [M.name] indicates that there [stored_items.len > 1 ? "are [stored_items.len] objects" : "is [stored_items.len] object"] stored inside it.</span>")
 
 /obj/item/weapon/subspacetunneler/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj)
-	if (target.loc == user || locate(user) in target)
+	if (target.loc == user)
 		return
 
 	if(target == user)

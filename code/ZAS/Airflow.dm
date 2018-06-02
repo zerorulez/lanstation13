@@ -308,15 +308,17 @@ proc/AirflowSpace(zone/A)
 		while(airflow_speed > 0 && Process_Spacemove(1))
 			airflow_speed = min(airflow_speed,15)
 			airflow_speed -= zas_settings.Get(/datum/ZAS_Setting/airflow_speed_decay)
+			var/sleep_time
 			if(airflow_speed > 7)
 				if(airflow_time++ >= airflow_speed - 7)
 					if(od)
 						density = 0
-					sleep(tick_multiplier)
+					sleep_time = tick_multiplier
 			else
 				if(od)
 					density = 0
-				sleep(max(1,10-(airflow_speed+3)) * tick_multiplier)
+				sleep_time = max(1,10-(airflow_speed+3)) * tick_multiplier
+			sleep(sleep_time)
 			if(od)
 				density = 1
 			if ((!( src.airflow_dest ) || src.loc == src.airflow_dest))
@@ -325,6 +327,7 @@ proc/AirflowSpace(zone/A)
 				break
 			if(!isturf(loc))
 				break
+			set_glide_size(DELAY2GLIDESIZE(sleep_time))
 			step_towards(src, src.airflow_dest)
 			if(ismob(src) && src:client)
 				var/mob/M = src

@@ -23,6 +23,7 @@
 #define SS_INIT_FINISH            -22
 #define SS_INIT_MINIMAP           -23
 
+#define SS_WAIT_FAST_MACHINERY 0.7 SECONDS //TODO move the rest of these to defines
 
 #define SS_PRIORITY_TICKER         200
 #define SS_PRIORITY_MOB            150

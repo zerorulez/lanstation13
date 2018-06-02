@@ -814,3 +814,6 @@ its easier to just keep the beam vertical.
 
 /atom/proc/to_bump()
 	return
+
+/atom/proc/initialize()
+	return

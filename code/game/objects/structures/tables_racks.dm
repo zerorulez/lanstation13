@@ -358,13 +358,23 @@
 			return !density
 	return 1
 
-/obj/structure/table/MouseDrop_T(obj/O as obj, mob/user as mob)
+/obj/structure/table/MouseDrop_T(atom/movable/O as obj, mob/user as mob)
+	if(O == user)
+		if(!ishuman(user) || !Adjacent(user) || user.incapacitated() || user.lying) // Doesn't work if you're not dragging yourself, not a human, not in range or incapacitated
+			return
+		if (O.loc != src.loc)
+			step(O, get_dir(O, src))
+		if(O == user)
+			visible_message("<span class='warning'>[usr] jumps onto the [src]!</span>")
+		O.forceMove(get_turf(src))
+
 	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
 		return
 	if(user.drop_item())
 		if (O.loc != src.loc)
 			step(O, get_dir(O, src))
 	return
+
 
 
 /obj/structure/table/attackby(obj/item/W as obj, mob/user as mob, params)

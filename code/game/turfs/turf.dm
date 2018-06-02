@@ -84,9 +84,6 @@
 			src.Entered(AM)
 			return
 
-/turf/proc/initialize()
-	return
-
 /turf/DblClick()
 	if(istype(usr, /mob/living/silicon/ai))
 		return move_camera_by_click()
@@ -410,6 +407,7 @@
 		//		zone.SetStatus(ZONE_ACTIVE)
 
 		var/turf/W = new N(src)
+		W.initialize()
 
 		if(tell_universe)
 			universe.OnTurfChange(W)

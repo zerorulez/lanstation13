@@ -137,39 +137,35 @@
 
 	..()
 
-/atom/movable/Move(newLoc,Dir=0,step_x=0,step_y=0)
-	if(!loc || !newLoc)
-		return 0
-	//set up glide sizes before the move
-	//ensure this is a step, not a jump
+/atom/movable/proc/set_glide_size(glide_size_override = 0)
+	glide_size = glide_size_override
 
-	//. = ..(NewLoc,Dir,step_x,step_y)
+/atom/movable/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
+	if(!loc || !NewLoc)
+		return 0
+
 	if(timestopped)
 		if(!pulledby || pulledby.timestopped) //being moved by our wizard maybe?
 			return 0
-	var/move_delay = max(5 * world.tick_lag, 1)
-	if(ismob(src))
-		var/mob/M = src
-		if(M.client)
-			move_delay = (3+(M.client.move_delayer.next_allowed - world.time))*world.tick_lag
 
 	var/can_pull_tether = 0
 	if(tether)
-		if(tether.attempt_to_follow(src,newLoc))
+		if(tether.attempt_to_follow(src,NewLoc))
 			can_pull_tether = 1
 		else
 			return 0
 
-	glide_size = Ceiling(WORLD_ICON_SIZE / move_delay * world.tick_lag) - 1 //We always split up movements into cardinals for issues with diagonal movements.
+	if(glide_size_override > 0)
+		set_glide_size(glide_size_override)
 
 	var/atom/oldloc = loc
-	if((bound_height != WORLD_ICON_SIZE || bound_width != WORLD_ICON_SIZE) && (loc == newLoc))
+	if((bound_height != WORLD_ICON_SIZE || bound_width != WORLD_ICON_SIZE) && (loc == NewLoc))
 		. = ..()
 
 		update_dir()
 		return
 
-	if(loc != newLoc)
+	if(loc != NewLoc)
 		if (!(Dir & (Dir - 1))) //Cardinal move
 			. = ..()
 		else //Diagonal move, split it into cardinal moves
@@ -205,7 +201,7 @@
 
 	update_dir()
 
-	if(!loc || (loc == oldloc && oldloc != newLoc))
+	if(!loc || (loc == oldloc && oldloc != NewLoc))
 		last_move = 0
 		return
 
@@ -218,15 +214,14 @@
 			tether_datum.snap = 1
 			tether_datum.Delete_Chain()
 
-	last_move = (Dir || get_dir(oldloc, newLoc)) //If direction isn't specified, calculate it ourselves
+	last_move = (Dir || get_dir(oldloc, NewLoc)) //If direction isn't specified, calculate it ourselves
 	set_inertia(last_move)
 
 	last_moved = world.time
 	src.move_speed = world.timeofday - src.l_move_time
 	src.l_move_time = world.timeofday
 	// Update on_moved listeners.
-	INVOKE_EVENT(on_moved,list("loc"=newLoc))
-	return .
+	INVOKE_EVENT(on_moved,list("loc"=NewLoc))
 
 //The reason behind change_dir()
 /atom/movable/proc/update_dir()
@@ -519,7 +514,7 @@
 					. = 0
 					break
 
-				src.Move(step, dy)
+				src.Move(step, dy, glide_size_override = DELAY2GLIDESIZE(fly_speed))
 				. = hit_check(speed, user)
 				error += dist_x
 				dist_travelled++
@@ -533,7 +528,7 @@
 					. = 0
 					break
 
-				src.Move(step, dx)
+				src.Move(step, dx, glide_size_override = DELAY2GLIDESIZE(fly_speed))
 				. = hit_check(speed, user)
 				error -= dist_y
 				dist_travelled++
@@ -555,7 +550,7 @@
 					. = 0
 					break
 
-				src.Move(step, dx)
+				src.Move(step, dx, glide_size_override = DELAY2GLIDESIZE(fly_speed))
 				. = hit_check(speed, user)
 				error += dist_y
 				dist_travelled++
@@ -569,7 +564,7 @@
 					. = 0
 					break
 
-				src.Move(step, dy)
+				src.Move(step, dy, glide_size_override = DELAY2GLIDESIZE(fly_speed))
 				. = hit_check(speed, user)
 				error -= dist_x
 				dist_travelled++
@@ -709,12 +704,13 @@
 		inertia_dir  = 0
 		return
 
-	sleep(5)
+	sleep(INERTIA_MOVEDELAY)
 
 	if(can_apply_inertia() && (src.loc == start))
 		if(!inertia_dir)
 			return //inertia_dir = last_move
 
+		set_glide_size(DELAY2GLIDESIZE(INERTIA_MOVEDELAY))
 		step(src, inertia_dir)
 
 /atom/movable/proc/reset_inertia()

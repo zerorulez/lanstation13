@@ -502,7 +502,7 @@
 		for(var/obj/structure/window/W in get_step(T,direction))
 			W.update_icon()
 
-/obj/structure/window/forceMove(var/atom/A)
+/obj/structure/window/forceMove()
 	var/turf/T = loc
 	..()
 	update_nearby_icons(T)
