@@ -263,6 +263,6 @@
 // this was used in QM for a time but it fell into disuse and wasn't removed, the purpose being to check if an artifact
 // was benevolent or malicious, to determine whether QMs would be paid or punished for shipping it
 
-/obj/machinery/artifact/Move()
+/obj/machinery/artifact/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
 	..()
 	my_effect.update_move(src, src.loc)

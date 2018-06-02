@@ -29,7 +29,7 @@
 	if(prob(15) && turns_since_move && !stat)
 		flick("kobold_act",src)
 
-/mob/living/simple_animal/kobold/Move(var/dir)
+/mob/living/simple_animal/kobold/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
 	..()
 	if(!stat)
 		flick("kobold_walk",src)

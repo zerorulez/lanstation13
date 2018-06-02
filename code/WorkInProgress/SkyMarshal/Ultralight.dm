@@ -256,7 +256,7 @@ atom/Del()
 		ul_Extinguish()
 	. = ..()
 
-atom/movable/Move()
+atom/movable/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
 	if(ul_IsLuminous(src))
 		ul_Extinguish()
 		. = ..()

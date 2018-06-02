@@ -1,7 +1,7 @@
 atom/movable/var/list/adjacent_z_levels
 atom/movable/var/archived_z_level
 
-atom/movable/Move() //Hackish
+atom/movable/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0) //Hackish
 
 	if(adjacent_z_levels && adjacent_z_levels["up"])
 		var/turf/above_me = locate(x,y,adjacent_z_levels["up"])

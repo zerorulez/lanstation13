@@ -105,7 +105,7 @@
 			turf += src
 			c.add(turf,3,1)
 
-atom/movable/Move() //Hackish
+atom/movable/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0) //Hackish
 	. = ..()
 
 	var/turf/controllerlocation = locate(1, 1, src.z)
