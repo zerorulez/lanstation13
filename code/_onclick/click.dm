@@ -61,6 +61,10 @@
 		CtrlClickOn(A)
 		return
 
+	if(lying && istype(A, /turf/) && !istype(A, /turf/space/))
+		if(!src.get_active_hand())//Should make getting up stairs easier.
+			scramble(A)
+
 	if(isStunned())
 		return
 
@@ -331,3 +335,39 @@
 			change_dir(WEST)
 
 	Facing()
+
+/mob/proc/scramble(var/atom/A)
+	if(!ishuman(src))
+		return
+
+	var/mob/living/carbon/human/H = src
+
+	var/direction
+	if(stat || locked_to || paralysis || stunned || sleeping || (status_flags & FAKEDEATH) || restrained()) //|| (weakened > 5)) //You should be able to crawl when injured.
+		return
+	if(!istype(src.loc, /turf/))
+		return
+	if(!A || !x || !y || !A.x || !A.y) return
+	if(scrambling)
+		return
+	if(!H.check_crawl_ability())
+		to_chat(H, "<b>Você sequer consegue rastejar!</b>")
+	var/dx = A.x - x
+	var/dy = A.y - y
+	if(!dx && !dy) return
+
+	if(abs(dx) < abs(dy))
+		if(dy > 0)	direction = NORTH
+		else		direction = SOUTH
+	else
+		if(dx > 0)	direction = EAST
+		else		direction = WEST
+	if(direction)
+		scrambling = 1
+		if(do_after(src, A, 10))//spawn(10)
+			Move(get_step(src,direction))
+			scrambling = 0
+			dir = 2
+			src.visible_message("\red <b>[src]</b> rasteja!")
+		else
+			scrambling = 0

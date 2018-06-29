@@ -47,26 +47,6 @@
 	else
 		..()
 
-/obj/structure/closet/crate/bin/MouseDrop_T(var/atom/movable/O, var/mob/user)
-	. = ..(O, user, 0, 0, 0)
-	if(.)
-		if(O != user)
-			user.visible_message("<span class='danger'>[user] tries to stuff [O] into the [src].</span>", \
-							 	 "<span class='danger'>You try to stuff [O] into the [src].</span>", \
-							 	 "<span class='danger'>You hear clanging.</span>")
-			if(do_mob(user, O, 40))
-				user.visible_message("<span class='notice'>[user] stuffs [O] into the [src].</span>", \
-							 		 "<span class='notice'>You stuff [O] into the [src].</span>", \
-							 		 "<span class='notice'>You hear a loud metal bang.</span>")
-			else
-				user.visible_message("<span class='notice'>[user] fails to stuffs [O] into the [src]!</span>", \
-							 		 "<span class='notice'>You fail to stuff [O] into the [src].</span>")
-				return 0
-		insert(O, 1, !opened)
-
-		if(opened)
-			close()
-
 /obj/structure/closet/crate/bin/open()
 	. = ..()
 	update_icon()

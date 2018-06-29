@@ -181,26 +181,24 @@
 			m_type = VISIBLE
 
 		if ("cough")
+			var/emotesound = null
+
 			if(miming)
 				msg = "<B>[src]</B> aparenta tossir!"
 				m_type = VISIBLE
 			else
-				if (!muzzled)
-					if (auto == 1)
-						if(world.time-last_emote_sound >= 30)//prevent cough spam
-							//Cough sounds from freesound.org and an anon in ss13g
-							var/coughSound = "malecough"
-							if (src.gender == FEMALE) //Females have their own coughes
-								coughSound = "femalecough"
+				if(gender == MALE)
+					emotesound = "sound/voice/emotes/male_cough[rand(1,4)].ogg"
 
-							playsound(get_turf(src), coughSound, 20, 0)
-							last_emote_sound = world.time
-
-						msg = "<B>[src]</B> tosse!"
-						m_type = HEARABLE
 				else
-					msg = "<B>[src]</B> faz um forte barulho."
-					m_type = HEARABLE
+					emotesound = "sound/voice/emotes/female_cough[rand(1,6)].ogg"
+
+			if(emotesound && world.time - last_emote_sound >= 30)
+				playsound(src, emotesound, 50, 0, 1)
+				last_emote_sound = world.time
+
+			msg = "<B>[src]</B> tosse!"
+			m_type = HEARABLE
 
 		if ("frown")
 			msg = "<B>[src]</B> franze a testa."
@@ -219,16 +217,9 @@
 			m_type = VISIBLE
 
 		if ("gasp")
-			if(miming)
-				msg = "<B>[src]</B> aparenta se esgasgar!"
-				m_type = VISIBLE
-			else
-				if (!muzzled)
-					msg = "<B>[src]</B> [pick("se engasga!", "não consegue respirar!")]"
-					m_type = HEARABLE
-				else
-					msg = "<B>[src]</B> faz um fraco barulho."
-					m_type = HEARABLE
+			if(last_emote_sound - world.time >= 30)
+				gasp_sound()
+				last_emote_sound = world.time
 
 		if ("deathgasp")
 			if(M_HARDCORE in mutations)
@@ -542,28 +533,10 @@
 						msg = "<B>[src]</B> segura a mão de [M]."
 
 		if ("scream")
-			if (miming)
-				msg = "<B>[src]</B> simula um escandalo!"
-				m_type = VISIBLE
-			else
-				if(!stat)
-					if (!muzzled)
-						if (auto == 1)
-							if(world.time-last_emote_sound >= 30)//prevent scream spam with things like poly spray
-								msg = "<B>[src]</B> grita em agonia!"
-								var/list/screamSound = list('sound/misc/malescream1.ogg', 'sound/misc/malescream2.ogg', 'sound/misc/malescream3.ogg', 'sound/misc/malescream4.ogg', 'sound/misc/malescream5.ogg', 'sound/misc/wilhelm.ogg', 'sound/misc/goofy.ogg')
-								if (src.gender == FEMALE) //Females have their own screams. Trannys be damned.
-									screamSound = list('sound/misc/femalescream1.ogg', 'sound/misc/femalescream2.ogg', 'sound/misc/femalescream3.ogg', 'sound/misc/femalescream4.ogg', 'sound/misc/femalescream5.ogg')
-								var/scream = pick(screamSound)//AUUUUHHHHHHHHOOOHOOHOOHOOOOIIIIEEEEEE
-								playsound(get_turf(src), scream, 50, 0)
-								m_type = HEARABLE
-								last_emote_sound = world.time
-						else
-							msg = "<B>[src]</B> grita!"
-							m_type = HEARABLE
-					else
-						msg = "<B>[src]</B> faz um barulho muito alto."
-						m_type = HEARABLE
+			if(world.time - last_emote_sound >= 30)
+				agony_scream()
+				last_emote_sound = world.time
+
 
 /*fffuck you		// Needed for M_TOXIC_FART
 		if("fart")

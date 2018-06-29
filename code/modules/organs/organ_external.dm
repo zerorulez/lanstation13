@@ -736,6 +736,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 				"<span class='danger'>Your [display_name] goes flying off!</span>", \
 				"<span class='danger'>You hear a terrible sound of ripping tendons and flesh.</span>")
 
+			var/severed_sound = pick('sound/effects/gore/chop2.ogg', 'sound/effects/gore/chop3.ogg', 'sound/effects/gore/chop4.ogg')
+			playsound(owner, severed_sound, 100, 0)
+			
 			//Throw organs around
 			var/randomdir = pick(cardinal)
 			step(organ, randomdir)

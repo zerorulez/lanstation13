@@ -1396,6 +1396,7 @@
 #include "code\modules\mob\living\carbon\brain\MMI.dm"
 #include "code\modules\mob\living\carbon\brain\posibrain.dm"
 #include "code\modules\mob\living\carbon\brain\say.dm"
+#include "code\modules\mob\living\carbon\human\audible_emotes.dm"
 #include "code\modules\mob\living\carbon\human\combat.dm"
 #include "code\modules\mob\living\carbon\human\death.dm"
 #include "code\modules\mob\living\carbon\human\emote.dm"
