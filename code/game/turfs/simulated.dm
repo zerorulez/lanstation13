@@ -32,8 +32,8 @@
 
 	if (istype(A,/mob/living/carbon))
 		var/mob/living/carbon/M = A
-		if(M.lying)
-			return
+		if(!M.on_foot())
+			return ..()
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 
@@ -71,14 +71,6 @@
 						if (H.Slip(4, 5))
 							step(H, H.dir)
 							to_chat(H, "<span class='notice'>You tripped over your hair!</span>")
-
-		//Anything beyond that point will not fire if the mob isn't physically walking here
-		if(!M.on_foot()) //Checks lying, flying and locked.to
-			return ..()
-
-		//And anything beyond that point will not fire for slimes
-		if(isslime(M)) //Slimes just don't slip, end of story
-			return ..()
 
 		switch(src.wet)
 			if(1) //Water

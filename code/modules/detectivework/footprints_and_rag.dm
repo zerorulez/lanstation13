@@ -19,9 +19,9 @@
 	w_class = W_CLASS_TINY
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "rag"
-	amount_per_transfer_from_this = 5
-	possible_transfer_amounts = list(5)
-	volume = 5
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(5,10)
+	volume = 10
 	can_be_placed_into = null
 
 /obj/item/weapon/reagent_containers/glass/rag/attack_self(mob/user as mob)
@@ -33,28 +33,35 @@
 /obj/item/weapon/reagent_containers/glass/rag/attack(mob/living/M as mob, mob/living/user as mob, def_zone)
 	if(user.zone_sel.selecting == "mouth")
 		if(ismob(M) && M.reagents && reagents.total_volume)
+			if(ishuman(M))
+				var/mob/living/carbon/human/H = M
+				if(H.check_body_part_coverage(MOUTH))
+					to_chat(user, "<span class='warning'>It won't work. Their mouth needs to be uncovered..</span>")
+					return FALSE
 			user.visible_message("<span class='warning'>\The [M] has been smothered with \the [src] by \the [user]!</span>", "<span class='warning'>You smother \the [M] with \the [src]!</span>", "You hear some struggling and muffled cries of surprise")
 			src.reagents.reaction(M, TOUCH)
 			spawn(5) src.reagents.clear_reagents()
-			return 1
+			return TRUE
 	else
 		..()
 
 /obj/item/weapon/reagent_containers/glass/rag/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)
-		return 0 // Not adjacent
+		return // Not adjacent
+
+	if(ismob(target) && user.zone_sel.selecting == "mouth")
+		return
 
 	if(reagents.total_volume < 1)
 		to_chat(user, "<span class='notice'>Your rag is dry!</span>")
 		return
-	user.visible_message("<span class='warning'>[user] begins to wipe down \the [target].</span>", "<span class='notice'>You begin to wipe down \the [target].</span>")
-	if(do_after(user,target, 50))
-		if(target)
-			target.clean_blood()
-			if(isturf(target))
-				for(var/obj/effect/O in target)
-					if(istype(O,/obj/effect/rune) || istype(O,/obj/effect/decal/cleanable) || istype(O,/obj/effect/overlay))
-						qdel(O)
-			reagents.remove_any(1)
-			user.visible_message("<span class='notice'>[user] finishes wiping down \the [target].</span>", "<span class='notice'>You have finished wiping down \the [target]!</span>")
+
+	if(target)
+		target.clean_blood()
+		if(isturf(target))
+			for(var/obj/effect/O in target)
+				if(istype(O,/obj/effect/rune) || istype(O,/obj/effect/decal/cleanable) || istype(O,/obj/effect/overlay))
+					qdel(O)
+		reagents.remove_any(1)
+		user.visible_message("<span class='notice'>[user] wipes down \the [target].</span>", "<span class='notice'>You wipe down \the [target]!</span>")
 	return

@@ -94,9 +94,9 @@
 					param = null
 
 				if (param)
-					msg = "<B>[src]</B> saúda [param]."
+					msg = "<B>[src]</B> presta continência para [param]."
 				else
-					msg = "<B>[src]</b> faz uma saudação."
+					msg = "<B>[src]</b> presta continência."
 			m_type = VISIBLE
 
 		if ("choke")

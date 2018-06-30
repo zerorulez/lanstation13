@@ -49,7 +49,10 @@
 
 	var/list/modifiers = params2list(params)
 	if(modifiers["middle"])
-		MiddleClickOn(A)
+		if(modifiers["shift"])
+			MiddleShiftClickOn(A)
+		else
+			MiddleClickOn(A)
 		return
 	if(modifiers["shift"])
 		ShiftClickOn(A)
@@ -68,7 +71,8 @@
 	if(isStunned())
 		return
 
-	face_atom(A) // change direction to face what you clicked on
+	if(!scrambling)
+		face_atom(A) // change direction to face what you clicked on
 
 	if(attack_delayer.blocked()) // This was next_move.  next_attack makes more sense.
 		return
@@ -197,12 +201,13 @@
 
 /*
 	Middle click
-	Only used for swapping hands
 */
 /mob/proc/MiddleClickOn(var/atom/A)
 	return
 /mob/living/carbon/MiddleClickOn(var/atom/A)
 	swap_hand()
+/mob/proc/MiddleShiftClickOn(var/atom/A)
+	pointed(A)
 
 // In case of use break glass
 /*
@@ -363,11 +368,11 @@
 		if(dx > 0)	direction = EAST
 		else		direction = WEST
 	if(direction)
-		scrambling = 1
+		scrambling = TRUE
 		if(do_after(src, A, 10))//spawn(10)
 			Move(get_step(src,direction))
-			scrambling = 0
+			scrambling = FALSE
 			dir = 2
 			src.visible_message("\red <b>[src]</b> rasteja!")
 		else
-			scrambling = 0
+			scrambling = FALSE

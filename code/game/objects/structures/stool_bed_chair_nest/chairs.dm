@@ -421,3 +421,12 @@
 	color = "#c94c4c"
 /obj/structure/bed/chair/comfy/couch/turn/outward/red
 	color = "#c94c4c"
+
+
+// Shuttle chairs
+
+/obj/structure/bed/chair/shuttle
+	name = "shuttle seat"
+	desc = "A comfortable, secure seat. It has a more sturdy looking buckling system, for smoother flights."
+	icon_state = "shuttle_chair"
+

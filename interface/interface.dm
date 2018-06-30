@@ -107,6 +107,7 @@ Any-Mode: (hotkey doesn't need to be on)
 \tPGUP = swap-hand
 \tPGDN = activate held object
 \tEND = throw
+\tSHIFT+MMB = point-at
 \tALT+ENTER = modo fullscreen
 
 For an exhaustive list please visit http://ss13.moe/wiki/index.php/Shortcuts

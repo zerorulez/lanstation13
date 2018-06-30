@@ -40,11 +40,11 @@ var/global/list/blood_list = list()
 		plane = NOIR_BLOOD_PLANE
 	else
 		plane = ABOVE_TURF_PLANE
-	var/icon/blood = icon(base_icon,icon_state,dir)
+/*	var/icon/blood = icon(base_icon,icon_state,dir)
 	blood.Blend(basecolor,ICON_MULTIPLY)
 
 	icon = blood
-
+*/
 
 /obj/effect/decal/cleanable/blood/splatter
 	amount = 2
