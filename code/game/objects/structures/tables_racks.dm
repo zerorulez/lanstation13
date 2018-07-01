@@ -362,18 +362,20 @@
 	if(O == user)
 		if(!ishuman(user) || !Adjacent(user) || user.incapacitated() || user.lying) // Doesn't work if you're not dragging yourself, not a human, not in range or incapacitated
 			return
-		if (O.loc != src.loc)
-			step(O, get_dir(O, src))
-		if(O == user)
-			visible_message("<span class='warning'>[usr] jumps onto the [src]!</span>")
-		O.forceMove(get_turf(src))
+		visible_message("<span class='warning'>[user.name] starts climbing onto the [src]!</span>")
+		if(do_after(user, src, 30))
+			if (O.loc != src.loc)
+				step(O, get_dir(O, src))
+			if(O == user)
+				visible_message("<span class='warning'>[user.name] climbs onto the [src]!</span>")
+			O.forceMove(get_turf(src))
+			return
 
 	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
 		return
 	if(user.drop_item())
 		if (O.loc != src.loc)
 			step(O, get_dir(O, src))
-	return
 
 
 

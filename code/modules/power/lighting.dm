@@ -608,7 +608,7 @@ var/global/list/obj/machinery/light/alllights = list()
 	var/rigged = 0		// true if rigged to explode
 	var/brightness_range = 2 //how much light it gives off
 	var/brightness_power = 1
-	var/brightness_color = null
+	var/brightness_color = "#FFDDCC"
 	var/cost = 2 //How much power does it consume in an idle state?
 	var/fitting = "tube"
 
@@ -647,7 +647,7 @@ var/global/list/obj/machinery/light/alllights = list()
 	item_state = "contvapour"
 	fitting = "bulb"
 	brightness_range = 5
-	brightness_power = 2
+	brightness_power = 0.45
 	brightness_color = LIGHT_COLOR_TUNGSTEN
 	starting_materials = list(MAT_GLASS = 50, MAT_IRON = 30)
 	cost = 5

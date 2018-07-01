@@ -33,3 +33,34 @@
 				 0,0,1,0,
 				 0,0,0,1)
 	appearance_flags = NO_CLIENT_COLOR|PLANE_MASTER
+
+/obj/screen/plane_master/ambient_occlusion
+	name = "ambient occlusion master"
+	plane = OBJ_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+
+/obj/screen/plane_master/ambient_occlusion/backdrop(mob/mymob)
+	if(istype(mymob) && mymob.client)
+		filters += AMBIENT_OCCLUSION
+
+/obj/screen/plane_master/ambient_occlusion/lying_mob
+	plane = LYING_MOB_PLANE
+
+/obj/screen/plane_master/ambient_occlusion/lying_human
+	plane = LYING_HUMAN_PLANE
+
+/obj/screen/plane_master/ambient_occlusion/above_obj
+	plane = ABOVE_OBJ_PLANE
+
+/obj/screen/plane_master/ambient_occlusion/human_plane
+	plane = HUMAN_PLANE
+
+/obj/screen/plane_master/ambient_occlusion/mob_plane
+	plane = MOB_PLANE
+
+/obj/screen/plane_master/ambient_occlusion/above_human_plane
+	plane = ABOVE_HUMAN_PLANE
+
+/obj/screen/plane_master/ambient_occlusion/effects_plane
+	plane = EFFECTS_PLANE
