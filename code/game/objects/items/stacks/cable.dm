@@ -10,7 +10,7 @@
 	C.update_icon()
 
 var/global/list/datum/stack_recipe/cable_recipes = list ( \
-	new/datum/stack_recipe/cable_cuffs("cable cuffs", /obj/item/weapon/handcuffs/cable, 15, time = 3, one_per_turf = 0, on_floor = 0))
+	new/datum/stack_recipe/cable_cuffs("cable cuffs", /obj/item/weapon/handcuffs/cable, 30, time = 3, one_per_turf = 0, on_floor = 0))
 
 #define MAXCOIL 30
 

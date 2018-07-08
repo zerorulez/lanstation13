@@ -1195,7 +1195,7 @@ var/global/list/common_tools = list(
 /proc/can_operate(mob/living/carbon/M, mob/U)
 	if(U == M)
 		return 0
-	if(ishuman(M) && M.lying)
+	if((ishuman(M) || isslime(M)) && M.lying)
 		if(locate(/obj/machinery/optable,M.loc))
 			return 1
 		if(locate(/obj/structure/bed/roller, M.loc) && prob(75))

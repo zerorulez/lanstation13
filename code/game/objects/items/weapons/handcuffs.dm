@@ -19,7 +19,8 @@
 	melt_temperature = MELTPOINT_STEEL
 	origin_tech = Tc_MATERIALS + "=1"
 	var/cuffing_sound = 'sound/weapons/handcuffs.ogg'
-	var/breakouttime = 2 MINUTES
+	var/breakouttime = 1 MINUTES
+	var/cuffingtime  = 3 SECONDS
 
 /obj/item/weapon/handcuffs/attack(var/mob/living/carbon/M, var/mob/user, var/def_zone)
 	if(!istype(M))
@@ -58,7 +59,7 @@
 	user.visible_message("<span class='danger'>[user] is trying to handcuff \the [C]!</span>",
 						 "<span class='danger'>You try to handcuff \the [C]!</span>")
 
-	if(do_after(user, C, 3 SECONDS))
+	if(do_after(user, C, cuffingtime))
 		if(istype(src, /obj/item/weapon/handcuffs/cable))
 			feedback_add_details("handcuffs", "C")
 		else
@@ -75,7 +76,7 @@
 
 		var/obj/item/weapon/handcuffs/cuffs = src
 		if(istype(src, /obj/item/weapon/handcuffs/cyborg)) //There's GOT to be a better way to check for this.
-			cuffs = new(get_turf(user))
+			cuffs = new /obj/item/weapon/handcuffs/cyborg(get_turf(user))
 		else
 			user.drop_from_inventory(cuffs)
 		C.equip_to_slot(cuffs, slot_handcuffed)
@@ -83,6 +84,9 @@
 /obj/item/weapon/handcuffs/cyborg
 //This space intentionally left blank
 
+/obj/item/weapon/handcuffs/cyborg/on_remove(var/mob/living/carbon/C)
+	spawn(1)
+		qdel(src)
 
 //Syndicate Cuffs. Disguised as regular cuffs, they are pretty explosive
 /obj/item/weapon/handcuffs/syndicate
@@ -161,7 +165,8 @@
 	desc = "Looks like some cables tied together. Could be used to tie something up."
 	icon_state = "cuff_red"
 	_color = "red"
-	breakouttime = 300 //Deciseconds = 30s
+	breakouttime = 15 SECONDS
+	cuffingtime = 5 SECONDS
 	cuffing_sound = 'sound/weapons/cablecuff.ogg'
 
 /obj/item/weapon/handcuffs/cable/red
