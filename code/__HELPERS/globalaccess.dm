@@ -1161,8 +1161,6 @@
 			return global.splatter_cache;
 		if("blood_list")
 			return global.blood_list;
-		if("fluidtrack_cache")
-			return global.fluidtrack_cache;
 		if("beacons")
 			return global.beacons;
 		if("all_graffitis")
@@ -2962,8 +2960,6 @@
 			global.splatter_cache=newval
 		if("blood_list")
 			global.blood_list=newval
-		if("fluidtrack_cache")
-			global.fluidtrack_cache=newval
 		if("beacons")
 			global.beacons=newval
 		if("all_graffitis")

@@ -89,16 +89,16 @@
 		BAD.purchaser_is_traitor = was_traitor
 		badass_bundles += BAD
 	else
-		var/datum/stat/uplink_purchase_stat/UP = new
+		var/datum/stat/uplink_purchase_stat/PUR = new
 		if(istype(bundle, /datum/uplink_item/badass/random))
-			UP.itemtype = resulting_item.type
+			PUR.itemtype = resulting_item.type
 		else
-			UP.itemtype = bundle.item
-		UP.bundle = bundle.type
-		UP.purchaser_key = ckey(user.mind.key)
-		UP.purchaser_name = user.mind.name
-		UP.purchaser_is_traitor = was_traitor
-		uplink_purchases += UP
+			PUR.itemtype = bundle.item
+		PUR.bundle = bundle.type
+		PUR.purchaser_key = ckey(user.mind.key)
+		PUR.purchaser_name = user.mind.name
+		PUR.purchaser_is_traitor = was_traitor
+		uplink_purchases += PUR
 
 // /datum/stat_collector/proc/add_human_death(var/mob/living/carbon/human/M, var/datum/mind/B, timeofdeath)
 // 	var/datum/stat/death_stat/d = new

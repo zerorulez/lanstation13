@@ -1,7 +1,7 @@
 /atom/movable/Cross(atom/movable/mover, turf/target, height=1.5, air_group = 0)
 	return (!density || !height || air_group)
 
-/turf/proc/Cross(atom/movable/mover, turf/target, height=1.5, air_group = 0)
+/turf/Cross(atom/movable/mover, turf/target, height=1.5, air_group = 0)
 	if(!target)
 		return 0
 
