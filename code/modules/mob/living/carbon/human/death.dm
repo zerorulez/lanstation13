@@ -79,8 +79,10 @@
 	var/mob/living/simple_animal/borer/B=has_brain_worms()
 	if(B && B.controlling)
 		to_chat(src, "<span class='danger'>Your host has died.  You reluctantly release control.</span>")
-		to_chat(B.host_brain, "<span class='danger'>Just before your body passes, you feel a brief return of sensation.  You are now in control...  And dead.</span>")
+		to_chat(B.host_brain, "<span class='danger'>Just before your body passes, you feel a brief return of sensation.  You are now in control...</span>")
 		do_release_control(0)
+
+	to_chat(src, "<span class='danger'>YOU DIED</span>")
 
 	//Check for heist mode kill count.
 	if(ticker.mode && ( istype( ticker.mode,/datum/game_mode/heist) ) )
@@ -97,7 +99,7 @@
 			H.mind.kills += "[name] ([ckey])"
 
 	if(!gibbed)
-		emote("deathgasp") //Let the world KNOW WE ARE DEAD
+//		emote("deathgasp") //Let the world KNOW WE ARE DEAD
 
 		update_canmove()
 
