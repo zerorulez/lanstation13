@@ -71,7 +71,7 @@ var/const/MAX_SAVE_SLOTS = 8
 #define GET_RANDOM_JOB 0
 #define BE_ASSISTANT 1
 #define RETURN_TO_LOBBY 2
-#define POLLED_LIMIT	300
+#define POLLED_LIMIT	100
 
 /datum/preferences
 	//doohickeys for savefiles
@@ -1499,7 +1499,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 					toggles ^= CHAT_LOOC
 
 				if("save")
-					if(world.timeofday >= (lastPolled + POLLED_LIMIT))
+					if(world.timeofday >= (lastPolled + POLLED_LIMIT) || user.client.holder)
 						save_preferences_sqlite(user, user.ckey)
 						save_character_sqlite(user.ckey, user, default_slot)
 						lastPolled = world.timeofday
