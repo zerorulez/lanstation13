@@ -356,8 +356,8 @@
 		"tetrisp5.gif"		= 'icons/tetris/tetrisp5.gif',
 		"tetrisp6.gif"		= 'icons/tetris/tetrisp6.gif',
 		"tetrisp7.gif"		= 'icons/tetris/tetrisp7.gif',
-		"tetris.js"			= 'js/tetris/tetris.js',
-		"tetris2.js"		= 'js/tetris/tetris2.js'
+		"tetris.js"			= 'html/js/tetris/tetris.js',
+		"tetris2.js"		= 'html/js/tetris/tetris2.js'
 	)
 
 //Registers HTML I assets.
