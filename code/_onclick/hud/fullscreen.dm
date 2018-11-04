@@ -106,6 +106,7 @@
 /obj/screen/fullscreen/blind
 	icon_state = "blackimageoverlay"
 	layer = BLIND_LAYER
+	alpha = 245
 
 /obj/screen/fullscreen/impaired
 	icon_state = "impairedoverlay"
