@@ -1209,7 +1209,7 @@ Thanks.
 					to_chat(src, "<span class='warning'>[tmob] is pulling [R], you can't push past.</span>")
 					now_pushing = 0
 					return
-			for(var/mob/living/M in range(tmob, 1)) //no pushing prisoners or people pulling prisoners
+			/*for(var/mob/living/M in range(tmob, 1)) //no pushing prisoners or people pulling prisoners
 				if(tmob.pinned.len ||  ((M.pulling == tmob && (tmob.restrained() && !(M.restrained()) && M.stat == 0)) || locate(/obj/item/weapon/grab, tmob.grabbed_by.len)))
 					to_chat(src, "<span class='warning'>[tmob] is restrained, you can't push past.</span>")
 					now_pushing = 0
@@ -1217,7 +1217,7 @@ Thanks.
 				if(tmob.pulling == M && (M.restrained() && !(tmob.restrained()) && tmob.stat == 0))
 					to_chat(src, "<span class='warning'>[tmob] is restraining [M], you can't push past.</span>")
 					now_pushing = 0
-					return
+					return */
 
 			//BubbleWrap: people in handcuffs are always switched around as if they were on 'help' intent to prevent a person being pulled from being seperated from their puller
 			var/dense = 0
