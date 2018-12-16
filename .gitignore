@@ -42,7 +42,7 @@ players2.sqlite
 /data/statfiles/*
 
 # Map rendering
-/maprendering/renderoutput/*
+/maps/maprendering/renderoutput/*
 
 # Backup maps created by maptools
 *.dmm.backup
