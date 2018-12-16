@@ -355,8 +355,7 @@ var/list/admin_verbs_mod = list(
 		/client/proc/splash,
 		/client/proc/cmd_admin_areatest,
 		/client/proc/readmin,
-		/proc/generateMiniMaps,
-		/client/proc/maprender
+		/proc/generateMiniMaps
 		)
 
 /client/proc/hide_most_verbs()//Allows you to keep some functionality while hiding some verbs
