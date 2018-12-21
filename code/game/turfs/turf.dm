@@ -352,7 +352,6 @@
 	var/old_dynamic_lighting = dynamic_lighting
 	var/old_affecting_lights = affecting_lights
 	var/old_lighting_overlay = lighting_overlay
-	var/old_corners = corners
 
 	var/old_holomap = holomap_data
 //	to_chat(world, "Replacing [src.type] with [N]")
@@ -419,17 +418,15 @@
 
 		. = W
 
-	recalc_atom_opacity()
 	lighting_overlay = old_lighting_overlay
 	affecting_lights = old_affecting_lights
-	corners = old_corners
 	if((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting) || force_lighting_update)
 		reconsider_lights()
 	if(dynamic_lighting != old_dynamic_lighting)
 		if(dynamic_lighting)
-			lighting_build_overlay()
+			lighting_build_overlays()
 		else
-			lighting_clear_overlay()
+			lighting_clear_overlays()
 
 	holomap_data = old_holomap // Holomap persists through everything...
 	update_holomap_planes() // But we might need to recalculate it.
@@ -758,3 +755,11 @@
 	.=..()
 
 	src.map_element = ME
+
+
+/turf/change_area(var/area/old_area, var/area/new_area)
+	if (new_area.dynamic_lighting != old_area.dynamic_lighting)
+		if (new_area.dynamic_lighting)
+			lighting_build_overlays()
+		else
+			lighting_clear_overlays()

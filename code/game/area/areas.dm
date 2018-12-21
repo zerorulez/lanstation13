@@ -9,7 +9,7 @@ var/area/space_area
 	var/uid
 	var/obj/machinery/power/apc/areaapc = null
 	var/list/area_turfs
-	var/turret_protected = 0
+	var/turret_protected = FALSE
 	var/list/turretTargets = list()
 	plane = BASE_PLANE
 	layer = AREA_LAYER_MEME_NAME_BECAUSE_CELT_IS_A_FUCKING_RETARD
@@ -24,20 +24,20 @@ var/area/space_area
 		areas |= src
 
 	if(isspace(src))	// override defaults for space. TODO: make space areas of type /area/space rather than /area
-		requires_power = 1
-		always_unpowered = 1
-		dynamic_lighting = 0
-		power_light = 0
-		power_equip = 0
-		power_environ = 0
+		requires_power = FALSE
+		always_unpowered = TRUE
+		dynamic_lighting = FALSE
+		power_light = FALSE
+		power_equip = FALSE
+		power_environ = FALSE
 		space_area = src
 //		lighting_state = 4
 		//has_gravity = 0    // Space has gravity.  Because.. because.
 
 	if(!requires_power)
-		power_light = 1
-		power_equip = 1
-		power_environ = 1
+		power_light = TRUE
+		power_equip = TRUE
+		power_environ = TRUE
 
 	if(!dynamic_lighting)
 		overlays.Add()

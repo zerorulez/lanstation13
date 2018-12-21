@@ -1,7 +1,7 @@
 // Subsystem defines.
 // All in one file so it's easier to see what everything is relative to.
 
-#define SS_INIT_TICKER_SPAWN       999
+#define SS_INIT_TICKER_SPAWN       99
 #define SS_INIT_RUST               26
 #define SS_INIT_SUPPLY_SHUTTLE     25
 #define SS_INIT_SUN                24
@@ -11,11 +11,11 @@
 #define SS_INIT_MAP                20
 #define SS_INIT_POWER              19
 #define SS_INIT_OBJECT             18
-#define SS_INIT_PIPENET            17.5
-#define SS_INIT_XENOARCH           17
-#define SS_INIT_MORE_INIT          16
-#define SS_INIT_AIR                15
-#define SS_INIT_LIGHTING           14
+#define SS_INIT_PIPENET            17
+#define SS_INIT_XENOARCH           16
+#define SS_INIT_MORE_INIT          15
+#define SS_INIT_AIR                14
+#define SS_INIT_LIGHTING           13
 #define SS_INIT_UNSPECIFIED        0
 #define SS_INIT_EMERGENCY_SHUTTLE -19
 #define SS_INIT_ASSETS            -20
