@@ -47,7 +47,7 @@
 	if(charge_max < charge_counter)
 		charge_counter = charge_max
 
-	var/temp = "You have improved [name]"
+	var/temp = "I have improved [name]"
 	if(spell_levels[Sp_SPEED] >= level_max[Sp_SPEED])
 		multicast = 2
 		temp += " and gain the ability to multicast, each incantation allows you to fire off two bolts of lightning before having to re-cast."
@@ -63,15 +63,15 @@
 	var/temp = ""
 	switch(level_max[Sp_POWER] - spell_levels[Sp_POWER])
 		if(2)
-			temp = "You have improved [name] into Chain Lightning it will arc to one additional target."
+			temp = "I have improved [name] into Chain Lightning it will arc to one additional target."
 			name = "Chain Lightning"
 			bounces++
 		if(1)
-			temp = "You have improved [name] into Powerful Chain Lightning it will arc to up to 3 targets."
+			temp = "I have improved [name] into Powerful Chain Lightning it will arc to up to 3 targets."
 			name = "Powerful Chain Lightning"
 			bounces+=2
 		if(0)
-			temp = "You have improved [name] into Zeus' Own Chain Lightning it will arc to up to 5 targets."
+			temp = "I have improved [name] into Zeus' Own Chain Lightning it will arc to up to 5 targets."
 			name = "Zeus' Own Chain Lightning"
 			bounces+=2
 	basedamage += 5
@@ -104,7 +104,7 @@
 	if(istype(L))
 		zapzap--
 		if(zapzap)
-			to_chat(holder, "<span class='info'>You can throw lightning [zapzap] more time\s</span>")
+			to_chat(holder, "<span class='info'>I can throw lightning [zapzap] more time\s</span>")
 			. = 1
 
 		invocation(holder)

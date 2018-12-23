@@ -73,7 +73,7 @@
 		icon_state = "taperecorderidle"
 		return
 	else
-		to_chat(usr, "<span class='notice'>Either your tape recorder's memory is full, or it is currently playing back its memory.</span>")
+		to_chat(usr, "<span class='notice'>Either my tape recorder's memory is full, or it is currently playing back its memory.</span>")
 
 
 /obj/item/device/taperecorder/verb/stop()
@@ -109,7 +109,7 @@
 		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
 		return
 	if(recording == 1 || playing == 1)
-		to_chat(usr, "<span class='notice'>You can't clear the memory while playing or recording!</span>")
+		to_chat(usr, "<span class='notice'>I can't clear the memory while playing or recording!</span>")
 		return
 	else
 		if(storedinfo)
@@ -131,10 +131,10 @@
 		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
 		return
 	if(recording == 1)
-		to_chat(usr, "<span class='notice'>You can't playback when recording!</span>")
+		to_chat(usr, "<span class='notice'>I can't playback when recording!</span>")
 		return
 	if(playing == 1)
-		to_chat(usr, "<span class='notice'>You're already playing!</span>")
+		to_chat(usr, "<span class='notice'>I am already playing!</span>")
 		return
 	playing = 1
 	icon_state = "taperecorderplaying"
@@ -185,7 +185,7 @@
 		to_chat(usr, "<span class='notice'>The recorder can't print that fast!</span>")
 		return
 	if(recording == 1 || playing == 1)
-		to_chat(usr, "<span class='notice'>You can't print the transcript while playing or recording!</span>")
+		to_chat(usr, "<span class='notice'>I can't print the transcript while playing or recording!</span>")
 		return
 	to_chat(usr, "<span class='notice'>Transcript printed.</span>")
 	var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(get_turf(src))
@@ -221,7 +221,7 @@
 			icon_state = "taperecorderidle"
 			return
 		else
-			to_chat(usr, "<span class='warning'>Either your tape recorder's memory is full, or it is currently playing back its memory.</span>")
+			to_chat(usr, "<span class='warning'>Either my tape recorder's memory is full, or it is currently playing back its memory.</span>")
 	else
 		if(usr.stat)
 			to_chat(usr, "Not when you're incapacitated.")

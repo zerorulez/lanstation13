@@ -21,7 +21,7 @@
 		to_chat(user, "<span class='notice'>Invalid depth.</span>")
 		return
 	excavation_amount = depth/2
-	to_chat(user, "<span class='notice'>You set the depth to [depth]cm.</span>")
+	to_chat(user, "<span class='notice'>I set the depth to [depth]cm.</span>")
 	if (depth<4)
 		icon_state = "excavationdrill0"
 	else if (depth >=4 && depth <8)

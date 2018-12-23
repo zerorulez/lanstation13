@@ -31,24 +31,24 @@
 		if(M != user)
 			M.visible_message( \
 				"<span class='warning'>[user] is beginning to attach \the [src] where [H]'s [S.display_name] used to be.</span>", \
-				"<span class='warning'>[user] begins to attach \the [src] where your [S.display_name] used to be.</span>")
+				"<span class='warning'>[user] begins to attach \the [src] where my [S.display_name] used to be.</span>")
 		else
 			M.visible_message( \
 				"<span class='warning'>[user] begins to attach a robotic limb where \his [S.display_name] used to be with [src].</span>", \
-				"<span class='warning'>You begin to attach \the [src] where your [S.display_name] used to be.</span>")
+				"<span class='warning'>I begin to attach \the [src] where my [S.display_name] used to be.</span>")
 
 		if(do_mob(user, H, 100))
 			if(M != user)
 				M.visible_message( \
 					"<span class='warning'>[user] finishes attaching [H]'s new [S.display_name].</span>", \
-					"<span class='warning'>[user] finishes attaching your new [S.display_name].</span>")
+					"<span class='warning'>[user] finishes attaching my new [S.display_name].</span>")
 			else
 				M.visible_message( \
 					"<span class='warning'>[user] finishes attaching \his new [S.display_name].</span>", \
-					"<span class='warning'>You finish attaching your new [S.display_name].</span>")
+					"<span class='warning'>I finish attaching my new [S.display_name].</span>")
 
 			if(H == user && prob(25))
-				to_chat(user, "<span class='warning'>You mess up!</span>")
+				to_chat(user, "<span class='warning'>I mess up!</span>")
 				S.take_damage(15)
 
 			S.status &= ~ORGAN_BROKEN

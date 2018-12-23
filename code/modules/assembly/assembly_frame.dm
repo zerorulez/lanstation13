@@ -102,9 +102,9 @@
 		lock_ejection = !lock_ejection
 
 		if(lock_ejection)
-			to_chat(usr, "<span class='info'>You have locked \the [src]. Assemblies can no longer be ejected.</span>")
+			to_chat(usr, "<span class='info'>I have locked \the [src]. Assemblies can no longer be ejected.</span>")
 		else
-			to_chat(usr, "<span class='info'>You have unlocked \the [src]. Assemblies can now be ejected freely.</span>")
+			to_chat(usr, "<span class='info'>I have unlocked \the [src]. Assemblies can now be ejected freely.</span>")
 	if(href_list["connect"]) //Connect AS to another assembly
 		if(!assembly_found)
 			return
@@ -142,7 +142,7 @@
 
 		start_new_connection(AS, choice)
 
-		to_chat(usr, "<span class='info'>You connect \the [AS] to \the [choice].</span>")
+		to_chat(usr, "<span class='info'>I connect \the [AS] to \the [choice].</span>")
 
 	if(href_list["eject"]) //Eject AS from the frame
 		if(!assembly_found)
@@ -154,7 +154,7 @@
 
 		eject_assembly(AS)
 
-		to_chat(usr, "<span class='info'>You remove \the [AS] from \the [src].</span>")
+		to_chat(usr, "<span class='info'>I remove \the [AS] from \the [src].</span>")
 
 	if(href_list["pulse"])
 		if(!assembly_found)
@@ -220,7 +220,7 @@
 	if(href_list["help"])
 		//Here comes the fluff
 		spawn(2)
-			to_chat(usr, "<span class='notice'>You press \the [src]'s help button.</span>")
+			to_chat(usr, "<span class='notice'>I press \the [src]'s help button.</span>")
 			sleep(5)
 			to_chat(usr, "----------------------------------")
 			to_chat(usr, "<span class='info'><h5>AdCo. Assembly Frame MK II</h5></span>")
@@ -266,7 +266,7 @@
 
 	if(istype(W, /obj/item/weapon/paper))
 
-		to_chat(user, "<span class='info'>You start inserting \the [W] into \the [src].</span>")
+		to_chat(user, "<span class='info'>I start inserting \the [W] into \the [src].</span>")
 
 		spawn()
 			if(do_after(user, src, 30))

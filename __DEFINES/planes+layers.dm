@@ -23,7 +23,7 @@ What can I do with Planesmasters?
 
 How do planes work?
 	A plane can be any integer from -100 to 100. (If you want more, bug lummox.)
-	All planes above 0, the 'base plane', are visible even when your character cannot 'see' them, for example, the HUD.
+	All planes above 0, the 'base plane', are visible even when my character cannot 'see' them, for example, the HUD.
 	All planes below 0, the 'base plane', are only visible when a character can see them.
 
 How do I add a plane?
@@ -35,7 +35,7 @@ How do I make something a planesmaster?
 	Add the PLANE_MASTER appearance flag to the appearance_flags variable.
 
 What is the naming convention for planes or layers?
-	Make sure to use the name of your object before the _LAYER or _PLANE, eg: [NAME_OF_YOUR_OBJECT HERE]_LAYER or [NAME_OF_YOUR_OBJECT HERE]_PLANE
+	Make sure to use the name of my object before the _LAYER or _PLANE, eg: [NAME_OF_YOUR_OBJECT HERE]_LAYER or [NAME_OF_YOUR_OBJECT HERE]_PLANE
 	Also, as it's a define, it is standard practice to use capital letters for the variable so people know this.
 
 */

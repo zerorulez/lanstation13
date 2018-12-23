@@ -23,7 +23,7 @@
 /obj/effect/blob/resource/Destroy()
 	blob_resources -= src
 	if(!manual_remove && overmind)
-		to_chat(overmind,"<span class='warning'>You lost a resource blob.</span> <b><a href='?src=\ref[overmind];blobjump=\ref[loc]'>(JUMP)</a></b>")
+		to_chat(overmind,"<span class='warning'>I lost a resource blob.</span> <b><a href='?src=\ref[overmind];blobjump=\ref[loc]'>(JUMP)</a></b>")
 		overmind.special_blobs -= src
 		overmind.update_specialblobs()
 	..()
@@ -32,7 +32,7 @@
 	if(!overmind)
 		var/mob/camera/blob/B = (locate() in range(src,1))
 		if(B)
-			to_chat(B,"<span class='notice'>You take control of the resource blob.</span>")
+			to_chat(B,"<span class='notice'>I take control of the resource blob.</span>")
 			overmind = B
 			B.special_blobs += src
 			B.update_specialblobs()

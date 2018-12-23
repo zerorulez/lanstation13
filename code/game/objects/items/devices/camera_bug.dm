@@ -32,7 +32,7 @@
 			to_chat(user, "<span class='warning'>\The [I] is too small for \the [src]</span>")
 			return 0
 	if(user.drop_item(src, A))
-		to_chat(user, "<span class='notice'>You stealthily place \the [src] onto \the [A]</span>")
+		to_chat(user, "<span class='notice'>I stealthily place \the [src] onto \the [A]</span>")
 		active = 1
 		camera_bugs += src
 		return 1

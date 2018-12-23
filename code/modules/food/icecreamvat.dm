@@ -44,7 +44,7 @@
 		if(user.drop_item(I, src))
 			src.beaker = I
 			. = 1
-			to_chat(user, "<span class='notice'>You add the [I.name] to the [src.name].</span>")
+			to_chat(user, "<span class='notice'>I add the [I.name] to the [src.name].</span>")
 			src.updateUsrDialog()
 
 	else if(istype(I,/obj/item/weapon/reagent_containers/food/snacks/icecream))
@@ -68,7 +68,7 @@
 
 /obj/machinery/cooking/icemachine/attack_hand(mob/user)
 	if(istype(user,/mob/dead/observer))
-		to_chat(user, "Your ghostly hand goes straight through.")
+		to_chat(user, "My ghostly hand goes straight through.")
 	user.set_machine(src)
 	var/dat = ""
 	if(src.beaker)

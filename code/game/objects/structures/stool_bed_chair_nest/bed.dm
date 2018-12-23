@@ -1,4 +1,4 @@
-/* Beds... get your mind out of the gutter, they're for sleeping!
+/* Beds... get my mind out of the gutter, they're for sleeping!
  * Contains:
  * 		Beds
  *		Roller beds
@@ -56,20 +56,20 @@
 		return
 
 	if(user.size <= SIZE_TINY)
-		to_chat(user, "<span class='warning'>You are too small to do that.</span>")
+		to_chat(user, "<span class='warning'>I am too small to do that.</span>")
 		return
 
 	var/mob/M = get_locked(lock_type)[1]
 	if(M != user)
 		M.visible_message(\
 			"<span class='notice'>[M] was unbuckled by [user]!</span>",\
-			"You were unbuckled from \the [src] by [user].",\
-			"You hear metal clanking.")
+			"I was unbuckled from \the [src] by [user].",\
+			"I hear metal clanking.")
 	else
 		M.visible_message(\
 			"<span class='notice'>[M] unbuckled \himself!</span>",\
-			"You unbuckle yourself from \the [src].",\
-			"You hear metal clanking.")
+			"I unbuckle yourself from \the [src].",\
+			"I hear metal clanking.")
 	playsound(get_turf(src), 'sound/misc/buckle_unclick.ogg', 50, 1)
 	unlock_atom(M)
 
@@ -87,7 +87,7 @@
 		return
 
 	if(user.size <= SIZE_TINY) //Fuck off mice
-		to_chat(user, "<span class='warning'>You are too small to do that.</span>")
+		to_chat(user, "<span class='warning'>I am too small to do that.</span>")
 		return
 
 	if(isanimal(M))
@@ -102,13 +102,13 @@
 	if(M == usr)
 		M.visible_message(\
 			"<span class='notice'>[M.name] buckles in!</span>",\
-			"You buckle yourself to [src].",\
-			"You hear metal clanking.")
+			"I buckle yourself to [src].",\
+			"I hear metal clanking.")
 	else
 		M.visible_message(\
 			"<span class='notice'>[M.name] is buckled in to [src] by [user.name]!</span>",\
-			"You are buckled in to [src] by [user.name].",\
-			"You hear metal clanking.")
+			"I am buckled in to [src] by [user.name].",\
+			"I hear metal clanking.")
 
 	playsound(get_turf(src), 'sound/misc/buckle_click.ogg', 50, 1)
 	add_fingerprint(user)

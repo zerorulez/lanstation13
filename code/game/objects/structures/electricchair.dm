@@ -41,7 +41,7 @@
 
 	on = !on
 	icon_state = "echair[on]"
-	to_chat(usr, "<span class='notice'>You switch [on ? "on" : "off"] [src].</span>")
+	to_chat(usr, "<span class='notice'>I switch [on ? "on" : "off"] [src].</span>")
 
 /obj/structure/bed/chair/e_chair/rotate()
 	..()
@@ -73,11 +73,11 @@
 		var/mob/living/M = get_locked(/datum/locking_category/buckle, subtypes=TRUE)[1]
 		M.Stun(60)
 		M.Jitter(60)
-		visible_message("<span class='danger'>The electric chair went off!</span>", "<span class='danger'>You hear a deep sharp shock!</span>")
+		visible_message("<span class='danger'>The electric chair went off!</span>", "<span class='danger'>I hear a deep sharp shock!</span>")
 		for(var/i=1;i<=5;i++)
 			if(M && M.locked_to == src)
 				M.burn_skin(34)
-				to_chat(M, "<span class='danger'>You feel a deep shock course through your body!</span>")
+				to_chat(M, "<span class='danger'>I feel a deep shock course through my body!</span>")
 			spark_system.start()
 			sleep(10)
 

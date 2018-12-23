@@ -65,12 +65,12 @@
 /datum/event/blob/proc/burst_blobs()
 	spawn(0)
 		for(var/datum/mind/blob in infected_crew)
-			blob.current.show_message("<span class='alert'>You feel tired and bloated.</span>")
+			blob.current.show_message("<span class='alert'>I feel tired and bloated.</span>")
 
 		sleep(600) // 60s
 
 		for(var/datum/mind/blob in infected_crew)
-			blob.current.show_message("<span class='alert'>You feel like you are about to burst.</span>")
+			blob.current.show_message("<span class='alert'>I feel like you are about to burst.</span>")
 
 		sleep(300) // 30s
 
@@ -100,11 +100,11 @@
 		biohazard_alert()
 
 /datum/event/blob/proc/greetblob(user)
-	to_chat(user, {"<B><span class='warning'>You are infected by the Blob!</B>
-<b>Your body is ready to give spawn to a new blob core which will eat this station.</b>
+	to_chat(user, {"<B><span class='warning'>I am infected by the Blob!</B>
+<b>My body is ready to give spawn to a new blob core which will eat this station.</b>
 <b>Find a good location to spawn the core and then take control and overwhelm the station!</b>
 <b>When you have found a location, wait until you spawn; this will happen automatically and you cannot speed up the process.</b>
-<b>If you go outside of the station level, or in space, then you will die; make sure your location has lots of ground to cover.</b></span>"})
+<b>If you go outside of the station level, or in space, then you will die; make sure my location has lots of ground to cover.</b></span>"})
 
 /datum/event/blob/tick()
 	if(!Blob && infected_crew.len == 0)

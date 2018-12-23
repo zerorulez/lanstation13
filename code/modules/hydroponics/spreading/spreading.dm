@@ -162,7 +162,7 @@
 			to_chat(user, "<span class='warning'>There is nothing to take a sample from.</span>")
 			return
 		if(sampled)
-			to_chat(user, "<span class='danger'>You cannot take another sample from \the [src].</span>")
+			to_chat(user, "<span class='danger'>I cannot take another sample from \the [src].</span>")
 			return
 		if(prob(70))
 			sampled = 1

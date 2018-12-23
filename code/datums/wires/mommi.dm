@@ -46,7 +46,7 @@
 			if(!isnull(R.camera) && R.camera.can_use() && !R.scrambledcodes)
 				R.camera.deactivate(usr, 0) // Kick anyone watching the Cyborg's camera, doesn't display you disconnecting the camera.
 				R.visible_message("[R]'s camera lense focuses loudly.")
-				to_chat(R, "Your camera lense focuses loudly.")
+				to_chat(R, "My camera lense focuses loudly.")
 
 		if(BORG_WIRE_LOCKED_DOWN)
 			R.SetLockdown(!R.lockcharge) // Toggle

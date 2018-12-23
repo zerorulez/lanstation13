@@ -35,25 +35,25 @@
 				if(do_after(user, src, 20))
 					if(!src || !WT.remove_fuel(0, user))
 						return
-					to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
+					to_chat(user, "<span class='notice'>I deconstruct the frame.</span>")
 					new /obj/item/stack/sheet/plasteel( loc, 4)
 					qdel(src)
 			if(istype(P, /obj/item/weapon/circuitboard/aicore) && !circuit)
 				if(user.drop_item(P, src))
 					playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
-					to_chat(user, "<span class='notice'>You place the circuit board inside the frame.</span>")
+					to_chat(user, "<span class='notice'>I place the circuit board inside the frame.</span>")
 					icon_state = "1"
 					circuit = P
 					state = UNSECURED_CIRCUITBOARD
 		if(UNSECURED_CIRCUITBOARD)
 			if(isscrewdriver(P) && circuit)
 				playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
-				to_chat(user, "<span class='notice'>You screw the circuit board into place.</span>")
+				to_chat(user, "<span class='notice'>I screw the circuit board into place.</span>")
 				state = SECURED_CIRCUITBOARD
 				icon_state = "2"
 			if(iscrowbar(P) && circuit)
 				playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
-				to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
+				to_chat(user, "<span class='notice'>I remove the circuit board.</span>")
 				state = NOCIRCUITBOARD
 				icon_state = "0"
 				circuit.forceMove(loc)
@@ -61,7 +61,7 @@
 		if(SECURED_CIRCUITBOARD)
 			if(isscrewdriver(P) && circuit)
 				playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
-				to_chat(user, "<span class='notice'>You unfasten the circuit board.</span>")
+				to_chat(user, "<span class='notice'>I unfasten the circuit board.</span>")
 				state = UNSECURED_CIRCUITBOARD
 				icon_state = "1"
 			if(istype(P, /obj/item/stack/cable_coil))
@@ -71,7 +71,7 @@
 						P:amount -= 5
 						if(!P:amount)
 							qdel(P)
-						to_chat(user, "<span class='notice'>You add cables to the frame.</span>")
+						to_chat(user, "<span class='notice'>I add cables to the frame.</span>")
 						state = WIREDFRAME
 						icon_state = "3"
 		if(WIREDFRAME)
@@ -80,7 +80,7 @@
 					to_chat(user, "Get that brain out of there first!")
 				else
 					playsound(loc, 'sound/items/Wirecutter.ogg', 50, 1)
-					to_chat(user, "<span class='notice'>You remove the cables.</span>")
+					to_chat(user, "<span class='notice'>I remove the cables.</span>")
 					state = SECURED_CIRCUITBOARD
 					icon_state = "2"
 					var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( loc )
@@ -96,7 +96,7 @@
 								qdel(P)
 							if(!P:amount)
 								qdel(P)
-							to_chat(user, "<span class='notice'>You put in the glass panel.</span>")
+							to_chat(user, "<span class='notice'>I put in the glass panel.</span>")
 							state = GLASS_PANELED
 							icon_state = "4"
 
@@ -113,7 +113,7 @@
 					return
 
 				if(!user.drop_item(P, src))
-					user << "<span class='warning'>You can't let go of \the [P]!</span>"
+					user << "<span class='warning'>I can't let go of \the [P]!</span>"
 					return
 
 				if(P:brainmob.mind)
@@ -128,7 +128,7 @@
 
 			if(iscrowbar(P) && brain)
 				playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
-				to_chat(user, "<span class='notice'>You remove the brain.</span>")
+				to_chat(user, "<span class='notice'>I remove the brain.</span>")
 				brain.forceMove(loc)
 				brain = null
 				icon_state = "3"
@@ -136,7 +136,7 @@
 		if(GLASS_PANELED)
 			if(iscrowbar(P))
 				playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
-				to_chat(user, "<span class='notice'>You remove the glass panel.</span>")
+				to_chat(user, "<span class='notice'>I remove the glass panel.</span>")
 				state = WIREDFRAME
 				if (brain)
 					icon_state = "3b"
@@ -147,7 +147,7 @@
 
 			if(isscrewdriver(P))
 				playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
-				to_chat(user, "<span class='notice'>You connect the monitor.</span>")
+				to_chat(user, "<span class='notice'>I connect the monitor.</span>")
 				var/mob/living/silicon/ai/A = new /mob/living/silicon/ai ( loc, laws, brain )
 				if(A) //if there's no brain, the mob is deleted and a structure/AIcore is created
 					A.rename_self("ai", 1)
@@ -200,7 +200,7 @@ That prevents a few funky behaviors.
 							else
 								C.icon_state = "aicard-full"
 							T.cancel_camera()
-							to_chat(T, "You have been downloaded to a mobile storage device. Remote device connection severed.")
+							to_chat(T, "I have been downloaded to a mobile storage device. Remote device connection severed.")
 							to_chat(U, "<span class='notice'><b>Transfer successful</b>:</span> [T.name] ([rand(1000,9999)].exe) removed from host terminal and stored within local memory.")
 							//fix blindness from powerloss
 							if(T.aiRestorePowerRoutine)
@@ -220,7 +220,7 @@ That prevents a few funky behaviors.
 							C.name = "inteliCard"
 							C.overlays.len = 0
 							A.cancel_camera()
-							to_chat(A, "You have been uploaded to a stationary terminal. Remote device connection restored.")
+							to_chat(A, "I have been uploaded to a stationary terminal. Remote device connection restored.")
 							to_chat(U, "<span class='notice'><b>Transfer successful</b>:</span> [A.name] ([rand(1000,9999)].exe) installed and executed successfully. Local copy has been removed.")
 							qdel(T)
 							T = null
@@ -247,7 +247,7 @@ That prevents a few funky behaviors.
 										T.overlays += image('icons/obj/computer.dmi', "ai-fixer-full")
 									T.overlays -= image('icons/obj/computer.dmi', "ai-fixer-empty")
 									A.cancel_camera()
-									to_chat(A, "You have been uploaded to a stationary terminal. Sadly, there is no remote access from here.")
+									to_chat(A, "I have been uploaded to a stationary terminal. Sadly, there is no remote access from here.")
 									to_chat(U, "<span class='notice'><b>Transfer successful</b>:</span> [A.name] ([rand(1000,9999)].exe) installed and executed successfully. Local copy has been removed.")
 						else
 							if(!C.contents.len && T.occupant && !T.active)
@@ -259,7 +259,7 @@ That prevents a few funky behaviors.
 								else
 									C.icon_state = "aicard-full"
 									T.overlays -= image('icons/obj/computer.dmi', "ai-fixer-full")
-								to_chat(T.occupant, "You have been downloaded to a mobile storage device. Still no remote access.")
+								to_chat(T.occupant, "I have been downloaded to a mobile storage device. Still no remote access.")
 								to_chat(U, "<span class='notice'><b>Transfer succesful</b>:</span> [T.occupant.name] ([rand(1000,9999)].exe) removed from host terminal and stored within local memory.")
 								T.occupant.forceMove(C)
 								T.occupant.cancel_camera()

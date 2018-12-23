@@ -26,7 +26,7 @@
 		while(select_query.NextRow())
 			pollid = select_query.item[1]
 			pollquestion = select_query.item[2]
-			output += "<tr bgcolor='[ (i % 2 == 1) ? color1 : color2 ]'><td>[!client.holder && client.player_age <= 30 ? "<b>[pollquestion]</b> (<span class='danger'>You cannot vote on this</span>)" : "<a href=\"byond://?src=\ref[src];pollid=[pollid]\"><b>[pollquestion]</b></a>"][config.poll_results_url ? " | <a href=\"byond://?src=\ref[src];pollresult=[pollid]\">Results</a>" : ""]</td></tr>"
+			output += "<tr bgcolor='[ (i % 2 == 1) ? color1 : color2 ]'><td>[!client.holder && client.player_age <= 30 ? "<b>[pollquestion]</b> (<span class='danger'>I cannot vote on this</span>)" : "<a href=\"byond://?src=\ref[src];pollid=[pollid]\"><b>[pollquestion]</b></a>"][config.poll_results_url ? " | <a href=\"byond://?src=\ref[src];pollresult=[pollid]\">Results</a>" : ""]</td></tr>"
 			i++
 
 		output += "</table>"
@@ -269,7 +269,7 @@
 				var/output = "<div align='center'><B>Player poll</B>"
 
 				output += {"<hr>
-					<b>Question: [pollquestion]</b><br>You can select up to [multiplechoiceoptions] options. If you select more, the first [multiplechoiceoptions] will be saved.<br>
+					<b>Question: [pollquestion]</b><br>I can select up to [multiplechoiceoptions] options. If you select more, the first [multiplechoiceoptions] will be saved.<br>
 					<font size='2'>Poll runs from <b>[pollstarttime]</b> until <b>[pollendtime]</b></font><p>"}
 
 				if(!voted)	//Only make this a form if we have not voted yet
@@ -354,11 +354,11 @@
 				break
 
 		if(!multichoice && alreadyvoted)
-			to_chat(usr, "<span class='warning'>You already voted in this poll.</span>")
+			to_chat(usr, "<span class='warning'>I already voted in this poll.</span>")
 			return
 
 		if(multichoice && (alreadyvoted >= multiplechoiceoptions))
-			to_chat(usr, "<span class='warning'>You already have more than [multiplechoiceoptions] logged votes on this poll. Enough is enough. Contact the database admin if this is an error.</span>")
+			to_chat(usr, "<span class='warning'>I already have more than [multiplechoiceoptions] logged votes on this poll. Enough is enough. Contact the database admin if this is an error.</span>")
 			return
 
 		var/adminrank = "Player"
@@ -407,7 +407,7 @@
 			break
 
 		if(alreadyvoted)
-			to_chat(usr, "<span class='warning'>You already sent your feedback for this poll.</span>")
+			to_chat(usr, "<span class='warning'>I already sent my feedback for this poll.</span>")
 			return
 
 		var/adminrank = "Player"
@@ -478,7 +478,7 @@
 			break
 
 		if(alreadyvoted)
-			to_chat(usr, "<span class='warning'>You already voted in this poll.</span>")
+			to_chat(usr, "<span class='warning'>I already voted in this poll.</span>")
 			return
 
 		var/adminrank = "Player"

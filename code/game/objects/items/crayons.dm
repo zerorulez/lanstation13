@@ -79,11 +79,11 @@ var/global/list/all_graffitis = list(
 	if(colour != "#FFFFFF" && shadeColour != "#000000")
 		colour = "#FFFFFF"
 		shadeColour = "#000000"
-		to_chat(user, "You will now draw in white and black with this crayon.")
+		to_chat(user, "I will now draw in white and black with this crayon.")
 	else
 		colour = "#000000"
 		shadeColour = "#FFFFFF"
-		to_chat(user, "You will now draw in black and white with this crayon.")
+		to_chat(user, "I will now draw in black and white with this crayon.")
 	return
 
 /obj/item/toy/crayon/rainbow
@@ -113,7 +113,7 @@ var/global/list/all_graffitis = list(
 		switch(drawtype)
 			if("letter")
 				drawtype = input("Choose the letter.", "Crayon scribbles") in list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z")
-				to_chat(user, "You start drawing a letter on the [target.name].")
+				to_chat(user, "I start drawing a letter on the [target.name].")
 			if("graffiti")
 				var/list/graffitis = list("Random" = "graffiti") + all_graffitis
 				if(istype(user,/mob/living/carbon/human))
@@ -130,9 +130,9 @@ var/global/list/all_graffitis = list(
 					return
 
 				drawtype=graffitis[preference]
-				to_chat(user, "You start drawing graffiti on \the [target].")
+				to_chat(user, "I start drawing graffiti on \the [target].")
 			if("rune")
-				to_chat(user, "You start drawing a rune on \the [target].")
+				to_chat(user, "I start drawing a rune on \the [target].")
 			if("text")
 				#define MAX_LETTERS 15
 				preference = input("Write some text here (maximum [MAX_LETTERS] letters).", "Crayon scribbles") as null|text
@@ -156,7 +156,7 @@ var/global/list/all_graffitis = list(
 					animate(alpha = 255, 10, -1)
 
 					user.client.images.Add(I)
-					var/continue_drawing = alert(user, "This is how your drawing will look. Continue?", "Crayon scribbles", "Yes", "Cancel")
+					var/continue_drawing = alert(user, "This is how my drawing will look. Continue?", "Crayon scribbles", "Yes", "Cancel")
 
 					user.client.images.Remove(I)
 					animate(I) //Cancel the animation so that the image gets garbage collected
@@ -166,12 +166,12 @@ var/global/list/all_graffitis = list(
 					if(continue_drawing != "Yes")
 						return
 
-				to_chat(user, "You start writing \"[preference]\" on \the [target].")
+				to_chat(user, "I start writing \"[preference]\" on \the [target].")
 
 		if(!user.Adjacent(target))
 			return
 		if(target.density && !cardinal.Find(get_dir(user, target))) //Drawing on a wall and not standing in a cardinal direction - don't draw
-			to_chat(user, "<span class='warning'>You can't reach \the [target] from here!</span>")
+			to_chat(user, "<span class='warning'>I can't reach \the [target] from here!</span>")
 			return
 
 		if(instant || do_after(user,target, drawtime))
@@ -197,12 +197,12 @@ var/global/list/all_graffitis = list(
 				C.pixel_y = WORLD_ICON_SIZE * sin(angle) //Offset the graffiti to make it appear on the wall
 				C.on_wall = target
 
-			to_chat(user, "You finish drawing.")
+			to_chat(user, "I finish drawing.")
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the crayon is drawn on.
 			if(uses)
 				uses--
 				if(!uses)
-					to_chat(user, "<span class='warning'>You used up your crayon!</span>")
+					to_chat(user, "<span class='warning'>I used up my crayon!</span>")
 					qdel(src)
 	return
 
@@ -211,12 +211,12 @@ var/global/list/all_graffitis = list(
 
 /obj/item/toy/crayon/attack(mob/M as mob, mob/user as mob)
 	if(M == user)
-		to_chat(user, "You take a bite of the crayon. Delicious!")
+		to_chat(user, "I take a bite of the crayon. Delicious!")
 		user.nutrition += 5
 		if(uses)
 			uses -= 5
 			if(uses <= 0)
-				to_chat(user, "<span class='warning'>You ate your crayon!</span>")
+				to_chat(user, "<span class='warning'>I ate my crayon!</span>")
 				qdel(src)
 	else
 		..()

@@ -114,7 +114,7 @@ rcd light flash thingy on matter drain
 
 /spell/targeted/overload_machine/cast(var/list/targets, mob/user)
 	var/obj/machinery/M = targets[1]
-	M.visible_message("<span class='notice'>You hear a loud electrical buzzing sound!</span>")
+	M.visible_message("<span class='notice'>I hear a loud electrical buzzing sound!</span>")
 	spawn(50)
 		explosion(get_turf(M), -1, 1, 2, 3) //C4 Radius + 1 Dest for the machine
 		qdel(M)
@@ -175,7 +175,7 @@ rcd light flash thingy on matter drain
 	playsound(targets[1], 'sound/effects/phasein.ogg', 100, 1)
 	var/mob/living/silicon/ai/A = user
 	A.can_shunt = 0
-	to_chat(user, "You cannot shunt anymore.")
+	to_chat(user, "I cannot shunt anymore.")
 
 /datum/AI_Module/large/highrescams
 	module_name = "High Resolution Cameras"
@@ -415,7 +415,7 @@ rcd light flash thingy on matter drain
 	if(href_list["buy"])
 		var/datum/AI_Module/AM = locate(href_list["module"])
 		if(AM.cost > src.processing_time)
-			temp = "You cannot afford this module."
+			temp = "I cannot afford this module."
 			return
 
 			// Give the power and take away the money.

@@ -36,7 +36,7 @@ var/global/list/falltempoverlays = list()
 	sleeptime += duration_increase_per_level
 	switch(level_max[Sp_POWER] - spell_levels[Sp_POWER])
 		if(2)
-			temp = "Your control over time strengthens, you can now stop time for [sleeptime/10] second\s and in a radius of [range*2] meter\s."
+			temp = "My control over time strengthens, you can now stop time for [sleeptime/10] second\s and in a radius of [range*2] meter\s."
 
 	return temp
 

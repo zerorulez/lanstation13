@@ -112,11 +112,11 @@ var/const/MAX_ACTIVE_TIME = 400
 	//
 	// 	if(carr && istype(carr, /mob/living/carbon/alien/humanoid/carrier))
 	// 		if(carr.facehuggers >= 6)
-	// 			carr << "You can't hold anymore facehuggers. You pick it up"
+	// 			carr << "I can't hold anymore facehuggers. You pick it up"
 	// 			..()
 	// 			return
 	// 		if(stat != DEAD)
-	// 			carr << "You pick up a facehugger"
+	// 			carr << "I pick up a facehugger"
 	// 			carr.facehuggers += 1
 	// 			del(src)
 	//
@@ -241,7 +241,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		if(istype(hugger) && !hugger.sterile && !src.sterile) // Lamarr won't fight over faces and neither will normal huggers.
 			return
 
-		if(mouth_protection && mouth_protection != H.wear_mask) //can't be protected with your own mask, has to be a hat
+		if(mouth_protection && mouth_protection != H.wear_mask) //can't be protected with my own mask, has to be a hat
 			stat_collection.xeno.proper_head_protection++
 			var/rng = 50
 			if(istype(mouth_protection, /obj/item/clothing/head/helmet/space/rig))

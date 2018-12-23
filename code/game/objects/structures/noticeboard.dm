@@ -20,7 +20,7 @@
 //attaching papers!!
 /obj/structure/noticeboard/attackby(var/obj/item/weapon/O as obj, var/mob/user as mob)
 	if(iswrench(O))
-		to_chat(user, "<span class='notice'>You disassemble \the [src].</span>")
+		to_chat(user, "<span class='notice'>I disassemble \the [src].</span>")
 		playsound(get_turf(src), 'sound/items/Ratchet.ogg', 100, 1)
 		new /obj/item/stack/sheet/wood (src.loc,2)
 		qdel(src)
@@ -31,9 +31,9 @@
 			user.drop_item(O,src, force_drop = 1)
 			notices++
 			icon_state = "nboard0[notices]"	//update sprite
-			to_chat(user, "<span class='notice'>You pin the paper to the noticeboard.</span>")
+			to_chat(user, "<span class='notice'>I pin the paper to the noticeboard.</span>")
 		else
-			to_chat(user, "<span class='notice'>You reach to pin your paper to the board but hesitate. You are certain your paper will not be seen among the many others already attached.</span>")
+			to_chat(user, "<span class='notice'>I reach to pin my paper to the board but hesitate. You are certain my paper will not be seen among the many others already attached.</span>")
 
 /obj/structure/noticeboard/attack_hand(user as mob)
 	var/dat = "<B>Noticeboard</B><BR>"
@@ -69,7 +69,7 @@
 				add_fingerprint(usr)
 				P.attackby(pen, usr)
 			else
-				to_chat(usr, "<span class='notice'>You'll need something to write with!</span>")
+				to_chat(usr, "<span class='notice'>I'll need something to write with!</span>")
 
 	if(href_list["read"])
 		var/obj/item/weapon/paper/P = locate(href_list["read"])

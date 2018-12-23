@@ -46,7 +46,7 @@
 		id.forceMove(get_turf(src))
 		user.put_in_hands(id)
 
-		to_chat(user, "<span class='notify'>You pry the ID card out of \the [src]</span>")
+		to_chat(user, "<span class='notify'>I pry the ID card out of \the [src]</span>")
 		id = null
 
 	interact(user)
@@ -76,7 +76,7 @@
 		dat += "<br>Current unclaimed credits: $[num2septext(smelter_data["credits"])]<br>"
 
 		if(istype(id))
-			dat += "You have [id.GetBalance(format = 1)] credits in your bank account. <A href='?src=\ref[src];eject=1'>Eject ID.</A><br>"
+			dat += "I have [id.GetBalance(format = 1)] credits in my bank account. <A href='?src=\ref[src];eject=1'>Eject ID.</A><br>"
 			dat += "<A href='?src=\ref[src];claim=1'>Claim points.</A><br>"
 		else
 			dat += text("No ID inserted. <A href='?src=\ref[src];insert=1'>Insert ID.</A><br>")

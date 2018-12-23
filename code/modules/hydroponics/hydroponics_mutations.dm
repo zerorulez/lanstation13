@@ -146,7 +146,7 @@
 			// DEARIE ME, WHAT IS GOING ON HERE?
 			// Each stat mutation will have a "soft cap" and a "hard cap" depending on how much mutagen is used. If the stat to mutate is bigger than the "soft cap",
 			// the strength of the mutation will decrease. As that stat approaches the "hard cap", the strength of subsequent mutations will linearly decrease to 0.
-			// Example: If the potency "soft cap" is 50, the "hard cap" is 75, and your plant has 60 potency, then the mutation will only be 60% of what is listed.
+			// Example: If the potency "soft cap" is 50, the "hard cap" is 75, and my plant has 60 potency, then the mutation will only be 60% of what is listed.
 
 			// The actual caps depend on how much mutagen is used. The values below represent the caps at 0, 5, 10, 15, 20, and 25 mutagen respectively.
 			var/list/softcap_values = list(5,  20, 50,  100, 150, 180)

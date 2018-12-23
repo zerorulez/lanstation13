@@ -16,9 +16,9 @@
 /obj/item/weapon/chisel/attack_self(mob/user as mob)
 	use_name = !use_name
 	if(use_name)
-		to_chat(user, "You will now sign your work.")
+		to_chat(user, "I will now sign my work.")
 	else
-		to_chat(user, "You will no longer sign your work.")
+		to_chat(user, "I will no longer sign my work.")
 
 /obj/item/weapon/chisel/attack(mob/M as mob, mob/user as mob)
 	if(istype(M, /mob/living/simple_animal/sculpture))
@@ -51,7 +51,7 @@
 
 			var/list/engravings = list("Amyjon"="amyjon", "Face"="face", "Matt wuz here"="matt", "Vive la Revolution"="revolution", "Engi"="engie", "Killroy"="guy", "End is nigh"= "end", "Dorf"="dwarf", "Uboa"="uboa")
 
-			var/engravingdesign = input("Your engraving", null)as null|anything in engravings
+			var/engravingdesign = input("My engraving", null)as null|anything in engravings
 			if(!engravingdesign)
 				return
 
@@ -60,12 +60,12 @@
 			//Get icon
 			var/icon/engraving_overlay = new/icon('icons/effects/crayondecal.dmi',"[engraving_icon_state]",2.1)
 
-			user.visible_message("<span class='notice'>[user.name] starts engraving something on the [W.name].</span>", "<span class='notice'>You start engraving an image of [engraving_name] on the [W.name].</span>")
+			user.visible_message("<span class='notice'>[user.name] starts engraving something on the [W.name].</span>", "<span class='notice'>I start engraving an image of [engraving_name] on the [W.name].</span>")
 			if(do_after(user, target, 60))
 				if( !istype(W, /turf/simulated/wall) || !user || !src || !W )
 					return
 				if( W.rotting )
-					user.visible_message("<span class='warning'>The [W.name] crumbles under [user.name]'s touch!</span>", "<span class='warning'>The [W.name] crumbles under your touch!</span>")
+					user.visible_message("<span class='warning'>The [W.name] crumbles under [user.name]'s touch!</span>", "<span class='warning'>The [W.name] crumbles under my touch!</span>")
 					W.dismantle_wall()
 					return
 
@@ -87,4 +87,4 @@
 
 				W.overlays += engraving_overlay
 				W.engraving = engraving
-				user.visible_message("<span class='notice'>[user.name] finishes engraving [W.engraving_quality] image of [engraving_name].</span>", "<span class='notice'>You finish engraving on the [W.name].</span>")
+				user.visible_message("<span class='notice'>[user.name] finishes engraving [W.engraving_quality] image of [engraving_name].</span>", "<span class='notice'>I finish engraving on the [W.name].</span>")

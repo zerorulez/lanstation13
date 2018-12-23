@@ -85,7 +85,7 @@
 	species_fit = list(VOX_SHAPED)
 
 /obj/item/clothing/head/det_hat/noir
-	desc = "This hat's been with you for some time now. It was a gift from your ex, and you wore it during the war. Thinking back on it, the war was prettier."
+	desc = "This hat's been with you for some time now. It was a gift from my ex, and you wore it during the war. Thinking back on it, the war was prettier."
 	icon_state = "detective_noir"
 	item_state = "detective_noir"
 /*
@@ -113,7 +113,7 @@
 
 //Jensen cosplay gear
 /obj/item/clothing/under/rank/head_of_security/jensen
-	desc = "You never asked for anything that stylish."
+	desc = "I never asked for anything that stylish."
 	name = "head of security's jumpsuit"
 	icon_state = "jensen"
 	item_state = "jensensuit"

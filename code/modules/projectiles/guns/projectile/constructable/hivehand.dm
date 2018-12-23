@@ -27,7 +27,7 @@
 
 /obj/item/weapon/gun/projectile/hivehand/pickup(mob/user as mob)
 	..()
-	to_chat(user, "<span class='warning'>\The [src] latches tightly onto your arm!</span>")
+	to_chat(user, "<span class='warning'>\The [src] latches tightly onto my arm!</span>")
 	user.update_inv_hands()
 	processing_objects.Add(src)
 

@@ -316,7 +316,7 @@ Class Procs:
 			if(!O)
 				return 1
 			if(!canLink(O,href_list))
-				to_chat(usr, "<span class='warning'>You can't link with that device.</span>")
+				to_chat(usr, "<span class='warning'>I can't link with that device.</span>")
 				return 1
 			if (isLinkedWith(O))
 				to_chat(usr, "<span class='attack'>A red light flashes on \the [P]. The two devices are already linked.</span>")
@@ -373,7 +373,7 @@ Class Procs:
 		if(usr.restrained() || usr.lying || usr.stat)
 			return 1
 		if (!usr.dexterity_check())
-			to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+			to_chat(usr, "<span class='warning'>I don't have the dexterity to do this!</span>")
 			return 1
 		var/turf/T = get_turf(usr)
 		if(!isAI(usr) && T.z != z)
@@ -422,7 +422,7 @@ Class Procs:
 		return 0
 
 	if(!user.dexterity_check())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
 		return 1
 /*
 	//distance checks are made by atom/proc/DblClick
@@ -435,7 +435,7 @@ Class Procs:
 			visible_message("<span class='warning'>[H] stares cluelessly at [src] and drools.</span>")
 			return 1
 		else if(prob(H.getBrainLoss()) || (H.undergoing_hypothermia() == MODERATE_HYPOTHERMIA && prob(25)))
-			to_chat(user, "<span class='warning'>You momentarily forget how to use [src].</span>")
+			to_chat(user, "<span class='warning'>I momentarily forget how to use [src].</span>")
 			return 1
 
 	src.add_fingerprint(user)
@@ -471,7 +471,7 @@ Class Procs:
 
 /obj/machinery/proc/crowbarDestroy(mob/user)
 	user.visible_message(	"[user] begins to pry out the circuitboard from \the [src].",
-							"You begin to pry out the circuitboard from \the [src]...")
+							"I begin to pry out the circuitboard from \the [src]...")
 	if(do_after(user, src, 40))
 		playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
 		dropFrame()
@@ -504,19 +504,19 @@ Class Procs:
 /obj/machinery/proc/weldToFloor(var/obj/item/weapon/weldingtool/WT, mob/user)
 	if(!anchored)
 		state = 0 //since this might be wrong, we go sanity
-		to_chat(user, "You need to secure \the [src] before it can be welded.")
+		to_chat(user, "I need to secure \the [src] before it can be welded.")
 		return -1
 	if (WT.remove_fuel(0,user))
 		playsound(get_turf(src), 'sound/items/Welder2.ogg', 50, 1)
 		user.visible_message("[user.name] starts to [state - 1 ? "unweld": "weld" ] the [src] [state - 1 ? "from" : "to"] the floor.", \
-				"You start to [state - 1 ? "unweld": "weld" ] the [src] [state - 1 ? "from" : "to"] the floor.", \
-				"You hear welding.")
+				"I start to [state - 1 ? "unweld": "weld" ] the [src] [state - 1 ? "from" : "to"] the floor.", \
+				"I hear welding.")
 		if (do_after(user, src,20))
 			if(!src || !WT.isOn())
 				return -1
 			switch(state)
 				if(0)
-					to_chat(user, "You have to keep \the [src] secure before it can be welded down.")
+					to_chat(user, "I have to keep \the [src] secure before it can be welded down.")
 					return -1
 				if(1)
 					state = 2
@@ -527,7 +527,7 @@ Class Procs:
 								)
 			return 1
 	else
-		to_chat(user, "<span class='rose'>You need more welding fuel to complete this task.</span>")
+		to_chat(user, "<span class='rose'>I need more welding fuel to complete this task.</span>")
 		return -1
 
 /**
@@ -701,7 +701,7 @@ Class Procs:
 /obj/machinery/kick_act(mob/living/carbon/human/H)
 	playsound(get_turf(src), 'sound/effects/grillehit.ogg', 50, 1) //Zth: I couldn't find a proper sound, please replace it
 
-	H.visible_message("<span class='danger'>[H] kicks \the [src].</span>", "<span class='danger'>You kick \the [src].</span>")
+	H.visible_message("<span class='danger'>[H] kicks \the [src].</span>", "<span class='danger'>I kick \the [src].</span>")
 	if(prob(70))
 		H.apply_damage(rand(2,4), BRUTE, pick(LIMB_RIGHT_LEG, LIMB_LEFT_LEG, LIMB_RIGHT_FOOT, LIMB_LEFT_FOOT))
 

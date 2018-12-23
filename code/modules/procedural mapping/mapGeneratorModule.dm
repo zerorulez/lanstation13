@@ -124,10 +124,10 @@
 // Not usable types themselves, use them as parent types //
 // Seriously, don't use these on their own, just parents //
 ///////////////////////////////////////////////////////////
-//The /atom and /turf examples are just so these compile, replace those with your typepaths in your subtypes.
+//The /atom and /turf examples are just so these compile, replace those with my typepaths in my subtypes.
 
 //Settings appropriate for a turf that covers the entire map region, eg a fill colour on a bottom layer in a graphics program.
-//Should only have one of these in your mapGenerator unless you want to waste CPU
+//Should only have one of these in my mapGenerator unless you want to waste CPU
 /datum/mapGeneratorModule/bottomLayer
 	clusterCheckFlags = CLUSTER_CHECK_NONE
 	spawnableAtoms = list()//Recommended: No atoms.

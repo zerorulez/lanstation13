@@ -113,7 +113,7 @@
 
 obj/item/asteroid/basilisk_hide
 	name = "basilisk crystals"
-	desc = "You shouldn't ever see this."
+	desc = "I shouldn't ever see this."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "Diamond ore"
 
@@ -354,19 +354,19 @@ obj/item/asteroid/basilisk_hide/New()
 
 	if (!target.hasmouth)
 		if (target != user)
-			to_chat(user, "<span class='warning'>You attempt to feed \the [src] to [target], but you realize they don't have a mouth. How dumb!</span>")
+			to_chat(user, "<span class='warning'>I attempt to feed \the [src] to [target], but you realize they don't have a mouth. How dumb!</span>")
 		else
-			to_chat(user, "<span class='warning'>You don't have a mouth to eat \the [src] with.</span>")
+			to_chat(user, "<span class='warning'>I don't have a mouth to eat \the [src] with.</span>")
 		return
 
 	// Delay feeding to others, just like in regular food
 	if (target != user)
-		user.visible_message("<span class='danger'>[user] attempts to feed [target] \the [src].</span>", "<span class='danger'>You attempt to feed [target] \the [src].</span>")
+		user.visible_message("<span class='danger'>[user] attempts to feed [target] \the [src].</span>", "<span class='danger'>I attempt to feed [target] \the [src].</span>")
 		if (!do_mob(user, target))
 			return
 		user.visible_message("<span class='notice'>[user] feeds [target] the [src]... They look better!</span>")
 	else
-		to_chat(user, "<span class='notice'>You chomp into \the [src], barely managing to hold it down, but feel amazingly refreshed in mere moments.</span>")
+		to_chat(user, "<span class='notice'>I chomp into \the [src], barely managing to hold it down, but feel amazingly refreshed in mere moments.</span>")
 
 	playsound(get_turf(src), 'sound/items/eatfood.ogg', rand(10, 50), 1)
 	target.revive()
@@ -490,7 +490,7 @@ obj/item/asteroid/basilisk_hide/New()
 
 /obj/item/asteroid/goliath_hide
 	name = "goliath hide plates"
-	desc = "Pieces of a goliath's rocky hide, these might be able to make your suit a bit more durable to attack from the local fauna."
+	desc = "Pieces of a goliath's rocky hide, these might be able to make my suit a bit more durable to attack from the local fauna."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "goliath_hide"
 	w_class = W_CLASS_MEDIUM
@@ -502,8 +502,8 @@ obj/item/asteroid/basilisk_hide/New()
 		if(C.goliath_reinforce)
 			if(current_armor.["melee"] < 90)
 				current_armor.["melee"] = min(current_armor.["melee"] + 10, 90)
-				to_chat(user, "<span class='info'>You strengthen [target], improving its resistance against melee attacks.</span>")
+				to_chat(user, "<span class='info'>I strengthen [target], improving its resistance against melee attacks.</span>")
 				qdel(src)
 			else
-				to_chat(user, "<span class='info'>You can't improve [C] any further.</span>")
+				to_chat(user, "<span class='info'>I can't improve [C] any further.</span>")
 	return

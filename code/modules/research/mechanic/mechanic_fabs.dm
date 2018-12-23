@@ -100,7 +100,7 @@
 			if(src.AddBlueprint(RB, user))
 				if(src.AddMechanicDesign(RB.stored_design, user))
 					overlays += image(icon = icon, icon_state = "[base_state]-bp")
-					to_chat(user, "<span class='notice'>You successfully load \the [RB.name] into \the [src].</span>")
+					to_chat(user, "<span class='notice'>I successfully load \the [RB.name] into \the [src].</span>")
 					if(RB.delete_on_use)
 						qdel(RB) //we delete if the thing is set to delete. Always set to 1 right now
 					spawn(10)
@@ -169,7 +169,7 @@
 	for(var/list in src.part_sets)
 		for(var/datum/design/MD in part_sets[list])
 			if(MD == BPdesign) //because they're the same design, they make exactly the same thing
-				to_chat(user, "You can't add that design, as it's already loaded into the machine!")
+				to_chat(user, "I can't add that design, as it's already loaded into the machine!")
 				return 0 //can't add to an infinite design
 	return 1 //let's add the new design, since we haven't found it
 

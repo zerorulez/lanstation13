@@ -30,7 +30,7 @@
 	if(wielded)
 		Fire(A,user,params, "struggle" = struggle)
 	else
-		to_chat(user, "<span class='warning'>You must dual-wield \the [src] before you can fire it!</span>")
+		to_chat(user, "<span class='warning'>I must dual-wield \the [src] before you can fire it!</span>")
 
 /obj/item/weapon/gun/projectile/hecate/update_wield(mob/user)
 	if(wielded)

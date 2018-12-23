@@ -1,6 +1,6 @@
 /spell/targeted/mind_transfer
 	name = "Mind Transfer"
-	desc = "Switch bodies with somebody adjacent to you. Both you and your target regain your mind and knowledge of spells."
+	desc = "Switch bodies with somebody adjacent to you. Both you and my target regain my mind and knowledge of spells."
 	abbreviation = "MT"
 
 	school = "transmutation"
@@ -12,7 +12,7 @@
 	mind_affecting = 1
 	range = 1
 	cooldown_min = 200 //100 deciseconds reduction per rank
-	compatible_mobs = list(/mob/living/carbon/human,/mob/living/carbon/monkey) //which types of mobs are affected by the spell. NOTE: change at your own risk
+	compatible_mobs = list(/mob/living/carbon/human,/mob/living/carbon/monkey) //which types of mobs are affected by the spell. NOTE: change at my own risk
 
 	var/list/protected_roles = list("Wizard","Changeling","Cultist") //which roles are immune to the spell
 	var/msg_wait = 500 //how long in deciseconds it waits before telling that body doesn't feel right or mind swap robbed of a spell
@@ -25,7 +25,7 @@
 
 	for(var/mob/living/target in targets)
 		if(target.stat == DEAD)
-			to_chat(user, "You didn't study necromancy back at the Space Wizard Federation academy.")
+			to_chat(user, "I didn't study necromancy back at the Space Wizard Federation academy.")
 			continue
 
 		else if(!target.key || !target.mind)
@@ -33,7 +33,7 @@
 			continue
 
 		else if(target.mind.special_role in protected_roles)
-			to_chat(user, "Their mind is resisting your spell.")
+			to_chat(user, "Their mind is resisting my spell.")
 			continue
 		else
 			var/mob/living/victim = target//The target of the spell whos body will be transferred to.
@@ -79,4 +79,4 @@
 
 			//After a certain amount of time the victim gets a message about being in a different body.
 			spawn(msg_wait)
-				to_chat(caster, "<span class='danger'>You feel woozy and lightheaded. Your body doesn't seem like your own.</span>")
+				to_chat(caster, "<span class='danger'>I feel woozy and lightheaded. Your body doesn't seem like my own.</span>")

@@ -156,7 +156,7 @@
 				A.state = 3
 				A.icon_state = "3"
 			else
-				user.show_message("<span class=\"info\">You disconnect the monitor.</span>")
+				user.show_message("<span class=\"info\">I disconnect the monitor.</span>")
 				A.state = 4
 				A.icon_state = "4"
 

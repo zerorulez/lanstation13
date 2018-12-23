@@ -62,7 +62,7 @@
 	if(!requires_dexterity(user))
 		attack_hand(user) //if the object doesn't need dexterity, we can use our stump
 	else
-		to_chat(user, "Your [user.get_index_limb_name(user.active_hand)] is not fine enough for this action.")
+		to_chat(user, "My [user.get_index_limb_name(user.active_hand)] is not fine enough for this action.")
 
 /atom/proc/requires_dexterity(mob/user)
 	return 0

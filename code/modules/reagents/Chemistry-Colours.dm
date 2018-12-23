@@ -51,7 +51,7 @@
 
 	if(!reagent_list.len)
 		DG.name = "glass of...nothing?"
-		DG.desc = "You can't see anything inside that glass, odd"//this shouldn't ever happen
+		DG.desc = "I can't see anything inside that glass, odd"//this shouldn't ever happen
 	else if(reagent_list.len > 4)
 		DG.name = "mixture of chemicals"
 		DG.desc = "There's too many different chemicals in the glass, you cannot tell them apart."

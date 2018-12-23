@@ -27,7 +27,7 @@
 	dat += {"Locked on<BR>
 		<B>Charge progress: [reload]/180:</B><BR>
 		<A href='byond://?src=\ref[src];fire=1'>Open Fire</A><BR>
-		Deployment of weapon authorized by <br>Nanotrasen Naval Command<br><br>Remember, friendly fire is grounds for termination of your contract and life.<HR>"}
+		Deployment of weapon authorized by <br>Nanotrasen Naval Command<br><br>Remember, friendly fire is grounds for termination of my contract and life.<HR>"}
 	user << browse(dat, "window=scroll")
 	onclose(user, "scroll")
 	return

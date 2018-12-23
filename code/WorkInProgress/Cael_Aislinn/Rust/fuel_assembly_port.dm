@@ -21,7 +21,7 @@
 			if(user.drop_item(I, src))
 				cur_assembly = I
 				icon_state = "port1"
-				to_chat(user, "<span class='notice'>You insert [I] into [src]. Touch the panel again to insert [I] into the injector.</span>")
+				to_chat(user, "<span class='notice'>I insert [I] into [src]. Touch the panel again to insert [I] into the injector.</span>")
 
 /obj/machinery/rust_fuel_assembly_port/attack_hand(mob/user)
 	if(..())

@@ -1,6 +1,6 @@
 /spell/aoe_turf/conjure/forcewall
 	name = "Forcewall"
-	desc = "Create a wall of pure energy at your location."
+	desc = "Create a wall of pure energy at my location."
 	abbreviation = "FW"
 
 	summon_type = list(/obj/effect/forcefield/wizard)
@@ -14,7 +14,7 @@
 
 /spell/aoe_turf/conjure/forcewall/mime
 	name = "Invisible wall"
-	desc = "Create an invisible wall on your location."
+	desc = "Create an invisible wall on my location."
 	school = "mime"
 	panel = "Mime"
 	summon_type = list(/obj/effect/forcefield/mime)
@@ -49,14 +49,14 @@
 /obj/effect/forcefield/mime
 	icon_state = "empty"
 	name = "invisible wall"
-	desc = "You have a bad feeling about this."
+	desc = "I have a bad feeling about this."
 	invisibility = 0
 
 /obj/effect/forcefield/mime/Cross(atom/movable/mover, turf/target, height = 0)
 	if(istype(mover, /obj/item/projectile/bullet/invisible))
 		return 1
 	..()
-	
+
 /obj/effect/forcefield/cultify()
 	new /obj/effect/forcefield/cult(get_turf(src))
 	qdel(src)

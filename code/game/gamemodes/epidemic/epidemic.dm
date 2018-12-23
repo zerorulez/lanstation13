@@ -21,7 +21,7 @@
 ///////////////////////////
 /datum/game_mode/epidemic/announce()
 	to_chat(world, {"<B>The current game mode is - Epidemic!</B><br />)
-		<B>A deadly epidemic is spreading on the station. Find a cure as fast as possible, and keep your distance to anyone who speaks in a hoarse voice!</B>"}
+		<B>A deadly epidemic is spreading on the station. Find a cure as fast as possible, and keep my distance to anyone who speaks in a hoarse voice!</B>"}
 
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -62,7 +62,7 @@
 		return
 
 	if(!usr.client.holder || !(usr.client.holder.rights & R_PERMISSIONS))
-		to_chat(usr, "<span class='warning'>You do not have permission to do this!</span>")
+		to_chat(usr, "<span class='warning'>I do not have permission to do this!</span>")
 		return
 
 	establish_db_connection()
@@ -113,7 +113,7 @@
 		return
 
 	if(!usr.client.holder || !(usr.client.holder.rights & R_PERMISSIONS))
-		to_chat(usr, "<span class='warning'>You do not have permission to do this!</span>")
+		to_chat(usr, "<span class='warning'>I do not have permission to do this!</span>")
 		return
 
 	establish_db_connection()

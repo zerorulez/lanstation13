@@ -10,7 +10,7 @@
 
 /datum/design/drill
 	name = "Mining Drill"
-	desc = "Yours is the drill that will pierce through the rock walls."
+	desc = "Irs is the drill that will pierce through the rock walls."
 	id = "drill"
 	req_tech = list(Tc_MATERIALS = 2, Tc_POWERSTORAGE = 3, Tc_ENGINEERING = 2)
 	build_type = PROTOLATHE
@@ -20,7 +20,7 @@
 
 /datum/design/plasmacutter
 	name = "Plasma Cutter"
-	desc = "You could use it to cut limbs off of xenos! Or, you know, mine stuff."
+	desc = "I could use it to cut limbs off of xenos! Or, you know, mine stuff."
 	id = "plasmacutter"
 	req_tech = list(Tc_MATERIALS = 4, Tc_PLASMATECH = 3, Tc_ENGINEERING = 3)
 	build_type = PROTOLATHE
@@ -41,7 +41,7 @@
 
 /datum/design/drill_diamond
 	name = "Diamond Mining Drill"
-	desc = "Yours is the drill that will pierce the heavens!"
+	desc = "Irs is the drill that will pierce the heavens!"
 	id = "drill_diamond"
 	req_tech = list(Tc_MATERIALS = 6, Tc_POWERSTORAGE = 4, Tc_ENGINEERING = 4)
 	build_type = PROTOLATHE

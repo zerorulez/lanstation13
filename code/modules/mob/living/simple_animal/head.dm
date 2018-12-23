@@ -16,7 +16,7 @@
 	response_harm   = "punches the"
 	var/list/insults = list(
 	"Man you suck",
-	"You look like the most retarded douche around",
+	"I look like the most retarded douche around",
 	"What's up?, oh wait nevermind you are a fucking asshat",
 	"you are just overly retarded",
 	"Whiteman said what?!",)

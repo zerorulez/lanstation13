@@ -92,7 +92,7 @@
 	W.health += diff
 	W.healthcheck(user, FALSE)
 
-	user.visible_message("<span class='notice'>[user] repairs \the [W] with their [name]!</span>", "<span class='notice'>You repair \the [W] with your [name].</span>")
+	user.visible_message("<span class='notice'>[user] repairs \the [W] with their [name]!</span>", "<span class='notice'>I repair \the [W] with my [name].</span>")
 	playsound(get_turf(src), 'sound/effects/refill.ogg', 10, 1, -6)
 
 	remove_silicate(diff * SILICATE_PER_DAMAGE)
@@ -152,7 +152,7 @@
 	var/extra_health = W.health - initial_health
 
 	if(W.health >= initial_health * MAX_WINDOW_HEALTH_MULTIPLIER)
-		to_chat(user, "<span class='notice'>You can't reinforce \the [W] any further!</span>")
+		to_chat(user, "<span class='notice'>I can't reinforce \the [W] any further!</span>")
 		return 1
 
 	var/repair_amt = min(get_amount() / SILICATE_PER_REINFORCE, (initial_health * MAX_WINDOW_HEALTH_MULTIPLIER) - (initial_health + extra_health))
@@ -160,7 +160,7 @@
 	W.health += repair_amt
 	W.healthcheck(user, FALSE)
 
-	user.visible_message("<span class='notice'>[user] reinforced \the [W] with their [name]!</span>", "<span class='notice'>You reinforce \the [W] with your [name].</span>")
+	user.visible_message("<span class='notice'>[user] reinforced \the [W] with their [name]!</span>", "<span class='notice'>I reinforce \the [W] with my [name].</span>")
 	playsound(get_turf(src), 'sound/effects/refill.ogg', 10, 1, -6)
 
 	remove_silicate(repair_amt * SILICATE_PER_REINFORCE)

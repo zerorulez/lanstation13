@@ -109,7 +109,7 @@ var/list/SPS_list = list()
 			to_chat(usr, "No way.")
 			return 0
 		if (usr.get_active_hand() != src || usr.stat) //no silicons allowed
-			to_chat(usr, "<span class = 'caution'>You need to have the GPS in your hand to do that!</span>")
+			to_chat(usr, "<span class = 'caution'>I need to have the GPS in my hand to do that!</span>")
 			return 1
 
 		var/a = input("Please enter desired tag.", name, gpstag) as text|null
@@ -117,7 +117,7 @@ var/list/SPS_list = list()
 			return 1
 
 		if (usr.get_active_hand() != src || usr.stat) //second check in case some chucklefuck drops the GPS while typing the tag
-			to_chat(usr, "<span class = 'caution'>The GPS needs to be kept in your active hand!</span>")
+			to_chat(usr, "<span class = 'caution'>The GPS needs to be kept in my active hand!</span>")
 			return 1
 
 		if(length(a) < 4 || length(a) > 5)

@@ -42,7 +42,7 @@
 		name = "[name] (ID [id])"
 
 	attack_hand(var/mob/user as mob)
-		to_chat(usr, "<span class='notice'>You can't directly interact with this machine. Use the area atmos computer.</span>")
+		to_chat(usr, "<span class='notice'>I can't directly interact with this machine. Use the area atmos computer.</span>")
 
 	update_icon()
 		src.overlays = 0
@@ -60,7 +60,7 @@
 
 			anchored = !anchored
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
-			to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
+			to_chat(user, "<span class='notice'>I [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 
 			return
 

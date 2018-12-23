@@ -418,7 +418,7 @@
 
 /obj/item/clothing/under/batmansuit
 	name = "batsuit"
-	desc = "You are the night."
+	desc = "I am the night."
 	icon_state = "bmuniform"
 	_color = "bmuniform"
 
@@ -589,11 +589,11 @@
 	var/list/slot_must_be_empty = list(slot_back,slot_handcuffed,slot_legcuffed,slot_belt,slot_head,slot_wear_suit)
 	for(var/slot_id in slot_must_be_empty)
 		if(user.get_item_by_slot(slot_id))
-			to_chat(user, "<span class='warning'>You can't fit inside while wearing that \the [user.get_item_by_slot(slot_id)].</span>")
+			to_chat(user, "<span class='warning'>I can't fit inside while wearing that \the [user.get_item_by_slot(slot_id)].</span>")
 			return 0
 
 	for(var/obj/item/I in user.held_items)
-		to_chat(user, "<span class='warning'>You can't fit inside while holding \the [I].</span>")
+		to_chat(user, "<span class='warning'>I can't fit inside while holding \the [I].</span>")
 		return 0
 
 	return 1

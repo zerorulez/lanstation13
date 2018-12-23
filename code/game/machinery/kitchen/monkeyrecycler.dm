@@ -56,7 +56,7 @@
 				user.drop_item(G, force_drop = 1)
 				qdel(target)
 				target = null
-				to_chat(user, "<span class='notice'>You stuff the monkey in the machine.")
+				to_chat(user, "<span class='notice'>I stuff the monkey in the machine.")
 				playsound(get_turf(src), 'sound/machines/juicer.ogg', 50, 1)
 				use_power(500)
 				src.grinded++
@@ -71,7 +71,7 @@
 			to_chat(user, "<span class='warning'>The monkey may not have abiotic items on.</span>")
 		else
 			qdel(target)
-			to_chat(user, "<span class='notice'>You stuff the monkey in the machine.</span>")
+			to_chat(user, "<span class='notice'>I stuff the monkey in the machine.</span>")
 			playsound(get_turf(src), 'sound/machines/juicer.ogg', 50, 1)
 			use_power(500)
 			src.grinded++

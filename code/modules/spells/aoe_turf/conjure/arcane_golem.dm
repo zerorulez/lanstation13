@@ -1,6 +1,6 @@
 /spell/aoe_turf/conjure/arcane_golem
 	name = "Forge Arcane Golem"
-	desc = "Creates a fragile construct that follows you around. It knows a basic version of all of your spells, and will cast them simultaneously with you - at the same target. If cast while an arcane golem is already summoned, your arcane golems will be teleported to you instead. It's unable to learn Mind Transfer and Forge Arcane Golem."
+	desc = "Creates a fragile construct that follows you around. It knows a basic version of all of my spells, and will cast them simultaneously with you - at the same target. If cast while an arcane golem is already summoned, my arcane golems will be teleported to you instead. It's unable to learn Mind Transfer and Forge Arcane Golem."
 
 	charge_max = 20 SECONDS
 	cooldown_min = 1 SECONDS
@@ -63,7 +63,7 @@
 		AG.add_spell(copy)
 
 	AG.faction = "\ref[user]"
-	to_chat(user, "<span class='sinister'>You infuse \the [AG] with your mana and knowledge. If it dies, your arcane abilities will be affected.</span>")
+	to_chat(user, "<span class='sinister'>I infuse \the [AG] with my mana and knowledge. If it dies, my arcane abilities will be affected.</span>")
 	src.golems.Add(AG)
 
 /spell/aoe_turf/conjure/arcane_golem/proc/copy_spellcast(list/arguments)
@@ -110,7 +110,7 @@
 			spell_levels[Sp_AMOUNT]++
 			golem_limit++
 
-			return "You can now sustain [golem_limit] golems at once."
+			return "I can now sustain [golem_limit] golems at once."
 
 	return ..()
 

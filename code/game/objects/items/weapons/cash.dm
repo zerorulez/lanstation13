@@ -71,7 +71,7 @@ var/global/list/moneytypes = list(
 		if (user.get_inactive_hand()!=S)
 			to_transfer = min(S.amount, 10-amount)
 		amount+=to_transfer
-		to_chat(user, "You add [to_transfer] chip\s to the stack. It now contains [amount] chips, worth [amount*worth] credits.")
+		to_chat(user, "I add [to_transfer] chip\s to the stack. It now contains [amount] chips, worth [amount*worth] credits.")
 		S.amount-=to_transfer
 		if(S.amount<=0)
 			qdel(S)
@@ -124,7 +124,7 @@ var/global/list/moneytypes = list(
 		var/collected = src.collect_from(cash)
 		if(collected)
 			update_icon()
-			to_chat(user, "<span class='notice'>You add [collected] [src.name][amount > 1 ? "s":""] to your stack of cash.</span>")
+			to_chat(user, "<span class='notice'>I add [collected] [src.name][amount > 1 ? "s":""] to my stack of cash.</span>")
 
 /obj/item/weapon/spacecash/proc/get_total()//I can't believe this didn't exist here already.
 	return worth * amount

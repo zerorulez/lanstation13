@@ -29,20 +29,20 @@
 		to_chat(user, "<span class='notice'>Label too big.</span>")
 		return
 	if(ishuman(target))
-		to_chat(user, "<span class='notice'>You can't label humans.</span>")
+		to_chat(user, "<span class='notice'>I can't label humans.</span>")
 		return
 	if(issilicon(target))
-		to_chat(user, "<span class='notice'>You can't label cyborgs.</span>")
+		to_chat(user, "<span class='notice'>I can't label cyborgs.</span>")
 		return
 
 	if(user.a_intent == I_HURT && target.min_harm_label)
 		user.visible_message("<span class='warning'>[user] labels [target] as [label]... with malicious intent!</span>", \
-							 "<span class='warning'>You label [target] as [label]... with malicious intent!</span>") //OK this is total shit but I don't want to add TOO many vars to /atom
+							 "<span class='warning'>I label [target] as [label]... with malicious intent!</span>") //OK this is total shit but I don't want to add TOO many vars to /atom
 		target.harm_labeled = min(length(label) + 2, chars_left)
 		target.harm_label_update()
 	else
 		user.visible_message("<span class='notice'>[user] labels [target] as [label].</span>", \
-							 "<span class='notice'>You label [target] as [label].</span>")
+							 "<span class='notice'>I label [target] as [label].</span>")
 
 	target.set_labeled(label)
 
@@ -64,16 +64,16 @@
 	mode = !mode
 	icon_state = "labeler[mode]"
 	if(mode)
-		to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
+		to_chat(user, "<span class='notice'>I turn on \the [src].</span>")
 		//Now let them chose the text.
 		var/str = copytext(reject_bad_text(input(user,"Label text?","Set label","")),1,min(MAX_NAME_LEN,chars_left))
 		if(!str || !length(str))
 			to_chat(user, "<span class='notice'>Invalid text.</span>")
 			return
 		label = str
-		to_chat(user, "<span class='notice'>You set the text to '[str]'.</span>")
+		to_chat(user, "<span class='notice'>I set the text to '[str]'.</span>")
 	else
-		to_chat(user, "<span class='notice'>You turn off \the [src].</span>")
+		to_chat(user, "<span class='notice'>I turn off \the [src].</span>")
 
 /obj/item/weapon/hand_labeler/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/device/label_roll))
@@ -85,18 +85,18 @@
 		chars_left = LR.left
 		if(holder)
 			LR.left = holder
-			to_chat(user, "<span class='notice'>You switch the label rolls.</span>")
+			to_chat(user, "<span class='notice'>I switch the label rolls.</span>")
 		else
 			qdel(LR)
 			LR = null
-			to_chat(user, "<span class='notice'>You replace the label roll.</span>")
+			to_chat(user, "<span class='notice'>I replace the label roll.</span>")
 			icon_state = "labeler0"
 
 /obj/item/weapon/hand_labeler/attack_hand(mob/user) //Shamelessly stolen from stack.dm.
 	if (!mode && user.get_inactive_hand() == src)
 		var/obj/item/device/label_roll/LR = new(user, amount=chars_left)
 		user.put_in_hands(LR)
-		to_chat(user, "<span class='notice'>You remove the label roll.</span>")
+		to_chat(user, "<span class='notice'>I remove the label roll.</span>")
 		chars_left = 0
 		icon_state = "labeler_e"
 	else
@@ -146,7 +146,7 @@
 	if(usr.incapacitated())
 		return
 	remove_label()
-	to_chat(usr, "<span class='notice'>You remove the label.</span>")
+	to_chat(usr, "<span class='notice'>I remove the label.</span>")
 
 /atom/proc/remove_label()
 	name = replacetext(name, labeled, "")
@@ -168,6 +168,6 @@
 	if(length(tmp_label) > 16)
 		to_chat(user, "<span class='warning'>The label can be at most 16 characters long.</span>")
 		return FALSE
-	to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
+	to_chat(user, "<span class='notice'>I set the label to \"[tmp_label]\".</span>")
 	set_labeled(tmp_label, start_text, end_text)
 	return TRUE

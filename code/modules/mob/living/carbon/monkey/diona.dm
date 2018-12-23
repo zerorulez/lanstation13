@@ -43,7 +43,7 @@
 
 	set category = "Diona"
 	set name = "Fertilize plant"
-	set desc = "Turn your food into nutrients for plants."
+	set desc = "Turn my food into nutrients for plants."
 
 	var/list/trays = list()
 	for(var/obj/machinery/portable_atmospherics/hydroponics/tray in range(1))
@@ -57,7 +57,7 @@
 
 	src.nutrition -= ((10-target.nutrilevel)*5)
 	target.nutrilevel = 10
-	src.visible_message("<span class='warning'>[src] secretes a trickle of green liquid from its tail, refilling [target]'s nutrient tray.</span>","<span class='warning'>You secrete a trickle of green liquid from your tail, refilling [target]'s nutrient tray.</span>")
+	src.visible_message("<span class='warning'>[src] secretes a trickle of green liquid from its tail, refilling [target]'s nutrient tray.</span>","<span class='warning'>I secrete a trickle of green liquid from my tail, refilling [target]'s nutrient tray.</span>")
 
 /mob/living/carbon/monkey/diona/verb/eat_weeds()
 
@@ -78,7 +78,7 @@
 
 	src.reagents.add_reagent(NUTRIMENT, target.weedlevel)
 	target.weedlevel = 0
-	src.visible_message("<span class='warning'>[src] begins rooting through [target], ripping out weeds and eating them noisily.</span>","<span class='warning'>You begin rooting through [target], ripping out weeds and eating them noisily.</span>")
+	src.visible_message("<span class='warning'>[src] begins rooting through [target], ripping out weeds and eating them noisily.</span>","<span class='warning'>I begin rooting through [target], ripping out weeds and eating them noisily.</span>")
 
 /mob/living/carbon/monkey/diona/verb/evolve()
 
@@ -88,22 +88,22 @@
 	set desc = "Grow to a more complex form."
 
 	if(!is_alien_whitelisted(src, "Diona") && config.usealienwhitelist)
-		to_chat(src, alert("You are currently not whitelisted to play an adult Diona."))
+		to_chat(src, alert("I am currently not whitelisted to play an adult Diona."))
 		return 0
 
 	if(stat == DEAD)
-		to_chat(src, "You cannot evolve if you are dead!")
+		to_chat(src, "I cannot evolve if you are dead!")
 		return
 
 	if(donors.len < 5)
-		to_chat(src, "You are not yet ready for your growth...")
+		to_chat(src, "I am not yet ready for my growth...")
 		return
 
 	if(nutrition < 400)
-		to_chat(src, "You have not yet consumed enough to grow...")
+		to_chat(src, "I have not yet consumed enough to grow...")
 		return
 
-	src.visible_message("<span class='warning'>[src] begins to shift and quiver, and erupts in a shower of shed bark and twigs!</span>","<span class='warning'>You begin to shift and quiver, then erupt in a shower of shed bark and twigs, attaining your adult form!</span>")
+	src.visible_message("<span class='warning'>[src] begins to shift and quiver, and erupts in a shower of shed bark and twigs!</span>","<span class='warning'>I begin to shift and quiver, then erupt in a shower of shed bark and twigs, attaining my adult form!</span>")
 
 	var/mob/living/carbon/human/adult = new(get_turf(src.loc))
 	adult.set_species("Diona")
@@ -160,7 +160,7 @@
 		to_chat(src, "<span class='warning'>That donor offers you nothing new.</span>")
 		return
 
-	src.visible_message("<span class='warning'>[src] flicks out a feeler and neatly steals a sample of [M]'s blood.</span>","<span class='warning'>You flick out a feeler and neatly steal a sample of [M]'s blood.</span>")
+	src.visible_message("<span class='warning'>[src] flicks out a feeler and neatly steals a sample of [M]'s blood.</span>","<span class='warning'>I flick out a feeler and neatly steal a sample of [M]'s blood.</span>")
 	donors += M.real_name
 	spawn(25)
 		update_progression()
@@ -173,18 +173,18 @@
 
 	if(donors.len == 5)
 		ready_evolve = 1
-		to_chat(src, "<span class='good'>You feel ready to move on to your next stage of growth.</span>")
+		to_chat(src, "<span class='good'>I feel ready to move on to my next stage of growth.</span>")
 	else if(donors.len == 4)
-		to_chat(src, "<span class='good'>You feel your vocal range expand, and realize you know how to speak with the creatures around you.</span>")
+		to_chat(src, "<span class='good'>I feel my vocal range expand, and realize you know how to speak with the creatures around you.</span>")
 		add_language(LANGUAGE_GALACTIC_COMMON)
 		default_language = all_languages[LANGUAGE_GALACTIC_COMMON]
 	else if(donors.len == 3)
-		to_chat(src, "<span class='good'>More blood seeps into you, continuing to expand your growing collection of memories.</span>")
+		to_chat(src, "<span class='good'>More blood seeps into you, continuing to expand my growing collection of memories.</span>")
 	else if(donors.len == 2)
-		to_chat(src, "<span class='good'>You feel your awareness expand, and realize you know how to understand the creatures around you.</span>")
+		to_chat(src, "<span class='good'>I feel my awareness expand, and realize you know how to understand the creatures around you.</span>")
 		//say_understands() effectively lets us understand common language at this point
 	else
-		to_chat(src, "<span class='good'>The blood seeps into your small form, and you draw out the echoes of memories and personality from it, working them into your budding mind.</span>")
+		to_chat(src, "<span class='good'>The blood seeps into my small form, and you draw out the echoes of memories and personality from it, working them into my budding mind.</span>")
 
 /mob/living/carbon/monkey/diona/dexterity_check()
 	return 0

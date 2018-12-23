@@ -16,7 +16,7 @@
 	else
 		fuse_lit = 0
 		update_icon()
-		to_chat(user, "<span class='warning'>You extinguish the fuse with [seconds_left] seconds left!</span>")
+		to_chat(user, "<span class='warning'>I extinguish the fuse with [seconds_left] seconds left!</span>")
 	return
 
 /obj/item/device/fuse_bomb/attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -42,12 +42,12 @@
 		if(iswirecutter(W))
 			fuse_lit = 0
 			update_icon()
-			to_chat(user, "<span class='warning'>You extinguish the fuse with [seconds_left] seconds left!</span>")
+			to_chat(user, "<span class='warning'>I extinguish the fuse with [seconds_left] seconds left!</span>")
 
 
 /obj/item/device/fuse_bomb/proc/lit(mob/user as mob, var/obj/O=null)
 	fuse_lit = 1
-	to_chat(user, "<span class='warning'>You lit the fuse[O ? " with [O]":""]! [seconds_left] seconds till detonation!</span>")
+	to_chat(user, "<span class='warning'>I lit the fuse[O ? " with [O]":""]! [seconds_left] seconds till detonation!</span>")
 	admin_warn(user)
 	add_fingerprint(user)
 	if(iscarbon(user))

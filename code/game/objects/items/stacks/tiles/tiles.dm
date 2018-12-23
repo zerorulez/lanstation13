@@ -76,7 +76,7 @@
 	if(iswelder(W))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(amount < 4)
-			to_chat(user, "<span class='warning'>You need at least four tiles to do this.</span>")
+			to_chat(user, "<span class='warning'>I need at least four tiles to do this.</span>")
 			return
 
 		if(WT.remove_fuel(0,user))
@@ -84,8 +84,8 @@
 			M.amount = 1
 			M.forceMove(get_turf(usr)) //This is because new() doesn't call forceMove, so we're forcemoving the new sheet to make it stack with other sheets on the ground.
 			user.visible_message("<span class='warning'>[src] is shaped into metal by [user.name] with the welding tool.</span>", \
-			"<span class='warning'>You shape the [src] into metal with the welding tool.</span>", \
-			"<span class='warning'>You hear welding.</span>")
+			"<span class='warning'>I shape the [src] into metal with the welding tool.</span>", \
+			"<span class='warning'>I hear welding.</span>")
 			var/obj/item/stack/tile/plasteel/R = src
 			src = null
 			var/replace = (user.get_inactive_hand()==R)

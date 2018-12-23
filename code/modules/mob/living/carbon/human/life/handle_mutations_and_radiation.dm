@@ -19,7 +19,7 @@
 		if(radiation > 100)
 			radiation = 100
 			Knockdown(10)
-			to_chat(src, "<span class='warning'>You feel weak.</span>")
+			to_chat(src, "<span class='warning'>I feel weak.</span>")
 			emote("collapse")
 
 		if(radiation < 0)
@@ -52,7 +52,7 @@
 					if(prob(5))
 						radiation -= 5
 						Knockdown(3)
-						to_chat(src, "<span class='warning'>You feel weak.</span>")
+						to_chat(src, "<span class='warning'>I feel weak.</span>")
 						emote("collapse")
 					updatehealth()
 
@@ -62,7 +62,7 @@
 					damage = 1
 					/*
 					if(prob(1))
-						to_chat(src, "<span class='warning'>You mutate!</span>")
+						to_chat(src, "<span class='warning'>I mutate!</span>")
 						randmutb(src)
 						domutcheck(src,null)
 						emote("gasp")

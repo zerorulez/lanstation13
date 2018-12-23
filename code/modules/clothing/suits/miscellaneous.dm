@@ -196,13 +196,13 @@
 	if(src.icon_state == "suitjacket_blue_open")
 		src.icon_state = "suitjacket_blue"
 		src.item_state = "suitjacket_blue"
-		to_chat(usr, "You button up the suit jacket.")
+		to_chat(usr, "I button up the suit jacket.")
 	else if(src.icon_state == "suitjacket_blue")
 		src.icon_state = "suitjacket_blue_open"
 		src.item_state = "suitjacket_blue_open"
-		to_chat(usr, "You unbutton the suit jacket.")
+		to_chat(usr, "I unbutton the suit jacket.")
 	else
-		to_chat(usr, "You button-up some imaginary buttons on your [src].")
+		to_chat(usr, "I button-up some imaginary buttons on my [src].")
 		return
 	usr.update_inv_wear_suit()
 
@@ -360,7 +360,7 @@
 
 /obj/item/clothing/suit/lordadmiral
 	name = "Lord Admiral's Coat"
-	desc = "You'll be the Ruler of the King's Navy in no time."
+	desc = "I'll be the Ruler of the King's Navy in no time."
 	icon_state = "lordadmiral"
 	allowed = list (/obj/item/weapon/gun)
 
@@ -480,7 +480,7 @@
 /obj/item/clothing/suit/spaceblanket/attackby(obj/item/W,mob/user)
 	..()
 	if(istype(W,/obj/item/clothing/head/bearpelt) && !bearpelt)
-		to_chat(user,"<span class='notice'>You add \the [W] to \the [src].</span>")
+		to_chat(user,"<span class='notice'>I add \the [W] to \the [src].</span>")
 		qdel(W)
 		qdel(src)
 		var/obj/advanced = new /obj/item/clothing/suit/spaceblanket/advanced (src.loc)

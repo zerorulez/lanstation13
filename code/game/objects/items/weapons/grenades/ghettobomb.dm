@@ -8,7 +8,7 @@
         user.before_take_item(G)
         user.before_take_item(src)
         user.put_in_hands(W)
-        to_chat(user, "<span  class='notice'>You stuff the [I] into the [src], emptying the contents beforehand.</span>")
+        to_chat(user, "<span  class='notice'>I stuff the [I] into the [src], emptying the contents beforehand.</span>")
         W.underlays += image(src.icon, icon_state = src.icon_state)
         qdel(I)
         I = null
@@ -44,7 +44,7 @@
 			var/obj/structure/reagent_dispensers/fueltank/F = target
 			F.reagents.remove_reagent(FUEL, 50, 1)//Deleting 50 fuel from the welding fuel tank,
 			assembled = 1
-			to_chat(user, "<span  class='notice'>You've filled the makeshift explosive with welding fuel.</span>")
+			to_chat(user, "<span  class='notice'>I've filled the makeshift explosive with welding fuel.</span>")
 			playsound(get_turf(src), 'sound/effects/refill.ogg', 50, 1, -6)
 			desc = "An improvised explosive assembly. Filled to the brim with 'Explosive flavor'"
 			overlays += image('icons/obj/grenade.dmi', icon_state = "improvised_grenade_filled")
@@ -57,7 +57,7 @@
 			var/obj/item/stack/cable_coil/C = I
 			C.use(1)
 			assembled = 2
-			to_chat(user, "<span  class='notice'>You wire the igniter to detonate the fuel.</span>")
+			to_chat(user, "<span  class='notice'>I wire the igniter to detonate the fuel.</span>")
 			desc = "A weak, improvised explosive."
 			overlays += image('icons/obj/grenade.dmi', icon_state = "improvised_grenade_wired")
 			name = "improvised explosive"
@@ -77,7 +77,7 @@
 	if(assembled == 2 && shrapnel_list.len > 0)
 
 
-		to_chat(usr, "<span  class='notice'>You remove all the shrapnel from the improvised explosive.</span>")
+		to_chat(usr, "<span  class='notice'>I remove all the shrapnel from the improvised explosive.</span>")
 		for(var/obj/item/shrapnel in shrapnel_list)
 
 			shrapnel.forceMove(get_turf(src))
@@ -87,7 +87,7 @@
 /obj/item/weapon/grenade/iedcasing/attack_self(mob/user as mob) //Activating the IED
 	if(!active)
 		if(clown_check(user))
-			to_chat(user, "<span class='warning'>You light the [name]!</span>")
+			to_chat(user, "<span class='warning'>I light the [name]!</span>")
 			active = 1
 			overlays -= image('icons/obj/grenade.dmi', icon_state = "improvised_grenade_filled")
 			icon_state = initial(icon_state) + "_active"
@@ -113,7 +113,7 @@
 				shrapnel_list.Add(I)
 				current_shrapnel += I.shrapnel_size
 				if(user && user.drop_item(I, src))
-					to_chat(user, "<span  class='notice'>You add \the [I] to the improvised explosive.</span>")
+					to_chat(user, "<span  class='notice'>I add \the [I] to the improvised explosive.</span>")
 					playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 25, 1)
 				else
 					I.forceMove(src)
@@ -166,7 +166,7 @@
 /obj/item/weapon/grenade/iedcasing/examine(mob/user)
 	..()
 	if(assembled == 3)
-		to_chat(user, "<span class='info'>You can't tell when it will explode!</span>")//Stops you from checking the time to detonation unlike regular grenades
+		to_chat(user, "<span class='info'>I can't tell when it will explode!</span>")//Stops you from checking the time to detonation unlike regular grenades
 	if(current_shrapnel && get_dist(get_turf(user),get_turf(src)) <=1)
 		to_chat(user, "<span class='info'>Someone stuck shrapnel onto the improvised explosive.</span>")
 

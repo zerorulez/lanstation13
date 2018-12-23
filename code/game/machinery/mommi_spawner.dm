@@ -50,7 +50,7 @@
 	if(user.client.time_died_as_mouse && timedifference <= mouse_respawn_time * 600)
 		var/timedifference_text
 		timedifference_text = time2text(mouse_respawn_time * 600 - timedifference,"mm:ss")
-		to_chat(user, "<span class='warning'>You may only spawn again as a mouse or MoMMI more than [mouse_respawn_time] minutes after your death. You have [timedifference_text] left.</span>")
+		to_chat(user, "<span class='warning'>I may only spawn again as a mouse or MoMMI more than [mouse_respawn_time] minutes after my death. You have [timedifference_text] left.</span>")
 		return
 	/*
 	if(!mmi.brainmob)
@@ -68,7 +68,7 @@
 			return TRUE
 
 	if(mmi.brainmob.stat == DEAD)
-		to_chat(user, "<span class='warning'>Yeah, good idea. Give something deader than the pizza in your fridge legs.  Mom would be so proud.</span>")
+		to_chat(user, "<span class='warning'>Yeah, good idea. Give something deader than the pizza in my fridge legs.  Mom would be so proud.</span>")
 		return TRUE
 
 	if(mmi.brainmob.mind in ticker.mode.head_revolutionaries)
@@ -106,7 +106,7 @@
 					return TRUE
 
 			if(mmi.brainmob.stat == DEAD)
-				to_chat(user, "<span class='warning'>Yeah, good idea. Give something deader than the pizza in your fridge legs.  Mom would be so proud.</span>")
+				to_chat(user, "<span class='warning'>Yeah, good idea. Give something deader than the pizza in my fridge legs.  Mom would be so proud.</span>")
 				return TRUE
 
 			if(mmi.brainmob.mind in ticker.mode.head_revolutionaries)
@@ -149,7 +149,7 @@
 
 		M.invisibility = 0
 		if (locked_to_zlevel)
-			M.add_ion_law("You belong to the station where you were created; do not leave it.")
+			M.add_ion_law("I belong to the station where you were created; do not leave it.")
 			M.locked_to_z = T.z
 
 		if(user.mind)

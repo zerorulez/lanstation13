@@ -250,7 +250,7 @@
 
 /mob/living/simple_animal/cockroach/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weapon/newspaper))
-		user.visible_message("<span class='danger'>[user] swats \the [src] with \the [W]!</span>", "<span class='danger'>You swat \the [src] with \the [W].</span>")
+		user.visible_message("<span class='danger'>[user] swats \the [src] with \the [W]!</span>", "<span class='danger'>I swat \the [src] with \the [W].</span>")
 		W.desc = "[initial(W.desc)] <span class='notice'>There is a splattered [src] on the back.</span>"
 
 		adjustBruteLoss(5)
@@ -281,7 +281,7 @@
 		return
 
 	playsound(get_turf(H),'sound/items/eatfood.ogg', rand(10,50), 1)
-	H.visible_message("<span class='notice'>[H] eats \the [src]!</span>", "<span class='notice'>You eat \the [src]!</span>")
+	H.visible_message("<span class='notice'>[H] eats \the [src]!</span>", "<span class='notice'>I eat \the [src]!</span>")
 
 	Die(gore = 1)
 	qdel(src)

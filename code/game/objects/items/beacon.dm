@@ -42,7 +42,7 @@ var/global/list/obj/item/beacon/beacons = list()
 
 /obj/item/beacon/syndicate
 	name = "suspicious beacon"
-	desc = "A label on it reads: <i>Activate to have a singularity beacon teleported to your location</i>."
+	desc = "A label on it reads: <i>Activate to have a singularity beacon teleported to my location</i>."
 	origin_tech = Tc_BLUESPACE + "=1;" + Tc_SYNDICATE + "=7"
 
 /obj/item/beacon/syndicate/attack_self(mob/user as mob)

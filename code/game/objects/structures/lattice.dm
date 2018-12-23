@@ -55,7 +55,7 @@
 /obj/structure/lattice/wood/attackby(obj/item/C as obj, mob/user as mob)
 	if(C.sharpness_flags & (CHOPWOOD|SERRATED_BLADE)) // If C is able to cut down a tree
 		new/obj/item/stack/sheet/wood(loc)
-		to_chat(user, "<span class='notice'>You chop the [src] apart!</span>")
+		to_chat(user, "<span class='notice'>I chop the [src] apart!</span>")
 		qdel(src)
 	else
 		var/turf/T = get_turf(src)

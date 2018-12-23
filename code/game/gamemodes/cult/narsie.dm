@@ -3,7 +3,7 @@ var/global/narsie_cometh = 0
 var/global/list/narsie_list = list()
 /obj/machinery/singularity/narsie //Moving narsie to its own file for the sake of being clearer
 	name = "Nar-Sie"
-	desc = "Your mind begins to bubble and ooze as it tries to comprehend what it sees."
+	desc = "My mind begins to bubble and ooze as it tries to comprehend what it sees."
 	icon = 'icons/obj/narsie.dmi'
 	icon_state = "narsie-small"
 	pixel_x = -236 * PIXEL_MULTIPLIER
@@ -98,7 +98,7 @@ var/global/list/narsie_list = list()
 			if(M.flags & INVULNERABLE)
 				continue
 			if(!iscultist(M))
-				to_chat(M, "<span class='danger'>You feel your sanity crumble away in an instant as you gaze upon [src.name]...</span>")
+				to_chat(M, "<span class='danger'>I feel my sanity crumble away in an instant as you gaze upon [src.name]...</span>")
 				M.apply_effect(3, STUN)
 
 
@@ -168,7 +168,7 @@ var/global/list/narsie_list = list()
 /obj/machinery/singularity/narsie/proc/narsiefloor(var/turf/T)//leaving "footprints"
 	if(!(istype(T, /turf/simulated/wall/cult)||istype(T, /turf/space)))
 		if(T.icon_state != "cult-narsie")
-			T.desc = "something that goes beyond your understanding went this way"
+			T.desc = "something that goes beyond my understanding went this way"
 			T.icon_state = "cult-narsie"
 			T.luminosity = 1
 
@@ -439,7 +439,7 @@ var/global/mr_clean_targets = list(
 		if(M.stat == CONSCIOUS)
 			if(M.flags & INVULNERABLE)
 				continue
-			to_chat(M, "<span class='warning'>You take a moment to admire [src.name] hard at work...</span>")
+			to_chat(M, "<span class='warning'>I take a moment to admire [src.name] hard at work...</span>")
 			M.apply_effect(3, STUN)
 
 /obj/machinery/singularity/narsie/large/clean/update_icon()

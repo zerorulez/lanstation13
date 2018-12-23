@@ -52,7 +52,7 @@
 
 /obj/item/device/assembly/mousetrap/attack_self(mob/living/user as mob)
 	if(!armed)
-		to_chat(user, "<span class='notice'>You arm [src].</span>")
+		to_chat(user, "<span class='notice'>I arm [src].</span>")
 	else
 		if(((user.getBrainLoss() >= 60 || clumsy_check(user)) && prob(50)))
 
@@ -60,9 +60,9 @@
 
 			triggered(user, OE.name)
 			user.visible_message("<span class='warning'>[user] accidentally sets off [src], breaking their fingers.</span>", \
-								 "<span class='warning'>You accidentally trigger [src]!</span>")
+								 "<span class='warning'>I accidentally trigger [src]!</span>")
 			return
-		to_chat(user, "<span class='notice'>You disarm [src].</span>")
+		to_chat(user, "<span class='notice'>I disarm [src].</span>")
 	armed = !armed
 	update_icon()
 	playsound(user.loc, 'sound/weapons/handcuffs.ogg', 30, 1, -3)
@@ -74,7 +74,7 @@
 			var/datum/organ/external/OE = user.get_active_hand_organ()
 			triggered(user, OE.name)
 			user.visible_message("<span class='warning'>[user] accidentally sets off [src], breaking their fingers.</span>", \
-								 "<span class='warning'>You accidentally trigger [src]!</span>")
+								 "<span class='warning'>I accidentally trigger [src]!</span>")
 			return
 	..()
 
@@ -86,7 +86,7 @@
 			if(H.m_intent == "run")
 				triggered(H)
 				H.visible_message("<span class='warning'>[H] accidentally steps on [src].</span>", \
-								  "<span class='warning'>You accidentally step on [src]</span>")
+								  "<span class='warning'>I accidentally step on [src]</span>")
 		if(ismouse(AM))
 			triggered(AM)
 	..()
@@ -95,7 +95,7 @@
 /obj/item/device/assembly/mousetrap/on_found(mob/finder as mob)
 	if(armed)
 		finder.visible_message("<span class='warning'>[finder] accidentally sets off [src], breaking their fingers.</span>", \
-							   "<span class='warning'>You accidentally trigger [src]!</span>")
+							   "<span class='warning'>I accidentally trigger [src]!</span>")
 
 		var/datum/organ/external/OE = finder.get_active_hand_organ()
 		triggered(finder, OE.name)
@@ -125,4 +125,4 @@
 
 	plane = ABOVE_TURF_PLANE
 	layer = MOUSETRAP_LAYER
-	to_chat(usr, "<span class='notice'>You hide [src].</span>")
+	to_chat(usr, "<span class='notice'>I hide [src].</span>")

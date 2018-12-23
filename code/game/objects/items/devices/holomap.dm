@@ -33,7 +33,7 @@
 	if (viewing)
 		viewing.images -= showing
 		showing.Cut()
-		to_chat(user, "You turn off \the [src].")
+		to_chat(user, "I turn off \the [src].")
 		viewing.mob.on_logout.Remove("\ref[src]:mob_logout")
 		viewing = null
 		return
@@ -77,18 +77,18 @@
 		if (O.holomap)
 			target.add_holomap(O)
 
-	to_chat(user, "You reset the holomap data.")
+	to_chat(user, "I reset the holomap data.")
 
 /obj/item/device/holomap/attackby(obj/item/W, mob/user)
 	if (isscrewdriver(W))
 		panel = !panel
-		to_chat(user, "<span class='notify'>You [panel ? "open" : "close"] the panel on \the [src].</span>")
+		to_chat(user, "<span class='notify'>I [panel ? "open" : "close"] the panel on \the [src].</span>")
 		playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 		return 1
 
 	if (ismultitool(W) && panel)
 		hacked = !hacked
-		to_chat(user, "<span class='notify'>You [hacked ? "disable" : "enable"] the lock on \the [src].</span>")
+		to_chat(user, "<span class='notify'>I [hacked ? "disable" : "enable"] the lock on \the [src].</span>")
 		return 1
 
 	. = ..()

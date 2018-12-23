@@ -37,19 +37,19 @@
 
 	begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		user.visible_message("[user] starts to separate [target]'s appendix from the abdominal wall with \the [tool].", \
-		"You start to separate [target]'s appendix from the abdominal wall with \the [tool]." )
-		target.custom_pain("The pain in your abdomen is living hell!",1)
+		"I start to separate [target]'s appendix from the abdominal wall with \the [tool]." )
+		target.custom_pain("The pain in my abdomen is living hell!",1)
 		..()
 
 	end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		user.visible_message("<span class='notice'>[user] has separated [target]'s appendix with \the [tool].</span>" , \
-		"<span class='notice'>You have separated [target]'s appendix with \the [tool].</span>")
+		"<span class='notice'>I have separated [target]'s appendix with \the [tool].</span>")
 		target.op_stage.appendix = 1
 
 	fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/datum/organ/external/groin = target.get_organ("groin")
 		user.visible_message("<span class='warning'>[user]'s hand slips, slicing an artery inside [target]'s abdomen with \the [tool]!</span>", \
-		"<span class='warning'>Your hand slips, slicing an artery inside [target]'s abdomen with \the [tool]!</span>")
+		"<span class='warning'>My hand slips, slicing an artery inside [target]'s abdomen with \the [tool]!</span>")
 		groin.createwound(CUT, 50, 1)
 
 /datum/surgery_step/appendectomy/remove_appendix
@@ -67,13 +67,13 @@
 
 	begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		user.visible_message("[user] starts removing [target]'s appendix with \the [tool].", \
-		"You start removing [target]'s appendix with \the [tool].")
-		target.custom_pain("Someone's ripping out your bowels!",1)
+		"I start removing [target]'s appendix with \the [tool].")
+		target.custom_pain("Someone's ripping out my bowels!",1)
 		..()
 
 	end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		user.visible_message("<span class='notice'>[user] has removed [target]'s appendix with \the [tool].</span>", \
-		"<span class='notice'>You have removed [target]'s appendix with \the [tool].</span>")
+		"<span class='notice'>I have removed [target]'s appendix with \the [tool].</span>")
 		var/app = 0
 		for(var/datum/disease/appendicitis/appendicitis in target.viruses)
 			app = 1
@@ -88,5 +88,5 @@
 	fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/datum/organ/external/affected = target.get_organ(target_zone)
 		user.visible_message("<span class='warning'>[user]'s hand slips, nicking internal organs in [target]'s abdomen with \the [tool]!</span>", \
-		"<span class='warning'>Your hand slips, nicking internal organs in [target]'s abdomen with \the [tool]!</span>")
+		"<span class='warning'>My hand slips, nicking internal organs in [target]'s abdomen with \the [tool]!</span>")
 		affected.createwound(BRUISE, 20)

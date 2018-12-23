@@ -55,7 +55,7 @@
 
 	for(var/mob/living/carbon/human/CP in world)
 		if(CP.real_name=="Cuban Pete" && CP.key!="Rosham")
-			to_chat(CP, "Your body can't contain the rhumba beat")
+			to_chat(CP, "My body can't contain the rhumba beat")
 			CP.gib()
 
 

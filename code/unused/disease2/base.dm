@@ -260,7 +260,7 @@
 	name = "Flemmingtons"
 	stage = 1
 	activate(var/mob/living/carbon/mob,var/multiplier)
-		to_chat(mob, "<span class='warning'>Mucous runs down the back of your throat.</span>")
+		to_chat(mob, "<span class='warning'>Mucous runs down the back of my throat.</span>")
 
 /datum/disease2/effect/killertoxins
 	name = "Toxification syndrome"

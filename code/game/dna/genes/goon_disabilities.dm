@@ -10,8 +10,8 @@
 /datum/dna/gene/disability/mute
 	name = "Mute"
 	desc = "Completely shuts down the speech center of the subject's brain."
-	activation_message   = "You feel unable to express yourself at all."
-	deactivation_message = "You feel able to speak freely again."
+	activation_message   = "I feel unable to express yourself at all."
+	deactivation_message = "I feel able to speak freely again."
 
 	New()
 		..()
@@ -34,8 +34,8 @@
 /datum/dna/gene/disability/radioactive
 	name = "Radioactive"
 	desc = "The subject suffers from constant radiation sickness and causes the same on nearby organics."
-	activation_message = "You feel a strange sickness permeate your whole body."
-	deactivation_message = "You no longer feel awful and sick all over."
+	activation_message = "I feel a strange sickness permeate my whole body."
+	deactivation_message = "I no longer feel awful and sick all over."
 	flags = GENE_UNNATURAL
 
 	New()
@@ -47,7 +47,7 @@
 		for(var/mob/living/L in range(1, owner))
 			if(L == owner)
 				continue
-			to_chat(L, "<span class='warning'>You are enveloped by a soft green glow emanating from [owner].</span>")
+			to_chat(L, "<span class='warning'>I am enveloped by a soft green glow emanating from [owner].</span>")
 			L.radiation += 5
 		return
 
@@ -62,8 +62,8 @@
 /datum/dna/gene/disability/fat
 	name = "Obesity"
 	desc = "Greatly slows the subject's metabolism, enabling greater buildup of lipid tissue."
-	activation_message = "You feel blubbery and lethargic!"
-	deactivation_message = "You feel fit!"
+	activation_message = "I feel blubbery and lethargic!"
+	deactivation_message = "I feel fit!"
 
 	mutation = M_OBESITY
 
@@ -89,7 +89,7 @@
 /datum/dna/gene/disability/speech/smile
 	name = "Smile"
 	desc = "Causes the speech center of the subject's brain to produce large amounts of seratonin and a chemical resembling ecstacy when engaged."
-	activation_message = "You feel so happy. Nothing can be wrong with anything :)"
+	activation_message = "I feel so happy. Nothing can be wrong with anything :)"
 	deactivation_message = "Everything is terrible again. :("
 
 	New()
@@ -143,15 +143,15 @@
 		speech.message = replacetext(speech.message,"vagina","privates")
 //		speech.message += "[pick(":)",":^)",":*)")]"             : ^ (
 		if(prob(30))
-			speech.message += " check your privilege."
+			speech.message += " check my privilege."
 
 
 // WAS: /datum/bioEffect/elvis
 /datum/dna/gene/disability/speech/elvis
 	name = "Elvis"
 	desc = "Forces the language center and primary motor cortex of the subject's brain to talk and act like the King of Rock and Roll."
-	activation_message = "You feel pretty good, honeydoll."
-	deactivation_message = "You feel a little less conversation would be great."
+	activation_message = "I feel pretty good, honeydoll."
+	deactivation_message = "I feel a little less conversation would be great."
 
 	New()
 		..()
@@ -190,7 +190,7 @@
 	name = "Chav"
 	desc = "Forces the language center of the subject's brain to construct sentences in a more rudimentary manner."
 	activation_message = "Ye feel like a reet prat like, innit?"
-	deactivation_message = "You no longer feel like being rude and sassy."
+	deactivation_message = "I no longer feel like being rude and sassy."
 
 	New()
 		..()
@@ -226,7 +226,7 @@
 /datum/dna/gene/disability/speech/swedish
 	name = "Swedish"
 	desc = "Forces the language center of the subject's brain to construct sentences in a vaguely norse manner."
-	activation_message = "You feel Swedish, however that works."
+	activation_message = "I feel Swedish, however that works."
 	deactivation_message = "The feeling of Swedishness passes."
 
 	New()
@@ -243,8 +243,8 @@
 /datum/dna/gene/disability/unintelligable
 	name = "Unintelligable"
 	desc = "Heavily corrupts the part of the brain responsible for forming spoken sentences."
-	activation_message = "You can't seem to form any coherent thoughts!"
-	deactivation_message = "Your mind feels more clear."
+	activation_message = "I can't seem to form any coherent thoughts!"
+	deactivation_message = "My mind feels more clear."
 
 	New()
 		..()
@@ -277,8 +277,8 @@
 /datum/dna/gene/disability/toxic_farts
 	name = "Toxic Farts"
 	desc = "Causes the subject's digestion to create a significant amount of noxious gas."
-	activation_message = "Your stomach grumbles unpleasantly."
-	deactivation_message = "Your stomach stops acting up. Phew!"
+	activation_message = "My stomach grumbles unpleasantly."
+	deactivation_message = "My stomach stops acting up. Phew!"
 	flags = GENE_UNNATURAL
 
 	mutation = M_TOXIC_FARTS
@@ -296,8 +296,8 @@
 /datum/dna/gene/disability/horns
 	name = "Horns"
 	desc = "Enables the growth of a compacted keratin formation on the subject's head."
-	activation_message = "A pair of horns erupt from your head."
-	deactivation_message = "Your horns crumble away into nothing."
+	activation_message = "A pair of horns erupt from my head."
+	deactivation_message = "My horns crumble away into nothing."
 	flags = GENE_UNNATURAL
 
 	New()
@@ -314,8 +314,8 @@
 	id = "stinky"
 	effectType = effectTypeDisability
 	isBad = 1
-	msgGain = "You feel sweaty."
-	msgLose = "You feel much more hygenic."
+	msgGain = "I feel sweaty."
+	msgLose = "I feel much more hygenic."
 	var/personalized_stink = "Wow, it stinks in here!"
 
 	New()
@@ -342,8 +342,8 @@
 	name = "Incendiary Mitochondria"
 	desc = "The subject becomes able to convert excess cellular energy into thermal energy."
 	flags = GENE_UNNATURAL
-	activation_messages = list("You suddenly feel rather hot.")
-	deactivation_messages = list("You no longer feel uncomfortably hot.")
+	activation_messages = list("I suddenly feel rather hot.")
+	deactivation_messages = list("I no longer feel uncomfortably hot.")
 
 	spelltype = /spell/targeted/immolate
 
@@ -385,8 +385,8 @@
 	name = "Self Biomass Manipulation"
 	desc = "The subject becomes able to transform the matter of their cells into a liquid state."
 	flags = GENE_UNNATURAL
-	activation_messages = list("You feel strange and jiggly.")
-	deactivation_messages = list("You feel more solid.")
+	activation_messages = list("I feel strange and jiggly.")
+	deactivation_messages = list("I feel more solid.")
 
 	spelltype = /spell/targeted/melt
 
@@ -415,7 +415,7 @@
 		if (istype(M,/mob/living/carbon/human/))
 			var/mob/living/carbon/human/H = M
 			if(isskellington(H))
-				to_chat(H, "<span class='warning'>You have no flesh left to melt!</span>")
+				to_chat(H, "<span class='warning'>I have no flesh left to melt!</span>")
 				return 0
 			if(isvox(H))
 				H.set_species("Skeletal Vox")

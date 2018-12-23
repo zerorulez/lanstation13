@@ -21,7 +21,7 @@ Another feature of this new system is that our lists are indexed. This means we 
 So we only regenerate icons when we need them to be updated! This is the main saving for this system.
 In practice this means that:
 	everytime you fall over, we just switch between precompiled lists. Which is fast and cheap.
-	Everytime you do something minor like take a pen out of your pocket, we only update the in-hand overlay
+	Everytime you do something minor like take a pen out of my pocket, we only update the in-hand overlay
 	etc...
 There are several things that need to be remembered:
 >	Whenever we do something that should cause an overlay to update (which doesn't use standard procs
@@ -46,11 +46,11 @@ There are several things that need to be remembered:
 	update_clothing was, so you won't cause undefined proc runtimes with usr.update_inv_wear_id() if the usr is a
 	slime etc. Instead, it'll just return without doing any work. So no harm in calling it for slimes and such.
 >	There are also these special cases:
-		update_mutations()	//handles updating your appearance for certain mutations.  e.g TK head-glows
-		update_mutantrace()	//handles updating your appearance after setting the mutantrace var
+		update_mutations()	//handles updating my appearance for certain mutations.  e.g TK head-glows
+		update_mutantrace()	//handles updating my appearance after setting the mutantrace var
 		QueueUpdateDamageIcon()	//handles damage overlays for brute/burn damage //(will rename this when I geta round to it)
-		update_body()	//Handles updating your mob's icon to reflect their gender/race/complexion etc
-		update_hair()	//Handles updating your hair overlay (used to be update_face, but mouth and
+		update_body()	//Handles updating my mob's icon to reflect their gender/race/complexion etc
+		update_hair()	//Handles updating my hair overlay (used to be update_face, but mouth and
 																			...eyes were merged into update_body)
 		update_targeted() // Updates the target overlay when someone points a gun at you
 >	All of these procs update our overlays_lying and overlays_standing, and then call update_icons() by default.
@@ -547,7 +547,7 @@ var/global/list/damage_icon_parts = list()
 			if(w_uniform.clothing_flags&ONESIZEFITSALL)
 				standing.icon	= 'icons/mob/uniform_fat.dmi'
 			else
-				to_chat(src, "<span class='warning'>You burst out of \the [w_uniform]!</span>")
+				to_chat(src, "<span class='warning'>I burst out of \the [w_uniform]!</span>")
 				drop_from_inventory(w_uniform)
 				return
 		else
@@ -920,7 +920,7 @@ var/global/list/damage_icon_parts = list()
 			if(wear_suit.clothing_flags&ONESIZEFITSALL)
 				standing.icon	= 'icons/mob/suit_fat.dmi'
 			else
-				to_chat(src, "<span class='warning'>You burst out of \the [wear_suit]!</span>")
+				to_chat(src, "<span class='warning'>I burst out of \the [wear_suit]!</span>")
 				drop_from_inventory(wear_suit)
 
 		if( istype(wear_suit, /obj/item/clothing/suit/straight_jacket) )

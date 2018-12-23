@@ -53,13 +53,13 @@
 /obj/item/weapon/reagent_containers/chempack/proc/can_use_verbs(mob/user)
 	var/mob/living/carbon/human/M = user
 	if (M.stat == DEAD)
-		to_chat(user, "You can't do that while you're dead!")
+		to_chat(user, "I can't do that while you're dead!")
 		return 0
 	else if (M.stat == UNCONSCIOUS)
-		to_chat(user, "You must be conscious to do this!")
+		to_chat(user, "I must be conscious to do this!")
 		return 0
 	else if (M.handcuffed)
-		to_chat(user, "You can't reach the controls while you're restrained!")
+		to_chat(user, "I can't reach the controls while you're restrained!")
 		return 0
 	else
 		return 1
@@ -146,7 +146,7 @@
 		return
 
 	src.reagents.clear_reagents()
-	to_chat(usr, "<span class='notice'>You flush the contents of \the [src].</span>")
+	to_chat(usr, "<span class='notice'>I flush the contents of \the [src].</span>")
 	src.update_icon()
 
 obj/item/weapon/reagent_containers/chempack/verb/set_fill()
@@ -168,14 +168,14 @@ obj/item/weapon/reagent_containers/chempack/verb/set_fill()
 	if (istype(A, /obj/structure/reagent_dispensers) && adjacency_flag)
 		var/tx_amount = transfer_sub(A, src, fill_amount, user)
 		if (tx_amount > 0)
-			to_chat(user, "<span class='notice'>You fill \the [src][src.is_full() ? " to the brim" : ""] with [tx_amount] units of the contents of \the [A].</span>")
+			to_chat(user, "<span class='notice'>I fill \the [src][src.is_full() ? " to the brim" : ""] with [tx_amount] units of the contents of \the [A].</span>")
 			return
 
 /obj/item/weapon/reagent_containers/chempack/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weapon/reagent_containers/glass))
 		if(src.safety && auxiliary)
 			if(stage)
-				to_chat(user, "<span class='warning'>You need to secure the maintenance panel before you can insert a beaker!</span>")
+				to_chat(user, "<span class='warning'>I need to secure the maintenance panel before you can insert a beaker!</span>")
 				return
 			if(user.type == /mob/living/silicon/robot) //Can't have silicons putting their beakers inside this.
 				return
@@ -188,7 +188,7 @@ obj/item/weapon/reagent_containers/chempack/verb/set_fill()
 			else
 				if(user.drop_item(W, src))
 					src.beaker = W
-					to_chat(user, "You add the beaker to \the [src]'s auxiliary chamber!")
+					to_chat(user, "I add the beaker to \the [src]'s auxiliary chamber!")
 					if(user.wear_mask && istype(user.wear_mask, /obj/item/clothing/mask/chemmask))
 						var/obj/item/clothing/mask/chemmask/C = user.wear_mask
 						C.update_verbs()
@@ -198,29 +198,29 @@ obj/item/weapon/reagent_containers/chempack/verb/set_fill()
 
 	if(iswrench(W))
 		if (stage)
-			to_chat(user, "<span class='warning'>You need to secure the maintenance panel before you can access the auxiliary chamber bolts!</span>")
+			to_chat(user, "<span class='warning'>I need to secure the maintenance panel before you can access the auxiliary chamber bolts!</span>")
 			return
 		if (!auxiliary && !src.beaker)
 			auxiliary = 1
-			to_chat(user, "You loosen the bolts of \the [src]'s auxiliary chamber.")
+			to_chat(user, "I loosen the bolts of \the [src]'s auxiliary chamber.")
 			return
 		else if (!auxiliary)
 			auxiliary = 1
-			to_chat(user, "You loosen the bolts of \the [src]'s auxiliary chamber. The beaker can now be removed.")
+			to_chat(user, "I loosen the bolts of \the [src]'s auxiliary chamber. The beaker can now be removed.")
 			return
 		else if (auxiliary && src.beaker)
 			auxiliary = 0
-			to_chat(user, "You tighten the bolts of \the [src]'s auxiliary chamber, securing the beaker in place.")
+			to_chat(user, "I tighten the bolts of \the [src]'s auxiliary chamber, securing the beaker in place.")
 			return
 		else
 			auxiliary = 0
-			to_chat(user, "You tighten the bolts of \the [src]'s auxiliary chamber.")
+			to_chat(user, "I tighten the bolts of \the [src]'s auxiliary chamber.")
 			return
 
 	switch(stage) //Handles the different stages of overriding the chemical pack's safeties. This can be done completely with a standard set of tools.
 		if(0)
 			if(isscrewdriver(W) && user.back == src)
-				to_chat(user, "<span class='warning'>You can't perform maintenance on \the [src] while you're wearing it!</span>")
+				to_chat(user, "<span class='warning'>I can't perform maintenance on \the [src] while you're wearing it!</span>")
 				return
 			else
 				if (iscrowbar(W) && src.beaker && auxiliary)
@@ -230,7 +230,7 @@ obj/item/weapon/reagent_containers/chempack/verb/set_fill()
 					else
 						B.forceMove(loc)
 					beaker = null
-					to_chat(user, "You pry the beaker out of \the [src].")
+					to_chat(user, "I pry the beaker out of \the [src].")
 					if(user.wear_mask && istype(user.wear_mask, /obj/item/clothing/mask/chemmask))
 						var/obj/item/clothing/mask/chemmask/C = user.wear_mask
 						C.update_verbs()
@@ -239,12 +239,12 @@ obj/item/weapon/reagent_containers/chempack/verb/set_fill()
 					to_chat(user, "<span class='warning'>The beaker is held tight by the bolts of the auxiliary chamber!</span>")
 					return
 				if (isscrewdriver(W) && src.beaker)
-					to_chat(user, "<span class='warning'>You can't reach the maintenance panel with the beaker in the way!</span>")
+					to_chat(user, "<span class='warning'>I can't reach the maintenance panel with the beaker in the way!</span>")
 					return
 				else if (isscrewdriver(W))
 					stage = 1
 					slot_flags = null
-					to_chat(user, "<span class='notice'>You unscrew the maintenance panel of \the [src].</span>")
+					to_chat(user, "<span class='notice'>I unscrew the maintenance panel of \the [src].</span>")
 					icon_state = "[initial(icon_state)]3"
 					user.update_inv_hands() //These procs are to force the item's in_hand mob overlay to update to reflect the different stages of building. It was the only way I could find to accomplish this.
 					return
@@ -254,14 +254,14 @@ obj/item/weapon/reagent_containers/chempack/verb/set_fill()
 					stage = 2
 				else
 					stage = 3
-				to_chat(user, "<span class='notice'>You pry open the maintenance panel of \the [src].</span>")
+				to_chat(user, "<span class='notice'>I pry open the maintenance panel of \the [src].</span>")
 				icon_state = "[initial(icon_state)]2"
 				user.update_inv_hands()
 				return
 			else if (isscrewdriver(W))
 				stage = 0
 				slot_flags = SLOT_BACK
-				to_chat(user, "<span class='notice'>You secure the maintenance panel of \the [src].</span>")
+				to_chat(user, "<span class='notice'>I secure the maintenance panel of \the [src].</span>")
 				if (safety == 0)
 					icon_state = "[initial(icon_state)]"
 					user.update_inv_hands()
@@ -273,28 +273,28 @@ obj/item/weapon/reagent_containers/chempack/verb/set_fill()
 			if (iswirecutter(W))
 				stage = 3
 				primed = 1
-				to_chat(user, "<span class='notice'>You reroute the connections within \the [src].</span>")
+				to_chat(user, "<span class='notice'>I reroute the connections within \the [src].</span>")
 				return
 			else if (iscrowbar(W))
 				stage = 1
-				to_chat(user, "<span class='notice'>You close the maintenance panel of \the [src].</span>")
+				to_chat(user, "<span class='notice'>I close the maintenance panel of \the [src].</span>")
 				icon_state = "[initial(icon_state)]3"
 				user.update_inv_hands()
 				return
 		if(3)
 			if (ismultitool(W))
 				if (safety == 0)
-					to_chat(user, "<span class='warning'>You activate the manual safety override of \the [src]!</span>")
+					to_chat(user, "<span class='warning'>I activate the manual safety override of \the [src]!</span>")
 					to_chat(user, "<span class='warning'>The bolts for the auxiliary chamber of \the [src] have been exposed!</span>")
 					safety = 1
 				else if (safety == 1)
-					to_chat(user, "<span class='notice'>You reactivate the safety restrictions of \the [src].</span>")
+					to_chat(user, "<span class='notice'>I reactivate the safety restrictions of \the [src].</span>")
 					to_chat(user, "<span class='notice'>The bolts for the auxiliary chamber of \the [src] are now hidden.</span>")
 					safety = 0
 				return
 			else if (iscrowbar(W))
 				stage = 1
-				to_chat(user, "<span class='notice'>You close the maintenance panel of \the [src].</span>")
+				to_chat(user, "<span class='notice'>I close the maintenance panel of \the [src].</span>")
 				icon_state = "[initial(icon_state)]3"
 				user.update_inv_hands()
 				return

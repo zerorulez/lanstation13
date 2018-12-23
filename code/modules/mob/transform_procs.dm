@@ -86,8 +86,8 @@
 	new_mob.a_intent = I_HURT
 	new_mob.key = key
 
-	to_chat(new_mob, "<span class='sinister'>Instantly, what was your clothes fall off, and are replaced with a mockery of all that is clowning; Disgusting-looking garb that the foulest of creatures would be afraid of wearing. Your very face begins to shape, mold, into something truely disgusting. A mask made of flesh. Your body is feeling the worst pain it has ever felt. As you think it cannot get any worse, one of your arms turns into a horrific meld of flesh and plastic, making a limb made entirely of bike horns.</span>")
-	to_chat(new_mob, "<span class='sinister'>Your very soul is being torn apart. What was organs, blood, flesh, is now darkness. And inside the infernal void that was once a living being, something sinister takes root. As what you were goes away, you try to let out a frantic plea of 'Help me! Please god help me!' but your god has abandoned you, and all that leaves your horrible mouth is a strangled 'HONK!'.</span>")
+	to_chat(new_mob, "<span class='sinister'>Instantly, what was my clothes fall off, and are replaced with a mockery of all that is clowning; Disgusting-looking garb that the foulest of creatures would be afraid of wearing. Your very face begins to shape, mold, into something truely disgusting. A mask made of flesh. Your body is feeling the worst pain it has ever felt. As you think it cannot get any worse, one of my arms turns into a horrific meld of flesh and plastic, making a limb made entirely of bike horns.</span>")
+	to_chat(new_mob, "<span class='sinister'>My very soul is being torn apart. What was organs, blood, flesh, is now darkness. And inside the infernal void that was once a living being, something sinister takes root. As what you were goes away, you try to let out a frantic plea of 'Help me! Please god help me!' but my god has abandoned you, and all that leaves my horrible mouth is a strangled 'HONK!'.</span>")
 	new_mob.say("HONK!")
 	spawn(0)//To prevent the proc from returning null.
 		qdel(src)
@@ -157,11 +157,11 @@
 		for (var/obj/item/device/radio/intercom/comm in O.loc)
 			comm.ai += O
 
-	to_chat(O, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
+	to_chat(O, "<B>I am playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
 	to_chat(O, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")
 	to_chat(O, "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>")
 	to_chat(O, "To use something, simply click on it.")
-	to_chat(O, {"Use say ":b to speak to your cyborgs through binary."})
+	to_chat(O, {"Use say ":b to speak to my cyborgs through binary."})
 	if (!(ticker && ticker.mode && (O.mind in ticker.mode.malf_ai)))
 		O.show_laws()
 		to_chat(O, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
@@ -310,7 +310,7 @@
 	new_xeno.a_intent = I_HURT
 	new_xeno.key = key
 
-	to_chat(new_xeno, "<B>You are now an alien.</B>")
+	to_chat(new_xeno, "<B>I am now an alien.</B>")
 	spawn(0)//To prevent the proc from returning null.
 		qdel(src)
 	return new_xeno
@@ -348,7 +348,7 @@
 	new_slime.a_intent = I_HURT
 	new_slime.key = key
 
-	to_chat(new_slime, "<B>You are now a slime. Skreee!</B>")
+	to_chat(new_slime, "<B>I am now a slime. Skreee!</B>")
 	spawn(0)//To prevent the proc from returning null.
 		qdel(src)
 	return new_slime
@@ -372,7 +372,7 @@
 	new_corgi.a_intent = I_HURT
 	new_corgi.key = key
 
-	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
+	to_chat(new_corgi, "<B>I am now a Corgi. Yap Yap!</B>")
 	spawn(0)//To prevent the proc from returning null.
 		qdel(src)
 	return new_corgi
@@ -408,7 +408,7 @@
 	new_mob.a_intent = I_HURT
 
 
-	to_chat(new_mob, "You suddenly feel more... animalistic.")
+	to_chat(new_mob, "I suddenly feel more... animalistic.")
 	spawn()
 		qdel(src)
 	return new_mob
@@ -427,7 +427,7 @@
 
 	new_mob.key = key
 	new_mob.a_intent = I_HURT
-	to_chat(new_mob, "You feel more... animalistic")
+	to_chat(new_mob, "I feel more... animalistic")
 
 	spawn()
 		qdel(src)
@@ -445,7 +445,7 @@
 		return 0	//Sanity, this should never happen.
 
 	if(ispath(MP, /mob/living/simple_animal/space_worm))
-		return 0 //Unfinished. Very buggy, they seem to just spawn additional space worms everywhere and eating your own tail results in new worms spawning.
+		return 0 //Unfinished. Very buggy, they seem to just spawn additional space worms everywhere and eating my own tail results in new worms spawning.
 
 	if(ispath(MP, /mob/living/simple_animal/construct/behemoth))
 		return 0 //I think this may have been an unfinished WiP or something. These constructs should really have their own class simple_animal/construct/subtype

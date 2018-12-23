@@ -96,13 +96,13 @@
 					R.hud_used.update_robot_modules_display()
 					return
 				else
-					to_chat(R, "<span class='warning'>You can't make that much [initial(material_type.name)] without shutting down!</span>")
+					to_chat(R, "<span class='warning'>I can't make that much [initial(material_type.name)] without shutting down!</span>")
 					return
 
 				return
 
 		else if(R.cell.charge)
-			to_chat(R, "<span class='warning'>You need to select a sheet type first!</span>")
+			to_chat(R, "<span class='warning'>I need to select a sheet type first!</span>")
 			return
 	else
 		if (material_type && matter >= 1)
@@ -133,7 +133,7 @@
 				to_chat(user, "<span class='warning'>\The [src] matter is not enough to create the selected material!</span>")
 				return
 		else if (matter >= 1)
-			to_chat(user, "<span class='warning'>You must select a sheet type first!</span>")
+			to_chat(user, "<span class='warning'>I must select a sheet type first!</span>")
 			return
 		else
 			to_chat(user, "<span class='warning'>\The [src] is empty!</span>")
@@ -146,13 +146,13 @@
 	if(is_type_in_list(target, can_scan)) //Can_scan, can you?
 		for(var/matID in materials_scanned)
 			if(materials_scanned[matID] == target.type)
-				to_chat(user, "<span class='warning'>You have already scanned \the [target].</span>")
+				to_chat(user, "<span class='warning'>I have already scanned \the [target].</span>")
 				return
 		materials_scanned["[initial(target.name)]"] = target.type
-		to_chat(user, "<span class='notice'>You successfully scan \the [target] into \the [src]'s material banks.</span>")
+		to_chat(user, "<span class='notice'>I successfully scan \the [target] into \the [src]'s material banks.</span>")
 		return 1
 	else if(istype(target, /obj/item/stack/sheet)) //We can't scan it, but, only display an error when trying to scan a sheet. Currently only happens with MoMMI matsynths.
-		to_chat(user, "<span class='warning'>Your [src.name] does not contain this functionality to scan this type of material.</span>")
+		to_chat(user, "<span class='warning'>My [src.name] does not contain this functionality to scan this type of material.</span>")
 	return ..()
 
 /obj/item/device/material_synth/examine(mob/user)
@@ -180,8 +180,8 @@
 			if(matter >= matter_rng)
 				var/obj/item/device/spawn_item = pick(existing_typesof(/obj/item/device)) //we make any kind of device. It's a surprise!
 				user.visible_message("<span class='warning'>\The [src] in [user]'s hands appears to be trying to synthesize... \a [initial(spawn_item.name)]?</span>", \
-									 "<span class='warning'>\The [src] pops and fizzles in your hands, before creating... \a [initial(spawn_item.name)]?</span>", \
-									 "<span class='warning'>You hear a loud popping noise.</span>")
+									 "<span class='warning'>\The [src] pops and fizzles in my hands, before creating... \a [initial(spawn_item.name)]?</span>", \
+									 "<span class='warning'>I hear a loud popping noise.</span>")
 				sleep(10)
 				new spawn_item(get_turf(src))
 				matter -= matter_rng
@@ -191,7 +191,7 @@
 				explosion(src.loc, 0, 0, 1, 2) //traitors - fuck them, am I right?
 				qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You don't think you can do that again.</span>")
+			to_chat(user, "<span class='warning'>I don't think you can do that again.</span>")
 			return
 	return ..()
 
@@ -200,7 +200,7 @@
 		var/selection = materials_scanned[input("Select the material you'd like to synthesize", "Change Material Type") as null|anything in materials_scanned]
 		if(selection)
 			active_material = selection
-			to_chat(user, "<span class='notice'>You switch \the [src] to synthesize [initial(active_material.name)]</span>")
+			to_chat(user, "<span class='notice'>I switch \the [src] to synthesize [initial(active_material.name)]</span>")
 		else
 			active_material = null
 			return

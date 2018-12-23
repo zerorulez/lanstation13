@@ -37,7 +37,7 @@
 			var/obj/item/weapon/weldingtool/WT = W
 			if(WT.remove_fuel(0, user))
 				overlays.len = 0
-				to_chat(usr, "You slice off [src]'s uneven chunks of aluminum and scorch marks.")
+				to_chat(usr, "I slice off [src]'s uneven chunks of aluminum and scorch marks.")
 				return
 
 
@@ -60,10 +60,10 @@
 				if(ishuman(user))
 					if(!user.get_active_hand())
 						user.put_in_hands(src)
-						to_chat(user, "You take the target out of the stake.")
+						to_chat(user, "I take the target out of the stake.")
 				else
 					src.forceMove(get_turf(user))
-					to_chat(user, "You take the target out of the stake.")
+					to_chat(user, "I take the target out of the stake.")
 
 				stake.pinned_target = null
 				return

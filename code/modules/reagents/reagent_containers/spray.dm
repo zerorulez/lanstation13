@@ -25,11 +25,11 @@
 		return
 	if(!melted)
 		if(W.is_hot())
-			to_chat(user, "You slightly melt the plastic on the top of \the [src] with \the [W].")
+			to_chat(user, "I slightly melt the plastic on the top of \the [src] with \the [W].")
 			melted = 1
 	if(melted)
 		if(istype(W, /obj/item/stack/rods))
-			to_chat(user, "You press \the [W] into the melted plastic on the top of \the [src].")
+			to_chat(user, "I press \the [W] into the melted plastic on the top of \the [src].")
 			var/obj/item/stack/rods/R = W
 			if(src.loc == user)
 				user.drop_item(src, force_drop = 1)
@@ -76,12 +76,12 @@
 	reagents.log_bad_reagents(user, src)
 	user.investigation_log(I_CHEMS, "sprayed [amount_per_transfer_from_this]u from \a [src] ([type]) containing [reagents.get_reagent_ids(1)] towards [A] ([A.x], [A.y], [A.z]).")
 
-	// Override for your custom puff behaviour
+	// Override for my custom puff behaviour
 	make_puff(A, user)
 
 /obj/item/weapon/reagent_containers/spray/attack_self(var/mob/user)
 	amount_per_transfer_from_this = (amount_per_transfer_from_this == 10 ? 5 : 10)
-	to_chat(user, "<span class='notice'>You switched [amount_per_transfer_from_this == 10 ? "on" : "off"] the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
+	to_chat(user, "<span class='notice'>I switched [amount_per_transfer_from_this == 10 ? "on" : "off"] the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
 
 /obj/item/weapon/reagent_containers/spray/restock()
 	if(name == "Polyacid spray")

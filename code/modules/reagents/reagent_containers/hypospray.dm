@@ -41,16 +41,16 @@
 			to_chat(user, "<span classs='notice'>\The [src]'s needle fails to pierce [H]")
 			return
 
-	var/inject_message = "<span class='notice'>You inject [M] with [src].</span>"
+	var/inject_message = "<span class='notice'>I inject [M] with [src].</span>"
 	if(M == user)
-		inject_message = "<span class='notice'>You inject yourself with [src].</span>"
+		inject_message = "<span class='notice'>I inject yourself with [src].</span>"
 	else if(clumsy_check(user) && prob(50))
 		inject_message = "<span class='notice'>Oops! You inject yourself with [src] by accident.</span>"
 		M = user
 
 	if (reagents.total_volume)
 		to_chat(user, inject_message)
-		to_chat(M, "<span class='warning'>You feel a tiny prick!</span>")
+		to_chat(M, "<span class='warning'>I feel a tiny prick!</span>")
 		playsound(get_turf(src), 'sound/items/hypospray.ogg', 50, 1)
 
 		src.reagents.reaction(M, INGEST)

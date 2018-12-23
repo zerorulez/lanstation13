@@ -41,7 +41,7 @@
 	if(gift)
 		user.put_in_active_hand(gift)
 		gift.add_fingerprint(user)
-		to_chat(user, "<span class='notice'>You unwrapped \a [gift]!</span>")
+		to_chat(user, "<span class='notice'>I unwrapped \a [gift]!</span>")
 	else
 		to_chat(user, "<span class='notice'>The gift was empty!</span>")
 	qdel(src)
@@ -158,7 +158,7 @@
 	M.u_equip(src,0)
 	M.put_in_hands(I)
 	I.add_fingerprint(M)
-	to_chat(M, "<span class='notice'>You unwrapped \a [I]!</span>")
+	to_chat(M, "<span class='notice'>I unwrapped \a [I]!</span>")
 	qdel(src)
 	return
 
@@ -174,7 +174,7 @@
 	M.u_equip(src,0)
 	M.put_in_hands(I)
 	I.add_fingerprint(M)
-	to_chat(M, "<span class='notice'>You unwrapped \a [I]! Tasty!</span>")
+	to_chat(M, "<span class='notice'>I unwrapped \a [I]! Tasty!</span>")
 	qdel(src)
 	return
 
@@ -182,7 +182,7 @@
 /obj/item/weapon/winter_gift/cloth/attack_self(mob/M as mob)
 	if(prob(30))
 		cloth_bundle()
-		to_chat(M, "<span class='notice'>You unwrapped a bundle of clothes! Looks comfy!</span>")
+		to_chat(M, "<span class='notice'>I unwrapped a bundle of clothes! Looks comfy!</span>")
 		qdel(src)
 		return
 
@@ -196,7 +196,7 @@
 	M.u_equip(src,0)
 	M.put_in_hands(I)
 	I.add_fingerprint(M)
-	to_chat(M, "<span class='notice'>You unwrapped \a [I]! Looks comfy!</span>")
+	to_chat(M, "<span class='notice'>I unwrapped \a [I]! Looks comfy!</span>")
 	qdel(src)
 	return
 
@@ -263,7 +263,7 @@
 	message_admins(log_str, 0, 1)
 	log_game(log_str)
 
-	to_chat(M, "<span class='notice'>You unwrapped \a [I][additional_info]!</span>")
+	to_chat(M, "<span class='notice'>I unwrapped \a [I][additional_info]!</span>")
 
 	qdel(src)
 	return
@@ -292,11 +292,11 @@
 /obj/structure/strange_present/relaymove(mob/user as mob)
 	if (user.stat)
 		return
-	to_chat(user, "<span class='notice'>You can't move.</span>")
+	to_chat(user, "<span class='notice'>I can't move.</span>")
 
 /obj/structure/strange_present/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (iswirecutter(W))
-		to_chat(user, "<span class='notice'>You cut open the present.</span>")
+		to_chat(user, "<span class='notice'>I cut open the present.</span>")
 
 		for(var/mob/M in src) //Should only be one but whatever.
 			M.forceMove(get_turf(src))

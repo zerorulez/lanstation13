@@ -17,7 +17,7 @@
 				return
 			if (src.client)
 				if (client.prefs.muted & MUTE_IC)
-					to_chat(src, "<span class='warning'>You cannot send IC messages (muted).</span>")
+					to_chat(src, "<span class='warning'>I cannot send IC messages (muted).</span>")
 					return
 				if (src.client.handle_spam_prevention(message,MUTE_IC))
 					return
@@ -30,15 +30,15 @@
 		if ("custom")
 			return custom_emote(m_type, message)
 		if ("alarm")
-			to_chat(src, "You sound an alarm.")
+			to_chat(src, "I sound an alarm.")
 			message = "<B>[src]</B> sounds an alarm."
 			m_type = HEARABLE
 		if ("alert")
-			to_chat(src, "You let out a distressed noise.")
+			to_chat(src, "I let out a distressed noise.")
 			message = "<B>[src]</B> lets out a distressed noise."
 			m_type = HEARABLE
 		if ("notice")
-			to_chat(src, "You play a loud tone.")
+			to_chat(src, "I play a loud tone.")
 			message = "<B>[src]</B> plays a loud tone."
 			m_type = HEARABLE
 		if ("flash")
@@ -48,15 +48,15 @@
 			message = "<B>[src]</B> blinks."
 			m_type = VISIBLE
 		if ("whistle")
-			to_chat(src, "You whistle.")
+			to_chat(src, "I whistle.")
 			message = "<B>[src]</B> whistles."
 			m_type = HEARABLE
 		if ("beep")
-			to_chat(src, "You beep.")
+			to_chat(src, "I beep.")
 			message = "<B>[src]</B> beeps."
 			m_type = HEARABLE
 		if ("boop")
-			to_chat(src, "You boop.")
+			to_chat(src, "I boop.")
 			message = "<B>[src]</B> boops."
 			m_type = HEARABLE
 		if ("help")

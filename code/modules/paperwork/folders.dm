@@ -34,7 +34,7 @@
 /obj/item/weapon/folder/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/paper) || istype(W, /obj/item/weapon/photo))
 		if(user.drop_item(W, src))
-			to_chat(user, "<span class='notice'>You put the [W] into \the [src].</span>")
+			to_chat(user, "<span class='notice'>I put the [W] into \the [src].</span>")
 			update_icon()
 	else if(istype(W, /obj/item/weapon/pen))
 		set_tiny_label(user, " - '", "'")

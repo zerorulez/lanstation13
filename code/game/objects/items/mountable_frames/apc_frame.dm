@@ -22,7 +22,7 @@
 			else
 				var/obj/item/stack/cable_coil/C = new /obj/item/stack/cable_coil(turf_loc)
 				C.amount = 10
-				to_chat(user, "You cut the cables and disassemble the unused power terminal.")
+				to_chat(user, "I cut the cables and disassemble the unused power terminal.")
 				qdel(T)
 		return 1
 	return

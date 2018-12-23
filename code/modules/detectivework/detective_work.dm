@@ -617,7 +617,7 @@ var/const/FINGERPRINT_COMPLETE = 6	//This is the output of the stringpercent(pri
 
 /obj/machinery/computer/forensic_scanning/proc/process_card()	//Same as above, but for fingerprint cards
 	if(card.fingerprints && !(card.amount > 1) && islist(card.fingerprints) && files && files.len)
-		to_chat(usr, "You insert the card, and it is destroyed by the machinery in the process of comparing prints.")
+		to_chat(usr, "I insert the card, and it is destroyed by the machinery in the process of comparing prints.")
 		var/found = 0
 		for(var/master_print in card.fingerprints)
 			var/list/data_entry = files[master_print]

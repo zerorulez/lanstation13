@@ -86,10 +86,10 @@
 
 	if(user.drop_item(W, src))
 		cell = W
-		user.visible_message("[user] inserts a cell into \the [src].", "You insert a cell into \the [src].")
+		user.visible_message("[user] inserts a cell into \the [src].", "I insert a cell into \the [src].")
 		nanomanager.update_uis(src)
 	else
-		to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
+		to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
 
 
 /obj/machinery/computer/telescience/update_icon()
@@ -135,7 +135,7 @@
 		ui.set_auto_update(FALSE)
 
 /obj/machinery/computer/telescience/attack_paw(mob/user)
-	to_chat(user, "You are too primitive to use this computer.")
+	to_chat(user, "I am too primitive to use this computer.")
 
 /obj/machinery/computer/telescience/attack_ai(mob/user)
 	return src.attack_hand(user)
@@ -162,7 +162,7 @@
 			sparks(L)
 			for(var/mob/living/carbon/human/M in viewers(L, null))
 				M.apply_effect((rand(10, 20)), IRRADIATE, 0)
-				to_chat(M, "<span class='warning'>You feel strange.</span>")
+				to_chat(M, "<span class='warning'>I feel strange.</span>")
 		return
 
 	/* Lets not, for now.  - N3X
@@ -178,7 +178,7 @@
 	if(prob(1))
 		// VIVA LA FUCKING REVOLUTION BITCHES, SUPER LOW CHANCE, CAN HARDLY HAPPEN
 		for(var/mob/living/carbon/O in viewers(src, null))
-			O.show_message("<span class='warning'>The telepad flashes with a strange light, and you see all kind of images flash through your mind, of murderous things Nanotrasen has done, and you decide to rebel!</span>", 2)
+			O.show_message("<span class='warning'>The telepad flashes with a strange light, and you see all kind of images flash through my mind, of murderous things Nanotrasen has done, and you decide to rebel!</span>", 2)
 			O.mind.make_Rev()
 			sparks()
 		return
@@ -186,7 +186,7 @@
 
 	if(prob(1))
 		// The OH SHIT FUCK GOD DAMN IT LYNCH THE SCIENTISTS event.
-		visible_message("<span class='warning'>The telepad changes colors rapidly, and opens a portal, and you see what your mind seems to think is the very threads that hold the pattern of the universe together, and a eerie sense of paranoia creeps into you.</span>")
+		visible_message("<span class='warning'>The telepad changes colors rapidly, and opens a portal, and you see what my mind seems to think is the very threads that hold the pattern of the universe together, and a eerie sense of paranoia creeps into you.</span>")
 		for(var/mob/living/carbon/O in viewers(src, null)) //I-IT'S A FEEEEATUUUUUUUREEEEE
 			spacevine_infestation()
 		sparks(telepad)
@@ -261,13 +261,13 @@ var/list/telesci_warnings = list(
 	var/area/A=target.loc
 	if(A && A.jammed)
 		if(!telepad.amplifier || A.jammed==SUPER_JAMMED)
-			src.visible_message("<span class='warning'>\icon[src]] \The [src] turns on and the lights dim. You can see a faint shape, but it loses focus and the telepad shuts off with a buzz.  Perhaps you need more signal strength?", "<span class='warning'>You hear something buzz.</span></span>")
+			src.visible_message("<span class='warning'>\icon[src]] \The [src] turns on and the lights dim. You can see a faint shape, but it loses focus and the telepad shuts off with a buzz.  Perhaps you need more signal strength?", "<span class='warning'>I hear something buzz.</span></span>")
 			return
 
 		if(prob(25))
 			qdel(telepad.amplifier)
 			telepad.amplifier = null
-			src.visible_message("\icon[src]<span class='notice'>You hear something shatter.</span>","\icon[src]]<span class='notice'>You hear something shatter.</span>")
+			src.visible_message("\icon[src]<span class='notice'>I hear something shatter.</span>","\icon[src]]<span class='notice'>I hear something shatter.</span>")
 
 	sparks(telepad, 5)
 	flick("pad-beam", telepad)
@@ -378,7 +378,7 @@ var/list/telesci_warnings = list(
 			cell.add_fingerprint(usr)
 			cell.updateicon()
 			src.cell = null
-			usr.visible_message("[usr] removes the cell from \the [name].", "You remove the cell from \the [name].")
+			usr.visible_message("[usr] removes the cell from \the [name].", "I remove the cell from \the [name].")
 			update_icon()
 		return TRUE
 
@@ -476,9 +476,9 @@ var/list/telesci_warnings = list(
 
 			if(user.drop_item(W, src))
 				cell = W
-				user.visible_message("[user] inserts a cell into the [src].", "You insert a cell into the [src].")
+				user.visible_message("[user] inserts a cell into the [src].", "I insert a cell into the [src].")
 			else
-				user << "<span class='warning'>You can't let go of \the [W]!</span>"
+				user << "<span class='warning'>I can't let go of \the [W]!</span>"
 		update_icon()
 
 /obj/machinery/computer/telescience/update_icon()
@@ -537,7 +537,7 @@ var/list/telesci_warnings = list(
 		ui.set_auto_update(1)
 
 /obj/machinery/computer/telescience/attack_paw(mob/user)
-	to_chat(user, "You are too primitive to use this computer.")
+	to_chat(user, "I am too primitive to use this computer.")
 	return
 
 /obj/machinery/computer/telescience/attack_ai(mob/user)
@@ -622,7 +622,7 @@ var/list/telesci_warnings = list(
 			sparks(target = L)
 			for(var/mob/living/carbon/human/M in viewers(L, null))
 				M.apply_effect((rand(10, 20)), IRRADIATE, 0)
-				to_chat(M, "<span class='warning'>You feel strange.</span>")
+				to_chat(M, "<span class='warning'>I feel strange.</span>")
 		return
 	/* Lets not, for now.  - N3X
 	if(prob(1))
@@ -637,14 +637,14 @@ var/list/telesci_warnings = list(
 	if(prob(1))
 		// VIVA LA FUCKING REVOLUTION BITCHES, SUPER LOW CHANCE, CAN HARDLY HAPPEN
 		for(var/mob/living/carbon/O in viewers(src, null))
-			O.show_message("<span class='warning'>The telepad flashes with a strange light, and you see all kind of images flash through your mind, of murderous things Nanotrasen has done, and you decide to rebel!</span>", 2)
+			O.show_message("<span class='warning'>The telepad flashes with a strange light, and you see all kind of images flash through my mind, of murderous things Nanotrasen has done, and you decide to rebel!</span>", 2)
 			O.mind.make_Rev()
 			sparks()
 		return
 	*/
 	if(prob(1))
 		// The OH SHIT FUCK GOD DAMN IT LYNCH THE SCIENTISTS event.
-		visible_message("<span class='warning'>The telepad changes colors rapidly, and opens a portal, and you see what your mind seems to think is the very threads that hold the pattern of the universe together, and a eerie sense of paranoia creeps into you.</span>")
+		visible_message("<span class='warning'>The telepad changes colors rapidly, and opens a portal, and you see what my mind seems to think is the very threads that hold the pattern of the universe together, and a eerie sense of paranoia creeps into you.</span>")
 		for(var/mob/living/carbon/O in viewers(src, null)) //I-IT'S A FEEEEATUUUUUUUREEEEE
 			spacevine_infestation()
 		sparks()
@@ -706,12 +706,12 @@ var/global/list/telesci_warnings = list(/obj/machinery/power/supermatter,
 		var/area/A=target.loc
 		if(A && A.jammed)
 			if(!telepad.amplifier || A.jammed==SUPER_JAMMED)
-				src.visible_message("<span class='warning'>\icon[src] [src] turns on and the lights dim.  You can see a faint shape, but it loses focus and the telepad shuts off with a buzz.  Perhaps you need more signal strength?", "\icon[src]<span class='warning'>You hear something buzz.</span></span>")
+				src.visible_message("<span class='warning'>\icon[src] [src] turns on and the lights dim.  You can see a faint shape, but it loses focus and the telepad shuts off with a buzz.  Perhaps you need more signal strength?", "\icon[src]<span class='warning'>I hear something buzz.</span></span>")
 				return
 			if(prob(25))
 				qdel(telepad.amplifier)
 				telepad.amplifier = null
-				src.visible_message("\icon[src]<span class='notice'>You hear something shatter.</span>","\icon[src]<span class='notice'>You hear something shatter.</span>")
+				src.visible_message("\icon[src]<span class='notice'>I hear something shatter.</span>","\icon[src]<span class='notice'>I hear something shatter.</span>")
 		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 		s.set_up(5, 1, telepad)
 		s.start()
@@ -832,7 +832,7 @@ var/global/list/telesci_warnings = list(/obj/machinery/power/supermatter,
 			cell.add_fingerprint(usr)
 			cell.updateicon()
 			src.cell = null
-			usr.visible_message("[usr] removes the cell from \the [name].", "You remove the cell from \the [name].")
+			usr.visible_message("[usr] removes the cell from \the [name].", "I remove the cell from \the [name].")
 			update_icon()
 		src.updateUsrDialog()
 		return 1

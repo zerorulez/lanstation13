@@ -115,18 +115,12 @@
 			playsound(get_turf(src), 'sound/effects/glass_step.ogg', 50, 1)
 			if(ishuman(AM))
 				var/mob/living/carbon/human/H = AM
-				var/danger = FALSE
-
 				var/datum/organ/external/foot = H.pick_usable_organ(LIMB_LEFT_FOOT, LIMB_RIGHT_FOOT)
 				if(!H.organ_has_mutation(foot, M_STONE_SKIN) && !H.check_body_part_coverage(FEET))
 					if(foot.is_organic())
-						danger = TRUE
-
 						if(!H.lying && H.feels_pain())
 							H.Knockdown(3)
 						if(foot.take_damage(5, 0))
 							H.UpdateDamageIcon()
 						H.updatehealth()
-
-				to_chat(AM, "<span class='[danger ? "danger" : "notice"]'>You step in the broken glass!</span>")
 	..()

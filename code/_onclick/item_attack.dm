@@ -31,7 +31,7 @@
 			I.attack(src, user)
 
 
-// Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
+// Proximity_flag is 1 if this afterattack was called on something adjacent, in my square, or on my person.
 // Click parameters is the params string from byond Click() code, see that documentation.
 /obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	return
@@ -191,13 +191,13 @@ obj/item/proc/get_clamped_volume()
 						var/mob/living/simple_animal/borer/BO = originator
 						if(BO.host == user)
 							if(BO.hostlimb == LIMB_RIGHT_ARM)
-								to_chat(user, "<span class='warning'>Your right arm attacks [M] with [I]!</span>")
+								to_chat(user, "<span class='warning'>My right arm attacks [M] with [I]!</span>")
 							else if(BO.hostlimb == LIMB_LEFT_ARM)
-								to_chat(user, "<span class='warning'>Your left arm attacks [M] with [I]!</span>")
+								to_chat(user, "<span class='warning'>My left arm attacks [M] with [I]!</span>")
 					else
-						to_chat(user, "<span class='warning'>You attack [M] with [I]!</span>")
+						to_chat(user, "<span class='warning'>I attack [M] with [I]!</span>")
 				else
-					to_chat(user, "<span class='warning'>You attack [M] with [I]!</span>")
+					to_chat(user, "<span class='warning'>I attack [M] with [I]!</span>")
 
 
 	if(istype(M, /mob/living/carbon/human))

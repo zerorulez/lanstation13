@@ -71,7 +71,7 @@
 	if(istype(W, /obj/item/weapon/reagent_containers/syringe))
 		var/obj/item/weapon/reagent_containers/syringe/S = W
 
-		to_chat(user, "You inject the solution into the power cell.")
+		to_chat(user, "I inject the solution into the power cell.")
 
 		if(S.reagents.has_reagent(PLASMA, 5))
 

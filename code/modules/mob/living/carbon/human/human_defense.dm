@@ -40,7 +40,7 @@ emp_act
 		return checkarmor(affecting, type)
 		//If a specific bodypart is targetted, check how that bodypart is protected and return the value.
 
-	//If you don't specify a bodypart, it checks ALL your bodyparts for protection, and averages out the values
+	//If you don't specify a bodypart, it checks ALL my bodyparts for protection, and averages out the values
 	for(var/datum/organ/external/organ in organs)
 		armorval += checkarmor(organ, type)
 		organnum++
@@ -178,7 +178,7 @@ emp_act
 		src.reagents.trans_to (newmeat, round ((src.reagents.total_volume) / 3, 1))
 		src.loc.add_blood(src)
 		--src.meatleft
-		to_chat(user, "<span class='warning'>You hack off a chunk of meat from [src.name]</span>")
+		to_chat(user, "<span class='warning'>I hack off a chunk of meat from [src.name]</span>")
 		if(!src.meatleft)
 			src.attack_log += "\[[time_stamp()]\] Was chopped up into meat by <b>[user]/[user.ckey]</b>"
 			user.attack_log += "\[[time_stamp()]\] Chopped up <b>[src]/[src.ckey]</b> into meat</b>"
@@ -212,7 +212,7 @@ emp_act
 		if(affecting.sabotaged)
 			to_chat(user, "<span class='warning'>[src]'s [affecting.display_name] is already sabotaged!</span>")
 		else
-			to_chat(user, "<span class='warning'>You sneakily slide [I] into the dataport on [src]'s [affecting.display_name] and short out the safeties.</span>")
+			to_chat(user, "<span class='warning'>I sneakily slide [I] into the dataport on [src]'s [affecting.display_name] and short out the safeties.</span>")
 			affecting.sabotaged = 1
 		return 0
 
@@ -220,12 +220,12 @@ emp_act
 	user.delayNextAttack(1)
 	if(istype(I.attack_verb, /list) && I.attack_verb.len && !(I.flags & NO_ATTACK_MSG))
 		visible_message("<span class='danger'>[user] [pick(I.attack_verb)] [src] in the [hit_area] with \the [I.name]!</span>", \
-			"<span class='userdanger'>[user] [pick(I.attack_verb)] you in the [hit_area] with \the [I.name]!</span>")
+			"<span class='userdanger'>[user] [pick(I.attack_verb)] me in the [hit_area] with \the [I.name]!</span>")
 	else if(!(I.flags & NO_ATTACK_MSG))
 		visible_message("<span class='danger'>[user] attacks [src] in the [hit_area] with \the [I.name]!</span>", \
-			"<span class='userdanger'>[user] attacks you in the [hit_area] with \the [I.name]!</span>")
+			"<span class='userdanger'>[user] attacks me in the [hit_area] with \the [I.name]!</span>")
 
-	var/armor = run_armor_check(affecting, "melee", "Your armor protects your [hit_area].", "Your armor softens the hit to your [hit_area].")
+	var/armor = run_armor_check(affecting, "melee", "My armor protects my [hit_area].", "My armor softens the hit to my [hit_area].")
 	if(armor >= 2)
 		return 1 //We still connected
 	if(!I.force)
@@ -307,17 +307,17 @@ emp_act
 	if(user)
 		src.visible_message(\
 			"<span class='danger'>[user] knocks [(amount < 3) ? "some" : "a bunch"] of [src]'s teeth out!</span>",\
-			"<span class='danger'>[user] knocks [(amount < 3) ? "some" : "a bunch"] of your teeth out!</span>",\
+			"<span class='danger'>[user] knocks [(amount < 3) ? "some" : "a bunch"] of my teeth out!</span>",\
 
 			drugged_message = "<span class='info'>[user] starts brushing [src]'s teeth.</span>",\
-			self_drugged_message = "<span class='info'>[user] has removed some of your wisdom teeth.</span>")
+			self_drugged_message = "<span class='info'>[user] has removed some of my wisdom teeth.</span>")
 	else
 		src.visible_message(\
 			"<span class='danger'>[(amount < 3) ? "Some" : "A bunch"] of [src]'s teeth fall out!</span>",\
-			"<span class='danger'>[(amount < 3) ? "Some" : "A bunch"] of your teeth fall out!</span>",\
+			"<span class='danger'>[(amount < 3) ? "Some" : "A bunch"] of my teeth fall out!</span>",\
 
 			drugged_message = "<span class='info'>The tooth fairy takes some of [src]'s teeth out!</span>",\
-			self_drugged_message = "<span class='info'>The tooth fairy takes some of your teeth out, and gives you a dollar.</span>")
+			self_drugged_message = "<span class='info'>The tooth fairy takes some of my teeth out, and gives me a dollar.</span>")
 
 /mob/living/carbon/human/proc/bloody_hands(var/mob/living/source, var/amount = 2)
 	if (gloves)

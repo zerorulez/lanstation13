@@ -35,18 +35,18 @@
 	if (iswrench(W))
 		if (src.stage == 1)
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 75, 1)
-			to_chat(usr, "You begin deconstructing [src].")
+			to_chat(usr, "I begin deconstructing [src].")
 			if (!do_after(usr, src, 30))
 				return
 			var/obj/item/stack/sheet/metal/M = getFromPool(/obj/item/stack/sheet/metal, get_turf(src))
 			M.amount = sheets_refunded
 			user.visible_message("[user.name] deconstructs [src].", \
-				"You deconstruct [src].", "You hear a noise.")
+				"I deconstruct [src].", "I hear a noise.")
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 75, 1)
 			qdel(src)
 			return
 		if (src.stage == 2)
-			to_chat(usr, "You have to remove the wires first.")
+			to_chat(usr, "I have to remove the wires first.")
 			return
 
 	if(istype(W, /obj/item/stack/cable_coil))
@@ -60,7 +60,7 @@
 					src.icon_state = "bulb-empty"
 			src.stage = 2
 			user.visible_message("[user.name] adds wires to \the [src].", \
-				"You add wires to \the [src]")
+				"I add wires to \the [src]")
 
 			switch(fixture_type)
 				if("tube")
@@ -75,7 +75,7 @@
 	..()
 
 /obj/machinery/light_construct/kick_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H] attempts to kick \the [src].</span>", "<span class='danger'>You attempt to kick \the [src].</span>")
+	H.visible_message("<span class='danger'>[H] attempts to kick \the [src].</span>", "<span class='danger'>I attempt to kick \the [src].</span>")
 	to_chat(H, "<span class='danger'>Dumb move! You strain a muscle.</span>")
 
 	H.apply_damage(rand(1,2), BRUTE, pick(LIMB_RIGHT_LEG, LIMB_LEFT_LEG, LIMB_RIGHT_FOOT, LIMB_LEFT_FOOT))
@@ -152,7 +152,7 @@ var/global/list/obj/machinery/light/alllights = list()
 			broken()
 
 /obj/machinery/light/kick_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H] attempts to kick \the [src].</span>", "<span class='danger'>You attempt to kick \the [src].</span>")
+	H.visible_message("<span class='danger'>[H] attempts to kick \the [src].</span>", "<span class='danger'>I attempt to kick \the [src].</span>")
 	to_chat(H, "<span class='danger'>Dumb move! You strain a muscle.</span>")
 
 	H.apply_damage(rand(1,2), BRUTE, pick(LIMB_RIGHT_LEG, LIMB_LEFT_LEG, LIMB_RIGHT_FOOT, LIMB_LEFT_FOOT))
@@ -311,11 +311,11 @@ var/global/list/obj/machinery/light/alllights = list()
 			var/obj/item/weapon/light/L = W
 			if(L.fitting == fitting)
 				if(!user.drop_item(L))
-					user << "<span class='warning'>You can't let go of \the [L]!</span>"
+					user << "<span class='warning'>I can't let go of \the [L]!</span>"
 					return
 
 				status = L.status
-				to_chat(user, "You insert \the [L.name].")
+				to_chat(user, "I insert \the [L.name].")
 				switchcount = L.switchcount
 				rigged = L.rigged
 				brightness_range = L.brightness_range
@@ -348,11 +348,11 @@ var/global/list/obj/machinery/light/alllights = list()
 		user.do_attack_animation(src, W)
 		if(prob(1+W.force * 5))
 
-			to_chat(user, "You hit the light, and it smashes!")
+			to_chat(user, "I hit the light, and it smashes!")
 			for(var/mob/M in viewers(src))
 				if(M == user)
 					continue
-				M.show_message("[user.name] smashed the light!", 1, "You hear a tinkle of breaking glass", 2)
+				M.show_message("[user.name] smashed the light!", 1, "I hear a tinkle of breaking glass", 2)
 			if(on && (W.is_conductor()))
 				//if(!user.mutations & M_RESIST_COLD)
 				if (prob(12))
@@ -360,13 +360,13 @@ var/global/list/obj/machinery/light/alllights = list()
 			broken()
 
 		else
-			to_chat(user, "You hit the light!")
+			to_chat(user, "I hit the light!")
 	// attempt to deconstruct / stick weapon into light socket
 	else if(status == LIGHT_EMPTY)
 		if(iswirecutter(W)) //If it's a wirecutter take out the wires
 			playsound(get_turf(src), 'sound/items/Wirecutter.ogg', 75, 1)
 			user.visible_message("[user.name] removes \the [src]'s wires.", \
-				"You remove \the [src]'s wires.", "You hear a noise.")
+				"I remove \the [src]'s wires.", "I hear a noise.")
 			var/obj/machinery/light_construct/newlight = null
 			switch(fitting)
 				if("tube")
@@ -385,7 +385,7 @@ var/global/list/obj/machinery/light/alllights = list()
 			qdel(src)
 			return
 
-		to_chat(user, "You stick \the [W] into the light socket!")//If not stick it in the socket.
+		to_chat(user, "I stick \the [W] into the light socket!")//If not stick it in the socket.
 
 		if(has_power() && (W.is_conductor()))
 			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
@@ -452,7 +452,7 @@ var/global/list/obj/machinery/light/alllights = list()
 	else if (status == LIGHT_OK||status == LIGHT_BURNED)
 		user.do_attack_animation(src, user)
 		for(var/mob/M in viewers(src))
-			M.show_message("<span class='attack'>[user.name] smashed the light!</span>", 1, "You hear a tinkle of breaking glass", 2)
+			M.show_message("<span class='attack'>[user.name] smashed the light!</span>", 1, "I hear a tinkle of breaking glass", 2)
 		broken()
 	return
 
@@ -465,7 +465,7 @@ var/global/list/obj/machinery/light/alllights = list()
 	else if (status == LIGHT_OK||status == LIGHT_BURNED)
 		M.do_attack_animation(src, M)
 		for(var/mob/O in viewers(src))
-			O.show_message("<span class='attack'>[M.name] smashed the light!</span>", 1, "You hear a tinkle of breaking glass", 2)
+			O.show_message("<span class='attack'>[M.name] smashed the light!</span>", 1, "I hear a tinkle of breaking glass", 2)
 		broken()
 	return
 // attack with hand - remove tube/bulb
@@ -498,9 +498,9 @@ var/global/list/obj/machinery/light/alllights = list()
 			prot = 1
 
 		if(prot > 0 || (M_RESIST_HEAT in user.mutations))
-			to_chat(user, "You remove the light [fitting]")
+			to_chat(user, "I remove the light [fitting]")
 		else
-			to_chat(user, "You try to remove the light [fitting], but it's too hot and you don't want to burn your hand.")
+			to_chat(user, "I try to remove the light [fitting], but it's too hot and you don't want to burn my hand.")
 			return				// if burned, don't remove the light
 
 	// create a light tube/bulb item and put it in the user's hand
@@ -707,7 +707,7 @@ var/global/list/obj/machinery/light/alllights = list()
 	if(istype(I, /obj/item/weapon/reagent_containers/syringe))
 		var/obj/item/weapon/reagent_containers/syringe/S = I
 
-		to_chat(user, "You inject the solution into the [src].")
+		to_chat(user, "I inject the solution into the [src].")
 
 		if(S.reagents.has_reagent(PLASMA, 5))
 
@@ -735,7 +735,7 @@ var/global/list/obj/machinery/light/alllights = list()
 
 /obj/item/weapon/light/proc/shatter()
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		src.visible_message("<span class='warning'>[name] shatters.</span>","<span class='warning'>You hear a small glass object shatter.</span>")
+		src.visible_message("<span class='warning'>[name] shatters.</span>","<span class='warning'>I hear a small glass object shatter.</span>")
 		status = LIGHT_BROKEN
 		force = 5
 		playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)

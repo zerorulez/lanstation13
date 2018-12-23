@@ -63,7 +63,7 @@
 			if(user.drop_item(I, src))
 				oxytanks.Add(I)
 				oxygentanks++
-				to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+				to_chat(user, "<span class='notice'>I put [I] in [src].</span>")
 		else
 			to_chat(user, "<span class='notice'>[src] is full.</span>")
 		updateUsrDialog()
@@ -73,18 +73,18 @@
 			if(user.drop_item(I, src))
 				platanks.Add(I)
 				plasmatanks++
-				to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+				to_chat(user, "<span class='notice'>I put [I] in [src].</span>")
 		else
 			to_chat(user, "<span class='notice'>[src] is full.</span>")
 		updateUsrDialog()
 		return
 	if(iswrench(I))
 		if(anchored)
-			to_chat(user, "<span class='notice'>You lean down and unwrench [src].</span>")
+			to_chat(user, "<span class='notice'>I lean down and unwrench [src].</span>")
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 			anchored = 0
 		else
-			to_chat(user, "<span class='notice'>You wrench [src] into place.</span>")
+			to_chat(user, "<span class='notice'>I wrench [src] into place.</span>")
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 			anchored = 1
 		return
@@ -103,7 +103,7 @@
 				else
 					O = new /obj/item/weapon/tank/oxygen(loc)
 				O.forceMove(loc)
-				to_chat(usr, "<span class='notice'>You take [O] out of [src].</span>")
+				to_chat(usr, "<span class='notice'>I take [O] out of [src].</span>")
 				oxygentanks--
 				update_icon()
 		if(href_list["plasma"])
@@ -115,7 +115,7 @@
 				else
 					P = new /obj/item/weapon/tank/plasma(loc)
 				P.forceMove(loc)
-				to_chat(usr, "<span class='notice'>You take [P] out of [src].</span>")
+				to_chat(usr, "<span class='notice'>I take [P] out of [src].</span>")
 				plasmatanks--
 				update_icon()
 		add_fingerprint(usr)

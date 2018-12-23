@@ -32,7 +32,7 @@
 
 /datum/game_mode/wizard/raginmages/greet_wizard(var/datum/mind/wizard, var/you_are=1)
 	if (you_are)
-		to_chat(wizard.current, "<span class='danger'>You are the Space Wizard!</span>")
+		to_chat(wizard.current, "<span class='danger'>I am the Space Wizard!</span>")
 	to_chat(wizard.current, "<B>The Space Wizards Federation has given you the following tasks:</B>")
 
 	var/obj_count = 1
@@ -53,7 +53,7 @@
 			continue
 		if(wizard.current.stat == UNCONSCIOUS)
 			if(wizard.current.health < 0)
-				to_chat(wizard.current, "<span class='warning'><font size='4'>The Space Wizard Federation is upset with your performance and have terminated your employment.</font></span>")
+				to_chat(wizard.current, "<span class='warning'><font size='4'>The Space Wizard Federation is upset with my performance and have terminated my employment.</font></span>")
 				wizard.current.stat = DEAD
 				continue
 		wizards_alive++

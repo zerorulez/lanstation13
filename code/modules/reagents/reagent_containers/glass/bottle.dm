@@ -25,11 +25,11 @@
 	if(..())
 		if(src.reagents.total_volume >= 1)
 			if(M.reagents.total_volume >= 1)
-				to_chat(user, "<span class='notice'>You dip \the [M]'s tip into \the [src] but don't soak anything up.</span>")
+				to_chat(user, "<span class='notice'>I dip \the [M]'s tip into \the [src] but don't soak anything up.</span>")
 				return 1
 			else
 				src.reagents.trans_to(M, 1)
-				to_chat(user, "<span class='notice'>You barely manage to wet [M]</span>")
+				to_chat(user, "<span class='notice'>I barely manage to wet [M]</span>")
 				playsound(get_turf(src), 'sound/effects/slosh.ogg', 25, 1)
 		else
 			to_chat(user, "<span class='notice'>Nothing left to wet [M] with!</span>")
@@ -420,7 +420,7 @@
 	name = "Rezadone Bottle"
 	desc = "A small bottle. Contains a small amount of Rezadone."
 	icon = 'icons/obj/chemical.dmi'
-	
+
 /obj/item/weapon/reagent_containers/glass/bottle/rezadone/New()
 	..()
 	reagents.add_reagent(REZADONE, 30)
@@ -429,7 +429,7 @@
 	name = "Alkysine Bottle"
 	desc = "A small bottle. Contains a small amount of Alkysine."
 	icon = 'icons/obj/chemical.dmi'
-	
+
 /obj/item/weapon/reagent_containers/glass/bottle/alkysine/New()
 	..()
 	reagents.add_reagent(ALKYSINE, 30)
@@ -438,7 +438,7 @@
 	name = "Alkysine Bottle"
 	desc = "A small bottle. Contains a small amount of Alkysine."
 	icon = 'icons/obj/chemical.dmi'
-	
+
 /obj/item/weapon/reagent_containers/glass/bottle/alkysinesmall/New()
 	..()
 	reagents.add_reagent(ALKYSINE, 10)

@@ -19,7 +19,7 @@
 	..(loc)
 
 /obj/item/mounted/poster/do_build(turf/on_wall, mob/user)
-	to_chat(user, "<span class='notice'>You start placing the poster on the wall...</span>")//Looks like it's uncluttered enough. Place the poster.
+	to_chat(user, "<span class='notice'>I start placing the poster on the wall...</span>")//Looks like it's uncluttered enough. Place the poster.
 
 
 	//declaring D because otherwise if P gets 'deconstructed' we lose our reference to P.resulting_poster
@@ -36,7 +36,7 @@
 		return
 
 	if(do_after(user, on_wall, 17))//Let's check if everything is still there
-		to_chat(user, "<span class='notice'>You place the poster!</span>")
+		to_chat(user, "<span class='notice'>I place the poster!</span>")
 	else
 		D.roll_and_drop(temp_loc)
 	return
@@ -76,10 +76,10 @@ obj/structure/sign/poster/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(iswirecutter(W))
 		playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
 		if(ruined)
-			to_chat(user, "<span class='notice'>You remove the remnants of the poster.</span>")
+			to_chat(user, "<span class='notice'>I remove the remnants of the poster.</span>")
 			qdel(src)
 		else
-			to_chat(user, "<span class='notice'>You carefully remove the poster from the wall.</span>")
+			to_chat(user, "<span class='notice'>I carefully remove the poster from the wall.</span>")
 			roll_and_drop(user.loc)
 		return
 
@@ -87,7 +87,7 @@ obj/structure/sign/poster/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(ruined)
 		return
 	var/temp_loc = user.loc
-	switch(alert("Do I want to rip the poster from the wall?","You think...","Yes","No"))
+	switch(alert("Do I want to rip the poster from the wall?","I think...","Yes","No"))
 		if("Yes")
 			if(user.loc != temp_loc)
 				return
@@ -96,7 +96,7 @@ obj/structure/sign/poster/attackby(obj/item/weapon/W as obj, mob/user as mob)
 			ruined = 1
 			icon_state = "poster_ripped"
 			name = "ripped poster"
-			desc = "You can't make out anything from the poster's original print. It's ruined."
+			desc = "I can't make out anything from the poster's original print. It's ruined."
 			add_fingerprint(user)
 		if("No")
 			return
@@ -109,7 +109,7 @@ obj/structure/sign/poster/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	qdel(src)
 
 /obj/structure/sign/poster/kick_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H] kicks \the [src]!</span>", "<span class='danger'>You kick \the [src]!</span>")
+	H.visible_message("<span class='danger'>[H] kicks \the [src]!</span>", "<span class='danger'>I kick \the [src]!</span>")
 
 	if(prob(70))
 		to_chat(H, "<span class='userdanger'>Ouch! That hurts!</span>")

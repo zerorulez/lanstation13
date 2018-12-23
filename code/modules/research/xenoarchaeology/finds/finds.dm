@@ -137,7 +137,7 @@
 			apply_image_decorations = 1
 			anomaly_factor = 0
 			if(prob(20))
-				additional_desc = "It [pick("whispers faintly","makes a quiet roaring sound","whistles softly","thrums quietly","throbs")] if you put it to your ear."
+				additional_desc = "It [pick("whispers faintly","makes a quiet roaring sound","whistles softly","thrums quietly","throbs")] if you put it to my ear."
 				anomaly_factor = 1
 		if(ARCHAEO_CUTLERY)
 			item_type = "[pick("fork","spoon","knife")]"
@@ -149,7 +149,7 @@
 				new_item = new /obj/item/weapon/kitchen/utensil/spoon(src.loc)
 			additional_desc = "[pick("It's like no [item_type] you've ever seen before",\
 			"It's a mystery how anyone is supposed to eat with this",\
-			"You wonder what the creator's mouth was shaped like")]."
+			"I wonder what the creator's mouth was shaped like")]."
 		if(ARCHAEO_STATUETTE)
 			item_type = "statuette"
 			icon_state = "statuette"
@@ -161,10 +161,10 @@
 			icon_state = "instrument"
 			if(prob(30))
 				apply_image_decorations = 1
-				additional_desc = "[pick("You're not sure how anyone could have played this",\
-				"You wonder how many mouths the creator had",\
-				"You wonder what it sounds like",\
-				"You wonder what kind of music was made with it")]."
+				additional_desc = "[pick("I am not sure how anyone could have played this",\
+				"I wonder how many mouths the creator had",\
+				"I wonder what it sounds like",\
+				"I wonder what kind of music was made with it")]."
 		if(ARCHAEO_KNIFE)
 			item_type = "[pick("bladed knife","serrated blade","sharp cutting implement")]"
 			new_item = new /obj/item/weapon/kitchen/utensil/knife/large(src.loc)
@@ -228,7 +228,7 @@
 			else
 				new_item = new /obj/item/weapon/screwdriver(src.loc)
 			additional_desc = "[pick("It doesn't look safe.",\
-			"You wonder what it was used for",\
+			"I wonder what it was used for",\
 			"There appear to be [pick("dark red","dark purple","dark green","dark blue")] stains on it")]."
 		if(ARCHAEO_METAL)
 			apply_material_decorations = 0

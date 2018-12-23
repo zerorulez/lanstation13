@@ -30,7 +30,7 @@
 		burstfire = !burstfire
 		if(!burstfire)//fixing a bug where burst fire being toggled on then off would leave the gun unable to shoot at its normal speed.
 			fire_delay = initial(fire_delay)
-		to_chat(usr, "You toggle \the [src]'s firing setting to [burstfire ? "burst fire" : "single fire"].")
+		to_chat(usr, "I toggle \the [src]'s firing setting to [burstfire ? "burst fire" : "single fire"].")
 
 /obj/item/weapon/gun/projectile/automatic/update_icon()
 	..()
@@ -112,7 +112,7 @@
 	automagdrop_delay_time = 0
 	load_method = 2
 
-	gun_flags = AUTOMAGDROP | EMPTYCASINGS
+	gun_flags = EMPTYCASINGS
 
 /obj/item/weapon/gun/projectile/automatic/c20r/update_icon()
 	..()
@@ -137,7 +137,7 @@
 	mag_type = "/obj/item/ammo_storage/magazine/a12mm"
 	fire_sound = 'sound/weapons/Gunshot_c20.ogg'
 	load_method = 2
-	gun_flags = AUTOMAGDROP | EMPTYCASINGS
+	gun_flags = EMPTYCASINGS
 
 /obj/item/weapon/gun/projectile/automatic/xcom/lockbox
 	mag_type = "/obj/item/ammo_storage/magazine/a12mm/empty"
@@ -164,7 +164,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/attack_self(mob/user as mob)
 	cover_open = !cover_open
-	to_chat(user, "<span class='notice'>You [cover_open ? "open" : "close"] [src]'s cover.</span>")
+	to_chat(user, "<span class='notice'>I [cover_open ? "open" : "close"] [src]'s cover.</span>")
 	update_icon()
 
 
@@ -189,7 +189,7 @@
 	else if(cover_open && stored_magazine) //since attack_self toggles the cover and not the magazine, we use this instead
 		//drop the mag
 		RemoveMag(user)
-		to_chat(user, "<span class='notice'>You remove the magazine from [src].</span>")
+		to_chat(user, "<span class='notice'>I remove the magazine from [src].</span>")
 
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/attackby(obj/item/ammo_storage/magazine/a762/A as obj, mob/user as mob)

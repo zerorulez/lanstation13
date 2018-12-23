@@ -45,7 +45,7 @@
 		if(injecting)
 			to_chat(user, "Theres already a fuel rod in the injector!")
 			return
-		to_chat(user, "You insert the rod into the injector")
+		to_chat(user, "I insert the rod into the injector")
 		injecting = 1
 		var/fuel = F.fuel
 		qdel(F)
@@ -59,7 +59,7 @@
 		if(injecting)
 			to_chat(user, "Theres already a fuel rod in the injector!")
 			return
-		to_chat(user, "You insert the rod into the injector")
+		to_chat(user, "I insert the rod into the injector")
 		injecting = 1
 		var/fuel = F.fuel
 		qdel(F)
@@ -113,7 +113,7 @@
 			antiH_fuel = residual_matter
 
 	for(var/mob/M in hearers(src, null))
-		M.show_message(text("<span class='warning'>You hear a loud bang!</span>"))
+		M.show_message(text("<span class='warning'>I hear a loud bang!</span>"))
 
 	//Q = k x (delta T)
 
@@ -166,7 +166,7 @@
 
 		if(energy > convert2energy(8e-12))	//TOO MUCH ENERGY
 			for(var/mob/M in hearers(src, null))
-				M.show_message(text("<span class='warning'>You hear a loud whirring!</span>"))
+				M.show_message(text("<span class='warning'>I hear a loud whirring!</span>"))
 			sleep(20)
 
 			//Q = k x (delta T)

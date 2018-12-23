@@ -155,7 +155,7 @@
 /datum/command_alert/electrical_storm
 	name = "Electrical Storm"
 	alert_title = "Electrical Storm Alert"
-	message = "An Electrical storm has been detected in your area, please repair potential electronic overloads."
+	message = "An Electrical storm has been detected in my area, please repair potential electronic overloads."
 
 ///////SUMMARY DOWNLOADED AND PRINTED AT COMMS
 
@@ -174,7 +174,7 @@
 	message = {"
 There's been a galaxy-wide electromagnetic pulse.  All of our systems are heavily damaged and many personnel are dead or dying. We are seeing increasing indications of the universe itself beginning to unravel.
 
-[station_name()], you are the only facility nearby a bluespace rift, which is near your research outpost.  You are hereby directed to enter the rift using all means necessary, quite possibly as the last humans alive.
+[station_name()], you are the only facility nearby a bluespace rift, which is near my research outpost.  You are hereby directed to enter the rift using all means necessary, quite possibly as the last humans alive.
 
 You have five minutes before the universe collapses. Good l\[\[###!!!-
 
@@ -231,7 +231,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 	name = "AI Malfunctioning Warning"
 	alert_title = "Anomaly Alert"
 	alert = 'sound/AI/aimalf.ogg'
-	message = "Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core."
+	message = "Hostile runtimes detected in all station systems, please deactivate my AI to prevent possible damage to its morality core."
 
 /////////////METEOR STORM
 
@@ -246,9 +246,9 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 /datum/command_alert/meteor_round/announce()
 	meteor_delay = rand(4500, 6000)
 	if(prob(70)) //slightly off-scale
-		message = "A meteor storm has been detected in proximity of [station_name()] and is expected to strike within [round((rand(meteor_delay - 600, meteor_delay + 600))/600)] minutes. A backup emergency shuttle is being dispatched and emergency gear should be teleported into your station's Bar area in [supply_delay/10] seconds."
+		message = "A meteor storm has been detected in proximity of [station_name()] and is expected to strike within [round((rand(meteor_delay - 600, meteor_delay + 600))/600)] minutes. A backup emergency shuttle is being dispatched and emergency gear should be teleported into my station's Bar area in [supply_delay/10] seconds."
 	else
-		message = "A meteor storm has been detected in proximity of [station_name()] and is expected to strike within [round((rand(meteor_delay - 1800, meteor_delay + 1800))/600)] minutes. A backup emergency shuttle is being dispatched and emergency gear should be teleported into your station's Bar area in [supply_delay/10] seconds."
+		message = "A meteor storm has been detected in proximity of [station_name()] and is expected to strike within [round((rand(meteor_delay - 1800, meteor_delay + 1800))/600)] minutes. A backup emergency shuttle is being dispatched and emergency gear should be teleported into my station's Bar area in [supply_delay/10] seconds."
 
 	..()
 
@@ -392,7 +392,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 
 /datum/command_alert/eagles
 	name = "Airlock Access Removed"
-	message = "Centcomm airlock control override activated. Please take this time to get acquainted with your coworkers."
+	message = "Centcomm airlock control override activated. Please take this time to get acquainted with my coworkers."
 
 /datum/command_alert/bluespace_artillery
 	name = "Bluespace Artillery Strike Detected"
@@ -421,7 +421,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 /datum/command_alert/electrical_storm
 	name = "Electrical Storm Alert"
 	alert_title = "Electrical Storm Alert"
-	message = "An electrical storm has been detected in your area, please repair potential electronic overloads."
+	message = "An electrical storm has been detected in my area, please repair potential electronic overloads."
 
 /datum/command_alert/immovable_rod
 	name = "Immovable Rod (\"What The Fuck Was That?\")"

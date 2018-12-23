@@ -1,7 +1,7 @@
 var/global/list/obj/machinery/mirror/mirror_list = list()
 /obj/machinery/mirror
 	name = "mirror"
-	desc = "Looks too expensive and sciencey to mount above your bathroom sink."
+	desc = "Looks too expensive and sciencey to mount above my bathroom sink."
 
 	icon='icons/obj/machines/optical/beamsplitter.dmi'
 	icon_state="mirror" // For alignment when mapping

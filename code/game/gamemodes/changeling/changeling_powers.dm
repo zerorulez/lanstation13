@@ -166,7 +166,7 @@
 	var/atom/movable/overlay/animation = new /atom/movable/overlay( loc )
 	H.visible_message("<span class = 'warning'>[src] emits a putrid odor as their torso splits open!</span>")
 	world << sound('sound/effects/greaterling.ogg')
-	to_chat(world, "<span class = 'sinister'>A roar pierces the air and makes your blood curdle. Uh oh.</span>")
+	to_chat(world, "<span class = 'sinister'>A roar pierces the air and makes my blood curdle. Uh oh.</span>")
 	animation.icon_state = "blank"
 	animation.icon = 'icons/mob/mob.dmi'
 	animation.master = src
@@ -235,7 +235,7 @@
 
 	var/mob/living/carbon/human/H = src
 	if(deny_horror && ishorrorform(H))
-		to_chat(src, "<span class='warning'>You are not permitted to taint our purity.  You cannot do this as a Horror.</span>")
+		to_chat(src, "<span class='warning'>I am not permitted to taint our purity.  You cannot do this as a Horror.</span>")
 		return
 
 	return changeling
@@ -295,7 +295,7 @@
 			if(3)
 				to_chat(src, "<span class='notice'>We stab [T] with the proboscis.</span>")
 				src.visible_message("<span class='danger'>[src] stabs [T] with the proboscis!</span>")
-				to_chat(T, "<span class='danger'>You feel a sharp stabbing pain!</span>")
+				to_chat(T, "<span class='danger'>I feel a sharp stabbing pain!</span>")
 				playsound(get_turf(src), 'sound/effects/lingstabs.ogg', 50, 1)
 				var/datum/organ/external/affecting = T.get_organ(src.zone_sel.selecting)
 				if(affecting.take_damage(39,0,1,"large organic needle"))
@@ -310,7 +310,7 @@
 
 	to_chat(src, "<span class='notice'>We have absorbed [T]!</span>")
 	src.visible_message("<span class='danger'>[src] sucks the fluids from [T]!</span>")
-	to_chat(T, "<span class='danger'>You have been absorbed by the changeling!</span>")
+	to_chat(T, "<span class='danger'>I have been absorbed by the changeling!</span>")
 	playsound(get_turf(src), 'sound/effects/lingabsorbs.ogg', 50, 1)
 	add_attacklogs(src, T, "absorbed")
 
@@ -642,7 +642,7 @@
 /obj/item/verbs/changeling/proc/changeling_boost_range()
 	set category = "Changeling"
 	set name = "Ranged Sting (10)"
-	set desc = "Your next sting ability can be used against targets 2 squares away."
+	set desc = "My next sting ability can be used against targets 2 squares away."
 
 	var/mob/M = loc
 	if(!istype(M))
@@ -650,13 +650,13 @@
 
 	M.changeling_boost_range()
 
-//Boosts the range of your next sting attack by 1
+//Boosts the range of my next sting attack by 1
 /mob/proc/changeling_boost_range()
 	var/datum/changeling/changeling = changeling_power(10,0,100)
 	if(!changeling)
 		return 0
 	changeling.chem_charges -= 10
-	to_chat(src, "<span class='notice'>Your throat adjusts to launch the sting.</span>")
+	to_chat(src, "<span class='notice'>My throat adjusts to launch the sting.</span>")
 	changeling.sting_range = 2
 
 	remove_changeling_verb(/obj/item/verbs/changeling/proc/changeling_boost_range)
@@ -951,7 +951,7 @@ var/list/datum/dna/hivemind_bank = list()
 	to_chat(src, "<span class='notice'>We stealthily sting [T].</span>")
 	if(!T.mind || !T.mind.changeling)
 		return T	//T will be affected by the sting
-	to_chat(T, "<span class='warning'>You feel a tiny prick.</span>")
+	to_chat(T, "<span class='warning'>I feel a tiny prick.</span>")
 	return
 
 /obj/item/verbs/changeling/proc/changeling_lsdsting()
@@ -1008,10 +1008,10 @@ var/list/datum/dna/hivemind_bank = list()
 		return
 
 	if(target.disabilities & NEARSIGHTED)
-		to_chat(target, "<span class='userdanger'>Your eyes burn terribly!</span>")
+		to_chat(target, "<span class='userdanger'>My eyes burn terribly!</span>")
 		return
 
-	to_chat(target, "<span class='userdanger'>Your eyes burn terribly and you lose the ability to see!</span>")
+	to_chat(target, "<span class='userdanger'>My eyes burn terribly and you lose the ability to see!</span>")
 	target.disabilities |= NEARSIGHTED
 	spawn(300)
 		target.disabilities &= ~NEARSIGHTED
@@ -1036,7 +1036,7 @@ var/list/datum/dna/hivemind_bank = list()
 		return
 
 	if(target.disabilities & DEAF)
-		to_chat(target, "<span class='info'>You feel a weird sensation in your ears.</span>")
+		to_chat(target, "<span class='info'>I feel a weird sensation in my ears.</span>")
 		return
 
 	to_chat(target, "<span class='notice'>The world around you suddenly becomes quiet.</span>")
@@ -1060,7 +1060,7 @@ var/list/datum/dna/hivemind_bank = list()
 	if(!target)
 		return
 
-	to_chat(target, "<span class='userdanger'>Your muscles begin to painfully tighten.</span>")
+	to_chat(target, "<span class='userdanger'>My muscles begin to painfully tighten.</span>")
 	target.Knockdown(20)
 	feedback_add_details("changeling_powers", "PS")
 	return 1
@@ -1120,11 +1120,11 @@ var/list/datum/dna/hivemind_bank = list()
 		return
 
 	if(target.overeatduration > 100)
-		to_chat(target, "<span class='danger'>You feel a tiny prick as your stomach churns violently. You begin to feel skinnier.</span>")
+		to_chat(target, "<span class='danger'>I feel a tiny prick as my stomach churns violently. You begin to feel skinnier.</span>")
 		target.overeatduration = 0
 		target.nutrition = max(target.nutrition - 200, 0)
 	else
-		to_chat(target, "<span class='notice'>You feel a tiny prick. Nothing happens.</span>")
+		to_chat(target, "<span class='notice'>I feel a tiny prick. Nothing happens.</span>")
 
 	feedback_add_details("changeling_powers", "US")
 	return 1
@@ -1142,7 +1142,7 @@ var/list/datum/dna/hivemind_bank = list()
 	if(!target)
 		return
 
-	to_chat(target, "<span class='userdanger'>You feel a tiny prick. Your chest starts tightening.</span>")
+	to_chat(target, "<span class='userdanger'>I feel a tiny prick. My chest starts tightening.</span>")
 	target.silent = 10
 	target.Paralyse(10)
 	target.Jitter(1000)
@@ -1203,7 +1203,7 @@ var/list/datum/dna/hivemind_bank = list()
 	for(var/obj/item/weapon/armblade/W in src)
 		visible_message("<span class='warning'>With a sickening crunch, [src] reforms their arm blade into an arm!</span>",
 		"<span class='notice'>We assimilate the weapon back into our body.</span>",
-		"<span class='italics'>You hear organic matter ripping and tearing!</span>")
+		"<span class='italics'>I hear organic matter ripping and tearing!</span>")
 		playsound(src, 'sound/weapons/bloodyslice.ogg', 30, 1)
 		qdel(W)
 		return 1
@@ -1223,7 +1223,7 @@ var/list/datum/dna/hivemind_bank = list()
 		put_in_hand(good_hand, A)
 		H.visible_message("<span class='warning'>A grotesque blade forms around [name]\'s arm!</span>",
 			"<span class='warning'>Our arm twists and mutates, transforming it into a deadly blade.</span>",
-			"<span class='italics'>You hear organic matter ripping and tearing!</span>")
+			"<span class='italics'>I hear organic matter ripping and tearing!</span>")
 		playsound(H, 'sound/weapons/bloodyslice.ogg', 30, 1)
 		changeling.chem_charges -= 20
 		feedback_add_details("changeling_powers","AB")

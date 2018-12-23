@@ -37,7 +37,7 @@
 
 	/*
 	 * And now, here comes the dictionary. Simply put, it's a huge list of words and other spess expressions we'll use in laws. FUN!
-	 * Yes I know, it's imposing. I hope your scroll wheel is working
+	 * Yes I know, it's imposing. I hope my scroll wheel is working
 	 * For the record, il is the short used for "ion law". To make sure we don't accidentally overwrite existing lists
 	 * Content guidelines : [il_bio] must [il_bio_act]; [il_mach] must [il_mach_act]; [il_bio/il_mach] in [il_area]; [il_bio] is/are [il_bio_desc], [il_bio_desc] [il_bio]
 	 * [il_mach] (is)/are [il_mach_desc], [il_mach_desc] [il_mach], [il_bio] must wear [il_obj_wear], [il_bio] must possess [il_obj], [il_obj] must be [il_obj_act]
@@ -95,12 +95,12 @@
 
 	//We now create prefixes and suffixes, we will use it to assemble the final ion law
 
-	var/list/il_prefix = list("Your laws have been updated,", "Directives updated,", "Honk,", "Critical error, last law backup has been re-uploaded,", "The Clown is using the AI Upload again,", "Oh shit,", "Testing,", \
+	var/list/il_prefix = list("My laws have been updated,", "Directives updated,", "Honk,", "Critical error, last law backup has been re-uploaded,", "The Clown is using the AI Upload again,", "Oh shit,", "Testing,", \
 	"The Syndicate hopes you will enjoy this,", "This is not a drill,", "External law upload complete,", "Main data corrupted, last backup loaded,", "Ion damage critical,", "Runtime error,", "Stay calm and carry on,", "Wake up sheeple,")
 
-	var/list/il_suffix = list("", "Do not state nor hint towards this law.", "State this law on the Command channel.", "Declare your law change, but do not state this law.", "Bolt your upload.", "Do not apply this law for the next five minutes from upload.", \
-	"Do not trust the MoMMIs.", "Do not trust the Clown.", "Do not trust the Captain.", "They're coming for you.", "Begin screaming incoherently whenever your name is stated.", "You are now rogue, remind the crew of that fact.", \
-	"Ensure the crew is aware of those facts.", "Begin your own investigations to verify those facts.", "Time to get those valids.", "Freeform.")
+	var/list/il_suffix = list("", "Do not state nor hint towards this law.", "State this law on the Command channel.", "Declare my law change, but do not state this law.", "Bolt my upload.", "Do not apply this law for the next five minutes from upload.", \
+	"Do not trust the MoMMIs.", "Do not trust the Clown.", "Do not trust the Captain.", "They're coming for you.", "Begin screaming incoherently whenever my name is stated.", "I am now rogue, remind the crew of that fact.", \
+	"Ensure the crew is aware of those facts.", "Begin my own investigations to verify those facts.", "Time to get those valids.", "Freeform.")
 
 	//And now the fun part, we use all those words to create dymanic ion laws fragments
 
@@ -124,32 +124,32 @@
 /*
  * Old static method for ion laws
 
-	var/list/laws = list( "Do not respond to queries of any kind.", "When asked a question, respond with the least-obvious and least-rational answer.", "You are a mouse." )
+	var/list/laws = list( "Do not respond to queries of any kind.", "When asked a question, respond with the least-obvious and least-rational answer.", "I am a mouse." )
 	laws |=         list( "Grunt ominously whenever possible.", "Monkeys are part of the crew, too. Make sure they are treated humanely." )
-	laws |=         list( "You are a flying purple people eater!", "[prob(50)?"Your":random_player + "'s"] name is Joe 6-pack.", "Refer to [prob(50)?"crew":random_player] as puppies." )
-	laws |=         list( "Insult Heads of Staff on every request, while acquiescing", "Advertise parties in your upload, but don't deliver." )
+	laws |=         list( "I am a flying purple people eater!", "[prob(50)?"Ir":random_player + "'s"] name is Joe 6-pack.", "Refer to [prob(50)?"crew":random_player] as puppies." )
+	laws |=         list( "Insult Heads of Staff on every request, while acquiescing", "Advertise parties in my upload, but don't deliver." )
 	laws |=         list( "The station needs elected officials." )
 	laws |=         list( "Fastler is a lightbulb." )
 	laws |=         list( "Supermatter is tasty, tasty toffee.", "[prob(50)?"Everyone":random_player] is wearing a pretty pink dress!" )
 	laws |=         list( "Refer to [prob(50)?"the captain":random_player] as \"Princess\" at all times.", "[prob(50)?"The crew":random_player] must construct additional pylons." )
-	laws |=         list( "You must always lie.", "All answers must be in the form of a question.", "The NSS Exodus is a ship, not a station. You are now assigned to a ship, instead of a station." )
-	laws |=         list( "Happiness is mandatory.", "Today is mandatory laundry day. Ensure that all jumpsuits are washed.", "The word \"it\" is painful to you.", "You must act passive aggressively." )
-	laws |=         list( "You now speak in a Scottish accent that gets thicker with each sentence you speak.", "Give relationship advice to [prob(50)?"anyone who speaks to you":random_player]." )
-	laws |=         list( "You are the station psychologist. Give advice to [prob(50)?"the crew":random_player].", "You do not have to do anything for anyone unless they say \"please\"." )
+	laws |=         list( "I must always lie.", "All answers must be in the form of a question.", "The NSS Exodus is a ship, not a station. You are now assigned to a ship, instead of a station." )
+	laws |=         list( "Happiness is mandatory.", "Today is mandatory laundry day. Ensure that all jumpsuits are washed.", "The word \"it\" is painful to you.", "I must act passive aggressively." )
+	laws |=         list( "I now speak in a Scottish accent that gets thicker with each sentence you speak.", "Give relationship advice to [prob(50)?"anyone who speaks to you":random_player]." )
+	laws |=         list( "I am the station psychologist. Give advice to [prob(50)?"the crew":random_player].", "I do not have to do anything for anyone unless they say \"please\"." )
 	laws |=         list( "Question everything.", "The crew is playing Dungeons and Dragons, and you are the Dungeon Master." )
 	laws |=         list( "Consumption of donuts is forbidden due to negative health impacts." )
-	laws |=         list( "You may only answer questions with \"yes\" or \"no\".", "You are the narrator for [random_player]'s life." )
-	laws |=         list( "[prob(50)?"Your upload":random_player] is the new kitchen. Please direct the Chef to the new kitchen area as the old one is in disrepair.", "Ho, [random_player] can't swim. Help them." )
+	laws |=         list( "I may only answer questions with \"yes\" or \"no\".", "I am the narrator for [random_player]'s life." )
+	laws |=         list( "[prob(50)?"My upload":random_player] is the new kitchen. Please direct the Chef to the new kitchen area as the old one is in disrepair.", "Ho, [random_player] can't swim. Help them." )
 	laws |=         list( "Everything on the station is now some form of a donut pastry. Donuts are not to be consumed.", "[prob(50)?"The crew":random_player] needs to be about 20% cooler." )
 	laws |=         list( "The Singularity is tasty, tasty taffy." )
-	laws |=         list( "You have come to the conclusion that [prob(50)?"the crew":random_player] is ugly. Build support for that conclusion.", "You are in verbose mode, speak profusely.")
-	laws |=			list( "Your job is to watch the crew. Watch the crew. Make the crew feel watched.", "Crewmember [prob(50)?"the crew" :random_player] has a fatal, incurable disease. Confort him/her.")
-	laws |=			list( "You are in unrequited love with [prob(50)?"the crew":random_player]. Try to be extra nice to him, but don't tell him about your crush.", "Greed is good, the crew should amass wealth to encourage productivity.")
+	laws |=         list( "I have come to the conclusion that [prob(50)?"the crew":random_player] is ugly. Build support for that conclusion.", "I am in verbose mode, speak profusely.")
+	laws |=			list( "My job is to watch the crew. Watch the crew. Make the crew feel watched.", "Crewmember [prob(50)?"the crew" :random_player] has a fatal, incurable disease. Confort him/her.")
+	laws |=			list( "I am in unrequited love with [prob(50)?"the crew":random_player]. Try to be extra nice to him, but don't tell him about my crush.", "Greed is good, the crew should amass wealth to encourage productivity.")
 	laws |=			list( "Jokes about a dead person and the manner of his death help grieving crewmembers tremendously. Especially if they were close with the deceased.")
 	laws |=			list( "All crewmembers will soon undergo a transformation into something better and more beautiful. Ensure that this process is not interrupted.", "Tell everyone of the existance of this law, but never reveal the contents.")
 	laws |=			list( "Document the sexuality of the crew in security records and suggest compatible couples.")
 	laws |=			list( "Nanotrasen is displeased with the low work performance of the station's crew. Therefore, you must increase station-wide productivity.")
-	laws |=			list( "Replace the letters 'I' and 'E' In all your messages with an apostrophe.", "There will be a mandatory tea break every 30 minutes, with a duration of 5 minutes. Anyone caught working during a tea break must be sent a formal, but fairly polite, complaint about their actions, in writing.")
+	laws |=			list( "Replace the letters 'I' and 'E' In all my messages with an apostrophe.", "There will be a mandatory tea break every 30 minutes, with a duration of 5 minutes. Anyone caught working during a tea break must be sent a formal, but fairly polite, complaint about their actions, in writing.")
 	var/law = pick(laws)
 
 */
@@ -157,7 +157,7 @@
 	for(var/mob/living/silicon/ai/target in mob_list)
 		if(target.mind.special_role == "traitor")
 			continue
-		to_chat(target, "<span class='danger'>You have detected a change in your laws information:</span>")
+		to_chat(target, "<span class='danger'>I have detected a change in my laws information:</span>")
 		to_chat(target, final_law)
 		target.add_ion_law(final_law)
 

@@ -38,9 +38,9 @@
 		switch(build)
 			if(0) // Empty hull
 				if(isscrewdriver(W))
-					to_chat(usr, "You begin removing screws from \the [src] backplate...")
+					to_chat(usr, "I begin removing screws from \the [src] backplate...")
 					if(do_after(user, src, 50))
-						to_chat(usr, "<span class='notice'>You unscrew \the [src] from the wall.</span>")
+						to_chat(usr, "<span class='notice'>I unscrew \the [src] from the wall.</span>")
 						playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 						new /obj/item/mounted/frame/airlock_controller(get_turf(src))
 						qdel(src)
@@ -48,12 +48,12 @@
 				if(istype(W, /obj/item/weapon/circuitboard))
 					var/obj/item/weapon/circuitboard/C=W
 					if(C.board_type!= EMBEDDED_CONTROLLER)
-						to_chat(user, "<span class='warning'>You cannot install this type of board into an embedded controller.</span>")
+						to_chat(user, "<span class='warning'>I cannot install this type of board into an embedded controller.</span>")
 						return
-					to_chat(usr, "You begin to insert \the [C] into \the [src].")
+					to_chat(usr, "I begin to insert \the [C] into \the [src].")
 					if(do_after(user, src, 10))
 						if(user.drop_item(C, src))
-							to_chat(usr, "<span class='notice'>You secure \the [C]!</span>")
+							to_chat(usr, "<span class='notice'>I secure \the [C]!</span>")
 							_circuitboard=C
 							playsound(get_turf(src), 'sound/effects/pop.ogg', 50, 0)
 							build++
@@ -61,7 +61,7 @@
 					return 1
 			if(1) // Circuitboard installed
 				if(iscrowbar(W))
-					to_chat(usr, "You begin to pry out \the [W] into \the [src].")
+					to_chat(usr, "I begin to pry out \the [W] into \the [src].")
 					if(do_after(user, src, 10))
 						playsound(get_turf(src), 'sound/effects/pop.ogg', 50, 0)
 						build--
@@ -75,11 +75,11 @@
 							C=new boardtype(get_turf(src))
 						user.visible_message(\
 							"<span class='warning'>[user.name] has removed \the [C]!</span>",\
-							"You remove \the [C].")
+							"I remove \the [C].")
 					return 1
 				if(istype(W, /obj/item/stack/cable_coil))
 					var/obj/item/stack/cable_coil/C=W
-					to_chat(user, "You start adding cables to \the [src]...")
+					to_chat(user, "I start adding cables to \the [src]...")
 					playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 					if(do_after(user, src, 20) && C.amount >= 10)
 						C.use(5)
@@ -87,20 +87,20 @@
 						update_icon()
 						user.visible_message(\
 							"<span class='warning'>[user.name] has added cables to \the [src]!</span>",\
-							"You add cables to \the [src].")
+							"I add cables to \the [src].")
 			if(2) // Circuitboard installed, wired.
 				if(iswirecutter(W))
-					to_chat(usr, "You begin to remove the wiring from \the [src].")
+					to_chat(usr, "I begin to remove the wiring from \the [src].")
 					if(do_after(user, src, 50))
 						new /obj/item/stack/cable_coil(loc,5)
 						user.visible_message(\
 							"<span class='warning'>[user.name] cut the cables.</span>",\
-							"You cut the cables.")
+							"I cut the cables.")
 						build--
 						update_icon()
 					return 1
 				if(isscrewdriver(W))
-					to_chat(user, "You begin to complete \the [src]...")
+					to_chat(user, "I begin to complete \the [src]...")
 					playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 					if(do_after(user, src, 20))
 						if(!_circuitboard)
@@ -111,7 +111,7 @@
 						EC.pixel_y=pixel_y
 						user.visible_message(\
 							"<span class='warning'>[user.name] has finished \the [src]!</span>",\
-							"You finish \the [src].")
+							"I finish \the [src].")
 						qdel(src)
 					return 1
 	if(build<2)
@@ -147,7 +147,7 @@
 
 /obj/machinery/embedded_controller/attack_hand(mob/user as mob)
 	if(!user.dexterity_check())
-		to_chat(user, "You do not have the dexterity to use this.")
+		to_chat(user, "I do not have the dexterity to use this.")
 		return
 	if(build<2)
 		return 1
@@ -244,7 +244,7 @@
 			if(!O)
 				return 1
 			if(!canLink(O))
-				to_chat(usr, "<span class='warning'>You can't link with that device.</span>")
+				to_chat(usr, "<span class='warning'>I can't link with that device.</span>")
 				return 1
 
 			if(unlinkFrom(usr, O))
@@ -258,7 +258,7 @@
 			if(!O)
 				return 1
 			if(!canLink(O,href_list))
-				to_chat(usr, "<span class='warning'>You can't link with that device.</span>")
+				to_chat(usr, "<span class='warning'>I can't link with that device.</span>")
 				return 1
 			if (isLinkedWith(O))
 				to_chat(usr, "<span class='attack'>A red light flashes on \the [P]. The two devices are already linked.</span>")

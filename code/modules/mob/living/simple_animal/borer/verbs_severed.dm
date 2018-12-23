@@ -2,7 +2,7 @@
 /obj/item/verbs/borer/severed/verb/abandon_host()
 	set category = "Alien"
 	set name = "Abandon Host"
-	set desc = "Slither out of your host."
+	set desc = "Slither out of my host."
 
 	var/mob/living/simple_animal/borer/B=loc
 	if(!istype(B))
@@ -12,7 +12,7 @@
 /obj/item/verbs/borer/severed/verb/borer_speak(var/message as text)
 	set category = "Alien"
 	set name = "Borer Speak"
-	set desc = "Communicate with your bretheren"
+	set desc = "Communicate with my bretheren"
 
 	if(!message)
 		return

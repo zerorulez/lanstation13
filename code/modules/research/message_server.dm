@@ -95,7 +95,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	if(isobserver(user) && !isAdminGhost(user))
 		return 0
 //	to_chat(user, "<span class='notice'>There seem to be some parts missing from this server. They should arrive on the station in a few days, give or take a few CentCom delays.</span>")
-	to_chat(user, "You toggle PDA message passing from [disabled ? "Off" : "On"] to [disabled ? "On" : "Off"]")
+	to_chat(user, "I toggle PDA message passing from [disabled ? "Off" : "On"] to [disabled ? "On" : "Off"]")
 	disabled = !disabled
 	update_icon()
 

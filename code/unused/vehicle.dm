@@ -162,7 +162,7 @@
 
 		if ((H.pulling && !(H.pulling.anchored)))
 			if (src.one_person_only && !(istype(H.pulling, /obj/item/weapon)))
-				to_chat(usr, "You may only place items in.")
+				to_chat(usr, "I may only place items in.")
 			else
 				H.pulling.forceMove(src)
 				if (ismob(H.pulling))

@@ -52,11 +52,11 @@
 				var/obj/item/stack/cable_coil/C = P
 				if(C.amount >= 5)
 					playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-					to_chat(user, "<span class='notice'>You start to add cables to the frame.</span>")
+					to_chat(user, "<span class='notice'>I start to add cables to the frame.</span>")
 					if(do_after(user, src, 20))
 						if(C && C.amount >= 5) // Check again
 							C.use(5)
-							to_chat(user, "<span class='notice'>You add cables to the frame.</span>")
+							to_chat(user, "<span class='notice'>I add cables to the frame.</span>")
 							set_build_state(2)
 			else if(istype(P, /obj/item/stack/sheet/glass/glass))
 				var/obj/item/stack/sheet/glass/glass/G=P
@@ -64,7 +64,7 @@
 					to_chat(user, "<span class='warning'>How...?</span>")
 					return
 				G.use(1)
-				to_chat(user, "<span class='notice'>You add the glass to the frame.</span>")
+				to_chat(user, "<span class='notice'>I add the glass to the frame.</span>")
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 				new /obj/structure/displaycase_frame(src.loc)
 				qdel(src)
@@ -72,7 +72,7 @@
 			else
 				if(iswrench(P))
 					playsound(get_turf(src), 'sound/items/Ratchet.ogg', 75, 1)
-					to_chat(user, "<span class='notice'>You dismantle the frame.</span>")
+					to_chat(user, "<span class='notice'>I dismantle the frame.</span>")
 					//new /obj/item/stack/sheet/metal(src.loc, 5)
 					var/obj/item/stack/sheet/metal/M = getFromPool(/obj/item/stack/sheet/metal, src.loc)
 					M.amount = 5
@@ -83,11 +83,11 @@
 					var/obj/item/weapon/circuitboard/B = P
 					if(B.board_type == MACHINE)
 						if(!user.drop_item(B, src))
-							user << "<span class='warning'>You can't let go of \the [B]!</span>"
+							user << "<span class='warning'>I can't let go of \the [B]!</span>"
 							return
 
 						playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-						to_chat(user, "<span class='notice'>You add the circuit board to the frame.</span>")
+						to_chat(user, "<span class='notice'>I add the circuit board to the frame.</span>")
 						circuit = P
 						set_build_state(3)
 						components = list()
@@ -114,7 +114,7 @@
 				else
 					if(iswirecutter(P))
 						playsound(get_turf(src), 'sound/items/Wirecutter.ogg', 50, 1)
-						to_chat(user, "<span class='notice'>You remove the cables.</span>")
+						to_chat(user, "<span class='notice'>I remove the cables.</span>")
 						set_build_state(1)
 						var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( src.loc )
 						A.amount = 5
@@ -127,9 +127,9 @@
 					circuit.forceMove(src.loc)
 					circuit = null
 					if(components.len == 0)
-						to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
+						to_chat(user, "<span class='notice'>I remove the circuit board.</span>")
 					else
-						to_chat(user, "<span class='notice'>You remove the circuit board and other components.</span>")
+						to_chat(user, "<span class='notice'>I remove the circuit board and other components.</span>")
 						for(var/obj/item/weapon/W in components)
 							W.forceMove(src.loc)
 					desc = initial(desc)
@@ -205,7 +205,7 @@
 												update_desc()
 												break
 											else
-												to_chat(user, "<span class='warning'>You do not have enough [P]!</span>")
+												to_chat(user, "<span class='warning'>I do not have enough [P]!</span>")
 
 										if(user.drop_item(P, src))
 											components += P
@@ -215,7 +215,7 @@
 								to_chat(user, desc)
 
 								if(P && P.loc != src && !istype(P, /obj/item/stack/cable_coil))
-									to_chat(user, "<span class='warning'>You cannot add that component to the machine!</span>")
+									to_chat(user, "<span class='warning'>I cannot add that component to the machine!</span>")
 
 /obj/machinery/constructable_frame/machine_frame/proc/set_build_state(var/state)
 	build_state = state
@@ -277,7 +277,7 @@ to destroy them and players will be able to make replacements.
 		if(do_after(user, src,40))
 			var/boardType = allowed_boards[t]
 			var/obj/item/I = new boardType(get_turf(user))
-			to_chat(user, "<span class='notice'>You fashion a crude [I] from the blank circuitboard.</span>")
+			to_chat(user, "<span class='notice'>I fashion a crude [I] from the blank circuitboard.</span>")
 			qdel(src)
 			user.put_in_hands(I)
 		soldering = 0

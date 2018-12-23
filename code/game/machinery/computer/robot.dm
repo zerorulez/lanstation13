@@ -32,7 +32,7 @@
 	if(..())
 		return
 	if (src.z > 6)
-		to_chat(user, "<span class='danger'>Unable to establish a connection: </span>You're too far away from the station!")
+		to_chat(user, "<span class='danger'>Unable to establish a connection: </span>I am too far away from the station!")
 		return
 	user.set_machine(src)
 	var/dat
@@ -188,11 +188,11 @@
 							if (R.lockcharge)
 							//	R.cell.charge = R.lockcharge
 								R.lockcharge = !R.lockcharge
-								to_chat(R, "Your lockdown has been lifted!")
+								to_chat(R, "My lockdown has been lifted!")
 							else
 								R.lockcharge = !R.lockcharge
 						//		R.cell.charge = 0
-								to_chat(R, "You have been locked down!")
+								to_chat(R, "I have been locked down!")
 
 			else
 				to_chat(usr, "<span class='warning'>Access Denied.</span>")
@@ -236,4 +236,4 @@
 /obj/machinery/computer/robotics/emag(mob/user)
 	..()
 	req_access = list()
-	to_chat(user, "You disable the console's access requirement.")
+	to_chat(user, "I disable the console's access requirement.")

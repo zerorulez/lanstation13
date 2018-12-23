@@ -25,7 +25,7 @@
 			continue
 		if(istype(X, /mob/living) && X.Adjacent(holder))
 			var/mob/living/L = X
-			to_chat(L, "<span class='warning'>You are [pull_strength >= STAGE_FOUR ? "painfully crushed onto" : "pulled against"] \the [holder]!</span>")
+			to_chat(L, "<span class='warning'>I am [pull_strength >= STAGE_FOUR ? "painfully crushed onto" : "pulled against"] \the [holder]!</span>")
 			if(pull_strength >= STAGE_FOUR)
 				L.take_overall_damage(10)
 			continue

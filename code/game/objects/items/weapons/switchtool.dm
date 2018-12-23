@@ -53,7 +53,7 @@
 		return
 
 	if(deployed)
-		to_chat(user, "You store \the [deployed].")
+		to_chat(user, "I store \the [deployed].")
 		undeploy()
 	else
 		choose_deploy(user)
@@ -98,7 +98,7 @@
 			else
 				if(user.drop_item(used_item, src))
 					stored_modules[module] = used_item
-					to_chat(user, "You successfully load \the [used_item] into \the [src]'s [get_module_name(module)] slot.")
+					to_chat(user, "I successfully load \the [used_item] into \the [src]'s [get_module_name(module)] slot.")
 					return 1
 
 /obj/item/weapon/switchtool/proc/remove_module(mob/user)
@@ -108,7 +108,7 @@
 		if(stored_modules[module] == deployed)
 			stored_modules[module] = null
 			break
-	to_chat(user, "You successfully remove \the [deployed] from \the [src].")
+	to_chat(user, "I successfully remove \the [deployed] from \the [src].")
 	playsound(get_turf(src), "sound/items/screwdriver.ogg", 10, 1)
 	undeploy()
 	return 1
@@ -148,7 +148,7 @@
 
 	else if(potential_modules.len == 1)
 		deploy(potential_modules[1])
-		to_chat(user, "You deploy \the [potential_modules[1]]")
+		to_chat(user, "I deploy \the [potential_modules[1]]")
 		return 1
 
 	else
@@ -160,7 +160,7 @@
 					true_module = checkmodule
 					break
 			if(deploy(true_module))
-				to_chat(user, "You deploy \the [deployed].")
+				to_chat(user, "I deploy \the [deployed].")
 			return 1
 		return
 

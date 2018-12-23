@@ -85,8 +85,8 @@
 			return
 		add_fingerprint(user)
 		user.visible_message("<span class='notice'>[user] honks at [src].</span>", \
-		"<span class='notice'>You honk at [src].</span>", \
-		"<span class='notice'>You hear honking.</span>")
+		"<span class='notice'>I honk at [src].</span>", \
+		"<span class='notice'>I hear honking.</span>")
 		playsound(get_turf(src), W.hitsound, 50, 1)
 		if(reagents.get_reagent_amount(BANANA) <= 5 && max_health < HEALTH_FOR_FREE_MOVEMENT)
 			if(activated)
@@ -141,7 +141,7 @@
 		qdel(W)
 	else if(istype(W, /obj/item/stack/sheet/mineral/clown)) //Bananium sheets
 		if(max_health >= max_health_top) //There's a point where the magic doesn't work anymore, sadly
-			to_chat(user, "<span class='notice'>You fail to reinforce [src] any further.</span>")
+			to_chat(user, "<span class='notice'>I fail to reinforce [src] any further.</span>")
 			return
 
 		visible_message("<span class='notice'>[user] reinforces [src] with [W].</span>")
@@ -150,7 +150,7 @@
 
 		switch(max_health)
 			if(HEALTH_FOR_FLOWER_RECHARGE)
-				to_chat(user, "You can now recharge your water flower using [src]'s HONKTech pump.")
+				to_chat(user, "I can now recharge my water flower using [src]'s HONKTech pump.")
 			if(HEALTH_FOR_70X_MODIFIER)
 				to_chat(user, "\The [src] will now convert food into banana essence a bit more effectively.")
 			if(HEALTH_FOR_80X_MODIFIER)
@@ -161,7 +161,7 @@
 		var/obj/item/stack/ST = W
 		ST.use(1)
 	else if(istype(W, /obj/item/weapon/coin/clown)) //Bananium coin
-		user.visible_message("<span class='warning'>[user] inserts a bananium coin into [src].</span>", "<span class='notice'>You insert a bananium coin into [src].</span>")
+		user.visible_message("<span class='warning'>[user] inserts a bananium coin into [src].</span>", "<span class='notice'>I insert a bananium coin into [src].</span>")
 		playsound(get_turf(src), 'sound/machines/ping.ogg', 50, 1)
 		mode += 1
 		if(mode > 2) //only 3 modes, so when it raises above 2 reset to 0
@@ -179,7 +179,7 @@
 				visible_message("<span class='warning'>[src]'s SmartCrayon Mk.II disappears in a puff of art!</span>")
 				spawn(5)
 					playsound(get_turf(src), 'sound/machines/ping.ogg', 50, 1)
-					visible_message("<span class='notice'>You hear a ping as [src]'s SynthPeel Generator starts transforming banana juice into slippery peels.</span>")
+					visible_message("<span class='notice'>I hear a ping as [src]'s SynthPeel Generator starts transforming banana juice into slippery peels.</span>")
 					playsound(get_turf(src), 'sound/machines/ping.ogg', 50, 1)
 		qdel(W)
 		W = null
@@ -199,7 +199,7 @@
 				else
 					to_chat(user, "<span class='notice'>Set to print the following text: [printing_text].</span>")
 	else if(istype(W, /obj/item/toy/waterflower)) //Water flower
-		to_chat(user, "<span class='notice'>You plug [W] into [src]!</span>")//Using it on the clown cart will transfer anything in the fuel tank (other than banana juice) into the flower
+		to_chat(user, "<span class='notice'>I plug [W] into [src]!</span>")//Using it on the clown cart will transfer anything in the fuel tank (other than banana juice) into the flower
 
 		if(max_health >= HEALTH_FOR_FLOWER_RECHARGE)
 			if(do_after(user, src, 5))
@@ -294,7 +294,7 @@
 				new /obj/item/weapon/bananapeel/traitorpeel/(old_pos)
 				reagents.remove_reagent(BANANA,BANANA_FOR_TRAITOR_PEEL)
 	else
-		to_chat(user, "<span class='notice'>You have to honk to be able to ride [src].</span>")
+		to_chat(user, "<span class='notice'>I have to honk to be able to ride [src].</span>")
 
 /obj/structure/bed/chair/vehicle/clowncart/die()
 	destroyed = 1

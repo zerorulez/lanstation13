@@ -68,7 +68,7 @@
 			if(do_after(user, src,40))
 				playsound(loc, 'sound/items/Welder.ogg', 100, 1)
 				broken = 0
-				to_chat(user, "<span class='notice'>You repair the electronics inside the locking mechanism!</span>")
+				to_chat(user, "<span class='notice'>I repair the electronics inside the locking mechanism!</span>")
 				src.icon_state = src.icon_closed
 		else
 			to_chat(user, "<span class='notice'>The locker appears to be broken.</span>")
@@ -80,18 +80,18 @@
 		icon_state = icon_off
 		flick(icon_broken, src)
 		for(var/mob/O in viewers(user, 3))
-			O.show_message("<span class='warning'>The locker has been broken by [user] with an electromagnetic card!</span>", 1, "You hear a faint electrical spark.", 2)
+			O.show_message("<span class='warning'>The locker has been broken by [user] with an electromagnetic card!</span>", 1, "I hear a faint electrical spark.", 2)
 		update_icon()
 	else
 		if(istype(W, /obj/item/weapon/weldingtool))
 			var/obj/item/weapon/weldingtool/WT = W
 			if(!WT.remove_fuel(0,user))
-				to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+				to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
 				return
 			src.welded =! src.welded
 			src.update_icon()
 			for(var/mob/M in viewers(src))
-				M.show_message("<span class='warning'>[src] has been [welded?"welded shut":"unwelded"] by [user.name].</span>", 1, "You hear welding.", 2)
+				M.show_message("<span class='warning'>[src] has been [welded?"welded shut":"unwelded"] by [user.name].</span>", 1, "I hear welding.", 2)
 		else
 			togglelock(user)
 

@@ -73,7 +73,7 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 /obj/machinery/atmospherics/unary/cryo_cell/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
 	if(!ismob(O)) //humans only
 		return
-	if(O.loc == user) //no you can't pull things out of your ass
+	if(O.loc == user) //no you can't pull things out of my ass
 		return
 	if(user.incapacitated() || user.lying) //are you cuffed, dying, lying, stunned or other
 		return
@@ -93,7 +93,7 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 	if(isrobot(user))
 		var/mob/living/silicon/robot/robit = usr
 		if(istype(robit) && !istype(robit.module, /obj/item/weapon/robot_module/medical))
-			to_chat(user, "<span class='warning'>You do not have the means to do this!</span>")
+			to_chat(user, "<span class='warning'>I do not have the means to do this!</span>")
 			return
 	var/mob/living/L = O
 	if(!istype(L) || L.locked_to)
@@ -122,7 +122,7 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 	if(isrobot(usr))
 		var/mob/living/silicon/robot/robit = usr
 		if(istype(robit) && !istype(robit.module, /obj/item/weapon/robot_module/medical))
-			to_chat(usr, "<span class='warning'>You do not have the means to do this!</span>")
+			to_chat(usr, "<span class='warning'>I do not have the means to do this!</span>")
 			return
 	if(!istype(over_location) || over_location.density)
 		return
@@ -184,7 +184,7 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 	..()
 	if(Adjacent(user))
 		if(contents.len)
-			to_chat(user, "You can just about make out some properties of the cryo's murky depths:")
+			to_chat(user, "I can just about make out some properties of the cryo's murky depths:")
 			for(var/atom/movable/floater in (contents - beaker))
 				to_chat(user, "A figure floats in the depths, they appear to be [floater.name]")
 			if(beaker)
@@ -337,7 +337,7 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 			return
 		if(user.drop_item(G, src))
 			beaker =  G
-			user.visible_message("[user] adds \a [G] to \the [src]!", "You add \a [G] to \the [src]!")
+			user.visible_message("[user] adds \a [G] to \the [src]!", "I add \a [G] to \the [src]!")
 			investigation_log(I_CHEMS, "was loaded with \a [G] by [key_name(user)], containing [G.reagents.get_reagent_ids(1)]")
 	if(iswrench(G))//FUCK YOU PARENT, YOU AREN'T MY REAL DAD
 		return
@@ -517,7 +517,7 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 	M.forceMove(src)
 	M.reset_view()
 	if(M.health > -100 && (M.health < 0 || M.sleeping))
-		to_chat(M, "<span class='bnotice'>You feel a cold liquid surround you. Your skin starts to freeze up.</span>")
+		to_chat(M, "<span class='bnotice'>I feel a cold liquid surround you. Your skin starts to freeze up.</span>")
 	occupant = M
 	//M.metabslow = 1
 	add_fingerprint(usr)
@@ -553,7 +553,7 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 		return
 	for(var/mob/living/carbon/slime/M in range(1,usr))
 		if(M.Victim == usr)
-			to_chat(usr, "You're too busy getting your life sucked out of you.")
+			to_chat(usr, "I am too busy getting my life sucked out of you.")
 			return
 	if (usr.isUnconscious() || stat & (NOPOWER|BROKEN))
 		return

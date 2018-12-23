@@ -98,7 +98,7 @@
 	else if (iswrench(W))
 		if(connected_port)
 			disconnect()
-			to_chat(user, "<span class='notice'>You disconnect [name] from the port.</span>")
+			to_chat(user, "<span class='notice'>I disconnect [name] from the port.</span>")
 			update_icon()
 			pixel_x = 0
 			pixel_y = 0
@@ -107,7 +107,7 @@
 			var/obj/machinery/atmospherics/unary/portables_connector/possible_port = locate(/obj/machinery/atmospherics/unary/portables_connector/) in loc
 			if(possible_port)
 				if(connect(possible_port))
-					to_chat(user, "<span class='notice'>You connect [name] to the port.</span>")
+					to_chat(user, "<span class='notice'>I connect [name] to the port.</span>")
 					var/datum/gas/sleeping_agent/S = locate() in src.air_contents.trace_gases
 					if(src.air_contents.toxins > 0 || (istype(S)))
 						log_admin("[usr]([ckey(usr.key)]) connected a canister that contains \[[src.air_contents.toxins > 0 ? "Toxins" : ""] [istype(S) ? " N2O" : ""]\] to a connector_port at [loc.x], [loc.y], [loc.z]")
@@ -127,7 +127,7 @@
 		return 1
 
 	else if ((istype(W, /obj/item/device/analyzer)) && get_dist(user, src) <= 1)
-		user.visible_message("<span class='attack'>[user] has used [W] on \icon[icon] [src]</span>", "<span class='attack'>You use \the [W] on \icon[icon] [src]</span>")
+		user.visible_message("<span class='attack'>[user] has used [W] on \icon[icon] [src]</span>", "<span class='attack'>I use \the [W] on \icon[icon] [src]</span>")
 		var/obj/item/device/analyzer/analyzer = W
 		user.show_message(analyzer.output_gas_scan(src.air_contents, src, 0), 1)
 		src.add_fingerprint(user)

@@ -138,7 +138,7 @@
 	src.add_fingerprint(usr)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter) || istype(W, /obj/item/pipe_gsensor))
 		if(user.drop_item(W, src))
-			to_chat(usr, "<span class='notice'>You put [W] back to [src].</span>")
+			to_chat(usr, "<span class='notice'>I put [W] back to [src].</span>")
 			if(istype(W, /obj/item/pipe))
 				returnToPool(W)
 			else

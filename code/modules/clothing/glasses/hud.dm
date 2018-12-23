@@ -32,7 +32,7 @@
 
 /obj/item/clothing/glasses/hud/security/jensenshades
 	name = "Augmented shades"
-	desc = "Polarized bioneural eyewear, designed to augment your vision."
+	desc = "Polarized bioneural eyewear, designed to augment my vision."
 	icon_state = "jensenshades"
 	item_state = "jensenshades"
 	min_harm_label = 12

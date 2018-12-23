@@ -90,11 +90,11 @@
 	if(config.automute_on && !holder && src.last_message == message)
 		src.last_message_count++
 		if(src.last_message_count >= SPAM_TRIGGER_AUTOMUTE)
-			to_chat(src, "<span class='warning'>You have exceeded the spam filter limit for identical messages. An auto-mute was applied.</span>")
+			to_chat(src, "<span class='warning'>I have exceeded the spam filter limit for identical messages. An auto-mute was applied.</span>")
 			cmd_admin_mute(src.mob, mute_type, 1)
 			return 1
 		if(src.last_message_count >= SPAM_TRIGGER_WARNING)
-			to_chat(src, "<span class='warning'>You are nearing the spam filter limit for identical messages.</span>")
+			to_chat(src, "<span class='warning'>I am nearing the spam filter limit for identical messages.</span>")
 			return 0
 	else
 		last_message = message
@@ -146,7 +146,7 @@
 
 	if(byond_version < MIN_CLIENT_VERSION)		//Out of date client.
 		message_admins("[key]/[ckey] has connected with an out of date client! Their version: [byond_version]. They will be kicked shortly.")
-		alert(src,"Your BYOND client is out of date. Please make sure you have have at least version [world.byond_version] installed. Check for a beta update if necessary.", "Update Yo'Self", "OK")
+		alert(src,"My BYOND client is out of date. Please make sure you have have at least version [world.byond_version] installed. Check for a beta update if necessary.", "Update Yo'Self", "OK")
 		spawn(5 SECONDS)
 			del(src)
 
@@ -201,7 +201,7 @@
 	if(prefs.lastchangelog != changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
 		prefs.SetChangelog(ckey,changelog_hash)
-		to_chat(src, "<span class='info'>Changelog has changed since your last visit.</span>")
+		to_chat(src, "<span class='info'>Changelog has changed since my last visit.</span>")
 
 	//Set map label to correct map name
 	winset(src, "rpane.map", "text=\"[map.nameLong]\"")
@@ -399,7 +399,7 @@
 Yes/No: Only affects this round
 Never/Always: Affects future rounds, you will not be polled again.
 
-NOTE:  You will only be polled about this role once per round. To change your choice, use Preferences > Setup Special Roles.  The change will take place AFTER this recruiting period."}
+NOTE:  You will only be polled about this role once per round. To change my choice, use Preferences > Setup Special Roles.  The change will take place AFTER this recruiting period."}
 				var/answer = alert(src,question,"Role Recruitment", "Yes","No","Never")
 				switch(answer)
 					if("Never")

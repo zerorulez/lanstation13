@@ -32,7 +32,7 @@
 		to_chat(user, "It has most of its planks broken and is somewhat unstable.")
 	else
 		to_chat(user, "It has only one or two planks still in shape and is unstable.")
-		
+
 //Allows us to quickly check if we should break the barricade, can handle not having an user
 //Sound is technically deprecated, but barricades should really have a build sound
 /obj/structure/window/barricade/healthcheck(var/mob/M, var/sound = 1)
@@ -50,16 +50,16 @@
 		healthcheck()
 		//playsound(get_turf(src), 'sound/effects/glassknock.ogg', 100, 1)
 		user.visible_message("<span class='warning'>[user] bangs against \the [src]!</span>", \
-		"<span class='warning'>You bang against \the [src]!</span>", \
-		"You hear banging.")
+		"<span class='warning'>I bang against \the [src]!</span>", \
+		"I hear banging.")
 
 	//Knock against it
 	else
 		user.delayNextAttack(10)
 		//playsound(get_turf(src), 'sound/effects/glassknock.ogg', 50, 1)
 		user.visible_message("<span class='notice'>[user] knocks on \the [src].</span>", \
-		"<span class='notice'>You knock on \the [src].</span>", \
-		"You hear knocking.")
+		"<span class='notice'>I knock on \the [src].</span>", \
+		"I hear knocking.")
 
 	..() //Hulk
 
@@ -70,13 +70,13 @@
 	if(iscrowbar(W) && user.a_intent == I_HURT && !busy) //Only way to deconstruct, needs harm intent
 		playsound(loc, 'sound/items/Crowbar.ogg', 75, 1)
 		user.visible_message("<span class='warning'>[user] starts struggling to pry \the [src] back into planks.</span>", \
-		"<span class='notice'>You start struggling to pry \the [src] back into planks.</span>")
+		"<span class='notice'>I start struggling to pry \the [src] back into planks.</span>")
 		busy = 1
 
 		if(do_after(user, src, 50)) //Takes a while because it is a barricade instant kill
 			playsound(loc, 'sound/items/Deconstruct.ogg', 75, 1)
 			user.visible_message("<span class='warning'>[user] finishes turning \the [src] back into planks.</span>", \
-			"<span class='notice'>You finish turning \the [src] back into planks.</span>")
+			"<span class='notice'>I finish turning \the [src] back into planks.</span>")
 			busy = 0
 			qdel(src)
 			return
@@ -87,7 +87,7 @@
 		user.delayNextAttack(10)
 		health -= W.force
 		user.visible_message("<span class='warning'>\The [user] hits \the [src] with \the [W].</span>", \
-		"<span class='warning'>You hit \the [src] with \the [W].</span>")
+		"<span class='warning'>I hit \the [src] with \the [W].</span>")
 		healthcheck(user)
 		return
 	else

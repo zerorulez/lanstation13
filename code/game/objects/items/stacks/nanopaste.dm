@@ -18,7 +18,7 @@
 			R.updatehealth()
 			use(1)
 			user.visible_message("<span class='notice'>[user] applies some [src] to [R]'s damaged areas.</span>", \
-				"<span class='notice'>You apply some [src] to [R]'s damaged areas.</span>")
+				"<span class='notice'>I apply some [src] to [R]'s damaged areas.</span>")
 		else
 			to_chat(user, "<span class='notice'>All [R]'s systems are nominal.</span>")
 
@@ -33,7 +33,7 @@
 					H.updatehealth()
 					use(1)
 					user.visible_message("<span class='notice'>[user] applies some [src] to [user != M ? "[M]'s":"their"] [affecting.display_name].</span>", \
-					"<span class='notice'>You apply some [src] to [user != M ? "[M]'s":"your"] [affecting.display_name].</span>")
+					"<span class='notice'>I apply some [src] to [user != M ? "[M]'s":"your"] [affecting.display_name].</span>")
 				else
 					to_chat(user, "<span class='notice'>Nothing to fix here.</span>")
 		else

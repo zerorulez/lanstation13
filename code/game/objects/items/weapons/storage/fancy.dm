@@ -2,7 +2,7 @@
  * The 'fancy' path is for objects like donut boxes that show how many items are in the storage item on the sprite itself
  * .. Sorry for the shitty path name, I couldnt think of a better one.
  *
- * WARNING: var/icon_type is used for both examine text and sprite name. Please look at the procs below and adjust your sprite names accordingly
+ * WARNING: var/icon_type is used for both examine text and sprite name. Please look at the procs below and adjust my sprite names accordingly
  *		TODO: Cigarette boxes should be ported to this standard
  *
  * Contains:
@@ -152,7 +152,7 @@
 
 /obj/item/weapon/storage/fancy/crayons
 	name = "box of crayons"
-	desc = "A box of crayons for all your rune drawing needs."
+	desc = "A box of crayons for all my rune drawing needs."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "crayonbox"
 	foldable = /obj/item/stack/sheet/cardboard
@@ -315,7 +315,7 @@
 		user.equip_to_slot_if_possible(W, slot_wear_mask)
 		reagents.maximum_volume = 15 * contents.len
 		contents.len--
-		to_chat(user, "<span class='notice'>You take a cigarette out of the pack.</span>")
+		to_chat(user, "<span class='notice'>I take a cigarette out of the pack.</span>")
 		update_icon()
 	else
 		..()
@@ -415,7 +415,7 @@
 	if(!istype(F))
 		return
 	if(F.on)
-		to_chat(user, "You can't put a lit flare in the box!")
+		to_chat(user, "I can't put a lit flare in the box!")
 		return
 	if(!F.fuel)
 		to_chat(user, "This flare is empty!")
@@ -461,7 +461,7 @@
 	storage_slots = 6
 	can_only_hold = list("/obj/item/weapon/reagent_containers/food/snacks")
 
-/obj/item/weapon/storage/fancy/food_box/update_icon(var/itemremoved = 0) //this is so that your box doesn't turn into a donut box, see line 29
+/obj/item/weapon/storage/fancy/food_box/update_icon(var/itemremoved = 0) //this is so that my box doesn't turn into a donut box, see line 29
 	return
 
 //SLIDER BOXES
@@ -472,7 +472,7 @@
 	icon_type = "slider"
 	storage_slots = 4
 	can_only_hold = list("/obj/item/weapon/reagent_containers/food/snacks/slider")
-	var/slider_type = /obj/item/weapon/reagent_containers/food/snacks/slider//set this as the spawn path of your slider
+	var/slider_type = /obj/item/weapon/reagent_containers/food/snacks/slider//set this as the spawn path of my slider
 	starting_materials = list(MAT_CARDBOARD = 3750)
 	w_type=RECYK_MISC
 

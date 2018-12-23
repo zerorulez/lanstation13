@@ -60,15 +60,15 @@
 	if(icon_state == "[icon_base]_start")
 		start = get_turf(src)
 		if(istype(start,/turf/space))
-			to_chat(usr, "<span class='warning'>You can't place [src] in space</span>")
+			to_chat(usr, "<span class='warning'>I can't place [src] in space</span>")
 			return
-		to_chat(usr, "<span class='notice'>You place the first end of [src].</span>")
+		to_chat(usr, "<span class='notice'>I place the first end of [src].</span>")
 		icon_state = "[icon_base]_stop"
 	else
 		icon_state = "[icon_base]_start"
 		end = get_turf(src)
 		if(istype(end,/turf/space))
-			to_chat(usr, "<span class='warning'>You can't place [src] in space</span>")
+			to_chat(usr, "<span class='warning'>I can't place [src] in space</span>")
 			return
 		if(start.y != end.y && start.x != end.x || start.z != end.z)
 			to_chat(usr, "<span class='notice'>[src] can only be laid in a straight line.</span>")
@@ -100,7 +100,7 @@
 						break
 			cur = get_step_towards(cur,end)
 		if (!can_place)
-			to_chat(usr, "<span class='warning'>You can't run [src] through that!</span>")
+			to_chat(usr, "<span class='warning'>I can't run [src] through that!</span>")
 			return
 
 		cur = start
@@ -114,7 +114,7 @@
 				P.icon_state = "[P.icon_base]_[dir]"
 			cur = get_step_towards(cur,end)
 	//is_blocked_turf(var/turf/T)
-		to_chat(usr, "<span class='notice'>You finish placing [src].</span>")
+		to_chat(usr, "<span class='notice'>I finish placing [src].</span>")
 		user.visible_message("<span class='warning'>[user] finishes placing [src].</span>") //Now you know who to whack with a stun baton
 
 /obj/item/taperoll/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
@@ -127,7 +127,7 @@
 		if(locate(tape_type) in turf) //Don't you dare stack tape // can be remove for a new feature
 			return
 
-		to_chat(user, "<span class='notice'>You start placing [src].</span>")
+		to_chat(user, "<span class='notice'>I start placing [src].</span>")
 
 		if(!do_mob(user, target, 30))
 			return
@@ -136,7 +136,7 @@
 		tape.icon_state = "[icon_base]_door"
 		tape.layer = ABOVE_DOOR_LAYER
 
-		to_chat(user, "<span class='notice'>You placed [src].</span>")
+		to_chat(user, "<span class='notice'>I placed [src].</span>")
 
 /obj/item/tape/to_bumped(M as mob)
 	if(src.allowed(M))
@@ -177,7 +177,7 @@
 
 /obj/item/tape/proc/breaktape(obj/item/weapon/W as obj, mob/user as mob)
 	if(user.a_intent == I_HELP && (!W || !W.is_sharp()) && !src.allowed(user))
-		to_chat(user, "<span class='notice'>You can't break [src] [W ? "with \the [W] " : ""]unless you use force.</span>")
+		to_chat(user, "<span class='notice'>I can't break [src] [W ? "with \the [W] " : ""]unless I use force.</span>")
 		return
 	user.visible_message("<span class='warning'>[user] breaks [src]!</span>")
 

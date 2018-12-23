@@ -36,7 +36,7 @@
 	if(iscrowbar(W))
 		var/turf/T = get_turf(src)
 		var/obj/item/stack/sheet/glass/G = solar_assembly.glass_type
-		to_chat(user, "<span class='notice'>You begin taking the [initial(G.name)] off the [src].</span>")
+		to_chat(user, "<span class='notice'>I begin taking the [initial(G.name)] off the [src].</span>")
 		playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 		if(do_after(user, src, 50))
 			if(solar_assembly)
@@ -44,7 +44,7 @@
 				solar_assembly.give_glass()
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 			user.visible_message("<span class='notice'>[user] takes the [initial(G.name)] off the [src].</span>",\
-			"<span class='notice'>You take the [initial(G.name)] off the [src].</span>")
+			"<span class='notice'>I take the [initial(G.name)] off the [src].</span>")
 			qdel(src)
 	else if(W)
 		add_fingerprint(user)

@@ -89,12 +89,12 @@ var/global/list/obj/machinery/field_generator/field_gen_list = list()
 	if(state == 2)
 		if(get_dist(src, user) <= 1)//Need to actually touch the thing to turn it on
 			if(src.active >= 1)
-				to_chat(user, "You are unable to turn off the [src.name] once it is online.")
+				to_chat(user, "I am unable to turn off the [src.name] once it is online.")
 				return 1
 			else
 				user.visible_message("[user.name] turns on the [src.name]", \
-					"You turn on the [src.name].", \
-					"You hear heavy droning")
+					"I turn on the [src.name].", \
+					"I hear heavy droning")
 				turn_on()
 				investigation_log(I_SINGULO,"<font color='green'>activated</font> by [user.key].")
 

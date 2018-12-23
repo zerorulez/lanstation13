@@ -45,22 +45,22 @@
 
 	if(istype(W, /obj/item/weapon/pickaxe/shovel))
 		user.visible_message("<span class='notice'>[user] starts digging out some snow with \the [W].</span>", \
-		"<span class='notice'>You start digging out some snow with \the [W].</span>")
+		"<span class='notice'>I start digging out some snow with \the [W].</span>")
 		user.delayNextAttack(20)
 		if(do_after(user, src, 20))
 			user.visible_message("<span class='notice'>[user] digs out some snow with \the [W].</span>", \
-			"<span class='notice'>You dig out some snow with \the [W].</span>")
+			"<span class='notice'>I dig out some snow with \the [W].</span>")
 			extract_snowballs(5, 0, user)
 
 /turf/unsimulated/floor/snow/attack_hand(mob/user as mob)
 
 	//Reach down and make a snowball
 	user.visible_message("<span class='notice'>[user] reaches down and starts forming a snowball.</span>", \
-	"<span class='notice'>You reach down and start forming a snowball.</span>")
+	"<span class='notice'>I reach down and start forming a snowball.</span>")
 	user.delayNextAttack(10)
 	if(do_after(user, src, 5))
 		user.visible_message("<span class='notice'>[user] finishes forming a snowball.</span>", \
-		"<span class='notice'>You finish forming a snowball.</span>")
+		"<span class='notice'>I finish forming a snowball.</span>")
 		extract_snowballs(1, 1, user)
 
 	..()

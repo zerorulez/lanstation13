@@ -86,7 +86,7 @@
 	set src in usr
 
 	if(clumsy_check(usr) && prob(50))
-		to_chat(usr, "<span class='warning'>You cut yourself on [src].</span>")
+		to_chat(usr, "<span class='warning'>I cut yourself on [src].</span>")
 		return
 	var/n_name = copytext(sanitize(input(usr, "What would you like to label [src]?", "Paper Labelling", null)  as text), 1, MAX_NAME_LEN)
 	if((loc == usr && !usr.isUnconscious()))
@@ -211,7 +211,7 @@
 		\[i\] - \[/i\] : Makes the text <i>italic</i>.<br>
 		\[u\] - \[/u\] : Makes the text <u>underlined</u>.<br>
 		\[large\] - \[/large\] : Increases the <span style=\"font-size:25px\">size</span> of the text.<br>
-		\[sign\] : Inserts a signature of your name in a foolproof way.<br>
+		\[sign\] : Inserts a signature of my name in a foolproof way.<br>
 		\[field\] : Inserts an invisible field which lets you start type from there. Useful for forms.<br>
 		<br>
 		<b><center>Pen exclusive commands</center></b><br>
@@ -254,7 +254,7 @@
 		var/t = sanitize(input("Enter what you want to write:", "Write", null, null) as message, MAX_MESSAGE_LEN)
 		var/obj/item/i = usr.get_active_hand() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
 		if(!istype(i,/obj/item/weapon/pen) && !istype(i,/obj/item/toy/crayon))
-			to_chat(usr, "<span class='warning'>Please ensure your pen is in your active hand and that you're holding the paper.</span>")
+			to_chat(usr, "<span class='warning'>Please ensure my pen is in my active hand and that you're holding the paper.</span>")
 			return
 
 		if(!Adjacent(usr, 1)) //the 1 means that the paper can be in one other item and be written on
@@ -312,7 +312,7 @@
 		//if((!in_range(src, user) && loc != user && !( istype(loc, /obj/item/weapon/clipboard) ) && loc.loc != user && user.get_active_hand() != P)) return //What the actual FUCK
 
 		if(istype(P, /obj/item/weapon/stamp/clown) && !clown)
-			to_chat(user, "<span class='notice'>You are totally unable to use the stamp. HONK!</span>")
+			to_chat(user, "<span class='notice'>I am totally unable to use the stamp. HONK!</span>")
 			return
 
 		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This [src.name] has been stamped with the [P.name].</i>"
@@ -327,7 +327,7 @@
 		stamped += P.type
 		overlays += stampoverlay
 
-		to_chat(user, "<span class='notice'>You stamp [src] with your rubber stamp.</span>")
+		to_chat(user, "<span class='notice'>I stamp [src] with my rubber stamp.</span>")
 
 	else if(istype(P, /obj/item/weapon/photo))
 		if(user.drop_item(P, src))
@@ -335,7 +335,7 @@
 				to_chat(user, "<span class='notice'>This paper already has a photo attached.</span>")
 				return
 			img = P
-			to_chat(user, "<span class='notice'>You attach the photo to the piece of paper.</span>")
+			to_chat(user, "<span class='notice'>I attach the photo to the piece of paper.</span>")
 	else if(P.is_hot())
 		src.ashify_item(user)
 		return //no fingerprints, paper is gone
@@ -357,16 +357,16 @@
 			user.drop_hands()
 			user.visible_message( \
 				"<span class='notice'>[user] tries to burn the [src.name], but burns \his hand trying!</span>", \
-				"<span class='warning'>You try to burn the [src.name], but burn your hand trying!</span>")
+				"<span class='warning'>I try to burn the [src.name], but burn my hand trying!</span>")
 			return //you fail before even managing to burn it!
 	if(prot) //user is human and is protected from fire, let's make them a badass
 		user.visible_message( \
 			"<span class='warning'>[user] holds up the [src.name] and sets it on fire, holding it in \his hand as it burns down to ashes. Damn, \he's cold.</span>", \
-			"<span class='warning'>You hold up the [src.name] and set it on fire, holding it in your hand as it burns down to ashes. Damn, you're cold.</span>")
+			"<span class='warning'>I hold up the [src.name] and set it on fire, holding it in my hand as it burns down to ashes. Damn, you're cold.</span>")
 	else
 		user.visible_message( \
 			"<span class='warning'>[user] holds up the [src.name] and sets it on fire, reducing it to a heap of ashes.</span>", \
-			"<span class='warning'>You hold up the [src.name] and set it on fire, reducing it to a heap of ashes.</span>")
+			"<span class='warning'>I hold up the [src.name] and set it on fire, reducing it to a heap of ashes.</span>")
 	var/ashtype = ashtype()
 	new ashtype(get_turf(src)) //not using ashify() since it calls for src.loc rather than get_turf(src), and requires the object to be on fire also
 	qdel(src)
@@ -404,7 +404,7 @@ var/global/list/paper_folding_results = list ( \
 	if (istype(src, /obj/item/weapon/paper/nano))
 		P.color = "#9A9A9A"
 		P.nano = 1
-	usr.visible_message("<span class='notice'>[usr] folds \the [src.name] into a [P.name].</span>", "<span class='notice'>You fold \the [src.name] into a [P.name].</span>")
+	usr.visible_message("<span class='notice'>[usr] folds \the [src.name] into a [P.name].</span>", "<span class='notice'>I fold \the [src.name] into a [P.name].</span>")
 	transfer_fingerprints(src, P)
 	return
 
@@ -412,10 +412,10 @@ var/global/list/paper_folding_results = list ( \
 	if(!user)
 		return 0
 	if(user.stat || user.restrained())
-		to_chat(user, "<span class='notice'>You can't do that while restrained.</span>")
+		to_chat(user, "<span class='notice'>I can't do that while restrained.</span>")
 		return 0
 	if(!user.is_holding_item(src))
-		to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
+		to_chat(user, "<span class='notice'>I'll need [src] in my hands to do that.</span>")
 		return 0
 	return 1
 
@@ -436,15 +436,15 @@ var/global/list/paper_folding_results = list ( \
 
 /obj/item/weapon/paper/hydroponics
 	name = "paper- 'Greetings from Billy Bob'"
-	info = "<B>Hey fellow botanist!</B><BR>\n<BR>\nI didn't trust the station folk so I left<BR>\na couple of weeks ago. But here's some<BR>\ninstructions on how to operate things here.<BR>\nYou can grow plants and each iteration they become<BR>\nstronger, more potent and have better yield, if you<BR>\nknow which ones to pick. Use your botanist's analyzer<BR>\nfor that. You can turn harvested plants into seeds<BR>\nat the seed extractor, and replant them for better stuff!<BR>\nSometimes if the weed level gets high in the tray<BR>\nmutations into different mushroom or weed species have<BR>\nbeen witnessed. On the rare occassion even weeds mutate!<BR>\n<BR>\nEither way, have fun!<BR>\n<BR>\nBest regards,<BR>\nBilly Bob Johnson.<BR>\n<BR>\nPS.<BR>\nHere's a few tips:<BR>\nIn nettles, potency = damage<BR>\nIn amanitas, potency = deadliness + side effect<BR>\nIn Liberty caps, potency = drug power + effect<BR>\nIn chilis, potency = heat<BR>\n<B>Nutrients keep mushrooms alive!</B><BR>\n<B>Water keeps weeds such as nettles alive!</B><BR>\n<B>All other plants need both.</B>"
+	info = "<B>Hey fellow botanist!</B><BR>\n<BR>\nI didn't trust the station folk so I left<BR>\na couple of weeks ago. But here's some<BR>\ninstructions on how to operate things here.<BR>\nYou can grow plants and each iteration they become<BR>\nstronger, more potent and have better yield, if you<BR>\nknow which ones to pick. Use my botanist's analyzer<BR>\nfor that. You can turn harvested plants into seeds<BR>\nat the seed extractor, and replant them for better stuff!<BR>\nSometimes if the weed level gets high in the tray<BR>\nmutations into different mushroom or weed species have<BR>\nbeen witnessed. On the rare occassion even weeds mutate!<BR>\n<BR>\nEither way, have fun!<BR>\n<BR>\nBest regards,<BR>\nBilly Bob Johnson.<BR>\n<BR>\nPS.<BR>\nHere's a few tips:<BR>\nIn nettles, potency = damage<BR>\nIn amanitas, potency = deadliness + side effect<BR>\nIn Liberty caps, potency = drug power + effect<BR>\nIn chilis, potency = heat<BR>\n<B>Nutrients keep mushrooms alive!</B><BR>\n<B>Water keeps weeds such as nettles alive!</B><BR>\n<B>All other plants need both.</B>"
 
 /obj/item/weapon/paper/djstation
 	name = "paper - 'DJ Listening Outpost'"
-	info = "<B>Welcome new owner!</B><BR><BR>You have purchased the latest in listening equipment. The telecommunication setup we created is the best in listening to common and private radio fequencies. Here is a step by step guide to start listening in on those saucy radio channels:<br><ol><li>Equip yourself with a multi-tool</li><li>Use the multitool on each machine, that is the broadcaster, receiver and the relay.</li><li>Turn all the machines on, it has already been configured for you to listen on.</li></ol> Simple as that. Now to listen to the private channels, you'll have to configure the intercoms, located on the front desk. Here is a list of frequencies for you to listen on.<br><ul><li>145.9 - Common Channel</li><li>144.7 - Private AI Channel</li><li>135.9 - Security Channel</li><li>135.7 - Engineering Channel</li><li>135.5 - Medical Channel</li><li>135.3 - Command Channel</li><li>135.1 - Science Channel</li><li>134.9 - Service Channel</li><li>134.7 - Supply Channel</li>"
+	info = "<B>Welcome new owner!</B><BR><BR>I have purchased the latest in listening equipment. The telecommunication setup we created is the best in listening to common and private radio fequencies. Here is a step by step guide to start listening in on those saucy radio channels:<br><ol><li>Equip yourself with a multi-tool</li><li>Use the multitool on each machine, that is the broadcaster, receiver and the relay.</li><li>Turn all the machines on, it has already been configured for you to listen on.</li></ol> Simple as that. Now to listen to the private channels, you'll have to configure the intercoms, located on the front desk. Here is a list of frequencies for you to listen on.<br><ul><li>145.9 - Common Channel</li><li>144.7 - Private AI Channel</li><li>135.9 - Security Channel</li><li>135.7 - Engineering Channel</li><li>135.5 - Medical Channel</li><li>135.3 - Command Channel</li><li>135.1 - Science Channel</li><li>134.9 - Service Channel</li><li>134.7 - Supply Channel</li>"
 
 /obj/item/weapon/paper/intercoms
 	name = "paper - 'Ace Reporter Intercom manual'"
-	info = "<B>Welcome new owner!</B><BR><BR>You have purchased the latest in listening equipment. The telecommunication setup we created is the best in listening to common and private radio fequencies.Now to listen to the private channels, you'll have to configure the intercoms.<br> Here is a list of frequencies for you to listen on.<br><ul><li>145.9 - Common Channel</li><li>144.7 - Private AI Channel</li><li>135.9 - Security Channel</li><li>135.7 - Engineering Channel</li><li>135.5 - Medical Channel</li><li>135.3 - Command Channel</li><li>135.1 - Science Channel</li><li>134.9 - Service Channel</li><li>134.7 - Supply Channel</li>"
+	info = "<B>Welcome new owner!</B><BR><BR>I have purchased the latest in listening equipment. The telecommunication setup we created is the best in listening to common and private radio fequencies.Now to listen to the private channels, you'll have to configure the intercoms.<br> Here is a list of frequencies for you to listen on.<br><ul><li>145.9 - Common Channel</li><li>144.7 - Private AI Channel</li><li>135.9 - Security Channel</li><li>135.7 - Engineering Channel</li><li>135.5 - Medical Channel</li><li>135.3 - Command Channel</li><li>135.1 - Science Channel</li><li>134.9 - Service Channel</li><li>134.7 - Supply Channel</li>"
 
 /obj/item/weapon/paper/flag
 	icon_state = "flag_neutral"

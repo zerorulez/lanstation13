@@ -97,7 +97,7 @@
 	species_fit = list(VOX_SHAPED)
 
 /obj/item/clothing/suit/storage/det_suit/noir
-	desc = "Ah, your trusty coat. There's a few tears here and there, giving it a more timely look. Or at least, that's what you told yourself when you found out gettin' it repaired would set you back 200 credits."
+	desc = "Ah, my trusty coat. There's a few tears here and there, giving it a more timely look. Or at least, that's what you told yourself when you found out gettin' it repaired would set you back 200 credits."
 	icon_state = "noir_detective"
 	item_state = "noir_detective"
 
@@ -165,12 +165,12 @@
 		switch(icon_state)
 			if("ia_jacket_open")
 				src.icon_state = "ia_jacket"
-				to_chat(usr, "You button up the jacket.")
+				to_chat(usr, "I button up the jacket.")
 			if("ia_jacket")
 				src.icon_state = "ia_jacket_open"
-				to_chat(usr, "You unbutton the jacket.")
+				to_chat(usr, "I unbutton the jacket.")
 			else
-				to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how retarded you are.")
+				to_chat(usr, "I attempt to button-up the velcro on my [src], before promptly realising how retarded you are.")
 				return
 		usr.update_inv_wear_suit()	//so our overlays update
 
@@ -195,10 +195,10 @@
 		switch(icon_state)
 			if("fr_jacket_open")
 				src.icon_state = "fr_jacket"
-				to_chat(usr, "You button up the jacket.")
+				to_chat(usr, "I button up the jacket.")
 			if("fr_jacket")
 				src.icon_state = "fr_jacket_open"
-				to_chat(usr, "You unbutton the jacket.")
+				to_chat(usr, "I unbutton the jacket.")
 		usr.update_inv_wear_suit()	//so our overlays update
 
 //Mime

@@ -113,13 +113,13 @@
 /obj/item/clothing/mask/chemmask/proc/can_use_verbs(mob/user)
 	var/mob/living/carbon/human/M = user
 	if (M.stat == DEAD)
-		to_chat(user, "You can't do that while you're dead!")
+		to_chat(user, "I can't do that while you're dead!")
 		return 0
 	else if (M.stat == UNCONSCIOUS)
-		to_chat(user, "You must be conscious to do this!")
+		to_chat(user, "I must be conscious to do this!")
 		return 0
 	else if (M.handcuffed)
-		to_chat(user, "You can't reach the controls while you're restrained!")
+		to_chat(user, "I can't reach the controls while you're restrained!")
 		return 0
 	else
 		return 1
@@ -162,18 +162,18 @@
 		if (istype(M.back,/obj/item/weapon/reagent_containers/chempack))
 			var/obj/item/weapon/reagent_containers/chempack/P = M.back
 			if (P.safety)
-				to_chat(usr, "<span class='notice'>You activate \the [src].</span>")
+				to_chat(usr, "<span class='notice'>I activate \the [src].</span>")
 				power = 1
 				icon_state = "chemmask1"
 //				start_flow(usr)
 				usr.update_inv_wear_mask()
 				update_verbs()
 			else
-				to_chat(usr, "<span class='warning'>You must disable \the [P]'s safeties before you can activate \the [src]!</span>")
+				to_chat(usr, "<span class='warning'>I must disable \the [P]'s safeties before you can activate \the [src]!</span>")
 		else
-			to_chat(usr, "<span class='warning'>You need to be wearing a chemical pack before you can activate \the [src]!</span>")
+			to_chat(usr, "<span class='warning'>I need to be wearing a chemical pack before you can activate \the [src]!</span>")
 	else
-		to_chat(usr, "<span class='notice'>You deactivate \the [src].</span>")
+		to_chat(usr, "<span class='notice'>I deactivate \the [src].</span>")
 		mask_shutdown(usr)
 
 /obj/item/clothing/mask/chemmask/verb/set_pack_injection()
@@ -199,10 +199,10 @@
 
 	if (!beakeractive)
 		beakeractive = 1
-		to_chat(usr, "<span class='notice'>You enable connection to the chemical pack's auxiliary beaker chamber.</span>")
+		to_chat(usr, "<span class='notice'>I enable connection to the chemical pack's auxiliary beaker chamber.</span>")
 	else
 		beakeractive = 0
-		to_chat(usr, "<span class='notice'>You disable connection to the chemical pack's auxiliary beaker chamber.</span>")
+		to_chat(usr, "<span class='notice'>I disable connection to the chemical pack's auxiliary beaker chamber.</span>")
 
 /obj/item/clothing/mask/chemmask/verb/set_tank_usage()
 	set name = "Toggle primary tank usage"
@@ -214,10 +214,10 @@
 
 	if (!tankactive)
 		tankactive = 1
-		to_chat(usr, "<span class='notice'>You enable connection to the chemical pack's primary tank system.</span>")
+		to_chat(usr, "<span class='notice'>I enable connection to the chemical pack's primary tank system.</span>")
 	else
 		tankactive = 0
-		to_chat(usr, "<span class='notice'>You disable connection to the chemical pack's primary tank system.</span>")
+		to_chat(usr, "<span class='notice'>I disable connection to the chemical pack's primary tank system.</span>")
 
 /obj/item/clothing/mask/chemmask/verb/set_beaker_injection_method()
 	set name = "Set auxiliary beaker injection method"
@@ -281,7 +281,7 @@
 	if (!can_use_verbs(usr))
 		return
 
-	var/N = input("Set the minimum threshold of [beaker_threshold_reagent] in your body that must be reached to cause \the [src] to administer more chemicals:","[src]") as null|num
+	var/N = input("Set the minimum threshold of [beaker_threshold_reagent] in my body that must be reached to cause \the [src] to administer more chemicals:","[src]") as null|num
 	if (N)
 		beaker_threshold = N
 

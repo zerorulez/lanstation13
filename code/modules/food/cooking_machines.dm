@@ -126,7 +126,7 @@ var/global/ingredientLimit = 10
 
 /obj/machinery/cooking/attack_hand(mob/user)
 	if(isobserver(user))
-		to_chat(user, "Your ghostly hand goes straight through.")
+		to_chat(user, "My ghostly hand goes straight through.")
 	else if(issilicon(user))
 		to_chat(user, "This is old analog equipment. You can't interface with it.")
 
@@ -138,14 +138,14 @@ var/global/ingredientLimit = 10
 					src.icon_state = initial(src.icon_state)
 					src.ingredient.mouse_opacity = 1
 					user.put_in_hands(src.ingredient)
-					to_chat(user, "<span class='notice'>You remove \the [src.ingredient.name] from \the [src.name].</span>")
+					to_chat(user, "<span class='notice'>I remove \the [src.ingredient.name] from \the [src.name].</span>")
 					src.ingredient = null
 				else
-					to_chat(user, "You are too far away from [src.name].")
+					to_chat(user, "I am too far away from [src.name].")
 			else
 				src.active = 0
 		else
-			to_chat(user, "You leave \the [src.name] alone.")
+			to_chat(user, "I leave \the [src.name] alone.")
 	else
 		. = ..()
 
@@ -174,7 +174,7 @@ var/global/ingredientLimit = 10
 		if(do_after(usr, src, src.reagents.total_volume / 10))
 			src.reagents.clear_reagents()
 			if(usr)
-				to_chat(usr, "You clean \the [src] of any ingredients.")
+				to_chat(usr, "I clean \the [src] of any ingredients.")
 
 // Food Processing /////////////////////////////////////////////
 
@@ -213,10 +213,10 @@ var/global/ingredientLimit = 10
 		if(user.drop_item(I, src))
 			src.ingredient = I
 			spawn() src.cook(.)
-			to_chat(user, "<span class='notice'>You add \the [I.name] to \the [src.name].</span>")
+			to_chat(user, "<span class='notice'>I add \the [I.name] to \the [src.name].</span>")
 			return 1
 	else
-		to_chat(user, "<span class='warning'>You can't put that in \the [src.name]. \n[.]</span>")
+		to_chat(user, "<span class='warning'>I can't put that in \the [src.name]. \n[.]</span>")
 	return 0
 
 /obj/machinery/cooking/proc/transfer_reagents_to_food(var/obj/item/I)
@@ -551,7 +551,7 @@ var/global/ingredientLimit = 10
 /obj/machinery/cooking/grill/spit/attackby(obj/item/I, mob/user)
 	user.delayNextAttack(30)
 	if(istype(I,/obj/item/weapon/crowbar) && do_after(user,src,30))
-		user.visible_message("<span class='notice'>[user] dissassembles the [src].</span>", "<span class='notice'>You dissassemble \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] dissassembles the [src].</span>", "<span class='notice'>I dissassemble \the [src].</span>")
 		if(src.ingredient)
 			ingredient.forceMove(src.loc)
 			src.ingredient = null

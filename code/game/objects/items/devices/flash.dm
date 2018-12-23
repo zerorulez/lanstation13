@@ -21,7 +21,7 @@
 
 /obj/item/device/flash/proc/clown_check(var/mob/user)
 	if(user && clumsy_check(user) && prob(50))
-		to_chat(user, "<span class='warning'>\The [src] slips out of your hand.</span>")
+		to_chat(user, "<span class='warning'>\The [src] slips out of my hand.</span>")
 		user.drop_item()
 		return 0
 	return 1
@@ -186,7 +186,7 @@
 			if(prob(80))
 				M.alpha = 255
 				M.visible_message("<span class='warning'>[M] suddenly becomes fully visible!</span>",\
-								"<span class='warning'>You see a bright flash of light and are suddenly fully visible again.</span>")
+								"<span class='warning'>I see a bright flash of light and are suddenly fully visible again.</span>")
 				spawn(50)
 					M.alpha = oldalpha
 		var/safety = M:eyecheck()

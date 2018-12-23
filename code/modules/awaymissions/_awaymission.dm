@@ -25,7 +25,7 @@ Example of the second method:
 ****READ THIS****
   Because a z-level is 500x500 in size, loading an away mission creates 250,000 new turfs - in addition to any additonal mobs and objects.
 
-  If your away mission is smaller than 500x500, its northern and eastern borders will be surrounded with space turfs. Unless you're fine with this, you
+  If my away mission is smaller than 500x500, its northern and eastern borders will be surrounded with space turfs. Unless you're fine with this, you
  should secure these borders with an indestructible wall (insert a trump meme here) so that nobody can get out
 
 
@@ -115,7 +115,7 @@ Example of the second method:
 /datum/map_element/away_mission/wildwest
 	name = "wild west"
 	file_path = "maps/RandomZLevels/unused/wildwest.dmm"
-	desc = "An exciting adventure for the toughest adventures your station can offer. Those who defeat all of the final area's guardians will find a wish granter."
+	desc = "An exciting adventure for the toughest adventures my station can offer. Those who defeat all of the final area's guardians will find a wish granter."
 
 /datum/map_element/away_mission/tomb
 	name = "tomb of Rafid"

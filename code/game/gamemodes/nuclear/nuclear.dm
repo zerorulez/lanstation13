@@ -220,7 +220,7 @@
 
 /datum/game_mode/proc/greet_syndicate(var/datum/mind/syndicate, var/you_are=1)
 	if (you_are)
-		to_chat(syndicate.current, "<span class='notice'>You are a [syndicate_name()] agent!</span>")
+		to_chat(syndicate.current, "<span class='notice'>I am a [syndicate_name()] agent!</span>")
 	var/obj_count = 1
 	for(var/datum/objective/objective in syndicate.objectives)
 		to_chat(syndicate.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
@@ -237,7 +237,7 @@
 	var/radio_freq = SYND_FREQ
 
 	if(synd_mob.overeatduration) //We need to do this here and now, otherwise a lot of gear will fail to spawn
-		to_chat(synd_mob, "<span class='notice'>Your intensive physical training to become a Nuclear Operative has paid off and made you fit again!</span>")
+		to_chat(synd_mob, "<span class='notice'>My intensive physical training to become a Nuclear Operative has paid off and made you fit again!</span>")
 		synd_mob.overeatduration = 0 //Fat-B-Gone
 		if(synd_mob.nutrition > 400) //We are also overeating nutriment-wise
 			synd_mob.nutrition = 400 //Fix that
@@ -274,7 +274,7 @@
 
 		var/obj/item/weapon/tank/nitrogen/TN = new(synd_mob)
 		synd_mob.put_in_hands(TN)
-		to_chat(synd_mob, "<span class='notice'>You are now running on nitrogen internals from the [TN] in your hand. Your species finds oxygen toxic, so you must breathe nitrogen (AKA N<sub>2</sub>) only.</span>")
+		to_chat(synd_mob, "<span class='notice'>I am now running on nitrogen internals from the [TN] in my hand. Your species finds oxygen toxic, so you must breathe nitrogen (AKA N<sub>2</sub>) only.</span>")
 		synd_mob.internal = TN
 
 		if (synd_mob.internals)
@@ -427,7 +427,7 @@
 
 /proc/nukelastname(var/mob/M as mob) //--All praise goes to NEO|Phyte, all blame goes to DH, and it was Cindi-Kate's idea. Also praise Urist for copypasta ho.
 	var/randomname = pick(last_names)
-	var/newname = copytext(sanitize(input(M,"You are the nuke operative [pick("Czar", "Boss", "Commander", "Chief", "Kingpin", "Director", "Overlord")]. Please choose a last name for your family.", "Name change",randomname)),1,MAX_NAME_LEN)
+	var/newname = copytext(sanitize(input(M,"I am the nuke operative [pick("Czar", "Boss", "Commander", "Chief", "Director", "Overlord")]. I shall choose a last name for my crew.", "Name change",randomname)),1,MAX_NAME_LEN)
 
 	if (!newname)
 		newname = randomname

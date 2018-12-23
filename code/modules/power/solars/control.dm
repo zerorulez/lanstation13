@@ -80,7 +80,7 @@
 		if(do_after(user, src, 20))
 			if(src.stat & BROKEN)
 				visible_message("<span class='notice'>[user] clears the broken monitor off of [src].</span>", \
-				"You clear the broken monitor off of [src]")
+				"I clear the broken monitor off of [src]")
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe(src.loc)
 				getFromPool(/obj/item/weapon/shard, loc)
 				var/obj/item/weapon/circuitboard/solar_control/M = new /obj/item/weapon/circuitboard/solar_control(A)
@@ -93,7 +93,7 @@
 				qdel(src)
 			else
 				visible_message("[user] begins to unscrew \the [src]'s monitor.",
-				"You begin to unscrew the monitor...")
+				"I begin to unscrew the monitor...")
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe(src.loc)
 				var/obj/item/weapon/circuitboard/solar_control/M = new /obj/item/weapon/circuitboard/solar_control(A)
 				for (var/obj/C in src)

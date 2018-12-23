@@ -104,7 +104,7 @@ var/global/list/wizard_cards_normal = list(
 
 /obj/item/toy/singlecard/wizard/legendary/honkmother/pickup(mob/living/user as mob)
 	if(user.mind && user.mind.assigned_role == "Clown")
-		to_chat(user, "<span class ='notice'>You feel Honkmother's presence as you pick up the card.</span>")
+		to_chat(user, "<span class ='notice'>I feel Honkmother's presence as you pick up the card.</span>")
 
 /obj/item/toy/singlecard/wizard/legendary/singularity
 	name = "rare singularity wizard card"
@@ -237,7 +237,7 @@ var/global/list/wizard_cards_normal = list(
 		return
 
 	new /obj/item/toy/singlecard/wizard/borer/small(get_turf(src.loc))
-	to_chat(user, "You create a borer token card!")
+	to_chat(user, "I create a borer token card!")
 
 /obj/item/toy/singlecard/wizard/borer/small/special_effect()
 	return

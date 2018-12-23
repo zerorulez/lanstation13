@@ -11,7 +11,7 @@ Headache
 
 BONUS
 	Displays an annoying message!
-	Should be used for buffing your disease.
+	Should be used for buffing my disease.
 
 //////////////////////////////////////
 */
@@ -29,5 +29,5 @@ BONUS
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/M = A.affected_mob
-		to_chat(M, "<span class='notice'>[pick("Your head hurts.", "Your head starts pounding.")]</span>")
+		to_chat(M, "<span class='notice'>[pick("My head hurts.", "My head starts pounding.")]</span>")
 	return

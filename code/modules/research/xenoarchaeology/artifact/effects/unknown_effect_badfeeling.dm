@@ -2,24 +2,24 @@
 /datum/artifact_effect/badfeeling
 	effecttype = "badfeeling"
 	effect_type = 2
-	var/list/messages = list("You feel worried.",\
+	var/list/messages = list("I feel worried.",\
 		"Something doesn't feel right.",\
-		"You get a strange feeling in your gut.",\
-		"Your instincts are trying to warn you about something.",\
-		"Someone just walked over your grave.",\
+		"I get a strange feeling in my gut.",\
+		"My instincts are trying to warn me about something.",\
+		"Someone just walked over my grave.",\
 		"There's a strange feeling in the air.",\
 		"There's a strange smell in the air.",\
-		"The tips of your fingers feel tingly.",\
-		"You feel twitchy.",\
-		"You have a terrible sense of foreboding.",\
-		"You've got a bad feeling about this.",\
-		"Your scalp prickles.",\
+		"The tips of my fingers feel tingly.",\
+		"I feel twitchy.",\
+		"I have a terrible sense of foreboding.",\
+		"I've got a bad feeling about this.",\
+		"My scalp prickles.",\
 		"The light seems to flicker.",\
 		"The shadows seem to lengthen.",\
 		"The walls are getting closer.",\
 		"Something is wrong")
 
-	var/list/drastic_messages = list("You've got to get out of here!",\
+	var/list/drastic_messages = list("I've got to get out of here!",\
 		"Someone's trying to kill you!",\
 		"There's something out there!",\
 		"What's happening to you?",\

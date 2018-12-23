@@ -123,8 +123,8 @@
 
 	//Used for modifying movement speed for mobs.
 	//Unversal modifiers
-	var/run_speed = 1.5
-	var/walk_speed = 0
+	var/run_speed = 2
+	var/walk_speed = 1
 
 	//Mob specific modifiers. NOTE: These will affect different mob types in different ways
 	var/human_delay = 0
@@ -150,7 +150,7 @@
 	var/paperwork_library = 0 //use the library DLL.
 
 	var/use_irc_bot = 0
-	var/irc_bot_host = "localhost"
+	var/irc_bot_host = "127.0.0.1"
 	var/irc_bot_port = 45678
 	var/irc_bot_server_id = 45678
 	var/python_path = "" //Path to the python executable.  Defaults to "python" on windows and "/usr/bin/env python2" on unix

@@ -33,7 +33,7 @@
 					var/obj/item/clothing/head/butt/B = new(C.loc)
 					B.transfer_buttdentity(C)
 				C.op_stage.butt = 4 //No having two butts.
-				to_chat(C, "<span class='warning'>Your ass just blew up!</span>")
+				to_chat(C, "<span class='warning'>My ass just blew up!</span>")
 			playsound(get_turf(src), 'sound/effects/superfart.ogg', 50, 1)
 			C.apply_damage(40, BRUTE, LIMB_GROIN)
 			C.apply_damage(10, BURN, LIMB_GROIN)
@@ -43,7 +43,7 @@
 	spell_levels[Sp_POWER]++
 	summon_bot = 1
 
-	var/upgrade_desc = "You have upgraded [name] into Butt-Bot's Legacy. When successfully cast on someone it will turn their butt into a working butt-bot."
+	var/upgrade_desc = "I have upgraded [name] into Butt-Bot's Legacy. When successfully cast on someone it will turn their butt into a working butt-bot."
 	name = "Butt-Bot's Legacy"
 	desc = "This spell removes the target's ass in a firey explosion, turning it into a fully functioning butt-bot."
 

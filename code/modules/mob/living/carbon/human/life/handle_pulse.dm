@@ -13,7 +13,7 @@
 		return PULSE_NONE //No blood, no pulse.
 
 	if(stat == DEAD)
-		return PULSE_NONE //That's it, you're dead, nothing can influence your pulse
+		return PULSE_NONE //That's it, you're dead, nothing can influence my pulse
 
 	var/temp = PULSE_NORM
 

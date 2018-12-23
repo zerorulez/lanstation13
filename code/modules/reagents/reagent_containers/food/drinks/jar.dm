@@ -24,7 +24,7 @@
 				else
 					icon_state ="jar_what"
 					name = "jar of something"
-					desc = "You can't really tell what this is."
+					desc = "I can't really tell what this is."
 		else
 			icon_state = "jar"
 			name = "empty jar"

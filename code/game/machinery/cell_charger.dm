@@ -81,7 +81,7 @@
 
 			if(user.drop_item(W, src))
 				charging = W
-				user.visible_message("<span class='notice'>[user] inserts a cell into [src].</span>", "<span class='notice'>You insert a cell into [src].</span>")
+				user.visible_message("<span class='notice'>[user] inserts a cell into [src].</span>", "<span class='notice'>I insert a cell into [src].</span>")
 				chargelevel = -1
 		updateicon()
 
@@ -89,7 +89,7 @@
 	if(!emagged)
 		emagged = 1 //Congratulations, you've done it
 		user.visible_message("<span class='warning'>[user] swipes a card into \the [src]'s charging port.</span>", \
-		"<span class='warning'>You hear fizzling coming from \the [src] and a wire turns red hot as you swipe the electromagnetic card. Better not use it anymore.</span>")
+		"<span class='warning'>I hear fizzling coming from \the [src] and a wire turns red hot as you swipe the electromagnetic card. Better not use it anymore.</span>")
 		return
 
 /obj/machinery/cell_charger/attack_robot(mob/user as mob)
@@ -110,7 +110,7 @@
 		charging.add_fingerprint(user)
 		charging.updateicon()
 		src.charging = null
-		user.visible_message("<span class='notice'>[user] removes the cell from [src].</span>", "<span class='notice'>You remove the cell from [src].</span>")
+		user.visible_message("<span class='notice'>[user] removes the cell from [src].</span>", "<span class='notice'>I remove the cell from [src].</span>")
 		chargelevel = -1
 		updateicon()
 

@@ -15,7 +15,7 @@
 			if(caliber["38"] == 0) //if it's been modified, this is true
 				return 1
 			if(istype(AC, /obj/item/ammo_casing/a357) && !perfect && prob(70 - (getAmmo() * 10)))	//minimum probability of 10, maximum of 60
-				to_chat(M, "<span class='danger'>[src] blows up in your face.</span>")
+				to_chat(M, "<span class='danger'>[src] blows up in my face.</span>")
 				M.take_organ_damage(0,20)
 				M.drop_item(src, force_drop = 1)
 				qdel(src)
@@ -25,20 +25,20 @@
 	verb/rename_gun()
 		set name = "Name Gun"
 		set category = "Object"
-		set desc = "Click to rename your gun. If you're the detective."
+		set desc = "Click to rename my gun. If you're the detective."
 
 		var/mob/M = usr
 		if(!M.mind)
 			return 0
 		if(!M.mind.assigned_role == "Detective")
-			to_chat(M, "<span class='notice'>You don't feel cool enough to name this gun, chump.</span>")
+			to_chat(M, "<span class='notice'>I don't feel cool enough to name this gun, chump.</span>")
 			return 0
 
 		var/input = stripped_input(usr,"What do you want to name the gun?", ,"", MAX_NAME_LEN)
 
 		if(src && input && !M.stat && in_range(src,M))
 			name = input
-			to_chat(M, "You name the gun [input]. Say hello to your new friend.")
+			to_chat(M, "I name the gun [input]. Say hello to my new friend.")
 			return 1
 
 	attackby(var/obj/item/A as obj, mob/user as mob)
@@ -51,35 +51,35 @@
 					to_chat(user, "<span class='notice'>This [CK.name] is useless unless you open it first. </span>")
 					return
 			if(caliber["38"])
-				to_chat(user, "<span class='notice'>You begin to reinforce the barrel of [src].</span>")
+				to_chat(user, "<span class='notice'>I begin to reinforce the barrel of [src].</span>")
 				if(getAmmo())
 					afterattack(user, user)	//you know the drill
 					playsound(user, fire_sound, 50, 1)
-					user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='danger'>[src] goes off in your face!</span>")
+					user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='danger'>[src] goes off in my face!</span>")
 					return
 				if(do_after(user, src, 30))
 					if(getAmmo())
-						to_chat(user, "<span class='notice'>You can't modify it!</span>")
+						to_chat(user, "<span class='notice'>I can't modify it!</span>")
 						return
 					caliber["38"] = 0
 					desc = "The barrel and chamber assembly seems to have been modified."
-					to_chat(user, "<span class='warning'>You reinforce the barrel of [src]! Now it will fire .357 rounds.</span>")
+					to_chat(user, "<span class='warning'>I reinforce the barrel of [src]! Now it will fire .357 rounds.</span>")
 					if(CK && istype(CK))
 						perfect = 1
 			else
-				to_chat(user, "<span class='notice'>You begin to revert the modifications to [src].</span>")
+				to_chat(user, "<span class='notice'>I begin to revert the modifications to [src].</span>")
 				if(getAmmo())
 					afterattack(user, user)	//and again
 					playsound(user, fire_sound, 50, 1)
-					user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='danger'>[src] goes off in your face!</span>")
+					user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='danger'>[src] goes off in my face!</span>")
 					return
 				if(do_after(user, src, 30))
 					if(getAmmo())
-						to_chat(user, "<span class='notice'>You can't modify it!</span>")
+						to_chat(user, "<span class='notice'>I can't modify it!</span>")
 						return
 					caliber["38"] = 1
 					desc = initial(desc)
-					to_chat(user, "<span class='warning'>You remove the modifications on [src]! Now it will fire .38 rounds.</span>")
+					to_chat(user, "<span class='warning'>I remove the modifications on [src]! Now it will fire .38 rounds.</span>")
 					perfect = 0
 
 
@@ -147,9 +147,9 @@
 		A.update_icon()
 
 	if(num_loaded)
-		user.visible_message("<span class='warning'>[user] loads a single bullet into the revolver and spins the chamber.</span>", "<span class='warning'>You load a single bullet into the chamber and spin it.</span>")
+		user.visible_message("<span class='warning'>[user] loads a single bullet into the revolver and spins the chamber.</span>", "<span class='warning'>I load a single bullet into the chamber and spin it.</span>")
 	else
-		user.visible_message("<span class='warning'>[user] spins the chamber of the revolver.</span>", "<span class='warning'>You spin the revolver's chamber.</span>")
+		user.visible_message("<span class='warning'>[user] spins the chamber of the revolver.</span>", "<span class='warning'>I spin the revolver's chamber.</span>")
 
 
 	if(getAmmo() > 0)
@@ -160,7 +160,7 @@
 
 /obj/item/weapon/gun/projectile/russian/attack_self(mob/user as mob)
 
-	user.visible_message("<span class='warning'>[user] spins the chamber of the revolver.</span>", "<span class='warning'>You spin the revolver's chamber.</span>")
+	user.visible_message("<span class='warning'>[user] spins the chamber of the revolver.</span>", "<span class='warning'>I spin the revolver's chamber.</span>")
 	playsound(user, 'sound/weapons/revolver_spin.ogg', 50, 1)
 	if(getAmmo() > 0)
 		Spin()
@@ -170,7 +170,7 @@
 	var/obj/item/ammo_casing/AC = loaded[1]
 	if(isliving(target) && isliving(user) && target == user)
 		if(mouthshoot)
-			to_chat(user, "<span class='warning'>You're already doing that.</span>")
+			to_chat(user, "<span class='warning'>I am already doing that.</span>")
 			return
 		var/datum/organ/external/affecting = user.zone_sel.selecting
 		if(affecting == LIMB_HEAD || affecting == "mouth")
@@ -196,7 +196,7 @@
 				return
 			var/obj/item/projectile/P = new AC.projectile_type
 			playsound(user, fire_sound, 50, 1)
-			user.visible_message("<span class='danger'>[user.name] fires \the [src]!</span>", "<span class='danger'>You fire \the [src]!</span>", "You hear a [istype(in_chamber, /obj/item/projectile/beam) ? "laser blast" : "gunshot"]!")
+			user.visible_message("<span class='danger'>[user.name] fires \the [src]!</span>", "<span class='danger'>I fire \the [src]!</span>", "I hear a [istype(in_chamber, /obj/item/projectile/beam) ? "laser blast" : "gunshot"]!")
 			if(!P.nodamage)
 				affecting = LIMB_HEAD
 				user.apply_damage(300, BRUTE, affecting, used_weapon = "Shot self with [src].") // You are dead, dead, dead.
@@ -204,7 +204,7 @@
 			loaded.Cut(1,2)
 			loaded += AC //to make it more realistic, empty casings remain in until you empty the gun
 		else
-			to_chat(user, "<span class='warning'>Aim for your head or put it in your mouth.</span>")
+			to_chat(user, "<span class='warning'>Aim for my head or put it in my mouth.</span>")
 			return
 
 	..()

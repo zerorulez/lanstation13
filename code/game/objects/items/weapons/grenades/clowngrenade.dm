@@ -71,15 +71,15 @@
 		var/mob/living/M = AM
 		if(M.lying)
 			M.take_overall_damage(0, max(0, (burned - 2)))
-			M.simple_message("<span class='danger'>Something burns your back!</span>",\
-				"<span class='userdanger'>They're eating your back!</span>")
+			M.simple_message("<span class='danger'>Something burns my back!</span>",\
+				"<span class='userdanger'>They're eating my back!</span>")
 			return
 		if(ishuman(M))
 			if(M.CheckSlip() < 1)
 				return
 			else
-				M.simple_message("<span class='warning'>Your feet feel like they're on fire!</span>",\
-					"<span class='userdanger'>Egads! They bite your feet!</span>")
+				M.simple_message("<span class='warning'>My feet feel like they're on fire!</span>",\
+					"<span class='userdanger'>Egads! They bite my feet!</span>")
 				M.take_overall_damage(0, max(0, (burned - 2)))
 
 		if(!istype(M, /mob/living/carbon/slime) && !isrobot(M))
@@ -90,7 +90,7 @@
 					step(M, M.dir)
 					sleep(1)
 			M.take_organ_damage(2) // Was 5 -- TLE
-			M.simple_message("<span class='notice'>You slipped on \the [name]!</span>",\
+			M.simple_message("<span class='notice'>I slipped on \the [name]!</span>",\
 				"<span class='userdanger'>Please, just end the pain!</span>")
 			playsound(get_turf(src), 'sound/misc/slip.ogg', 50, 1, -3)
 			M.Knockdown(10)

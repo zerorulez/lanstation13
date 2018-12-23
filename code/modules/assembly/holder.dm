@@ -179,20 +179,20 @@
 			to_chat(user, "<span class='warning'>BUG:Assembly part missing, please report this!</span>")
 			return
 		if(!isigniter(a_left) && !isigniter(a_right))
-			to_chat(user, "<span class='warning'>You can't make an igniter without an igniting component!</span>")
+			to_chat(user, "<span class='warning'>I can't make an igniter without an igniting component!</span>")
 			return
 		var/obj/item/weapon/weldingtool/WT = W
 		if (WT.remove_fuel(0,user))
 			playsound(get_turf(src), 'sound/items/Welder2.ogg', 50, 1)
-			to_chat(user, "<span class='notice'>You begin to weld \the [src] to the floor...</span>")
+			to_chat(user, "<span class='notice'>I begin to weld \the [src] to the floor...</span>")
 			if (do_after(user, src, 40))
 				var/obj/machinery/igniter/igniter=new(src.loc)
 				igniter.assembly=src
 				src.forceMove(igniter)
-				to_chat(user, "<span class='notice'>You attach the assembly to the floor with a few spot welds.</span>")
+				to_chat(user, "<span class='notice'>I attach the assembly to the floor with a few spot welds.</span>")
 		else
 			:
-			to_chat(user, "<span class='warning'>You need more welder fuel to do that.</span>")
+			to_chat(user, "<span class='warning'>I need more welder fuel to do that.</span>")
 			return
 
 	else
@@ -310,4 +310,4 @@
 			else
 				to_chat(usr, "<span class='notice'>Timer can't be [ntime<=0?"negative":"more than 1000 seconds"].</span>")
 	else
-		to_chat(usr, "<span class='notice'>You cannot do this while [usr.stat?"unconscious/dead":"restrained"].</span>")
+		to_chat(usr, "<span class='notice'>I cannot do this while [usr.stat?"unconscious/dead":"restrained"].</span>")

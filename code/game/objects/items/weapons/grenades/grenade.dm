@@ -31,7 +31,7 @@
 	if (istype(target, /obj/item/weapon/gun/grenadelauncher))
 		return ..()
 	if((user.get_active_hand() == src) && (!active) && (clown_check(user)) && target.loc != src.loc)
-		to_chat(user, "<span class='warning'>You prime the [name]! [det_time/10] seconds!</span>")
+		to_chat(user, "<span class='warning'>I prime the [name]! [det_time/10] seconds!</span>")
 		active = 1
 		icon_state = initial(icon_state) + "_active"
 		playsound(loc, 'sound/weapons/armbomb.ogg', 75, 1, -3)
@@ -56,7 +56,7 @@
 /obj/item/weapon/grenade/attack_self(mob/user as mob)
 	if(!active)
 		if(clown_check(user))
-			to_chat(user, "<span class='attack'>You prime \the [name]! [det_time/10] seconds!</span>")
+			to_chat(user, "<span class='attack'>I prime \the [name]! [det_time/10] seconds!</span>")
 
 			activate(user)
 			add_fingerprint(user)
@@ -101,16 +101,16 @@
 		switch(det_time)
 			if (1)
 				det_time = 10
-				to_chat(user, "<span class='notice'>You set the [name] for 1 second detonation time.</span>")
+				to_chat(user, "<span class='notice'>I set the [name] for 1 second detonation time.</span>")
 			if (10)
 				det_time = 30
-				to_chat(user, "<span class='notice'>You set the [name] for 3 second detonation time.</span>")
+				to_chat(user, "<span class='notice'>I set the [name] for 3 second detonation time.</span>")
 			if (30)
 				det_time = 50
-				to_chat(user, "<span class='notice'>You set the [name] for 5 second detonation time.</span>")
+				to_chat(user, "<span class='notice'>I set the [name] for 5 second detonation time.</span>")
 			if (50)
 				det_time = 1
-				to_chat(user, "<span class='notice'>You set the [name] for instant detonation.</span>")
+				to_chat(user, "<span class='notice'>I set the [name] for instant detonation.</span>")
 		add_fingerprint(user)
 	..()
 	return

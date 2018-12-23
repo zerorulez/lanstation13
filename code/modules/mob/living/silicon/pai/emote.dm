@@ -16,7 +16,7 @@
 		if ("me")
 			if (src.client)
 				if(client.prefs.muted & MUTE_IC)
-					to_chat(src, "You cannot send IC messages (muted).")
+					to_chat(src, "I cannot send IC messages (muted).")
 					return
 				if (src.client.handle_spam_prevention(message,MUTE_IC))
 					return
@@ -146,7 +146,7 @@
 				playsound(get_turf(src), 'sound/voice/biamthelaw.ogg', 50, 0)
 				m_type = VISIBLE
 			else
-				to_chat(src, "You don't have the right software to be THE LAW.")
+				to_chat(src, "I don't have the right software to be THE LAW.")
 
 		if("halt")
 			if (software.Find(SOFT_SS))
@@ -155,7 +155,7 @@
 				playsound(get_turf(src), 'sound/voice/halt.ogg', 50, 0)
 				m_type = HEARABLE
 			else
-				to_chat(src, "You have no Security software.")
+				to_chat(src, "I have no Security software.")
 
 		if ("help")
 			to_chat(src, "deathgasp, glare-(none)/mob, stare-(none)/mob, look, beep, ping, buzz, law, halt")

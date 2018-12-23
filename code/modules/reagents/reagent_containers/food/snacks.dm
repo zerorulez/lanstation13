@@ -43,7 +43,7 @@
 		reagentreference = reagents
 	if(!reagentreference || !reagentreference.total_volume) //Are we done eating (determined by the amount of reagents left, here 0)
 		user.visible_message("<span class='notice'>[user] finishes eating \the [src].</span>", \
-		"<span class='notice'>You finish eating \the [src].</span>")
+		"<span class='notice'>I finish eating \the [src].</span>")
 		score["foodeaten"]++ //For post-round score
 
 		//Drop our item before we delete it, to clear any references of ourselves in people's hands or whatever.
@@ -85,7 +85,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.check_body_part_coverage(MOUTH))
-			to_chat(H, "<span class='notice'><B>Remove your [H.get_body_part_coverage(MOUTH)]!</B></span>")
+			to_chat(H, "<span class='notice'><B>Remove my [H.get_body_part_coverage(MOUTH)]!</B></span>")
 			return
 	if(can_consume(user, user))
 		consume(user, 1)
@@ -114,7 +114,7 @@
 			if(ishuman(target))
 				var/mob/living/carbon/human/H = target
 				if(H.check_body_part_coverage(MOUTH))
-					to_chat(H, "<span class='notice'><B>Remove your [H.get_body_part_coverage(MOUTH)]!</B></span>")
+					to_chat(H, "<span class='notice'><B>Remove my [H.get_body_part_coverage(MOUTH)]!</B></span>")
 					return
 			if(!can_consume(M, user))
 				return 0
@@ -123,16 +123,16 @@
 
 			if(fullness <= 50)
 				target.visible_message("<span class='notice'>[target] hungrily [eatverb]s some of \the [src] and gobbles it down!</span>", \
-				"<span class='notice'>You hungrily [eatverb] some of \the [src] and gobble it down!</span>")
+				"<span class='notice'>I hungrily [eatverb] some of \the [src] and gobble it down!</span>")
 			else if(fullness > 50 && fullness < 150)
 				target.visible_message("<span class='notice'>[target] hungrily [eatverb]s \the [src].</span>", \
-				"<span class='notice'>You hungrily [eatverb] \the [src].</span>")
+				"<span class='notice'>I hungrily [eatverb] \the [src].</span>")
 			else if(fullness > 150 && fullness < 350)
 				target.visible_message("<span class='notice'>[target] [eatverb]s \the [src].</span>", \
-				"<span class='notice'>You [eatverb] \the [src].</span>")
+				"<span class='notice'>I [eatverb] \the [src].</span>")
 			else if(fullness > 350 && fullness < 550)
 				target.visible_message("<span class='notice'>[target] unwillingly [eatverb]s some of \the [src].</span>", \
-				"<span class='notice'>You unwillingly [eatverb] some of \the [src].</span>")
+				"<span class='notice'>I unwillingly [eatverb] some of \the [src].</span>")
 
 		else //Feeding someone else, target is eating, user is feeding
 			if(ishuman(target))
@@ -147,7 +147,7 @@
 				"<span class='userdanger'>[user] attempts to feed you \the [src].</span>")
 			else //The mob is overfed and will refuse
 				target.visible_message("<span class='danger'>[user] cannot force anymore of \the [src] down [target]'s throat!</span>", \
-				"<span class='userdanger'>[user] cannot force anymore of \the [src] down your throat!</span>")
+				"<span class='userdanger'>[user] cannot force anymore of \the [src] down my throat!</span>")
 				return 0
 
 			if(!do_mob(user, target))
@@ -174,16 +174,16 @@
 		var/fullness = eater.nutrition + (eater.reagents.get_reagent_amount(NUTRIMENT) * 25)
 		if(fullness <= 50)
 			eater.visible_message("<span class='notice'>[eater] hungrily [eatverb]s some of \the [src] and gobbles it down!</span>", \
-			"<span class='notice'>You hungrily [eatverb] some of \the [src] and gobble it down!</span>")
+			"<span class='notice'>I hungrily [eatverb] some of \the [src] and gobble it down!</span>")
 		else if(fullness > 50 && fullness < 150)
 			eater.visible_message("<span class='notice'>[eater] hungrily [eatverb]s \the [src].</span>", \
-			"<span class='notice'>You hungrily [eatverb] \the [src].</span>")
+			"<span class='notice'>I hungrily [eatverb] \the [src].</span>")
 		else if(fullness > 150 && fullness < 350)
 			eater.visible_message("<span class='notice'>[eater] [eatverb]s \the [src].</span>", \
-			"<span class='notice'>You [eatverb] \the [src].</span>")
+			"<span class='notice'>I [eatverb] \the [src].</span>")
 		else if(fullness > 350 && fullness < 550)
 			eater.visible_message("<span class='notice'>[eater] unwillingly [eatverb]s some of \the [src].</span>", \
-			"<span class='notice'>You unwillingly [eatverb] some of \the [src].</span>")
+			"<span class='notice'>I unwillingly [eatverb] some of \the [src].</span>")
 
 	var/datum/reagents/reagentreference = reagents //Even when the object is qdeleted, the reagents exist until this ref gets removed
 	if(reagentreference)	//Handle ingestion of any reagents (Note : Foods always have reagents)
@@ -224,7 +224,7 @@
 	var/fullness = eater.nutrition + (eater.reagents.get_reagent_amount(NUTRIMENT) * 25) //This reminds me how unlogical mob nutrition is
 
 	if(fullness > (550 * (1 + eater.overeatduration / 2000)))	// The more you eat - the more you can eat
-		to_chat(user, "<span class='notice'>You cannot force any more of \the [src] to go down [(user==eater) ? "your" : "\the [eater]'s"] throat.</span>")
+		to_chat(user, "<span class='notice'>I cannot force any more of \the [src] to go down [(user==eater) ? "your" : "\the [eater]'s"] throat.</span>")
 		return
 
 	if(ishuman(eater))
@@ -235,7 +235,7 @@
 				M.drop_from_inventory(src)
 			src.forceMove(get_turf(H))
 			H.visible_message("<span class='warning'>\The [src] falls through \the [eater] and onto the ground, completely untouched.</span>",\
-			"<span class='notice'>As [user] attempts to feed you \the [src], \he falls through your body and onto the ground, completely untouched.</span>")
+			"<span class='notice'>As [user] attempts to feed you \the [src], \he falls through my body and onto the ground, completely untouched.</span>")
 			return
 
 	return 1
@@ -269,7 +269,7 @@
 	if(istype(W, /obj/item/weapon/kitchen/utensil/fork))
 		var/obj/item/weapon/kitchen/utensil/fork/fork = W
 		if(slices_num || slice_path)
-			to_chat(user, "<span class='notice'>You can't take the whole [src] at once!.</span>")
+			to_chat(user, "<span class='notice'>I can't take the whole [src] at once!.</span>")
 			return
 		else
 			return fork.load_food(src, user)
@@ -290,7 +290,7 @@
 			return 0
 
 		if(user.drop_item(W, src))
-			to_chat(user, "<span class='notice'>You slip \the [W] inside [src].</span>")
+			to_chat(user, "<span class='notice'>I slip \the [W] inside [src].</span>")
 
 		add_fingerprint(user)
 		contents += W
@@ -300,16 +300,16 @@
 		return 0
 
 	if(!isturf(src.loc) || !(locate(/obj/structure/table) in src.loc) && !(locate(/obj/item/weapon/tray) in src.loc))
-		to_chat(user, "<span class='notice'>You cannot slice \the [src] here! You need a table or at least a tray.</span>")
+		to_chat(user, "<span class='notice'>I cannot slice \the [src] here! You need a table or at least a tray.</span>")
 		return 1
 
 	var/slices_lost = 0
 	if(W.sharpness_flags & SHARP_BLADE) //Actually sharp things are this sharp, yes
 		user.visible_message("<span class='notice'>[user] slices \the [src].</span>", \
-		"<span class='notice'>You slice \the [src].</span>")
+		"<span class='notice'>I slice \the [src].</span>")
 	else //We're above 0.8 //The magic threshold of pizza slicing
 		user.visible_message("<span class='notice'>[user] inaccurately slices \the [src] with \the [W]!</span>", \
-		"<span class='notice'>You inaccurately slice \the [src] with \the [W]!</span>")
+		"<span class='notice'>I inaccurately slice \the [src] with \the [W]!</span>")
 		slices_lost = rand(1, min(1, round(slices_num/2))) //Randomly lose a few slices along the way, but at least one and up to half
 	var/reagents_per_slice = reagents.total_volume/slices_num //Figure out how much reagents each slice inherits (losing slices loses reagents)
 	for(var/i = 1 to (slices_num - slices_lost)) //Transfer those reagents
@@ -329,7 +329,7 @@
 		if(iscorgi(M)) //Feeding food to a corgi
 			M.delayNextAttack(10)
 			if(bitecount >= 4) //This really, really shouldn't be hardcoded like this, but sure I guess
-				M.visible_message("[M] [pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where \the [src] was")].", "<span class='notice'>You swallow up the last of \the [src].")
+				M.visible_message("[M] [pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where \the [src] was")].", "<span class='notice'>I swallow up the last of \the [src].")
 				playsound(src.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
 				var/mob/living/simple_animal/corgi/C = M
 				if(C.health <= C.maxHealth + 5)
@@ -338,16 +338,16 @@
 					C.health = C.maxHealth
 				qdel(src)
 			else
-				M.visible_message("[M] takes a bite of \the [src].", "<span class='notice'>You take a bite of \the [src].</span>")
+				M.visible_message("[M] takes a bite of \the [src].", "<span class='notice'>I take a bite of \the [src].</span>")
 				playsound(src.loc,'sound/items/eatfood.ogg', rand(10, 50), 1)
 				bitecount++
 		else if(ismouse(M)) //Mouse eating shit
 			M.delayNextAttack(10)
 			var/mob/living/simple_animal/mouse/N = M
 			if(prob(25)) //We are noticed
-				N.visible_message("[N] nibbles away at \the [src].", "<span class='notice'>You nibble away at \the [src].</span>")
+				N.visible_message("[N] nibbles away at \the [src].", "<span class='notice'>I nibble away at \the [src].</span>")
 			else
-				to_chat(N, ("<span class='notice'>You nibble away at \the [src].</span>"))
+				to_chat(N, ("<span class='notice'>I nibble away at \the [src].</span>"))
 			N.health = min(N.health + 1, N.maxHealth)
 
 
@@ -494,7 +494,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/chocolatebar/proc/Unwrap(mob/user)
 		icon_state = "chocolatebarunwrapped"
 		desc = "It won't make you all sticky."
-		to_chat(user, "<span class='notice'>You remove the foil.</span>")
+		to_chat(user, "<span class='notice'>I remove the foil.</span>")
 		wrapped = 0
 
 
@@ -574,7 +574,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/donut/jelly
 	name = "jelly donut"
-	desc = "You jelly?"
+	desc = "I jelly?"
 	icon_state = "jdonut1"
 	bitesize = 5
 /obj/item/weapon/reagent_containers/food/snacks/donut/jelly/New()
@@ -589,7 +589,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/donut/slimejelly
 	name = "jelly donut"
-	desc = "You jelly?"
+	desc = "I jelly?"
 	icon_state = "jdonut1"
 	bitesize = 5
 /obj/item/weapon/reagent_containers/food/snacks/donut/slimejelly/New()
@@ -605,7 +605,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/donut/cherryjelly
 	name = "jelly donut"
-	desc = "You jelly?"
+	desc = "I jelly?"
 	icon_state = "jdonut1"
 	bitesize = 5
 /obj/item/weapon/reagent_containers/food/snacks/donut/cherryjelly/New()
@@ -1217,7 +1217,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/cubancarp
 	name = "Cuban Carp"
-	desc = "A grifftastic sandwich that burns your tongue and then leaves it numb!"
+	desc = "A grifftastic sandwich that burns my tongue and then leaves it numb!"
 	icon_state = "cubancarp"
 	trash = /obj/item/trash/plate
 	food_flags = FOOD_MEAT
@@ -1245,7 +1245,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/popcorn/after_consume()
 	if(prob(unpopped))	//lol ...what's the point? << AINT SO POINTLESS NO MORE
-		to_chat(usr, "<span class='warning'>You bite down on an un-popped kernel, and it hurts your teeth!</span>")
+		to_chat(usr, "<span class='warning'>I bite down on an un-popped kernel, and it hurts my teeth!</span>")
 		unpopped = max(0, unpopped-1)
 		reagents.add_reagent(SACID, 0.1) //only a little tingle.
 
@@ -1287,7 +1287,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/oldempirebar
 	name = "Old Empire Bar"
 	icon_state = "old_empire_bar"
-	desc = "You can see a villager from a long lost old empire on the wrap."
+	desc = "I can see a villager from a long lost old empire on the wrap."
 	trash = /obj/item/trash/oldempirebar
 
 /obj/item/weapon/reagent_containers/food/snacks/oldempirebar/New()
@@ -1309,7 +1309,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/cheesiehonkers
 	name = "Cheesie Honkers"
 	icon_state = "cheesie_honkers"
-	desc = "Bite sized cheesie snacks that will honk all over your mouth"
+	desc = "Bite sized cheesie snacks that will honk all over my mouth"
 	trash = /obj/item/trash/cheesie
 	food_flags = FOOD_ANIMAL //cheese
 
@@ -1541,7 +1541,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/meatballsoup
 	name = "Meatball soup"
-	desc = "You've got balls kid, BALLS!"
+	desc = "I've got balls kid, BALLS!"
 	icon_state = "meatballsoup"
 	trash = /obj/item/trash/snack_bowl
 	food_flags = FOOD_MEAT | FOOD_LIQUID
@@ -1742,7 +1742,7 @@
 	if(!proximity)
 		return
 	if(istype(O,/obj/structure/sink) && !wrapped)
-		to_chat(user, "<span class='notice'>You place [src] under a stream of water...</span>")
+		to_chat(user, "<span class='notice'>I place [src] under a stream of water...</span>")
 		return Expand()
 	..()
 
@@ -1797,7 +1797,7 @@
 
 	icon_state = "monkeycube"
 	desc = "Just add water!"
-	to_chat(user, "You unwrap the cube.")
+	to_chat(user, "I unwrap the cube.")
 	wrapped = 0
 	return
 
@@ -2067,7 +2067,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/mommispaghetti
 	name = "bowl of MoMMi spaghetti"
-	desc = "You can feel the autism in this one."
+	desc = "I can feel the autism in this one."
 	icon_state = "spaghettiboiled"
 
 /obj/item/weapon/reagent_containers/food/snacks/mommispaghetti/New()
@@ -2131,7 +2131,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/pastatomato
 	name = "Spaghetti"
-	desc = "Spaghetti and crushed tomatoes. Just like your abusive father used to make!"
+	desc = "Spaghetti and crushed tomatoes. Just like my abusive father used to make!"
 	icon_state = "pastatomato"
 	trash = /obj/item/trash/plate
 
@@ -2143,7 +2143,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/copypasta
 	name = "copypasta"
-	desc = "You probably shouldn't try this, you always hear people talking about how bad it is..."
+	desc = "I probably shouldn't try this, you always hear people talking about how bad it is..."
 	icon_state = "copypasta"
 	trash = /obj/item/trash/plate
 
@@ -2268,7 +2268,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/jellysandwich
 	name = "Jelly Sandwich"
-	desc = "You wish you had some peanut butter to go with this..."
+	desc = "I wish you had some peanut butter to go with this..."
 	icon_state = "jellysandwich"
 	trash = /obj/item/trash/plate
 
@@ -2551,7 +2551,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/carrotcakeslice
 	name = "carrot cake slice"
-	desc = "Carrotty slice of Carrot Cake, carrots are good for your eyes! Also not a lie."
+	desc = "Carrotty slice of Carrot Cake, carrots are good for my eyes! Also not a lie."
 	icon_state = "carrotcake_slice"
 	trash = /obj/item/trash/plate
 	bitesize = 2
@@ -2752,7 +2752,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/birthdaycakeslice
 	name = "Birthday Cake slice"
-	desc = "A slice of your birthday"
+	desc = "A slice of my birthday"
 	icon_state = "birthdaycakeslice"
 	trash = /obj/item/trash/plate
 	bitesize = 2
@@ -2944,7 +2944,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/mushroompizzaslice
 	name = "Mushroompizza slice"
-	desc = "Maybe it is the last slice of pizza in your life."
+	desc = "Maybe it is the last slice of pizza in my life."
 	icon_state = "mushroompizzaslice"
 	bitesize = 2
 
@@ -3043,7 +3043,7 @@
 	if( open && pizza )
 		user.put_in_hands( pizza )
 
-		to_chat(user, "<span class='notice'>You take the [src.pizza] out of the [src].</span>")
+		to_chat(user, "<span class='notice'>I take the [src.pizza] out of the [src].</span>")
 		src.pizza = null
 		update_icon()
 		return
@@ -3057,7 +3057,7 @@
 		boxes -= box
 
 		user.put_in_hands( box )
-		to_chat(user, "<span class='warning'>You remove the topmost [src] from your hand.</span>")
+		to_chat(user, "<span class='warning'>I remove the topmost [src] from my hand.</span>")
 		box.update_icon()
 		update_icon()
 		return
@@ -3095,7 +3095,7 @@
 					box.update_icon()
 					update_icon()
 
-					to_chat(user, "<span class='notice'>You put the [box] ontop of the [src]!</span>")
+					to_chat(user, "<span class='notice'>I put the [box] ontop of the [src]!</span>")
 
 			else
 				to_chat(user, "<span class='warning'>The stack is too high!</span>")
@@ -3111,7 +3111,7 @@
 			if(user.drop_item(I, src))
 				src.pizza = I
 				src.update_icon()
-				to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+				to_chat(user, "<span class='notice'>I put [I] in [src].</span>")
 		else
 			to_chat(user, "<span class='warning'>Open [src] first.</span>")
 
@@ -3237,7 +3237,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/sugarcookie
 	name = "sugar cookie"
-	desc = "Just like your little sister used to make."
+	desc = "Just like my little sister used to make."
 	icon_state = "sugarcookie"
 	food_flags = FOOD_SWEET
 
@@ -3261,7 +3261,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/spidereggs
 	name = "spider eggs"
-	desc = "A cluster of juicy spider eggs. A great side dish for when you care not for your health."
+	desc = "A cluster of juicy spider eggs. A great side dish for when you care not for my health."
 	icon_state = "spidereggs"
 	food_flags = FOOD_ANIMAL //eggs are eggs
 
@@ -3298,7 +3298,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/assburger
 	name = "assburger"
-	desc = "You better be REALLY nice to this burger, or it'll report you to the police!"
+	desc = "I better be REALLY nice to this burger, or it'll report you to the police!"
 	icon_state = "assburger"
 	food_flags = FOOD_MEAT
 
@@ -3311,7 +3311,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/pie/asspie
 	name = "asspie"
-	desc = "Please remember to check your privlidge, pie eating scum."
+	desc = "Please remember to check my privlidge, pie eating scum."
 	icon_state = "asspie"
 	food_flags = FOOD_MEAT
 
@@ -3413,10 +3413,10 @@
 	if(istype(I, /obj/item/weapon/kitchen/rollingpin))
 		if(isturf(loc))
 			new /obj/item/weapon/reagent_containers/food/snacks/sliceable/flatdough(loc)
-			to_chat(user, "<span class='notice'>You flatten [src].</span>")
+			to_chat(user, "<span class='notice'>I flatten [src].</span>")
 			qdel(src)
 		else
-			to_chat(user, "<span class='notice'>You need to put [src] on a surface to roll it out!</span>")
+			to_chat(user, "<span class='notice'>I need to put [src] on a surface to roll it out!</span>")
 	else
 		..()
 
@@ -3515,7 +3515,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/chicken_nuggets
 	name = "Chicken Nuggets"
-	desc = "You'd rather not know how they were prepared."
+	desc = "I'd rather not know how they were prepared."
 	icon_state = "kfc_nuggets"
 	item_state = "kfc_bucket"
 	trash = /obj/item/trash/chicken_bucket
@@ -3730,7 +3730,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/honeyflan
 	name = "Honey Flan"
-	desc = "The systematic slavery of an entire society of insects, elegantly sized to fit in your mouth."
+	desc = "The systematic slavery of an entire society of insects, elegantly sized to fit in my mouth."
 	icon_state = "honeyflan"
 	trash = /obj/item/trash/plate
 	food_flags = FOOD_SWEET | FOOD_ANIMAL
@@ -3745,7 +3745,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/omurice
 	name = "omelette rice"
-	desc = "Just like your Japanese animes!"
+	desc = "Just like my Japanese animes!"
 	icon_state = "omurice"
 	trash = /obj/item/trash/plate
 	food_flags = FOOD_ANIMAL //egg
@@ -4002,7 +4002,7 @@
 			return
 
 		H.stop_pulling()
-		to_chat(H, "<SPAN CLASS='notice'>You slipped on the [name]!</SPAN>")
+		to_chat(H, "<SPAN CLASS='notice'>I slipped on the [name]!</SPAN>")
 		playsound(get_turf(src), 'sound/misc/slip.ogg', 50, 1, -3)
 		H.Stun(3)
 		H.Knockdown(2)
@@ -4048,7 +4048,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/coleslaw
 	name = "Coleslaw"
-	desc = "You fought the 'slaw, and the 'slaw won."
+	desc = "I fought the 'slaw, and the 'slaw won."
 	icon_state = "coleslaw"
 
 /obj/item/weapon/reagent_containers/food/snacks/coleslaw/New()
@@ -4144,7 +4144,7 @@
 			desc += " It has a nice crunch!"
 			reagents.add_reagent(NUTRIMENT, 10)
 		if(9)
-			desc += " Yummy, but with all the sweets, your chest starts to hurt."
+			desc += " Yummy, but with all the sweets, my chest starts to hurt."
 			reagents.add_reagent(NUTRIMENT, 10)
 		if(10)
 			desc += " Just a dollop of garnishes."
@@ -4193,7 +4193,7 @@
 	spawn(0)
 		if((clumsy_check(H)) || prob(25))
 			if(H.drop_item())
-				user.visible_message("<span class='warning'>[src] escapes from [H]'s hands!</span>","<span class='warning'>[src] escapes from your grasp!</span>")
+				user.visible_message("<span class='warning'>[src] escapes from [H]'s hands!</span>","<span class='warning'>[src] escapes from my grasp!</span>")
 
 				jump()
 	return 1
@@ -4258,7 +4258,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/chococoin/proc/Unwrap(mob/user)
 	icon_state = "chococoin_unwrapped"
 	desc = "A thin wafer of milky, chocolatey, melt-in-your-mouth goodness. That alone is already worth a hoard."
-	to_chat(user, "<span class='notice'>You remove the golden foil from \the [src].</span>")
+	to_chat(user, "<span class='notice'>I remove the golden foil from \the [src].</span>")
 	wrapped = 0
 
 /obj/item/weapon/reagent_containers/food/snacks/eucharist
@@ -4327,7 +4327,7 @@
 	set src in range(1)
 
 	if(usr.isUnconscious())
-		to_chat(usr, "You can't do that while unconscious.")
+		to_chat(usr, "I can't do that while unconscious.")
 		return
 
 	verbs -= /obj/item/weapon/reagent_containers/food/snacks/pie/nofruitpie/verb/pick_leaf
@@ -4347,7 +4347,7 @@
 				playsound(user, 'sound/weapons/genhit2.ogg', 50, 1)
 			if(3)
 				playsound(user, 'sound/weapons/genhit3.ogg', 50, 1)
-		user.visible_message("[user] smacks \the [src] with \the [W].","You smack \the [src] with \the [W].")
+		user.visible_message("[user] smacks \the [src] with \the [W].","I smack \the [src] with \the [W].")
 		if(src.loc == user)
 			user.drop_item(src, force_drop = 1)
 			var/I = new current_path(get_turf(user))
@@ -4537,7 +4537,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/sweetandsourpork
 	name = "sweet and sour pork"
-	desc = "Makes your insides burn with flavor! With this in your stomach, you won't want to stop moving any time soon."
+	desc = "Makes my insides burn with flavor! With this in my stomach, you won't want to stop moving any time soon."
 	icon_state = "sweetsourpork"
 	bitesize = 2
 
@@ -4545,7 +4545,7 @@
 	..()
 	//3 nutriment inherited from the meat
 	reagents.add_reagent(LITHIUM,2) //Random movement for a short period
-	reagents.add_reagent(SYNAPTIZINE,1) //Stay on your feet, loads of toxins
+	reagents.add_reagent(SYNAPTIZINE,1) //Stay on my feet, loads of toxins
 
 /obj/item/weapon/reagent_containers/food/snacks/reclaimed
 	name = "reclaimed nutrition cube"
@@ -4610,7 +4610,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/starrynightsalad
 	name = "starry night salad"
-	desc = "Eating too much of this salad may cause you to want to cut off your own ear."
+	desc = "Eating too much of this salad may cause you to want to cut off my own ear."
 	icon_state = "starrynight"
 	bitesize = 2
 

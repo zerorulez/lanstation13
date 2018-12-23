@@ -64,16 +64,16 @@
 
 /obj/machinery/atmospherics/unary/cold_sink/freezer/togglePanelOpen(var/obj/toggleitem, mob/user)
 	if(anchored)
-		to_chat(user, "You have to unanchor the [src] first!")
+		to_chat(user, "I have to unanchor the [src] first!")
 		return
 	if(src.on)
-		to_chat(user, "You have to turn off the [src]!")
+		to_chat(user, "I have to turn off the [src]!")
 		return
 	return ..()
 
 /obj/machinery/atmospherics/unary/cold_sink/freezer/wrenchAnchor(mob/user)
 	if(src.on)
-		to_chat(user, "You have to turn off the [src] first!")
+		to_chat(user, "I have to turn off the [src] first!")
 		return
 	..()
 	if(!anchored)
@@ -237,16 +237,16 @@
 
 /obj/machinery/atmospherics/unary/heat_reservoir/heater/togglePanelOpen(var/obj/toggleitem, mob/user)
 	if(anchored)
-		to_chat(user, "You have to unanchor the [src] first!")
+		to_chat(user, "I have to unanchor the [src] first!")
 		return
 	if(src.on)
-		to_chat(user, "You have to turn off the [src]!")
+		to_chat(user, "I have to turn off the [src]!")
 		return
 	return ..()
 
 /obj/machinery/atmospherics/unary/heat_reservoir/heater/wrenchAnchor(mob/user)
 	if(src.on)
-		to_chat(user, "You have to turn off the [src] first!")
+		to_chat(user, "I have to turn off the [src] first!")
 		return
 	..()
 	if(!anchored)

@@ -1,7 +1,7 @@
 /* Station-Collision(sc) away mission map specific stuff
  *
  * Notes:
- *		Feel free to use parts of this map, or even all of it for your own project. Just include me in the credits :)
+ *		Feel free to use parts of this map, or even all of it for my own project. Just include me in the credits :)
  *
  *		Some of this code unnecessary, but the intent is to add a little bit of everything to serve as examples
  *		for anyone who wants to make their own stuff.
@@ -173,7 +173,7 @@ var/sc_safecode5 = "[rand(0,9)]"
  * Modified Nar-Sie.
  */
 /obj/machinery/singularity/narsie/wizard/sc_Narsie
-	desc = "Your body becomes weak and your feel your mind slipping away as you try to comprehend what you know can't be possible."
+	desc = "My body becomes weak and my feel my mind slipping away as you try to comprehend what you know can't be possible."
 	move_self = 0 // Contained narsie does not move!
 
 /*

@@ -17,7 +17,7 @@
 		return
 
 	if(!(prefs.toggles & CHAT_OOC))
-		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
+		to_chat(src, "<span class='warning'>I have OOC muted.</span>")
 		return
 
 	if(!holder)
@@ -28,10 +28,10 @@
 			to_chat(usr, "<span class='warning'>OOC for dead mobs has been turned off.</span>")
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, "<span class='warning'>You cannot use OOC (muted).</span>")
+			to_chat(src, "<span class='warning'>I cannot use OOC (muted).</span>")
 			return
 		if(oocban_isbanned(ckey))
-			to_chat(src, "<span class='warning'>You cannot use OOC (banned).</span>")
+			to_chat(src, "<span class='warning'>I cannot use OOC (banned).</span>")
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
@@ -42,7 +42,7 @@
 			return
 		*/
 		if((copytext(msg, 1, 2) in list(".",";",":","#")) || (findtext(lowertext(copytext(msg, 1, 5)), "say")))
-			if(alert("Your message \"[msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
+			if(alert("My message \"[msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
 				return
 	log_ooc("[mob.name]/[key] (@[mob.x],[mob.y],[mob.z]): [msg]")
 
@@ -121,7 +121,7 @@
 		return
 
 	if(!(prefs.toggles & CHAT_LOOC))
-		to_chat(src, "<span class='warning'>You have LOOC muted.</span>")
+		to_chat(src, "<span class='warning'>I have LOOC muted.</span>")
 		return
 
 	if(!holder)
@@ -132,10 +132,10 @@
 			to_chat(usr, "<span class='warning'>LOOC for dead mobs has been turned off.</span>")
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, "<span class='warning'>You cannot use LOOC (muted).</span>")
+			to_chat(src, "<span class='warning'>I cannot use LOOC (muted).</span>")
 			return
 		if(oocban_isbanned(ckey))
-			to_chat(src, "<span class='warning'>You cannot use LOOC (banned).</span>")
+			to_chat(src, "<span class='warning'>I cannot use LOOC (banned).</span>")
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
@@ -146,7 +146,7 @@
 			return
 		*/
 		if((copytext(msg, 1, 2) in list(".",";",":","#")) || (findtext(lowertext(copytext(msg, 1, 5)), "say")))
-			if(alert("Your message \"[msg]\" looks like it was meant for in game communication, say it in LOOC?", "Meant for LOOC?", "No", "Yes") != "Yes")
+			if(alert("My message \"[msg]\" looks like it was meant for in game communication, say it in LOOC?", "Meant for LOOC?", "No", "Yes") != "Yes")
 				return
 	log_ooc("(LOCAL) [mob.name]/[key] (@[mob.x],[mob.y],[mob.z]): [msg]")
 	var/list/heard

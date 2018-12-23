@@ -70,7 +70,7 @@
 
 /obj/item/clothing/glasses/scanner/proc/enable(var/mob/C)
 	on = TRUE
-	to_chat(C, "<span class = 'warning'>You turn \the [src] on.</span>")
+	to_chat(C, "<span class = 'warning'>I turn \the [src] on.</span>")
 	if(iscarbon(loc))
 		if(istype(loc, /mob/living/carbon/monkey))
 			var/mob/living/carbon/monkey/M = C
@@ -83,7 +83,7 @@
 
 /obj/item/clothing/glasses/scanner/proc/disable(var/mob/C)
 	on = FALSE
-	to_chat(C, "<span class = 'warning'>You turn \the [src] off.</span>")
+	to_chat(C, "<span class = 'warning'>I turn \the [src] off.</span>")
 	if(iscarbon(loc) && color_matrix)
 		if(istype(loc, /mob/living/carbon/monkey))
 			var/mob/living/carbon/monkey/M = C
@@ -307,7 +307,7 @@
 	origin_tech = Tc_MAGNETS + "=3"
 	vision_flags = SEE_MOBS
 	see_invisible = SEE_INVISIBLE_MINIMUM
-	eyeprot = -2 //prepare for your eyes to get shit on
+	eyeprot = -2 //prepare for my eyes to get shit on
 
 /obj/item/clothing/glasses/scanner/thermal/toggle()
 	return
@@ -369,7 +369,7 @@
 
 /obj/item/clothing/glasses/scanner/thermal/jensen
 	name = "optical thermal implants"
-	desc = "A set of implantable lenses designed to augment your vision."
+	desc = "A set of implantable lenses designed to augment my vision."
 	icon_state = "thermalimplants"
 	item_state = "syringe_kit"
 	species_fit = list(VOX_SHAPED)

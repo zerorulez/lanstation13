@@ -68,7 +68,7 @@
 		if(M.mind)
 			M.mind.current = M
 
-		to_chat(M, "<span class='danger'>You are a mummy under the service of \the [src]. Protect your master and destroy any invaders that dare step foot into this place.</span>")
+		to_chat(M, "<span class='danger'>I am a mummy under the service of \the [src]. Protect my master and destroy any invaders that dare step foot into this place.</span>")
 
 		L.dust()
 		target = null

@@ -57,13 +57,13 @@
 	if(!chaplain) //The user is not a Chaplain. BLASPHEMY !
 		//Using the Bible as a member of the occult will get you smithed, aka holy cleansing fire. You'd have to be stupid to remotely consider it
 		if(isvampire(user)) //Vampire trying to use it
-			to_chat(user, "<span class='danger'>[deity_name] channels through \the [src] and sets you ablaze for your blasphemy!</span>")
+			to_chat(user, "<span class='danger'>[deity_name] channels through \the [src] and sets you ablaze for my blasphemy!</span>")
 			user.fire_stacks += 5
 			user.IgniteMob()
 			user.emote("scream",,, 1)
 			M.mind.vampire.smitecounter += 50 //Once we are extinguished, we will be quite vulnerable regardless
 		else if(iscult(user)) //Cultist trying to use it
-			to_chat(user, "<span class='danger'>[deity_name] channels through \the [src] and sets you ablaze for your blasphemy!</span>")
+			to_chat(user, "<span class='danger'>[deity_name] channels through \the [src] and sets you ablaze for my blasphemy!</span>")
 			user.fire_stacks += 5
 			user.IgniteMob()
 			user.emote("scream",,, 1)
@@ -73,7 +73,7 @@
 
 	if(clumsy_check(user) && prob(50)) //Using it while clumsy, let's have some fun
 		user.visible_message("<span class='warning'>\The [src] slips out of [user]'s hands and hits \his head.</span>",
-		"<span class='warning'>\The [src] slips out of your hands and hits your head.</span>")
+		"<span class='warning'>\The [src] slips out of my hands and hits my head.</span>")
 		user.apply_damage(10, BRUTE, LIMB_HEAD)
 		user.Stun(5)
 		return 1
@@ -89,26 +89,26 @@
 		var/mob/living/carbon/human/H = M
 		if(istype(H.head, /obj/item/clothing/head/helmet) || istype(H.head, /obj/item/clothing/head/hardhat) || istype(H.head, /obj/item/clothing/head/fedora) || istype(H.head, /obj/item/clothing/head/culthood)) //Blessing blocked
 			user.visible_message("<span class='warning'>[user] [pick(attack_verb)] [H]'s head with \the [src], but their headgear blocks the hit.</span>",
-			"<span class='warning'>You try to bless [H]'s head with \the [src], but their headgear blocks the blessing. Blasphemy!</span>")
+			"<span class='warning'>I try to bless [H]'s head with \the [src], but their headgear blocks the blessing. Blasphemy!</span>")
 			return 1 //That's it. Helmets are very haram
 
 	if(M.stat == DEAD) //Our target is dead. RIP in peace
 		user.visible_message("<span class='warning'>[user] [pick(attack_verb)] [M]'s lifeless body with \the [src].</span>",
-		"<span class='warning'>You bless [M]'s lifeless body with \the [src], trying to conjure [deity_name]'s mercy on them.</span>")
+		"<span class='warning'>I bless [M]'s lifeless body with \the [src], trying to conjure [deity_name]'s mercy on them.</span>")
 		playsound(get_turf(src), "punch", 25, 1, -1)
 
-		//TODO : Way to bring people back from death if they are your followers
+		//TODO : Way to bring people back from death if they are my followers
 		return 1 //Otherwise, there's so little we can do
 
 	//Our target is alive, prepare the blessing
 	user.visible_message("<span class='warning'>[user] [pick(attack_verb)] [M]'s head with \the [src].</span>",
-	"<span class='warning'>You bless [M]'s head with \the [src]. In the name of [deity_name], bless thee!</span>")
+	"<span class='warning'>I bless [M]'s head with \the [src]. In the name of [deity_name], bless thee!</span>")
 	playsound(get_turf(src), "punch", 25, 1, -1)
 
 	if(ishuman(M)) //Only humans can be vampires or cultists
 		var/mob/living/carbon/human/H = M
 		if(H.mind && isvampire(H) && !(VAMP_MATURE in H.mind.vampire.powers)) //The user is a "young" Vampire, fuck up his vampiric powers and hurt his head
-			to_chat(H, "<span class='warning'>[deity_name]'s power nullifies your own!</span>")
+			to_chat(H, "<span class='warning'>[deity_name]'s power nullifies my own!</span>")
 			if(H.mind.vampire.nullified < 5) //Don't actually reduce their debuff if it's over 5
 				H.mind.vampire.nullified = max(5, H.mind.vampire.nullified + 2)
 			H.mind.vampire.smitecounter += 10 //Better get out of here quickly before the problem shows. Ten hits and you are literal toast
@@ -116,8 +116,8 @@
 
 		if(H.mind && iscult(H)) //The user is a Cultist. We are thus deconverting him
 			if(prob(20))
-				to_chat(H, "<span class='notice'>The power of [deity_name] suddenly clears your mind of heresy. Your allegiance to Nar'Sie wanes!</span>")
-				to_chat(user, "<span class='notice'>You see [H]'s eyes become clear. Nar'Sie no longer controls his mind, [deity_name] saved \him!</span>")
+				to_chat(H, "<span class='notice'>The power of [deity_name] suddenly clears my mind of heresy. Your allegiance to Nar'Sie wanes!</span>")
+				to_chat(user, "<span class='notice'>I see [H]'s eyes become clear. Nar'Sie no longer controls his mind, [deity_name] saved \him!</span>")
 				ticker.mode.remove_cultist(H.mind)
 			else //We aren't deconverting him this time, give the Cultist a fair warning
 				to_chat(H, "<span class='warning'>The power of [deity_name] is overwhelming you. Your mind feverishly questions Nar'Sie's teachings!</span>")
@@ -126,7 +126,7 @@
 		if(H.mind && H.mind.special_role == "VampThrall")
 			ticker.mode.remove_thrall(H.mind)
 			H.visible_message("<span class='notice'>[H] suddenly becomes calm and collected again, \his eyes clear up.</span>",
-			"<span class='notice'>Your blood cools down and you are inhabited by a sensation of untold calmness.</span>")
+			"<span class='notice'>My blood cools down and you are inhabited by a sensation of untold calmness.</span>")
 			return 1 //That's it, game over
 
 		bless_mob(user, H) //Let's outsource the healing code, because we can
@@ -152,7 +152,7 @@
 	if(user.mind && (user.mind.assigned_role == "Chaplain")) //Make sure we still are a Chaplain, just in case
 		if(A.reagents && A.reagents.has_reagent(WATER)) //Blesses all the water in the holder
 			user.visible_message("<span class='notice'>[user] blesses \the [A].</span>",
-			"<span class='notice'>You bless \the [A].</span>")
+			"<span class='notice'>I bless \the [A].</span>")
 			//Ugly but functional conversion proc
 			var/water2holy = A.reagents.get_reagent_amount(WATER)
 			A.reagents.del_reagent(WATER)
@@ -164,7 +164,7 @@
 
 /obj/item/weapon/storage/bible/pickup(mob/living/user as mob)
 	if(user.mind && user.mind.assigned_role == "Chaplain") //We are the Chaplain, yes we are
-		to_chat(user, "<span class ='notice'>You feel [deity_name]'s holy presence as you pick up \the [src].</span>")
+		to_chat(user, "<span class ='notice'>I feel [deity_name]'s holy presence as you pick up \the [src].</span>")
 	if(ishuman(user)) //We are checking for antagonists, only humans can be antagonists
 		var/mob/living/carbon/human/H = user
 		if(isvampire(H) && (!VAMP_UNDYING in H.mind.vampire.powers)) //We are a Vampire, we aren't very smart

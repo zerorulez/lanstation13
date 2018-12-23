@@ -725,7 +725,7 @@ var/global/list/whitelisted_species = list("Human")
 		H.equip_or_collect(new/obj/item/weapon/tank/nitrogen(H), tank_slot)
 	else
 		H.put_in_hands(new/obj/item/weapon/tank/nitrogen(H))
-	to_chat(H, "<span class='info'>You are now running on nitrogen internals from the [H.s_store] in your [tank_slot_name]. Your species finds oxygen toxic, so <b>you must breathe nitrogen (AKA N<sub>2</sub>) only</b>.</span>")
+	to_chat(H, "<span class='info'>I am now running on nitrogen internals from the [H.s_store] in my [tank_slot_name]. Your species finds oxygen toxic, so <b>you must breathe nitrogen (AKA N<sub>2</sub>) only</b>.</span>")
 	H.internal = H.get_item_by_slot(tank_slot)
 	if (H.internals)
 		H.internals.icon_state = "internal1"
@@ -885,7 +885,7 @@ var/global/list/whitelisted_species = list("Human")
 		var/obj/item/slime_extract/adamantine/A = I
 		if(A.Uses)
 			if(!mind)
-				to_chat(user, "<span class='warning'>You press \the [A] into \the [src], but nothing happens.</span>")
+				to_chat(user, "<span class='warning'>I press \the [A] into \the [src], but nothing happens.</span>")
 			else
 				if(!client)
 					to_chat(user, "<span class='notice'>As you press \the [A] into \the [src], it shudders briefly, but falls still.</span>")
@@ -894,7 +894,7 @@ var/global/list/whitelisted_species = list("Human")
 						var/mob/ghostmob = ghost.get_top_transmogrification()
 						if(ghostmob)
 							ghostmob << 'sound/effects/adminhelp.ogg'
-							to_chat(ghostmob, "<span class='interface big'><span class='bold'>Someone is trying to resurrect you. Return to your body if you want to live again!</span> \
+							to_chat(ghostmob, "<span class='interface big'><span class='bold'>Someone is trying to resurrect you. Return to my body if you want to live again!</span> \
 								(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)</span>")
 				else
 					anim(target = src, a_icon = 'icons/mob/mob.dmi', flick_anim = "reverse-dust-g", sleeptime = 15)
@@ -910,7 +910,7 @@ var/global/list/whitelisted_species = list("Human")
 					dustmind.current = G
 					mind = null
 					G.key = key
-					to_chat(G, "You are an adamantine golem. You move slowly, but are highly resistant to heat and cold as well as impervious to burn damage. You are unable to wear most clothing, but can still use most tools. Serve [user], and assist them in completing their goals at any cost.")
+					to_chat(G, "I am an adamantine golem. You move slowly, but are highly resistant to heat and cold as well as impervious to burn damage. You are unable to wear most clothing, but can still use most tools. Serve [user], and assist them in completing their goals at any cost.")
 					qdel(src)
 		else
 			to_chat(user, "<span class='warning'>The used extract doesn't have any effect on \the [src].</span>")
@@ -1037,9 +1037,9 @@ var/global/list/whitelisted_species = list("Human")
 				head.internal_organs -= O.organ_data
 				O.removed(slime_person,user)
 				user.put_in_hands(O)
-				to_chat(user, "<span class='notice'>You remove \the [O] from \the [src].</span>")
+				to_chat(user, "<span class='notice'>I remove \the [O] from \the [src].</span>")
 		else
-			to_chat(user, "<span class='notice'>You root around inside \the [src], but find nothing.</span>")
+			to_chat(user, "<span class='notice'>I root around inside \the [src], but find nothing.</span>")
 
 /mob/living/slime_pile/attackby(obj/item/I, mob/user)
 	if(slime_person)
@@ -1065,5 +1065,5 @@ var/global/list/whitelisted_species = list("Human")
 					O.organ_data.status |= ORGAN_CUT_AWAY
 					O.replaced(slime_person)
 
-				to_chat(user, "<span class='notice'>You place \the [O] into \the [src].</span>")
+				to_chat(user, "<span class='notice'>I place \the [O] into \the [src].</span>")
 				qdel(O)

@@ -17,7 +17,7 @@
 	if(genes.len)
 		var/choice = alert(user, "Are you sure you want to wipe the disk?", "Xenobotany Data", "No", "Yes")
 		if(src && user && genes && choice && choice == "Yes" && user.get_active_hand() == src)
-			to_chat(user, "You wipe the disk data.")
+			to_chat(user, "I wipe the disk data.")
 			name = initial(name)
 			desc = initial(name)
 			genes = list()
@@ -89,7 +89,7 @@
 		else
 			user.drop_item(S, src, force_drop = 1)
 			loaded_seed = W
-			to_chat(user, "You load [W] into [src].")
+			to_chat(user, "I load [W] into [src].")
 			nanomanager.update_uis(src)
 		return
 
@@ -113,7 +113,7 @@
 				return
 
 			loaded_disk = W
-			to_chat(user, "You load [W] into [src].")
+			to_chat(user, "I load [W] into [src].")
 			nanomanager.update_uis(src)
 
 		return

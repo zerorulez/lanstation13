@@ -200,7 +200,7 @@
 
 /obj/item/projectile/meteor/small
 	name = "small meteor"
-	desc = "The mineral version of armed C4, coming right for your walls."
+	desc = "The mineral version of armed C4, coming right for my walls."
 	icon_state = "small"
 	pass_flags = PASSTABLE
 
@@ -265,7 +265,7 @@
 			//Shouldn't have to do this here, this is what life.dm and organ checks are for
 			//Not even going to bother with eye damage
 			if(prob(M.ear_damage - 10 + 5))
-				to_chat(M, "<span class='warning'>You can't hear anything!</span>")
+				to_chat(M, "<span class='warning'>I can't hear anything!</span>")
 				M.sdisabilities |= DEAF
 
 	explosion(get_turf(src), -1, 1, 3, 4, 0, 1, 0) //Tiny meteor doesn't cause too much damage
@@ -468,7 +468,7 @@ var/list/blob_candidates = list()
 
 	user.visible_message(
 		"<span class='warning'>[user] fires the [src]!</span>",
-		"<span class='warning'>You fire the [src]!</span>")
+		"<span class='warning'>I fire the [src]!</span>")
 
 	playsound(user, 'sound/weapons/rocket.ogg', 100)
 

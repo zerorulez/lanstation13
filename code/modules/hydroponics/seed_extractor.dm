@@ -53,10 +53,10 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 			++loaded
 			moveToStorage(G)
 			if(contents.len >= MAX_N_OF_ITEMS)
-				to_chat(user, "<span class='notice'>You fill \the [src] to the brim.</span>")
+				to_chat(user, "<span class='notice'>I fill \the [src] to the brim.</span>")
 				return
 		if (loaded)
-			to_chat(user, "<span class='notice'>You put the seeds from \the [O.name] into [src].</span>")
+			to_chat(user, "<span class='notice'>I put the seeds from \the [O.name] into [src].</span>")
 		else
 			to_chat(user, "<span class='notice'>There are no seeds in \the [O.name].</span>")
 		return
@@ -67,7 +67,7 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 			return
 		user.drop_item(force_drop = 1)
 		moveToStorage(O)
-		to_chat(user, "<span class='notice'>You add [O] to [src.name].</span>")
+		to_chat(user, "<span class='notice'>I add [O] to [src.name].</span>")
 		updateUsrDialog()
 		return
 
@@ -85,7 +85,7 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 			new_seed_type = plant_controller.seeds[F.plantname]
 
 		if(new_seed_type)
-			to_chat(user, "<span class='notice'>You extract some seeds from [O].</span>")
+			to_chat(user, "<span class='notice'>I extract some seeds from [O].</span>")
 			var/produce = rand(min_seeds,max_seeds)
 			for(var/i = 0;i<=produce;i++)
 				var/obj/item/seeds/seeds = new(get_turf(src))
@@ -99,14 +99,14 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 	//Grass. //Why isn't this using the nonplant_seed_type functionality below?
 	else if(istype(O, /obj/item/stack/tile/grass))
 		var/obj/item/stack/tile/grass/S = O
-		to_chat(user, "<span class='notice'>You extract some seeds from the [S.name].</span>")
+		to_chat(user, "<span class='notice'>I extract some seeds from the [S.name].</span>")
 		S.use(1)
 		new /obj/item/seeds/grassseed(loc)
 
 	if(O)
 		var/obj/item/F = O
 		if(F.nonplant_seed_type)
-			to_chat(user, "<span class='notice'>You extract some seeds from the [F.name].</span>")
+			to_chat(user, "<span class='notice'>I extract some seeds from the [F.name].</span>")
 			user.drop_item(O, force_drop = 1)
 			var/t_amount = 0
 			var/t_max = rand(1,4)

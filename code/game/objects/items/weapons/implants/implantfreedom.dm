@@ -20,7 +20,7 @@
 			return 0
 		if (emote == src.activation_emote)
 			src.uses--
-			to_chat(source, "You feel a faint click.")
+			to_chat(source, "I feel a faint click.")
 			if (source.handcuffed)
 				source.drop_from_inventory(source.handcuffed)
 			if (source.legcuffed)

@@ -43,12 +43,12 @@
 		return ..()
 	var/turf/T = get_turf(src)
 	playsound(T, 'sound/items/Ratchet.ogg', 50, 1)
-	to_chat(user, "<span class='notice'>You begin to remove \the [src]...</span>")
+	to_chat(user, "<span class='notice'>I begin to remove \the [src]...</span>")
 	if (do_after(user, src, 40))
 		user.visible_message( \
 			"[user] removes \the [src].", \
-			"<span class='notice'>You have removed \the [src].</span>", \
-			"You hear a ratchet.")
+			"<span class='notice'>I have removed \the [src].</span>", \
+			"I hear a ratchet.")
 		//new /obj/item/pipe(T, make_from=src)
 		qdel(src)
 

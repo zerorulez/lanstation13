@@ -35,7 +35,7 @@
 /obj/item/device/core_sampler/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/weapon/evidencebag))
 		if(num_stored_bags < 10)
-			to_chat(user, "<span class='notice'>You insert the [W] into the core sampler.</span>")
+			to_chat(user, "<span class='notice'>I insert the [W] into the core sampler.</span>")
 			qdel(W)
 			W = null
 			num_stored_bags += 1
@@ -81,13 +81,13 @@
 			filled_bag.underlays += I
 			filled_bag.w_class = W_CLASS_TINY
 
-			to_chat(user, "<span class='notice'>You take a core sample of the [item_to_sample].</span>")
+			to_chat(user, "<span class='notice'>I take a core sample of the [item_to_sample].</span>")
 	else
-		to_chat(user, "<span class='warning'>You are unable to take a sample of [item_to_sample].</span>")
+		to_chat(user, "<span class='warning'>I am unable to take a sample of [item_to_sample].</span>")
 
 /obj/item/device/core_sampler/attack_self()
 	if(filled_bag)
-		to_chat(usr, "<span class='notice'>You eject the full sample bag.</span>")
+		to_chat(usr, "<span class='notice'>I eject the full sample bag.</span>")
 		var/success = 0
 		if(istype(src.loc, /mob))
 			var/mob/M = src.loc

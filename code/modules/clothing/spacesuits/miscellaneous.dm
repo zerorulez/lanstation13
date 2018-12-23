@@ -67,7 +67,7 @@
 	name = "ancient space helmet"
 	icon_state = "nasa"
 	item_state = "nasa"
-	desc = "Take your protein pills and put your helmet on."
+	desc = "Take my protein pills and put my helmet on."
 	armor = list(melee = 10, bullet = 10, laser = 10,energy = 10, bomb = 50, bio = 100, rad = 100)
 	species_restricted =list("Human")
 

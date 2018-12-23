@@ -10,7 +10,7 @@
 		for(var/turf/simulated/floor/T in orange(user, 50))
 			randomturfs.Add(T)
 		if(randomturfs.len > 0)
-			to_chat(user, "<span class='warning'>You are suddenly zapped away elsewhere!</span>")
+			to_chat(user, "<span class='warning'>I am suddenly zapped away elsewhere!</span>")
 			user.unlock_from()
 
 			var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
@@ -30,7 +30,7 @@
 				for(var/turf/simulated/floor/T in orange(M, 30))
 					randomturfs.Add(T)
 				if(randomturfs.len > 0)
-					to_chat(M, "<span class='warning'>You are displaced by a strange force!</span>")
+					to_chat(M, "<span class='warning'>I am displaced by a strange force!</span>")
 					M.unlock_from()
 
 					var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
@@ -50,7 +50,7 @@
 				for(var/turf/simulated/floor/T in orange(M, 15))
 					randomturfs.Add(T)
 				if(randomturfs.len > 0)
-					to_chat(M, "<span class='warning'>You are displaced by a strange force!</span>")
+					to_chat(M, "<span class='warning'>I am displaced by a strange force!</span>")
 
 					var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
 					sparks.set_up(3, 0, get_turf(M))

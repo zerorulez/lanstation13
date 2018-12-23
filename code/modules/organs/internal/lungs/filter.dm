@@ -30,12 +30,12 @@
 /datum/organ/internal/lungs/filter/CanInsert(var/mob/living/carbon/human/H, var/mob/surgeon=null, var/quiet=0)
 	if(!(H.species.breath_type in intake_settings))
 		if(surgeon)
-			surgeon << "<span class='warning'>You read the compatibility list on the back of the lung and find that it won't work on this species.</span>"
+			surgeon << "<span class='warning'>I read the compatibility list on the back of the lung and find that it won't work on this species.</span>"
 		return 0
 	return 1
 
 /datum/organ/internal/lungs/filter/Insert(var/mob/living/carbon/human/H, var/mob/surgeon=null, var/quiet=0)
 	if(!quiet)
-		H.visible_message("<span class='info'>\The [name] clicks as it adjusts to their body's metabolism.</span>", "<span class='info'>You feel something click in your chest.</span>", "<span class='warning'>You hear a click.</span>")
+		H.visible_message("<span class='info'>\The [name] clicks as it adjusts to their body's metabolism.</span>", "<span class='info'>I feel something click in my chest.</span>", "<span class='warning'>I hear a click.</span>")
 	gasses=intake_settings[H.species.breath_type]
 	return 1

@@ -39,7 +39,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 			return
 
 	if(!note)
-		note = html_encode(input(usr,"Enter your note:","Enter some text",null) as message|null)
+		note = html_encode(input(usr,"Enter my note:","Enter some text",null) as message|null)
 		if(!note)
 			return
 

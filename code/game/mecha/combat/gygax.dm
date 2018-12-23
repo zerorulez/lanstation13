@@ -63,7 +63,7 @@
 		overload = 0
 		step_in = initial(step_in)
 		step_energy_drain = initial(step_energy_drain)
-		src.occupant_message("<font color='blue'>You disable leg actuators overload.</font>")
+		src.occupant_message("<font color='blue'>I disable leg actuators overload.</font>")
 		if(!istype(src,/obj/mecha/combat/gygax/dark))
 			flick("gygax-gofast-aoff",src)
 			reset_icon()
@@ -71,7 +71,7 @@
 		overload = 1
 		step_in = min(1, round(step_in/2))
 		step_energy_drain = step_energy_drain*overload_coeff
-		src.occupant_message("<font color='red'>You enable leg actuators overload.</font>")
+		src.occupant_message("<font color='red'>I enable leg actuators overload.</font>")
 		if(!istype(src,/obj/mecha/combat/gygax/dark))
 			flick("gygax-gofast-aon",src)
 			icon_state = "gygax-gofast"

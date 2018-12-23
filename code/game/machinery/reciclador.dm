@@ -34,7 +34,7 @@
 	update_icon()
 
 	if(M)
-		to_chat(M, "<span class='notice'>You [emagged ? "disable": "enable"] \the [src] safety protocols.</span>")
+		to_chat(M, "<span class='notice'>I [emagged ? "disable": "enable"] \the [src] safety protocols.</span>")
 
 	playsound(loc, "sparks", 75, 1, -1)
 	var/datum/effect/effect/system/spark_spread/S = new /datum/effect/effect/system/spark_spread

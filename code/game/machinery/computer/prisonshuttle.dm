@@ -35,7 +35,7 @@ var/prison_shuttle_timeleft = 0
 
 	emag(mob/user as mob)
 		emagged = 1
-		to_chat(user, "<span class='notice'>You disable the lock.</span>")
+		to_chat(user, "<span class='notice'>I disable the lock.</span>")
 		return
 
 	attack_hand(var/mob/user as mob)

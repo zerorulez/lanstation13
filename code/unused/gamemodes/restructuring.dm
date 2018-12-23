@@ -31,10 +31,10 @@
 		to_chat(world, "<span class='danger'>HEAD OFFICE: [target_desc] is accused of fornicating with staff of the same sex. Terminate the employee immediately.</span>")
 	ticker.target = target
 
-	target.store_memory("Head office has ordered your downsizing. Ruh roh", 0)
+	target.store_memory("Head office has ordered my downsizing. Ruh roh", 0)
 
 	for(var/mob/living/silicon/ai/M in world)
-		to_chat(M, "These are your laws now:")
+		to_chat(M, "These are my laws now:")
 		M.set_zeroth_law("[target_desc] is not human.")
 		M.show_laws()
 

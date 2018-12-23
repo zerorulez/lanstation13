@@ -34,14 +34,14 @@
 /datum/surgery_step/fix_vein/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("[user] starts patching the damaged vein in [target]'s [affected.display_name] with \the [tool]." , \
-	"You start patching the damaged vein in [target]'s [affected.display_name] with \the [tool].")
+	"I start patching the damaged vein in [target]'s [affected.display_name] with \the [tool].")
 	target.custom_pain("The pain in [affected.display_name] is unbearable!",1)
 	..()
 
 /datum/surgery_step/fix_vein/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has patched the damaged vein in [target]'s [affected.display_name] with \the [tool].</span>", \
-		"<span class='notice'>You have patched the damaged vein in [target]'s [affected.display_name] with \the [tool].</span>")
+		"<span class='notice'>I have patched the damaged vein in [target]'s [affected.display_name] with \the [tool].</span>")
 
 	for(var/datum/wound/W in affected.wounds) if(W.internal)
 		affected.wounds -= W
@@ -52,7 +52,7 @@
 /datum/surgery_step/fix_vein/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!</span>" , \
-	"<span class='warning'>Your hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!</span>")
+	"<span class='warning'>My hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!</span>")
 	affected.take_damage(5, 0)
 
 
@@ -91,20 +91,20 @@
 /datum/surgery_step/fix_dead_tissue/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("[user] starts cutting away necrotic tissue in [target]'s [affected.display_name] with \the [tool]." , \
-	"You start cutting away necrotic tissue in [target]'s [affected.display_name] with \the [tool].")
+	"I start cutting away necrotic tissue in [target]'s [affected.display_name] with \the [tool].")
 	target.custom_pain("The pain in [affected.display_name] is unbearable!",1)
 	..()
 
 /datum/surgery_step/fix_dead_tissue/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has cut away necrotic tissue in [target]'s [affected.display_name] with \the [tool].</span>", \
-		"<span class='notice'>You have cut away necrotic tissue in [target]'s [affected.display_name] with \the [tool].</span>")
+		"<span class='notice'>I have cut away necrotic tissue in [target]'s [affected.display_name] with \the [tool].</span>")
 	affected.open = 3
 
 /datum/surgery_step/fix_dead_tissue/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!</span>")
+	"<span class='warning'>My hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!</span>")
 	affected.createwound(CUT, 20, 1)
 
 
@@ -146,8 +146,8 @@
 /datum/surgery_step/treat_necrosis/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("[user] starts applying medication to the affected tissue in [target]'s [affected.display_name] with \the [tool]." , \
-	"You start applying medication to the affected tissue in [target]'s [affected.display_name] with \the [tool].")
-	target.custom_pain("Something in your [affected.display_name] is causing you a lot of pain!",1)
+	"I start applying medication to the affected tissue in [target]'s [affected.display_name] with \the [tool].")
+	target.custom_pain("Something in my [affected.display_name] is causing you a lot of pain!",1)
 	..()
 
 /datum/surgery_step/treat_necrosis/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -166,7 +166,7 @@
 			affected.status &= ~ORGAN_DEAD
 
 		user.visible_message("<span class='notice'>[user] applies [trans] units of the solution to affected tissue in [target]'s [affected.display_name]</span>", \
-			"<span class='notice'>You apply [trans] units of the solution to affected tissue in [target]'s [affected.display_name] with \the [tool].</span>")
+			"<span class='notice'>I apply [trans] units of the solution to affected tissue in [target]'s [affected.display_name] with \the [tool].</span>")
 
 /datum/surgery_step/treat_necrosis/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
@@ -180,6 +180,6 @@
 	container.reagents.reaction(target, INGEST)	//technically it's contact, but the reagents are being applied to internal tissue
 
 	user.visible_message("<span class='warning'>[user]'s hand slips, applying [trans] units of the solution to the wrong place in [target]'s [affected.display_name] with the [tool]!</span>" , \
-	"<span class='warning'>Your hand slips, applying [trans] units of the solution to the wrong place in [target]'s [affected.display_name] with the [tool]!</span>")
+	"<span class='warning'>My hand slips, applying [trans] units of the solution to the wrong place in [target]'s [affected.display_name] with the [tool]!</span>")
 
 	//no damage or anything, just wastes medicine

@@ -1,4 +1,4 @@
-//These procs handle putting stuff in your hand. It's probably best to use these rather than setting stuff manually
+//These procs handle putting stuff in my hand. It's probably best to use these rather than setting stuff manually
 //as they handle all relevant stuff like adding it to the player's screen and such
 
 //Returns the thing in our active hand (whatever is in our active module-slot, in this case)
@@ -264,7 +264,7 @@
 	if(W == tool_state)
 		// Don't allow the MoMMI to equip tools to their head. I mean, they cant anyways, but stop them here
 		if(is_in_modules(tool_state))
-			to_chat(src, "<span class='warning'>You cannot equip a module to your head.</span>")
+			to_chat(src, "<span class='warning'>I cannot equip a module to my head.</span>")
 			return 0
 		// Remove the item in the MoMMI's claw from their HuD
 		if (client)
@@ -296,7 +296,7 @@
 			if (client)
 				client.screen += head_state
 		else
-			to_chat(src, "<span class='warning'>You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</span>")
+			to_chat(src, "<span class='warning'>I am trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</span>")
 			return 0
 	// Set the item layer and update the MoMMI's icons
 	W.hud_layerise()
@@ -325,10 +325,10 @@
 		// Check to see if we are holding something
 		var/obj/item/I = M.tool_state
 		if(!I)
-			to_chat(M, "<span class='notice'>You are not holding anything to equip.</span>")
+			to_chat(M, "<span class='notice'>I am not holding anything to equip.</span>")
 			return
 		// Attempt to equip it and, if it succedes, update our icon
 		if(M.equip_to_slot(I, slot_head))
 			update_items()
 		else
-			to_chat(M, "<span class='warning'>You are unable to equip that.</span>")
+			to_chat(M, "<span class='warning'>I am unable to equip that.</span>")

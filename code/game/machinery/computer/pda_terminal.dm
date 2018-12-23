@@ -1,6 +1,6 @@
 /obj/machinery/computer/pda_terminal
 	name = "\improper PDA Terminal"
-	desc = "It can be used to download Apps on your PDA."
+	desc = "It can be used to download Apps on my PDA."
 	icon_state = "pdaterm"
 	circuit = "/obj/item/weapon/circuitboard/pda_terminal"
 	light_color = LIGHT_COLOR_ORANGE
@@ -72,7 +72,7 @@
 		return
 	if(stat != 0)
 		if(pda_device)
-			to_chat(usr, "You remove \the [pda_device] from \the [src].")
+			to_chat(usr, "I remove \the [pda_device] from \the [src].")
 			pda_device.forceMove(get_turf(src))
 			if(!usr.get_active_hand())
 				usr.put_in_hands(pda_device)
@@ -168,7 +168,7 @@
 
 				if(card)
 					if (connect_account(usr,card,0))
-						to_chat(usr, "\icon[src]<span class='notice'>Enjoy your new PDA!</span>")
+						to_chat(usr, "\icon[src]<span class='notice'>Enjoy my new PDA!</span>")
 						flick("pdaterm-purchase", src)
 						if(prob(10))
 							new /obj/item/device/pda/clear(src.loc)//inserting mandatory hidden feature.
@@ -215,15 +215,15 @@
 				D = linked_db.attempt_account_access(C.associated_account_number, 0, 2, 0)
 				using_account = "Bank Account"
 				if(!D)								//first we check if there IS a bank account in the first place
-					to_chat(usr, "\icon[src]<span class='warning'>You don't have that much money on your virtual wallet!</span>")
-					to_chat(usr, "\icon[src]<span class='warning'>Unable to access your bank account.</span>")
+					to_chat(usr, "\icon[src]<span class='warning'>I don't have that much money on my virtual wallet!</span>")
+					to_chat(usr, "\icon[src]<span class='warning'>Unable to access my bank account.</span>")
 					return 0
 				else if(D.security_level > 0)		//next we check if the security is low enough to pay directly from it
-					to_chat(usr, "\icon[src]<span class='warning'>You don't have that much money on your virtual wallet!</span>")
-					to_chat(usr, "\icon[src]<span class='warning'>Lower your bank account's security settings if you wish to pay directly from it.</span>")
+					to_chat(usr, "\icon[src]<span class='warning'>I don't have that much money on my virtual wallet!</span>")
+					to_chat(usr, "\icon[src]<span class='warning'>Lower my bank account's security settings if you wish to pay directly from it.</span>")
 					return 0
 				else if(D.money < transaction_amount)//and lastly we check if there's enough money on it, duh
-					to_chat(usr, "\icon[src]<span class='warning'>You don't have that much money on your bank account!</span>")
+					to_chat(usr, "\icon[src]<span class='warning'>I don't have that much money on my bank account!</span>")
 					return 0
 
 			//transfer the money

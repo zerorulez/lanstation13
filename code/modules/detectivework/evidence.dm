@@ -19,7 +19,7 @@
 		return ..()
 
 	if(istype(I, /obj/item/weapon/evidencebag))
-		to_chat(user, "<span class='notice'>You find putting an evidence bag in another evidence bag to be slightly absurd.</span>")
+		to_chat(user, "<span class='notice'>I find putting an evidence bag in another evidence bag to be slightly absurd.</span>")
 		return
 
 	if(I.w_class > W_CLASS_MEDIUM)
@@ -37,8 +37,8 @@
 			U.contents.Remove(I)
 		user.drop_item(I, force_drop = 1)
 
-	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",\
-	"You hear a rustle as someone puts something into a plastic bag.")
+	user.visible_message("[user] puts [I] into [src]", "I put [I] inside [src].",\
+	"I hear a rustle as someone puts something into a plastic bag.")
 
 	icon_state = "evidence"
 
@@ -62,8 +62,8 @@
 /obj/item/weapon/evidencebag/attack_self(mob/user as mob)
 	if(contents.len)
 		var/obj/item/I = contents[1]
-		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",\
-		"You hear someone rustle around in a plastic bag, and remove something.")
+		user.visible_message("[user] takes [I] out of [src]", "I take [I] out of [src].",\
+		"I hear someone rustle around in a plastic bag, and remove something.")
 		overlays.len = 0	//remove the overlays
 		underlays.len = 0	//and the underlays (due to xenoarch's core sampler)
 		user.put_in_hands(I)

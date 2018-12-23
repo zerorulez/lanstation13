@@ -31,7 +31,7 @@
 	//..()
 
 	if (clumsy_check(user) && prob(50))
-		to_chat(user, "<span class='warning'>The [src] slips out of your hand and hits your head.</span>")
+		to_chat(user, "<span class='warning'>The [src] slips out of my hand and hits my head.</span>")
 		user.take_organ_damage(10)
 		user.Paralyse(2)
 		return
@@ -59,7 +59,7 @@
 		if(M.stat != 2)
 			M.stat = 1
 		for(var/mob/O in viewers(M, null))
-			O.show_message(text("<span class='danger'>[] has been knocked unconscious!</span>", M), 1, "<span class='warning'>You hear someone fall.</span>", 2)
+			O.show_message(text("<span class='danger'>[] has been knocked unconscious!</span>", M), 1, "<span class='warning'>I hear someone fall.</span>", 2)
 	else
 		to_chat(M, text("<span class='warning'>[] tried to knock you unconcious!</span>",user))
 		M.eye_blurry += 3
@@ -97,15 +97,15 @@
 /obj/item/weapon/storage/briefcase/false_bottomed/attackby(var/obj/item/item, mob/user)
 	if(isscrewdriver(item))
 		if(!bottom_open && !busy_hunting)
-			to_chat(user, "You begin to hunt around the rim of \the [src]...")
+			to_chat(user, "I begin to hunt around the rim of \the [src]...")
 			busy_hunting = 1
 			if(do_after(user, src, 20))
 				if(user)
-					to_chat(user, "You pry open the false bottom!")
+					to_chat(user, "I pry open the false bottom!")
 				bottom_open = 1
 			busy_hunting = 0
 		else if(bottom_open)
-			to_chat(user, "You push the false bottom down and close it with a click[stored_item ? ", with \the [stored_item] snugly inside." : "."]")
+			to_chat(user, "I push the false bottom down and close it with a click[stored_item ? ", with \the [stored_item] snugly inside." : "."]")
 			bottom_open = 0
 	else if(bottom_open)
 		if(stored_item)
@@ -115,20 +115,20 @@
 			to_chat(user, "<span class='warning'>\The [item] is too big to fit in the false bottom!</span>")
 			return
 		if(!user.drop_item(item))
-			user << "<span class='warning'>\The [item] is stuck to your hands!</span>"
+			user << "<span class='warning'>\The [item] is stuck to my hands!</span>"
 			return
 
 		stored_item = item
 		fits_max_w_class = W_CLASS_MEDIUM - stored_item.w_class
 		item.forceMove(null) //null space here we go - to stop it showing up in the briefcase
-		to_chat(user, "You place \the [item] into the false bottom of the briefcase.")
+		to_chat(user, "I place \the [item] into the false bottom of the briefcase.")
 	else
 		return ..()
 
 /obj/item/weapon/storage/briefcase/false_bottomed/attack_hand(mob/user)
 	if(bottom_open && stored_item)
 		user.put_in_hands(stored_item)
-		to_chat(user, "You pull out \the [stored_item] from \the [src]'s false bottom.")
+		to_chat(user, "I pull out \the [stored_item] from \the [src]'s false bottom.")
 		stored_item = null
 		fits_max_w_class = initial(fits_max_w_class)
 	else

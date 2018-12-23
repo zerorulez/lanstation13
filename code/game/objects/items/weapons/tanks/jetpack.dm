@@ -17,7 +17,7 @@
 	set name = "Toggle Jetpack Stabilization"
 	set category = "Object"
 	src.stabilization_on = !( src.stabilization_on )
-	to_chat(usr, "You toggle the stabilization [stabilization_on? "on":"off"].")
+	to_chat(usr, "I toggle the stabilization [stabilization_on? "on":"off"].")
 	return
 
 

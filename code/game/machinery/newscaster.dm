@@ -35,7 +35,7 @@
 
 	var/icon/img = null
 	var/icon/backup_img
-	var/img_info = "" //Stuff like "You can see Honkers on the photo. Honkins looks hurt..."
+	var/img_info = "" //Stuff like "I can see Honkers on the photo. Honkins looks hurt..."
 
 /datum/feed_channel
 	var/channel_name=""
@@ -336,7 +336,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					else
 						existing_authors += FC.author
 				if(src.scanned_user in existing_authors)
-					dat+="<FONT COLOR='maroon'>�There already exists a Feed channel under your name.</FONT><BR>"
+					dat+="<FONT COLOR='maroon'>�There already exists a Feed channel under my name.</FONT><BR>"
 				if(src.channel_name=="" || src.channel_name == "\[REDACTED\]")
 					dat+="<FONT COLOR='maroon'>�Invalid channel name.</FONT><BR>"
 				var/check = 0
@@ -495,14 +495,14 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					<BR><A href='?src=\ref[src];setScreen=[NEWSCASTER_MENU]'>Return</A><BR>"}
 			if(NEWSCASTER_PRINT_NEWSPAPER_SUCCESS)
 
-				dat += {"<FONT COLOR='green'>Printing successfull. Please receive your newspaper from the bottom of the machine.</FONT><BR><BR>
+				dat += {"<FONT COLOR='green'>Printing successfull. Please receive my newspaper from the bottom of the machine.</FONT><BR><BR>
 					<A href='?src=\ref[src];setScreen=[NEWSCASTER_MENU]'>Return</A>"}
 			if(NEWSCASTER_PRINT_NEWSPAPER_ERROR)
 
 				dat += {"<FONT COLOR='maroon'>Unable to print newspaper. Insufficient paper. Please notify maintenance personnell to refill machine storage.</FONT><BR><BR>
 					<A href='?src=\ref[src];setScreen=[NEWSCASTER_MENU]'>Return</A>"}
 			else
-				dat+="I'm sorry to break your immersion. This shit's bugged. Report this bug to Agouri, polyxenitopalidou@gmail.com"
+				dat+="I'm sorry to break my immersion. This shit's bugged. Report this bug to Agouri, polyxenitopalidou@gmail.com"
 
 
 		M << browse(dat, "window=newscaster_main;size=400x600")
@@ -520,13 +520,13 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	if(..())
 		return
 	if(masterController && !isobserver(masterController) && get_dist(masterController,src)<=1 && usr!=masterController)
-		to_chat(usr, "<span class='warning'>You must wait for [masterController] to finish and move away.</span>")
+		to_chat(usr, "<span class='warning'>I must wait for [masterController] to finish and move away.</span>")
 		return
 	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon) || isobserver(usr)))
 		usr.set_machine(src)
 		if(href_list["set_channel_name"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"set a channel's name"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			src.channel_name = strip_html_simple(input(usr, "Provide a Feed Channel Name", "Network Channel Handler", ""))
 			while (findtext(src.channel_name," ") == 1)
@@ -536,7 +536,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["set_channel_lock"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"locked a channel"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			src.c_locked = !src.c_locked
 			src.updateUsrDialog()
@@ -544,7 +544,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["submit_new_channel"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"created a new channel"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			//var/list/existing_channels = list() //OBSOLETE
 			var/list/existing_authors = list()
@@ -578,7 +578,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["set_channel_receiving"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"tried to set the receiving channel"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			//var/list/datum/feed_channel/available_channels = list()
 			var/list/available_channels = list()
@@ -590,18 +590,18 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["set_new_message"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"set the message of a new feed story"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			if(isnull(src.msg))
 				src.msg = ""
-			src.msg = strip_html(input(usr, "Write your Feed story", "Network Channel Handler", src.msg))
+			src.msg = strip_html(input(usr, "Write my Feed story", "Network Channel Handler", src.msg))
 			while (findtext(src.msg," ") == 1)
 				src.msg = copytext(src.msg,2,length(src.msg)+1)
 			src.updateUsrDialog()
 
 		else if(href_list["set_attachment"])
 			if(isobserver(usr))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			AttachPhoto(usr)
 			src.updateUsrDialog()
@@ -633,7 +633,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["submit_new_message"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"added a new story"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			if(src.msg =="" || src.msg=="\[REDACTED\]" || src.scanned_user == "Unknown" || src.channel_name == "" )
 				src.screen=NEWSCASTER_NEW_MESSAGE_ERROR
@@ -664,27 +664,27 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["create_channel"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"created a channel"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			src.screen=NEWSCASTER_NEW_CHANNEL
 			src.updateUsrDialog()
 
 		else if(href_list["create_feed_story"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"created a feed story"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			src.screen=NEWSCASTER_NEW_MESSAGE
 			src.updateUsrDialog()
 
 		else if(href_list["menu_paper"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,""))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			src.screen=NEWSCASTER_PRINT_NEWSPAPER
 			src.updateUsrDialog()
 		else if(href_list["print_paper"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"printed a paper"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			if(!src.paper_remaining)
 				src.screen=NEWSCASTER_PRINT_NEWSPAPER_ERROR
@@ -695,21 +695,21 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["menu_censor_story"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"censored a story"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			src.screen=NEWSCASTER_CENSORSHIP_MENU
 			src.updateUsrDialog()
 
 		else if(href_list["menu_censor_channel"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"censored a channel"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			src.screen=NEWSCASTER_D_NOTICE_MENU
 			src.updateUsrDialog()
 
 		else if(href_list["menu_wanted"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,""))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			var/already_wanted = 0
 			if(news_network.wanted_issue)
@@ -723,7 +723,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["set_wanted_name"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"tried to set the name of a wanted person"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			src.channel_name = strip_html(input(usr, "Provide the name of the Wanted person", "Network Security Handler", ""))
 			while (findtext(src.channel_name," ") == 1)
@@ -732,7 +732,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["set_wanted_desc"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"tried to set the description of a wanted person"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			src.msg = strip_html(input(usr, "Provide the a description of the Wanted person and any other details you deem important", "Network Security Handler", ""))
 			while (findtext(src.msg," ") == 1)
@@ -741,7 +741,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["submit_wanted"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"submitted a wanted poster"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			var/input_param = text2num(href_list["submit_wanted"])
 			if(src.msg == "" || src.channel_name == "" || src.scanned_user == "Unknown")
@@ -801,7 +801,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			src.updateUsrDialog()
 		else if(href_list["censor_channel_author"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"tried to censor an author"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			var/datum/feed_channel/FC = locate(href_list["censor_channel_author"])
 			if(FC.is_admin_channel)
@@ -816,7 +816,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["censor_channel_story_author"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"tried to censor a story's author"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			var/datum/feed_message/MSG = locate(href_list["censor_channel_story_author"])
 			if(MSG.is_admin_message)
@@ -831,7 +831,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["censor_channel_story_body"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"tried to censor a story"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			var/datum/feed_message/MSG = locate(href_list["censor_channel_story_body"])
 			if(MSG.is_admin_message)
@@ -851,7 +851,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["pick_d_notice"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,""))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			var/datum/feed_channel/FC = locate(href_list["pick_d_notice"])
 			src.viewing_channel = FC
@@ -860,7 +860,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["toggle_d_notice"])
 			if(isobserver(usr) && !canGhostWrite(usr,src,"tried to set a D-notice"))
-				to_chat(usr, "<span class='warning'>You can't do that.</span>")
+				to_chat(usr, "<span class='warning'>I can't do that.</span>")
 				return
 			var/datum/feed_channel/FC = locate(href_list["toggle_d_notice"])
 			if(FC.is_admin_channel)
@@ -912,21 +912,21 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		if(0)
 			if(iscrowbar(I))
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-				user.visible_message("<span class='notice'>[user] begins prying off the [src]!</span>", "<span class='notice'>You begin prying off the [src]</span>")
+				user.visible_message("<span class='notice'>[user] begins prying off the [src]!</span>", "<span class='notice'>I begin prying off the [src]</span>")
 				if(do_after(user, src,10))
-					to_chat(user, "<span class='notice'>You pry off the [src]!.</span>")
+					to_chat(user, "<span class='notice'>I pry off the [src]!.</span>")
 					new /obj/item/mounted/frame/newscaster(src.loc)
 					qdel(src)
 					return
 
 			if(isscrewdriver(I) && !(stat & BROKEN))
-				user.visible_message("<span class='notice'>[user] screws in the [src]!</span>", "<span class='notice'>You screw in the [src]</span>")
+				user.visible_message("<span class='notice'>[user] screws in the [src]!</span>", "<span class='notice'>I screw in the [src]</span>")
 				playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 100, 1)
 				buildstage = 1
 
 		if(1)
 			if(isscrewdriver(I) && !(stat & BROKEN))
-				user.visible_message("<span class='notice'>[user] unscrews the [src]!</span>", "<span class='notice'>You unscrew the [src]</span>")
+				user.visible_message("<span class='notice'>[user] unscrews the [src]!</span>", "<span class='notice'>I unscrew the [src]</span>")
 				playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 100, 1)
 				buildstage = 0
 				src.update_icon()
@@ -935,7 +935,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			if ((stat & BROKEN) && (istype(I, /obj/item/stack/sheet/glass/glass)))
 				var/obj/item/stack/sheet/glass/glass/stack = I
 				if ((stack.amount - 2) < 0)
-					to_chat(user, "<span class='warning'>You need more glass to do that.</span>")
+					to_chat(user, "<span class='warning'>I need more glass to do that.</span>")
 				else
 					stack.use(2)
 					src.hitstaken = 0
@@ -950,7 +950,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				var/obj/item/weapon/photo/P = I
 				if(istype(P) && !photo && user.drop_item(P, src))
 					photo = P
-					to_chat(user, "<span class='notice'>You add \the [P] to \the [src].</span>")
+					to_chat(user, "<span class='notice'>I add \the [P] to \the [src].</span>")
 					src.updateUsrDialog()
 
 				else if(istype(I, /obj/item/weapon) )
@@ -977,7 +977,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 
 /obj/machinery/newscaster/attack_paw(mob/user as mob)
-	to_chat(user, "<font color='blue'>The newscaster controls are far too complicated for your tiny brain!</font>")
+	to_chat(user, "<font color='blue'>The newscaster controls are far too complicated for my tiny brain!</font>")
 	return
 
 /obj/machinery/newscaster/proc/AttachPhoto(mob/user as mob)
@@ -1124,7 +1124,7 @@ obj/item/weapon/newspaper/attack_self(mob/user as mob)
 					dat+="<BR><I>There is a small scribble near the end of this page... It reads: \"[src.scribble]\"</I>"
 				dat+= "<HR><DIV STYLE='float:left;'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
 			else
-				dat+="I'm sorry to break your immersion. This shit's bugged. Report this bug to Agouri, polyxenitopalidou@gmail.com"
+				dat+="I'm sorry to break my immersion. This shit's bugged. Report this bug to Agouri, polyxenitopalidou@gmail.com"
 
 		dat+="<BR><HR><div align='center'>[src.curr_page+1]</div>"
 		usr << browse(dat, "window=newspaper_main;size=300x400")
@@ -1223,7 +1223,7 @@ obj/item/weapon/newspaper/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	else if (isobserver(user))
 		src.scanned_user = "Space-Time Anomaly #[rand(0,9)][rand(0,9)][rand(0,9)]"
 //	if(masterController && masterController.client && get_dist(masterController,src)<=1)
-//		to_chat(masterController, "<span class='warning'>You were booted from \the [src] by [scanned_user].</span>")
+//		to_chat(masterController, "<span class='warning'>I was booted from \the [src] by [scanned_user].</span>")
 	masterController = user
 //	to_chat(masterController, "\icon[src] <span class='notice'>Welcome back, [scanned_user]!</span>")
 

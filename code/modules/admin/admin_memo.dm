@@ -21,7 +21,7 @@
 /client/proc/admin_memo_write()
 	var/savefile/F = new(MEMOFILE)
 	if(F)
-		var/memo = input(src,"Type your memo\n(Leaving it blank will delete your current memo):","Write Memo",null) as null|message
+		var/memo = input(src,"Type my memo\n(Leaving it blank will delete my current memo):","Write Memo",null) as null|message
 		switch(memo)
 			if(null)
 				return
@@ -42,7 +42,7 @@
 			for(var/ckey in F.dir)
 				to_chat(src, "<center><span class='motd'><b>Admin Memo</b><i> by [F[ckey]]</i></span></center>")
 
-//delete your own or somebody else's memo
+//delete my own or somebody else's memo
 /client/proc/admin_memo_delete()
 	var/savefile/F = new(MEMOFILE)
 	if(F)

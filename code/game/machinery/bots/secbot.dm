@@ -224,7 +224,7 @@ Auto Patrol: []"},
 	..()
 	if(open && !locked)
 		if(user)
-			to_chat(user, "<span class='warning'>You short out [src]'s target assessment circuits.</span>")
+			to_chat(user, "<span class='warning'>I short out [src]'s target assessment circuits.</span>")
 		spawn(0)
 			for(var/mob/O in hearers(src, null))
 				O.show_message("<span class='danger'>[src] buzzes oddly!</span>", 1)
@@ -288,7 +288,7 @@ Auto Patrol: []"},
 						if(declare_arrests)
 							declare()
 						target.visible_message("<span class='danger'>[target] has been stunned by [src]!</span>",\
-						"<span class='userdanger'>You have been stunned by [src]!</span>")
+						"<span class='userdanger'>I have been stunned by [src]!</span>")
 						maxstuns--
 						if(maxstuns <= 0)
 							target = null
@@ -364,7 +364,7 @@ Auto Patrol: []"},
 							src.frustration = 0
 
 							playsound(get_turf(src), pick('sound/voice/bgod.ogg', 'sound/voice/biamthelaw.ogg', 'sound/voice/bsecureday.ogg', 'sound/voice/bradio.ogg', 'sound/voice/binsult.ogg', 'sound/voice/bcreep.ogg'), 50, 0)
-		//					var/arrest_message = pick("Have a secure day!","I AM THE LAW.", "God made tomorrow for the crooks we don't catch today.","You can't outrun a radio.")
+		//					var/arrest_message = pick("Have a secure day!","I AM THE LAW.", "God made tomorrow for the crooks we don't catch today.","I can't outrun a radio.")
 		//					src.speak(arrest_message)
 
 			else
@@ -771,7 +771,7 @@ Auto Patrol: []"},
 
 /obj/machinery/bot/secbot/proc/speak(var/message)
 	visible_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"",\
-		drugged_message="<span class='game say'><span class='name'>[src]</span> beeps, \"[pick("Wait! Let's be friends!","Wait for me!","You're so cool!","Who's your favourite pony?","I-It's not like I like you or anything...","Wanna see a magic trick?","Let's go have fun, assistant-kun~")]\"")
+		drugged_message="<span class='game say'><span class='name'>[src]</span> beeps, \"[pick("Wait! Let's be friends!","Wait for me!","I am so cool!","Who's my favourite pony?","I-It's not like I like you or anything...","Wanna see a magic trick?","Let's go have fun, assistant-kun~")]\"")
 	return
 
 
@@ -817,7 +817,7 @@ Auto Patrol: []"},
 		qdel(S)
 		var/obj/item/weapon/secbot_assembly/A = new /obj/item/weapon/secbot_assembly
 		user.put_in_hands(A)
-		to_chat(user, "You add the signaler to the helmet.")
+		to_chat(user, "I add the signaler to the helmet.")
 		user.drop_from_inventory(src)
 		qdel(src)
 	else
@@ -830,12 +830,12 @@ Auto Patrol: []"},
 		if(WT.remove_fuel(0,user))
 			src.build_step++
 			src.overlays += image('icons/obj/aibots.dmi', "hs_hole")
-			to_chat(user, "You weld a hole in [src]!")
+			to_chat(user, "I weld a hole in [src]!")
 
 	else if(isprox(W) && (src.build_step == 1))
 		if(user.drop_item(W))
 			src.build_step++
-			to_chat(user, "You add the prox sensor to [src]!")
+			to_chat(user, "I add the prox sensor to [src]!")
 			src.overlays += image('icons/obj/aibots.dmi', "hs_eye")
 			src.name = "helmet/signaler/prox sensor assembly"
 			qdel(W)
@@ -843,7 +843,7 @@ Auto Patrol: []"},
 	else if(((istype(W, /obj/item/robot_parts/l_arm)) || (istype(W, /obj/item/robot_parts/r_arm))) && (src.build_step == 2))
 		if(user.drop_item(W))
 			src.build_step++
-			to_chat(user, "You add the robot arm to [src]!")
+			to_chat(user, "I add the robot arm to [src]!")
 			src.name = "helmet/signaler/prox sensor/robot arm assembly"
 			src.overlays += image('icons/obj/aibots.dmi', "hs_arm")
 			qdel(W)
@@ -851,7 +851,7 @@ Auto Patrol: []"},
 	else if((istype(W, /obj/item/weapon/melee/baton)) && (src.build_step >= 3))
 		if(user.drop_item(W))
 			src.build_step++
-			to_chat(user, "You complete the Securitron! Beep boop.")
+			to_chat(user, "I complete the Securitron! Beep boop.")
 			var/obj/machinery/bot/secbot/S = new /obj/machinery/bot/secbot
 			S.forceMove(get_turf(src))
 			S.name = src.created_name

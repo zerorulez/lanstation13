@@ -27,7 +27,7 @@
 			dish = I
 
 	if(istype(I,/obj/item/weapon/diseasedisk))
-		to_chat(user, "You upload the contents of the disk into the buffer")
+		to_chat(user, "I upload the contents of the disk into the buffer")
 		memorybank = I:effect
 
 	attack_hand(user)

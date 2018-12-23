@@ -146,7 +146,7 @@
 
 							CHECK_TICK
 	catch(var/exception/e)
-		to_chat(usr, "<span class='danger'>An exception has occured during the execution of your query and your query has been aborted.</span>")
+		to_chat(usr, "<span class='danger'>An exception has occured during the execution of my query and my query has been aborted.</span>")
 		to_chat(usr, "exception name: [e.name]")
 		to_chat(usr, "file/line: [e.file]/[e.line]")
 		return
@@ -494,7 +494,7 @@
 
 		else if(char == "'")
 			if(word != "")
-				to_chat(usr, "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unexpected ' in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.</span>")
+				to_chat(usr, "<span class='warning'>SDQL2: You have an error in my SDQL syntax, unexpected ' in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check my syntax, and try again.</span>")
 				return null
 
 			word = "'"
@@ -514,7 +514,7 @@
 					word += char
 
 			if(i > len)
-				to_chat(usr, "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unmatched ' in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.</span>")
+				to_chat(usr, "<span class='warning'>SDQL2: You have an error in my SDQL syntax, unmatched ' in query: \"<font color=gray>[query_text]</font>\". Please check my syntax, and try again.</span>")
 				return null
 
 			query_list += "[word]'"
@@ -522,7 +522,7 @@
 
 		else if(char == "\"")
 			if(word != "")
-				to_chat(usr, "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unexpected \" in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.</span>")
+				to_chat(usr, "<span class='warning'>SDQL2: You have an error in my SDQL syntax, unexpected \" in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check my syntax, and try again.</span>")
 				return null
 
 			word = "\""
@@ -542,7 +542,7 @@
 					word += char
 
 			if(i > len)
-				to_chat(usr, "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unmatched \" in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.</span>")
+				to_chat(usr, "<span class='warning'>SDQL2: You have an error in my SDQL syntax, unmatched \" in query: \"<font color=gray>[query_text]</font>\". Please check my syntax, and try again.</span>")
 				return null
 
 			query_list += "[word]\""

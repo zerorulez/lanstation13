@@ -64,7 +64,7 @@
 	var/loc_temp = get_loc_temp(environment)
 	if(loc_temp < bodytemperature)
 		// We're going to try and just use exposed area(temperature difference)/cold divisor, and assume we're only conducting.
-		var/thermal_loss = (1-get_cold_protection())  				// How much of your skin is exposed.
+		var/thermal_loss = (1-get_cold_protection())  				// How much of my skin is exposed.
 		if(!isVentCrawling() && (environment.total_moles > MOLES_CELLSTANDARD || !IS_SPACE_COLD))
 			var/pressure_diff   = environment.total_moles/MOLES_CELLSTANDARD // How many moles are in the environment over 103.934, the normal value of a station.
 			var/pressure_factor = (-COLD_PRESSUREFACTOR_MAX)/(pressure_diff) + COLD_PRESSUREFACTOR_MAX // non linear.

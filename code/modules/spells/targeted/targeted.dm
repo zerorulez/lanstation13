@@ -41,7 +41,7 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 
 /spell/targeted/choose_targets(mob/user = usr)
 	if(mind_affecting && tinfoil_check(user))
-		to_chat(user, "<span class='warning'>Something is interfering with your ability to target minds.</span>")
+		to_chat(user, "<span class='warning'>Something is interfering with my ability to target minds.</span>")
 		return
 	var/list/targets = list()
 

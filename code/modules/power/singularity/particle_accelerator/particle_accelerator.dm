@@ -214,33 +214,33 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 				playsound(get_turf(src), 'sound/items/Ratchet.ogg', 75, 1)
 				src.anchored = 1
 				user.visible_message("[user.name] secures the [src.name] to the floor.", \
-					"You secure the external bolts.")
+					"I secure the external bolts.")
 				temp_state++
 		if(1)
 			if(iswrench(O))
 				playsound(get_turf(src), 'sound/items/Ratchet.ogg', 75, 1)
 				src.anchored = 0
 				user.visible_message("[user.name] detaches the [src.name] from the floor.", \
-					"You remove the external bolts.")
+					"I remove the external bolts.")
 				temp_state--
 			else if(iscoil(O))
 				if(O:use(1,user))
 					user.visible_message("[user.name] adds wires to the [src.name].", \
-						"You add some wires.")
+						"I add some wires.")
 					temp_state++
 		if(2)
 			if(iswirecutter(O))//TODO:Shock user if its on?
 				user.visible_message("[user.name] removes some wires from the [src.name].", \
-					"You remove some wires.")
+					"I remove some wires.")
 				temp_state--
 			else if(isscrewdriver(O))
 				user.visible_message("[user.name] closes the [src.name]'s access panel.", \
-					"You close the access panel.")
+					"I close the access panel.")
 				temp_state++
 		if(3)
 			if(isscrewdriver(O))
 				user.visible_message("[user.name] opens the [src.name]'s access panel.", \
-					"You open the access panel.")
+					"I open the access panel.")
 				temp_state--
 	if(temp_state == src.construction_state)//Nothing changed
 		return 0
@@ -357,33 +357,33 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 				playsound(get_turf(src), 'sound/items/Ratchet.ogg', 75, 1)
 				src.anchored = 1
 				user.visible_message("[user.name] secures the [src.name] to the floor.", \
-					"You secure the external bolts.")
+					"I secure the external bolts.")
 				temp_state++
 		if(1)
 			if(iswrench(O))
 				playsound(get_turf(src), 'sound/items/Ratchet.ogg', 75, 1)
 				src.anchored = 0
 				user.visible_message("[user.name] detaches the [src.name] from the floor.", \
-					"You remove the external bolts.")
+					"I remove the external bolts.")
 				temp_state--
 			else if(iscoil(O))
 				if(O:use(1))
 					user.visible_message("[user.name] adds wires to the [src.name].", \
-						"You add some wires.")
+						"I add some wires.")
 					temp_state++
 		if(2)
 			if(iswirecutter(O))//TODO:Shock user if its on?
 				user.visible_message("[user.name] removes some wires from the [src.name].", \
-					"You remove some wires.")
+					"I remove some wires.")
 				temp_state--
 			else if(isscrewdriver(O))
 				user.visible_message("[user.name] closes the [src.name]'s access panel.", \
-					"You close the access panel.")
+					"I close the access panel.")
 				temp_state++
 		if(3)
 			if(isscrewdriver(O))
 				user.visible_message("[user.name] opens the [src.name]'s access panel.", \
-					"You open the access panel.")
+					"I open the access panel.")
 				temp_state--
 				active = 0
 	if(temp_state == src.construction_state)//Nothing changed

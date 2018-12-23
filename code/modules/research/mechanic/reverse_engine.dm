@@ -184,7 +184,7 @@
 				BP.PrintDesign(design, use_nano)
 				return 1
 	else
-		src.visible_message("You need to link this machine to a research console first!")
+		src.visible_message("I need to link this machine to a research console first!")
 
 
 /obj/machinery/r_n_d/reverse_engine/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open=NANOUI_FOCUS)

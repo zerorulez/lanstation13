@@ -82,17 +82,17 @@
 		return
 
 	if(!usr.dexterity_check())
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(usr, "<span class='warning'>I don't have the dexterity to do this!</span>")
 		return
 
 	if(scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
+		to_chat(usr, "I remove \the [scan] from \the [src].")
 		scan.forceMove(get_turf(src))
 		if(Adjacent(usr) && !usr.get_active_hand())
 			usr.put_in_hands(scan)
 		scan = null
 	else if(modify)
-		to_chat(usr, "You remove \the [modify] from \the [src].")
+		to_chat(usr, "I remove \the [modify] from \the [src].")
 		modify.forceMove(get_turf(src))
 		if(Adjacent(usr) && !usr.get_active_hand())
 			usr.put_in_hands(modify)
@@ -107,7 +107,7 @@
 
 	//Past this point, we are for sure inserting an ID.
 	if(!user.dexterity_check()) //Since we can't remove the ID, let's not put it in, to prevent tragic ID stuckness.
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
 		return
 	if(id_card.loc == src) //With telekinesis, someone can retain the reference to a card after it's put inside via TKgrab, thus attacking us with a card we already had
 		return

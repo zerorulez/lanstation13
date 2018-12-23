@@ -43,7 +43,7 @@ obj/machinery/gibber/New()
 	RefreshParts()
 
 /obj/machinery/gibber/attack_ghost(mob/dead/observer/user as mob)
-	to_chat(user, "<span class='warning'>You can't do that while dead.</span>")
+	to_chat(user, "<span class='warning'>I can't do that while dead.</span>")
 	return
 
 /obj/machinery/gibber/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -142,13 +142,13 @@ obj/machinery/gibber/New()
 	src.add_fingerprint(user)
 
 	user.visible_message("<span class='warning'>[user] starts climbing into the [src].</span>", \
-		"<span class='warning'>You start climbing into the [src].</span>", \
+		"<span class='warning'>I start climbing into the [src].</span>", \
 		drugged_message = "<span class='warning'>[user] starts dancing like a ballerina!</span>")
 
 	if(do_after(user, src, 30) && user && !occupant && !isnull(src.loc))
 
 		user.visible_message("<span class='warning'>[user] climbs into the [src]</span>", \
-			"<span class='warning'>You climb into the [src].</span>", \
+			"<span class='warning'>I climb into the [src].</span>", \
 			drugged_message = "<span class='warning'>[src] consumes [user]!</span>")
 
 		if(user.client)
@@ -189,12 +189,12 @@ obj/machinery/gibber/New()
 	if(src.operating)
 		return
 	if(!src.occupant)
-		visible_message("<span class='warning'>You hear a loud metallic grinding sound.</span>", \
-			drugged_message = "<span class='warning'>You faintly hear a guitar solo.</span>")
+		visible_message("<span class='warning'>I hear a loud metallic grinding sound.</span>", \
+			drugged_message = "<span class='warning'>I faintly hear a guitar solo.</span>")
 		return
 	use_power(1000)
-	visible_message("<span class='warning'>You hear a loud squelchy grinding sound.</span>", \
-		drugged_message = "<span class='warning'>You hear a band performance.</span>")
+	visible_message("<span class='warning'>I hear a loud squelchy grinding sound.</span>", \
+		drugged_message = "<span class='warning'>I hear a band performance.</span>")
 	src.operating = 1
 	update_icon()
 	var/sourcenutriment = src.occupant.nutrition / 15
@@ -274,12 +274,12 @@ obj/machinery/gibber/New()
 
 /obj/machinery/gibber/autogibber/proc/startautogibbing(mob/living/victim as mob)
 	if(!victim)
-		visible_message("<span class='warning'>You hear a loud metallic grinding sound.</span>", \
-			drugged_message = "<span class='warning'>You faintly hear a guitar solo.</span>")
+		visible_message("<span class='warning'>I hear a loud metallic grinding sound.</span>", \
+			drugged_message = "<span class='warning'>I faintly hear a guitar solo.</span>")
 		return
 	use_power(1000)
-	visible_message("<span class='warning'>You hear a loud squelchy grinding sound.</span>", \
-		drugged_message = "<span class='warning'>You hear a band performance.</span>")
+	visible_message("<span class='warning'>I hear a loud squelchy grinding sound.</span>", \
+		drugged_message = "<span class='warning'>I hear a band performance.</span>")
 	var/sourcenutriment = victim.nutrition / 15
 	var/sourcetotalreagents
 	if(victim.reagents)

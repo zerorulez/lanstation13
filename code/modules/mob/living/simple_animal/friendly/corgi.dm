@@ -180,7 +180,7 @@
 
 		var/add_to = href_list["add_inv"]
 		if(!usr.get_active_hand())
-			to_chat(usr, "<span class='warning'>You have nothing in your hand to put on its [add_to].</span>")
+			to_chat(usr, "<span class='warning'>I have nothing in my hand to put on its [add_to].</span>")
 			return
 		switch(add_to)
 			if("head")
@@ -194,7 +194,7 @@
 					var/obj/item/item_to_add = usr.get_active_hand()
 
 					if(!item_to_add)
-						usr.visible_message("<span class='notice'>[usr] pets [src]</span>","<span class='notice'>You rest your hand on [src]'s back for a moment.</span>")
+						usr.visible_message("<span class='notice'>[usr] pets [src]</span>","<span class='notice'>I rest my hand on [src]'s back for a moment.</span>")
 						return
 					if(istype(item_to_add,/obj/item/weapon/plastique)) // last thing he ever wears, I guess
 						item_to_add.afterattack(src,usr,1)
@@ -214,7 +214,7 @@
 					)
 
 					if( ! ( item_to_add.type in allowed_types ) )
-						to_chat(usr, "You set [item_to_add] on [src]'s back, but \he shakes it off!")
+						to_chat(usr, "I set [item_to_add] on [src]'s back, but \he shakes it off!")
 						usr.drop_item(item_to_add, get_turf(src))
 
 						if(prob(25))
@@ -245,10 +245,10 @@
 
 	if(inventory_head)
 		if(usr)
-			to_chat(usr, "<span class='warning'>You can't put more than one hat on [src]!</span>")
+			to_chat(usr, "<span class='warning'>I can't put more than one hat on [src]!</span>")
 		return
 	if(!item_to_add)
-		usr.visible_message("<span class='notice'>[usr] pets [src]</span>","<span class='notice'>You rest your hand on [src]'s head for a moment.</span>")
+		usr.visible_message("<span class='notice'>[usr] pets [src]</span>","<span class='notice'>I rest my hand on [src]'s head for a moment.</span>")
 		return
 
 
@@ -272,7 +272,7 @@
 
 		if(/obj/item/clothing/head/chefhat,	/obj/item/clothing/head/collectable/chef)
 			name = "Sous chef [real_name]"
-			desc = "Your food will be taste-tested.  All of it."
+			desc = "My food will be taste-tested.  All of it."
 			valid = 1
 
 		if(/obj/item/clothing/head/caphat, /obj/item/clothing/head/collectable/captain)
@@ -303,7 +303,7 @@
 
 		if(/obj/item/clothing/head/det_hat)
 			name = "Detective [real_name]"
-			desc = "[name] sees through your lies..."
+			desc = "[name] sees through my lies..."
 			emote_see = list("investigates the area","sniffs around for clues","searches for scooby snacks")
 			valid = 1
 
@@ -361,7 +361,7 @@
 
 		if(/obj/item/clothing/head/soft)
 			name = "Corgi Tech [real_name]"
-			desc = "The reason your yellow gloves have chew-marks."
+			desc = "The reason my yellow gloves have chew-marks."
 			emote_see = list("Orders emitter crates and goes full blown cargonia.")
 			valid = 1
 
@@ -399,8 +399,8 @@
 	if(valid)
 		if(usr)
 			usr.visible_message("[usr] puts [item_to_add] on [real_name]'s head.  [src] looks at [usr] and barks once.",
-				"You put [item_to_add] on [real_name]'s head.  [src] gives you a peculiar look, then wags \his tail once and barks.",
-				"You hear a friendly-sounding bark.")
+				"I put [item_to_add] on [real_name]'s head.  [src] gives you a peculiar look, then wags \his tail once and barks.",
+				"I hear a friendly-sounding bark.")
 			usr.drop_item(item_to_add, src, force_drop = 1)
 		else
 			item_to_add.forceMove(src)
@@ -408,7 +408,7 @@
 		regenerate_icons()
 
 	else
-		to_chat(usr, "You set [item_to_add] on [src]'s head, but \he shakes it off!")
+		to_chat(usr, "I set [item_to_add] on [src]'s head, but \he shakes it off!")
 		usr.drop_item(item_to_add, src.loc)
 
 		if(prob(25))
@@ -548,7 +548,7 @@
 //puppies cannot wear anything.
 /mob/living/simple_animal/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		to_chat(usr, "<span class='warning'>You can't fit this on [src]</span>")
+		to_chat(usr, "<span class='warning'>I can't fit this on [src]</span>")
 		return
 	..()
 

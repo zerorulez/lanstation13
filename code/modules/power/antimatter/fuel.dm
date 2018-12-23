@@ -26,7 +26,7 @@
 		if(istype(F, /obj/item/weapon/fuel/antiH))
 			src.fuel += F.fuel
 			F.fuel = 0
-			to_chat(user, "You have added the anti-Hydrogen to the storage ring, it now contains [src.fuel]kg")
+			to_chat(user, "I have added the anti-Hydrogen to the storage ring, it now contains [src.fuel]kg")
 		if(istype(F, /obj/item/weapon/fuel/H))
 			src.fuel += F.fuel
 			qdel(F)
@@ -36,7 +36,7 @@
 		if(istype(F, /obj/item/weapon/fuel/H))
 			src.fuel += F.fuel
 			F.fuel = 0
-			to_chat(user, "You have added the Hydrogen to the storage ring, it now contains [src.fuel]kg")
+			to_chat(user, "I have added the Hydrogen to the storage ring, it now contains [src.fuel]kg")
 		if(istype(F, /obj/item/weapon/fuel/antiH))
 			src.fuel += F.fuel
 			qdel(src)
@@ -78,7 +78,7 @@
 		if("Anti-Hydrogen")
 			M.gib()
 		if("Hydrogen")
-			to_chat(M, "<span class='notice'>You feel very light, as if you might just float away...</span>")
+			to_chat(M, "<span class='notice'>I feel very light, as if you might just float away...</span>")
 	qdel(src)
 	return
 

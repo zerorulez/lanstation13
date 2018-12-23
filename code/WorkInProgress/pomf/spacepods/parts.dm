@@ -63,11 +63,11 @@
 		var/obj/item/stack/rods/R = O
 		var/list/linkedparts = find_square()
 		if(!linkedparts)
-			to_chat(user, "<span class='rose'>You cannot assemble a pod frame because you do not have the necessary assembly.</span>")
+			to_chat(user, "<span class='rose'>I cannot assemble a pod frame because you do not have the necessary assembly.</span>")
 			return
 		var/obj/structure/spacepod_frame/pod = new /obj/structure/spacepod_frame(src.loc)
 		pod.dir = src.dir
-		to_chat(user, "<span class='notice'>You strut the pod frame together.</span>")
+		to_chat(user, "<span class='notice'>I strut the pod frame together.</span>")
 		R.use(10)
 		playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 		for(var/obj/item/pod_parts/pod_frame/F in linkedparts)
@@ -76,7 +76,7 @@
 				pod.forceMove(F.loc)
 			qdel(F)
 	if(iswrench(O))
-		to_chat(user, "<span class='notice'>You [!anchored ? "secure \the [src] in place."  : "remove the securing bolts."]</span>")
+		to_chat(user, "<span class='notice'>I [!anchored ? "secure \the [src] in place."  : "remove the securing bolts."]</span>")
 		anchored = !anchored
 		density = anchored
 		playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)

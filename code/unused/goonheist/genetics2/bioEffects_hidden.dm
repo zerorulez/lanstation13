@@ -28,8 +28,8 @@
 	can_reclaim = 0
 	can_copy = 0
 	// temporary debuff for when the wizard gets shaved
-	msgGain = "You feel shameful.  Also bald."
-	msgLose = "Your shame changes into righteous anger!"
+	msgGain = "I feel shameful.  Also bald."
+	msgLose = "My shame changes into righteous anger!"
 
 /datum/bioEffect/arcanepower
 	name = "Arcane Power"
@@ -41,8 +41,8 @@
 	can_reclaim = 0
 	// Variant 1 = Half Spell Cooldown, Variant 2 = No Spell Cooldown
 	// Only use variant 2 for debugging/horrible admin gimmicks ok
-	msgGain = "Your hair stands on end."
-	msgLose = "The tingling in your skin fades."
+	msgGain = "My hair stands on end."
+	msgLose = "The tingling in my skin fades."
 
 /datum/bioEffect/husk
 	name = "Husk"
@@ -84,8 +84,8 @@
 	isHidden = 1
 	can_reclaim = 0
 	can_copy = 0
-	msgGain = "You begin to rot."
-	msgLose = "You are no longer rotting."
+	msgGain = "I begin to rot."
+	msgLose = "I am no longer rotting."
 
 	OnAdd()
 		owner:mutantrace = new /datum/mutantrace/zombie(owner)
@@ -111,8 +111,8 @@
 	isHidden = 1
 	can_reclaim = 0
 	can_copy = 1
-	msgGain = "You go bananas!"
-	msgLose = "You do the evolution."
+	msgGain = "I go bananas!"
+	msgLose = "I do the evolution."
 
 	OnAdd()
 		owner:mutantrace = new /datum/mutantrace/monkey(owner)
@@ -137,14 +137,14 @@
 	isHidden = 1
 	can_reclaim = 0
 	can_copy = 0
-	msgGain = "You don't feel quite right."
-	msgLose = "You feel normal again."
+	msgGain = "I don't feel quite right."
+	msgLose = "I feel normal again."
 	var/outOfPod = 0 //Out of the cloning pod.
 
 	OnAdd()
 		owner:mutantrace = new /datum/mutantrace/premature_clone(owner)
 		if (!istype(owner.loc, /obj/machinery/clonepod))
-			to_chat(owner, "<span class='warning'>Your genes feel...disorderly.</span>")
+			to_chat(owner, "<span class='warning'>My genes feel...disorderly.</span>")
 		return
 
 	OnRemove()

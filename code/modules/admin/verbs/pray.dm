@@ -13,7 +13,7 @@
 
 	if(usr.client)
 		if(usr.client.prefs.muted & MUTE_PRAY)
-			to_chat(usr, "<span class='warning'>You cannot pray (muted).</span>")
+			to_chat(usr, "<span class='warning'>I cannot pray (muted).</span>")
 			return
 		if(src.client.handle_spam_prevention(msg, MUTE_PRAY))
 			return
@@ -27,7 +27,7 @@
 	log_admin("PRAYER: [key_name(usr)] at [formatJumpTo(get_turf(usr))]: [orig_message]")
 	if(!stat)
 		usr.whisper(orig_message)
-	to_chat(usr, "Your prayers have been received by the gods.")
+	to_chat(usr, "My prayers have been received by the gods.")
 
 	feedback_add_details("admin_verb", "PR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

@@ -4,7 +4,7 @@
 	set name = "Add Reagent"
 
 	if(!usr.client || !usr.client.holder)
-		to_chat(usr, "<span class='warning'>You need to be an administrator to access this.</span>")
+		to_chat(usr, "<span class='warning'>I need to be an administrator to access this.</span>")
 		return
 
 	if(!D)
@@ -27,7 +27,7 @@
 
 
 	if(!usr.client || !usr.client.holder)
-		to_chat(usr, "<span class='warning'>You need to be an administrator to access this.</span>")
+		to_chat(usr, "<span class='warning'>I need to be an administrator to access this.</span>")
 		return
 
 
@@ -788,7 +788,7 @@ body
 		if(ismob(A))
 			var/mob/M = A
 			if(M.client)
-				if(alert("You sure?","Confirm","Yes","No") != "Yes")
+				if(alert("I sure?","Confirm","Yes","No") != "Yes")
 					return
 
 		log_admin("[key_name(usr)] deleted [A] at ([A.x],[A.y],[A.z])")
@@ -1024,7 +1024,7 @@ body
 			if("clone")
 				L.adjustCloneLoss(amount)
 			else
-				to_chat(usr, "You caused an error. DEBUG: Text:[Text] Mob:[L]")
+				to_chat(usr, "I caused an error. DEBUG: Text:[Text] Mob:[L]")
 				return
 
 		if(amount != 0)

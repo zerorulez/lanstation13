@@ -318,7 +318,7 @@
 			if(iscarbon(usr))
 				var/mob/living/carbon/C = usr
 				if(C.legcuffed)
-					to_chat(C, "<span class='notice'>You are legcuffed! You cannot run until you get [C.legcuffed] removed!</span>")
+					to_chat(C, "<span class='notice'>I am legcuffed! You cannot run until you get [C.legcuffed] removed!</span>")
 					C.m_intent = "walk"	//Just incase
 					C.hud_used.move_intent.icon_state = "walking"
 					return 1
@@ -518,7 +518,7 @@
 			if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
 				return
 			if(!istype(usr.get_active_hand(),/obj/item/weapon/gun))
-				to_chat(usr, "You need your gun in your active hand to do that!")
+				to_chat(usr, "I need my gun in my active hand to do that!")
 				return
 			usr.client.AllowTargetMove()
 			gun_click_time = world.time
@@ -527,7 +527,7 @@
 			if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
 				return
 			if(!istype(usr.get_active_hand(),/obj/item/weapon/gun))
-				to_chat(usr, "You need your gun in your active hand to do that!")
+				to_chat(usr, "I need my gun in my active hand to do that!")
 				return
 			usr.client.AllowTargetMove()
 			gun_click_time = world.time
@@ -536,7 +536,7 @@
 			if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
 				return
 			if(!istype(usr.get_active_hand(),/obj/item/weapon/gun))
-				to_chat(usr, "You need your gun in your active hand to do that!")
+				to_chat(usr, "I need my gun in my active hand to do that!")
 				return
 			usr.client.AllowTargetRun()
 			gun_click_time = world.time
@@ -545,7 +545,7 @@
 			if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
 				return
 			if(!istype(usr.get_active_hand(),/obj/item/weapon/gun))
-				to_chat(usr, "You need your gun in your active hand to do that!")
+				to_chat(usr, "I need my gun in my active hand to do that!")
 				return
 			usr.client.AllowTargetRun()
 			gun_click_time = world.time
@@ -554,7 +554,7 @@
 			if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
 				return
 			if(!istype(usr.get_active_hand(),/obj/item/weapon/gun))
-				to_chat(usr, "You need your gun in your active hand to do that!")
+				to_chat(usr, "I need my gun in my active hand to do that!")
 				return
 			usr.client.AllowTargetClick()
 			gun_click_time = world.time
@@ -564,7 +564,7 @@
 			if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
 				return
 			if(!istype(usr.get_active_hand(),/obj/item/weapon/gun))
-				to_chat(usr, "You need your gun in your active hand to do that!")
+				to_chat(usr, "I need my gun in my active hand to do that!")
 				return
 			usr.client.AllowTargetClick()
 			gun_click_time = world.time

@@ -69,7 +69,7 @@
 		if(!target || !istype(target.loc, /turf))
 			qdel (src)
 		var/list/adjacent_to_me = global_adjacent_z_levels["[z]"]
-		M.visible_message("<span class='notice'>\The [M] climbs [target.z == adjacent_to_me["up"] ? "up" : "down"] \the [src]!", "You climb [target.z == adjacent_to_me["up"]  ? "up" : "down"] \the [src]!", "You hear some grunting, and clanging of a metal ladder being used.</span>")
+		M.visible_message("<span class='notice'>\The [M] climbs [target.z == adjacent_to_me["up"] ? "up" : "down"] \the [src]!", "I climb [target.z == adjacent_to_me["up"]  ? "up" : "down"] \the [src]!", "I hear some grunting, and clanging of a metal ladder being used.</span>")
 		M.Move(target.loc)
 
 
@@ -117,7 +117,7 @@
 					qdel (src)
 				if(M.z == z && get_dist(src,M) <= 1)
 					var/list/adjacent_to_me = global_adjacent_z_levels["[z]"]
-					M.visible_message("<span class='notice'>\The [M] scurries [target.z == adjacent_to_me["up"] ? "up" : "down"] \the [src]!", "You scramble [target.z == adjacent_to_me["up"] ? "up" : "down"] \the [src]!", "You hear some grunting, and a hatch sealing.</span>")
+					M.visible_message("<span class='notice'>\The [M] scurries [target.z == adjacent_to_me["up"] ? "up" : "down"] \the [src]!", "I scramble [target.z == adjacent_to_me["up"] ? "up" : "down"] \the [src]!", "I hear some grunting, and a hatch sealing.</span>")
 					M.Move(target.loc)
 				flick(top_icon_state_close,top_hatch)
 				bottom_hatch.overlays -= green_overlay

@@ -25,7 +25,7 @@
 		return
 
 	next_extinguish = world.time + extinguish_cooldown
-	to_chat(H, "<span class='warning'>Your suit automatically extinguishes the fire.</span>")
+	to_chat(H, "<span class='warning'>My suit automatically extinguishes the fire.</span>")
 	H.ExtinguishMob()
 
 /obj/item/clothing/head/helmet/space/plasmaman

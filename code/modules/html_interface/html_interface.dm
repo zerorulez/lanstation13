@@ -6,7 +6,7 @@ Created on: 2014-09-24
 
 If there is no getter or setter available and you aren't extending my code with a sub-type, DO NOT ACCESS VARIABLES DIRECTLY!
 
-Add a getter/setter instead, even if it does nothing but return or set the variable. Thank you for your patience with me. -NQ
+Add a getter/setter instead, even if it does nothing but return or set the variable. Thank you for my patience with me. -NQ
 
 	** Public API **
 
@@ -154,7 +154,7 @@ mob/verb/test()
 	winset(hclient.client, "browser_\ref[src].browser", list2params(list("parent" = "browser_\ref[src]", "type" = "browser", "pos" = "0,0", "size" = "[width]x[height]", "anchor1" = "0,0", "anchor2" = "100,100", "use-title" = "true", "auto-format" = "false")))
 
 	sendAssets(hclient.client)
-	
+
 /datum/html_interface/proc/sendAssets(var/client/client)
 	send_asset(client, "jquery.min.js")
 	send_asset(client, "bootstrap.min.js")

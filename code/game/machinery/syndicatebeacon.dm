@@ -33,7 +33,7 @@
 				honorific = "Ms."
 			dat += "<font color=red><i>Identity not found in operative database. What can the Syndicate do for you today, [honorific] [user.name]?</i></font><br>"
 			if(!selfdestructing)
-				dat += "<br><br><A href='?src=\ref[src];betraitor=1'>\"[pick("I want to switch teams.", "I want to work for you.", "Let me join you.", "I can be of use to you.", "You want me working for you, and here's why...", "Give me an objective.", "How's the 401k over at the Syndicate?")]\"</A><BR>"
+				dat += "<br><br><A href='?src=\ref[src];betraitor=1'>\"[pick("I want to switch teams.", "I want to work for you.", "Let me join you.", "I can be of use to you.", "I want me working for you, and here's why...", "Give me an objective.", "How's the 401k over at the Syndicate?")]\"</A><BR>"
 	dat += temptext
 	user << browse(dat, "window=syndbeacon")
 	onclose(user, "syndbeacon")
@@ -85,7 +85,7 @@
 			N.mind.objectives += escape_objective
 
 
-			to_chat(M, "<B>You have joined the ranks of the Syndicate and become a traitor to the station!</B>")
+			to_chat(M, "<B>I have joined the ranks of the Syndicate and become a traitor to the station!</B>")
 
 			message_admins("[N]/([N.ckey]) has accepted a traitor objective from a syndicate beacon.")
 
@@ -148,7 +148,7 @@
 	if(!check_power())
 		if(user)
 			user.visible_message("<span class='warning'>[user] tries to start \the [src], but it shuts down halfway.</span>", \
-			"<span class='warning'>You try to start \the [src], but it shuts down halfway. Looks like a power issue.</span>")
+			"<span class='warning'>I try to start \the [src], but it shuts down halfway. Looks like a power issue.</span>")
 		else
 			visible_message("<span class='warning'>\The [src] suddenly springs to life, only to shut down halfway through startup.</span>")
 		return
@@ -160,7 +160,7 @@
 	set_light(light_range_on, light_power_on, light_color)
 	if(user)
 		user.visible_message("<span class='warning'>[user] starts up \the [src].</span>", \
-		"<span class='notice'>You start up \the [src].</span>")
+		"<span class='notice'>I start up \the [src].</span>")
 	else
 		visible_message("<span class='warning'>\The [src] suddenly springs to life.</span>")
 
@@ -173,12 +173,12 @@
 	set_light(0)
 	if(user)
 		user.visible_message("<span class='warning'>[user] shuts down \the [src].</span>", \
-		"<span class='notice'>You shut down \the [src].</span>")
+		"<span class='notice'>I shut down \the [src].</span>")
 	else
 		visible_message("<span class='warning'>\The [src] suddenly shuts down.</span>")
 
 /obj/machinery/singularity_beacon/attack_ai(mob/user as mob)
-	to_chat(user, "<span class='warning'>You try to interface with \the [src], but it throws a strange encrypted error message.</span>")
+	to_chat(user, "<span class='warning'>I try to interface with \the [src], but it throws a strange encrypted error message.</span>")
 	return
 
 /obj/machinery/singularity_beacon/attack_hand(var/mob/user as mob)
@@ -190,7 +190,7 @@
 				attached = locate() in T
 			if(attached)
 				user.visible_message("<span class='notice'>[user] reaches for the exposed cabling and carefully runs it through \the [src]'s power port.</span>", \
-				"<span class='notice'>You reach for the exposed cabling and carefully run it through \the [src]'s power port.</span>")
+				"<span class='notice'>I reach for the exposed cabling and carefully run it through \the [src]'s power port.</span>")
 				return //Need to attack again to actually start
 		return active ? deactivate(user) : activate(user)
 	else

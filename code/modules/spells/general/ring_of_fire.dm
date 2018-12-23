@@ -1,6 +1,6 @@
 /spell/aoe_turf/ring_of_fire
 	name = "Ring of Fire"
-	desc = "Summon a stationary ring of flames around your current location for 10 seconds. While the ring is active, you are fully immune to fire and burns."
+	desc = "Summon a stationary ring of flames around my current location for 10 seconds. While the ring is active, you are fully immune to fire and burns."
 	school = "conjuration"
 	charge_max = 300
 	cooldown_min = 100
@@ -29,13 +29,13 @@
 	if(move_with_user)
 		user.lock_atom(ring, /datum/locking_category/ring_of_fire)
 
-	to_chat(user, "<span class='danger'>You summon a ring of fire around yourself.</span>")
+	to_chat(user, "<span class='danger'>I summon a ring of fire around yourself.</span>")
 
 	if(isliving(user))
 		var/mob/living/L = user
 
 		if(!L.mutations.Find(M_RESIST_HEAT))
-			to_chat(L, "<span class='info'>You feel resistant to fire.</span>")
+			to_chat(L, "<span class='info'>I feel resistant to fire.</span>")
 
 		L.mutations.Add(M_RESIST_HEAT)
 		L.update_mutations()
@@ -45,7 +45,7 @@
 			L.update_mutations()
 
 			if(!L.mutations.Find(M_RESIST_HEAT))
-				to_chat(L, "<span class='info'>You are no longer resistant to fire.</span>")
+				to_chat(L, "<span class='info'>I am no longer resistant to fire.</span>")
 
 	..()
 

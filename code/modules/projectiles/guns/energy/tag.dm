@@ -76,7 +76,7 @@
 	if(ishuman(M))
 		if(istype(M.wear_suit, needed_vest))
 			return 1
-		to_chat(M, "<span class='warning'>You need to be wearing your laser tag vest!</span>")
+		to_chat(M, "<span class='warning'>I need to be wearing my laser tag vest!</span>")
 	return 0
 
 /obj/item/weapon/gun/energy/tag/New()

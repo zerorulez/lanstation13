@@ -47,17 +47,17 @@ effective or pretty fucking useless.
 				M.Knockdown(rand(10,20))
 				if(prob(25))
 					M.Stun(rand(5,10))
-				to_chat(M, "<span class='danger'>You feel a tremendous, paralyzing wave flood your mind.</span>")
+				to_chat(M, "<span class='danger'>I feel a tremendous, paralyzing wave flood my mind.</span>")
 				if(!iscarbon(user))
 					M.LAssailant = null
 				else
 					M.LAssailant = user
 
 			else
-				to_chat(M, "<span class='danger'>You feel a sudden, electric jolt travel through your head.</span>")
+				to_chat(M, "<span class='danger'>I feel a sudden, electric jolt travel through my head.</span>")
 
 	playsound(get_turf(src), 'sound/misc/interference.ogg', 50, 1)
-	to_chat(user, "<span class='notice'>You trigger [src].</span>")
+	to_chat(user, "<span class='notice'>I trigger [src].</span>")
 	times_used += 1
 	if(times_used >= max_uses)
 		icon_state = "battererburnt"

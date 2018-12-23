@@ -55,13 +55,13 @@
 		src.slowdown = SHOES_SLOWDOWN
 		src.magpulse = 0
 		icon_state = "[base_state]0"
-		to_chat(usr, "You disable the mag-pulse traction system.")
+		to_chat(usr, "I disable the mag-pulse traction system.")
 	else
 		src.clothing_flags |= NOSLIP
 		src.slowdown = mag_slow
 		src.magpulse = 1
 		icon_state = "[base_state]1"
-		to_chat(usr, "You enable the mag-pulse traction system.")
+		to_chat(usr, "I enable the mag-pulse traction system.")
 	usr.update_inv_shoes()	//so our mob-overlays update
 
 /obj/item/clothing/shoes/magboots/attack_self()

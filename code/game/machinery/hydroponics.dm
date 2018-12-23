@@ -505,7 +505,7 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 			O.reagents.remove_reagent(WATER, b_amount)
 			waterlevel += b_amount
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
-			to_chat(user, "You fill the [src] with [b_amount] units of water.")
+			to_chat(user, "I fill the [src] with [b_amount] units of water.")
 
 	//		Toxicity dilutation code. The more water you put in, the lesser the toxin concentration.
 			toxic -= round(b_amount/4)
@@ -524,7 +524,7 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 		nutrilevel = 10
 		yieldmod = myNut.yieldmod
 		mutmod = myNut.mutmod
-		to_chat(user, "You replace the nutrient solution in the [src].")
+		to_chat(user, "I replace the nutrient solution in the [src].")
 		qdel(O)
 		O = null
 		updateicon()
@@ -536,7 +536,7 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 				if(!S.reagents.total_volume)
 					to_chat(user, "<span class='warning'>The syringe is empty.</span>")
 					return
-				to_chat(user, "<span class='warning'>You inject the [myseed.plantname] with a chemical solution.</span>")
+				to_chat(user, "<span class='warning'>I inject the [myseed.plantname] with a chemical solution.</span>")
 
 				// There needs to be a good amount of mutagen to actually work
 
@@ -713,7 +713,7 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 				if (nutrilevel > 10 )
 					nutrilevel = 10
 			else
-				to_chat(user, "You can't get any extract out of this plant.")
+				to_chat(user, "I can't get any extract out of this plant.")
 		else
 			to_chat(user, "There's nothing to apply the solution into.")
 		updateicon()
@@ -721,7 +721,7 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	else if ( istype(O, /obj/item/seeds/) )
 		if(!planted)
 			user.u_equip(O, 0)
-			to_chat(user, "You plant the [O.name]")
+			to_chat(user, "I plant the [O.name]")
 			dead = 0
 			myseed = O
 			planted = 1
@@ -788,7 +788,7 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	else if (istype(O, /obj/item/weapon/minihoe))  // The minihoe
 		//var/deweeding
 		if(weedlevel > 0)
-			user.visible_message("<span class='warning'>[user] starts uprooting the weeds.</span>", "<span class='warning'>You remove the weeds from the [src].</span>")
+			user.visible_message("<span class='warning'>[user] starts uprooting the weeds.</span>", "<span class='warning'>I remove the weeds from the [src].</span>")
 			weedlevel = 0
 			updateicon()
 			src.updateicon()
@@ -804,7 +804,7 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 			weedlevel = 0
 		if (toxic > 100 ) // Make sure it won't go overoboard
 			toxic = 100
-		to_chat(user, "You apply the weedkiller solution into the [src].")
+		to_chat(user, "I apply the weedkiller solution into the [src].")
 		playsound(loc, 'sound/effects/spray3.ogg', 50, 1, -6)
 		qdel(O)
 		O = null
@@ -827,14 +827,14 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 			pestlevel = 0
 		if (toxic > 100 ) // Make sure it won't go overoboard
 			toxic = 100
-		to_chat(user, "You apply the pestkiller solution into the [src].")
+		to_chat(user, "I apply the pestkiller solution into the [src].")
 		playsound(loc, 'sound/effects/spray3.ogg', 50, 1, -6)
 		qdel(O)
 		O = null
 		updateicon()
 	else if(istype(O, /obj/item/weapon/shovel))
 		if(istype(src, /obj/machinery/hydroponics/soil))
-			to_chat(user, "You clear up the [src]!")
+			to_chat(user, "I clear up the [src]!")
 			qdel(src)
 	else if(istype(O, /obj/item/apiary))
 		if(planted)
@@ -872,7 +872,7 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	else if(dead)
 		planted = 0
 		dead = 0
-		to_chat(usr, text("You remove the dead plant from the [src]."))
+		to_chat(usr, text("I remove the dead plant from the [src]."))
 		qdel(myseed)
 		myseed = null
 		updateicon()
@@ -1000,9 +1000,9 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	harvest = 0
 	lastproduce = age
 	if((yieldmod * myseed.yield) <= 0 || istype(myseed,/obj/item/seeds/dionanode))
-		to_chat(user, text("<span class='warning'>You fail to harvest anything useful.</span>"))
+		to_chat(user, text("<span class='warning'>I fail to harvest anything useful.</span>"))
 	else
-		to_chat(user, text("You harvest from the [myseed.plantname]."))
+		to_chat(user, text("I harvest from the [myseed.plantname]."))
 	if(myseed.oneharvest)
 		qdel(myseed)
 		myseed = null

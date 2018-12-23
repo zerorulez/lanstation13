@@ -152,7 +152,7 @@
 	if (!istype(M, /mob))
 		return
 	if (!user.dexterity_check())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
 		return
 
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [name] by [user.name] ([user.ckey])</font>")
@@ -264,7 +264,7 @@
 
 /obj/item/weapon/dnainjector/nofail/antitele
 	name = "DNA-Injector (Anti-Tele.)"
-	desc = "Will make you not able to control your mind."
+	desc = "Will make you not able to control my mind."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 12
@@ -275,7 +275,7 @@
 
 /obj/item/weapon/dnainjector/nofail/nobreath
 	name = "DNA-Injector (No Breath)"
-	desc = "Hold your breath and count to infinity."
+	desc = "Hold my breath and count to infinity."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
@@ -286,7 +286,7 @@
 
 /obj/item/weapon/dnainjector/nofail/antinobreath
 	name = "DNA-Injector (Anti-No Breath)"
-	desc = "Hold your breath and count to 100."
+	desc = "Hold my breath and count to 100."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
@@ -538,7 +538,7 @@
 */
 /obj/item/weapon/dnainjector/nofail/chameleon
 	name = "DNA-Injector (Chameleon)"
-	desc = "You cant see me."
+	desc = "I cant see me."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
@@ -749,7 +749,7 @@
 
 /obj/item/weapon/dnainjector/nofail/coughmut
 	name = "DNA-Injector (Cough)"
-	desc = "Will bring forth a sound of horror from your throat."
+	desc = "Will bring forth a sound of horror from my throat."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 5
@@ -1015,7 +1015,7 @@
 
 /obj/item/weapon/dnainjector/nofail/antisweedish
 	name = "DNA-Injector (Anti-Sweedish)"
-	desc = "You're no fun."
+	desc = "I am no fun."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 14
@@ -1125,7 +1125,7 @@
 
 /obj/item/weapon/dnainjector/nofail/antimelt
 	name = "DNA-Injector (Dissolve)"
-	desc = "You just lost the game."
+	desc = "I just lost the game."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 14
@@ -1268,7 +1268,7 @@
 
 /obj/item/weapon/dnainjector/nofail/farsightmut
 	name = "DNA-Injector (Farsight)"
-	desc = "This will allow you to focus your eyes better."
+	desc = "This will allow you to focus my eyes better."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2

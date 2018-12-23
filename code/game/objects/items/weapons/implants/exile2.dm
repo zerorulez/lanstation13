@@ -30,7 +30,7 @@
 	if(!istype(M, /mob/living/carbon))
 		return 0
 	var/mob/living/carbon/I = M
-	to_chat(I, "<span class='notice'>You shiver as you feel a weak bluespace void surround you.</span>")
+	to_chat(I, "<span class='notice'>I shiver as you feel a weak bluespace void surround you.</span>")
 	I.locked_to_z = ASTEROID_Z
 	return 1
 

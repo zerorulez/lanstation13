@@ -124,7 +124,7 @@
 				score["disc"] = 0
 
 		if(score["nuked"])
-			nukedpenalty = 50000 //Congratulations, your score was nuked
+			nukedpenalty = 50000 //Congratulations, my score was nuked
 
 			for(var/obj/machinery/nuclearbomb/nuke in machines)
 				if(nuke.r_code == "Nope")
@@ -463,7 +463,7 @@
 		if(-49999 to -5000)
 			score["rating"] = "Singularity Fodder"
 		if(-4999 to -1000)
-			score["rating"] = "You're All Fired"
+			score["rating"] = "I am All Fired"
 		if(-999 to -500)
 			score["rating"] = "A Waste of Perfectly Good Oxygen"
 		if(-499 to -250)

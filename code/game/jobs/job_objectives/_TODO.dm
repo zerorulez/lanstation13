@@ -4,7 +4,7 @@
 >HoP : Finish the round with at least one crewmember alive and extracted in every department
 >HoP : Ian must be alive at round end (a classic)
 >Captain : Finish the round with a full head team that is alive. Not extracted for all sorts of reasons. Reassigning counts
->Captain : Have the pinpointer, chain of command, nuke auth disk and telescopic baton in your possession (No Captain can call himself that with those items laying around waiting to be grabbed)
+>Captain : Have the pinpointer, chain of command, nuke auth disk and telescopic baton in my possession (No Captain can call himself that with those items laying around waiting to be grabbed)
 >HoS : Ensure at least one antagonist is extracted through the Shuttle Brig (would give a reason not to murderbone antags)
 >HoS : Ensure the Detective, Warden and at least one Security Officer extract. Self-explanatory
 >HoS : Finish the round without even going into critical health or dying (2robust)
@@ -15,7 +15,7 @@
 >CE : Keep Poly alive at all costs
 >RD : Have at least 3 bombs explode
 >RD : Keep Lamarr alive until round end
->RD : Make sure the AI is carded and on your person or functional at round end
+>RD : Make sure the AI is carded and on my person or functional at round end
 >RD : Do not use the Robotics Emergency Destruction command once
 >CMO : Have no more than 5 dead people from all causes but suicides or catatonics
 >CMO : Keep Runtime alive at all costs

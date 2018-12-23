@@ -17,7 +17,7 @@
 		return
 
 	if(pain_shock_stage == 10)
-		to_chat(src, "<span class='danger'>[pick("It hurts so much!", "You really need some painkillers.", "Dear god, the pain!")]</span>")
+		to_chat(src, "<span class='danger'>[pick("It hurts so much", "I really need some painkillers", "Dear god, the pain")]</span>")
 
 	if(pain_shock_stage >= 30)
 		if(pain_shock_stage == 30)
@@ -27,24 +27,24 @@
 		stuttering = max(stuttering, 5)
 
 	if(pain_shock_stage == 40)
-		to_chat(src, "<span class='danger'>[pick("The pain is excrutiating!", "Please, just end the pain!", "Your whole body is going numb!")]</span>")
+		to_chat(src, "<span class='danger'>[pick("The pain is excrutiating", "It hurts so much", "Please, just end the pain", "My body is going numb")]</span>")
 
 	if(pain_shock_stage >= 60)
 		if(pain_shock_stage == 60)
 			if(!isUnconscious())
 				visible_message("<B>[src]</B>'s body becomes limp.")
 		if(prob(2))
-			to_chat(src, "<span class='danger'>[pick("The pain is excrutiating!", "Please, just end the pain!", "Your whole body is going numb!")]</span>")
+			to_chat(src, "<span class='danger'>[pick("The pain is excrutiating", "It hurts so much", "Please, just end the pain", "My body is going numb")]</span>")
 			Knockdown(20)
 
 	if(pain_shock_stage >= 80)
 		if(prob(5))
-			to_chat(src, "<span class='danger'>[pick("The pain is excrutiating!", "Please, just end the pain!", "Your whole body is going numb!")]</span>")
+			to_chat(src, "<span class='danger'>[pick("The pain is excrutiating", "It hurts so much", "Please, just end the pain")]</span>")
 			Knockdown(20)
 
 	if(pain_shock_stage >= 120)
 		if(prob(2))
-			to_chat(src, "<span class='danger'>[pick("You black out!", "You feel like you could die any moment now.", "You're about to lose consciousness.")]</span>")
+			to_chat(src, "<span class='danger'>[pick("I black out", "I feel like I could die any moment now", "I am about to lose consciousness")]</span>")
 			Paralyse(5)
 
 	if(pain_shock_stage == 150)

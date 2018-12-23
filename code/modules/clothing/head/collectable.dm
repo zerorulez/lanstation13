@@ -75,7 +75,7 @@
 
 /obj/item/clothing/head/collectable/pirate
 	name = "collectable pirate hat"
-	desc = "You'd make a great Dread Syndie Roberts!"
+	desc = "I'd make a great Dread Syndie Roberts!"
 	icon_state = "pirate"
 	item_state = "pirate"
 

@@ -35,7 +35,7 @@
 	if(iswirecutter(W))
 		playsound(loc, 'sound/items/Wirecutter.ogg', 50, 1)
 		if(do_after(user, src, 10))
-			to_chat(user, "<span class='notice'>You cut the shower curtains down.</span>")
+			to_chat(user, "<span class='notice'>I cut the shower curtains down.</span>")
 			var/obj/item/stack/sheet/mineral/plastic/A = getFromPool(/obj/item/stack/sheet/mineral/plastic, get_turf(src))
 			A.amount = 4
 			qdel(src)

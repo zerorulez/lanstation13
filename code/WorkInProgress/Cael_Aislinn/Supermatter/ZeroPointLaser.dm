@@ -54,11 +54,11 @@
 		if(!src.locked)
 			if(src.active==1)
 				src.active = 0
-				to_chat(user, "You turn off the [src].")
+				to_chat(user, "I turn off the [src].")
 				src.use_power = 1
 			else
 				src.active = 1
-				to_chat(user, "You turn on the [src].")
+				to_chat(user, "I turn on the [src].")
 				src.shot_number = 0
 				src.fire_delay = 100
 				src.use_power = 2
@@ -119,7 +119,7 @@
 	if(!emagged)
 		locked = 0
 		emagged = 1
-		user.visible_message("[user.name] emags the [src.name].","<span class='warning'>You short out the lock.</span>")
+		user.visible_message("[user.name] emags the [src.name].","<span class='warning'>I short out the lock.</span>")
 		return 1
 	return -1
 

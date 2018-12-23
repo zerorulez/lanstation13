@@ -27,7 +27,7 @@
 			if(istype(B))
 				beakers -= B
 				user.put_in_hands(B)
-	to_chat(user, "<span class='notice'>You remove the containers from the electrolyzer.</span>")
+	to_chat(user, "<span class='notice'>I remove the containers from the electrolyzer.</span>")
 
 /obj/item/weapon/electrolyzer/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(iswirecutter(W))
@@ -35,7 +35,7 @@
 			to_chat(user, "<span class='warning'>The electrolyzer contains beakers!</span>")
 			return
 		else
-			to_chat(user, "<span class='notice'>You disassemble the electrolyzer.</span>")
+			to_chat(user, "<span class='notice'>I disassemble the electrolyzer.</span>")
 			var/turf/T = get_turf(src)
 			new /obj/item/stack/cable_coil(T,2)
 			new /obj/item/weapon/grenade/chem_grenade(T)
@@ -55,16 +55,16 @@
 		else if(beakers.len == 1)
 			var/obj/item/weapon/reagent_containers/glass/other = beakers[1]
 			if(other.reagents.total_volume && !G.reagents.total_volume) //We already have one inserted beaker. It must occupy slot 1. Is it empty or active?
-				to_chat(user, "<span class='notice'>You add \the [G] to the electrolyzer as the empty container.</span>")
+				to_chat(user, "<span class='notice'>I add \the [G] to the electrolyzer as the empty container.</span>")
 				insert_beaker(G,user)
 			else if(!other.reagents.total_volume && G.reagents.total_volume)
-				to_chat(user, "<span class='notice'>You add \the [G] to the electrolyzer as the active container.</span>")
+				to_chat(user, "<span class='notice'>I add \the [G] to the electrolyzer as the active container.</span>")
 				insert_beaker(G,user)
 			else
 				to_chat(user, "<span class='warning'>The electrolyzer requires one active beaker and one empty beaker!</span>")
 				return
 		else
-			to_chat(user, "<span class='notice'>You add \the [G] to the electrolyzer as the [G.reagents.total_volume ? "active" : "empty"] container.</span>")
+			to_chat(user, "<span class='notice'>I add \the [G] to the electrolyzer as the [G.reagents.total_volume ? "active" : "empty"] container.</span>")
 			insert_beaker(G,user)
 	else if(istype(W, /obj/item/weapon/cell))
 		if(beakers.len < 2)
@@ -120,5 +120,5 @@
 		W.forceMove(src)
 		beakers += W
 	else
-		to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
+		to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
 		return

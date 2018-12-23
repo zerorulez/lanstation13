@@ -32,7 +32,7 @@ var/global/list/obj/machinery/keycard_auth/authenticators = list()
 	return
 
 /obj/machinery/keycard_auth/attack_paw(mob/user as mob)
-	to_chat(user, "You are too primitive to use this device.")
+	to_chat(user, "I am too primitive to use this device.")
 	return
 
 /obj/machinery/keycard_auth/attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -90,7 +90,7 @@ var/global/list/obj/machinery/keycard_auth/authenticators = list()
 		user << browse(dat, "window=keycard_auth;size=500x300")
 	if(screen == 2)
 
-		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
+		dat += "Please swipe my card to authorize the following event: <b>[event]</b>"
 		if(event == "Emergency Response Team")
 			dat += "<p>Given reason for ERT request: '[ert_reason]'"
 
@@ -112,7 +112,7 @@ var/global/list/obj/machinery/keycard_auth/authenticators = list()
 		if(href_list["triggerevent"] == "Emergency Response Team")
 			ert_reason = stripped_input(usr, "Please input the reason for calling an Emergency Response Team. This may be all the briefing they get before arriving at the station.", "Response Team Justification", ert_reason)
 			if(!ert_reason)
-				to_chat(usr, "<span class='warning'>You are required to give a reason to call an ERT.</span>")
+				to_chat(usr, "<span class='warning'>I am required to give a reason to call an ERT.</span>")
 				return
 			if(!Adjacent(usr) || usr.incapacitated())
 				return

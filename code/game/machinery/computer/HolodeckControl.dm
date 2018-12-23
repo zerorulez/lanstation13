@@ -171,7 +171,7 @@
 	if(emagged)
 		return //No spamming
 	emagged = 1
-	visible_message("<span class='warning'>[user] swipes a card into the holodeck reader.</span>","<span class='notice'>You swipe the electromagnetic card into the holocard reader.</span>")
+	visible_message("<span class='warning'>[user] swipes a card into the holodeck reader.</span>","<span class='notice'>I swipe the electromagnetic card into the holocard reader.</span>")
 	visible_message("<span class='warning'>Warning: Power surge detected. Automatic shutoff and derezing protocols have been corrupted. Please contact Nanotrasen maintenance and cease all operation immediately.</span>")
 	log_game("[key_name(usr)] emagged the Holodeck Control Computer")
 	src.updateUsrDialog()
@@ -374,7 +374,7 @@
 
 /obj/item/clothing/gloves/boxing/hologlove
 	name = "boxing gloves"
-	desc = "Because you really needed another excuse to punch your crewmates."
+	desc = "Because you really needed another excuse to punch my crewmates."
 	icon_state = "boxing"
 	item_state = "boxing"
 
@@ -456,7 +456,7 @@
 	icon_state = "basketball"
 	name = "basketball"
 	item_state = "basketball"
-	desc = "Here's your chance, do your dance at the Space Jam."
+	desc = "Here's my chance, do my dance at the Space Jam."
 	w_class = W_CLASS_LARGE //Stops people from hiding it in their bags/pockets
 
 /obj/structure/holohoop
@@ -472,7 +472,7 @@
 	if(istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
 		var/obj/item/weapon/grab/G = W
 		if(G.state<GRAB_AGGRESSIVE)
-			to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+			to_chat(user, "<span class='warning'>I need a better grip to do that!</span>")
 			return
 
 		G.affecting.forceMove(src.loc)
@@ -523,7 +523,7 @@
 	..()
 
 /obj/machinery/readybutton/attack_paw(mob/user as mob)
-	to_chat(user, "<span='warning'>You are too primitive to use this device.</span>")
+	to_chat(user, "<span='warning'>I am too primitive to use this device.</span>")
 
 /obj/machinery/readybutton/New()
 	..()

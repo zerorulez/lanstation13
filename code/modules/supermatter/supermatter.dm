@@ -14,7 +14,7 @@
 
 /obj/machinery/power/supermatter
 	name = "Supermatter Crystal"
-	desc = "A strangely translucent and iridescent crystal. <span class='warning'>You get headaches just from looking at it.</span>"
+	desc = "A strangely translucent and iridescent crystal. <span class='warning'>I get headaches just from looking at it.</span>"
 	icon = 'icons/obj/engine.dmi'
 	icon_state = "darkmatter"
 	density = 1
@@ -71,7 +71,7 @@
 /obj/machinery/power/supermatter/shard //Small subtype, less efficient and more sensitive, but less boom.
 	name = "Supermatter Shard"
 	short_name = "Shard"
-	desc = "A strangely translucent and iridescent crystal that looks like it used to be part of a larger structure. <span class='warning'>You get headaches just from looking at it.</span>"
+	desc = "A strangely translucent and iridescent crystal that looks like it used to be part of a larger structure. <span class='warning'>I get headaches just from looking at it.</span>"
 	icon_state = "darkmatter_shard"
 	base_icon_state = "darkmatter_shard"
 
@@ -347,7 +347,7 @@
 	Consume(H)
 
 /obj/machinery/power/supermatter/bite_act(mob/living/H)
-	H.visible_message("<span class='danger'>[H] attempts to bite \the [src]!</span>", "<span class='userdanger'>You attempt to take a bite out of \the [src]. Your last thought before you burn to ashes is \"Touching it would've been a much wiser decision.\"")
+	H.visible_message("<span class='danger'>[H] attempts to bite \the [src]!</span>", "<span class='userdanger'>I attempt to take a bite out of \the [src]. Your last thought before you burn to ashes is \"Touching it would've been a much wiser decision.\"")
 
 	Consume(H)
 
@@ -364,8 +364,8 @@
 
 /obj/machinery/power/supermatter/attack_hand(mob/user as mob)
 	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src], inducing a resonance... \his body starts to glow and bursts into flames before flashing into ash.</span>",\
-		"<span class=\"danger\">You reach out and touch \the [src]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"</span>",\
-		"<span class=\"warning\">You hear an unearthly noise as a wave of heat washes over you.</span>")
+		"<span class=\"danger\">I reach out and touch \the [src]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"</span>",\
+		"<span class=\"warning\">I hear an unearthly noise as a wave of heat washes over you.</span>")
 
 	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, 1)
 
@@ -385,7 +385,7 @@
 		return attack_hand(user)
 
 	user.visible_message("<span class='warning'>\The [user] touches \a [W] to \the [src] as a silence fills the room...</span>",\
-		"<span class='danger'>You touch \the [W] to \the [src] when everything suddenly goes silent.</span>\n<span class='notice'>\The [W] flashes into dust as you flinch away from \the [src].</span>",\
+		"<span class='danger'>I touch \the [W] to \the [src] when everything suddenly goes silent.</span>\n<span class='notice'>\The [W] flashes into dust as you flinch away from \the [src].</span>",\
 		"<span class='warning'>Everything suddenly goes silent.</span>")
 
 	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, 1)
@@ -398,18 +398,18 @@
 
 /obj/machinery/power/supermatter/to_bumped(atom/AM as mob|obj)
 	if(istype(AM, /obj/machinery/power/supermatter))
-		AM.visible_message("<span class='sinister'>As \the [src] bumps into \the [AM] an otherworldly resonance ringing begins to shake the room, you ponder for a moment all the incorrect choices in your life that led you here, to this very moment, to witness this. You take one final sigh before it all ends.</span>")
+		AM.visible_message("<span class='sinister'>As \the [src] bumps into \the [AM] an otherworldly resonance ringing begins to shake the room, you ponder for a moment all the incorrect choices in my life that led you here, to this very moment, to witness this. You take one final sigh before it all ends.</span>")
 		sleep(10) //Adds to the hilarity
 		playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, 1)
 		explode()
 		return
 	if(istype(AM, /mob/living))
 		AM.visible_message("<span class=\"warning\">\The [AM] slams into \the [src] inducing a resonance... \his body starts to glow and catch flame before flashing into ash.</span>",\
-		"<span class=\"danger\">You slam into \the [src] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\"</span>",\
-		"<span class=\"warning\">You hear an unearthly noise as a wave of heat washes over you.</span>")
+		"<span class=\"danger\">I slam into \the [src] as my ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\"</span>",\
+		"<span class=\"warning\">I hear an unearthly noise as a wave of heat washes over you.</span>")
 	else if(!is_type_in_list(AM, message_exclusions))
 		AM.visible_message("<span class=\"warning\">\The [AM] smacks into \the [src] and rapidly flashes to ash.</span>",\
-		"<span class=\"warning\">You hear a loud crack as you are washed with a wave of heat.</span>")
+		"<span class=\"warning\">I hear a loud crack as you are washed with a wave of heat.</span>")
 	else
 		return ..()
 
@@ -432,10 +432,10 @@
 		//Some poor sod got eaten, go ahead and irradiate people nearby.
 	for(var/mob/living/l in range(10))
 		if(l in view())
-			l.show_message("<span class=\"warning\">As \the [src] slowly stops resonating, you find your skin covered in new radiation burns.</span>", 1,\
+			l.show_message("<span class=\"warning\">As \the [src] slowly stops resonating, you find my skin covered in new radiation burns.</span>", 1,\
 				"<span class=\"warning\">The unearthly ringing subsides and you notice you have new radiation burns.</span>", 2)
 		else
-			l.show_message("<span class=\"warning\">You hear an uneartly ringing and notice your skin is covered in fresh radiation burns.</span>", 2)
+			l.show_message("<span class=\"warning\">I hear an uneartly ringing and notice my skin is covered in fresh radiation burns.</span>", 2)
 		var/rads = 500 * sqrt( 1 / (get_dist(l, src) + 1) )
 		l.apply_effect(rads, IRRADIATE, 0) // Permit blocking
 

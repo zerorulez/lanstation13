@@ -132,7 +132,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
  2. Code in the triggers. Use check_trigger for this, I recommend closing the item's menu with "usr << browse(null, "window=windowname") if it returns true.
  The var/value is the value that will be compared with the var/target. If they are equal it will activate the menu.
 
- 3. If you want the menu to stay until the users locks his uplink, add an active_uplink_check(mob/user as mob) in your interact/attack_hand proc.
+ 3. If you want the menu to stay until the users locks his uplink, add an active_uplink_check(mob/user as mob) in my interact/attack_hand proc.
  Then check if it's true, if true return. This will stop the normal menu appearing and will instead show the uplink menu.
 */
 
@@ -172,7 +172,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 	return 0
 
 // I placed this here because of how relevant it is.
-// You place this in your uplinkable item to check if an uplink is active or not.
+// You place this in my uplinkable item to check if an uplink is active or not.
 // If it is, it will display the uplink menu and return 1, else it'll return false.
 // If it returns true, I recommend closing the item's normal menu with "user << browse(null, "window=name")"
 /obj/item/proc/active_uplink_check(mob/user as mob)

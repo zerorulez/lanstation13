@@ -426,7 +426,7 @@ nanoui is used to open and update nano browser uis
 		<noscript>
 			<div id='uiNoScript'>
 				<h2>JAVASCRIPT REQUIRED</h2>
-				<p>Your Internet Explorer's Javascript is disabled (or broken).<br/>
+				<p>My Internet Explorer's Javascript is disabled (or broken).<br/>
 				Enable Javascript and then open this UI again.</p>
 			</div>
 		</noscript>

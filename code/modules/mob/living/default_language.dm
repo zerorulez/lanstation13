@@ -6,13 +6,13 @@
 	set category = "IC"
 
 	if(!(language in languages))
-		to_chat(src, "<span class='warning'>You try mouthing a few words to yourself before realizing you have no idea how to speak [language]. Idiot.</span>")
+		to_chat(src, "<span class='warning'>I try mouthing a few words to yourself before realizing you have no idea how to speak [language]. Idiot.</span>")
 		return
 
 	if(language)
-		to_chat(src, "<span class='notice'>You will now speak [language] if you do not specify a language when speaking.</span>")
+		to_chat(src, "<span class='notice'>I will now speak [language] if you do not specify a language when speaking.</span>")
 	else
-		to_chat(src, "<span class='notice'>You will now speak whatever your standard default language is if you do not specify one when speaking.</span>")
+		to_chat(src, "<span class='notice'>I will now speak whatever my standard default language is if you do not specify one when speaking.</span>")
 	default_language = language
 
 // Silicons can't neccessarily speak everything in their languages list
@@ -24,6 +24,6 @@
 	set category = "IC"
 
 	if(default_language)
-		to_chat(src, "<span class='notice'>You are currently speaking [default_language] by default.</span>")
+		to_chat(src, "<span class='notice'>I am currently speaking [default_language] by default.</span>")
 	else
-		to_chat(src, "<span class='notice'>Your current default language is your species or mob type default.</span>")
+		to_chat(src, "<span class='notice'>My current default language is my species or mob type default.</span>")

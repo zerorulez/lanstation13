@@ -348,7 +348,7 @@ var/global/datum/controller/occupations/job_master
 				count = (officer.current_positions + hop.current_positions + captain.current_positions)
 				if(master_assistant.current_positions > (config.assistantratio * count))
 					if(count < 5) // if theres more than 5 security on the station just let assistants join regardless, they should be able to handle the tide
-						to_chat(player, "You have been returned to lobby because there's not enough security to make you an assistant.")
+						to_chat(player, "I have been returned to lobby because there's not enough security to make you an assistant.")
 						player.ready = 0
 						unassigned -= player
 						continue
@@ -359,7 +359,7 @@ var/global/datum/controller/occupations/job_master
 	//For ones returning to lobby
 	for(var/mob/new_player/player in unassigned)
 		if(player.client.prefs.alternate_option == RETURN_TO_LOBBY)
-			to_chat(player, "<span class='danger'>You have been returned to lobby due to your job preferences being filled.")
+			to_chat(player, "<span class='danger'>I have been returned to lobby due to my job preferences being filled.")
 			player.ready = 0
 			unassigned -= player
 	return 1
@@ -372,7 +372,7 @@ var/global/datum/controller/occupations/job_master
 	if(job)
 		job.equip(H)
 	else
-		to_chat(H, "Your job is [rank] and the game just can't handle it! Please report this bug to an administrator.")
+		to_chat(H, "My job is [rank] and the game just can't handle it! Please report this bug to an administrator.")
 
 	H.job = rank
 
@@ -400,14 +400,14 @@ var/global/datum/controller/occupations/job_master
 			var/datum/money_account/M = create_account(H.real_name, balance_bank, null, wage_payout = PLAYER_START_WAGE)
 			if(H.mind)
 				var/remembered_info = ""
-				remembered_info += "<b>Your account number is:</b> #[M.account_number]<br>"
-				remembered_info += "<b>Your account pin is:</b> [M.remote_access_pin]<br>"
-				remembered_info += "<b>Your bank account funds are:</b> $[balance_bank]<br>"
-				remembered_info += "<b>Your virtual wallet funds are:</b> $[balance_wallet]<br>"
+				remembered_info += "<b>My account number is:</b> #[M.account_number]<br>"
+				remembered_info += "<b>My account pin is:</b> [M.remote_access_pin]<br>"
+				remembered_info += "<b>My bank account funds are:</b> $[balance_bank]<br>"
+				remembered_info += "<b>My virtual wallet funds are:</b> $[balance_wallet]<br>"
 
 				if(M.transaction_log.len)
 					var/datum/transaction/T = M.transaction_log[1]
-					remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
+					remembered_info += "<b>My account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
 				H.mind.store_memory(remembered_info)
 
 				H.mind.initial_account = M
@@ -418,15 +418,15 @@ var/global/datum/controller/occupations/job_master
 				var/datum/money_account/department_account = department_accounts[job.department]
 
 				if(department_account)
-					remembered_info += "<b>Your department's account number is:</b> #[department_account.account_number]<br>"
-					remembered_info += "<b>Your department's account pin is:</b> [department_account.remote_access_pin]<br>"
-					remembered_info += "<b>Your department's account funds are:</b> $[department_account.money]<br>"
+					remembered_info += "<b>My department's account number is:</b> #[department_account.account_number]<br>"
+					remembered_info += "<b>My department's account pin is:</b> [department_account.remote_access_pin]<br>"
+					remembered_info += "<b>My department's account funds are:</b> $[department_account.money]<br>"
 
 				H.mind.store_memory(remembered_info)
 
 			spawn()
-				to_chat(H, "<span class='danger'>Your bank account number is: <span style='color: black;'>[M.account_number]</span>, your bank account pin is: <span style='color: black;'>[M.remote_access_pin]</span></span>")
-				to_chat(H, "<span class='danger'>Your virtual wallet funds are: <span style='color: black;'>$[balance_wallet]</span>, your bank account funds are: <span style='color: black;'>$[balance_bank]</span></span>")
+				to_chat(H, "<span class='danger'>My bank account number is: <span style='color: black;'>[M.account_number]</span>, my bank account pin is: <span style='color: black;'>[M.remote_access_pin]</span></span>")
+				to_chat(H, "<span class='danger'>My virtual wallet funds are: <span style='color: black;'>$[balance_wallet]</span>, my bank account funds are: <span style='color: black;'>$[balance_bank]</span></span>")
 
 	var/alt_title = null
 	if(H.mind)
@@ -469,10 +469,10 @@ var/global/datum/controller/occupations/job_master
 	if(job)
 		job.introduce(H, (alt_title ? alt_title : rank))
 	else
-		to_chat(H, "<B>You are the [alt_title ? alt_title : rank].</B>")
+		to_chat(H, "<B>I am the [alt_title ? alt_title : rank].</B>")
 		to_chat(H, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
 		if(job.req_admin_notify)
-			to_chat(H, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
+			to_chat(H, "<b>I am playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
 
 	spawnId(H, rank, alt_title, balance_wallet)
 

@@ -40,7 +40,7 @@ var/const/max_assembly_amount = 300
 	var/t = {"<B>Reactor Fuel Rod Compressor / Assembler</B><BR>
 <A href='?src=\ref[src];close=1'>Close</A><BR>"}
 	if(locked)
-		t += "Swipe your ID to unlock this console."
+		t += "Swipe my ID to unlock this console."
 	else
 
 		t += {"Compressed matter in storage: [compressed_matter] <A href='?src=\ref[src];eject_matter=1'>\[Eject all\]</a><br>

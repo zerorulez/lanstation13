@@ -2,7 +2,7 @@
 
 
 	if(my_atom.next_firetime > world.time)
-		to_chat(usr, "<span class='warning'>Your weapons are recharging.</span>")
+		to_chat(usr, "<span class='warning'>My weapons are recharging.</span>")
 		return
 	var/turf/firstloc
 	var/turf/secondloc
@@ -69,7 +69,7 @@
 
 /obj/item/device/spacepod_equipment/weaponry
 	name = "pod weapon"
-	desc = "You shouldn't be seeing this"
+	desc = "I shouldn't be seeing this"
 	icon = 'icons/pods/ship.dmi'
 	icon_state = "blank"
 	var/projectile_type

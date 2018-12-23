@@ -89,9 +89,9 @@
 			return
 		if(AC.BB && accepted && stored_ammo.len < max_ammo)
 			if(user.drop_item(A, src))
-				to_chat(user, "<span class='notice'>You successfully load the [src] with \the [AC]. </span>")
+				to_chat(user, "<span class='notice'>I successfully load the [src] with \the [AC]. </span>")
 			else
-				to_chat(user, "<span class='warning'>You can't let go of \the [A]!</span>")
+				to_chat(user, "<span class='warning'>I can't let go of \the [A]!</span>")
 				return
 
 
@@ -99,7 +99,7 @@
 
 			update_icon()
 		else if(!AC.BB)
-			to_chat(user, "<span class='notice'>You can't load a spent bullet.</span>")
+			to_chat(user, "<span class='notice'>I can't load a spent bullet.</span>")
 		else if (stored_ammo.len == max_ammo)
 			to_chat(user, "<span class='notice'>\The [src] can't hold any more shells.</span>")
 		return
@@ -108,7 +108,7 @@
 		if(stored_ammo.len < max_ammo && AS.stored_ammo)
 			var/loaded_bullets = LoadInto(AS, src)
 			if(loaded_bullets)
-				to_chat(user, "<span class='notice'>You successfully fill the [src] with [loaded_bullets] shell\s from the [AS].</span>")
+				to_chat(user, "<span class='notice'>I successfully fill the [src] with [loaded_bullets] shell\s from the [AS].</span>")
 				update_icon()
 		else if (stored_ammo.len >= max_ammo)
 			to_chat(user, "<span class='notice'>\The [src] can't hold any more shells.</span>")
@@ -133,7 +133,7 @@
 		dropped.forceMove(get_turf(user))
 		stored_ammo -= dropped
 		update_icon()
-		to_chat(user, "<span class='notice'>You remove \a [dropped] from \the [src].</span>")
+		to_chat(user, "<span class='notice'>I remove \a [dropped] from \the [src].</span>")
 
 //used for loading from or to boxes. Has the fumble check
 //this doesn't load any bullets by itself, but is a check for the slow loading used by boxes
@@ -150,7 +150,7 @@
 		var/obj/item/ammo_storage/AS = target
 		trying_to_load = min(AS.max_ammo - AS.stored_ammo.len, bullets_from.stored_ammo.len) //either we fill to max, or we fill as much as possible
 	if(usr && trying_to_load)
-		to_chat(usr, "You begin loading \the [target]...")
+		to_chat(usr, "I begin loading \the [target]...")
 	if(trying_to_load && do_after(usr,target,trying_to_load * 5)) //bit of a wait, but that's why it's SLOW
 		return 1
 	else if(trying_to_load)
@@ -163,7 +163,7 @@
 			dropped_bullets++
 			bullets_from.update_icon()
 		if(usr)
-			to_chat(usr, "<span class='rose'>You fumble around and drop [dropped_bullets] shell\s!</span>")
+			to_chat(usr, "<span class='rose'>I fumble around and drop [dropped_bullets] shell\s!</span>")
 		return 0
 	return 0
 

@@ -40,13 +40,13 @@
 			overlays.len = 0
 			overlays += image('icons/obj/storage/storage.dmi', icon_locking)
 			locked = 0
-			to_chat(user, "You short out the lock on [src].")
+			to_chat(user, "I short out the lock on [src].")
 			return
 
 		if (isscrewdriver(W))
 			if (do_after(user, src, 20))
 				src.open =! src.open
-				user.show_message(text("<span class='notice'>You [] the service panel.</span>", (src.open ? "open" : "close")))
+				user.show_message(text("<span class='notice'>I [] the service panel.</span>", (src.open ? "open" : "close")))
 			return
 		if ((istype(W, /obj/item/device/multitool)) && (src.open == 1)&& (!src.l_hacking))
 			user.show_message(text("<span class='warning'>Now attempting to reset internal memory, please hold.</span>"), 1)
@@ -190,7 +190,7 @@
 	//I consider this worthless but it isn't my code so whatever.  Remove or uncomment.
 	/*attack(mob/M as mob, mob/living/user as mob)
 		if (clumsy_check(user) && prob(50))
-			to_chat(user, "<span class='warning'>The [src] slips out of your hand and hits your head.</span>")
+			to_chat(user, "<span class='warning'>The [src] slips out of my hand and hits my head.</span>")
 			user.take_organ_damage(10)
 			user.Paralyse(2)
 			return
@@ -217,7 +217,7 @@
 					if(H.stat != 2)
 						H.stat = 1
 					for(var/mob/O in viewers(H, null))
-						O.show_message(text("<span class='danger'>[] has been knocked unconscious!</span>", H), 1, "<span class='warning'>You hear someone fall.</span>", 2)
+						O.show_message(text("<span class='danger'>[] has been knocked unconscious!</span>", H), 1, "<span class='warning'>I hear someone fall.</span>", 2)
 				else
 					to_chat(H, text("<span class='warning'>[] tried to knock you unconcious!</span>",user))
 					H.eye_blurry += 3

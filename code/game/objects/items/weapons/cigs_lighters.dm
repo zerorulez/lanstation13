@@ -117,7 +117,7 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 		lit = 1
 		update_brightness()
 		user.visible_message("[user] lights \the [src] with \the [W].", \
-		"You light \the [src] with \the [W].")
+		"I light \the [src] with \the [W].")
 	..()
 */
 
@@ -139,16 +139,16 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 		lit = 1
 		update_brightness()
 		user.visible_message("[user] strikes \the [src] on \the [target].", \
-		"You strike \the [src] on \the [target].")
+		"I strike \the [src] on \the [target].")
 
 //////////////////
 //FINE SMOKABLES//
 //////////////////
 
-//Doubles as a mask entity, aka can be put to your mouth like a real cigarette
+//Doubles as a mask entity, aka can be put to my mouth like a real cigarette
 /obj/item/clothing/mask/cigarette
 	name = "cigarette"
-	desc = "A roll of tobacco and nicotine. Not the best thing to have on your face in the event of a plasma flood."
+	desc = "A roll of tobacco and nicotine. Not the best thing to have on my face in the event of a plasma flood."
 	icon_state = "cig"
 	item_state = "cig"
 	w_class = W_CLASS_TINY
@@ -280,7 +280,7 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 			return
 		var/transfered = glass.reagents.trans_to(src, chem_volume)
 		if(transfered)	//If reagents were transfered, show the message
-			to_chat(user, "<span class='notice'>You dip \the [src] into \the [glass].</span>")
+			to_chat(user, "<span class='notice'>I dip \the [src] into \the [glass].</span>")
 		else	//If not, either the beaker was empty, or the cigarette was full
 			if(!glass.reagents.total_volume) //Only show an explicit message if the beaker was empty, you can't tell a cigarette is "full"
 				to_chat(user, "<span class='warning'>\The [glass] is empty.</span>")
@@ -291,7 +291,7 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 		return //"Normal" situations were already handled in attackby, don't show a message
 
 	if(reagents.get_reagent_amount(WATER)) //The cigarette was dipped into water, it's useless now
-		to_chat(usr, "<span class='warning'>You fail to light \the [src]. It appears to be wet.</span>")
+		to_chat(usr, "<span class='warning'>I fail to light \the [src]. It appears to be wet.</span>")
 		return
 
 	if(reagents.get_reagent_amount(PLASMA)) //Plasma explodes when exposed to fire
@@ -348,7 +348,7 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 		lit = 0 //Actually unlight the cigarette so that the lighting can update correctly
 		update_brightness()
 		if(ismob(loc))
-			to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
+			to_chat(M, "<span class='notice'>My [name] goes out.</span>")
 			M.u_equip(src, 0)	//Un-equip it so the overlays can update
 		qdel(src)
 		return
@@ -552,7 +552,7 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 		if(ismob(loc))
 			var/mob/living/M = loc
 			M.visible_message("<span class='notice'>[M]'s [name] goes out.</span>", \
-			"<span class='notice'>Your [name] goes out, and you empty the ash.</span>")
+			"<span class='notice'>My [name] goes out, and you empty the ash.</span>")
 			if(M.wear_mask == src)
 				M.update_inv_wear_mask(0)
 		update_brightness()
@@ -564,14 +564,14 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 /obj/item/clothing/mask/cigarette/pipe/attack_self(mob/user as mob) //Refills the pipe. Can be changed to an attackby later, if loose tobacco is added to vendors or something. //Later meaning never
 	if(lit)
 		user.visible_message("<span class='notice'>[user] puts out \the [src].</span>", \
-							"<span class='notice'>You put out \the [src].</span>")
+							"<span class='notice'>I put out \the [src].</span>")
 		lit = 0
 		clothing_flags &= ~(MASKINTERNALS | BLOCK_GAS_SMOKE_EFFECT)
 		update_brightness()
 		return
 	if(smoketime < initial(smoketime)) //Warrants a refill
 		user.visible_message("<span class='notice'>[user] refills \the [src].</span>", \
-							"<span class='notice'>You refill \the [src].</span>")
+							"<span class='notice'>I refill \the [src].</span>")
 		smoketime = initial(smoketime)
 	return
 
@@ -672,7 +672,7 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 	if(istype(O, /obj/structure/reagent_dispensers/fueltank))
 		fuel += O.reagents.remove_any(initial(fuel) - fuel)
 		user.visible_message("<span class='notice'>[user] refuels \the [src].</span>", \
-		"<span class='notice'>You refuel \the [src].</span>")
+		"<span class='notice'>I refuel \the [src].</span>")
 		playsound(get_turf(src), 'sound/effects/refill.ogg', 50, 1, -6)
 		return
 /obj/item/weapon/lighter/attack_self(mob/living/user)
@@ -686,20 +686,20 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 		playsound(get_turf(src), pick(lightersound), 50, 1)
 		if(fuel >= initial(fuel) - 5 || prob(100 * (fuel/initial(fuel)))) //Strike, but fail to light it
 			user.visible_message("<span class='notice'>[user] manages to light \the [src].</span>", \
-			"<span class='notice'>You manage to light \the [src].</span>")
+			"<span class='notice'>I manage to light \the [src].</span>")
 			lit = !lit
 			update_brightness()
 			--fuel
 			return
 		else //Failure
 			user.visible_message("<span class='notice'>[user] tries to light \the [src].</span>", \
-			"<span class='notice'>You try to light \the [src].</span>")
+			"<span class='notice'>I try to light \the [src].</span>")
 			return
 	else
 		fueltime = null
 		lit = !lit
 		user.visible_message("<span class='notice'>[user] quietly shuts off \the [src].</span>", \
-		"<span class='notice'>You quietly shut off \the [src].</span>")
+		"<span class='notice'>I quietly shut off \the [src].</span>")
 		update_brightness()
 
 /obj/item/weapon/lighter/zippo/attack_self(mob/living/user)
@@ -717,8 +717,8 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 	else //Was shut off
 		fueltime = null
 		playsound(get_turf(src), pick(close_sound), 50, 1)
-		user.visible_message("<span class='rose'>You hear a quiet click as [user] shuts off \the [src] without even looking at what they're doing. Wow.</span>", \
-		"<span class='rose'>You hear a quiet click as you shut off \the [src] without even looking at what you are doing.</span>")
+		user.visible_message("<span class='rose'>I hear a quiet click as [user] shuts off \the [src] without even looking at what they're doing. Wow.</span>", \
+		"<span class='rose'>I hear a quiet click as you shut off \the [src] without even looking at what you are doing.</span>")
 	update_brightness()
 
 /obj/item/weapon/lighter/is_hot()

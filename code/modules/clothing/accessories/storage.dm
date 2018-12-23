@@ -29,7 +29,7 @@
 	return 1
 
 /obj/item/clothing/accessory/storage/attack_self(mob/user as mob)
-	to_chat(user, "<span class='notice'>You empty [src].</span>")
+	to_chat(user, "<span class='notice'>I empty [src].</span>")
 	var/turf/T = get_turf(src)
 	hold.hide_from(user)
 	for(var/obj/item/I in hold.contents)
@@ -64,7 +64,7 @@
 
 /obj/item/clothing/accessory/storage/webbing
 	name = "webbing"
-	desc = "Sturdy mess of synthcotton belts and buckles, ready to share your burden."
+	desc = "Sturdy mess of synthcotton belts and buckles, ready to share my burden."
 	icon_state = "webbing"
 	_color = "webbing"
 	origin_tech = Tc_MATERIALS + "=2"
@@ -85,7 +85,7 @@
 
 /obj/item/clothing/accessory/storage/brown_vest
 	name = "brown webbing vest"
-	desc = "Worn brownish synthcotton vest with lots of pockets to unload your hands."
+	desc = "Worn brownish synthcotton vest with lots of pockets to unload my hands."
 	icon_state = "vest_brown"
 	_color = "vest_brown"
 	storage_slots = 5

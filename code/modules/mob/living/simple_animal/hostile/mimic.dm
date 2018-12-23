@@ -288,7 +288,7 @@ var/global/list/crate_mimic_disguises = list(\
 
 		if(H in locked)
 			if(prob(20))
-				to_chat(H, "<span class='danger'>You feel very weak!</span>")
+				to_chat(H, "<span class='danger'>I feel very weak!</span>")
 				H.Knockdown(3)
 
 /mob/living/simple_animal/hostile/mimic/crate/chest/LoseTarget()
@@ -308,9 +308,9 @@ var/global/list/crate_mimic_disguises = list(\
 		return
 
 	if(user.loc == src) //We're inside the chest
-		to_chat(user, "<span class='info'>You try to escape from \the [src]. This will take a while!</span>")
+		to_chat(user, "<span class='info'>I try to escape from \the [src]. This will take a while!</span>")
 		if(do_after(user, src, 300)) //30 seconds
-			to_chat(user, "<span class='info'>You successfully escape from \the [src].</span>")
+			to_chat(user, "<span class='info'>I successfully escape from \the [src].</span>")
 			user.forceMove(get_turf(src))
 	else //We're being held by the mimic
 		var/mob/living/carbon/human/H = user

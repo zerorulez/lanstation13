@@ -90,7 +90,7 @@ var/global/list/investigations=list(
 	set category = "Admin"
 
 	if(!holder)
-		to_chat(src, "<span class='warning'>You're not an admin, go away.</span>")
+		to_chat(src, "<span class='warning'>I am not an admin, go away.</span>")
 		return
 
 	if(!(subject in investigations))

@@ -33,15 +33,15 @@
 	if(isscrewdriver(W))
 		if(stage == 0)
 			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-			to_chat(user, "<span class = 'caution'>You unscrew the telepad's tracking beacon.</span>")
+			to_chat(user, "<span class = 'caution'>I unscrew the telepad's tracking beacon.</span>")
 			stage = 1
 		else if(stage == 1)
 			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-			to_chat(user, "<span class = 'caution'>You screw in the telepad's tracking beacon.</span>")
+			to_chat(user, "<span class = 'caution'>I screw in the telepad's tracking beacon.</span>")
 			stage = 0
 	if(istype(W, /obj/item/weapon/weldingtool) && stage == 1)
 		playsound(src, 'sound/items/Welder.ogg', 50, 1)
-		to_chat(user, "<span class = 'caution'>You disassemble the telepad.</span>")
+		to_chat(user, "<span class = 'caution'>I disassemble the telepad.</span>")
 		var/obj/item/stack/sheet/metal/M = getFromPool(/obj/item/stack/sheet/metal, get_turf(src))
 		M.amount = 1
 		new /obj/item/stack/sheet/glass/glass(get_turf(src))
@@ -105,7 +105,7 @@
 		mode = !mode
 		playsound(get_turf(src), 'sound/effects/pop.ogg', 50, 0)
 		if(mode == MODE_NORMAL)
-			to_chat(user, "<span class = 'caution'>You calibrate the telepad locator.</span>")
+			to_chat(user, "<span class = 'caution'>I calibrate the telepad locator.</span>")
 		else
 			to_chat(user, "<span class = 'caution'> The telepad locator has become uncalibrated.</span>")
 
@@ -116,7 +116,7 @@
 		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
-		to_chat(user, "<span class = 'caution'>You emag the RCS. Click on it to toggle between modes.</span>")
+		to_chat(user, "<span class = 'caution'>I emag the RCS. Click on it to toggle between modes.</span>")
 
 /obj/item/weapon/rcs/preattack(var/obj/structure/closet/crate/target, var/mob/user, var/proximity_flag, var/click_parameters)
 	if (!istype(target) || target.opened || !proximity_flag || !cell || teleporting)

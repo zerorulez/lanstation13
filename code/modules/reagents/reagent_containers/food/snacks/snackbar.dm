@@ -1,6 +1,6 @@
 /obj/item/weapon/reagent_containers/food/snacks/snackbar
 	name = "snack bar"
-	desc = "Made from your favorite completely harmless reagents!"
+	desc = "Made from my favorite completely harmless reagents!"
 	icon_state = "snackbar"
 	bitesize = 5
 	volume = 10

@@ -105,7 +105,7 @@ Feel free to do whatever with this if you think it lacks.
 	src.add_fingerprint(user)
 	if(storedpda)
 		var/chosenPDA
-		chosenPDA = input(user, "Select your color.", "PDA Painting") as null|anything in colorlist
+		chosenPDA = input(user, "Select my color.", "PDA Painting") as null|anything in colorlist
 		if(!chosenPDA)
 			return
 		if(!in_range(src, user))
@@ -150,7 +150,7 @@ Feel free to do whatever with this if you think it lacks.
 	if(!ishuman(usr))
 		return
 	if(storedpda)
-		to_chat(usr, "You can't print a PDA while \the [storedpda] is loaded into \the [src].")
+		to_chat(usr, "I can't print a PDA while \the [storedpda] is loaded into \the [src].")
 		return
 	if(busy)
 		to_chat(usr, "\The [src] is busy, try again later.")

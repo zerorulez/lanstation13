@@ -54,7 +54,7 @@
 									"[slot_s_store]" = /obj/item/weapon/tank/oxygen/yellow)
 
 	usr.visible_message("<span class='danger'>[user] puts on \his robe and wizard hat!</span>", \
-						"<span class='danger'>You put on your robe and wizard hat!</span>")
+						"<span class='danger'>I put on my robe and wizard hat!</span>")
 
 	..()
 
@@ -66,7 +66,7 @@
 	name = "Summon Hardsuit"
 	desc = "A spell which will summon you a wizard hardsuit."
 	delete_old = 1
-	return "You have improved Summon Robes into [name]. It will now summon a gem-encrusted hardsuit with internals."
+	return "I have improved Summon Robes into [name]. It will now summon a gem-encrusted hardsuit with internals."
 
 
 /spell/targeted/equip_item/robesummon/get_upgrade_info(upgrade_type, level)

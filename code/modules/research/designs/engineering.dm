@@ -62,7 +62,7 @@
 
 /datum/design/night_vision_goggles
 	name = "Night Vision Goggles"
-	desc = "You can totally see in the dark now!"
+	desc = "I can totally see in the dark now!"
 	id = "night_vision_goggles"
 	req_tech = list(Tc_MATERIALS = 5, Tc_ENGINEERING = 4)
 	build_type = PROTOLATHE

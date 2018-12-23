@@ -35,9 +35,9 @@
 			caught_bees += B.strength
 			qdel(B)
 			B = null
-			user.visible_message("<span class='notice'>[user] nets some bees.</span>","<span class='notice'>You net up some of the becalmed bees.</span>")
+			user.visible_message("<span class='notice'>[user] nets some bees.</span>","<span class='notice'>I net up some of the becalmed bees.</span>")
 		else
-			user.visible_message("<span class='warning'>[user] swings at some bees, they don't seem to like it.</span>","<span class='warning'>You swing at some bees, they don't seem to like it.</span>")
+			user.visible_message("<span class='warning'>[user] swings at some bees, they don't seem to like it.</span>","<span class='warning'>I swing at some bees, they don't seem to like it.</span>")
 			B.feral = 5
 			B.target = user
 	if(!caught)
@@ -52,9 +52,9 @@
 			caught_bees += B.strength
 			qdel(B)
 			B = null
-			user.visible_message("<span class='notice'>[user] nets some bees.</span>","<span class='notice'>You net up some of the becalmed bees.</span>")
+			user.visible_message("<span class='notice'>[user] nets some bees.</span>","<span class='notice'>I net up some of the becalmed bees.</span>")
 		else
-			user.visible_message("<span class='warning'>[user] swings at some bees, they don't seem to like it.</span>","<span class='warning'>You swing at some bees, they don't seem to like it.</span>")
+			user.visible_message("<span class='warning'>[user] swings at some bees, they don't seem to like it.</span>","<span class='warning'>I swing at some bees, they don't seem to like it.</span>")
 			B.feral = 5
 			B.target = user
 	if(!caught)
@@ -172,8 +172,8 @@
 				To fix such a situation, you will have to capture the bees and place them back into their apiary. Doing so is a two step process.
 				But before that, you'll want to acquire yourself a Bio suit to protect yourself from stings.
 				First you need to spray the bees with water. Chemistry sprays, fire extinguishers, smoke grenades, anything works as long as it has some water in it.
-				Once the bees are calmed, swing your bee net at them. If the bees aren't calmed first, you will only angry them further!
-				It is strongly disadvised to empty your bee net anywhere beside in the apiary, you might have to deal with an even more ferocious outbreak if you empty your net
+				Once the bees are calmed, swing my bee net at them. If the bees aren't calmed first, you will only angry them further!
+				It is strongly disadvised to empty my bee net anywhere beside in the apiary, you might have to deal with an even more ferocious outbreak if you empty my net
 				outside after having caught them all.
 
 				<h3>Collecting Honeycombs</h3>

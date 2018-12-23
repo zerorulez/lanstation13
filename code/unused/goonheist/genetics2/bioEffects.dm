@@ -11,8 +11,8 @@
 	effectType = effectTypeDisability
 	isBad = 1
 	probability = 20
-	msgGain = "You can't seem to see anything!"
-	msgLose = "Your vision returns!"
+	msgGain = "I can't seem to see anything!"
+	msgLose = "My vision returns!"
 	reclaim_fail = 15
 	lockedGaps = 1
 	lockedDiff = 4
@@ -32,8 +32,8 @@
 	effectType = effectTypeDisability
 	isBad = 1
 	probability = 75
-	msgGain = "You feel unable to express yourself at all."
-	msgLose = "You feel able to speak freely again."
+	msgGain = "I feel unable to express yourself at all."
+	msgLose = "I feel able to speak freely again."
 	reclaim_fail = 15
 	lockedGaps = 1
 	lockedDiff = 4
@@ -49,7 +49,7 @@
 	probability = 50
 	blockCount = 4
 	msgGain = "It's quiet. Too quiet."
-	msgLose = "You can hear again!"
+	msgLose = "I can hear again!"
 	reclaim_fail = 15
 	lockedGaps = 1
 	lockedDiff = 4
@@ -67,8 +67,8 @@
 	blockCount = 3
 	blockGaps = 3
 	isBad = 1
-	msgGain = "You feel a strange sickness permeate your whole body."
-	msgLose = "You no longer feel awful and sick all over."
+	msgGain = "I feel a strange sickness permeate my whole body."
+	msgLose = "I no longer feel awful and sick all over."
 	reclaim_fail = 15
 
 	OnLife()
@@ -76,7 +76,7 @@
 		for(var/mob/living/L in range(1, owner))
 			if(L == owner)
 				continue
-			to_chat(L, "<span class='warning'>You are enveloped by a soft green glow emanating from [owner].</span>")
+			to_chat(L, "<span class='warning'>I am enveloped by a soft green glow emanating from [owner].</span>")
 			L.radiation += 5
 		return
 
@@ -93,8 +93,8 @@
 	id = "clumsy"
 	effectType = effectTypeDisability
 	isBad = 1
-	msgGain = "You feel kind of off-balance and disoriented."
-	msgLose = "You feel well co-ordinated again."
+	msgGain = "I feel kind of off-balance and disoriented."
+	msgLose = "I feel well co-ordinated again."
 	reclaim_fail = 15
 
 /datum/bioEffect/fat
@@ -103,8 +103,8 @@
 	id = "fat"
 	effectType = effectTypeDisability
 	isBad = 1
-	msgGain = "You feel blubbery and lethargic!"
-	msgLose = "You feel fit!"
+	msgGain = "I feel blubbery and lethargic!"
+	msgLose = "I feel fit!"
 	reclaim_fail = 15
 
 /datum/bioEffect/dwarf
@@ -114,7 +114,7 @@
 	effectType = effectTypeDisability
 	isBad = 1
 	msgGain = "Did everything just get bigger?"
-	msgLose = "You feel tall!"
+	msgLose = "I feel tall!"
 	reclaim_fail = 15
 	mob_exclusive = /mob/living/carbon/human/
 
@@ -145,8 +145,8 @@
 	id = "bad_eyesight"
 	effectType = effectTypeDisability
 	isBad = 1
-	msgGain = "Your vision blurs."
-	msgLose = "Your vision is no longer blurry."
+	msgGain = "My vision blurs."
+	msgLose = "My vision is no longer blurry."
 	reclaim_fail = 15
 
 	OnLife()
@@ -165,13 +165,13 @@
 	isBad = 1
 	probability = 75
 	blockCount = 3
-	msgGain = "Your thoughts become disorderly and hard to control."
-	msgLose = "Your mind regains its former clarity."
+	msgGain = "My thoughts become disorderly and hard to control."
+	msgLose = "My mind regains its former clarity."
 	reclaim_fail = 15
 
 	OnLife()
 		if (prob(1) && owner:paralysis < 1)
-			owner:visible_message("<span class='warning'><B>[owner] starts having a seizure!</span>", "<span class='warning'>You have a seizure!</span>")
+			owner:visible_message("<span class='warning'><B>[owner] starts having a seizure!</span>", "<span class='warning'>I have a seizure!</span>")
 			owner:paralysis = max(2, owner:paralysis)
 			owner:Jitter(100)
 		return
@@ -183,8 +183,8 @@
 	effectType = effectTypeDisability
 	isBad = 1
 	probability = 50
-	msgGain = "You feel like you can't control your actions fully."
-	msgLose = "You feel in full control of yourself once again."
+	msgGain = "I feel like you can't control my actions fully."
+	msgLose = "I feel in full control of yourself once again."
 	reclaim_fail = 15
 
 	OnLife()
@@ -211,8 +211,8 @@
 	id = "cough"
 	effectType = effectTypeDisability
 	isBad = 1
-	msgGain = "You feel an irritating itch in your throat."
-	msgLose = "Your throat clears up."
+	msgGain = "I feel an irritating itch in my throat."
+	msgLose = "My throat clears up."
 	reclaim_fail = 15
 
 	OnLife()
@@ -234,7 +234,7 @@
 	effectType = effectTypeDisability
 	isBad = 1
 	msgGain = "Y-you f.. feel a.. a bit n-n-nervous."
-	msgLose = "You don't feel nervous anymore."
+	msgLose = "I don't feel nervous anymore."
 	reclaim_fail = 10
 	lockedGaps = 1
 
@@ -249,8 +249,8 @@
 	effectType = effectTypeDisability
 	isBad = 1
 	probability = 15
-	msgGain = "You feel like you want to smile and smile and smile forever :)"
-	msgLose = "You don't feel like smiling anymore. :("
+	msgGain = "I feel like you want to smile and smile and smile forever :)"
+	msgLose = "I don't feel like smiling anymore. :("
 	reclaim_fail = 10
 	lockedGaps = 1
 
@@ -260,8 +260,8 @@
 	id = "accent_elvis"
 	effectType = effectTypeDisability
 	isBad = 1
-	msgGain = "You feel funky."
-	msgLose = "You feel a little less conversation would be great."
+	msgGain = "I feel funky."
+	msgLose = "I feel a little less conversation would be great."
 	reclaim_fail = 10
 	lockedGaps = 1
 
@@ -272,7 +272,7 @@
 	effectType = effectTypeDisability
 	isBad = 1
 	msgGain = "Ye feel like a reet prat like, innit?"
-	msgLose = "You no longer feel like being rude and sassy."
+	msgLose = "I no longer feel like being rude and sassy."
 	reclaim_fail = 10
 	lockedGaps = 1
 
@@ -282,7 +282,7 @@
 	id = "accent_swedish"
 	effectType = effectTypeDisability
 	isBad = 1
-	msgGain = "You feel Swedish, however that works."
+	msgGain = "I feel Swedish, however that works."
 	msgLose = "The feeling of Swedishness passes."
 	reclaim_fail = 10
 	lockedGaps = 1
@@ -294,7 +294,7 @@
 	effectType = effectTypePower
 	probability = 40
 	msgGain = "YOU SUDDENLY FEEL LIKE SHOUTING A WHOLE LOT!!!"
-	msgLose = "You no longer feel the need to raise your voice."
+	msgLose = "I no longer feel the need to raise my voice."
 	reclaim_fail = 10
 	lockedGaps = 1
 
@@ -305,7 +305,7 @@
 	effectType = effectTypePower
 	probability = 40
 	msgGain = "...you feel like being quiet..."
-	msgLose = "You no longer feel the need to keep your voice down."
+	msgLose = "I no longer feel the need to keep my voice down."
 	reclaim_fail = 10
 	lockedGaps = 1
 
@@ -318,8 +318,8 @@
 	probability = 8
 	blockCount = 4
 	blockGaps = 4
-	msgGain = "You can't seem to form any coherent thoughts!"
-	msgLose = "Your mind feels more clear."
+	msgGain = "I can't seem to form any coherent thoughts!"
+	msgLose = "My mind feels more clear."
 	reclaim_fail = 10
 	lockedGaps = 1
 	lockedDiff = 4
@@ -337,16 +337,16 @@
 	effectType = effectTypePower
 	probability = 75
 	blockCount = 3
-	msgLose = "You feel cold."
+	msgLose = "I feel cold."
 
 	OnAdd()
 		if (owner.bioHolder.HasEffect("cold_resist"))
 			owner.bioHolder.AddEffect("thermal_resist",2)
 			owner.bioHolder.RemoveEffect("fire_resist")
 			owner.bioHolder.RemoveEffect("cold_resist")
-			to_chat(owner, "<span class='notice'>Your thermal resistances merge into one!</span>")
+			to_chat(owner, "<span class='notice'>My thermal resistances merge into one!</span>")
 		else
-			to_chat(owner, "<span class='notice'>You feel cold.</span>")
+			to_chat(owner, "<span class='notice'>I feel cold.</span>")
 		return
 
 	OnMobDraw()
@@ -361,7 +361,7 @@
 	effectType = effectTypePower
 	probability = 75
 	blockCount = 3
-	msgLose = "You feel warm."
+	msgLose = "I feel warm."
 	// you feel warm because you're resisting the cold, stop changing these around! =(
 
 	OnAdd()
@@ -369,9 +369,9 @@
 			owner.bioHolder.AddEffect("thermal_resist",1)
 			owner.bioHolder.RemoveEffect("fire_resist")
 			owner.bioHolder.RemoveEffect("cold_resist")
-			to_chat(owner, "<span class='notice'>Your thermal resistances merge into one!</span>")
+			to_chat(owner, "<span class='notice'>My thermal resistances merge into one!</span>")
 		else
-			to_chat(owner, "<span class='notice'>You feel warm.</span>")
+			to_chat(owner, "<span class='notice'>I feel warm.</span>")
 		return
 
 	OnMobDraw()
@@ -391,10 +391,10 @@
 	OnRemove()
 		if (src.variant == 1)
 			owner.bioHolder.AddEffect("cold_resist")
-			to_chat(owner, "<span class='warning'>You feel warm.</span>")
+			to_chat(owner, "<span class='warning'>I feel warm.</span>")
 		else if (src.variant == 2)
 			owner.bioHolder.AddEffect("fire_resist")
-			to_chat(owner, "<span class='warning'>You feel cold.</span>")
+			to_chat(owner, "<span class='warning'>I feel cold.</span>")
 		return
 
 	OnMobDraw()
@@ -410,8 +410,8 @@
 	probability = 50
 	blockCount = 3
 	blockGaps = 3
-	msgGain = "Your hair stands on end."
-	msgLose = "The tingling in your skin fades."
+	msgGain = "My hair stands on end."
+	msgLose = "The tingling in my skin fades."
 
 	OnMobDraw()
 		owner.overlays += image("icon" = 'genetics.dmi', "icon_state" = "elec[owner:bioHolder.HasEffect("fat") ? "fat" :""][!owner:lying ? "_s" : "_l"]")
@@ -422,16 +422,16 @@
 	desc = "Strongly reinforces the subject's nervous system against alcoholic intoxication."
 	id = "resist_alcohol"
 	effectType = effectTypePower
-	msgGain = "You feel unusually sober."
-	msgLose = "You feel like you could use a stiff drink."
+	msgGain = "I feel unusually sober."
+	msgLose = "I feel like you could use a stiff drink."
 
 /datum/bioEffect/psychic_resist
 	name = "Meta-Neural Enhancement"
 	desc = "Boosts efficiency in sectors of the brain commonly associated with meta-mental energies."
 	id = "psy_resist"
 	effectType = effectTypePower
-	msgGain = "Your mind feels closed."
-	msgLose = "You feel oddly exposed."
+	msgGain = "My mind feels closed."
+	msgLose = "I feel oddly exposed."
 
 // Stealth Enhancers
 
@@ -444,8 +444,8 @@
 	probability = 15
 	blockGaps = 3
 	blockCount = 3
-	msgGain = "You begin to fade into the shadows."
-	msgLose = "You become fully visible."
+	msgGain = "I begin to fade into the shadows."
+	msgLose = "I become fully visible."
 
 /datum/bioEffect/chameleon
 	name = "Chameleon"
@@ -455,8 +455,8 @@
 	probability = 25
 	blockCount = 3
 	blockGaps = 3
-	msgGain = "You feel one with your surroundings."
-	msgLose = "You feel oddly exposed."
+	msgGain = "I feel one with my surroundings."
+	msgLose = "I feel oddly exposed."
 	var/image/over = null
 
 	OnAdd()
@@ -482,8 +482,8 @@
 	probability = 100
 	blockCount = 3
 	blockGaps = 1
-	msgGain = "Your skin begins to glow softly."
-	msgLose = "Your glow fades away."
+	msgGain = "My skin begins to glow softly."
+	msgLose = "My glow fades away."
 	var/glow_red = 0
 	var/glow_green = 0
 	var/glow_blue = 0
@@ -513,8 +513,8 @@
 	blockCount = 4
 	blockGaps = 5
 	reclaim_mats = 20
-	msgGain = "You feel your muscles swell to an immense size."
-	msgLose = "Your muscles shrink back down."
+	msgGain = "I feel my muscles swell to an immense size."
+	msgLose = "My muscles shrink back down."
 
 	OnAdd()
 		owner.unlock_medal("It's not easy being green", 1)
@@ -528,7 +528,7 @@
 	OnLife()
 		if (owner:health <= 25)
 			timeLeft = 1
-			to_chat(owner, "<span class='warning'>You suddenly feel very weak.</span>")
+			to_chat(owner, "<span class='warning'>I suddenly feel very weak.</span>")
 			owner:SetKnockdown(3)
 			owner:emote("collapse")
 
@@ -542,8 +542,8 @@
 	blockCount = 5
 	blockGaps = 5
 	reclaim_mats = 20
-	msgGain = "You feel your consciousness expand outwards."
-	msgLose = "Your conciousness closes inwards."
+	msgGain = "I feel my consciousness expand outwards."
+	msgLose = "My conciousness closes inwards."
 
 	OnMobDraw()
 		if (hasvar(owner, "lying"))
@@ -559,8 +559,8 @@
 	blockCount = 3
 	blockGaps = 5
 	reclaim_mats = 20
-	msgGain = "You suddenly seem to be able to see through everything."
-	msgLose = "Your vision fades back to normal."
+	msgGain = "I suddenly seem to be able to see through everything."
+	msgLose = "My vision fades back to normal."
 
 /datum/bioEffect/toxic_farts
 	name = "High Decay Digestion"
@@ -569,8 +569,8 @@
 	probability = 35
 	blockCount = 2
 	blockGaps = 4
-	msgGain = "Your stomach grumbles unpleasantly."
-	msgLose = "Your stomach stops acting up. Phew!"
+	msgGain = "My stomach grumbles unpleasantly."
+	msgLose = "My stomach stops acting up. Phew!"
 
 /datum/bioEffect/cooldown_reducer
 	name = "Booster Gene X-1"
@@ -596,8 +596,8 @@
 	id = "strong"
 	effectType = effectTypePower
 	probability = 50
-	msgGain = "You feel buff!"
-	msgLose = "You feel wimpy and weak."
+	msgGain = "I feel buff!"
+	msgLose = "I feel wimpy and weak."
 
 /datum/bioEffect/horns
 	name = "Cranial Keratin Formation"
@@ -605,8 +605,8 @@
 	id = "horns"
 	effectType = effectTypePower
 	probability = 60
-	msgGain = "A pair of horns erupt from your head."
-	msgLose = "Your horns crumble away into nothing."
+	msgGain = "A pair of horns erupt from my head."
+	msgLose = "My horns crumble away into nothing."
 
 	OnMobDraw()
 		if (hasvar(owner, "lying"))
@@ -619,8 +619,8 @@
 	id = "stinky"
 	effectType = effectTypeDisability
 	isBad = 1
-	msgGain = "You feel sweaty."
-	msgLose = "You feel much more hygenic."
+	msgGain = "I feel sweaty."
+	msgLose = "I feel much more hygenic."
 	var/personalized_stink = "Wow, it stinks in here!"
 
 	New()

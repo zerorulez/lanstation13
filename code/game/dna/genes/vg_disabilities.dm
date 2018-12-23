@@ -3,7 +3,7 @@
 	name = "Loud"
 	desc = "Forces the speaking centre of the subjects brain to yell every sentence."
 	activation_message = "YOU FEEL LIKE YELLING!"
-	deactivation_message = "You feel like being quiet.."
+	deactivation_message = "I feel like being quiet.."
 
 	New()
 		..()
@@ -20,8 +20,8 @@
 /datum/dna/gene/disability/speech/whisper
 	name = "Quiet"
 	desc = "Damages the subjects vocal cords"
-	activation_message = "<i>Your throat feels sore..</i>"
-	deactivation_message = "You feel fine again."
+	activation_message = "<i>My throat feels sore..</i>"
+	deactivation_message = "I feel fine again."
 
 	New()
 		..()
@@ -41,8 +41,8 @@
 /datum/dna/gene/disability/dizzy
 	name = "Dizzy"
 	desc = "Causes the cerebellum to shut down in some places."
-	activation_message = "You feel very dizzy..."
-	deactivation_message = "You regain your balance."
+	activation_message = "I feel very dizzy..."
+	deactivation_message = "I regain my balance."
 	flags = GENE_UNNATURAL
 
 	New()
@@ -60,7 +60,7 @@
 /datum/dna/gene/disability/speech/sans
 	name = "Wacky"
 	desc = "Forces the subject to talk in an odd manner."
-	activation_message = "You feel an off sensation in your voicebox.."
+	activation_message = "I feel an off sensation in my voicebox.."
 	deactivation_message = "The off sensation passes.."
 
 	New()

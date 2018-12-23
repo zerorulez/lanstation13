@@ -36,7 +36,7 @@
 						attached.attached = src
 						anchored = 1
 						mode = 1
-						to_chat(user, "You attach the device to the cable.")
+						to_chat(user, "I attach the device to the cable.")
 						for(var/mob/M in viewers(user))
 							if(M == user)
 								continue
@@ -50,7 +50,7 @@
 					processing_objects.Remove(src) // Now the power sink actually stops draining the station's power if you unhook it. --NeoFite
 				anchored = 0
 				mode = 0
-				to_chat(user, "You detach the device from the cable.")
+				to_chat(user, "I detach the device from the cable.")
 				attached.attached = null
 				attached = null
 				for(var/mob/M in viewers(user))
@@ -83,7 +83,7 @@
 				..()
 
 			if(1)
-				to_chat(user, "You activate the device!")
+				to_chat(user, "I activate the device!")
 				for(var/mob/M in viewers(user))
 					if(M == user)
 						continue
@@ -94,7 +94,7 @@
 				processing_objects.Add(src)
 
 			if(2)  //This switch option wasn't originally included. It exists now. --NeoFite
-				to_chat(user, "You deactivate the device!")
+				to_chat(user, "I deactivate the device!")
 				for(var/mob/M in viewers(user))
 					if(M == user)
 						continue

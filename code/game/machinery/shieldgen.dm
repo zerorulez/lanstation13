@@ -242,13 +242,13 @@
 	if (src.active)
 		user.visible_message("<span class='notice'>\icon[src] [user] deactivated the shield generator.</span>", \
 			"<span class='notice'>\icon[src] You deactivate the shield generator.</span>", \
-			"You hear heavy droning fade out.")
+			"I hear heavy droning fade out.")
 		src.shields_down()
 	else
 		if(anchored)
 			user.visible_message("<span class='notice'>\icon[src] [user] activated the shield generator.</span>", \
 				"<span class='notice'>\icon[src] You activate the shield generator.</span>", \
-				"You hear heavy droning.")
+				"I hear heavy droning.")
 			src.shields_up()
 		else
 			to_chat(user, "The [src] must first be secured to the floor.")
@@ -266,7 +266,7 @@
 	if(active)
 		to_chat(user, "Turn \the [src] off first!")
 	if(panel_open)
-		to_chat(user, "You have to close \the [src]'s maintenance panel before you can do that.")
+		to_chat(user, "I have to close \the [src]'s maintenance panel before you can do that.")
 		return
 	return ..()
 
@@ -276,7 +276,7 @@
 
 	if(istype(W, /obj/item/stack/cable_coil) && malfunction && panel_open)
 		var/obj/item/stack/cable_coil/coil = W
-		to_chat(user, "<span class='notice'>You begin to replace the wires.</span>")
+		to_chat(user, "<span class='notice'>I begin to replace the wires.</span>")
 		//if(do_after(user, src, min(60, round( ((maxhealth/health)*10)+(malfunction*10) ))) //Take longer to repair heavier damage
 		if(do_after(user, src, 30))
 			if(!src || !coil)
@@ -284,7 +284,7 @@
 			coil.use(1)
 			health = max_health
 			malfunction = 0
-			to_chat(user, "<span class='notice'>You repair the [src]!</span>")
+			to_chat(user, "<span class='notice'>I repair the [src]!</span>")
 			update_icon()
 		return
 
@@ -379,15 +379,15 @@
 		icon_state = "Shield_Gen"
 
 		user.visible_message("[user] turned the shield generator off.", \
-			"You turn off the shield generator.", \
-			"You hear heavy droning fade out.")
+			"I turn off the shield generator.", \
+			"I hear heavy droning fade out.")
 		src.cleanup()
 	else
 		src.active = 1
 		icon_state = "Shield_Gen +a"
 		user.visible_message("[user] turned the shield generator on.", \
-			"You turn on the shield generator.", \
-			"You hear heavy droning.")
+			"I turn on the shield generator.", \
+			"I hear heavy droning.")
 	src.add_fingerprint(user)
 
 /obj/machinery/shieldwallgen/process()
@@ -417,7 +417,7 @@
 		src.active = 2
 	if(!power && active)
 		src.visible_message("<span class='warning'>The [src.name] shuts down due to lack of power!</span>", \
-			"You hear heavy droning fade out")
+			"I hear heavy droning fade out")
 		icon_state = "Shield_Gen"
 		src.active = 0
 		spawn(1)

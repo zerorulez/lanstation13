@@ -1,4 +1,4 @@
-//These procs handle putting s tuff in your hand. It's probably best to use these rather than setting stuff manually
+//These procs handle putting s tuff in my hand. It's probably best to use these rather than setting stuff manually
 //as they handle all relevant stuff like adding it to the player's screen and such
 
 //Returns the thing in our active hand (whatever is in our active module-slot, in this case)
@@ -93,7 +93,7 @@
 		O.screen_loc = inv3.screen_loc
 		O.forceMove(src)
 	else
-		to_chat(src, "<span class='notice'>You need to disable a module first!</span>")
+		to_chat(src, "<span class='notice'>I need to disable a module first!</span>")
 
 /mob/living/silicon/robot/proc/uneq_all()
 	module_active = null

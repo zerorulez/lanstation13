@@ -74,14 +74,14 @@
 					if(1 to 5)
 						runner.emote("collapse")
 					if(5 to 10)
-						to_chat(runner,"<span class='warning'>You really should take a rest!</span>")
+						to_chat(runner,"<span class='warning'>I really should take a rest!</span>")
 					if(10 to 20)
-						to_chat(runner,"<span class='warning'>Your legs really hurt!</span>")
+						to_chat(runner,"<span class='warning'>My legs really hurt!</span>")
 						runner.apply_damage(5, BRUTE, LIMB_LEFT_LEG)
 						runner.apply_damage(5, BRUTE, LIMB_RIGHT_LEG)
 				runner.bodytemperature = max(T0C + 100,cached_temp)
 	else
-		to_chat(runner,"<span class='warning'>You're exhausted! You can't run anymore!</span>")
+		to_chat(runner,"<span class='warning'>I am exhausted! You can't run anymore!</span>")
 
 /obj/machinery/power/treadmill/Uncross(var/atom/movable/mover, var/turf/target)
 	if(istype(mover) && mover.checkpass(PASSGLASS))

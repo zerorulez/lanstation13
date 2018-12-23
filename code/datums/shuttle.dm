@@ -265,7 +265,7 @@
 		if(81 to INFINITY)
 			time = "in [max(round((pre_flight_delay) / 10, 1), 0)] seconds"
 	if(broadcast)
-		broadcast.announce("The shuttle has received your message and will be sent [time].")
+		broadcast.announce("The shuttle has received my message and will be sent [time].")
 
 	destination_port = D
 	last_moved = world.time
@@ -778,7 +778,7 @@
 	if(!centered_at)
 		var/turf/user_turf = get_turf(user)
 		if(!user_turf)
-			to_chat(user, "You must be standing on a turf!")
+			to_chat(user, "I must be standing on a turf!")
 			return
 
 		centered_at = get_step(user_turf,usr.dir)

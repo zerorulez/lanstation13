@@ -1,8 +1,8 @@
 /mob/living/simple_animal/corgi/verb/chasetail()
-	set name = "Chase your tail"
+	set name = "Chase my tail"
 	set desc = "d'awwww."
 	set category = "Corgi"
-	to_chat(src, text("[pick("You dance around","You chase your tail")]."))
+	to_chat(src, text("[pick("I dance around","I chase my tail")]."))
 	for(var/mob/O in oviewers(src, null))
 		if ((O.client && !( O.blinded )))
 			to_chat(O, text("[] [pick("dances around","chases its tail")].", src))

@@ -50,7 +50,7 @@
 
 			if(src.arcanecheckout)
 				new /obj/item/weapon/tome(src.loc)
-				to_chat(user, "<span class='warning'>Your sanity barely endures the seconds spent in the vault's browsing window. The only thing to remind you of this when you stop browsing is a dusty old tome sitting on the desk. You don't really remember printing it.</span>")
+				to_chat(user, "<span class='warning'>My sanity barely endures the seconds spent in the vault's browsing window. The only thing to remind you of this when you stop browsing is a dusty old tome sitting on the desk. You don't really remember printing it.</span>")
 				user.visible_message("[user] stares at the blank screen for a few moments, his expression frozen in fear. When he finally awakens from it, he looks a lot older.", 2)
 				src.arcanecheckout = 0
 		if(1)
@@ -94,7 +94,7 @@
 		if(4)
 			dat += "<h3>External Archive</h3>"
 			if(!dbcon_old.IsConnected())
-				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact your system administrator for assistance.</font>"
+				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact my system administrator for assistance.</font>"
 			else
 				num_results = src.get_num_results()
 				num_pages = Ceiling(num_results/LIBRARY_BOOKS_PER_PAGE)
@@ -200,7 +200,7 @@
 /obj/machinery/computer/library/checkout/emag(mob/user)
 	if(!emagged)
 		src.emagged = 1
-		to_chat(user, "<span class='notice'>You override the library computer's printing restrictions.</span>")
+		to_chat(user, "<span class='notice'>I override the library computer's printing restrictions.</span>")
 		return 1
 	return
 
@@ -260,7 +260,7 @@
 		screenstate = 4
 	if(href_list["del"])
 		if(!usr.check_rights(R_ADMIN))
-			to_chat(usr, "You aren't an admin, piss off.")
+			to_chat(usr, "I amn't an admin, piss off.")
 			return
 		var/datum/cachedbook/target = getBookByID(href_list["del"]) // Sanitized in getBookByID
 		var/ans = alert(usr, "Are you sure you wish to delete \"[target.title]\", by [target.author]? This cannot be undone.", "Library System", "Yes", "No")
@@ -277,7 +277,7 @@
 
 	if(href_list["delbyckey"])
 		if(!usr.check_rights(R_ADMIN))
-			to_chat(usr, "You aren't an admin, piss off.")
+			to_chat(usr, "I amn't an admin, piss off.")
 			return
 		var/tckey = ckey(href_list["delbyckey"])
 		var/ans = alert(usr,"Are you sure you wish to delete all books by [tckey]? This cannot be undone.", "Library System", "Yes", "No")
@@ -390,7 +390,7 @@
 
 	if(href_list["id"])
 		if(href_list["id"]=="-1")
-			href_list["id"] = input("Enter your order:") as null|num
+			href_list["id"] = input("Enter my order:") as null|num
 			if(!href_list["id"])
 				return
 

@@ -172,6 +172,6 @@ Thus, the two variables affect pump operation are set in New():
 	if (!iswrench(W))
 		return ..()
 	if (!(stat & NOPOWER) && on)
-		to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
+		to_chat(user, "<span class='warning'>I cannot unwrench this [src], turn it off first.</span>")
 		return 1
 	return ..()

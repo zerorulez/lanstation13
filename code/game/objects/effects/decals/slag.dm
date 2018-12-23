@@ -86,17 +86,17 @@
 
 /obj/effect/decal/slag/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(molten)
-		user.show_message("<span class=\"warning\">You need to wait for \the [src] to cool.</span>")
+		user.show_message("<span class=\"warning\">I need to wait for \the [src] to cool.</span>")
 		return
 	if(W.force >= 5 && W.w_class >= W_CLASS_MEDIUM)
 		user.visible_message("<span class=\"danger\">\The [src] is broken apart with the [W.name] by [user.name]!</span>", \
-			"<span class=\"danger\">You break apart \the [src] with your [W.name]!", \
-			"You hear the sound of rock crumbling.")
+			"<span class=\"danger\">I break apart \the [src] with my [W.name]!", \
+			"I hear the sound of rock crumbling.")
 		var/obj/item/weapon/ore/slag/slag = new /obj/item/weapon/ore/slag(loc)
 		slag.materials = src.materials
 		slag.materials.holder = slag
 		qdel(src)
 	else
 		user.visible_message("<span class=\"attack\">[user.name] hits \the [src] with his [W.name].</span>", \
-			"<span class=\"attack\">You fail to damage \the [src] with your [W.name]!</span>", \
-			"You hear someone hitting something.")
+			"<span class=\"attack\">I fail to damage \the [src] with my [W.name]!</span>", \
+			"I hear someone hitting something.")

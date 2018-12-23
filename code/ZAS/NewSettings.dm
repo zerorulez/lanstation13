@@ -387,7 +387,7 @@ a { color: white; }
 	<body>
 		<h1>ZAS Configuration</h1>
 		<p><a href="?src=\ref[src];save=1">Save Settings</a> | <a href="?src=\ref[src];load=1">Load Settings</a></p>
-		<p>Please note that changing these settings can and probably will result in death, destruction and mayhem. <b>Change at your own risk.</b></p>
+		<p>Please note that changing these settings can and probably will result in death, destruction and mayhem. <b>Change at my own risk.</b></p>
 	<dl>"}
 	for(var/id in src.settings)
 		var/datum/ZAS_Setting/s = src.settings[id]
@@ -401,7 +401,7 @@ a { color: white; }
 	if("changevar" in href_list)
 		ChangeSetting(usr,href_list["changevar"])
 	if("save" in href_list)
-		var/sure = input(usr,"Are you sure?  This will overwrite your ZAS configuration!","Overwrite ZAS.txt?", "No") in list("Yes","No")
+		var/sure = input(usr,"Are you sure?  This will overwrite my ZAS configuration!","Overwrite ZAS.txt?", "No") in list("Yes","No")
 		if(sure=="Yes")
 			Save()
 			message_admins("[key_name(usr)] saved ZAS settings to disk.")

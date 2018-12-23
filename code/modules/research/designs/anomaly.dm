@@ -1,6 +1,6 @@
 /datum/design/scienceglasses
 	name = "Science Goggles"
-	desc = "You expect those glasses to protect you from science-related hazards. Maybe you shouldn't."
+	desc = "I expect those glasses to protect you from science-related hazards. Maybe you shouldn't."
 	id = "scienceglasses"
 	req_tech = list(Tc_MATERIALS = 1, Tc_ANOMALY = 2)
 	build_type = PROTOLATHE

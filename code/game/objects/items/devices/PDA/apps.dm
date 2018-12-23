@@ -15,7 +15,7 @@ var/global/list/pda_app_menus = list(
 	var/name = "Template Application"
 	var/desc = "Template Description"
 	var/price = 10
-	var/menu = 0	//keep it at 0 if your app doesn't need its own menu on the PDA
+	var/menu = 0	//keep it at 0 if my app doesn't need its own menu on the PDA
 	var/obj/item/device/pda/pda_device = null
 	var/icon = null	//name of the icon that appears in front of the app name on the PDA, example: "pda_game.png"
 
@@ -43,7 +43,7 @@ var/global/list/pda_app_menus = list(
 
 /datum/pda_app/light_upgrade
 	name = "PDA Flashlight Enhancer"
-	desc = "Slightly increases the luminosity of your PDA's flashlight."
+	desc = "Slightly increases the luminosity of my PDA's flashlight."
 	price = 60
 
 /datum/pda_app/light_upgrade/onInstall()
@@ -54,7 +54,7 @@ var/global/list/pda_app_menus = list(
 
 /datum/pda_app/spam_filter
 	name = "Spam Filter"
-	desc = "Spam messages won't ring your PDA anymore. Enjoy the quiet."
+	desc = "Spam messages won't ring my PDA anymore. Enjoy the quiet."
 	price = 30
 	menu = PDA_APP_SPAMFILTER
 	var/function = 1	//0=do nothing 1=conceal the spam 2=block the spam
@@ -86,7 +86,7 @@ var/global/list/pda_app_menus = list(
 
 /datum/pda_app/station_map
 	name = "Station Map"
-	desc = "Displays a minimap of the station. You'll find a marker at your location. Place more markers using coordinates."
+	desc = "Displays a minimap of the station. You'll find a marker at my location. Place more markers using coordinates."
 	price = 50
 	menu = PDA_APP_STATIONMAP
 	var/list/markers = list()

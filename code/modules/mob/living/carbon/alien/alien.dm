@@ -1,6 +1,6 @@
-#define HEAT_DAMAGE_LEVEL_1 2 //Amount of damage applied when your body temperature just passes the 360.15k safety point
-#define HEAT_DAMAGE_LEVEL_2 4 //Amount of damage applied when your body temperature passes the 400K point
-#define HEAT_DAMAGE_LEVEL_3 8 //Amount of damage applied when your body temperature passes the 460K point and you are on fire
+#define HEAT_DAMAGE_LEVEL_1 2 //Amount of damage applied when my body temperature just passes the 360.15k safety point
+#define HEAT_DAMAGE_LEVEL_2 4 //Amount of damage applied when my body temperature passes the 400K point
+#define HEAT_DAMAGE_LEVEL_3 8 //Amount of damage applied when my body temperature passes the 460K point and you are on fire
 
 #define LARVA_GROW_TIME 100
 
@@ -128,7 +128,7 @@ In all, this is a lot like the monkey code. /N
 
 	// Aliens are now weak to fire.
 
-	//After then, it reacts to the surrounding atmosphere based on your thermal protection
+	//After then, it reacts to the surrounding atmosphere based on my thermal protection
 	if(!on_fire) // If you're on fire, ignore local air temperature
 		if(loc_temp > bodytemperature)
 			//Place is hotter than we are
@@ -221,7 +221,7 @@ In all, this is a lot like the monkey code. /N
 
 /mob/living/carbon/alien/Stun(amount)
 	if(status_flags & CANSTUN)
-		stunned = max(max(stunned,amount),0) //can't go below 0, getting a low amount of stun doesn't lower your current stun
+		stunned = max(max(stunned,amount),0) //can't go below 0, getting a low amount of stun doesn't lower my current stun
 	else
 		// add some movement delay
 		move_delay_add = min(move_delay_add + round(amount / 2), 10) // a maximum delay of 10
@@ -251,11 +251,11 @@ In all, this is a lot like the monkey code. /N
 
 	visible_message( \
 		"<span class='warning'>[src] was shocked by the [source]!</span>", \
-		"<span class='danger'>You feel a powerful shock course through your body!</span>", \
-		"<span class='warning'>You hear a heavy electrical crack.</span>", \
+		"<span class='danger'>I feel a powerful shock course through my body!</span>", \
+		"<span class='warning'>I hear a heavy electrical crack.</span>", \
 		"<span class='notice'>[src] starts raving!</span>", \
-		"<span class='notice'>You feel butterflies in your stomach!</span>", \
-		"<span class='warning'>You hear a policeman whistling!</span>"
+		"<span class='notice'>I feel butterflies in my stomach!</span>", \
+		"<span class='warning'>I hear a policeman whistling!</span>"
 	)
 
 	//if(src.stunned < shock_damage)	src.SetStunned(shock_damage)
@@ -270,7 +270,7 @@ In all, this is a lot like the monkey code. /N
 	SparkSpread.set_up(5, 1, loc)
 	SparkSpread.start()
 
-	return damage/2 //Fuck this I'm not reworking your abortion of a proc, here's a copy-paste with not fucked code
+	return damage/2 //Fuck this I'm not reworking my abortion of a proc, here's a copy-paste with not fucked code
 
 /*----------------------------------------
 Proc: AddInfectionImages()

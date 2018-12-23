@@ -5,7 +5,7 @@
 
 /datum/game_mode/ctf/announce()
 	to_chat(world, "<B>The current game mode is - Capture the Flag!</B>")
-	to_chat(world, "<B>Capture the other teams flag and bring it back to your base!</B>")
+	to_chat(world, "<B>Capture the other teams flag and bring it back to my base!</B>")
 	to_chat(world, "Respawn is on")
 
 /datum/game_mode/ctf/pre_setup()
@@ -29,7 +29,7 @@
 		if(mob_check <= total_mobs/2) //add to red team else to green
 			spawn()
 				if(M.client)
-					to_chat(M, "You are in the Red Team!")
+					to_chat(M, "I am in the Red Team!")
 					del(M.wear_suit)
 					M.w_uniform = new /obj/item/clothing/under/color/red(M)
 					M.w_uniform.layer = 20
@@ -69,7 +69,7 @@
 		else
 			spawn()
 				if(M.client)
-					to_chat(M, "You are in the Green Team!")
+					to_chat(M, "I am in the Green Team!")
 					del(M.wear_suit)
 					M.w_uniform = new /obj/item/clothing/under/color/green(M)
 					M.w_uniform.layer = 20

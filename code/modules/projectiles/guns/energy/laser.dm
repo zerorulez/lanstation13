@@ -280,7 +280,7 @@
 		M.emote("scream",,, 1)
 		M.adjustFireLossByPart(rand(5, 10), LIMB_LEFT_HAND, src)
 		M.adjustFireLossByPart(rand(5, 10), LIMB_RIGHT_HAND, src)
-		to_chat(M, "<span class='danger'>\The [src] burns your hands!.</span>")
+		to_chat(M, "<span class='danger'>\The [src] burns my hands!.</span>")
 		return 0
 	if(prob(max(0, fire_delay/2-5)))
 		var/turf/T = get_turf(loc)

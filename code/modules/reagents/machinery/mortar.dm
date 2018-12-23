@@ -70,7 +70,7 @@
 		to_chat(user, "<span class ='warning'>There's already something inside!</span>")
 		return 1
 	if (!is_type_in_list(O, blend_items) && !is_type_in_list(O, juice_items))
-		to_chat(user, "<span class ='warning'>You can't grind that!</span>")
+		to_chat(user, "<span class ='warning'>I can't grind that!</span>")
 		return ..()
 
 	if(istype(O, /obj/item/stack/))
@@ -78,14 +78,14 @@
 		var/obj/item/stack/S = O
 		S.use(1)
 		crushable = N
-		to_chat(user, "<span class='notice'>You place \the [N] in \the [src].</span>")
+		to_chat(user, "<span class='notice'>I place \the [N] in \the [src].</span>")
 		return 0
 	else if(!user.drop_item(O, src))
-		to_chat(user, "<span class='warning'>You can't let go of \the [O]!</span>")
+		to_chat(user, "<span class='warning'>I can't let go of \the [O]!</span>")
 		return
 
 	crushable = O
-	to_chat(user, "<span class='notice'>You place \the [O] in \the [src].</span>")
+	to_chat(user, "<span class='notice'>I place \the [O] in \the [src].</span>")
 	return 0
 
 /obj/item/weapon/reagent_containers/glass/mortar/attack_hand(mob/user as mob)
@@ -106,7 +106,7 @@
 		to_chat(user, "<span class='warning'>There is no more space inside!</span>")
 		return
 	if(is_type_in_list(crushable, juice_items))
-		to_chat(user, "<span class='notice'>You smash the contents into juice!</span>")
+		to_chat(user, "<span class='notice'>I smash the contents into juice!</span>")
 		var/id = null
 		for(var/i in juice_items)
 			if(istype(crushable, i))
@@ -118,7 +118,7 @@
 			juiceable.potency = 0
 		reagents.add_reagent(id[1], min(round(5*sqrt(juiceable.potency)), volume - reagents.total_volume))
 	else if(is_type_in_list(crushable, blend_items))
-		to_chat(user, "<span class='notice'>You grind the contents into dust!</span>")
+		to_chat(user, "<span class='notice'>I grind the contents into dust!</span>")
 		var/id = null
 		var/space = volume - reagents.total_volume
 		for(var/i in blend_items)
@@ -143,7 +143,7 @@
 			to_chat(user, "<span class ='warning'>An error was encountered. Report this message.</span>")
 			return
 	else
-		to_chat(user, "<span class='notice'>You smash the contents into nothingness.</span>")
+		to_chat(user, "<span class='notice'>I smash the contents into nothingness.</span>")
 	qdel(crushable)
 	crushable = null
 	return

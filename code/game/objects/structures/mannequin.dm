@@ -10,7 +10,7 @@
 
 /obj/structure/mannequin
 	name = "human marble mannequin"
-	desc = "You almost feel like it's going to come alive any second."
+	desc = "I almost feel like it's going to come alive any second."
 	icon = 'icons/obj/mannequin.dmi'
 	icon_state="mannequin_marble_human"
 	density = 1
@@ -110,14 +110,14 @@
 /obj/structure/mannequin/attack_hand(var/mob/living/user)
 	if(user.a_intent == I_HURT)
 		user.delayNextAttack(8)
-		user.visible_message("<span class='danger'>[user.name] punches \the [src]!</span>", "<span class='danger'>You punch \the [src]!</span>")
+		user.visible_message("<span class='danger'>[user.name] punches \the [src]!</span>", "<span class='danger'>I punch \the [src]!</span>")
 		getDamage(rand(1,7) * (user.get_strength() - 1))
 	else
 		show_inv(user)
 
 
 /obj/structure/mannequin/kick_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H.name] kicks \the [src]!</span>", "<span class='danger'>You kick \the [src]!</span>")
+	H.visible_message("<span class='danger'>[H.name] kicks \the [src]!</span>", "<span class='danger'>I kick \the [src]!</span>")
 
 	var/damage = rand(1,7) * (H.get_strength() - 1)
 	var/obj/item/clothing/shoes/S = H.shoes
@@ -130,7 +130,7 @@
 
 /obj/structure/mannequin/attack_animal(var/mob/living/simple_animal/user)
 	if(user.melee_damage_upper > 0)
-		user.visible_message("<span class='danger'>\The [user] [user.attacktext] \the [src]!</span>", "<span class='danger'>You [user.attacktext] \the [src]!</span>")
+		user.visible_message("<span class='danger'>\The [user] [user.attacktext] \the [src]!</span>", "<span class='danger'>I [user.attacktext] \the [src]!</span>")
 		getDamage(rand(user.melee_damage_upper, user.melee_damage_upper))
 
 
@@ -150,7 +150,7 @@
 	else if(user.a_intent == I_HURT)
 		user.delayNextAttack(8)
 		getDamage(W.force)
-		user.visible_message("<span class='danger'>[user.name] [(W.attack_verb && W.attack_verb.len) ? "[pick(W.attack_verb)]" : "attacks" ] \the [src] with \the [W]!</span>", "<span class='danger'>You [(W.attack_verb && W.attack_verb.len) ? "[pick(W.attack_verb)]" : "attack" ] \the [src] with \the [W]!</span>")
+		user.visible_message("<span class='danger'>[user.name] [(W.attack_verb && W.attack_verb.len) ? "[pick(W.attack_verb)]" : "attacks" ] \the [src] with \the [W]!</span>", "<span class='danger'>I [(W.attack_verb && W.attack_verb.len) ? "[pick(W.attack_verb)]" : "attack" ] \the [src] with \the [W]!</span>")
 	else
 		attack_hand(user)
 
@@ -239,7 +239,7 @@
 				var/obj/item/I = held_items[hand_index]
 				user.put_in_hands(I)
 				held_items[hand_index] = null
-				to_chat(user, "<span class='info'>You pick up \the [I] from \the [src].</span>")
+				to_chat(user, "<span class='info'>I pick up \the [I] from \the [src].</span>")
 		else
 			if(get_held_item_by_index(hand_index))
 				user.drop_from_inventory(item_in_hand)
@@ -247,12 +247,12 @@
 				var/obj/item/I = held_items[hand_index]
 				user.put_in_hands(I)
 				held_items[hand_index] = item_in_hand
-				to_chat(user, "<span class='info'>You switch \the [item_in_hand] and \the [I] on the [src].</span>")
+				to_chat(user, "<span class='info'>I switch \the [item_in_hand] and \the [I] on the [src].</span>")
 			else
 				user.drop_from_inventory(item_in_hand)
 				item_in_hand.forceMove(src)
 				held_items[hand_index] = item_in_hand
-				to_chat(user, "<span class='info'>You place \the [item_in_hand] on \the [src].</span>")
+				to_chat(user, "<span class='info'>I place \the [item_in_hand] on \the [src].</span>")
 
 	else if(href_list["item"])
 		if(trapped_strip)
@@ -267,7 +267,7 @@
 				user.put_in_hands(I)
 				clothing[item_slot] = null
 				add_fingerprint(user)
-				to_chat(user, "<span class='info'>You pick up \the [I] from \the [src].</span>")
+				to_chat(user, "<span class='info'>I pick up \the [I] from \the [src].</span>")
 		else
 			if(clothing[item_slot])
 				if(canEquip(user, item_slot,item_in_hand))
@@ -277,7 +277,7 @@
 					user.put_in_hands(I)
 					clothing[item_slot] = item_in_hand
 					add_fingerprint(user)
-					to_chat(user, "<span class='info'>You switch \the [item_in_hand] and \the [I] on the [src].</span>")
+					to_chat(user, "<span class='info'>I switch \the [item_in_hand] and \the [I] on the [src].</span>")
 				else
 					return
 			else
@@ -286,7 +286,7 @@
 					item_in_hand.forceMove(src)
 					clothing[item_slot] = item_in_hand
 					add_fingerprint(user)
-					to_chat(user, "<span class='info'>You place \the [item_in_hand] on \the [src].</span>")
+					to_chat(user, "<span class='info'>I place \the [item_in_hand] on \the [src].</span>")
 				else
 					return
 
@@ -755,7 +755,7 @@
 
 /obj/structure/block
 	name = "marble block"
-	desc = "Grab your chisel and get to work!"
+	desc = "Grab my chisel and get to work!"
 	anchored = 0
 	density = 1
 	icon = 'icons/obj/mannequin.dmi'
@@ -779,7 +779,7 @@
 		if(!chosen_sculpture || !Adjacent(user))
 			return
 
-		user.visible_message("[user.name] starts sculpting \the [src] with a passion!","You start sculpting \the [src] with a passion!","You hear a repeated knocking sound.")
+		user.visible_message("[user.name] starts sculpting \the [src] with a passion!","I start sculpting \the [src] with a passion!","I hear a repeated knocking sound.")
 		var/turf/T=get_turf(src)
 
 		if(do_after(user, src, time_to_sculpt))
@@ -788,7 +788,7 @@
 			var/obj/structure/mannequin/M = new mannequin_type(T)
 			M.anchored = anchored
 			M.add_fingerprint(user)
-			user.visible_message("[user.name] finishes \the [M].","You finish \the [M].")
+			user.visible_message("[user.name] finishes \the [M].","I finish \the [M].")
 			qdel(src)
 		return 1
 	else
@@ -928,12 +928,12 @@
 			if(!locked)
 				to_chat(user, "\icon[src] <span class='notice'>\The [src] clicks as locks release, and it slowly opens for you.</span>")
 			else
-				to_chat(user, "\icon[src] <span class='notice'>You close \the [src] and swipe your card, locking it.</span>")
+				to_chat(user, "\icon[src] <span class='notice'>I close \the [src] and swipe my card, locking it.</span>")
 			update_icon()
 	else if(iscrowbar(W) && (!locked || destroyed))
 		user.visible_message("[user.name] pries \the [src] apart.", \
-			"You pry \the [src] apart.", \
-			"You hear something pop.")
+			"I pry \the [src] apart.", \
+			"I hear something pop.")
 		var/turf/T=get_turf(src)
 		playsound(T, 'sound/items/Crowbar.ogg', 50, 1)
 
@@ -959,7 +959,7 @@
 
 	else if(istype(W, /obj/item/weapon/weldingtool) && user.a_intent == I_HELP)
 		if(locked)
-			to_chat(user, "<span class='warning'>You need to open the shield before you can fix the mannequin.</span>")
+			to_chat(user, "<span class='warning'>I need to open the shield before you can fix the mannequin.</span>")
 		else
 			if(health >= maxHealth)
 				to_chat(user, "<span class='warning'>Nothing to fix here!</span>")
@@ -968,14 +968,14 @@
 			if(WT.remove_fuel(5))
 				playsound(loc, 'sound/items/Welder.ogg', 50, 1)
 				health = min(health + 20, maxHealth)
-				to_chat(user, "<span class='notice'>You fix some of the dents on \the [src]!</span>")
+				to_chat(user, "<span class='notice'>I fix some of the dents on \the [src]!</span>")
 			else
 				to_chat(user, "<span class='warning'>Need more welding fuel!</span>")
 				return
 
 	else if(istype(W, /obj/item/weapon/weldingtool) && user.a_intent == I_HELP)
 		if(locked)
-			to_chat(user, "<span class='warning'>You need to open the shield before you can fix the mannequin.</span>")
+			to_chat(user, "<span class='warning'>I need to open the shield before you can fix the mannequin.</span>")
 		else
 			if(health >= maxHealth)
 				to_chat(user, "<span class='warning'>Nothing to fix here!</span>")
@@ -984,14 +984,14 @@
 			if(WT.remove_fuel(5))
 				playsound(loc, 'sound/items/Welder.ogg', 50, 1)
 				health = min(health + 20, maxHealth)
-				to_chat(user, "<span class='notice'>You fix some of the dents on \the [src]!</span>")
+				to_chat(user, "<span class='notice'>I fix some of the dents on \the [src]!</span>")
 			else
 				to_chat(user, "<span class='warning'>Need more welding fuel!</span>")
 				return
 
 	else if(istype(W, /obj/item/device/silicate_sprayer))
 		if(!locked)
-			to_chat(user, "<span class='warning'>You need to lock the shield before you can fix it.</span>")
+			to_chat(user, "<span class='warning'>I need to lock the shield before you can fix it.</span>")
 		else
 			if(shield >= maxShield)
 				to_chat(user, "<span class='warning'>Nothing to fix here!</span>")
@@ -1001,7 +1001,7 @@
 				SS.remove_silicate(5)
 				playsound(loc, 'sound/effects/refill.ogg', 50, 1)
 				shield = min(shield + 20, maxShield)
-				to_chat(user, "<span class='notice'>You fix some of the dents on \the [src]'s shield!</span>")
+				to_chat(user, "<span class='notice'>I fix some of the dents on \the [src]'s shield!</span>")
 			else
 				to_chat(user, "<span class='warning'>Need more silicate!</span>")
 				return
@@ -1009,7 +1009,7 @@
 	else if(user.a_intent == I_HURT)
 		user.delayNextAttack(8)
 		getDamage(W.force)
-		user.visible_message("<span class='danger'>[user.name] [(W.attack_verb && W.attack_verb.len) ? "[pick(W.attack_verb)]" : "attacks" ] \the [src] with \the [W]!</span>", "<span class='danger'>You [(W.attack_verb && W.attack_verb.len) ? "[pick(W.attack_verb)]" : "attack" ] \the [src] with \the [W]!</span>")
+		user.visible_message("<span class='danger'>[user.name] [(W.attack_verb && W.attack_verb.len) ? "[pick(W.attack_verb)]" : "attacks" ] \the [src] with \the [W]!</span>", "<span class='danger'>I [(W.attack_verb && W.attack_verb.len) ? "[pick(W.attack_verb)]" : "attack" ] \the [src] with \the [W]!</span>")
 	else
 		return ..()
 
@@ -1028,10 +1028,10 @@
 	else if(locked)
 		if(user.a_intent == I_HURT)
 			user.delayNextAttack(8)
-			user.visible_message("<span class='danger'>[user.name] punches \the [src]!</span>", "<span class='danger'>You punch \the [src]!</span>", "You hear glass crack.")
+			user.visible_message("<span class='danger'>[user.name] punches \the [src]!</span>", "<span class='danger'>I punch \the [src]!</span>", "I hear glass crack.")
 			getDamage(rand(1,7) * (user.get_strength() - 1))
 		else
-			to_chat(user,"<span class='notice'>You gently run your hands over \the [src] in appreciation of its contents.</span>")
+			to_chat(user,"<span class='notice'>I gently run my hands over \the [src] in appreciation of its contents.</span>")
 	else
 		..()
 
@@ -1083,7 +1083,7 @@
 		..()
 
 /datum/construction/mannequin_frame/custom_action(step, atom/used_atom, mob/user)
-	user.visible_message("[user] has connected [used_atom] to [holder].", "You connect [used_atom] to [holder]")
+	user.visible_message("[user] has connected [used_atom] to [holder].", "I connect [used_atom] to [holder]")
 	holder.overlays += image(holder.icon, used_atom.icon_state)
 	qdel (used_atom)
 	used_atom = null

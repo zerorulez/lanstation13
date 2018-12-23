@@ -35,7 +35,7 @@
 
 /mob/living/silicon/robot/mommi/verb/toggle_statics()
 	set name = "Change Vision Filter"
-	set desc = "Change the filter on the system used to remove organics from your viewscreen."
+	set desc = "Change the filter on the system used to remove organics from my viewscreen."
 	set category = "Robot Commands"
 
 	if(!can_see_static())

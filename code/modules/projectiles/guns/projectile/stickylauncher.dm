@@ -61,13 +61,13 @@
 	if(istype(A, /obj/item/stickybomb))
 		var/obj/item/stickybomb/B = A
 		if(B.live)
-			to_chat(user, "<span class='warning'>You cannot load a live stickybomb!</span>")
+			to_chat(user, "<span class='warning'>I cannot load a live stickybomb!</span>")
 		else
 			if(loaded.len >= 6)
-				to_chat(user, "<span class='warning'>You cannot fit any more stickybombs in there!</span>")
+				to_chat(user, "<span class='warning'>I cannot fit any more stickybombs in there!</span>")
 			else
 				if(user.drop_item(A, src))
-					to_chat(user, "<span class='notice'>You load \the [A] into \the [src].</span>")
+					to_chat(user, "<span class='notice'>I load \the [A] into \the [src].</span>")
 					loaded += A
 	else
 		..()
@@ -131,7 +131,7 @@
 
 /obj/item/stickybomb/pickup(mob/user)
 	if(stuck_to)
-		to_chat(user, "<span class='warning'>You reach for \the [src] stuck on \the [stuck_to] and start pulling.</span>")
+		to_chat(user, "<span class='warning'>I reach for \the [src] stuck on \the [stuck_to] and start pulling.</span>")
 		if(do_after(user, src, 30))
 			to_chat(user, "<span class='warning'>It came off!</span>")
 			unstick()

@@ -48,7 +48,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 
 /obj/machinery/r_n_d/destructive_analyzer/togglePanelOpen(var/obj/toggleitem, mob/user)
 	if(loaded_item)
-		to_chat(user, "<span class='rose'>You can't open the maintenance panel while an item is loaded!</span>")
+		to_chat(user, "<span class='rose'>I can't open the maintenance panel while an item is loaded!</span>")
 		return -1
 	return ..()
 
@@ -63,11 +63,11 @@ Note: Must be placed within 3 tiles of the R&D Console
 	if(..())
 		return 1
 	if (istype(O, /obj/item) && !loaded_item && !panel_open)
-		if(isrobot(user)) //Don't put your module items in there!
+		if(isrobot(user)) //Don't put my module items in there!
 			if(isMoMMI(user))
 				var/mob/living/silicon/robot/mommi/mommi = user
 				if(mommi.is_in_modules(O,permit_sheets=1))
-					to_chat(user, "<span class='warning'>You cannot insert something that is part of you.</span>")
+					to_chat(user, "<span class='warning'>I cannot insert something that is part of you.</span>")
 					return
 			else
 				return
@@ -76,7 +76,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 			return
 		var/list/temp_tech = ConvertReqString2List(O.origin_tech)
 		if (temp_tech.len == 0)
-			to_chat(user, "<span class='warning'>You cannot deconstruct this item!</span>")
+			to_chat(user, "<span class='warning'>I cannot deconstruct this item!</span>")
 			return
 		/*if(O.reliability < 90 && O.crit_fail == 0)
 			to_chat(usr, "<span class='warning'>Item is neither reliable enough or broken enough to learn from.</span>")
@@ -84,7 +84,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 		if(user.drop_item(O, src))
 			busy = 1
 			loaded_item = O
-			to_chat(user, "<span class='notice'>You add the [O.name] to the machine!</span>")
+			to_chat(user, "<span class='notice'>I add the [O.name] to the machine!</span>")
 			flick("d_analyzer_la", src)
 			spawn(10)
 				icon_state = "d_analyzer_l"
@@ -95,7 +95,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 	if (..(user))
 		return
 	if (loaded_item && !panel_open && !busy)
-		to_chat(user, "<span class='notice'>You remove the [loaded_item.name] from the [src].</span>")
+		to_chat(user, "<span class='notice'>I remove the [loaded_item.name] from the [src].</span>")
 		loaded_item.forceMove(src.loc)
 		loaded_item = null
 		icon_state = "d_analyzer"

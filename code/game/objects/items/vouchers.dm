@@ -19,7 +19,7 @@
 //Test case
 /obj/item/voucher/free_item/hot_drink
 	name = "free hot drink voucher"
-	desc = "Perk Up Your Day, with this handy free hot drink from your trusted name-brand vending machines."
+	desc = "Perk Up Your Day, with this handy free hot drink from my trusted name-brand vending machines."
 
 	freebies = list(/obj/item/weapon/reagent_containers/food/drinks/coffee, /obj/item/weapon/reagent_containers/food/drinks/tea, /obj/item/weapon/reagent_containers/food/drinks/h_chocolate)
 	vend_amount = 1

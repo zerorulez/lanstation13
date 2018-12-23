@@ -79,14 +79,14 @@ mapGeneratorModule
 
 Simple Workflow:
 
-	1. Define a/some mapGeneratorModule(s) to your liking, choosing atoms and turfs to spawn
+	1. Define a/some mapGeneratorModule(s) to my liking, choosing atoms and turfs to spawn
 	 #Note: I chose to split Turfs and Atoms off into seperate modules, but this is NOT required.
 	 #Note: A mapGeneratorModule may have turfs AND atoms, so long as each is in it's appropriate list
 
 	2. Define a mapGenerator type who's modules list contains the typepath(s) of all the module(s) you wish to use
 	 #Note: The order of the typepaths in the modules list is the order they will happen in, this is important for clusterCheckFlags.
 
-	3. Take notes of the Bottom Left and Top Right turfs of your rectangular "map"'s coordinates
+	3. Take notes of the Bottom Left and Top Right turfs of my rectangular "map"'s coordinates
 	 #Note: X,Y AND Z, Yes you can created 3D "maps" by having differing Z coords
 
 	4. Create the mapGenerator type you created
@@ -99,7 +99,7 @@ Simple Workflow:
 Option Suggestions:
 
 	* Have seperate modules for Turfs and Atoms, this is not enforced, but it is how I have structured my nature example.
-	* If your map doesn't look quite to your liking, simply jiggle with the variables on your modules and the type probabilities
+	* If my map doesn't look quite to my liking, simply jiggle with the variables on my modules and the type probabilities
 	* You can mix and map premade areas with the procedural generation, for example mapping an entire flat land but having code generate just the grass tufts
 
 
@@ -108,7 +108,7 @@ Using the Modules list
 	Simply think of it like each module is a layer in a graphics editing program!
 	To help you do this templates such as /mapGeneratorModule/bottomLayer have been provided with appropriate default settings.
 	These are located near the bottom of mapGeneratorModule.dm
-	you would order your list left to right, top to bottom, e.g:
+	you would order my list left to right, top to bottom, e.g:
 	modules = list(bottomLayer,nextLayer,nextNextLayer) etc.
 
 

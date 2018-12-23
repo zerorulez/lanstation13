@@ -92,16 +92,16 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 				if(!pale)
 					pale = 1
 					//update_body()
-					var/word = pick("dizzy","woosey","faint")
-					to_chat(src, "<span class='danger'>You feel [word].</span>")
+					var/word = pick("dizzy","woosey","faint", "disoriented", "lightheaded")
+					to_chat(src, "<span class='danger'>I feel [word]</span>")
 				if(blood_volume > BLOOD_VOLUME_WARN)
 					if(prob(1))
-						var/word = pick("dizzy","woosey","faint")
-						to_chat(src, "<span class='danger'>You feel [word].</span>")
+						var/word = pick("dizzy","woosey","faint", "disoriented", "lightheaded")
+						to_chat(src, "<span class='danger'>I feel [word]</span>")
 				else
 					if(prob(3))
-						var/word = pick("dizzy","woosey","faint")
-						to_chat(src, "<span class='danger'>You feel very [word].</span>")
+						var/word = pick("dizzy","woosey","faint", "disoriented", "lightheaded")
+						to_chat(src, "<span class='danger'>I feel very [word]</span>")
 				if(oxyloss < 20)
 					oxyloss += 2
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
@@ -114,8 +114,8 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 				oxyloss += 3
 				if(prob(15))
 					Paralyse(1)
-					var/word = pick("dizzy","woosey","faint")
-					to_chat(src, "<span class='danger'>You feel extremely [word].</span>")
+					var/word = pick("dizzy","woosey","faint", "disoriented")
+					to_chat(src, "<span class='danger'>I feel extremely [word]</span>")
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 				if(!pale)
 					pale = 1
@@ -127,8 +127,8 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 				toxloss += 1
 				if(prob(15))
 					Paralyse(rand(1,3))
-					var/word = pick("dizzy","woosey","faint")
-					to_chat(src, "<span class='danger'>You feel deathly [word].</span>")
+					var/word = pick("dizzy","woosey","faint", "disoriented")
+					to_chat(src, "<span class='danger'>I feel deathly [word]</span>")
 			if(0 to BLOOD_VOLUME_SURVIVE)
 				// Kill then pretty fast, but don't overdo it
 				// I SAID DON'T OVERDO IT
@@ -157,7 +157,7 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 			if(!(temp.status & ORGAN_BLEEDING) || temp.status & (ORGAN_ROBOT|ORGAN_PEG))
 				continue
 			for(var/datum/wound/W in temp.wounds) if(W.bleeding())
-				blood_max += W.damage / 4
+				blood_max += W.damage / 2
 			if(temp.status & ORGAN_DESTROYED && !(temp.status & ORGAN_GAUZED) && !temp.amputated)
 				blood_max += 20 //Yer missing a fucking limb.
 			if (temp.open)
@@ -179,7 +179,7 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 
 	var/large = FALSE
 
-	if(prob(10))
+	if(prob(10 + amt))
 		large = TRUE
 		amt *= 2
 

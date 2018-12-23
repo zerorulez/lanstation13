@@ -382,7 +382,7 @@ its easier to just keep the beam vertical.
 
 	if(reagents && is_open_container() && !ismob(src)) //is_open_container() isn't really the right proc for this, but w/e
 		if(get_dist(user,src) > 3)
-			to_chat(user, "<span class='info'>You can't make out the contents.</span>")
+			to_chat(user, "<span class='info'>I can't make out the contents.</span>")
 		else
 			to_chat(user, "It contains:")
 			if(!user.hallucinating())

@@ -61,11 +61,11 @@
 	if(!arrow)
 		if (istype(W,/obj/item/weapon/arrow))
 			if(!user.drop_item(W, src))
-				user << "<span class='warning'>You can't let go of \the [W]!</span>"
+				user << "<span class='warning'>I can't let go of \the [W]!</span>"
 				return
 
 			arrow = W
-			user.visible_message("[user] slides [arrow] into [src].","You slide [arrow] into [src].")
+			user.visible_message("[user] slides [arrow] into [src].","I slide [arrow] into [src].")
 			icon_state = "crossbow-nocked"
 			return
 		else if(istype(W,/obj/item/stack/rods))
@@ -75,7 +75,7 @@
 			arrow.fingerprintslast = src.fingerprintslast
 			arrow.forceMove(src)
 			icon_state = "crossbow-nocked"
-			user.visible_message("[user] haphazardly jams [arrow] into [src].","You jam [arrow] into [src].")
+			user.visible_message("[user] haphazardly jams [arrow] into [src].","I jam [arrow] into [src].")
 			if(cell)
 				if(cell.charge >= 500)
 					to_chat(user, "<span class='notice'>[arrow] plinks and crackles as it begins to glow red-hot.</span>")
@@ -87,11 +87,11 @@
 	if(istype(W, /obj/item/weapon/cell))
 		if(!cell)
 			if(!user.drop_item(W, src))
-				user << "<span class='warning'>You can't let go of \the [W]!</span>"
+				user << "<span class='warning'>I can't let go of \the [W]!</span>"
 				return
 
 			cell = W
-			to_chat(user, "<span class='notice'>You jam [cell] into [src] and wire it to the firing coil.</span>")
+			to_chat(user, "<span class='notice'>I jam [cell] into [src] and wire it to the firing coil.</span>")
 			if(arrow)
 				if(istype(arrow,/obj/item/weapon/arrow/rod) && arrow.throwforce < 15 && cell.charge >= 500)
 					to_chat(user, "<span class='notice'>[arrow] plinks and crackles as it begins to glow red-hot.</span>")
@@ -106,7 +106,7 @@
 			var/obj/item/C = cell
 			C.forceMove(get_turf(user))
 			cell = null
-			to_chat(user, "<span class='notice'>You jimmy [cell] out of [src] with [W].</span>")
+			to_chat(user, "<span class='notice'>I jimmy [cell] out of [src] with [W].</span>")
 		else
 			to_chat(user, "<span class='notice'>[src] doesn't have a cell installed.</span>")
 
@@ -116,13 +116,13 @@
 /obj/item/weapon/crossbow/attack_self(mob/living/user as mob)
 	if(tension)
 		if(arrow)
-			user.visible_message("[user] relaxes the tension on [src]'s string and removes [arrow].","You relax the tension on [src]'s string and remove [arrow].")
+			user.visible_message("[user] relaxes the tension on [src]'s string and removes [arrow].","I relax the tension on [src]'s string and remove [arrow].")
 			var/obj/item/weapon/arrow/A = arrow
 			A.forceMove(get_turf(src))
 			A.removed(user)
 			arrow = null
 		else
-			user.visible_message("[user] relaxes the tension on [src]'s string.","You relax the tension on [src]'s string.")
+			user.visible_message("[user] relaxes the tension on [src]'s string.","I relax the tension on [src]'s string.")
 		tension = 0
 		icon_state = "crossbow"
 	else
@@ -132,7 +132,7 @@
 
 
 	if(!arrow)
-		to_chat(user, "You don't have anything nocked to [src].")
+		to_chat(user, "I don't have anything nocked to [src].")
 		return
 
 	if(user.restrained())
@@ -140,7 +140,7 @@
 
 	current_user = user
 
-	user.visible_message("[user] begins to draw back the string of [src].","You begin to draw back the string of [src].")
+	user.visible_message("[user] begins to draw back the string of [src].","I begin to draw back the string of [src].")
 	tension = 1
 	spawn(25) increase_tension(user)
 
@@ -157,7 +157,7 @@
 		tension = max_tension
 		to_chat(usr, "[src] clunks as you draw the string to its maximum tension!")
 	else
-		user.visible_message("[usr] draws back the string of [src]!","You continue drawing back the string of [src]!")
+		user.visible_message("[usr] draws back the string of [src]!","I continue drawing back the string of [src]!")
 		spawn(25) increase_tension(user)
 
 /obj/item/weapon/crossbow/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, flag, params)
@@ -176,11 +176,11 @@
 		return
 
 	if(!tension)
-		to_chat(user, "You haven't drawn back the bolt!")
+		to_chat(user, "I haven't drawn back the bolt!")
 		return 0
 
 	if (!arrow)
-		to_chat(user, "You have no arrow nocked to [src]!")
+		to_chat(user, "I have no arrow nocked to [src]!")
 		return 0
 	else
 		spawn(0) Fire(target,user,params)
@@ -195,7 +195,7 @@
 	if (!istype(targloc) || !istype(curloc))
 		return
 
-	user.visible_message("<span class='danger'>[user] releases [src] and sends [arrow] streaking toward [target]!</span>","<span class='danger'>You release [src] and send [arrow] streaking toward [target]!</span>")
+	user.visible_message("<span class='danger'>[user] releases [src] and sends [arrow] streaking toward [target]!</span>","<span class='danger'>I release [src] and send [arrow] streaking toward [target]!</span>")
 
 	var/obj/item/weapon/arrow/A = arrow
 	A.forceMove(get_turf(user))

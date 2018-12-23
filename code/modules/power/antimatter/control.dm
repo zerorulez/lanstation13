@@ -173,8 +173,8 @@
 		if(!anchored)
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 75, 1)
 			user.visible_message("[user.name] secures the [src.name] to the floor.", \
-				"You secure the anchor bolts to the floor.", \
-				"You hear a ratchet")
+				"I secure the anchor bolts to the floor.", \
+				"I hear a ratchet")
 			src.anchored = 1
 			update_shield_icons = 2
 			check_shield_icons()
@@ -182,8 +182,8 @@
 		else if(!linked_shielding.len > 0)
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 75, 1)
 			user.visible_message("[user.name] unsecures the [src.name].", \
-				"You remove the anchor bolts.", \
-				"You hear a ratchet")
+				"I remove the anchor bolts.", \
+				"I hear a ratchet")
 			src.anchored = 0
 			disconnect_from_network()
 		else
@@ -202,8 +202,8 @@
 		user.update_icons()
 		message_admins("AME loaded with fuel by [user.real_name] ([user.key]) at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 		user.visible_message("[user.name] loads an [W.name] into the [src.name].", \
-				"You load an [W.name].", \
-				"You hear a thunk.")
+				"I load an [W.name].", \
+				"I hear a thunk.")
 		return
 
 	if(W.force >= 20)

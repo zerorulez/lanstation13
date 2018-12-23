@@ -31,20 +31,20 @@
 				to_chat(user, "<span class='notice'><B>Remove their [H.get_body_part_coverage(MOUTH)]!</B></span>")
 				return
 
-		user.visible_message("<span class='warning'>[user] attempts to force [M] to swallow \the [src].</span>", "<span class='notice'>You attempt to force [M] to swallow \the [src].</span>")
+		user.visible_message("<span class='warning'>[user] attempts to force [M] to swallow \the [src].</span>", "<span class='notice'>I attempt to force [M] to swallow \the [src].</span>")
 
 		if (!do_mob(user, M))
 			return 1
 
-		user.visible_message("<span class='warning'>[user] forces [M] to swallow \the [src].</span>", "<span class='notice'>You force [M] to swallow \the [src].</span>")
+		user.visible_message("<span class='warning'>[user] forces [M] to swallow \the [src].</span>", "<span class='notice'>I force [M] to swallow \the [src].</span>")
 		add_attacklogs(user, M, "fed", object = src, addition = "Reagents: [english_list(list(reagentlist(src)))]", admin_warn = TRUE)
 	else if (user == M)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(H.check_body_part_coverage(MOUTH))
-				to_chat(H, "<span class='notice'><B>Remove your [H.get_body_part_coverage(MOUTH)]!</B></span>")
+				to_chat(H, "<span class='notice'><B>Remove my [H.get_body_part_coverage(MOUTH)]!</B></span>")
 				return
-		user.visible_message("<span class='notice'>[user] swallows \the [src].</span>", "<span class='notice'>You swallow \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] swallows \the [src].</span>", "<span class='notice'>I swallow \the [src].</span>")
 	else
 		return 0
 
@@ -53,7 +53,7 @@
 		var/mob/living/carbon/human/H = M
 		if(H.species.chem_flags & NO_EAT)
 			src.forceMove(get_turf(H))
-			H.visible_message("<span class='warning'>\The [src] falls through and onto the ground.</span>", "<span class='notice'>You hear \the [src] plinking around for a second before it hits the ground below you.</span>")
+			H.visible_message("<span class='warning'>\The [src] falls through and onto the ground.</span>", "<span class='notice'>I hear \the [src] plinking around for a second before it hits the ground below you.</span>")
 			return 0
 	injest(M)
 	return 1
@@ -70,10 +70,10 @@
 	if (tx_amount > 0)
 		user.visible_message("<span class='warning'>[user] puts something into \the [target], filling it.</span>")
 		if (src.is_empty())
-			to_chat(user, "<span class='notice'>You [target_was_empty ? "crush" : "dissolve"] the pill into \the [target].</span>")
+			to_chat(user, "<span class='notice'>I [target_was_empty ? "crush" : "dissolve"] the pill into \the [target].</span>")
 			qdel(src)
 		else
-			to_chat(user, "<span class='notice'>You [target_was_empty ? "crush partially" : "partially dissolve"] the pill into \the [target], filling it.</span>")
+			to_chat(user, "<span class='notice'>I [target_was_empty ? "crush partially" : "partially dissolve"] the pill into \the [target], filling it.</span>")
 	else
 		to_chat(user, "<span class='notice'>\The [target] is full!</span>")
 

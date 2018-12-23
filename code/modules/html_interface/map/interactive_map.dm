@@ -115,7 +115,7 @@ var/const/ALLOW_CENTCOMM = FALSE
 	#endif
 
 	// Note for future developer: If you have tiles on the map with random or dynamic icons this hash check will fail
-	// every time. You'll have to modify this code to generate a unique hash for your object.
+	// every time. You'll have to modify this code to generate a unique hash for my object.
 	// Don't forget to modify the minimap generation code to use a default icon (or skip generation altogether).
 	for(var/i = x1 to x2)
 		for(var/r = y1 to y2)

@@ -295,7 +295,7 @@
 /obj/mecha/relaymove(mob/user,direction)
 	if(user != src.occupant) //While not "realistic", this piece is player friendly.
 		user.forceMove(get_turf(src))
-		to_chat(user, "You climb out from [src]")
+		to_chat(user, "I climb out from [src]")
 		return 0
 	if(connected_port)
 		if(world.time - last_message > 20)
@@ -365,7 +365,7 @@
 
 /obj/mecha/to_bump(var/atom/obstacle)
 //	src.inertia_dir = null
-	if(src.throwing)//high velocity mechas in your face!
+	if(src.throwing)//high velocity mechas in my face!
 		var/breakthrough = 0
 		if(istype(obstacle, /obj/structure/window/))
 			obstacle.Destroy(brokenup = 1)
@@ -517,9 +517,9 @@
 	if ((M_HULK in user.mutations) && !prob(src.deflect_chance))
 		src.take_damage(15)
 		src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-		user.visible_message("<font color='red'><b>[user] hits [src.name], doing some damage.</b></font>", "<font color='red'><b>You hit [src.name] with all your might. The metal creaks and bends.</b></font>")
+		user.visible_message("<font color='red'><b>[user] hits [src.name], doing some damage.</b></font>", "<font color='red'><b>I hit [src.name] with all my might. The metal creaks and bends.</b></font>")
 	else
-		user.visible_message("<font color='red'><b>[user] hits [src.name]. Nothing happens</b></font>","<font color='red'><b>You hit [src.name] with no visible effect.</b></font>")
+		user.visible_message("<font color='red'><b>[user] hits [src.name]. Nothing happens</b></font>","<font color='red'><b>I hit [src.name] with no visible effect.</b></font>")
 		src.log_append_to_last("Armor saved.")
 
 	user.delayNextAttack(10)
@@ -536,12 +536,12 @@
 		src.take_damage(15)
 		src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		playsound(get_turf(src), 'sound/weapons/slash.ogg', 50, 1, -1)
-		to_chat(user, "<span class='warning'>You slash at the armored suit!</span>")
+		to_chat(user, "<span class='warning'>I slash at the armored suit!</span>")
 		visible_message("<span class='warning'>The [user] slashes at [src.name]'s armor!</span>")
 	else
 		src.log_append_to_last("Armor saved.")
 		playsound(get_turf(src), 'sound/weapons/slash.ogg', 50, 1, -1)
-		to_chat(user, "<span class='good'>Your claws had no effect!</span>")
+		to_chat(user, "<span class='good'>My claws had no effect!</span>")
 		src.occupant_message("<span class='notice'>The [user]'s claws are stopped by the armor.</span>")
 		visible_message("<span class='notice'>The [user] rebounds off [src.name]'s armor!</span>")
 
@@ -692,14 +692,14 @@
 		src.take_damage(6)
 		src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		playsound(get_turf(src), 'sound/effects/blobattack.ogg', 50, 1, -1)
-		to_chat(user, "<span class='warning'>You smash at the armored suit!</span>")
+		to_chat(user, "<span class='warning'>I smash at the armored suit!</span>")
 		for (var/mob/V in viewers(src))
 			if(V.client && !(V.blinded))
 				V.show_message("<span class='warning'>The [user] smashes against [src.name]'s armor!</span>", 1)
 	else
 		src.log_append_to_last("Armor saved.")
 		playsound(get_turf(src), 'sound/effects/blobattack.ogg', 50, 1, -1)
-		to_chat(user, "<span class='good'>Your attack had no effect!</span>")
+		to_chat(user, "<span class='good'>My attack had no effect!</span>")
 		src.occupant_message("<span class='notice'>The [user]'s attack is stopped by the armor.</span>")
 		for (var/mob/V in viewers(src))
 			if(V.client && !(V.blinded))
@@ -740,7 +740,7 @@
 */
 	else
 		src.occupant_message("<font color='red'><b>[user] hits [src] with [W].</b></font>")
-		user.visible_message("<font color='red'><b>[user] hits [src] with [W].</b></font>", "<font color='red'><b>You hit [src] with [W].</b></font>")
+		user.visible_message("<font color='red'><b>[user] hits [src] with [W].</b></font>", "<font color='red'><b>I hit [src] with [W].</b></font>")
 		src.take_damage(W.force,W.damtype)
 		src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return
@@ -765,10 +765,10 @@
 			if(E.can_attach(src))
 				if(user.drop_item(W))
 					E.attach(src)
-					user.visible_message("[user] attaches [W] to [src]", "You attach [W] to [src]")
+					user.visible_message("[user] attaches [W] to [src]", "I attach [W] to [src]")
 					playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 			else
-				to_chat(user, "You were unable to attach [W] to [src]")
+				to_chat(user, "I was unable to attach [W] to [src]")
 		return
 	if(istype(W, /obj/item/weapon/card/id)||istype(W, /obj/item/device/pda))
 		if(add_req_access || maint_access)
@@ -788,11 +788,11 @@
 	else if(iswrench(W))
 		if(state==STATE_BOLTSEXPOSED)
 			state = STATE_BOLTSOPENED
-			to_chat(user, "You undo the securing bolts.")
+			to_chat(user, "I undo the securing bolts.")
 			playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
 		else if(state==STATE_BOLTSOPENED)
 			state = STATE_BOLTSEXPOSED
-			to_chat(user, "You tighten the securing bolts.")
+			to_chat(user, "I tighten the securing bolts.")
 			playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
 		return
 	else if(iscrowbar(W))
@@ -818,7 +818,7 @@
 					electropack.forceMove(src.loc)
 					electropack = null
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-			to_chat(user, "<span class='notice'>You pry out \the [remove] from \the [src].</span>")
+			to_chat(user, "<span class='notice'>I pry out \the [remove] from \the [src].</span>")
 			src.log_message("Internal component removed - [remove]")
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
@@ -827,20 +827,20 @@
 			if(CC.amount > 1)
 				CC.use(2)
 				clearInternalDamage(MECHA_INT_SHORT_CIRCUIT)
-				to_chat(user, "You replace the fused wires.")
+				to_chat(user, "I replace the fused wires.")
 			else
 				to_chat(user, "There's not enough wire to finish the task.")
 		return
 	else if(isscrewdriver(W))
 		if(hasInternalDamage(MECHA_INT_TEMP_CONTROL))
 			clearInternalDamage(MECHA_INT_TEMP_CONTROL)
-			to_chat(user, "You repair the damaged temperature controller.")
+			to_chat(user, "I repair the damaged temperature controller.")
 		return
 	else if(istype(W, /obj/item/weapon/cell))
 		if(state==STATE_BOLTSOPENED)
 			if(!src.cell)
 				if(user.drop_item(W, src))
-					to_chat(user, "You install the powercell.")
+					to_chat(user, "I install the powercell.")
 					src.cell = W
 					src.log_message("Powercell installed.")
 			else
@@ -850,7 +850,7 @@
 		if(state==STATE_BOLTSOPENED)
 			if(!src.tracking)
 				if(user.drop_item(W, src))
-					to_chat(user, "You install the tracking beacon and safeties.")
+					to_chat(user, "I install the tracking beacon and safeties.")
 					src.tracking = W
 					src.log_message("Exosuit tracking beacon installed.")
 			else
@@ -860,7 +860,7 @@
 		if(state==STATE_BOLTSOPENED)
 			if(!src.electropack)
 				if(user.drop_item(W, src))
-					to_chat(user, "You rig the electropack to the cockpit.")
+					to_chat(user, "I rig the electropack to the cockpit.")
 					src.electropack = W
 					src.log_message("Emergency ejection routines installed.") //not exactly a legitimate upgrade!
 			else
@@ -872,11 +872,11 @@
 		if (WT.remove_fuel(0,user))
 			if (hasInternalDamage(MECHA_INT_TANK_BREACH))
 				clearInternalDamage(MECHA_INT_TANK_BREACH)
-				to_chat(user, "<span class='notice'>You repair the damaged gas tank.</span>")
+				to_chat(user, "<span class='notice'>I repair the damaged gas tank.</span>")
 		else
 			return
 		if(src.health<initial(src.health))
-			to_chat(user, "<span class='notice'>You repair some damage to [src.name].</span>")
+			to_chat(user, "<span class='notice'>I repair some damage to [src.name].</span>")
 			src.health += min(10, initial(src.health)-src.health)
 		else
 			to_chat(user, "The [src.name] is at full integrity")
@@ -896,7 +896,7 @@
 */
 		else
 			src.occupant_message("<font color='red'><b>[user] hits [src] with [W].</b></font>")
-			user.visible_message("<font color='red'><b>[user] hits [src] with [W].</b></font>", "<font color='red'><b>You hit [src] with [W].</b></font>")
+			user.visible_message("<font color='red'><b>[user] hits [src] with [W].</b></font>", "<font color='red'><b>I hit [src] with [W].</b></font>")
 			src.take_damage(W.force,W.damtype)
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 */
@@ -1104,7 +1104,7 @@
 		return
 	for(var/mob/living/carbon/slime/M in range(1,usr))
 		if(M.Victim == usr)
-			to_chat(usr, "You're too busy getting your life sucked out of you.")
+			to_chat(usr, "I am too busy getting my life sucked out of you.")
 			return
 
 	visible_message("<span class='notice'>[usr] starts to climb into \the [src].</span>")
@@ -1116,7 +1116,7 @@
 		else if(src.occupant!=usr)
 			to_chat(usr, "[src.occupant] was faster. Try better next time, loser.")
 	else
-		to_chat(usr, "You stop entering the exosuit.")
+		to_chat(usr, "I stop entering the exosuit.")
 	return
 
 /obj/mecha/proc/moved_inside(var/mob/living/carbon/human/H as mob)
@@ -1178,7 +1178,7 @@
 		else
 			to_chat(user, "Occupant detected.")
 	else
-		to_chat(user, "You stop inserting the MMI.")
+		to_chat(user, "I stop inserting the MMI.")
 	return 0
 
 /obj/mecha/proc/mmi_moved_inside(var/obj/item/device/mmi/mmi_as_oc as obj,mob/user as mob)
@@ -1305,7 +1305,7 @@
 
 			occupant.SetStunned(5)
 			occupant.SetKnockdown(5)
-			to_chat(occupant, "You were blown out of the mech!")
+			to_chat(occupant, "I was blown out of the mech!")
 	*/
 		src.log_message("[mob_container] moved out.")
 		occupant.reset_view()
@@ -1345,7 +1345,7 @@
 /obj/mecha/proc/shock_n_boot(var/exit = loc)
 	spark_system.start()
 	if (occupant)
-		to_chat(occupant, "<span class='danger'>You feel a sharp shock!</span>")
+		to_chat(occupant, "<span class='danger'>I feel a sharp shock!</span>")
 		occupant.Knockdown(10)
 		spawn(10)
 		emergency_eject()
@@ -1653,7 +1653,7 @@
 		var/obj/item/mecha_parts/mecha_equipment/equip = t_filter.getObj("select_equip")
 		if(equip)
 			src.selected = equip
-			src.occupant_message("You switch to [equip]")
+			src.occupant_message("I switch to [equip]")
 			src.visible_message("[src] raises [equip]")
 			send_byjax(src.occupant,"exosuit.browser","eq_list",src.get_equipment_list())
 		return
@@ -1758,7 +1758,7 @@
 					occupant_message("Maintenance protocols terminated.")
 					occupant << sound('sound/mecha/mechentry.ogg',wait=0)
 			else
-				to_chat(user, "You can't toggle maintenance mode with the securing bolts unfastened.")
+				to_chat(user, "I can't toggle maintenance mode with the securing bolts unfastened.")
 			output_maintenance_dialog(t_filter.getObj("id_card"),user)
 		return
 	if(href_list["set_internal_tank_valve"] && state >=STATE_BOLTSEXPOSED)
@@ -1794,7 +1794,7 @@
 			return
 		if(src.occupant && (!istype(src.occupant, /obj/item/device/mmi/posibrain) || !istype(src.occupant, /obj/item/device/mmi)))
 			src.dna = src.occupant.dna.unique_enzymes
-			src.occupant_message("You feel a prick as the needle takes your DNA sample.")
+			src.occupant_message("I feel a prick as the needle takes my DNA sample.")
 		return
 	if(href_list["reset_dna"])
 		if(usr != src.occupant)

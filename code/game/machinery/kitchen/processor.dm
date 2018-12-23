@@ -119,8 +119,8 @@
 				if (O.client) //grief-proof
 					O.forceMove(loc)
 					O.visible_message("<span class='notice'>[O] suddenly jumps out of [src]!</span>", \
-							"You jump out from the processor", \
-							"You hear a slimy sound")
+							"I jump out from the processor", \
+							"I hear a slimy sound")
 					return
 				var/obj/item/weapon/reagent_containers/glass/bucket/bucket_of_blood = new(loc)
 				O.take_blood(bucket_of_blood, 70)
@@ -182,7 +182,7 @@
 
 /obj/machinery/processor/crowbarDestroy(mob/user)
 	if(contents.len)
-		to_chat(user, "You can't do that while something is loaded in \the [src].")
+		to_chat(user, "I can't do that while something is loaded in \the [src].")
 		return -1
 	return ..()
 
@@ -206,7 +206,7 @@
 		to_chat(user, "<span class='warning'>This probably won't blend.</span>")
 		return 1
 	user.visible_message("<span class='notice'>[user] puts [what] into [src].</span>", \
-		"You put [what] into the [src].")
+		"I put [what] into the [src].")
 	if(what == user.get_active_hand())
 		user.drop_item(what, src)
 	else
@@ -234,15 +234,15 @@
 			continue
 		src.processing = 1
 		user.visible_message("<span class='notice'>[user] turns on [src]</span>.", \
-			"You turn on \a [src].", \
-			"You hear [src] start")
+			"I turn on \a [src].", \
+			"I hear [src] start")
 		playsound(get_turf(src), 'sound/machines/blender.ogg', 50, 1)
 		use_power(500)
 		sleep(P.time*time_coeff)
 		P.process(src.loc, O)
 		src.processing = 0
 	src.visible_message("<span class='notice'>[src] is done.</span>", \
-		"You hear [src] stop")
+		"I hear [src] stop")
 
 /obj/machinery/processor/attack_ghost(mob/user as mob)
 	user.examination(src)

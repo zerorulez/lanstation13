@@ -254,7 +254,7 @@
 
 /obj/item/clothing/suit/armor/vest/piratelord
 	name = "pirate lord's armor"
-	desc = "The attire of an all powerful and bloodthirsty pirate lord. Simply looking at sends chills down your spine."
+	desc = "The attire of an all powerful and bloodthirsty pirate lord. Simply looking at sends chills down my spine."
 	armor = list(melee = 75, bullet = 75, laser = 75,energy = 75, bomb = 75, bio = 100, rad = 90)
 	icon_state = "piratelord"
 	item_state = "piratelord"
@@ -298,7 +298,7 @@
 			qdel(src)
 			return
 		if(holder.on_fire)
-			to_chat(holder, "<span class='warning'>Your [src.name] is melting!</span>")
+			to_chat(holder, "<span class='warning'>My [src.name] is melting!</span>")
 			health -= 10
 		holder.bodytemperature = max(holder.bodytemperature-2 * TEMPERATURE_DAMAGE_COEFFICIENT,T20C)
 		if(prob(1))

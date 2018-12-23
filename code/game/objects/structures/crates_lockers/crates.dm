@@ -443,7 +443,7 @@
 		return
 	if(locked && !broken)
 		if (allowed(user))
-			to_chat(user, "<span class='notice'>You unlock [src].</span>")
+			to_chat(user, "<span class='notice'>I unlock [src].</span>")
 			src.locked = 0
 			overlays.len = 0
 			overlays += greenlight
@@ -456,7 +456,7 @@
 
 /obj/structure/closet/crate/secure/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/card) && src.allowed(user) && !locked && !opened && !broken)
-		to_chat(user, "<span class='notice'>You lock \the [src].</span>")
+		to_chat(user, "<span class='notice'>I lock \the [src].</span>")
 		src.locked = 1
 		overlays.len = 0
 		overlays += redlight
@@ -469,7 +469,7 @@
 		playsound(get_turf(src), "sparks", 60, 1)
 		src.locked = 0
 		src.broken = 1
-		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
+		to_chat(user, "<span class='notice'>I unlock \the [src].</span>")
 		return
 	return ..()
 
@@ -487,7 +487,7 @@
 			return
 
 		if(user.drop_item(W))
-			to_chat(user, "<span class='notice'>You rig [src].</span>")
+			to_chat(user, "<span class='notice'>I rig [src].</span>")
 			qdel(W)
 			W = null
 			rigged = 1
@@ -495,11 +495,11 @@
 	else if(istype(W, /obj/item/device/radio/electropack))
 		if(rigged)
 			if(user.drop_item(W, src.loc))
-				to_chat(user, "<span class='notice'>You attach [W] to [src].</span>")
+				to_chat(user, "<span class='notice'>I attach [W] to [src].</span>")
 			return
 	else if(iswirecutter(W))
 		if(rigged)
-			to_chat(user, "<span class='notice'>You cut away the wiring.</span>")
+			to_chat(user, "<span class='notice'>I cut away the wiring.</span>")
 			playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
 			rigged = 0
 			return

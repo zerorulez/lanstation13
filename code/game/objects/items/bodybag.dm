@@ -53,7 +53,7 @@
 		set_tiny_label(user)
 	else if(iswirecutter(W))
 		remove_label()
-		to_chat(user, "<span class='notice'>You cut the tag off the bodybag.</span>")
+		to_chat(user, "<span class='notice'>I cut the tag off the bodybag.</span>")
 
 /obj/structure/closet/body_bag/set_labeled()
 	..()
@@ -130,5 +130,5 @@
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
 		if(!ishuman(usr) || usr.incapacitated() || usr.lying)
 			return
-		to_chat(usr, "<span class='warning'>You can't fold that up anymore.</span>")
+		to_chat(usr, "<span class='warning'>I can't fold that up anymore.</span>")
 	..()

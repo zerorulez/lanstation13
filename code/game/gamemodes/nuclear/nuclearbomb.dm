@@ -53,26 +53,26 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 					if(!WT.isOn())
 						return
 					if (WT.get_fuel() < 5) // uses up 5 fuel.
-						to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
+						to_chat(user, "<span class='warning'>I need more fuel to complete this task.</span>")
 						return
 
-					user.visible_message("[user] starts cutting loose the anchoring bolt covers on [src].", "You start cutting loose the anchoring bolt covers with [O]...")
+					user.visible_message("[user] starts cutting loose the anchoring bolt covers on [src].", "I start cutting loose the anchoring bolt covers with [O]...")
 
 					if(do_after(user, src, 40))
 						if(!src || !user || !WT.remove_fuel(5, user))
 							return
-						user.visible_message("[user] cuts through the bolt covers on [src].", "You cut through the bolt cover.")
+						user.visible_message("[user] cuts through the bolt covers on [src].", "I cut through the bolt cover.")
 						removal_stage = 1
 				return
 
 			if(1)
 				if(istype(O,/obj/item/weapon/crowbar))
-					user.visible_message("[user] starts forcing open the bolt covers on [src].", "You start forcing open the anchoring bolt covers with [O]...")
+					user.visible_message("[user] starts forcing open the bolt covers on [src].", "I start forcing open the anchoring bolt covers with [O]...")
 
 					if(do_after(user,  src, 15))
 						if(!src || !user)
 							return
-						user.visible_message("[user] forces open the bolt covers on [src].", "You force open the bolt covers.")
+						user.visible_message("[user] forces open the bolt covers on [src].", "I force open the bolt covers.")
 						removal_stage = 2
 				return
 
@@ -83,39 +83,39 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 					if(!WT.isOn())
 						return
 					if (WT.get_fuel() < 5) // uses up 5 fuel.
-						to_chat(user, "<span class='notice'>You need more fuel to complete this task.</span>")
+						to_chat(user, "<span class='notice'>I need more fuel to complete this task.</span>")
 						return
 
-					user.visible_message("[user] starts cutting apart the anchoring system sealant on [src].", "You start cutting apart the anchoring system's sealant with [O]...")
+					user.visible_message("[user] starts cutting apart the anchoring system sealant on [src].", "I start cutting apart the anchoring system's sealant with [O]...")
 
 					if(do_after(user, src, 40))
 						if(!src || !user || !WT.remove_fuel(5, user))
 							return
-						user.visible_message("[user] cuts apart the anchoring system sealant on [src].", "You cut apart the anchoring system's sealant.")
+						user.visible_message("[user] cuts apart the anchoring system sealant on [src].", "I cut apart the anchoring system's sealant.")
 						removal_stage = 3
 				return
 
 			if(3)
 				if(istype(O,/obj/item/weapon/wrench))
 
-					user.visible_message("[user] begins unwrenching the anchoring bolts on [src].", "You begin unwrenching the anchoring bolts...")
+					user.visible_message("[user] begins unwrenching the anchoring bolts on [src].", "I begin unwrenching the anchoring bolts...")
 
 					if(do_after(user, src, 50))
 						if(!src || !user)
 							return
-						user.visible_message("[user] unwrenches the anchoring bolts on [src].", "You unwrench the anchoring bolts.")
+						user.visible_message("[user] unwrenches the anchoring bolts on [src].", "I unwrench the anchoring bolts.")
 						removal_stage = 4
 				return
 
 			if(4)
 				if(istype(O,/obj/item/weapon/crowbar))
 
-					user.visible_message("[user] begins lifting [src] off of the anchors.", "You begin lifting the device off the anchors...")
+					user.visible_message("[user] begins lifting [src] off of the anchors.", "I begin lifting the device off the anchors...")
 
 					if(do_after(user, src, 80))
 						if(!src || !user)
 							return
-						user.visible_message("[user] crowbars [src] off of the anchors. It can now be moved.", "You jam the crowbar under the nuclear device and lift it off its anchors. You can now move it!")
+						user.visible_message("[user] crowbars [src] off of the anchors. It can now be moved.", "I jam the crowbar under the nuclear device and lift it off its anchors. You can now move it!")
 						anchored = 0
 						removal_stage = 5
 				return
@@ -170,14 +170,14 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 	if (!usr || usr.lying || usr.isUnconscious())
 		return
 	if (!usr.dexterity_check())
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(usr, "<span class='warning'>I don't have the dexterity to do this!</span>")
 		return
 
 	if (src.deployable)
-		to_chat(usr, "<span class='notice'>You close several panels to make [src] undeployable.</span>")
+		to_chat(usr, "<span class='notice'>I close several panels to make [src] undeployable.</span>")
 		src.deployable = 0
 	else
-		to_chat(usr, "<span class='notice'>You adjust some panels to make [src] deployable.</span>")
+		to_chat(usr, "<span class='notice'>I adjust some panels to make [src] deployable.</span>")
 		src.deployable = 1
 
 /obj/machinery/nuclearbomb/Topic(href, href_list)
@@ -186,7 +186,7 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 	if (!usr.canmove || usr.stat || usr.restrained())
 		return
 	if (!usr.dexterity_check())
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(usr, "<span class='warning'>I don't have the dexterity to do this!</span>")
 		return 1
 	if (istype(src.loc, /turf))
 		usr.set_machine(src)

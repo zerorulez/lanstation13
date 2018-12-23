@@ -16,7 +16,7 @@
 	name = "miniature black hole"
 	desc = "A miniature black hole that opens into a localized pocket of Blue Space."
 	icon_state = "porthole"
-	slot_flags = 0 //doesn't fit on your back!
+	slot_flags = 0 //doesn't fit on my back!
 	w_class = W_CLASS_SMALL //fits in pockets!
 
 /obj/item/weapon/storage/backpack/holding/suicide_act(mob/user)

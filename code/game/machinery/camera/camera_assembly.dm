@@ -37,7 +37,7 @@
 			// State 0
 			if(iswrench(W) && isturf(src.loc))
 				playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
-				to_chat(user, "You wrench the assembly into place.")
+				to_chat(user, "I wrench the assembly into place.")
 				anchored = 1
 				state = 1
 				update_icon()
@@ -48,14 +48,14 @@
 			// State 1
 			if(iswelder(W))
 				if(weld(W, user))
-					to_chat(user, "You weld the assembly securely into place.")
+					to_chat(user, "I weld the assembly securely into place.")
 					anchored = 1
 					state = 2
 				return
 
 			else if(iswrench(W))
 				playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
-				to_chat(user, "You unattach the assembly from it's place.")
+				to_chat(user, "I unattach the assembly from it's place.")
 				anchored = 0
 				update_icon()
 				state = 0
@@ -66,14 +66,14 @@
 			if(iscoil(W))
 				var/obj/item/stack/cable_coil/C = W
 				if(C.use(2))
-					to_chat(user, "You add wires to the assembly.")
+					to_chat(user, "I add wires to the assembly.")
 					state = 3
 				return
 
 			else if(iswelder(W))
 
 				if(weld(W, user))
-					to_chat(user, "You unweld the assembly from it's place.")
+					to_chat(user, "I unweld the assembly from it's place.")
 					state = 1
 					anchored = 1
 				return
@@ -86,12 +86,12 @@
 
 				var/input = strip_html(input(usr, "Which networks would you like to connect this camera to? seperate networks with a comma. No Spaces!\nFor example: SS13,Security,Secret ", "Set Network", "SS13"))
 				if(!input)
-					to_chat(usr, "No input found, please hang up and try your call again.")
+					to_chat(usr, "No input found, please hang up and try my call again.")
 					return
 
 				var/list/tempnetwork = splittext(input, ",")
 				if(tempnetwork.len < 1)
-					to_chat(usr, "No network found, please hang up and try your call again.")
+					to_chat(usr, "No network found, please hang up and try my call again.")
 					return
 
 				state = 4
@@ -117,7 +117,7 @@
 
 				new/obj/item/stack/cable_coil(get_turf(src), 2)
 				playsound(get_turf(src), 'sound/items/Wirecutter.ogg', 50, 1)
-				to_chat(user, "You cut the wires from the circuits.")
+				to_chat(user, "I cut the wires from the circuits.")
 				state = 2
 				return
 
@@ -134,14 +134,14 @@
 			if(!user.drop_item(W, src))
 				return
 			upgrades += W
-		to_chat(user, "You attach the [W] into the assembly inner circuits.")
+		to_chat(user, "I attach the [W] into the assembly inner circuits.")
 		return
 
 	// Taking out upgrades
 	else if(iscrowbar(W) && upgrades.len)
 		var/obj/U = locate(/obj) in upgrades
 		if(U)
-			to_chat(user, "You unattach \the [U] from the assembly.")
+			to_chat(user, "I unattach \the [U] from the assembly.")
 			playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
 			U.forceMove(get_turf(src))
 			upgrades -= U
@@ -167,7 +167,7 @@
 	if(!WT.isOn())
 		return 0
 
-	to_chat(user, "<span class='notice'>You start to weld the [src]...</span>")
+	to_chat(user, "<span class='notice'>I start to weld the [src]...</span>")
 	playsound(get_turf(src), 'sound/items/Welder.ogg', 50, 1)
 	WT.eyecheck(user)
 	busy = 1

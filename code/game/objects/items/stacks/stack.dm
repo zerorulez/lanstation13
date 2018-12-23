@@ -135,9 +135,9 @@
 			multiplier = 1
 		if (src.amount < R.req_amount*multiplier)
 			if (R.req_amount*multiplier>1)
-				to_chat(usr, "<span class='warning'>You haven't got enough [src] to build \the [R.req_amount*multiplier] [R.title]\s!</span>")
+				to_chat(usr, "<span class='warning'>I haven't got enough [src] to build \the [R.req_amount*multiplier] [R.title]\s!</span>")
 			else
-				to_chat(usr, "<span class='warning'>You haven't got enough [src] to build \the [R.title]!</span>")
+				to_chat(usr, "<span class='warning'>I haven't got enough [src] to build \the [R.title]!</span>")
 			return
 		if (!R.can_build_here(usr, usr.loc))
 			return
@@ -278,7 +278,7 @@
 		else
 			to_transfer = min(S.amount, max_amount-amount)
 		add(to_transfer)
-		to_chat(user, "You add [to_transfer] [((to_transfer > 1) && S.irregular_plural) ? S.irregular_plural : "[S.singular_name]\s"] to \the [src]. It now contains [amount] [CORRECT_STACK_NAME(src)].")
+		to_chat(user, "I add [to_transfer] [((to_transfer > 1) && S.irregular_plural) ? S.irregular_plural : "[S.singular_name]\s"] to \the [src]. It now contains [amount] [CORRECT_STACK_NAME(src)].")
 		if (S && user.machine==S)
 			spawn(0) interact(user)
 		S.use(to_transfer)
@@ -330,7 +330,7 @@
 			if(S.max_amount >= S.amount + add_amount)
 				S.add(add_amount)
 
-				to_chat(user, "<span class='info'>You add [add_amount] item\s to the stack. It now contains [S.amount] [CORRECT_STACK_NAME(S)].</span>")
+				to_chat(user, "<span class='info'>I add [add_amount] item\s to the stack. It now contains [S.amount] [CORRECT_STACK_NAME(S)].</span>")
 				return S
 
 	var/obj/item/stack/S = getFromPool(new_stack_type, loc)

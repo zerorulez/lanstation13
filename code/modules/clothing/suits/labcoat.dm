@@ -27,10 +27,10 @@
 		return 0
 
 	if(open)
-		to_chat(usr, "You button up the labcoat.")
+		to_chat(usr, "I button up the labcoat.")
 		src.body_parts_covered |= IGNORE_INV
 	else
-		to_chat(usr, "You unbutton the labcoat.")
+		to_chat(usr, "I unbutton the labcoat.")
 		src.body_parts_covered ^= IGNORE_INV
 	open=!open
 	update_icon()

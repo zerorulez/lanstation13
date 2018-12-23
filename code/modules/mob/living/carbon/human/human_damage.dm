@@ -142,21 +142,21 @@
 			if (candidates.len)
 				var/datum/organ/external/O = pick(candidates)
 				O.mutate()
-				to_chat(src, "<span class = 'notice'>Something is not right with your [O.display_name]...</span>")
+				to_chat(src, "<span class = 'notice'>Something is not right with my [O.display_name]...</span>")
 				return
 	else
 		if (prob(heal_prob))
 			for (var/datum/organ/external/O in organs)
 				if (O.status & ORGAN_MUTATED)
 					O.unmutate()
-					to_chat(src, "<span class = 'notice'>Your [O.display_name] is shaped normally again.</span>")
+					to_chat(src, "<span class = 'notice'>My [O.display_name] is shaped normally again.</span>")
 					return
 
 	if (getCloneLoss() < 1)
 		for (var/datum/organ/external/O in organs)
 			if (O.status & ORGAN_MUTATED)
 				O.unmutate()
-				to_chat(src, "<span class = 'notice'>Your [O.display_name] is shaped normally again.</span>")
+				to_chat(src, "<span class = 'notice'>My [O.display_name] is shaped normally again.</span>")
 	hud_updateflag |= 1 << HEALTH_HUD
 
 ////////////////////////////////////////////
@@ -421,7 +421,7 @@ This function restores all organs.
 			FS.luminosity = 4 //not so bright, because it's inside them
 			FS.Light(src) //Now they glow, because the flare is lit
 			if(prob(80)) //tends to happen, which is good
-				visible_message("<span class='danger'><b>[name]</b> bursts into flames!</span>", "<span class='danger'>You burst into flames!</span>")
+				visible_message("<span class='danger'><b>[name]</b> bursts into flames!</span>", "<span class='danger'>I burst into flames!</span>")
 				on_fire = 1
 				adjust_fire_stacks(0.5) //as seen in ignite code
 				update_icon = 1

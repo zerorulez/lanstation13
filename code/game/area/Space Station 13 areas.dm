@@ -1,6 +1,6 @@
 /*
 
-### This file contains a list of all the areas in your station. Format is as follows:
+### This file contains a list of all the areas in my station. Format is as follows:
 
 /area/CATEGORY/OR/DESCRIPTOR/NAME 	(you can make as many subdivisions as you want)
 	name = "NICE NAME" 				(not required but makes things really nice)

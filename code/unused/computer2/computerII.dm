@@ -283,7 +283,7 @@
 			user.drop_item()
 			W.forceMove(src)
 			src.diskette = W
-			to_chat(user, "You insert [W].")
+			to_chat(user, "I insert [W].")
 			src.updateUsrDialog()
 			return
 
@@ -298,7 +298,7 @@
 				A.state = 3
 				A.icon_state = "3"
 			else
-				to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
+				to_chat(user, "<span class='notice'>I disconnect the monitor.</span>")
 				A.state = 4
 				A.icon_state = "4"
 

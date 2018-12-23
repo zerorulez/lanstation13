@@ -1,7 +1,7 @@
 /datum/construction/mecha_chassis
 
 /datum/construction/mecha_chassis/custom_action(step, atom/used_atom, mob/user)
-	user.visible_message("[user] has connected [used_atom] to [holder].", "You connect [used_atom] to [holder]")
+	user.visible_message("[user] has connected [used_atom] to [holder].", "I connect [used_atom] to [holder]")
 	holder.overlays += used_atom.icon_state+"+o"
 	qdel (used_atom)
 	used_atom = null

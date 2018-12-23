@@ -27,18 +27,18 @@
 
 	begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		user.visible_message("[user] begins to cut through [target]'s ribcage with \the [tool].", \
-		"You begin to cut through [target]'s ribcage with \the [tool].")
-		target.custom_pain("Something hurts horribly in your chest!",1)
+		"I begin to cut through [target]'s ribcage with \the [tool].")
+		target.custom_pain("Something hurts horribly in my chest!",1)
 		..()
 
 	end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		user.visible_message("<span class='notice'>[user] has cut through [target]'s ribcage open with \the [tool].</span>",		\
-		"<span class='notice'>You have cut through [target]'s ribcage open with \the [tool].</span>")
+		"<span class='notice'>I have cut through [target]'s ribcage open with \the [tool].</span>")
 		target.op_stage.ribcage = 1
 
 	fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		user.visible_message("<span class='warning'>[user]'s hand slips, cracking [target]'s ribcage with \the [tool]!</span>" , \
-		"<span class='warning'>Your hand slips, cracking [target]'s ribcage with \the [tool]!</span>" )
+		"<span class='warning'>My hand slips, cracking [target]'s ribcage with \the [tool]!</span>" )
 		var/datum/organ/external/affected = target.get_organ(target_zone)
 		affected.createwound(CUT, 20)
 		affected.fracture()
@@ -59,14 +59,14 @@
 
 	begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/msg = "[user] starts to force open the ribcage in [target]'s torso with \the [tool]."
-		var/self_msg = "You start to force open the ribcage in [target]'s torso with \the [tool]."
+		var/self_msg = "I start to force open the ribcage in [target]'s torso with \the [tool]."
 		user.visible_message(msg, self_msg)
-		target.custom_pain("Something hurts horribly in your chest!",1)
+		target.custom_pain("Something hurts horribly in my chest!",1)
 		..()
 
 	end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/msg = "<span class='notice'>[user] forces open [target]'s ribcage with \the [tool].</span>"
-		var/self_msg = "<span class='notice'>You force open [target]'s ribcage with \the [tool].</span>"
+		var/self_msg = "<span class='notice'>I force open [target]'s ribcage with \the [tool].</span>"
 		user.visible_message(msg, self_msg)
 		target.op_stage.ribcage = 2
 
@@ -77,7 +77,7 @@
 
 	fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/msg = "<span class='warning'>[user]'s hand slips, breaking [target]'s ribcage!</span>"
-		var/self_msg = "<span class='warning'>Your hand slips, breaking [target]'s ribcage!</span>"
+		var/self_msg = "<span class='warning'>My hand slips, breaking [target]'s ribcage!</span>"
 		user.visible_message(msg, self_msg)
 		var/datum/organ/external/affected = target.get_organ(target_zone)
 		affected.createwound(BRUISE, 20)
@@ -99,21 +99,21 @@
 
 	begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/msg = "[user] starts bending [target]'s ribcage back into place with \the [tool]."
-		var/self_msg = "You start bending [target]'s ribcage back into place with \the [tool]."
+		var/self_msg = "I start bending [target]'s ribcage back into place with \the [tool]."
 		user.visible_message(msg, self_msg)
-		target.custom_pain("Something hurts horribly in your chest!",1)
+		target.custom_pain("Something hurts horribly in my chest!",1)
 		..()
 
 	end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/msg = "<span class='notice'>[user] bends [target]'s ribcage back into place with \the [tool].</span>"
-		var/self_msg = "<span class='notice'>You bend [target]'s ribcage back into place with \the [tool].</span>"
+		var/self_msg = "<span class='notice'>I bend [target]'s ribcage back into place with \the [tool].</span>"
 		user.visible_message(msg, self_msg)
 
 		target.op_stage.ribcage = 1
 
 	fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/msg = "<span class='warning'>[user]'s hand slips, bending [target]'s ribcage in a wrong shape!</span>"
-		var/self_msg = "<span class='warning'>Your hand slips, bending [target]'s ribcage in a wrong shape!</span>"
+		var/self_msg = "<span class='warning'>My hand slips, bending [target]'s ribcage in a wrong shape!</span>"
 		user.visible_message(msg, self_msg)
 		var/datum/organ/external/chest/affected = target.get_organ("chest")
 		affected.createwound(BRUISE, 20)
@@ -136,14 +136,14 @@
 
 	begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/msg = "[user] starts applying \the [tool] to [target]'s ribcage."
-		var/self_msg = "You start applying \the [tool] to [target]'s ribcage."
+		var/self_msg = "I start applying \the [tool] to [target]'s ribcage."
 		user.visible_message(msg, self_msg)
-		target.custom_pain("Something hurts horribly in your chest!",1)
+		target.custom_pain("Something hurts horribly in my chest!",1)
 		..()
 
 	end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/msg = "<span class='notice'>[user] applied \the [tool] to [target]'s ribcage.</span>"
-		var/self_msg = "<span class='notice'>You applied \the [tool] to [target]'s ribcage.</span>"
+		var/self_msg = "<span class='notice'>I applied \the [tool] to [target]'s ribcage.</span>"
 		user.visible_message(msg, self_msg)
 
 		target.op_stage.ribcage = 0
@@ -171,14 +171,14 @@
 
 	begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/msg = "[user] starts to pull something out from [target]'s ribcage with \the [tool]."
-		var/self_msg = "You start to pull something out from [target]'s ribcage with \the [tool]."
+		var/self_msg = "I start to pull something out from [target]'s ribcage with \the [tool]."
 		user.visible_message(msg, self_msg)
-		target.custom_pain("Something hurts horribly in your chest!",1)
+		target.custom_pain("Something hurts horribly in my chest!",1)
 		..()
 
 	end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		user.visible_message("<span class='warning'>[user] rips the larva out of [target]'s ribcage!</span>",
-							 "You rip the larva out of [target]'s ribcage!")
+							 "I rip the larva out of [target]'s ribcage!")
 
 		for(var/obj/item/alien_embryo/A in target)
 			A.forceMove(A.loc.loc)
@@ -218,17 +218,17 @@
 
 		if(lungs.damage > 0)
 			user.visible_message("[user] starts mending the rupture in [target]'s lungs with \the [tool].", \
-			"You start mending the rupture in [target]'s lungs with \the [tool]." )
+			"I start mending the rupture in [target]'s lungs with \the [tool]." )
 		if(heart.damage > 0)
 			user.visible_message("[user] starts mending the bruises on [target]'s heart with \the [tool].", \
-			"You start mending the bruises on [target]'s heart with \the [tool]." )
+			"I start mending the bruises on [target]'s heart with \the [tool]." )
 		if(liver.damage > 0)
 			user.visible_message("[user] starts mending the bruises on [target]'s liver with \the [tool].", \
-			"You start mending the bruises on [target]'s liver with \the [tool]." )
+			"I start mending the bruises on [target]'s liver with \the [tool]." )
 		if(kidney.damage > 0)
 			user.visible_message("[user] starts mending the bruises on [target]'s kidney with \the [tool].", \
-			"You start mending the bruises on [target]'s kidney with \the [tool]." )
-		target.custom_pain("The pain in your chest is living hell!",1)
+			"I start mending the bruises on [target]'s kidney with \the [tool]." )
+		target.custom_pain("The pain in my chest is living hell!",1)
 		..()
 
 	end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -239,26 +239,26 @@
 
 		if(lungs.damage > 0)
 			user.visible_message("<span class='notice'>[user] mends the rupture in [target]'s lungs with \the [tool].</span>", \
-			"<span class='notice'>You mend the rupture in [target]'s lungs with \the [tool].</span>" )
+			"<span class='notice'>I mend the rupture in [target]'s lungs with \the [tool].</span>" )
 			lungs.damage = 0
 
 		if(heart.damage > 0)
 			user.visible_message("<span class='notice'>[user] treats the bruises on [target]'s heart with \the [tool].</span>", \
-			"<span class='notice'>You treats the bruises on [target]'s heart with \the [tool].</span>" )
+			"<span class='notice'>I treats the bruises on [target]'s heart with \the [tool].</span>" )
 			heart.damage = 0
 
 		if(liver.damage > 0)
 			user.visible_message("<span class='notice'>[user] treats the bruises on [target]'s liver with \the [tool].</span>", \
-			"<span class='notice'>You treats the bruises on [target]'s liver with \the [tool].</span>" )
+			"<span class='notice'>I treats the bruises on [target]'s liver with \the [tool].</span>" )
 			liver.damage = 0
 
 		if(kidney.damage > 0)
 			user.visible_message("<span class='notice'>[user] treats the bruises on [target]'s kidney with \the [tool].</span>", \
-			"<span class='notice'>You treats the bruises on [target]'s kidney with \the [tool].</span>" )
+			"<span class='notice'>I treats the bruises on [target]'s kidney with \the [tool].</span>" )
 			kidney.damage = 0
 
 	fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/datum/organ/external/chest/affected = target.get_organ("chest")
 		user.visible_message("<span class='warning'>[user]'s hand slips, slicing an artery inside [target]'s chest with \the [tool]!</span>", \
-		"<span class='warning'>Your hand slips, slicing an artery inside [target]'s chest with \the [tool]!</span>")
+		"<span class='warning'>My hand slips, slicing an artery inside [target]'s chest with \the [tool]!</span>")
 		affected.createwound(CUT, 20)

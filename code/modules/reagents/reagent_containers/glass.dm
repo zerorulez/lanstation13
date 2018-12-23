@@ -68,10 +68,10 @@
 /obj/item/weapon/reagent_containers/glass/attack_self()
 	..()
 	if(is_open_container())
-		to_chat(usr, "<span class = 'notice'>You put the lid on \the [src].")
+		to_chat(usr, "<span class = 'notice'>I put the lid on \the [src].")
 		flags ^= OPENCONTAINER
 	else
-		to_chat(usr, "<span class = 'notice'>You take the lid off \the [src].")
+		to_chat(usr, "<span class = 'notice'>I take the lid off \the [src].")
 		flags |= OPENCONTAINER
 	update_icon()
 
@@ -108,10 +108,10 @@
 
 /obj/item/weapon/reagent_containers/glass/beaker/attackby(obj/item/weapon/W, mob/user)
 	if(src.type == /obj/item/weapon/reagent_containers/glass/beaker && istype(W, /obj/item/weapon/surgicaldrill)) //regular beakers only
-		to_chat(user, "You begin drilling holes into the bottom of \the [src].")
+		to_chat(user, "I begin drilling holes into the bottom of \the [src].")
 		playsound(user, 'sound/machines/juicer.ogg', 50, 1)
 		if(do_after(user, src, 60))
-			to_chat(user, "You drill six holes through the bottom of \the [src].")
+			to_chat(user, "I drill six holes through the bottom of \the [src].")
 			if(src.loc == user)
 				user.drop_item(src, force_drop = 1)
 				var/obj/item/weapon/cylinder/I = new (get_turf(user))
@@ -128,24 +128,24 @@
 			switch(src.reagents.total_volume)
 				if(1 to 30)
 					if(M.reagents.total_volume >= 3)
-						to_chat(user, "<span class='notice'>You dip \the [M]'s head into \the [src] but don't soak anything up.</span>")
+						to_chat(user, "<span class='notice'>I dip \the [M]'s head into \the [src] but don't soak anything up.</span>")
 						return 1
 					src.reagents.trans_to(M, 1)
-					to_chat(user, "<span class='notice'>You barely manage to wet [M]</span>")
+					to_chat(user, "<span class='notice'>I barely manage to wet [M]</span>")
 					playsound(get_turf(src), 'sound/effects/slosh.ogg', 25, 1)
 				if(30 to 100)
 					if(M.reagents.total_volume >= 5)
-						to_chat(user, "<span class='notice'>You dip \the [M]'s head into \the [src] but don't soak anything up.</span>")
+						to_chat(user, "<span class='notice'>I dip \the [M]'s head into \the [src] but don't soak anything up.</span>")
 						return 1
 					src.reagents.trans_to(M, 2)
-					to_chat(user, "<span class='notice'>You manage to wet [M]</span>")
+					to_chat(user, "<span class='notice'>I manage to wet [M]</span>")
 					playsound(get_turf(src), 'sound/effects/slosh.ogg', 25, 1)
 				if(100 to INFINITY)
 					if(M.reagents.total_volume >= 10)
-						to_chat(user, "<span class='notice'>You dip \the [M]'s head into \the [src] but don't soak anything up.</span>")
+						to_chat(user, "<span class='notice'>I dip \the [M]'s head into \the [src] but don't soak anything up.</span>")
 						return 1
 					src.reagents.trans_to(M, 5)
-					to_chat(user, "<span class='notice'>You manage to soak [M]</span>")
+					to_chat(user, "<span class='notice'>I manage to soak [M]</span>")
 					playsound(get_turf(src), 'sound/effects/slosh.ogg', 25, 1)
 				else
 					to_chat(user, "What")
@@ -310,24 +310,24 @@
 			switch(src.reagents.total_volume)
 				if(1 to 30)
 					if(M.reagents.total_volume >= 5)
-						to_chat(user, "<span class='notice'>You dip \the [M]'s head into \the [src] but don't soak anything up.</span>")
+						to_chat(user, "<span class='notice'>I dip \the [M]'s head into \the [src] but don't soak anything up.</span>")
 						return 1
 					src.reagents.trans_to(M, 1)
-					to_chat(user, "<span class='notice'>You barely manage to wet [M]</span>")
+					to_chat(user, "<span class='notice'>I barely manage to wet [M]</span>")
 					playsound(get_turf(src), 'sound/effects/slosh.ogg', 25, 1)
 				if(30 to 100)
 					if(M.reagents.total_volume >= 5)
-						to_chat(user, "<span class='notice'>You dip \the [M]'s head into \the [src] but don't soak anything up.</span>")
+						to_chat(user, "<span class='notice'>I dip \the [M]'s head into \the [src] but don't soak anything up.</span>")
 						return 1
 					src.reagents.trans_to(M, 2)
-					to_chat(user, "<span class='notice'>You manage to wet [M]</span>")
+					to_chat(user, "<span class='notice'>I manage to wet [M]</span>")
 					playsound(get_turf(src), 'sound/effects/slosh.ogg', 25, 1)
 				if(100 to INFINITY)
 					if(M.reagents.total_volume >= 10)
-						to_chat(user, "<span class='notice'>You dip \the [M]'s head into \the [src] but don't soak anything up.</span>")
+						to_chat(user, "<span class='notice'>I dip \the [M]'s head into \the [src] but don't soak anything up.</span>")
 						return 1
 					src.reagents.trans_to(M, 5)
-					to_chat(user, "<span class='notice'>You manage to soak [M]</span>")
+					to_chat(user, "<span class='notice'>I manage to soak [M]</span>")
 					playsound(get_turf(src), 'sound/effects/slosh.ogg', 25, 1)
 				else
 					to_chat(user, "What")
@@ -338,7 +338,7 @@
 
 /obj/item/weapon/reagent_containers/glass/bucket/attackby(var/obj/D, mob/user as mob)
 	if(isprox(D))
-		to_chat(user, "You add \the [D] to \the [src].")
+		to_chat(user, "I add \the [D] to \the [src].")
 		qdel(D)
 		D = null
 		user.put_in_hands(new /obj/item/weapon/bucket_sensor)

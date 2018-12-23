@@ -25,7 +25,7 @@
 /obj/item/device/device_analyser/attack_self()
 	..()
 	loadone = !loadone
-	to_chat(usr, "<span class='notice'>You set the Device Analyzer to [loadone ? "transfer one design" : "transfer all designs"] on use.</span>")
+	to_chat(usr, "<span class='notice'>I set the Device Analyzer to [loadone ? "transfer one design" : "transfer all designs"] on use.</span>")
 
 /obj/item/device/device_analyser/preattack(var/atom/A, mob/user, proximity_flag) //Hurrah for after-attack
 	/*if(get_turf(src) != get_turf(user)) //we aren't in the same place as our holder, so we have been moved and can ignore scanning
@@ -38,7 +38,7 @@
 			return //don't try to scan the reverse engine if we have any designs to upload! let the reverse engine's attackby handle it instead
 		for(var/datum/design/current_design in loaded_designs)
 			if(current_design.build_path == O.type)
-				to_chat(user, "<span class='rose'>You've already got a schematic of \the [O]!</span>")
+				to_chat(user, "<span class='rose'>I've already got a schematic of \the [O]!</span>")
 				return
 
 		if(O.origin_tech || istype(O, /obj/machinery)) //two requirements: items have origin_tech, machines are checked in...
@@ -46,7 +46,7 @@
 				if(1)
 					if(max_designs && !(max_designs <= loaded_designs.len))
 						loaded_designs += getScanDesign(O)
-						user.visible_message("[user] scans \the [O].", "<span class='notice'>You successfully scan \the [O].</span>")
+						user.visible_message("[user] scans \the [O].", "<span class='notice'>I successfully scan \the [O].</span>")
 						return 1
 					else
 						to_chat(user, "\icon[src] \The [src] flashes a message on-screen: \"Too many designs loaded.\"")

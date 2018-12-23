@@ -30,7 +30,7 @@
 		to_chat(user, "The switch is in the off position")
 
 /obj/structure/powerswitch/attack_ai(mob/user)
-	to_chat(user, "<span class='warning'>You're an AI. This is a manual switch. It's not going to work.</span>")
+	to_chat(user, "<span class='warning'>I am an AI. This is a manual switch. It's not going to work.</span>")
 	return
 
 /obj/structure/powerswitch/attack_hand(mob/user)

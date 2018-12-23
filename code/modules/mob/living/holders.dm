@@ -3,7 +3,7 @@
 
 /obj/item/weapon/holder
 	name = "holder"
-	desc = "You shouldn't ever see this."
+	desc = "I shouldn't ever see this."
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/mob_holders.dmi', "right_hand" = 'icons/mob/in-hand/right/mob_holders.dmi')
 
 	var/mob/stored_mob
@@ -143,7 +143,7 @@
 //SLIMES
 /obj/item/weapon/holder/animal/slime
 	name = "slime holder"
-	desc = "It seeps through your fingers"
+	desc = "It seeps through my fingers"
 
 /obj/item/weapon/holder/animal/slime/proc/unfreeze()
 	var/mob/living/simple_animal/slime/S = stored_mob

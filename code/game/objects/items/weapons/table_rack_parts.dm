@@ -20,25 +20,25 @@
 		var/obj/item/stack/rods/rods = W
 		if (rods.amount >= 4)
 			new /obj/item/weapon/table_parts/reinforced( user.loc )
-			to_chat(user, "<span class='notice'>You reinforce the [name].</span>")
+			to_chat(user, "<span class='notice'>I reinforce the [name].</span>")
 			rods.use(4)
 			qdel(src)
 		else if (rods.amount < 4)
-			to_chat(user, "<span class='warning'>You need at least four rods to do this.</span>")
+			to_chat(user, "<span class='warning'>I need at least four rods to do this.</span>")
 	if (istype(W, /obj/item/stack/sheet/glass/glass))
 		var/obj/item/stack/sheet/glass/glass = W
 		if (glass.amount >= 1)
 			new /obj/item/weapon/table_parts/glass( user.loc )
-			to_chat(user, "<span class='notice'>You add glass panes to \the [name].</span>")
+			to_chat(user, "<span class='notice'>I add glass panes to \the [name].</span>")
 			glass.use(1)
 			qdel(src)
-		
+
 
 /obj/item/weapon/table_parts/attack_self(mob/user as mob)
 	new /obj/structure/table( user.loc )
 	user.drop_item(src, force_drop = 1)
 	qdel(src)
-	
+
 
 
 /*
@@ -111,7 +111,7 @@
 /obj/item/weapon/table_parts/glass/attack_self(mob/user as mob)
 	new /obj/structure/table/glass( user.loc )
 	qdel(src)
-	
+
 
 
 /*

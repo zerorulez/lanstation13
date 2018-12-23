@@ -134,7 +134,7 @@
 
 	attack_self(mob/user as mob)
 		if( (last_vend + 400) < world.time)
-			to_chat(user, "You shake something out of [src]!")
+			to_chat(user, "I shake something out of [src]!")
 			src.vend_prize()
 			src.last_vend = world.time
 		else

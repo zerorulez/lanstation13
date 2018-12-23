@@ -24,7 +24,7 @@
 
 /obj/item/device/instrument/attack_self(mob/user as mob)
 	if(!user.dexterity_check())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
 		return 1
 	interact(user)
 
@@ -92,7 +92,7 @@
 
 /obj/item/device/instrument/saxophone
 	name = "saxophone"
-	desc = "This soothing sound will be sure to leave your audience in tears."
+	desc = "This soothing sound will be sure to leave my audience in tears."
 	icon_state = "saxophone"
 	item_state = "saxophone"
 	instrumentId = "saxophone"

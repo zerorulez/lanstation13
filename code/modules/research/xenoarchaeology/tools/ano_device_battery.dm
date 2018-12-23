@@ -40,7 +40,7 @@
 	if(istype(I, /obj/item/weapon/anobattery))
 		if(!inserted_battery)
 			if(user.drop_item(I, src))
-				to_chat(user, "<span class='notice'>You insert the battery.</span>")
+				to_chat(user, "<span class='notice'>I insert the battery.</span>")
 				inserted_battery = I
 				UpdateSprite()
 	else
@@ -134,7 +134,7 @@
 	if(activated)
 		activated = 0
 		timing = 0
-		src.visible_message("<span class='notice'>\icon[src] [src] buzzes.</span>", "\icon[src]<span class='notice'>You hear something buzz.</span>")
+		src.visible_message("<span class='notice'>\icon[src] [src] buzzes.</span>", "\icon[src]<span class='notice'>I hear something buzz.</span>")
 
 		cooldown = archived_time / 2
 

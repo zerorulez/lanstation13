@@ -111,7 +111,7 @@
 				var/list/new_chamber_2 = list(c_start_x, new_wall_y + 1, c_end_x, c_end_y)
 
 				//To add/remove lists to/from a list, you have to do this: Add(list([your list object])), Remove(list([your list object]))
-				//Otherwise it performs the Add/Remove operation on every object in your list object, instead of the list itself
+				//Otherwise it performs the Add/Remove operation on every object in my list object, instead of the list itself
 				chambers.Remove(list(chamber))
 				chambers.Add(list(new_chamber_1, new_chamber_2))
 
@@ -139,7 +139,7 @@
 				var/list/new_chamber_2 = list(new_wall_x + 1, c_start_y, c_end_x, c_end_y)
 
 				//To add/remove lists to/from a list, you have to do this: Add(list([your list object])), Remove(list([your list object]))
-				//Otherwise it performs the Add/Remove operation on every object in your list object, instead of the list itself
+				//Otherwise it performs the Add/Remove operation on every object in my list object, instead of the list itself
 				chambers.Remove(list(chamber))
 				chambers.Add(list(new_chamber_1, new_chamber_2))
 

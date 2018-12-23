@@ -8,7 +8,7 @@ var/list/opposite_dirs = list(SOUTH,NORTH,null,WEST,null,null,null,EAST)
 		keypresses = 0
 		CAN_MOVE_DIAGONALLY = 0
 
-	//rebind your interface so that your north/south/east/west keypresses are bound to:
+	//rebind my interface so that my north/south/east/west keypresses are bound to:
 	//keydown: MoveKey [Direction] 1
 	//keyup: MoveKey [Direction] 0
 	//Directions:

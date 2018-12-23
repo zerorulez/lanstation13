@@ -7,12 +7,12 @@
 
 //	to_chat(world, "Loc temp: [loc_temp] - Body temp: [bodytemperature] - Fireloss: [getFireLoss()] - Thermal protection: [get_thermal_protection()] - Fire protection: [thermal_protection + add_fire_protection(loc_temp)] - Heat capacity: [environment_heat_capacity] - Location: [loc] - src: [src]")
 
-	//Body temperature is adjusted in two steps. Firstly your body tries to stabilize itself a bit.
+	//Body temperature is adjusted in two steps. Firstly my body tries to stabilize itself a bit.
 	if(stat != DEAD)
 		handle_body_temperature()
 		//log_debug("Adjusting to atmosphere.")
 
-	//After then, it reacts to the surrounding atmosphere based on your thermal protection
+	//After then, it reacts to the surrounding atmosphere based on my thermal protection
 	if(!on_fire) //If you're on fire, you do not heat up or cool down based on surrounding gases
 		if(loc_temp < get_skin_temperature())
 			var/thermal_loss = get_thermal_loss(environment)

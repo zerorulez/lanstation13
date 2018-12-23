@@ -108,7 +108,7 @@
 		L.forceMove(get_turf(src))
 		L.status_flags &= ~GODMODE
 		if(user)
-			to_chat(L, "<b>You have been released from your prison, but you are still bound to [user.name]'s will. Help them suceed in their goals at all costs.</b>")
+			to_chat(L, "<b>I have been released from my prison, but you are still bound to [user.name]'s will. Help them suceed in their goals at all costs.</b>")
 		L.canmove = 1
 		L.cancel_camera()
 
@@ -146,7 +146,7 @@
 						return
 					else
 						//if the player ghosted, you don't need to put his body into crit to successfully soulstone them.
-						to_chat(new_target, "<span class='danger'>You feel your soul getting sucked into the soul stone.</span>")
+						to_chat(new_target, "<span class='danger'>I feel my soul getting sucked into the soul stone.</span>")
 						to_chat(user, "<span class='rose'>The soul stone reacts to the corpse and starts glowing.</span>")
 						capture_soul_process(user,new_target.client,carbonMob)
 			else if(humanTarget)
@@ -173,7 +173,7 @@
 			else if(!carbonMob.isInCrit() && carbonMob.stat != DEAD)
 				to_chat(user, "<span class='warning'>The victim is holding on, weaken them further!</span>")
 			else
-				to_chat(carbonMob, "<span class='danger'>You feel your soul getting sucked into the soul stone.</span>")
+				to_chat(carbonMob, "<span class='danger'>I feel my soul getting sucked into the soul stone.</span>")
 				to_chat(user, "<span class='rose'>The soul stone reacts to the corpse and starts glowing.</span>")
 				capture_soul_process(user,carbonMob.client,carbonMob)
 	else
@@ -203,11 +203,11 @@
 					to_chat(user, "<span class='warning'>The soul stone isn't reacting, looks like this target's soul already reincarnated.</span>")
 					return
 				else
-					to_chat(new_target, "<span class='danger'>You feel your soul getting sucked into the soulstone.</span>")
+					to_chat(new_target, "<span class='danger'>I feel my soul getting sucked into the soulstone.</span>")
 					to_chat(user, "<span class='rose'>The soul stone reacts to the corpse and starts glowing.</span>")
 					capture_soul_process(user,new_target.client,humanHead,humanHead.origin_body)
 		else
-			to_chat(humanBrainMob, "<span class='danger'>You feel your soul getting sucked into the soul stone.</span>")
+			to_chat(humanBrainMob, "<span class='danger'>I feel my soul getting sucked into the soul stone.</span>")
 			to_chat(user, "<span class='rose'>The soul stone reacts to the corpse and starts glowing.</span>")
 			capture_soul_process(user,humanBrainMob.client,humanHead,humanHead.origin_body)
 
@@ -286,7 +286,7 @@
 	item_state = "shard-soulstone2"
 	user.update_inv_hands()
 	name = "Soul Stone: [true_name]"
-	to_chat(shadeMob, "Your soul has been captured! You are now bound to [user.name]'s will, help them suceed in their goals at all costs.")
+	to_chat(shadeMob, "My soul has been captured! You are now bound to [user.name]'s will, help them suceed in their goals at all costs.")
 	to_chat(user, "<span class='notice'>[true_name]'s soul has been ripped from their body and stored within the soul stone.</span>")
 
 	//Necromancer stuff
@@ -353,7 +353,7 @@
 					C.item_state = "shard-soulstone2"
 					U.update_inv_hands()
 					C.name = "Soul Stone: [T.real_name]"
-					to_chat(T, "Your soul has been recaptured by the soul stone, its arcane energies are reknitting your ethereal form")
+					to_chat(T, "My soul has been recaptured by the soul stone, its arcane energies are reknitting my ethereal form")
 					to_chat(U, "<span class='notice'><b>Capture successful!</b>: </span>[T.name]'s has been recaptured and stored within the soul stone.")
 		if("CONSTRUCT")
 			var/obj/structure/constructshell/T = target
@@ -374,8 +374,8 @@
 								ticker.mode.cult+=Z.mind
 							ticker.mode.update_cult_icons_added(Z.mind)
 						qdel(T)
-						to_chat(Z, "<B>You are a Juggernaut. Though slow, your shell can withstand extreme punishment, your body can reflect energy and laser weapons, and you can create temporary shields that blocks pathing and projectiles. You fists can punch people and regular walls appart.</B>")
-						to_chat(Z, "<B>You are still bound to serve your creator, follow their orders and help them complete their goals at all costs.</B>")
+						to_chat(Z, "<B>I am a Juggernaut. Though slow, my shell can withstand extreme punishment, my body can reflect energy and laser weapons, and you can create temporary shields that blocks pathing and projectiles. You fists can punch people and regular walls appart.</B>")
+						to_chat(Z, "<B>I am still bound to serve my creator, follow their orders and help them complete their goals at all costs.</B>")
 						Z.cancel_camera()
 						deleteafter = 1
 
@@ -389,8 +389,8 @@
 								ticker.mode.cult+=Z.mind
 							ticker.mode.update_cult_icons_added(Z.mind)
 						qdel(T)
-						to_chat(Z, "<B>You are a Wraith. Though relatively fragile, you are fast, deadly, and even able to phase through walls for a few seconds. Use it both for surprise attacks and strategic retreats.</B>")
-						to_chat(Z, "<B>You are still bound to serve your creator, follow their orders and help them complete their goals at all costs.</B>")
+						to_chat(Z, "<B>I am a Wraith. Though relatively fragile, you are fast, deadly, and even able to phase through walls for a few seconds. Use it both for surprise attacks and strategic retreats.</B>")
+						to_chat(Z, "<B>I am still bound to serve my creator, follow their orders and help them complete their goals at all costs.</B>")
 						Z.cancel_camera()
 						deleteafter = 1
 
@@ -404,8 +404,8 @@
 								ticker.mode.cult+=Z.mind
 							ticker.mode.update_cult_icons_added(Z.mind)
 						qdel(T)
-						to_chat(Z, "<B>You are an Artificer. You are incredibly weak and fragile, but you can heal both yourself and other constructs (by clicking on yourself/them). You can build (and deconstruct) new walls and floors, or replace existing ones by clicking on them, as well as place pylons that act as light source (these block paths but can be easily broken),</B><I>and most important of all you can produce the tools to create new constructs</I><B> (remember to periodically produce new soulstones for your master, and place empty shells in your hideout or when asked.).</B>")
-						to_chat(Z, "<B>You are still bound to serve your creator, follow their orders and help them complete their goals at all costs.</B>")
+						to_chat(Z, "<B>I am an Artificer. You are incredibly weak and fragile, but you can heal both yourself and other constructs (by clicking on yourself/them). You can build (and deconstruct) new walls and floors, or replace existing ones by clicking on them, as well as place pylons that act as light source (these block paths but can be easily broken),</B><I>and most important of all you can produce the tools to create new constructs</I><B> (remember to periodically produce new soulstones for my master, and place empty shells in my hideout or when asked.).</B>")
+						to_chat(Z, "<B>I am still bound to serve my creator, follow their orders and help them complete their goals at all costs.</B>")
 						Z.cancel_camera()
 						deleteafter = 1
 				if(Z && Z.mind && !iscultist(Z))

@@ -56,11 +56,11 @@
 /obj/machinery/atmospherics/miner/attack_hand(var/mob/user)
 	..()
 	if(!Adjacent(user))
-		to_chat(user, "<span class='warning'>You can't toggle \the [src] from that far away.</span>")
+		to_chat(user, "<span class='warning'>I can't toggle \the [src] from that far away.</span>")
 	else if(anchored)
 		on=!on
 		power_change()
-		to_chat(user, "<span class='warning'>You toggle \the [src] [on ? "on" : "off"].</span>")
+		to_chat(user, "<span class='warning'>I toggle \the [src] [on ? "on" : "off"].</span>")
 	else
 		to_chat(user, "<span class='warning'>\The [src] needs to be bolted to the ground first.</span>")
 
@@ -158,7 +158,7 @@
 
 /obj/machinery/atmospherics/miner/air
 	name = "\improper Air Miner"
-	desc = "You fucking <em>cheater</em>."
+	desc = "I fucking <em>cheater</em>."
 	overlay_color = "#70DBDB"
 
 	on = 0

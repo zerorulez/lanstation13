@@ -19,8 +19,8 @@
 	if(W.sharpness_flags & CHOPWOOD)
 		playsound(src, 'sound/effects/woodcuttingshort.ogg', 50, 1)
 		user.visible_message("<span class='warning'>[user] smashes through \the [src] with \the [W].</span>", \
-							"<span class='notice'>You smash through \the [src].</span>",\
-							"<span class='warning'>You hear the sound of wood being cut</span>"
+							"<span class='notice'>I smash through \the [src].</span>",\
+							"<span class='warning'>I hear the sound of wood being cut</span>"
 							)
 		dismantle_wall()
 	else

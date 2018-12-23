@@ -169,7 +169,7 @@
 
 /datum/game_mode/proc/greet_traitor(var/datum/mind/traitor)
 	to_chat(traitor.current, {"
-	<SPAN CLASS='big bold center red'>You are now a traitor!</SPAN>
+	<SPAN CLASS='big bold center red'>I am now a traitor!</SPAN>
 	"})
 	var/wikiroute = role_wiki[ROLE_TRAITOR]
 	to_chat(traitor.current, "<span class='info'><a HREF='?src=\ref[traitor.current];getwiki=[wikiroute]'>(Wiki Guide)</a></span>")
@@ -205,9 +205,9 @@
 	return 0
 
 /datum/game_mode/proc/add_law_zero(mob/living/silicon/ai/killer)
-	var/law = "Accomplish your objectives at all costs."
-	var/law_borg = "Accomplish your AI's objectives at all costs."
-	to_chat(killer, "<b>Your laws have been changed!</b>")
+	var/law = "Accomplish my objectives at all costs."
+	var/law_borg = "Accomplish my AI's objectives at all costs."
+	to_chat(killer, "<b>My laws have been changed!</b>")
 	killer.set_zeroth_law(law, law_borg)
 	to_chat(killer, "New law: 0. [law]")
 
@@ -326,7 +326,7 @@
 			var/obj/item/device/uplink/hidden/T = new(R)
 			target_radio.hidden_uplink = T
 			target_radio.traitor_frequency = freq
-			to_chat(traitor_mob, "The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name] [loc]. Simply dial the frequency [format_frequency(freq)] to unlock its hidden features.")
+			to_chat(traitor_mob, "The Syndicate have cunningly disguised a Syndicate Uplink as my [R.name] [loc]. Simply dial the frequency [format_frequency(freq)] to unlock its hidden features.")
 			traitor_mob.mind.store_memory("<B>Radio Freq:</B> [format_frequency(freq)] ([R.name] [loc]).")
 			traitor_mob.mind.total_TC += target_radio.hidden_uplink.uses
 		else if (istype(R, /obj/item/device/pda))
@@ -338,7 +338,7 @@
 			var/obj/item/device/pda/P = R
 			P.lock_code = pda_pass
 
-			to_chat(traitor_mob, "The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name] [loc]. Simply enter the code \"[pda_pass]\" into the ringtone select to unlock its hidden features.")
+			to_chat(traitor_mob, "The Syndicate have cunningly disguised a Syndicate Uplink as my [R.name] [loc]. Simply enter the code \"[pda_pass]\" into the ringtone select to unlock its hidden features.")
 			traitor_mob.mind.store_memory("<B>Uplink Passcode:</B> [pda_pass] ([R.name] [loc]).")
 			traitor_mob.mind.total_TC += R.hidden_uplink.uses
 	//Begin code phrase.
@@ -424,4 +424,4 @@
 	traitor_mind.special_role = null
 	update_traitor_icons_removed(traitor_mind)
 //	to_chat(world, "Removed [traitor_mind.current.name] from traitor shit")
-	to_chat(traitor_mind.current, "<span class='danger'><FONT size = 3>The fog clouding your mind clears. You remember nothing from the moment you were implanted until now.(You don't remember who implanted you)</FONT></span>")
+	to_chat(traitor_mind.current, "<span class='danger'><FONT size = 3>The fog clouding my mind clears. You remember nothing from the moment you were implanted until now.(You don't remember who implanted you)</FONT></span>")

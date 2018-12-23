@@ -1,10 +1,10 @@
 /*
  * NOTE FROM SOMEBODY WHO DID SOME HOUSEKEEPING AROUND THIS ASS-CODE
  * There's absolutely no documentation on most of this so I'd like to write this down to help you get a grasp of how this works and how redundant it all is.
- * Let's assume you live in a horrible horrible universe where nobody coded inventory datums yet. Damn. Now let's say you want your new mob to be able to wear a jumpsuit.
+ * Let's assume you live in a horrible horrible universe where nobody coded inventory datums yet. Damn. Now let's say you want my new mob to be able to wear a jumpsuit.
  *
  * First thing the mob needs is a variable for the inventory slot, like var/obj/item/w_uniform = null. Start by the most awful part and modify /obj/item/proc/mob_can_equip()
- * to account for your mob. It has a switch for every slot, and jumpsuits go in under slot_w_uniform, so probably just copypaste how monkeys do it.
+ * to account for my mob. It has a switch for every slot, and jumpsuits go in under slot_w_uniform, so probably just copypaste how monkeys do it.
  *
  * Good, now the item thinks the mob can equip it. Now the mob has to be ACTUALLY be able to equip it. Go and modify or create mob/your_mob/equip_to_slot(). Again, it's a switch of
  * all slots. You'll see that that proc also handles the icon refreshing, so you have to create mob/your_mob/update_inv_w_uniform() as well. Good luck there because iconcode is also ass.
@@ -13,12 +13,12 @@
  * Small detail: Your mob cannot unequip their jumpsuit yet. You need to add it to mob/your_mob/u_equip()
  * Oh yeah, you need to add the new variable for the jumpsuit to mob/your_mob/get_all_slots(). I know, I know, this is why we need inventory datums.
  *
- * Okay, so your mob still has no HUD element for their inventory slot. That takes a /obj/screen/inventory... beats me how most of it works, but you do need to have it point to
+ * Okay, so my mob still has no HUD element for their inventory slot. That takes a /obj/screen/inventory... beats me how most of it works, but you do need to have it point to
  * slot_id = slot_w_uniform and define a new screen_loc for it. I would advise you to just look at code/_onclick/hud/monkey.dm and do the ol' monkey see, monkey do.
  * When you click on that obj/screen/inventory, it calls attack_ui() which by default will just call equip_to_slot_if_possible(item, slot_id)
  * At this point I think you need to handle some UI shitcode in mob/your_mob/update_inv_w_uniform(), something like w_uniform.screen_loc = the_screen_loc_you_defined_earlier
  *
- * For other players to be able to strip and forcibly put on the uniform on your mob, you need to give it a fancy mob/your_mob/show_inv(), and put HREF links that you'll pick up
+ * For other players to be able to strip and forcibly put on the uniform on my mob, you need to give it a fancy mob/your_mob/show_inv(), and put HREF links that you'll pick up
  * in mob/your_mob/Topic() that finally point to handle_strip_slot(). If you search for (href_list["item"]) I'm sure you'll be able to figure this out.
  *
  * Good luck.
@@ -32,7 +32,7 @@
 
 #define is_valid_hand_index(index) ((index > 0) && (index <= held_items.len))
 
-//These procs handle putting stuff in your hand. It's probably best to use these rather than setting l_hand = ...etc
+//These procs handle putting stuff in my hand. It's probably best to use these rather than setting l_hand = ...etc
 //as they handle all relevant stuff like adding it to the player's screen and updating their overlays.
 
 //Returns the thing in our active hand
@@ -195,11 +195,11 @@
 	W.pickup(src)
 	return 1
 
-//Puts the item into your left hand if possible and calls all necessary triggers/updates. returns 1 on success.
+//Puts the item into my left hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(var/obj/item/W)
 	return put_in_hand(GRASP_LEFT_HAND, W)
 
-//Puts the item into your right hand if possible and calls all necessary triggers/updates. returns 1 on success.
+//Puts the item into my right hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_r_hand(var/obj/item/W)
 	return put_in_hand(GRASP_RIGHT_HAND, W)
 
@@ -214,13 +214,13 @@
 
 	if(W.flags & MUSTTWOHAND)
 		if(!W.wield(src, 1))
-			to_chat(src, "You need both hands to pick up \the [W].")
+			to_chat(src, "I need both hands to pick up \the [W].")
 			return 0
 
 	if(W.cant_drop) //if the item can't be dropped
 		var/I = is_holding_item(W) //AND the item is currently being held in one of the mob's hands
 		if(I)
-			to_chat(src, "You can't pry \the [W] out of your [get_index_limb_name(I)]!")
+			to_chat(src, "I can't pry \the [W] out of my [get_index_limb_name(I)]!")
 			return 0
 
 	return 1

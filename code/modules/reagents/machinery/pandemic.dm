@@ -291,7 +291,7 @@
 			to_chat(user, "<span class='warning'>\The [I] is too big to fit.</span>")
 			return
 		if(!user.drop_item(I, src))
-			to_chat(user, "<span class='warning'>You can't let go of \the [I]!</span>")
+			to_chat(user, "<span class='warning'>I can't let go of \the [I]!</span>")
 			return
 
 		src.beaker =  I
@@ -300,7 +300,7 @@
 			R.uneq_active()
 			targetMoveKey =  R.on_moved.Add(src, "user_moved")
 
-		to_chat(user, "You add the beaker to the machine!")
+		to_chat(user, "I add the beaker to the machine!")
 
 		src.updateUsrDialog()
 		overlays += image(icon = icon, icon_state = "mixer_overlay")

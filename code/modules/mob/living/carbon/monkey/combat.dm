@@ -12,7 +12,7 @@
 
 /mob/living/carbon/monkey/unarmed_attack_mob(mob/living/)
 	if(istype(wear_mask, /obj/item/clothing/mask/muzzle))
-		to_chat(src, "<span class='notice'>You can't do this with \the [wear_mask] on!</span>")
+		to_chat(src, "<span class='notice'>I can't do this with \the [wear_mask] on!</span>")
 		return
 
 	return ..()

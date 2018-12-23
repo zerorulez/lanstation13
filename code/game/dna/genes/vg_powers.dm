@@ -14,11 +14,11 @@ Obviously, requires DNA2.
 /datum/dna/gene/basic/grant_spell/hulk
 	name = "Hulk"
 	desc = "Allows the subject to become the motherfucking Hulk."
-	activation_messages = list("Your muscles hurt.")
-	deactivation_messages = list("Your muscles quit tensing.")
+	activation_messages = list("My muscles hurt.")
+	deactivation_messages = list("My muscles quit tensing.")
 
-	drug_activation_messages=list("You feel strong! You must've been working out lately.")
-	drug_deactivation_messages=list("You return to your old lifestyle.")
+	drug_activation_messages=list("I feel strong! You must've been working out lately.")
+	drug_deactivation_messages=list("I return to my old lifestyle.")
 
 	flags = GENE_UNNATURAL // Do NOT spawn on roundstart.
 
@@ -39,7 +39,7 @@ Obviously, requires DNA2.
 			//M.dna.SetSEState(HULKBLOCK,0)
 			M.update_mutations()		//update our mutation overlays
 			M.update_body()
-			to_chat(M, "<span class='warning'>You suddenly feel very weak.</span>")
+			to_chat(M, "<span class='warning'>I suddenly feel very weak.</span>")
 			M.Knockdown(3)
 			M.emote("collapse")
 
@@ -66,7 +66,7 @@ Obviously, requires DNA2.
 
 /spell/targeted/genetic/hulk/cast(list/targets, mob/user)
 	if (istype(user.loc,/mob))
-		to_chat(usr, "<span class='warning'>You can't hulk out right now!</span>")
+		to_chat(usr, "<span class='warning'>I can't hulk out right now!</span>")
 		return 1
 	for(var/mob/living/carbon/human/M in targets)
 		M.hulk_time = world.time + src.duration
@@ -81,11 +81,11 @@ Obviously, requires DNA2.
 /datum/dna/gene/basic/farsight
 	name = "Farsight"
 	desc = "Increases the subjects ability to see things from afar."
-	activation_messages = list("Your eyes focus.")
-	deactivation_messages = list("Your eyes return to normal.")
+	activation_messages = list("My eyes focus.")
+	deactivation_messages = list("My eyes return to normal.")
 
 	drug_activation_messages=list("The world becomes huge! You feel like an ant.")
-	drug_deactivation_messages=list("You no longer feel like an insect.")
+	drug_deactivation_messages=list("I no longer feel like an insect.")
 
 	mutation = M_FARSIGHT
 
@@ -113,8 +113,8 @@ Obviously, requires DNA2.
 /datum/dna/gene/basic/noir
 	name="Noir"
 	desc = "In recent years, there's been a real push towards 'Detective Noir' movies, but since the last black and white camera was lost many centuries ago, Scientists had to develop a way to turn any movie noir."
-	activation_messages=list("The Station's bright coloured light hits your eyes for the last time, and fades into a more appropriate tone, something's different about this place, but you can't put your finger on it. You feel a need to check out the bar, maybe get to the bottom of what's going on in this godforsaken place.")
-	deactivation_messages = list("You now feel soft boiled.")
+	activation_messages=list("The Station's bright coloured light hits my eyes for the last time, and fades into a more appropriate tone, something's different about this place, but you can't put my finger on it. You feel a need to check out the bar, maybe get to the bottom of what's going on in this godforsaken place.")
+	deactivation_messages = list("I now feel soft boiled.")
 
 	mutation=M_NOIR
 

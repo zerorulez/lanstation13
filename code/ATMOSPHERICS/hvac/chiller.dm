@@ -46,7 +46,7 @@
 		onclose(user, "aircond")
 	else
 		on = !on
-		user.visible_message("<span class='notice'>[user] switches [on ? "on" : "off"] the [src].</span>","<span class='notice'>You switch [on ? "on" : "off"] the [src].</span>")
+		user.visible_message("<span class='notice'>[user] switches [on ? "on" : "off"] the [src].</span>","<span class='notice'>I switch [on ? "on" : "off"] the [src].</span>")
 		update_icon()
 	return
 
@@ -73,7 +73,7 @@
 					usr.put_in_hands(cell)
 					cell.add_fingerprint(usr)
 					cell = null
-					usr.visible_message("<span class='notice'>[usr] removes the power cell from \the [src].</span>", "<span class='notice'>You remove the power cell from \the [src].</span>")
+					usr.visible_message("<span class='notice'>[usr] removes the power cell from \the [src].</span>", "<span class='notice'>I remove the power cell from \the [src].</span>")
 
 
 			if("cellinstall")
@@ -84,7 +84,7 @@
 							cell = C
 							C.add_fingerprint(usr)
 
-							usr.visible_message("<span class='notice'>[usr] inserts a power cell into \the [src].</span>", "<span class='notice'>You insert the power cell into \the [src].</span>")
+							usr.visible_message("<span class='notice'>[usr] inserts a power cell into \the [src].</span>", "<span class='notice'>I insert the power cell into \the [src].</span>")
 
 		src.updateDialog()
 	return

@@ -68,7 +68,7 @@
 
 	if (istype(W, /obj/item/device/measuring_tape))
 		var/obj/item/device/measuring_tape/P = W
-		user.visible_message("<span class='notice>[user] extends [P] towards [src].","<span class='notice'>You extend [P] towards [src].</span></span>")
+		user.visible_message("<span class='notice>[user] extends [P] towards [src].","<span class='notice'>I extend [P] towards [src].</span></span>")
 		to_chat(user, "<span class='notice'>\icon[P] [src] has been excavated to a depth of [2*src.excavation_level]cm.</span>")
 		return
 
@@ -86,7 +86,7 @@
 
 			busy = 0
 
-			to_chat(user, "<span class='notice'>You finish [P.drill_verb] [src].</span>")
+			to_chat(user, "<span class='notice'>I finish [P.drill_verb] [src].</span>")
 			excavation_level += P.excavation_amount
 
 			playsound(src, 'sound/items/shovel.ogg', 50, 1)
@@ -94,7 +94,7 @@
 			if(excavation_level > 100)
 				//failure
 				src.visible_message("<span class='danger'>\The [src] suddenly crumbles away.</span>")
-				to_chat(user, "<span class='rose'>\The [src] has disintegrated under your onslaught, any secrets it was holding are long gone.</span>")
+				to_chat(user, "<span class='rose'>\The [src] has disintegrated under my onslaught, any secrets it was holding are long gone.</span>")
 				returnToPool(src)
 				return
 
@@ -109,7 +109,7 @@
 						if(X.my_effect)
 							X.my_effect.artifact_id = artifact_find.artifact_id
 				else
-					to_chat(user, "<span class='notice'>[src] has been whittled away under your careful excavation, but there was nothing of interest inside.</span>")
+					to_chat(user, "<span class='notice'>[src] has been whittled away under my careful excavation, but there was nothing of interest inside.</span>")
 				returnToPool(src)
 		else
 			busy = 0

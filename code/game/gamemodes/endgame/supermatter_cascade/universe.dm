@@ -39,7 +39,7 @@
 // Apply changes when entering state
 /datum/universal_state/supermatter_cascade/OnEnter()
 	set background = 1
-	to_chat(world, "<span class='sinister' style='font-size:22pt'>You are blinded by a brilliant flash of energy.</span>")
+	to_chat(world, "<span class='sinister' style='font-size:22pt'>I am blinded by a brilliant flash of energy.</span>")
 
 	world << sound('sound/effects/cascade.ogg')
 
@@ -198,7 +198,7 @@
 			M.objectives += live
 
 		if(failed_objectives)
-			to_chat(M, "<span class='danger'><font size=3>You have permitted the universe to collapse and have therefore failed your objectives.</font></span>")
+			to_chat(M, "<span class='danger'><font size=3>I have permitted the universe to collapse and have therefore failed my objectives.</font></span>")
 
 		// Delete all runes
 		for(var/obj/effect/rune/R in rune_list)
@@ -207,13 +207,13 @@
 
 		if(M in ticker.mode.revolutionaries)
 			ticker.mode.revolutionaries -= M
-			to_chat(M, "<span class='danger'><FONT size = 3>The massive pulse of energy clears your mind.  You are no longer a revolutionary.</FONT></span>")
+			to_chat(M, "<span class='danger'><FONT size = 3>The massive pulse of energy clears my mind.  You are no longer a revolutionary.</FONT></span>")
 			ticker.mode.update_rev_icons_removed(M)
 			M.special_role = null
 
 		if(M in ticker.mode.head_revolutionaries)
 			ticker.mode.head_revolutionaries -= M
-			to_chat(M.current, "<span class='danger'><FONT size = 3>The massive pulse of energy clears your mind.  You are no longer a head revolutionary.</FONT></span>")
+			to_chat(M.current, "<span class='danger'><FONT size = 3>The massive pulse of energy clears my mind.  You are no longer a head revolutionary.</FONT></span>")
 			ticker.mode.update_rev_icons_removed(M)
 			M.special_role = null
 
@@ -225,7 +225,7 @@
 			if (istype(cult))
 				cult.memoize_cult_objectives(M)
 			to_chat(M.current, "<span class='danger'><FONT size = 3>Nar-Sie loses interest in this plane. You are no longer a cultist.</FONT></span>")
-			to_chat(M.current, "<span class='danger'>You find yourself unable to mouth the words of the forgotten...</span>")
+			to_chat(M.current, "<span class='danger'>I find yourself unable to mouth the words of the forgotten...</span>")
 			M.current.remove_language(LANGUAGE_CULT)
 			M.memory = ""
 
@@ -233,7 +233,7 @@
 			ticker.mode.wizards -= M
 			M.special_role = null
 			M.current.spellremove(M.current, config.feature_object_spell_system? "object":"verb")
-			to_chat(M.current, "<span class='danger'><FONT size = 3>Your powers ebb and you feel weak. You are no longer a wizard.</FONT></span>")
+			to_chat(M.current, "<span class='danger'><FONT size = 3>My powers ebb and you feel weak. You are no longer a wizard.</FONT></span>")
 			ticker.mode.update_wizard_icons_removed(M)
 
 		if(M in ticker.mode.apprentices)
@@ -251,7 +251,7 @@
 			if(M.changeling)
 				qdel(M.changeling)
 				M.changeling = null
-			to_chat(M.current, "<span class='danger'><FONT size = 3>You grow weak and lose your powers. You are no longer a changeling and are stuck in your current form.</FONT></span>")
+			to_chat(M.current, "<span class='danger'><FONT size = 3>I grow weak and lose my powers. You are no longer a changeling and are stuck in my current form.</FONT></span>")
 
 		if(M in ticker.mode.vampires)
 			ticker.mode.vampires -= M
@@ -260,7 +260,7 @@
 			if(M.vampire)
 				qdel(M.vampire)
 				M.vampire = null
-			to_chat(M.current, "<span class='danger'><FONT size = 3>You grow weak and lose your powers. You are no longer a vampire and are stuck in your current form.</FONT></span>")
+			to_chat(M.current, "<span class='danger'><FONT size = 3>I grow weak and lose my powers. You are no longer a vampire and are stuck in my current form.</FONT></span>")
 
 		if(M in ticker.mode.syndicates)
 			ticker.mode.syndicates -= M
@@ -268,12 +268,12 @@
 			M.special_role = null
 			//for (var/datum/objective/nuclear/O in objectives)
 			//	objectives-=O
-			to_chat(M.current, "<span class='danger'><FONT size = 3>Your masters are likely dead or dying. You are no longer a syndicate operative.</FONT></span>")
+			to_chat(M.current, "<span class='danger'><FONT size = 3>My masters are likely dead or dying. You are no longer a syndicate operative.</FONT></span>")
 
 		if(M in ticker.mode.traitors)
 			ticker.mode.traitors -= M
 			M.special_role = null
-			to_chat(M.current, "<span class='danger'><FONT size = 3>Your masters are likely dead or dying.  You are no longer a traitor.</FONT></span>")
+			to_chat(M.current, "<span class='danger'><FONT size = 3>My masters are likely dead or dying.  You are no longer a traitor.</FONT></span>")
 			if(isAI(M.current))
 				var/mob/living/silicon/ai/A = M.current
 				A.set_zeroth_law("")

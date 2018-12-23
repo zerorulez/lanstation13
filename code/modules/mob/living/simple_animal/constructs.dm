@@ -110,7 +110,7 @@
 			to_chat(M, "<span class='notice'>[src] has nothing to mend.</span>")
 			return
 		health = min(maxHealth, health + 5) // Constraining health to maxHealth
-		M.visible_message("[M] mends some of \the <EM>[src]'s</EM> wounds.","You mend some of \the <em>[src]'s</em> wounds.")
+		M.visible_message("[M] mends some of \the <EM>[src]'s</EM> wounds.","I mend some of \the <em>[src]'s</em> wounds.")
 	else
 		M.unarmed_attack_mob(src)
 
@@ -347,11 +347,11 @@
 /client/proc/summon_cultist()
 	set category = "Behemoth"
 	set name = "Summon Cultist (300)"
-	set desc = "Teleport a cultist to your location"
+	set desc = "Teleport a cultist to my location"
 	if (istype(usr,/mob/living/simple_animal/constructbehemoth))
 
 		if(usr.energy<300)
-			to_chat(usr, "<span class='warning'>You do not have enough power stored!</span>")
+			to_chat(usr, "<span class='warning'>I do not have enough power stored!</span>")
 			return
 
 		if(usr.stat)

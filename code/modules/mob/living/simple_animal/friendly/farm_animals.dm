@@ -138,7 +138,7 @@
 
 /mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M as mob)
 	if(!stat && M.a_intent == I_DISARM && icon_state != icon_dead)
-		M.visible_message("<span class='warning'>[M] tips over [src].</span>","<span class='notice'>You tip over [src].</span>")
+		M.visible_message("<span class='warning'>[M] tips over [src].</span>","<span class='notice'>I tip over [src].</span>")
 		Knockdown(30)
 		icon_state = icon_dead
 		spawn(rand(20,50))
@@ -234,10 +234,10 @@
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/grown/wheat)) //feedin' dem chickens
 		if(!stat && eggsleft < 8)
 			if(!user.drop_item(O))
-				user << "<span class='notice'>You can't let go of \the [O]!</span>"
+				user << "<span class='notice'>I can't let go of \the [O]!</span>"
 				return
 
-			user.visible_message("<span class='notice'>[user] feeds [O] to [name]! It clucks happily.</span>","<span class='notice'>You feed [O] to [name]! It clucks happily.</span>")
+			user.visible_message("<span class='notice'>[user] feeds [O] to [name]! It clucks happily.</span>","<span class='notice'>I feed [O] to [name]! It clucks happily.</span>")
 			qdel(O)
 			eggsleft += rand(1, 4)
 //			to_chat(world, eggsleft)
@@ -338,10 +338,10 @@
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/chickenshroom)) //Pigs like mushrooms
 		if(!stat && size < SIZE_BIG)
 			if(!user.drop_item(O))
-				user << "<span class='notice'>You can't let go of \the [O]!</span>"
+				user << "<span class='notice'>I can't let go of \the [O]!</span>"
 				return
 
-			user.visible_message("<span class='notice'>[user] feeds [O] to [name].</span>","<span class='notice'>You feed [O] to [name].</span>")
+			user.visible_message("<span class='notice'>[user] feeds [O] to [name].</span>","<span class='notice'>I feed [O] to [name].</span>")
 			qdel(O)
 			fat += rand(15,25)
 	else

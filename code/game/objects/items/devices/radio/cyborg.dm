@@ -33,7 +33,7 @@
 					keyslot = null
 
 			recalculateChannels()
-			to_chat(user, "You pop out the encryption key in the radio!")
+			to_chat(user, "I pop out the encryption key in the radio!")
 
 		else
 			to_chat(user, "This radio doesn't have any encryption keys!")

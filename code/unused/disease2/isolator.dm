@@ -38,7 +38,7 @@
 		user.drop_item()
 		B.forceMove(src)
 		if(istype(B,/obj/item/weapon/reagent_containers/syringe))
-			to_chat(user, "You add the syringe to the machine!")
+			to_chat(user, "I add the syringe to the machine!")
 			src.updateUsrDialog()
 			icon_state = "isolator_in"
 

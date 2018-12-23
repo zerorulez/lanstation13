@@ -116,10 +116,10 @@
 		else if(istype(clong, /mob))
 			if(istype(clong, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = clong
-				H.visible_message("<span class='danger'>[H.name] is penetrated by an immovable rod!</span>" , "<span class='userdanger'>The rod penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
+				H.visible_message("<span class='danger'>[H.name] is penetrated by an immovable rod!</span>" , "<span class='userdanger'>The rod penetrates you!</span>" , "<span class ='danger'>I hear a CLANG!</span>")
 				H.gib()
 			else if(clong.density || (istype(clong,/mob/living) && prob(10))) //Only 1 Ian was harmed in the coding of this object, RIP
-				clong.visible_message("<span class='danger'>[clong] is scraped by an immovable rod!</span>" , "<span class='userdanger'>The rod scrapes part of you off!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
+				clong.visible_message("<span class='danger'>[clong] is scraped by an immovable rod!</span>" , "<span class='userdanger'>The rod scrapes part of you off!</span>" , "<span class ='danger'>I hear a CLANG!</span>")
 				clong.ex_act(2)
 
 		if(prob(25) && (!clong || !clong.density || clong.gcDestroyed)) //did we just clear some shit?

@@ -32,7 +32,7 @@ var/global/list/hasbeendiona = list() // Stores ckeys and a timestamp for ghost 
 
 	if(istype(W,/obj/item/weapon/reagent_containers))
 
-		to_chat(user, "You inject the contents of the syringe into the seeds.")
+		to_chat(user, "I inject the contents of the syringe into the seeds.")
 
 		var/datum/reagent/blood/B
 
@@ -47,7 +47,7 @@ var/global/list/hasbeendiona = list() // Stores ckeys and a timestamp for ghost 
 			if(!source.client && source.mind)
 				var/mob/dead/observer/O = get_ghost_from_mind(source.mind)
 				if(O && O.client && config.revival_pod_plants)
-					to_chat(O, "<span class='interface big'><span class='bold'>Your blood has been placed into a replica pod seed. Return to your body if you want to be returned to life as a pod person!</span> \)
+					to_chat(O, "<span class='interface big'><span class='bold'>My blood has been placed into a replica pod seed. Return to my body if you want to be returned to life as a pod person!</span> \)
 						(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[O];reentercorpse=1'>click here!</a>)</span>"
 					break
 		else
@@ -73,9 +73,9 @@ var/global/list/hasbeendiona = list() // Stores ckeys and a timestamp for ghost 
 
 
 	if(beingharvested)
-		to_chat(user, ("<span class='warning'>You can only harvest the pod once!</span>"))
+		to_chat(user, ("<span class='warning'>I can only harvest the pod once!</span>"))
 	else
-		user.visible_message("<span class='notice'>[user] carefully begins to open the pod...</span>","<span class='notice'>You carefully begin to open the pod...</span>")
+		user.visible_message("<span class='notice'>[user] carefully begins to open the pod...</span>","<span class='notice'>I carefully begin to open the pod...</span>")
 		beingharvested = 1
 
 	//If a sample is injected (and revival is allowed) the plant will be controlled by the original donor.
@@ -180,10 +180,10 @@ var/global/list/hasbeendiona = list() // Stores ckeys and a timestamp for ghost 
 		// -- End mode specific stuff
 
 
-	to_chat(podman, "<span class='good'><B>You awaken slowly, feeling your sap stir into sluggish motion as the warm air caresses your bark.</B></span>")
+	to_chat(podman, "<span class='good'><B>I awaken slowly, feeling my sap stir into sluggish motion as the warm air caresses my bark.</B></span>")
 	if(source && ckey && podman.ckey == ckey && !ghost)
 		to_chat(podman, "<B>Memories of a life as [source] drift oddly through a mind unsuited for them, like a skin of oil over a fathomless lake.</B>")
-	to_chat(podman, "<B>You are now one of the Dionaea, a race of drifting interstellar plantlike creatures that sometimes share their seeds with human traders.</B>")
+	to_chat(podman, "<B>I am now one of the Dionaea, a race of drifting interstellar plantlike creatures that sometimes share their seeds with human traders.</B>")
 	to_chat(podman, "<B>Too much darkness will send you into shock and starve you, but light will help you heal.</B>")
 	if(!realName)
 		var/newname = input(podman,"Enter a name, or leave blank for the default name.", "Name change","") as text

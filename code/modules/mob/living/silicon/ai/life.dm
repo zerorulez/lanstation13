@@ -86,7 +86,7 @@
 				if (aiRestorePowerRoutine==0)
 					aiRestorePowerRoutine = 1
 
-					to_chat(src, "You've lost power!")
+					to_chat(src, "I've lost power!")
 					spawn(20)
 						if(!aiRestorePowerRoutine)
 							return // Checking for premature changes.
@@ -162,7 +162,7 @@
 									//bring up APC dialog
 									theAPC.attack_ai(src)
 									aiRestorePowerRoutine = 3
-									to_chat(src, "Here are your current laws:")
+									to_chat(src, "Here are my current laws:")
 									show_laws()
 							spawn(50)
 							theAPC = null

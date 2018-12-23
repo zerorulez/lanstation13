@@ -144,5 +144,5 @@ obj/item/clothing/mask/bandana/red
 
 obj/item/clothing/mask/joy
 	name = "joy mask"
-	desc = "Express your happiness or hide your sorrows with this laughing face with crying tears of joy cutout."
+	desc = "Express my happiness or hide my sorrows with this laughing face with crying tears of joy cutout."
 	icon_state = "joy"

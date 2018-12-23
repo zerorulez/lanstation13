@@ -29,7 +29,7 @@
 		if(grenades.len < max_grenades)
 			if(user.drop_item(I, src))
 				grenades += I
-				to_chat(user, "<span class='notice'>You load the [I.name] into the [src.name].</span>")
+				to_chat(user, "<span class='notice'>I load the [I.name] into the [src.name].</span>")
 				to_chat(user, "<span class='notice'>[grenades.len] / [max_grenades] grenades loaded.</span>")
 		else
 			to_chat(user, "<span class='warning'>The [src.name] cannot hold more grenades.</span>")
@@ -53,7 +53,7 @@
 /obj/item/weapon/gun/grenadelauncher/proc/fire_grenade(atom/target, mob/user)
 	for(var/mob/O in viewers(world.view, user))
 		O.show_message(text("<span class='warning'>[] fired a grenade!</span>", user), 1)
-	to_chat(user, "<span class='warning'>You fire the grenade launcher!</span>")
+	to_chat(user, "<span class='warning'>I fire the grenade launcher!</span>")
 	var/obj/item/weapon/grenade/chem_grenade/F = grenades[1] //Now with less copypasta!
 	grenades -= F
 	F.forceMove(user.loc)

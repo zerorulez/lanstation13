@@ -8,7 +8,7 @@
 		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
 		return
 
-	var/information = alert(src, "Please be aware that this may freeze up your game for a few seconds depending on how many broken polls there are. Don't do this unless neccessary, and MAKE SURE NOBODY IS IN THE PROCESS OF CURRENTLY MAKING A POLL!","READ THIS FIRST","Cancel","I Understand")
+	var/information = alert(src, "Please be aware that this may freeze up my game for a few seconds depending on how many broken polls there are. Don't do this unless neccessary, and MAKE SURE NOBODY IS IN THE PROCESS OF CURRENTLY MAKING A POLL!","READ THIS FIRST","Cancel","I Understand")
 	if(information == "Cancel")
 		return
 

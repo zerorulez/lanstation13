@@ -45,10 +45,10 @@
 				else
 					return
 				authorised = 1
-				to_chat(user, "<span class='notice'>You authorised the circuit network!</span>")
+				to_chat(user, "<span class='notice'>I authorised the circuit network!</span>")
 				updateDialog()
 			else
-				to_chat(user, "<span class='notice'>You must select a camera network circuit!</span>")
+				to_chat(user, "<span class='notice'>I must select a camera network circuit!</span>")
 		else if(istype(I,/obj/item/weapon/screwdriver))
 			secured = !secured
 			user.visible_message("<span class='notice'>The [src] can [secured ? "no longer" : "now"] be modified.</span>")
@@ -115,10 +115,10 @@
 					else
 						return
 					authorised = 1
-					to_chat(usr, "<span class='notice'>You authorised the circuit network!</span>")
+					to_chat(usr, "<span class='notice'>I authorised the circuit network!</span>")
 					updateDialog()
 				else
-					to_chat(usr, "<span class='notice'>You must select a camera network circuit!</span>")
+					to_chat(usr, "<span class='notice'>I must select a camera network circuit!</span>")
 		else if( href_list["removeauth"] )
 			authorised = 0
 		updateDialog()

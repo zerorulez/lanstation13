@@ -58,7 +58,7 @@
 		if (href_list["attack"])
 			src.blocked = 1
 			var/attackamt = rand(2,6)
-			src.temp = "You attack for [attackamt] damage!"
+			src.temp = "I attack for [attackamt] damage!"
 			src.master.updateUsrDialog()
 
 			sleep(10)
@@ -69,7 +69,7 @@
 			src.blocked = 1
 			var/pointamt = rand(1,3)
 			var/healamt = rand(6,8)
-			src.temp = "You use [pointamt] magic to heal for [healamt] damage!"
+			src.temp = "I use [pointamt] magic to heal for [healamt] damage!"
 			src.master.updateUsrDialog()
 
 			sleep(10)
@@ -82,7 +82,7 @@
 		else if (href_list["charge"])
 			src.blocked = 1
 			var/chargeamt = rand(4,7)
-			src.temp = "You regain [chargeamt] points"
+			src.temp = "I regain [chargeamt] points"
 			src.player_mp += chargeamt
 
 			src.master.updateUsrDialog()
@@ -109,14 +109,14 @@
 
 	else if ((src.enemy_mp <= 5) && (prob(70)))
 		var/stealamt = rand(2,3)
-		src.temp = "[src.enemy_name] steals [stealamt] of your power!"
+		src.temp = "[src.enemy_name] steals [stealamt] of my power!"
 		src.player_mp -= stealamt
 		src.master.updateUsrDialog()
 
 		if (src.player_mp <= 0)
 			src.gameover = 1
 			sleep(10)
-			src.temp = "You have been drained! GAME OVER"
+			src.temp = "I have been drained! GAME OVER"
 
 	else if ((src.enemy_hp <= 10) && (src.enemy_mp > 4))
 		src.temp = "[src.enemy_name] heals for 4 health!"
@@ -130,7 +130,7 @@
 
 	if ((src.player_mp <= 0) || (src.player_hp <= 0))
 		src.gameover = 1
-		src.temp = "You have been crushed! GAME OVER"
+		src.temp = "I have been crushed! GAME OVER"
 
 	src.blocked = 0
 	return

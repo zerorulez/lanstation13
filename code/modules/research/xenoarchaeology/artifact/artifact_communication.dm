@@ -16,7 +16,7 @@
 	if(istype(W,/obj/item/commstone))
 		if((W in allstones) && remaining < 6)
 			if(user.drop_item(W, src))
-				to_chat(user, "<span class='notice'>You place one of the strange stones back onto the ancient device, it snaps into place.</span>")
+				to_chat(user, "<span class='notice'>I place one of the strange stones back onto the ancient device, it snaps into place.</span>")
 	..()
 
 /obj/machinery/communication/attack_ghost(mob/user as mob)
@@ -31,7 +31,7 @@
 	if(contents.len)
 		var/obj/item/commstone/stone = contents[1]
 		user.put_in_hands(stone)
-		to_chat(user, "<span class='notice'>You delicately remove one of the strange stones from the ancient device.</span>")
+		to_chat(user, "<span class='notice'>I delicately remove one of the strange stones from the ancient device.</span>")
 		return
 	if(remaining)
 		var/obj/item/commstone/stone = new(remaining)
@@ -39,7 +39,7 @@
 		stone.commdevice = src
 		allstones += stone
 		remaining--
-		to_chat(user, "<span class='notice'>You delicately remove one of the strange stones from the ancient device.</span>")
+		to_chat(user, "<span class='notice'>I delicately remove one of the strange stones from the ancient device.</span>")
 		return
 
 /obj/machinery/communication/examine(mob/user as mob)
@@ -67,7 +67,7 @@
 
 /obj/item/commstone
 	name = "Strange Stone"
-	desc = "You can hear small voices coming from within, they whisper through to you a soft but persistent message - 'use .y'"
+	desc = "I can hear small voices coming from within, they whisper through to you a soft but persistent message - 'use .y'"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "crystal1"
 	w_class = W_CLASS_SMALL

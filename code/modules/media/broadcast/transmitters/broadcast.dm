@@ -106,7 +106,7 @@
 		if(do_after(user, src,40))
 			playsound(loc, 'sound/items/Welder.ogg', 100, 1)
 			integrity = 100
-			to_chat(user, "<span class='notice'>You repair the blown fuses on [src].</span>")
+			to_chat(user, "<span class='notice'>I repair the blown fuses on [src].</span>")
 
 /obj/machinery/media/transmitter/broadcast/attack_ai(var/mob/user as mob)
 	src.add_hiddenprint(user)

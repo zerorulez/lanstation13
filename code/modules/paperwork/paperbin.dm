@@ -39,7 +39,7 @@
 				if(usr == over_object) //It's the user!
 					if( !usr.get_active_hand() )		//if active hand is empty
 						usr.put_in_hands(src)
-						usr.visible_message("<span class='notice'>[usr] picks up the [src].</span>", "<span class='notice'>You pick up \the [src].</span>")
+						usr.visible_message("<span class='notice'>[usr] picks up the [src].</span>", "<span class='notice'>I pick up \the [src].</span>")
 	return
 
 
@@ -65,7 +65,7 @@
 		update_icon()
 		P.forceMove(user.loc)
 		user.put_in_hands(P)
-		to_chat(user, "<span class='notice'>You take [P] out of the [src].</span>")
+		to_chat(user, "<span class='notice'>I take [P] out of the [src].</span>")
 	else
 		to_chat(user, "<span class='notice'>[src] is empty!</span>")
 
@@ -78,7 +78,7 @@
 		return
 
 	if(user.drop_item(i, src))
-		to_chat(user, "<span class='notice'>You put [i] in [src].</span>")
+		to_chat(user, "<span class='notice'>I put [i] in [src].</span>")
 		papers.Add(i)
 		amount++
 		update_icon()
@@ -94,33 +94,33 @@
 					var/obj/item/weapon/paper/talisman/T = P
 					switch(T.imbue)
 						if("newtome")
-							to_chat(user, "<span class='info'>You spot a Spawn Arcane Tome talisman on top.</span>")
+							to_chat(user, "<span class='info'>I spot a Spawn Arcane Tome talisman on top.</span>")
 						if("armor")
-							to_chat(user, "<span class='info'>You spot a Cult Armor talisman on top.</span>")
+							to_chat(user, "<span class='info'>I spot a Cult Armor talisman on top.</span>")
 						if("emp")
-							to_chat(user, "<span class='info'>You spot an EMP talisman on top.</span>")
+							to_chat(user, "<span class='info'>I spot an EMP talisman on top.</span>")
 						if("conceal")
-							to_chat(user, "<span class='info'>You spot an Hide Runes talisman on top.</span>")
+							to_chat(user, "<span class='info'>I spot an Hide Runes talisman on top.</span>")
 						if("revealrunes")
-							to_chat(user, "<span class='info'>You spot a Reveal Runes talisman on top.</span>")
+							to_chat(user, "<span class='info'>I spot a Reveal Runes talisman on top.</span>")
 						if("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "balaq", "mgar", "karazet", "geeri")
-							to_chat(user, "<span class='info'>You spot a Teleport talisman on top, linked to <i>[T.imbue]</i></span>")
+							to_chat(user, "<span class='info'>I spot a Teleport talisman on top, linked to <i>[T.imbue]</i></span>")
 						if("communicate")
-							to_chat(user, "<span class='info'>You spot a Communicate talisman on top.</span>")
+							to_chat(user, "<span class='info'>I spot a Communicate talisman on top.</span>")
 						if("deafen")
-							to_chat(user, "<span class='info'>You spot a Deafen talisman on top.</span>")
+							to_chat(user, "<span class='info'>I spot a Deafen talisman on top.</span>")
 						if("blind")
-							to_chat(user, "<span class='info'>You spot a Blind talisman on top.</span>")
+							to_chat(user, "<span class='info'>I spot a Blind talisman on top.</span>")
 						if("runestun")
-							to_chat(user, "<span class='info'>You spot a Stun talisman on top.</span>")
+							to_chat(user, "<span class='info'>I spot a Stun talisman on top.</span>")
 						if("supply")
-							to_chat(user, "<span class='info'>You spot a Supply talisman on top.</span>")
+							to_chat(user, "<span class='info'>I spot a Supply talisman on top.</span>")
 						else
-							to_chat(user, "<span class='info'>You spot a weird talisman on top.</span>")
+							to_chat(user, "<span class='info'>I spot a weird talisman on top.</span>")
 				else
 					to_chat(user, "<span class='info'>The paper on top has some bloody markings on it.</span>")
 			else if(P.info)
-				to_chat(user, "<span class='info'>You notice some writings on the top paper. <a HREF='?src=\ref[user];lookitem=\ref[P]'>Take a closer look.</a></span>")
+				to_chat(user, "<span class='info'>I notice some writings on the top paper. <a HREF='?src=\ref[user];lookitem=\ref[P]'>Take a closer look.</a></span>")
 	else
 		to_chat(user, "<span class='info'>There are no papers in the bin.</span>")
 

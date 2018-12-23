@@ -68,7 +68,7 @@
 	switch(rand(0,2))
 		if(0) //damage
 			var/dmg = rand(10,20)
-			to_chat(L, "<span class='userdanger'>Pain surges through your body and horrible visions flash through your mind!</span>")
+			to_chat(L, "<span class='userdanger'>Pain surges through my body and horrible visions flash through my mind!</span>")
 			L.emote("scream", , , 1)
 			L.adjustBruteLoss(dmg)
 		if(1) //deaf
@@ -79,7 +79,7 @@
 			H.ear_damage += rand(1, 3)
 
 			if(H.ear_deaf <= 0)
-				to_chat(L, "<span class='userdanger'>All of the sudden, horrifying screams start filling your head. You can't hear anything else aside from them!</span>")
+				to_chat(L, "<span class='userdanger'>All of the sudden, horrifying screams start filling my head. You can't hear anything else aside from them!</span>")
 				H.ear_deaf += rand(3,10)
 				H << 'sound/effects/creepyshriek.ogg'
 		if(2) //emp

@@ -78,7 +78,7 @@
 	if(flag)
 		return //we're placing gun on a table or in backpack
 	if(harm_labeled >= min_harm_label)
-		to_chat(user, "<span class='warning'>A label sticks the trigger to the trigger guard!</span>")//Such a new feature, the player might not know what's wrong if it doesn't tell them.
+		to_chat(user, "<span class='warning'>A label sticks the trigger to the trigger guard.</span>")//Such a new feature, the player might not know what's wrong if it doesn't tell them.
 
 		return
 	if(istype(target, /obj/machinery/recharger) && istype(src, /obj/item/weapon/gun/energy))
@@ -104,7 +104,7 @@
 			firing_dexterity = 0
 	if(!firing_dexterity)
 		if(display_message)
-			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+			to_chat(user, "<span class='warning'>I don't have the dexterity to do this.</span>")
 		return 0
 
 	if(istype(user, /mob/living))
@@ -112,19 +112,19 @@
 			var/mob/living/M = user
 			if (M_HULK in M.mutations)
 				if(display_message)
-					to_chat(M, "<span class='warning'>Your meaty finger is much too large for the trigger guard!</span>")
+					to_chat(M, "<span class='warning'>My finger is much too large for the trigger guard.</span>")
 				return 0
 	if(ishuman(user))
 		var/mob/living/carbon/human/H=user
 		if(golem_check)
 			if(isgolem(H))
 				if(display_message)
-					to_chat(user, "<span class='warning'>Your fat fingers don't fit in the trigger guard!</span>")
+					to_chat(user, "<span class='warning'>My fat fingers don't fit in the trigger guard.</span>")
 				return 0
 		var/datum/organ/external/a_hand = H.get_active_hand_organ()
 		if(!a_hand.can_use_advanced_tools())
 			if(display_message)
-				to_chat(user, "<span class='warning'>Your [a_hand] doesn't have the dexterity to do this!</span>")
+				to_chat(user, "<span class='warning'>My [a_hand] doesn't have the dexterity to do this.</span>")
 			return 0
 	return 1
 
@@ -134,7 +134,7 @@
 		if(istype(user, /mob/living))
 			var/mob/living/M = user
 			if (clumsy_check(M) && prob(50))
-				to_chat(M, "<span class='danger'>[src] blows up in your face.</span>")
+				to_chat(M, "<span class='danger'>[src] blows up in my face.</span>")
 				M.take_organ_damage(0,20)
 				M.drop_item(src, force_drop = 1)
 				qdel(src)
@@ -162,7 +162,7 @@
 
 	if (!ready_to_fire())
 		if (world.time % 3) //to prevent spam
-			to_chat(user, "<span class='warning'>[src] is not ready to fire again!")
+			to_chat(user, "<span class='warning'>[src] is not ready to fire again.")
 		return
 
 	if(!process_chambered() || jammed) //CHECK
@@ -170,6 +170,7 @@
 
 	if(!in_chamber)
 		return
+
 	if(defective)
 		if(!failure_check(user))
 			return
@@ -228,8 +229,8 @@
 		else if (in_chamber.fire_sound)
 			playsound(user, in_chamber.fire_sound, fire_volume, 1)
 		user.visible_message("<span class='warning'>[user] fires [src][reflex ? " by reflex":""]!</span>", \
-		"<span class='warning'>You fire [src][reflex ? "by reflex":""]!</span>", \
-		"You hear a [istype(in_chamber, /obj/item/projectile/beam) ? "laser blast" : "gunshot"]!")
+		"<span class='warning'>I fire [src][reflex ? "by reflex":""]!</span>", \
+		"I hear a [istype(in_chamber, /obj/item/projectile/beam) ? "laser blast" : "gunshot"]!")
 
 	in_chamber.original = target
 	in_chamber.forceMove(get_turf(user))
@@ -257,6 +258,11 @@
 	sleep(1)
 	in_chamber = null
 
+	if(istype(src, /obj/item/weapon/gun/projectile))
+		var/obj/item/weapon/gun/projectile/P = src
+		if(P.load_method == 2)
+			P.chamber_round()
+
 	update_icon()
 
 	user.update_inv_hand(user.active_hand)
@@ -264,7 +270,7 @@
 	if(defective && recoil && prob(3))
 		var/throwturf = get_ranged_target_turf(user, pick(alldirs), 7)
 		user.drop_item()
-		user.visible_message("\The [src] jumps out of [user]'s hands!","\The [src] jumps out of your hands!")
+		user.visible_message("\The [src] jumps out of [user]'s hands!","\The [src] jumps out of my hands!")
 		throw_at(throwturf, rand(3, 6), 3)
 		return 1
 
@@ -350,7 +356,7 @@
 	if(check_pai_can_fire(user))
 		Fire(A,user,use_shooter_turf = TRUE)
 	else
-		to_chat(user, "<span class='warning'>You can't aim the gun properly from this location!</span>")
+		to_chat(user, "<span class='warning'>I can't aim the gun properly from this location!</span>")
 
 /obj/item/weapon/gun/proc/check_pai_can_fire(mob/living/silicon/pai/user)	//for various restrictions on when pAIs can fire a gun into which they're integrated
 	if(get_holder_of_type(user, /obj/structure/disposalpipe) || get_holder_of_type(user, /obj/machinery/atmospherics/pipe))	//can't fire the gun from inside pipes or disposal pipes

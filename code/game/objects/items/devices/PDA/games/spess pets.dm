@@ -75,7 +75,7 @@
 				if(6 to 10)
 					talk_line = pick("U got a banana?","[isdirty ? "Imma throw me poop at 'em":"Ook? Ook!"]","Dem balls")
 				if(11 to 15)
-					talk_line = pick("You lookin for monkey trabble?","[ishurt ? "Dun look at me!":"Come on look at me!"]","[ishappy ? "I feel like a million bananas":"Oooooooki!"]","Later I'll be an astrochimp")
+					talk_line = pick("I lookin for monkey trabble?","[ishurt ? "Dun look at me!":"Come on look at me!"]","[ishappy ? "I feel like a million bananas":"Oooooooki!"]","Later I'll be an astrochimp")
 				if(16 to 48)
 					talk_line = "[issleeping ? "One banana, Two bananas,...." : "[pick("Good ta see ya","I gat sam spare banana juice, let's throw da paaty","What does Ook mean anyway? Out-Of-Karakter?")]"]"
 				if(49 to 50)
@@ -168,7 +168,7 @@
 			if("Syndegg")
 				food = "[pick("syndie-cakes","busta-nuts")]"
 
-		last_spoken = "You feed [petname] some [food]!"
+		last_spoken = "I feed [petname] some [food]!"
 		if((level >= 1) && (level <= 5))
 			exp += 900
 
@@ -176,13 +176,13 @@
 /datum/pda_app/spesspets/proc/button_clean()
 	if(isdirty)
 		isdirty = 0
-		last_spoken = "You clean up [petname]!"
+		last_spoken = "I clean up [petname]!"
 
 
 /datum/pda_app/spesspets/proc/button_heal()
 	if(ishurt)
 		ishurt = 0
-		last_spoken = "You bandage up [petname]!"
+		last_spoken = "I bandage up [petname]!"
 
 
 /datum/pda_app/spesspets/proc/button_fight()
@@ -325,7 +325,7 @@
 				else
 					last_spoken = {"<i>Unable to access account. Either its security settings don't allow remote checking or the account is nonexistent.</i>"}
 			else
-				last_spoken = {"<i>Unfortunately your station's Accounts Database doesn't allow remote access. Negociate with your HoP or Captain to solve this issue.</i>"}
+				last_spoken = {"<i>Unfortunately my station's Accounts Database doesn't allow remote access. Negociate with my HoP or Captain to solve this issue.</i>"}
 		else
 			last_spoken = {"<i>Unable to connect to accounts database. The database is either nonexistent, inoperative, or too far away.</i>"}
 

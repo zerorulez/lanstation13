@@ -4,8 +4,8 @@ Research and Development System. (Designed specifically for the /tg/station 13 (
 ///////////////Overview///////////////////
 This system is a "tech tree" research and development system designed for SS13. It allows a "researcher" job (this document assumes
 the "scientist" job is given this role) the tools necessiary to research new and better technologies. In general, the system works
-by breaking existing technology and using what you learn from to advance your knowledge of SCIENCE! As your knowledge progresses,
-you can build newer (and better?) devices (which you can also, eventually, deconstruct to advance your knowledge).
+by breaking existing technology and using what you learn from to advance my knowledge of SCIENCE! As my knowledge progresses,
+you can build newer (and better?) devices (which you can also, eventually, deconstruct to advance my knowledge).
 
 A brief overview is below. For more details, see the related files.
 

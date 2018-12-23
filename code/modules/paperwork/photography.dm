@@ -55,7 +55,7 @@
 		show(user)
 	else
 		..()
-		to_chat(user, "<span class='notice'>You can't make out the picture from here.</span>")
+		to_chat(user, "<span class='notice'>I can't make out the picture from here.</span>")
 
 
 /obj/item/weapon/photo/proc/show(mob/user)
@@ -175,10 +175,10 @@
 
 	if(photo_size == 3)
 		photo_size = 1
-		usr.simple_message("<span class='info'>You zoom the camera in.</span>", "<span class='danger'>You drink from the mysterious bottle labeled \"DRINK ME\". Everything feels huge!</span>") //Second message is shown when hallucinating
+		usr.simple_message("<span class='info'>I zoom the camera in.</span>", "<span class='danger'>I drink from the mysterious bottle labeled \"DRINK ME\". Everything feels huge!</span>") //Second message is shown when hallucinating
 	else
 		photo_size = 3
-		usr.simple_message("<span class='info'>You zoom the camera out.</span>", "<span class='danger'>You take a bite of the mysterious mushroom. Everything feels so tiny!</span>") //Second message is shown when hallucinating
+		usr.simple_message("<span class='info'>I zoom the camera out.</span>", "<span class='danger'>I take a bite of the mysterious mushroom. Everything feels so tiny!</span>") //Second message is shown when hallucinating
 
 /obj/item/device/camera/AltClick()
 	set_zoom()
@@ -204,7 +204,7 @@
 
 /obj/item/device/camera/attackby(obj/item/I, mob/user)
 	if(isscrewdriver(I))
-		to_chat(user, "You [panelopen ? "close" : "open"] the panel on the side of \the [src].")
+		to_chat(user, "I [panelopen ? "close" : "open"] the panel on the side of \the [src].")
 		panelopen = !panelopen
 		playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 
@@ -213,9 +213,9 @@
 			return
 		var/obj/item/stack/cable_coil/C = I
 		if(C.amount < 5)
-			to_chat(user, "You don't have enough cable to alter \the [src].")
+			to_chat(user, "I don't have enough cable to alter \the [src].")
 			return
-		to_chat(user, "You attach [C.amount > 5 ? "some" : "the"] wires to \the [src]'s flash circuit.")
+		to_chat(user, "I attach [C.amount > 5 ? "some" : "the"] wires to \the [src]'s flash circuit.")
 		if(src.loc == user)
 			user.drop_item(src, force_drop = 1)
 			var/obj/item/device/blinder/Q = new (get_turf(user))
@@ -231,7 +231,7 @@
 			return
 
 		if(user.drop_item(I))
-			to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+			to_chat(user, "<span class='notice'>I insert [I] into [src].</span>")
 
 			qdel(I)
 			pictures_left = pictures_max
@@ -358,16 +358,16 @@
 			item_count++
 
 		if(!mob_detail)
-			mob_detail = "You can see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]. "
+			mob_detail = "I can see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]. "
 		else
-			mob_detail += "You can also see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
+			mob_detail += "I can also see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
 	for(var/mob/living/simple_animal/S in the_turf)
 		if(S.invisibility != 0)
 			continue
 		if(!mob_detail)
-			mob_detail = "You can see [S] on the photo[S.health < (S.maxHealth/2) ? " - [S] looks hurt":""]."
+			mob_detail = "I can see [S] on the photo[S.health < (S.maxHealth/2) ? " - [S] looks hurt":""]."
 		else
-			mob_detail += "You can also see [S] on the photo[S.health < (S.maxHealth/2) ? " - [S] looks hurt":""]."
+			mob_detail += "I can also see [S] on the photo[S.health < (S.maxHealth/2) ? " - [S] looks hurt":""]."
 	for(var/mob/dead/observer/O in the_turf)//in case ghosts have been made visible
 		if(O.invisibility != 0)
 			continue
@@ -394,14 +394,14 @@
 			item_count++
 
 		if(!mob_detail)
-			mob_detail = "You can see [A] on the photo[A.health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]. "
+			mob_detail = "I can see [A] on the photo[A.health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]. "
 		else
-			mob_detail += "You can also see [A] on the photo[A.health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
+			mob_detail += "I can also see [A] on the photo[A.health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
 	for(var/mob/living/simple_animal/S in the_turf)
 		if(!mob_detail)
-			mob_detail = "You can see [S] on the photo[S.health < (S.maxHealth/2) ? " - [S] looks hurt":""]."
+			mob_detail = "I can see [S] on the photo[S.health < (S.maxHealth/2) ? " - [S] looks hurt":""]."
 		else
-			mob_detail += "You can also see [S] on the photo[S.health < (S.maxHealth/2) ? " - [S] looks hurt":""]."
+			mob_detail += "I can also see [S] on the photo[S.health < (S.maxHealth/2) ? " - [S] looks hurt":""]."
 	for(var/mob/dead/observer/O in the_turf)
 		if(!mob_detail)
 			mob_detail = "Wait...is that [O] on the photo? "
@@ -415,7 +415,7 @@
 	if(min_harm_label && harm_labeled >= min_harm_label)
 		var/icon/I = get_base_photo_icon("blocked")
 
-		printpicture(user, I, "You can't see a thing.", flag)
+		printpicture(user, I, "I can't see a thing.", flag)
 		return
 
 	var/mobs = ""

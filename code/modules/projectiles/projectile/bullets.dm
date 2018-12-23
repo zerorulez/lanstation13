@@ -328,7 +328,7 @@
 			H.Stun(2)
 			H.ear_damage += rand(3, 5)
 			H.ear_deaf = max(H.ear_deaf,15)
-			to_chat(H, "<span class='warning'>Your ears ring!</span>")
+			to_chat(H, "<span class='warning'>My ears ring!</span>")
 
 /obj/item/projectile/bullet/a762x55
 	name = "a762x55 round"

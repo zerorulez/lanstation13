@@ -75,10 +75,10 @@
 	if(snow_amount != SNOWCOVERING_FULL)
 		return
 	playsound(get_turf(src), "rustle", 50, 1)
-	to_chat(user, "<span class='notice'>You start digging the snow with your hands.</span>")
+	to_chat(user, "<span class='notice'>I start digging the snow with my hands.</span>")
 	if(do_after(user, src, 30))
 		snow_amount = SNOWCOVERING_MEDIUM
-		to_chat(user, "<span class='notice'>You form a snowball in your hands.</span>")
+		to_chat(user, "<span class='notice'>I form a snowball in my hands.</span>")
 		user.put_in_hands(new /obj/item/stack/sheet/snow())
 		icon_state = "snow_grabbed"
 
@@ -303,7 +303,7 @@
 				S.say("Ah, I give up, you've got a pretty good swing.")
 				call(/obj/item/weapon/winter_gift/proc/pick_a_gift)(S.loc)
 			else
-				S.say(pick("Didn't feel anything","You call that snowballing?"))
+				S.say(pick("Didn't feel anything","I call that snowballing?"))
 		else
 			S.say(pick("A fight? With pleasure.","Don't forget that you're the one who started it all."))
 			S.Retaliate()

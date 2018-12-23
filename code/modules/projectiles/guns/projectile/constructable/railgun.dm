@@ -48,7 +48,7 @@
 	C.forceMove(user.loc)
 	user.put_in_hands(C)
 	capacitor = null
-	to_chat(user, "You remove \the [C] from the capacitor bank of \the [src].")
+	to_chat(user, "I remove \the [C] from the capacitor bank of \the [src].")
 
 	update_icon()
 	update_verbs()
@@ -93,7 +93,7 @@
 	set src in range(0)
 
 	if(usr.isUnconscious())
-		to_chat(usr, "You can't do that while unconscious.")
+		to_chat(usr, "I can't do that while unconscious.")
 		return
 
 	if(!rod_loaded)
@@ -103,7 +103,7 @@
 	R.forceMove(usr.loc)
 	usr.put_in_hands(R)
 	rod_loaded = 0
-	to_chat(usr, "You remove \the [R] from the barrel of \the [src].")
+	to_chat(usr, "I remove \the [R] from the barrel of \the [src].")
 
 	update_icon()
 	update_verbs()
@@ -114,7 +114,7 @@
 	set src in range(0)
 
 	if(usr.isUnconscious())
-		to_chat(usr, "You can't do that while unconscious.")
+		to_chat(usr, "I can't do that while unconscious.")
 		return
 
 	if(!capacitor)
@@ -124,7 +124,7 @@
 	C.forceMove(usr.loc)
 	usr.put_in_hands(C)
 	capacitor = null
-	to_chat(usr, "You remove \the [C] from the capacitor bank of \the [src].")
+	to_chat(usr, "I remove \the [C] from the capacitor bank of \the [src].")
 
 	update_icon()
 	update_verbs()
@@ -135,7 +135,7 @@
 	set src in range(0)
 
 	if(usr.isUnconscious())
-		to_chat(usr, "You can't do that while unconscious.")
+		to_chat(usr, "I can't do that while unconscious.")
 		return
 
 	if(!rails)
@@ -145,7 +145,7 @@
 	R.forceMove(usr.loc)
 	usr.put_in_hands(R)
 	rails = null
-	to_chat(usr, "You remove \the [R] from the barrel of \the [src].")
+	to_chat(usr, "I remove \the [R] from the barrel of \the [src].")
 
 	update_icon()
 	update_verbs()
@@ -156,18 +156,18 @@
 			to_chat(user, "There is already a set of rails in \the [src].")
 			return
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
 			return 1
-		to_chat(user, "You insert \the [W] into the barrel of \the [src].")
+		to_chat(user, "I insert \the [W] into the barrel of \the [src].")
 		rails = W
 
 	else if(isscrewdriver(W))
 		if(rails)
 			if(rails_secure)
-				to_chat(user, "You loosen the rail assembly within \the [src].")
+				to_chat(user, "I loosen the rail assembly within \the [src].")
 				playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 			else
-				to_chat(user, "You tighten the rail assembly inside \the [src].")
+				to_chat(user, "I tighten the rail assembly inside \the [src].")
 				playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 			rails_secure = !rails_secure
 
@@ -181,7 +181,7 @@
 		if(rod_loaded)
 			to_chat(user, "There is already a rod in the barrel of \the [src].")
 			return
-		to_chat(user, "You load a rod into the barrel of \the [src].")
+		to_chat(user, "I load a rod into the barrel of \the [src].")
 		var/obj/item/stack/rods/R = W
 		rod_loaded = 1
 		R.use(1)
@@ -191,9 +191,9 @@
 			to_chat(user, "There is already a capacitor in the capacitor bank of \the [src].")
 			return
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
 			return 1
-		to_chat(user, "You insert \the [W] into the capacitor bank of \the [src].")
+		to_chat(user, "I insert \the [W] into the capacitor bank of \the [src].")
 		capacitor = W
 
 	update_icon()
@@ -345,7 +345,7 @@
 
 	var/distance = 10
 
-	user.visible_message("<span class='danger'>[user] fires \the [src] and launches \the [object] at [target]!</span>","<span class='danger'>You fire \the [src] and launch \the [object] at [target]!</span>")
+	user.visible_message("<span class='danger'>[user] fires \the [src] and launches \the [object] at [target]!</span>","<span class='danger'>I fire \the [src] and launch \the [object] at [target]!</span>")
 	log_attack("[user.name] ([user.ckey]) fired \the [src] (proj:[object.name]) at [target] [ismob(target) ? "([target:ckey])" : ""] ([target.x],[target.y],[target.z])" )
 
 	object.forceMove(user.loc)

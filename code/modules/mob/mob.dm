@@ -325,7 +325,7 @@
 				type = alt_type
 		if((type & MESSAGE_HEAR) && is_deaf()) //Hearing related //We can't hear what the person is saying. Too bad
 			if(!(alt))
-				to_chat(src, "<span class='notice'>You can almost hear someone talking.</span>")//Well, not THAT deaf
+				to_chat(src, "<span class='notice'>I can almost hear someone talking.</span>")//Well, not THAT deaf
 
 				return //And that does it
 			else
@@ -341,11 +341,11 @@
 			if(!(alt)) //No alternative message
 				return //We can't see it, we're a bit too dying over here
 			else //Hey look someone passed an alternative message
-				to_chat(src, "<span class='notice'>You can almost hear someone talking.</span>")//Now we can totally not hear it!
+				to_chat(src, "<span class='notice'>I can almost hear someone talking.</span>")//Now we can totally not hear it!
 
 				return //And we're good
 		else //This is not an emote
-			to_chat(src, "<span class='notice'>You can almost hear someone talking.</span>")//The sweet silence of death
+			to_chat(src, "<span class='notice'>I can almost hear someone talking.</span>")//The sweet silence of death
 
 			return //All we ever needed to hear
 	else //We're fine
@@ -356,8 +356,8 @@
 // Show a message to all mobs in sight of this one
 // This would be for visible actions by the src mob
 // message is the message output to anyone who can see e.g. "[src] does something!"
-// self_message (optional) is what the src mob sees  e.g. "You do something!"
-// blind_message (optional) is what blind people will hear e.g. "You hear something!"
+// self_message (optional) is what the src mob sees  e.g. "I do something!"
+// blind_message (optional) is what blind people will hear e.g. "I hear something!"
 // drugged_message (optional) is shown to hallucinating mobs instead of message
 // self_drugged_message (optional) is shown to src mob if it's hallucinating
 // blind_drugged_message (optional) is shown to blind hallucinating people
@@ -397,7 +397,7 @@
 // Show a message to all mobs in sight of this atom
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
-// blind_message (optional) is what blind people will hear e.g. "You hear something!"
+// blind_message (optional) is what blind people will hear e.g. "I hear something!"
 
 /atom/proc/visible_message(var/message, var/blind_message, var/drugged_message, var/blind_drugged_message)
 	if(world.time>resethearers)
@@ -568,7 +568,7 @@
 				W.forceMove(get_turf(src)) //Should this be using drop_from_inventory instead?
 			else
 				if(!disable_warning)
-					to_chat(src, "<span class='warning'>You are unable to equip that.</span>")//Only print if act_on_fail is NOTHING
+					to_chat(src, "<span class='warning'>I am unable to equip that.</span>")//Only print if act_on_fail is NOTHING
 
 		return 0
 
@@ -666,7 +666,7 @@ var/list/slot_equipment_priority = list( \
 				if( !(slot_flags & SLOT_MASK) )
 					return 0
 //				if(H.species.anatomy_flags & IS_BULKY)
-//					to_chat(H, "<span class='warning'>You can't get \the [src] to fasten around your thick head!</span>")
+//					to_chat(H, "<span class='warning'>I can't get \the [src] to fasten around my thick head!</span>")
 //					return 0
 				if(H.wear_mask)
 					return 0
@@ -684,7 +684,7 @@ var/list/slot_equipment_priority = list( \
 				if( !(slot_flags & SLOT_OCLOTHING) )
 					return 0
 //				if(H.species.anatomy_flags & IS_BULKY)
-//					to_chat(H, "<span class='warning'>You can't get \the [src] to fit over your bulky exterior!</span>")
+//					to_chat(H, "<span class='warning'>I can't get \the [src] to fit over my bulky exterior!</span>")
 //					return 0
 				if(H.wear_suit)
 					if(H.wear_suit.canremove)
@@ -696,7 +696,7 @@ var/list/slot_equipment_priority = list( \
 				if( !(slot_flags & SLOT_GLOVES) )
 					return 0
 //				if(H.species.anatomy_flags & IS_BULKY)
-//					to_chat(H, "<span class='warning'>You can't get \the [src] to fit over your bulky fingers!</span>")
+//					to_chat(H, "<span class='warning'>I can't get \the [src] to fit over my bulky fingers!</span>")
 //					return 0
 				if(H.gloves)
 					if(H.gloves.canremove)
@@ -708,7 +708,7 @@ var/list/slot_equipment_priority = list( \
 				if( !(slot_flags & SLOT_FEET) )
 					return 0
 //				if(H.species.anatomy_flags & IS_BULKY)
-//					to_chat(H, "<span class='warning'>You can't get \the [src] to fit over your bulky feet!</span>")
+//					to_chat(H, "<span class='warning'>I can't get \the [src] to fit over my bulky feet!</span>")
 //					return 0
 				if(H.shoes)
 					if(H.shoes.canremove)
@@ -719,7 +719,7 @@ var/list/slot_equipment_priority = list( \
 			if(slot_belt)
 				if(!H.w_uniform)
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
+						to_chat(H, "<span class='warning'>I need a jumpsuit before you can attach this [name].</span>")
 					return 0
 				if( !(slot_flags & SLOT_BELT) )
 					return 0
@@ -762,7 +762,7 @@ var/list/slot_equipment_priority = list( \
 				if((M_FAT in H.mutations) && (H.species && H.species.anatomy_flags & CAN_BE_FAT) && !(clothing_flags & ONESIZEFITSALL))
 					return 0
 //				if(H.species.anatomy_flags & IS_BULKY && !(clothing_flags & ONESIZEFITSALL))
-//					to_chat(H, "<span class='warning'>You can't get \the [src] to fit over your bulky exterior!</span>")
+//					to_chat(H, "<span class='warning'>I can't get \the [src] to fit over my bulky exterior!</span>")
 //					return 0
 				if(H.w_uniform)
 					if(H.w_uniform.canremove)
@@ -773,7 +773,7 @@ var/list/slot_equipment_priority = list( \
 			if(slot_wear_id)
 				if(!H.w_uniform)
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
+						to_chat(H, "<span class='warning'>I need a jumpsuit before you can attach this [name].</span>")
 					return 0
 				if( !(slot_flags & SLOT_ID) )
 					return 0
@@ -788,7 +788,7 @@ var/list/slot_equipment_priority = list( \
 					return 0
 				if(!H.w_uniform)
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
+						to_chat(H, "<span class='warning'>I need a jumpsuit before you can attach this [name].</span>")
 					return 0
 				if(slot_flags & SLOT_DENYPOCKET)
 					return
@@ -799,7 +799,7 @@ var/list/slot_equipment_priority = list( \
 					return 0
 				if(!H.w_uniform)
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
+						to_chat(H, "<span class='warning'>I need a jumpsuit before you can attach this [name].</span>")
 					return 0
 				if(slot_flags & SLOT_DENYPOCKET)
 					return 0
@@ -809,11 +809,11 @@ var/list/slot_equipment_priority = list( \
 			if(slot_s_store)
 				if(!H.wear_suit)
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a suit before you can attach this [name].</span>")
+						to_chat(H, "<span class='warning'>I need a suit before you can attach this [name].</span>")
 					return 0
 				if(!H.wear_suit.allowed)
 					if(!disable_warning)
-						to_chat(usr, "You somehow have a suit with no defined allowed items for suit storage, stop that.")
+						to_chat(usr, "I somehow have a suit with no defined allowed items for suit storage, stop that.")
 					return 0
 				if(src.w_class > W_CLASS_MEDIUM)
 					if(!disable_warning)
@@ -950,7 +950,7 @@ var/list/slot_equipment_priority = list( \
 		return
 
 	if(!has_hand_check())
-		to_chat(src,"<span class='notice'>You don't have any hands to pull with!</span>")
+		to_chat(src,"<span class='notice'>I don't have any hands to pull with!</span>")
 		return
 
 	var/atom/movable/P = AM
@@ -1037,7 +1037,7 @@ var/list/slot_equipment_priority = list( \
 	if(mind)
 		mind.show_memory(src)
 	else
-		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
+		to_chat(src, "The game appears to have misplaced my mind datum, so we can't show you my notes.")
 
 /mob/verb/add_memory(msg as message)
 	set name = "Add Note"
@@ -1049,7 +1049,7 @@ var/list/slot_equipment_priority = list( \
 	if(mind)
 		mind.store_memory(msg)
 	else
-		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
+		to_chat(src, "The game appears to have misplaced my mind datum, so we can't show you my notes.")
 
 /mob/proc/store_memory(msg as message, popup, sane = 1)
 	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
@@ -1072,7 +1072,7 @@ var/list/slot_equipment_priority = list( \
 
 //	if( (sdisabilities & BLIND || blinded || stat) && !istype(src,/mob/dead/observer) )
 	if(is_blind(src))
-		to_chat(src, "<span class='notice'>Something is there but you can't see it.</span>")
+		to_chat(src, "<span class='notice'>Something is there but I can't see it.</span>")
 		return
 
 	face_atom(A)
@@ -1108,7 +1108,7 @@ var/list/slot_equipment_priority = list( \
 		to_chat(usr, "<span class='notice'> Respawn is disabled.</span>")
 		return
 	if ((stat != 2 || !( ticker )))
-		to_chat(usr, "<span class='notice'> <B>You must be dead to use this!</B></span>")
+		to_chat(usr, "<span class='notice'> <B>I must be dead to use this!</B></span>")
 		return
 	if (ticker.mode.name == "meteor" || ticker.mode.name == "epidemic") //BS12 EDIT
 		to_chat(usr, "<span class='notice'> Respawn is disabled.</span>")
@@ -1129,12 +1129,12 @@ var/list/slot_equipment_priority = list( \
 		else if(deathtimeminutes > 1)
 			pluralcheck = " [deathtimeminutes] minutes and"
 		var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
-		to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
+		to_chat(usr, "I have been dead for[pluralcheck] [deathtimeseconds] seconds.")
 		if (deathtime < config.respawn_delay*600)
-			to_chat(usr, "You must wait [config.respawn_delay] minutes to respawn!")
+			to_chat(usr, "I must wait [config.respawn_delay] minutes to respawn!")
 			return
 		else
-			to_chat(usr, "You can respawn now, enjoy your new life!")
+			to_chat(usr, "I can respawn now, enjoy my new life!")
 
 	log_game("[usr.name]/[usr.key] used abandon mob.")
 
@@ -1205,7 +1205,7 @@ var/list/slot_equipment_priority = list( \
 	if(client.holder && (client.holder.rights & R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
-		to_chat(usr, "<span class='notice'>You must be observing to use this!</span>")
+		to_chat(usr, "<span class='notice'>I must be observing to use this!</span>")
 		return
 
 	if(is_admin && stat == DEAD)
@@ -1521,7 +1521,7 @@ var/list/slot_equipment_priority = list( \
 
 /mob/proc/Stun(amount)
 	if(status_flags & CANSTUN)
-		stunned = max(max(stunned,amount),0) //can't go below 0, getting a low amount of stun doesn't lower your current stun
+		stunned = max(max(stunned,amount),0) //can't go below 0, getting a low amount of stun doesn't lower my current stun
 	return
 
 /mob/proc/SetStunned(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
@@ -1617,11 +1617,11 @@ var/list/slot_equipment_priority = list( \
 	delayNextAttack(20)
 
 	if(usr.stat == 1)
-		to_chat(usr, "You are unconcious and cannot do that!")
+		to_chat(usr, "I am unconcious and cannot do that!")
 		return
 
 	if(usr.restrained())
-		to_chat(usr, "You are restrained and cannot do that!")
+		to_chat(usr, "I am restrained and cannot do that!")
 		return
 
 	var/mob/S = src
@@ -1638,7 +1638,7 @@ var/list/slot_equipment_priority = list( \
 
 	if(!valid_objects.len)
 		if(self)
-			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
+			to_chat(src, "I have nothing stuck in my body that is large enough to remove.")
 		else
 			to_chat(U, "[src] has nothing stuck in their wounds that is large enough to remove.")
 		return
@@ -1646,9 +1646,9 @@ var/list/slot_equipment_priority = list( \
 	var/obj/item/weapon/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
 
 	if(self)
-		to_chat(src, "<span class='warning'>You attempt to get a good grip on the [selection] in your body.</span></span>")
+		to_chat(src, "<span class='warning'>I attempt to get a good grip on the [selection] in my body.</span></span>")
 	else
-		to_chat(U, "<span class='warning'>You attempt to get a good grip on the [selection] in [S]'s body.</span>")
+		to_chat(U, "<span class='warning'>I attempt to get a good grip on the [selection] in [S]'s body.</span>")
 
 	if(!do_after(U, src, 80))
 		return
@@ -1656,9 +1656,9 @@ var/list/slot_equipment_priority = list( \
 		return
 
 	if(self)
-		visible_message("<span class='danger'><b>[src] rips [selection] out of their body.</b></span>","<span class='warning'>You rip [selection] out of your body.</span>")
+		visible_message("<span class='danger'><b>[src] rips [selection] out of their body.</b></span>","<span class='warning'>I rip [selection] out of my body.</span>")
 	else
-		visible_message("<span class='danger'><b>[usr] rips [selection] out of [src]'s body.</b></span>","<span class='warning'>[usr] rips [selection] out of your body.</span>")
+		visible_message("<span class='danger'><b>[usr] rips [selection] out of [src]'s body.</b></span>","<span class='warning'>[usr] rips [selection] out of my body.</span>")
 
 	selection.forceMove(get_turf(src))
 
@@ -1730,11 +1730,11 @@ mob/proc/on_foot()
 /mob/proc/get_subtle_message(var/msg, var/deity = null)
 	if(!deity)
 		deity = "a voice" //sanity
-	var/pre_msg = "You hear [deity] in your head... "
+	var/pre_msg = "I hear [deity] in my head... "
 	if(src.hallucinating()) //If hallucinating, make subtle messages more fun
 		var/adjective = pick("an angry","a funny","a squeaky","a disappointed","your mother's","your father's","[ticker.Bible_deity_name]'s","an annoyed","a brittle","a loud","a very loud","a quiet","an evil", "an angelic")
-		var/location = pick(" from above"," from below"," in your head"," from behind you"," from everywhere"," from nowhere in particular","")
-		pre_msg = pick("You hear [adjective] voice[location]...")
+		var/location = pick(" from above"," from below"," in my head"," from behind you"," from everywhere"," from nowhere in particular","")
+		pre_msg = pick("I hear [adjective] voice[location]...")
 
 	to_chat(src, "<b>[pre_msg] <em>[msg]</em></b>")
 
@@ -1850,7 +1850,7 @@ mob/proc/on_foot()
 
 /spell/aoe_turf/revert_form
 	name = "Revert Form"
-	desc = "Morph back into your previous form."
+	desc = "Morph back into my previous form."
 	spell_flags = GHOSTCAST
 	abbreviation = "RF"
 	charge_max = 1
@@ -1868,7 +1868,7 @@ mob/proc/on_foot()
 
 /obj/transmog_body_container
 	name = "transmog body container"
-	desc = "You should not be seeing this."
+	desc = "I should not be seeing this."
 	flags = TIMELESS
 	var/mob/contained_mob
 

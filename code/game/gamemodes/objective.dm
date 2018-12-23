@@ -335,7 +335,7 @@ var/list/potential_theft_objectives=list(
 	return 1
 
 /datum/objective/silence
-	explanation_text = "Do not allow anyone to escape the station.  Only allow the shuttle to be called when everyone is dead and your story is the only one left."
+	explanation_text = "Do not allow anyone to escape the station.  Only allow the shuttle to be called when everyone is dead and my story is the only one left."
 
 /datum/objective/silence/check_completion()
 	if(blocked)
@@ -430,7 +430,7 @@ var/list/potential_theft_objectives=list(
 	return 1
 
 /datum/objective/multiply
-	explanation_text = "Procreate, and protect your spawn."
+	explanation_text = "Procreate, and protect my spawn."
 	var/already_completed=0
 
 /datum/objective/multiply/check_completion()

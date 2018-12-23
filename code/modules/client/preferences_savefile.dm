@@ -180,7 +180,7 @@
 /datum/preferences/proc/save_preferences_sqlite(var/user, var/ckey)
 	/* FUCK YOU
 	if(!(world.timeofday >= (lastPolled + POLLED_LIMIT)))
-		to_chat(user, "You need to wait [round((((lastPolled + POLLED_LIMIT) - world.timeofday) / 10))] seconds before you can save again.")
+		to_chat(user, "I need to wait [round((((lastPolled + POLLED_LIMIT) - world.timeofday) / 10))] seconds before you can save again.")
 		return
 	*/
 
@@ -260,7 +260,7 @@
 	check.Add("SELECT player_ckey FROM players WHERE player_ckey = ? AND player_slot = ?", ckey, slot)
 	if(check.Execute(db))
 		if(!check.NextRow())
-			to_chat(user, "You have no character file to load, please save one first.")
+			to_chat(user, "I have no character file to load, please save one first.")
 			WARNING("[__LINE__]: datum/preferences/load_save_sqlite has returned")
 			return 0
 	else
@@ -687,7 +687,7 @@ AND players.player_slot = ? ;"}, ckey, slot)
 
 
 	if(slot > MAX_SAVE_SLOTS)
-		to_chat(user, "You are limited to 8 character slots.")
+		to_chat(user, "I am limited to 8 character slots.")
 		message_admins("[ckey] attempted to override character slot limit")
 		return 0
 

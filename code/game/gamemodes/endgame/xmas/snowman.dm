@@ -72,7 +72,7 @@
 /mob/living/simple_animal/hostile/retaliate/snowman/Retaliate()
 	..()
 	if(!stat)
-		src.say(pick("You, come fight me!","I say!","Coward!"))
+		src.say(pick("I, come fight me!","I say!","Coward!"))
 
 /mob/living/simple_animal/hostile/retaliate/snowman/attackby(var/obj/item/W, var/mob/user)
 	if(!carrot && istype(W, /obj/item/weapon/reagent_containers/food/snacks/grown/carrot))

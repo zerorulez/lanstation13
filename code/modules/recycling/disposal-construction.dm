@@ -99,7 +99,7 @@
 		return
 
 	if(anchored)
-		to_chat(usr, "You must unfasten the pipe before rotating it.")
+		to_chat(usr, "I must unfasten the pipe before rotating it.")
 		return
 
 	dir = turn(dir, -90)
@@ -113,7 +113,7 @@
 		return
 
 	if(anchored)
-		to_chat(usr, "You must unfasten the pipe before flipping it.")
+		to_chat(usr, "I must unfasten the pipe before flipping it.")
 		return
 
 	dir = turn(dir, 180)
@@ -210,13 +210,13 @@
 				density = 0
 			else
 				density = 1
-			to_chat(user, "You detach the [nicetype] from the underfloor.")
+			to_chat(user, "I detach the [nicetype] from the underfloor.")
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 100, 1)
 			update()
 			return
 		else
 			if(is_under_floorplating())
-				to_chat(user, "You can only bolt down the [nicetype] if the floor tiling is removed.")
+				to_chat(user, "I can only bolt down the [nicetype] if the floor tiling is removed.")
 				return
 			if(lacks_trunk())
 				to_chat(user, "The [nicetype] requires a trunk underneath it in order to work.")
@@ -230,17 +230,17 @@
 				density = 0
 			else
 				density = 1 // We don't want disposal bins or outlets to go density 0
-			to_chat(user, "You attach the [nicetype] to the underfloor.")
+			to_chat(user, "I attach the [nicetype] to the underfloor.")
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 100, 1)
 			update()
 
 	else if(iswelder(I))
 		if(!anchored)
-			to_chat(user, "You need to attach it to the plating first!")
+			to_chat(user, "I need to attach it to the plating first!")
 			return
 		else
 			if(is_under_floorplating())
-				to_chat(user, "You can't weld the [nicetype] in place with the tiling in the way.")
+				to_chat(user, "I can't weld the [nicetype] in place with the tiling in the way.")
 				return
 			if(lacks_trunk())
 				to_chat(user, "The [nicetype] requires a trunk underneath it in order to work.")
@@ -298,5 +298,5 @@
 					qdel(src)
 					return
 			else
-				to_chat(user, "You need more welding fuel to complete this task.")
+				to_chat(user, "I need more welding fuel to complete this task.")
 				return

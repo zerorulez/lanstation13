@@ -29,10 +29,10 @@
 	..()
 	icon_state = "incisionmanager_off"
 
-	
+
 /obj/item/weapon/hemostat
 	name = "hemostat"
-	desc = "You think you have seen this before."
+	desc = "I think you have seen this before."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "hemostat"
 	item_state = "hemostat"
@@ -74,7 +74,7 @@
 
 /obj/item/weapon/surgicaldrill
 	name = "surgical drill"
-	desc = "You can drill using this item. You dig?"
+	desc = "I can drill using this item. You dig?"
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "drill"
 	item_state = "surgicaldrill"
@@ -129,12 +129,12 @@
 
 /obj/item/weapon/scalpel/laser/attack_self(mob/user)
 	if(!cauterymode)
-		to_chat(user, "You disable the blade and switch to the scalpel's cautery tool.")
+		to_chat(user, "I disable the blade and switch to the scalpel's cautery tool.")
 		heat_production = 1600
 		sharpness = 0
 		sharpness_flags = 0
 	else
-		to_chat(user, "You return the scalpel to cutting mode.")
+		to_chat(user, "I return the scalpel to cutting mode.")
 		heat_production = 0
 		sharpness = initial(sharpness)
 		sharpness_flags = initial(sharpness_flags)
@@ -248,7 +248,7 @@
 		playsound(get_turf(target), 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 		target.visible_message(
 			"<span class='notice'>[user] prods [target] trying to wake \him up!</span>",
-			"<span class='notice'>You prod [target] trying to wake \him up!</span>",
+			"<span class='notice'>I prod [target] trying to wake \him up!</span>",
 			)
 	else
 		return ..()

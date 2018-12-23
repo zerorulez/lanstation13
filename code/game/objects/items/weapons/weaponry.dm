@@ -131,14 +131,14 @@ obj/item/weapon/wirerod/attackby(var/obj/item/I, mob/user as mob)
 	..()
 	if(istype(I, /obj/item/weapon/shard))
 		user.visible_message("<span class='notice'>[user] starts securing \the [I] to the top of \the [src].</span>",\
-		"<span class='info'>You attempt to create a spear by securing \the [I] to \the [src].</span>")
+		"<span class='info'>I attempt to create a spear by securing \the [I] to \the [src].</span>")
 
 		if(do_after(user, get_turf(src), 5 SECONDS))
 			if(!I || !src)
 				return
 
 			if(!user.drop_item(I))
-				to_chat(user, "<span class='warning'>You can't let go of \the [I]! You quickly unsecure it from \the [src].</span>")
+				to_chat(user, "<span class='warning'>I can't let go of \the [I]! You quickly unsecure it from \the [src].</span>")
 				return
 
 			user.drop_item(src, force_drop = 1)
@@ -166,7 +166,7 @@ obj/item/weapon/wirerod/attackby(var/obj/item/I, mob/user as mob)
 
 			user.put_in_hands(S)
 			user.visible_message("<span class='danger'>[user] creates a spear with \a [I] and \a [src]!</span>",\
-			"<span class='notice'>You fasten \the [I] to the top of \the [src], creating \a [S].</span>")
+			"<span class='notice'>I fasten \the [I] to the top of \the [src], creating \a [S].</span>")
 
 			qdel(I)
 			I = null
@@ -179,13 +179,13 @@ obj/item/weapon/wirerod/attackby(var/obj/item/I, mob/user as mob)
 		user.before_take_item(src)
 
 		user.put_in_hands(P)
-		to_chat(user, "<span class='notice'>You fasten the wirecutters to the top of the rod with the cable, prongs outward.</span>")
+		to_chat(user, "<span class='notice'>I fasten the wirecutters to the top of the rod with the cable, prongs outward.</span>")
 		qdel(I)
 		I =  null
 		qdel(src)
 
 	else if(istype(I, /obj/item/stack/rods))
-		to_chat(user, "You fasten the metal rods together.")
+		to_chat(user, "I fasten the metal rods together.")
 		var/obj/item/stack/rods/R = I
 		if(src.loc == user)
 			user.drop_item(src, force_drop = 1)

@@ -127,7 +127,7 @@
 		return
 
 	if(closed_system)
-		to_chat(user, "You can't harvest from the plant while the lid is shut.")
+		to_chat(user, "I can't harvest from the plant while the lid is shut.")
 		return
 
 	if(!seed.check_harvest(user))
@@ -152,12 +152,12 @@
 		return
 
 	if(closed_system)
-		to_chat(user, "You can't remove the dead plant while the lid is shut.")
+		to_chat(user, "I can't remove the dead plant while the lid is shut.")
 		return
 
 	remove_plant()
 
-	to_chat(user, "You remove the dead plant from the [src].")
+	to_chat(user, "I remove the dead plant from the [src].")
 	check_level_sanity()
 	update_icon()
 	return
@@ -198,7 +198,7 @@
 				qdel(O)
 				return
 
-			to_chat(user, "You plant the [S.seed.seed_name] [S.seed.seed_noun].")
+			to_chat(user, "I plant the [S.seed.seed_name] [S.seed.seed_noun].")
 			switch(S.seed.spread)
 				if(1)
 					var/turf/T = get_turf(src)
@@ -236,19 +236,19 @@
 		user.delayNextAttack(5)
 
 	else if(istype(O, /obj/item/claypot))
-		to_chat(user, "<span class='warning'>You must place the pot on the ground and use a spade on \the [src] to make a transplant.</span>")
+		to_chat(user, "<span class='warning'>I must place the pot on the ground and use a spade on \the [src] to make a transplant.</span>")
 		return
 
 	else if(seed && istype(O, /obj/item/weapon/pickaxe/shovel))
 		var/obj/item/claypot/C = locate() in range(user,1)
 		if(!C)
-			to_chat(user, "<span class='warning'>You need an empty clay pot next to you.</span>")
+			to_chat(user, "<span class='warning'>I need an empty clay pot next to you.</span>")
 			return
 		playsound(loc, 'sound/items/shovel.ogg', 50, 1)
 		if(do_after(user, src, 50))
 			user.visible_message(	"<span class='notice'>[user] transplants \the [seed.display_name] into \the [C].</span>",
 									"<span class='notice'>\icon[src] You transplant \the [seed.display_name] into \the [C].</span>",
-									"<span class='notice'>You hear a ratchet.</span>")
+									"<span class='notice'>I hear a ratchet.</span>")
 
 			var/obj/structure/flora/pottedplant/claypot/S = new(get_turf(C))
 			transfer_fingerprints(C, S)
@@ -289,7 +289,7 @@
 			return
 
 		if(sampled)
-			to_chat(user, "You have already sampled from this plant.")
+			to_chat(user, "I have already sampled from this plant.")
 			return
 
 		if(dead)
@@ -298,7 +298,7 @@
 
 		// Create a sample.
 		seed.spawn_seed_packet(get_turf(user))
-		to_chat(user, "You take a sample from the [seed.display_name].")
+		to_chat(user, "I take a sample from the [seed.display_name].")
 		health -= (rand(3,5)*10)
 
 		if(prob(30))
@@ -314,7 +314,7 @@
 	else if (istype(O, /obj/item/weapon/minihoe))
 
 		if(weedlevel > 0)
-			user.visible_message("<span class='alert'>[user] starts uprooting the weeds.</span>", "<span class='alert'>You remove the weeds from the [src].</span>")
+			user.visible_message("<span class='alert'>[user] starts uprooting the weeds.</span>", "<span class='alert'>I remove the weeds from the [src].</span>")
 			weedlevel = 0
 			update_icon()
 		else
@@ -337,7 +337,7 @@
 		toxins += spray.toxicity
 		pestlevel -= spray.pest_kill_str
 		weedlevel -= spray.weed_kill_str
-		to_chat(user, "You spray [src] with [O].")
+		to_chat(user, "I spray [src] with [O].")
 		playsound(loc, 'sound/effects/spray3.ogg', 50, 1, -6)
 		qdel(O)
 
@@ -472,7 +472,7 @@
 		return
 
 	closed_system = !closed_system
-	to_chat(usr, "You [closed_system ? "close" : "open"] the tray's lid.")
+	to_chat(usr, "I [closed_system ? "close" : "open"] the tray's lid.")
 	if(closed_system)
 		flags &= ~OPENCONTAINER
 	else

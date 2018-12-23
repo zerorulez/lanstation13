@@ -6,7 +6,7 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 /mob/living/proc/ventcrawl_carry()
 	for(var/atom/A in src.contents)
 		if(!(isInTypes(A, canEnterVentWith)))
-			to_chat(src, "<SPAN CLASS='warning'>You can't be carrying items or have items equipped when vent crawling!</SPAN>")
+			to_chat(src, "<SPAN CLASS='warning'>I can't be carrying items or have items equipped when vent crawling!</SPAN>")
 			return 0
 	return 1
 
@@ -123,28 +123,28 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 			if(vent_found)
 				if(vent_found.network && (vent_found.network.normal_members.len || vent_found.network.line_members.len))
 
-					to_chat(src, "You begin climbing into the ventilation system...")
+					to_chat(src, "I begin climbing into the ventilation system...")
 					if(vent_found.air_contents && !issilicon(src))
 
 						switch(vent_found.air_contents.temperature)
 							if(0 to BODYTEMP_COLD_DAMAGE_LIMIT)
-								to_chat(src, "<span class='danger'>You feel a painful freeze coming from the vent!</span>")
+								to_chat(src, "<span class='danger'>I feel a painful freeze coming from the vent!</span>")
 							if(BODYTEMP_COLD_DAMAGE_LIMIT to T0C)
-								to_chat(src, "<span class='warning'>You feel an icy chill coming from the vent.</span>")
+								to_chat(src, "<span class='warning'>I feel an icy chill coming from the vent.</span>")
 							if(T0C + 40 to BODYTEMP_HEAT_DAMAGE_LIMIT)
-								to_chat(src, "<span class='warning'>You feel a hot wash coming from the vent.</span>")
+								to_chat(src, "<span class='warning'>I feel a hot wash coming from the vent.</span>")
 							if(BODYTEMP_HEAT_DAMAGE_LIMIT to INFINITY)
-								to_chat(src, "<span class='danger'>You feel a searing heat coming from the vent!</span>")
+								to_chat(src, "<span class='danger'>I feel a searing heat coming from the vent!</span>")
 
 						switch(vent_found.air_contents.pressure)
 							if(0 to HAZARD_LOW_PRESSURE)
-								to_chat(src, "<span class='danger'>You feel a rushing draw pulling you into the vent!</span>")
+								to_chat(src, "<span class='danger'>I feel a rushing draw pulling you into the vent!</span>")
 							if(HAZARD_LOW_PRESSURE to WARNING_LOW_PRESSURE)
-								to_chat(src, "<span class='warning'>You feel a strong drag pulling you into the vent.</span>")
+								to_chat(src, "<span class='warning'>I feel a strong drag pulling you into the vent.</span>")
 							if(WARNING_HIGH_PRESSURE to HAZARD_HIGH_PRESSURE)
-								to_chat(src, "<span class='warning'>You feel a strong current pushing you away from the vent.</span>")
+								to_chat(src, "<span class='warning'>I feel a strong current pushing you away from the vent.</span>")
 							if(HAZARD_HIGH_PRESSURE to INFINITY)
-								to_chat(src, "<span class='danger'>You feel a roaring wind pushing you away from the vent!</span>")
+								to_chat(src, "<span class='danger'>I feel a roaring wind pushing you away from the vent!</span>")
 
 					if(!do_after(src,vent_found, 45,,0))
 						return
@@ -155,7 +155,7 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 					if(!ventcrawl_carry())
 						return
 
-					visible_message("<B>[src] scrambles into the ventilation ducts!</B>", "You climb into the ventilation system.")
+					visible_message("<B>[src] scrambles into the ventilation ducts!</B>", "I climb into the ventilation system.")
 
 					forceMove(vent_found)
 					add_ventcrawl(vent_found)
@@ -164,13 +164,13 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 					to_chat(src, "This vent is not connected to anything.")
 
 			else
-				to_chat(src, "You must be standing on or beside an air vent to enter it.")
+				to_chat(src, "I must be standing on or beside an air vent to enter it.")
 
 		else
-			to_chat(src, "You can't vent crawl while you're stunned!")
+			to_chat(src, "I can't vent crawl while you're stunned!")
 
 	else
-		to_chat(src, "You must be conscious to do this!")
+		to_chat(src, "I must be conscious to do this!")
 	return
 
 /mob/living/proc/add_ventcrawl(obj/machinery/atmospherics/starting_machine)

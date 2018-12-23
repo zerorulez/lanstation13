@@ -24,7 +24,7 @@
 	if(occupant)
 		return
 	if(istype(W, /obj/item/weapon/gun_barrel))
-		to_chat(user, "You place \the [W] on \the [src].")
+		to_chat(user, "I place \the [W] on \the [src].")
 		var/obj/structure/bed/chair/vehicle/wheelchair/wheelchair_assembly/I = new (get_turf(src.loc))
 		I.dir = dir
 		qdel(src)
@@ -132,7 +132,7 @@
 
 /obj/structure/bed/chair/vehicle/wheelchair/relaymove(var/mob/user, direction)
 	if(!check_key(user))
-		to_chat(user, "<span class='warning'>You need at least one hand to use [src]!</span>")
+		to_chat(user, "<span class='warning'>I need at least one hand to use [src]!</span>")
 		return 0
 	return ..()
 
@@ -230,17 +230,17 @@
 
 /obj/structure/bed/chair/vehicle/wheelchair/motorized/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(isscrewdriver(W))
-		user.visible_message("<span class='notice'>[user] screws [maintenance ? "closed" : "open"] \the [src]'s battery compartment.</span>", "<span class='notice'>You screw [maintenance ? "closed" : "open"] the battery compartment.</span>", "You hear screws being loosened.")
+		user.visible_message("<span class='notice'>[user] screws [maintenance ? "closed" : "open"] \the [src]'s battery compartment.</span>", "<span class='notice'>I screw [maintenance ? "closed" : "open"] the battery compartment.</span>", "I hear screws being loosened.")
 		maintenance = !maintenance
 	else if(iscrowbar(W)&&maintenance)
 		if(internal_battery)
 			user.put_in_hands(internal_battery)
 			internal_battery = null
-		user.visible_message("<span class='notice'>[user] pries out \the [src]'s battery.</span>", "<span class='notice'>You pry out \the [src]'s battery.</span>", "You hear a clunk.")
+		user.visible_message("<span class='notice'>[user] pries out \the [src]'s battery.</span>", "<span class='notice'>I pry out \the [src]'s battery.</span>", "I hear a clunk.")
 	else if(istype(W,/obj/item/weapon/cell)&&maintenance&&!internal_battery)
 		if(user.drop_item(W,src))
 			internal_battery = W
-			user.visible_message("<span class='notice'>[user] inserts \the [W] into the \the [src].</span>", "<span class='notice'>You insert \the [W] into \the [src].</span>", "You hear something being slid into place.")
+			user.visible_message("<span class='notice'>[user] inserts \the [W] into the \the [src].</span>", "<span class='notice'>I insert \the [W] into \the [src].</span>", "I hear something being slid into place.")
 	else
 		..()
 

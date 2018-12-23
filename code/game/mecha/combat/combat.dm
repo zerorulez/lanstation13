@@ -79,13 +79,13 @@
 					else
 						return
 				M.updatehealth()
-			src.occupant_message("You hit [target].")
+			src.occupant_message("I hit [target].")
 			src.visible_message("<font color='red'><b>[src.name] hits [target].</b></font>")
 			message_admins("[key_name_and_info(src.occupant)] mech punched [target] with [src.name] ([formatJumpTo(src)])",0,1)
 			log_attack("[key_name(src.occupant)] mech punched [target] with [src.name] ([formatLocation(src)])")
 		else
 			step_away(M,src)
-			src.occupant_message("You push [target] out of the way.")
+			src.occupant_message("I push [target] out of the way.")
 			src.visible_message("[src] pushes [target] out of the way.")
 
 		melee_can_hit = 0
@@ -97,13 +97,13 @@
 		if(damtype == "brute")
 			for(var/target_type in src.destroyable_obj)
 				if(istype(target, target_type) && hascall(target, "attackby"))
-					src.occupant_message("You hit [target].")
+					src.occupant_message("I hit [target].")
 					src.visible_message("<font color='red'><b>[src.name] hits [target]</b></font>")
 					if(!istype(target, /turf/simulated/wall))
 						target:attackby(src,src.occupant)
 					else if(prob(5))
 						target:dismantle_wall(1)
-						src.occupant_message("<span class='notice'>You smash through the wall.</span>")
+						src.occupant_message("<span class='notice'>I smash through the wall.</span>")
 						src.visible_message("<b>[src.name] smashes through the wall</b>")
 						playsound(src, 'sound/weapons/smash.ogg', 50, 1)
 					melee_can_hit = 0

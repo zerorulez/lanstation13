@@ -52,7 +52,7 @@
 			cell.updateicon()
 			cell = null
 			user.visible_message("<span class='notice'>[user] removes \the [src]'s power cell</span>", \
-			"<span class='notice'>You remove \the [src]'s power cell</span>")
+			"<span class='notice'>I remove \the [src]'s power cell</span>")
 			update_icon()
 			return
 
@@ -66,16 +66,16 @@
 		set_light(brightness_on)
 
 	user.visible_message("<span class='notice'>[user] turns \the [src] [on ? "on":"off"].</span>", \
-	"<span class='notice'>You turn \the [src] [on ? "on":"off"].</span>")
+	"<span class='notice'>I turn \the [src] [on ? "on":"off"].</span>")
 
 	update_icon()
 
 /obj/machinery/floodlight/attack_ghost(var/mob/dead/observer/ghost)
 	if(blessed)
-		to_chat(ghost, "Your hand goes right through \the [src]...Is that some holy water dripping from it?")
+		to_chat(ghost, "My hand goes right through \the [src]...Is that some holy water dripping from it?")
 		return 0
 	if(!ghost.can_poltergeist())
-		to_chat(ghost, "Your poltergeist abilities are still cooling down.")
+		to_chat(ghost, "My poltergeist abilities are still cooling down.")
 		return 0
 	investigation_log(I_GHOST, "|| was switched [on ? "off" : "on"] by [key_name(ghost)][ghost.locked_to ? ", who was haunting [ghost.locked_to]" : ""]")
 	return ..()
@@ -91,5 +91,5 @@
 				if(user.drop_item(W, src))
 					cell = W
 					user.visible_message("<span class='notice'>[user] inserts \the [src] into \the [src].</span>", \
-					"<span class='notice'>You insert \the [src] into \the [src].</span>")
+					"<span class='notice'>I insert \the [src] into \the [src].</span>")
 					update_icon()

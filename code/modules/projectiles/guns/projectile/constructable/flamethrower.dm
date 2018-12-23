@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/projectile/flamethrower
 	name = "flamethrower"
-	desc = "You are a firestarter!"
+	desc = "I am a firestarter!"
 	icon = 'icons/obj/flamethrower.dmi'
 	icon_state = "flamethrowerbase"
 	item_state = "flamethrower_0"
@@ -130,7 +130,7 @@
 	B.gas_jet = tank_gas.remove_ratio(throw_percent/100)
 
 	if(Fire(target,user))
-		user.visible_message("<span class='danger'>[user] shoots a jet of gas from \his [src.name]!</span>","<span class='danger'>You shoot a jet of gas from your [src.name]!</span>")
+		user.visible_message("<span class='danger'>[user] shoots a jet of gas from \his [src.name]!</span>","<span class='danger'>I shoot a jet of gas from my [src.name]!</span>")
 		playsound(user, 'sound/weapons/flamethrower.ogg', 50, 1)
 		src.updateUsrDialog()
 		flamethrower_window(user)

@@ -7,7 +7,7 @@
 	var/activeFor		= 0	//How long the event has existed. You don't need to change this.
 
 //Called first before processing.
-//Allows you to setup your event, such as randomly
+//Allows you to setup my event, such as randomly
 //setting the startWhen and or announceWhen variables.
 //Only called once.
 /datum/event/proc/setup()
@@ -26,7 +26,7 @@
 	return
 
 //Called on or after the tick counter is equal to startWhen.
-//You can include code related to your event or add your own
+//You can include code related to my event or add my own
 //time stamped events.
 //Called more than once.
 /datum/event/proc/tick()

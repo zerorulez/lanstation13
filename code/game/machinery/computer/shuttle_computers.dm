@@ -49,7 +49,7 @@
 /obj/item/weapon/disk/shuttle_coords/proc/compactible(datum/shuttle/S)
 	if(!allowed_shuttles.len)
 		return TRUE
-	
+
 	return is_type_in_list(S, allowed_shuttles)
 
 /obj/item/weapon/disk/shuttle_coords/proc/reset()
@@ -348,7 +348,7 @@
 
 	if(href_list["admin_link_to_shuttle"])
 		if(!isAdminGhost(usr))
-			to_chat(usr, "You must be an admin for this")
+			to_chat(usr, "I must be an admin for this")
 			return
 
 		var/list/L = list()
@@ -369,14 +369,14 @@
 
 	if(href_list["admin_unlink_shuttle"])
 		if(!isAdminGhost(usr))
-			to_chat(usr, "You must be an admin for this")
+			to_chat(usr, "I must be an admin for this")
 			return
 
 		shuttle = null
 
 	if(href_list["admin_toggle_lockdown"])
 		if(!isAdminGhost(usr))
-			to_chat(usr, "You must be an admin for this")
+			to_chat(usr, "I must be an admin for this")
 			return
 
 		if(!shuttle.lockdown)
@@ -394,7 +394,7 @@
 		src.updateUsrDialog()
 	if(href_list["admin_toggle_select_all"])
 		if(!isAdminGhost(usr))
-			to_chat(usr, "You must be an admin for this")
+			to_chat(usr, "I must be an admin for this")
 			return
 
 		if(allow_selecting_all)
@@ -407,14 +407,14 @@
 		src.updateUsrDialog()
 	if(href_list["admin_reset"])
 		if(!isAdminGhost(usr))
-			to_chat(usr, "You must be an admin for this")
+			to_chat(usr, "I must be an admin for this")
 			return
 
 		shuttle.initialize()
 		to_chat(usr, "Shuttle's list of travel destinations has been reset")
 	if(href_list["admin_toggle_silicon_use"])
 		if(!isAdminGhost(usr))
-			to_chat(usr, "You must be an admin for this")
+			to_chat(usr, "I must be an admin for this")
 			return
 
 		if(allow_silicons)
@@ -433,7 +433,7 @@
 		else
 			disk.forceMove(get_turf(src))
 			usr.put_in_hands(disk)
-			to_chat(usr, "<span class='info'>You eject \the [disk] from \the [src].</span>")
+			to_chat(usr, "<span class='info'>I eject \the [disk] from \the [src].</span>")
 			if(disk.destination == selected_port)
 				selected_port = null
 			disk = null
@@ -452,7 +452,7 @@
 
 	if(user.drop_item(SC, src))
 		disk = SC
-		to_chat(usr, "<span class='info'>You insert \the [SC] into \the [src].</span>")
+		to_chat(usr, "<span class='info'>I insert \the [SC] into \the [src].</span>")
 		src.updateUsrDialog()
 
 /obj/machinery/computer/shuttle_control/proc/use_pass(obj/item/weapon/card/shuttle_pass/P, mob/user)
@@ -462,10 +462,10 @@
 	if(user.drop_item(P, src))
 		if(shuttle && shuttle.type == P.allowed_shuttle)
 			if(shuttle.travel_to(P.destination, src, user))
-				to_chat(user, "<span class='info'>You insert \the [P] into \the [src].</span>")
+				to_chat(user, "<span class='info'>I insert \the [P] into \the [src].</span>")
 				qdel(P)
 				return
-		to_chat(user, "<span class='info'>You insert \the [P] into \the [src], but it is rejected.</span>")
+		to_chat(user, "<span class='info'>I insert \the [P] into \the [src], but it is rejected.</span>")
 		user.put_in_hands(P)
 
 /obj/machinery/computer/shuttle_control/bullet_act(var/obj/item/projectile/Proj)
@@ -485,6 +485,6 @@
 /obj/machinery/computer/shuttle_control/emag(mob/user as mob)
 	..()
 	src.req_access = list()
-	to_chat(usr, "You disable the console's access requirement.")
+	to_chat(usr, "I disable the console's access requirement.")
 
 #undef MAX_SHUTTLE_NAME_LEN

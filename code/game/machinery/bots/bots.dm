@@ -9,7 +9,7 @@
 	var/icon_initial //To get around all that pesky hardcoding of icon states, don't put modifiers on this one
 	var/obj/item/weapon/card/id/botcard			// the ID card that the bot "holds"
 	var/on = 1
-	var/health = 0 //do not forget to set health for your bot!
+	var/health = 0 //do not forget to set health for my bot!
 	var/maxhealth = 0
 	var/fire_dam_coeff = 1.0
 	var/brute_dam_coeff = 1.0
@@ -58,10 +58,10 @@
 	if(locked)
 		locked = 0
 		emagged = 1
-		to_chat(user, "<span class='warning'>You remove [src]'s control restrictions. Opening up its maintenance panel and swiping again will cause [src] to malfunction.</span>")
+		to_chat(user, "<span class='warning'>I remove [src]'s control restrictions. Opening up its maintenance panel and swiping again will cause [src] to malfunction.</span>")
 	if(!locked && open)
 		emagged = 2
-		to_chat(user, "<span class='warning'>You cause a malfunction in [src]'s behavioral matrix.</span>")
+		to_chat(user, "<span class='warning'>I cause a malfunction in [src]'s behavioral matrix.</span>")
 
 /obj/machinery/bot/examine(mob/user)
 	..()
@@ -127,7 +127,7 @@
 		if(health < maxhealth)
 			if(open)
 				health = min(maxhealth, health+10)
-				user.visible_message("<span class='danger'>[user] repairs [src]!</span>","<span class='notice'>You repair [src]!</span>")
+				user.visible_message("<span class='danger'>[user] repairs [src]!</span>","<span class='notice'>I repair [src]!</span>")
 			else
 				to_chat(user, "<span class='notice'>Unable to repair with the maintenance panel closed.</span>")
 		else

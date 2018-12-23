@@ -189,7 +189,7 @@ var/list/all_doors = list()
 		for(var/obj/machinery/door/firedoor/FD in loc)
 			FD.open(1)
 	else
-		to_chat(H, "<span class='warning'>You fail to open \the [src].</span>")
+		to_chat(H, "<span class='warning'>I fail to open \the [src].</span>")
 
 	return TRUE
 

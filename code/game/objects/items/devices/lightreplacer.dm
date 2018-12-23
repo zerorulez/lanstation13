@@ -23,11 +23,11 @@
 //
 // NOTICE: The Cyborg cannot use the emagged Light Replacer and the light's explosion was nerfed. It cannot create holes in the station anymore.
 //
-// I'm not sure everyone will react the emag's features so please say what your opinions are of it.
+// I'm not sure everyone will react the emag's features so please say what my opinions are of it.
 //
 // When emagged it will rig every light it replaces, which will explode when the light is on.
 // This is VERY noticable, even the device's name changes when you emag it so if anyone
-// examines you when you're holding it in your hand, you will be discovered.
+// examines you when you're holding it in my hand, you will be discovered.
 // It will also be very obvious who is setting all these lights off, since only Janitor Borgs and Janitors have easy
 // access to them, and only one of them can emag their device.
 //
@@ -125,7 +125,7 @@
 			return
 		var/obj/item/stack/sheet/glass/glass/G = W
 		G.use(1)
-		to_chat(user, "<span class='notice'>You insert \the [G] into \the [src].</span>")
+		to_chat(user, "<span class='notice'>I insert \the [G] into \the [src].</span>")
 		return
 
 	if(istype(W, /obj/item/weapon/light))
@@ -137,7 +137,7 @@
 				else
 					to_chat(user, "<span class='warning'>\The [src] has no [L.status ? "waste" : "supply"] container!</span>")
 			if(1)
-				user.visible_message("[user] inserts \a [L] into \the [src]", "You insert \the [L] into \the [src]'s [L.status ? "waste" : "supply"] container.")
+				user.visible_message("[user] inserts \a [L] into \the [src]", "I insert \the [L] into \the [src]'s [L.status ? "waste" : "supply"] container.")
 			else
 				to_chat(user, "<span class='bnotice'>Something very strange has happened. Please adminhelp and ask someone to view the variables of that light, especially status.</span>")
 		return
@@ -145,12 +145,12 @@
 	if(istype(W, /obj/item/weapon/storage/box/lights))
 		if(!supply)
 			if(user.drop_item(W, src))
-				user.visible_message("[user] inserts \a [W] into \the [src]", "You insert \the [W] into \the [src] to be used as the supply container.")
+				user.visible_message("[user] inserts \a [W] into \the [src]", "I insert \the [W] into \the [src] to be used as the supply container.")
 				supply = W
 				return
 		else if(!waste)
 			if(user.drop_item(W, src))
-				user.visible_message("[user] inserts \a [W] into \the [src]", "You insert \the [W] into \the [src] to be used as the waste container.")
+				user.visible_message("[user] inserts \a [W] into \the [src]", "I insert \the [W] into \the [src] to be used as the waste container.")
 				waste = W
 				return
 		else
@@ -175,7 +175,7 @@
 		var/obj/item/stack/sheet/cardboard/C = W
 		cardboard_stor++
 		C.use(1)
-		to_chat(user, "<span class='notice'>You insert a cardboard sheet into \the [src].</span>")
+		to_chat(user, "<span class='notice'>I insert a cardboard sheet into \the [src].</span>")
 		return
 
 /obj/item/device/lightreplacer/attack_self(mob/user)
@@ -243,7 +243,7 @@
 		var/mob/living/silicon/robot/R = user
 		if(R.emagged)
 			src.Emag()
-			to_chat(usr, "You shortcircuit the [src].")
+			to_chat(usr, "I shortcircuit the [src].")
 			return
 	*/
 
@@ -322,7 +322,7 @@
 		return
 
 
-	to_chat(user, "<span class='notice'>You replace the [target.fitting] with \the [src].</span>")
+	to_chat(user, "<span class='notice'>I replace the [target.fitting] with \the [src].</span>")
 	playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 
 	supply.remove_from_storage(best_light)
@@ -482,7 +482,7 @@
 			if("supply")
 				if(usr)
 					usr.put_in_hands(supply)
-					usr.visible_message("[usr] removes \the [supply] from \the [src].", "You remove \the [src]'s supply container, \the [supply].")
+					usr.visible_message("[usr] removes \the [supply] from \the [src].", "I remove \the [src]'s supply container, \the [supply].")
 				else
 					supply.forceMove(get_turf(src))
 				supply = null
@@ -493,7 +493,7 @@
 			if("waste")
 				if(usr)
 					usr.put_in_hands(waste)
-					usr.visible_message("[usr] removes \the [waste] from \the [src].", "You remove \the [src]'s waste container, \the [waste].")
+					usr.visible_message("[usr] removes \the [waste] from \the [src].", "I remove \the [src]'s waste container, \the [waste].")
 				else
 					waste.forceMove(get_turf(src))
 				waste = null

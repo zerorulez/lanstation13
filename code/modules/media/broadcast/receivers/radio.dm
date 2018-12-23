@@ -14,7 +14,7 @@
 
 /obj/machinery/media/receiver/boombox/attack_hand(var/mob/user)
 	if(stat & (NOPOWER|BROKEN))
-		to_chat(usr, "<span class='warning'>You don't see anything to mess with.</span>")
+		to_chat(usr, "<span class='warning'>I don't see anything to mess with.</span>")
 		return
 	user.set_machine(src)
 	interact(user)
@@ -47,7 +47,7 @@
 	if(..())
 		return 1
 	if(isobserver(usr) && !isAdminGhost(usr))
-		to_chat(usr, "<span class='warning'>You can't push buttons when your fingers go right through them, dummy.</span>")
+		to_chat(usr, "<span class='warning'>I can't push buttons when my fingers go right through them, dummy.</span>")
 		return
 	..()
 	if("power" in href_list)
@@ -138,7 +138,7 @@
 	switch(buildstage)
 		if(SYSTEMISDONE)
 			if(iscrowbar(W))
-				to_chat(user, "<span class='notice'>You pry the cover off [src].</span>")
+				to_chat(user, "<span class='notice'>I pry the cover off [src].</span>")
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 				if(do_after(user, src, 10) && buildstage==SYSTEMISDONE)
 					on = 0
@@ -153,7 +153,7 @@
 				if(do_after(user, src, 10) && buildstage==SYSTEMISKINDADONE)
 					on = 1
 					buildstage = SYSTEMISDONE
-					to_chat(user, "<span class='notice'>You secure the cover.</span>")
+					to_chat(user, "<span class='notice'>I secure the cover.</span>")
 					update_icon()
 					update_on(TRUE)
 				return 1
@@ -168,15 +168,15 @@
 			if(iscoil(W))
 				var/obj/item/stack/cable_coil/coil = W
 				if(coil.amount < 5)
-					to_chat(user, "<span class='warning'>You need more cable for this!</span>")
+					to_chat(user, "<span class='warning'>I need more cable for this!</span>")
 					return
 				if(do_after(user, src, 10) && buildstage==SYSTEMISNOTDONE)
 					coil.use(5)
-					to_chat(user, "<span class='notice'>You wire \the [src]!</span>")
+					to_chat(user, "<span class='notice'>I wire \the [src]!</span>")
 					buildstage = SYSTEMISKINDADONE
 				return 1
 			if(iswrench(W))
-				to_chat(user, "<span class='notice'>You remove the securing bolts...</span>")
+				to_chat(user, "<span class='notice'>I remove the securing bolts...</span>")
 				playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 				if(do_after(user, src, 10) && buildstage==SYSTEMISNOTDONE)
 					new /obj/item/mounted/frame/soundsystem(get_turf(src))

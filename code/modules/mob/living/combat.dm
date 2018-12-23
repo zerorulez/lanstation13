@@ -2,7 +2,7 @@
 	if(grab_check(target))
 		return
 	if(target.locked_to)
-		to_chat(src, "<span class='notice'>You cannot grab \the [target], \he is buckled in!</span>")
+		to_chat(src, "<span class='notice'>I cannot grab \the [target], \he is buckled in!</span>")
 		return
 
 	var/obj/item/weapon/grab/G = getFromPool(/obj/item/weapon/grab, src, target)

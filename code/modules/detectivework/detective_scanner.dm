@@ -118,7 +118,7 @@
 	if (fingerprints_found.len == 0 && blood_DNA_found.len == 0 && fibers_found.len == 0)
 		user.visible_message("\The [user] scans \the [A] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]" ,\
 		"<span class='notice'>Unable to locate any fingerprints, materials, fibers, or blood on [A]!</span>",\
-		"You hear a faint hum of electrical equipment.")
+		"I hear a faint hum of electrical equipment.")
 		return 0
 
 	if(add_data(A,blood_DNA_found,fingerprints_found,fibers_found))
@@ -157,13 +157,13 @@
 
 	if(prob(80) || !fingerprints_found.len)
 		user.visible_message("\The [user] scans \the [A] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]" ,\
-		"You finish scanning \the [A].",\
-		"You hear a faint hum of electrical equipment.")
+		"I finish scanning \the [A].",\
+		"I hear a faint hum of electrical equipment.")
 		return 0
 	else
 		user.visible_message("\The [user] scans \the [A] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]\n[user.gender == MALE ? "He" : "She"] seems to perk up slightly at the readout." ,\
-		"The results of the scan pique your interest.",\
-		"You hear a faint hum of electrical equipment, and someone making a thoughtful noise.")
+		"The results of the scan pique my interest.",\
+		"I hear a faint hum of electrical equipment, and someone making a thoughtful noise.")
 		return 0
 	return
 
@@ -222,7 +222,7 @@
 	var/list/customfiber = list()
 	var/list/customblood = list()
 	if(forging)
-		to_chat(user, "<span class='warning'>You are already forging evidence</span>")
+		to_chat(user, "<span class='warning'>I am already forging evidence</span>")
 		return 0
 	clear_forgery()
 	//fingerprint loop
@@ -301,12 +301,12 @@
 		if(!custom_finger.len && !custom_fiber.len && !custom_blood.len)
 			user.visible_message("\The [user] scans \the [A] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]" ,\
 			"<span class='notice'>Unable to locate any fingerprints, materials, fibers, or blood on [A]!</span>",\
-			"You hear a faint hum of electrical equipment.")
+			"I hear a faint hum of electrical equipment.")
 			return 0
 		else
 			user.visible_message("\The [user] scans \the [A] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]" ,\
 			"<span class='notice'>Unable to locate any fingerprints, materials, fibers, or blood on [A], loading custom forgery instead.</span>",\
-			"You hear a faint hum of electrical equipment.")
+			"I hear a faint hum of electrical equipment.")
 
 	if(add_data(A,blood_DNA_found,fingerprints_found,fibers_found))
 		to_chat(user, "<span class='notice'>Object already in internal memory. Consolidating data...</span>")

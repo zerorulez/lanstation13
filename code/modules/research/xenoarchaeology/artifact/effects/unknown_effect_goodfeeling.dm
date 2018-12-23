@@ -2,27 +2,27 @@
 /datum/artifact_effect/goodfeeling
 	effecttype = "goodfeeling"
 	effect_type = 2
-	var/list/messages = list("You feel good.",\
+	var/list/messages = list("I feel good.",\
 		"Everything seems to be going alright",\
-		"You've got a good feeling about this",\
-		"Your instincts tell you everything is going to be getting better.",\
+		"I've got a good feeling about this",\
+		"My instincts tell me everything is going to get better.",\
 		"There's a good feeling in the air.",\
 		"Something smells... good.",\
-		"The tips of your fingers feel tingly.",\
-		"You've got a good feeling about this.",\
-		"You feel happy.",\
-		"You fight the urge to smile.",\
-		"Your scalp prickles.",\
+		"The tips of my fingers feel tingly.",\
+		"I've got a good feeling about this.",\
+		"I feel happy.",\
+		"I fight the urge to smile.",\
+		"My scalp prickles.",\
 		"All the colours seem a bit more vibrant.",\
 		"Everything seems a little lighter.",\
 		"The troubles of the world seem to fade away.")
 
-	var/list/drastic_messages = list("You want to hug everyone you meet!",\
+	var/list/drastic_messages = list("I want to hug everyone I meet!",\
 		"Everything is going so well!",\
-		"You feel euphoric.",\
-		"You feel giddy.",\
-		"You're so happy suddenly, you almost want to dance and sing.",\
-		"You feel like the world is out to help you.")
+		"I feel euphoric.",\
+		"I feel giddy.",\
+		"I'am so happy suddenly, you almost want to dance and sing.",\
+		"I feel like the world is out to help you.")
 
 /datum/artifact_effect/goodfeeling/DoEffectTouch(var/mob/user)
 	if(user)

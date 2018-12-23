@@ -99,7 +99,7 @@
 
 	if(!dna_profile)
 		dna_profile = H.dna.unique_enzymes
-		to_chat(usr, "<span class='notice'>You submit a DNA sample to \the [src].</span>")
+		to_chat(usr, "<span class='notice'>I submit a DNA sample to \the [src].</span>")
 		verbs += /obj/item/weapon/gun/lawgiver/verb/erase_DNA_sample
 		verbs -= /obj/item/weapon/gun/lawgiver/verb/submit_DNA_sample
 		update_icon()
@@ -120,7 +120,7 @@
 	if(dna_profile)
 		if(dna_profile == H.dna.unique_enzymes)
 			dna_profile = null
-			to_chat(usr, "<span class='notice'>You erase the DNA profile from \the [src].</span>")
+			to_chat(usr, "<span class='notice'>I erase the DNA profile from \the [src].</span>")
 			verbs += /obj/item/weapon/gun/lawgiver/verb/submit_DNA_sample
 			verbs -= /obj/item/weapon/gun/lawgiver/verb/erase_DNA_sample
 			update_icon()
@@ -140,7 +140,7 @@
 	if(istype(AM, /obj/item/ammo_storage/magazine/lawgiver) && !magazine)
 		if(user)
 			if(user.drop_item(AM, src))
-				to_chat(user, "<span class='notice'>You load the magazine into \the [src].</span>")
+				to_chat(user, "<span class='notice'>I load the magazine into \the [src].</span>")
 			else
 				return
 
@@ -156,7 +156,7 @@
 		L.forceMove(get_turf(src.loc))
 		if(user)
 			user.put_in_hands(L)
-			to_chat(user, "<span class='notice'>You pull the magazine out of \the [src].</span>")
+			to_chat(user, "<span class='notice'>I pull the magazine out of \the [src].</span>")
 		L.update_icon()
 		magazine = null
 		update_icon()
@@ -425,11 +425,11 @@
 		else
 			to_chat(user, "<span class='warning'>There is already a magazine loaded in \the [src]!</span>")
 	else if (istype(A, /obj/item/ammo_storage/magazine))
-		to_chat(user, "<span class='warning'>You can't load \the [src] with that kind of magazine!</span>")
+		to_chat(user, "<span class='warning'>I can't load \the [src] with that kind of magazine!</span>")
 
 /obj/item/weapon/gun/lawgiver/proc/check_mag_type(obj/item/I, mob/user)
 	if(istype(I, /obj/item/ammo_storage/magazine/lawgiver/demolition))
-		to_chat(user, "<span class='warning'>You can't load a demolition-model magazine into this [src.name]!</span>")
+		to_chat(user, "<span class='warning'>I can't load a demolition-model magazine into this [src.name]!</span>")
 		return 0
 	return 1
 

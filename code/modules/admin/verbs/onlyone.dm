@@ -117,7 +117,7 @@
 	hijack_objective.owner = H.mind
 	H.mind.objectives += hijack_objective
 
-	to_chat(H, "<B>You are a highlander!</B>")
+	to_chat(H, "<B>I am a highlander!</B>")
 	var/obj_count = 1
 	for(var/datum/objective/OBJ in H.mind.objectives)
 		to_chat(H, "<B>Objective #[obj_count++]</B>: [OBJ.explanation_text]")
@@ -152,7 +152,7 @@
 	H.equip_to_slot_or_del(W, slot_wear_id)
 
 	return H
-	
+
 
 //MAGIC MISSILE
 /datum/only_one/wizardwars
@@ -172,7 +172,7 @@
 	hijack_objective.owner = H.mind
 	H.mind.objectives += hijack_objective
 
-	to_chat(H, "<span class='danger'>You are a Space Wizard!</span>")
+	to_chat(H, "<span class='danger'>I am a Space Wizard!</span>")
 	var/obj_count = 1
 	for(var/datum/objective/OBJ in H.mind.objectives)
 		to_chat(H, "<B>Objective #[obj_count++]</B>: [OBJ.explanation_text]")
@@ -183,7 +183,7 @@
 
 	if(isplasmaman(H))
 		H.set_species("Skellington", 1) //Don't want them just catching fire, and this is the most similar species that doesn't need the suit.
-		to_chat(H, "<span class='notice'>Your solid plasma vanishes, leaving behind only bones!</span>")
+		to_chat(H, "<span class='notice'>My solid plasma vanishes, leaving behind only bones!</span>")
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_ears)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/lightpurple(H), slot_w_uniform)
@@ -210,7 +210,7 @@
 
 	H.make_all_robot_parts_organic()
 
-	to_chat(H, "<span class='info'>Your spellbook is in your backpack. All wizards are invincible for the next 20 seconds, and no spells can be cast in that time. Take this time to select your spells.</span>")
+	to_chat(H, "<span class='info'>My spellbook is in my backpack. All wizards are invincible for the next 20 seconds, and no spells can be cast in that time. Take this time to select my spells.</span>")
 
 	return H
 

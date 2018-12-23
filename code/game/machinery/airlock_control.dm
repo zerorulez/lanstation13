@@ -258,9 +258,9 @@ obj/machinery/airlock_sensor/attackby(var/obj/item/W, var/mob/user)
 	if(.)
 		return .
 	if(istype(W,/obj/item/weapon/screwdriver))
-		to_chat(user, "You begin to pry \the [src] off the wall...")
+		to_chat(user, "I begin to pry \the [src] off the wall...")
 		if(do_after(user, src, 50))
-			to_chat(user, "You successfully pry \the [src] off the wall.")
+			to_chat(user, "I successfully pry \the [src] off the wall.")
 			new /obj/item/mounted/frame/airlock_sensor(get_turf(src))
 			qdel(src)
 
@@ -330,9 +330,9 @@ obj/machinery/access_button/attackby(var/obj/item/W, var/mob/user)
 	if(.)
 		return .
 	if(istype(W,/obj/item/weapon/screwdriver))
-		to_chat(user, "You begin to pry \the [src] off the wall...")
+		to_chat(user, "I begin to pry \the [src] off the wall...")
 		if(do_after(user, src, 50))
-			to_chat(user, "You successfully pry \the [src] off the wall.")
+			to_chat(user, "I successfully pry \the [src] off the wall.")
 			new /obj/item/mounted/frame/access_button(get_turf(src))
 			qdel(src)
 

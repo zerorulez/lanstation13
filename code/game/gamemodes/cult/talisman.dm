@@ -21,7 +21,7 @@
 			if("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "balaq", "mgar", "karazet", "geeri")
 				to_chat(user, "This talisman has been imbued with the power of taking you to someplace else. You can read <i>[imbue]</i> on it.")
 			if("communicate")
-				to_chat(user, "This talisman has been imbued with the power of communicating your whispers to your allies.")
+				to_chat(user, "This talisman has been imbued with the power of communicating my whispers to my allies.")
 			if("deafen")
 				to_chat(user, "This talisman has been imbued with the power of deafening visible enemies.")
 			if("blind")
@@ -29,11 +29,11 @@
 			if("runestun")
 				to_chat(user, "This talisman has been imbued with the power of paralyzing the beings you touch with it. The effect works on silicons as well, but humans will also be muted for a short time.")
 			if("supply")
-				to_chat(user, "This talisman has been imbued with the power of providing you and your allies with some supplies to start your cult.")
+				to_chat(user, "This talisman has been imbued with the power of providing you and my allies with some supplies to start my cult.")
 			else
 				to_chat(user, "This talisman.....has no particular power. Is this some kind of joke?")
 	else
-		to_chat(user, "Something about the blood stains on this paper fills you with uneasiness.")
+		to_chat(user, "Something about the blood stains on this paper fills me with uneasiness.")
 
 /obj/item/weapon/paper/talisman/proc/findNullRod(var/atom/target)
 	if(istype(target,/obj/item/weapon/nullrod))
@@ -58,7 +58,7 @@
 		switch(imbue)
 			if("newtome")
 				call(/obj/effect/rune/proc/tomesummon)()
-			if("armor") //Fuck off with your shit /tg/. This isn't Edgy Rev+
+			if("armor") //Fuck off with my shit /tg/. This isn't Edgy Rev+
 				call(/obj/effect/rune/proc/armor)()
 			if("emp")
 				call(/obj/effect/rune/proc/emp)(usr.loc,3)
@@ -82,7 +82,7 @@
 				blind()
 				qdel(src)
 			if("runestun")
-				to_chat(user, "<span class='warning'>To use this talisman, attack your target directly.</span>")
+				to_chat(user, "<span class='warning'>To use this talisman, attack my target directly.</span>")
 				return
 			if("supply")
 				supply()
@@ -92,7 +92,7 @@
 				qdel(src)
 		return
 	else
-		to_chat(user, "You see strange symbols on the paper. Are they supposed to mean something?")
+		to_chat(user, "I see strange symbols on the paper. Are they supposed to mean something?")
 		return
 
 
@@ -123,10 +123,10 @@
 <A href='?src=\ref[src];rune=teleport'>Sas'so c'arta forbici!</A> - Allows you to move to a rune with the same last word.<BR>
 <A href='?src=\ref[src];rune=emp'>Ta'gh fara'qha fel d'amar det!</A> - Allows you to destroy technology in a short range.<BR>
 <A href='?src=\ref[src];rune=conceal'>Kla'atu barada nikt'o!</A> - Allows you to conceal the runes you placed on the floor.<BR>
-<A href='?src=\ref[src];rune=communicate'>O bidai nabora se'sma!</A> - Allows you to coordinate with others of your cult.<BR>
+<A href='?src=\ref[src];rune=communicate'>O bidai nabora se'sma!</A> - Allows you to coordinate with others of my cult.<BR>
 <A href='?src=\ref[src];rune=runestun'>Fuu ma'jin</A> - Allows you to stun a person by attacking them with the talisman.<BR>
 <A href='?src=\ref[src];rune=soulstone'>Kal om neth</A> - Summons a soul stone<BR>
-<A href='?src=\ref[src];rune=construct'>Da A'ig Osk</A> - Summons a construct shell for use with captured souls. It is too large to carry on your person.<BR>"}
+<A href='?src=\ref[src];rune=construct'>Da A'ig Osk</A> - Summons a construct shell for use with captured souls. It is too large to carry on my person.<BR>"}
 //<A href='?src=\ref[src];rune=armor'>Sa tatha najin</A> - Allows you to summon armored robes and an unholy blade<BR> //Kept for reference
 	usr << browse(dat, "window=id_com;size=350x200")
 	return
@@ -146,7 +146,7 @@
 			if("teleport")
 				var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
 				var/list/words = list("ire" = "ire", "ego" = "ego", "nahlizet" = "nahlizet", "certum" = "certum", "veri" = "veri", "jatkaa" = "jatkaa", "balaq" = "balaq", "mgar" = "mgar", "karazet" = "karazet", "geeri" = "geeri")
-				T.imbue = input("Write your teleport destination rune:", "Rune Scribing") in words
+				T.imbue = input("Write my teleport destination rune:", "Rune Scribing") in words
 			if("emp")
 				var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
 				T.imbue = "emp"
@@ -213,10 +213,10 @@
 		C.eye_blind += 10
 		//talismans is weaker.
 		affected++
-		to_chat(C, "<span class='warning'>You feel a sharp pain in your eyes, and the world disappears into darkness..</span>")
+		to_chat(C, "<span class='warning'>I feel a sharp pain in my eyes, and the world disappears into darkness..</span>")
 	if(affected)
 		usr.whisper("Sti[pick("'","`")] kaliesin!")
-		to_chat(usr, "<span class='warning'>Your talisman turns into gray dust, blinding those who not follow the Nar-Sie.</span>")
+		to_chat(usr, "<span class='warning'>My talisman turns into gray dust, blinding those who not follow the Nar-Sie.</span>")
 
 
 /obj/item/weapon/paper/talisman/proc/deafen()
@@ -235,7 +235,7 @@
 		affected++
 	if(affected)
 		usr.whisper("Sti[pick("'","`")] kaliedir!")
-		to_chat(usr, "<span class='warning'>Your talisman turns into gray dust, deafening everyone around.</span>")
+		to_chat(usr, "<span class='warning'>My talisman turns into gray dust, deafening everyone around.</span>")
 		for (var/mob/V in orange(1,src))
 			if(!(iscultist(V)))
 				V.show_message("<span class='warning'>Dust flows from [usr]'s hands for a moment, and the world suddenly becomes quiet..</span>")

@@ -29,12 +29,12 @@
 			src.locked = !( src.locked )
 			if(src.locked)
 				src.icon_state = src.icon_locked
-				to_chat(user, "<span class='rose'>You lock the [src.name]!</span>")
+				to_chat(user, "<span class='rose'>I lock the [src.name]!</span>")
 				tracked_access = "The tracker reads: 'Last locked by [ID.registered_name].'"
 				return
 			else
 				src.icon_state = src.icon_closed
-				to_chat(user, "<span class='rose'>You unlock the [src.name]!</span>")
+				to_chat(user, "<span class='rose'>I unlock the [src.name]!</span>")
 				tracked_access = "The tracker reads: 'Last unlocked by [ID.registered_name].'"
 				if(oneuse)
 					for(var/atom/movable/A in src)
@@ -50,7 +50,7 @@
 		desc = "It appears to be broken."
 		icon_state = src.icon_broken
 		for(var/mob/O in viewers(user, 3))
-			O.show_message(text("<span class='notice'>The lockbox has been broken by [] with an electromagnetic card!</span>", user), 1, text("You hear a faint electrical spark."), 2)
+			O.show_message(text("<span class='notice'>The lockbox has been broken by [] with an electromagnetic card!</span>", user), 1, text("I hear a faint electrical spark."), 2)
 		if(oneuse)
 			for(var/atom/movable/A in src)
 				remove_from_storage(A, get_turf(src))
@@ -186,7 +186,7 @@
 
 /obj/item/weapon/storage/lockbox/clusterbang
 	name = "lockbox (clusterbang)"
-	desc = "You have a bad feeling about opening this."
+	desc = "I have a bad feeling about opening this."
 	req_one_access = list(access_security)
 
 /obj/item/weapon/storage/lockbox/clusterbang/New()
@@ -224,12 +224,12 @@
 			src.locked = !( src.locked )
 			if(src.locked)
 				src.icon_state = src.icon_locked
-				to_chat(user, "<span class='rose'>You lock the [src.name]!</span>")
+				to_chat(user, "<span class='rose'>I lock the [src.name]!</span>")
 				tracked_access = "The tracker reads: 'Last locked by [ID.registered_name]'."
 				return
 			else
 				src.icon_state = src.icon_closed
-				to_chat(user, "<span class='rose'>You unlock the [src.name]!</span>")
+				to_chat(user, "<span class='rose'>I unlock the [src.name]!</span>")
 				tracked_access = "The tracker reads: 'Last unlocked by [ID.registered_name].'"
 				return
 	else

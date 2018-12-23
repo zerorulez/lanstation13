@@ -49,11 +49,11 @@
 		if(!tank_one)
 			if(user.drop_item(item, src))
 				tank_one = item
-				to_chat(user, "<span class='notice'>You attach the tank to the transfer valve.</span>")
+				to_chat(user, "<span class='notice'>I attach the tank to the transfer valve.</span>")
 		else if(!tank_two)
 			if(user.drop_item(item, src))
 				tank_two = item
-				to_chat(user, "<span class='notice'>You attach the tank to the transfer valve.</span>")
+				to_chat(user, "<span class='notice'>I attach the tank to the transfer valve.</span>")
 
 		update_icon()
 	//TODO: Have this take an assemblyholder
@@ -68,7 +68,7 @@
 		user.remove_from_mob(item)
 		attached_device = A
 		A.forceMove(src)
-		to_chat(user, "<span class='notice'>You attach the [item] to the valve controls and secure it.</span>")
+		to_chat(user, "<span class='notice'>I attach the [item] to the valve controls and secure it.</span>")
 		A.holder = src
 		A.toggle_secure()	//this calls update_icon(), which calls update_icon() on the holder (i.e. the bomb).
 

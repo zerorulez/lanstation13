@@ -25,7 +25,7 @@
 	..()
 	if (iswrench(W))
 		if(occupant)
-			to_chat(user, "<span class='warning'>You can't disassemble [src] with meat and gore all over it.</span>")
+			to_chat(user, "<span class='warning'>I can't disassemble [src] with meat and gore all over it.</span>")
 			return
 		var/obj/item/stack/sheet/metal/M = getFromPool(/obj/item/stack/sheet/metal, get_turf(src))
 		M.amount = 2
@@ -89,9 +89,9 @@
 			src.occupant.drop_meat(get_turf(src))
 
 			if(src.meat_remaining)
-				to_chat(user, "You remove some meat from \the [src.occupant].")
+				to_chat(user, "I remove some meat from \the [src.occupant].")
 			else
-				to_chat(user, "You remove the last piece of meat from \the [src]!")
+				to_chat(user, "I remove the last piece of meat from \the [src]!")
 				src.clean()
 	else
 		src.clean()

@@ -82,7 +82,7 @@
 				if(NUKA_COLA)
 					icon_state = "nuka_colaglass"
 					name = "\improper Nuka Cola"
-					desc = "Don't cry, Don't raise your eye, It's only nuclear wasteland"
+					desc = "Don't cry, Don't raise my eye, It's only nuclear wasteland"
 				if(ORANGEJUICE)
 					icon_state = "glass_orange"
 					item_state = "glass_orange"
@@ -141,7 +141,7 @@
 				if(VERMOUTH)
 					icon_state = "vermouthglass"
 					name = "glass of vermouth"
-					desc = "You wonder why you're even drinking this straight."
+					desc = "I wonder why you're even drinking this straight."
 				if(TEQUILA)
 					icon_state = "tequilaglass"
 					name = "glass of tequila"
@@ -165,7 +165,7 @@
 				if(WHITERUSSIAN)
 					icon_state = "whiterussianglass"
 					name = "\improper White Russian"
-					desc = "A very nice looking drink. But that's just, like, your opinion, man."
+					desc = "A very nice looking drink. But that's just, like, my opinion, man."
 				if(SCREWDRIVERCOCKTAIL)
 					icon_state = "screwdriverglass"
 					name = "\improper Screwdriver"
@@ -230,7 +230,7 @@
 				if(ATOMICBOMB)
 					icon_state = "atomicbombglass"
 					name = "\improper Atomic Bomb"
-					desc = "Nanotrasen cannot take legal responsibility for your actions after imbibing."
+					desc = "Nanotrasen cannot take legal responsibility for my actions after imbibing."
 				if(LONGISLANDICEDTEA)
 					icon_state = "longislandicedteaglass"
 					name = "\improper Long Island Iced Tea"
@@ -271,7 +271,7 @@
 					icon_state = "glass_brown2"
 					item_state = "glass_brown2"
 					name = "\improper Hooch"
-					desc = "You've really hit rock bottom now... your liver packed its bags and left last night."
+					desc = "I've really hit rock bottom now... my liver packed its bags and left last night."
 				if(WHISKEYSODA)
 					icon_state = "whiskeysodaglass2"
 					name = "whiskey soda"
@@ -310,12 +310,12 @@
 					icon_state = "space-up_glass"
 					item_state = "space-up_glass"
 					name = "glass of Space-up"
-					desc = "Space-up. It helps keep your cool."
+					desc = "Space-up. It helps keep my cool."
 				if(MOONSHINE)
 					icon_state = "glass_clear"
 					item_state = "glass_clear"
 					name = "\improper Moonshine"
-					desc = "You've really hit rock bottom now... your liver packed its bags and left last night."
+					desc = "I've really hit rock bottom now... my liver packed its bags and left last night."
 				if(SOYMILK)
 					icon_state = "glass_white"
 					item_state = "glass_white"
@@ -352,7 +352,7 @@
 				if(ALLIESCOCKTAIL)
 					icon_state = ALLIESCOCKTAIL
 					name = "\improper Allies Cocktail"
-					desc = "A drink made from your allies."
+					desc = "A drink made from my allies."
 				if(ANTIFREEZE)
 					icon_state = ANTIFREEZE
 					item_state = ANTIFREEZE
@@ -365,7 +365,7 @@
 				if(DEMONSBLOOD)
 					icon_state = DEMONSBLOOD
 					name = "\improper Demon's Blood"
-					desc = "Just looking at this thing makes the hair at the back of your neck stand up."
+					desc = "Just looking at this thing makes the hair at the back of my neck stand up."
 				if(BOOGER)
 					icon_state = BOOGER
 					item_state = BOOGER
@@ -602,11 +602,11 @@
 				if(GREENTEA)
 					icon_state = GREENTEA
 					name = "Green Tea"
-					desc = "Green Tea served in a traditional Japanese tea cup, just like in your Chinese cartoons!"
+					desc = "Green Tea served in a traditional Japanese tea cup, just like in my Chinese cartoons!"
 				if(REDTEA)
 					icon_state = REDTEA
 					name = "Red Tea"
-					desc = "Red Tea served in a traditional Chinese tea cup, just like in your Malaysian movies!"
+					desc = "Red Tea served in a traditional Chinese tea cup, just like in my Malaysian movies!"
 				if(ACIDTEA)
 					icon_state = ACIDTEA
 					name = "Earl's Grey Tea"
@@ -650,7 +650,7 @@
 				if(PLASMATEA)
 					icon_state = PLASMATEA
 					name = "Plasma Pekoe"
-					desc = "You can practically taste the science, or maybe that's just the horrible plasma burns."
+					desc = "I can practically taste the science, or maybe that's just the horrible plasma burns."
 				if(COFFEE)
 					icon_state = COFFEE
 					name = "Coffee"
@@ -698,7 +698,7 @@
 				if(ETANK)
 					icon_state = ETANK
 					name = "Recharger"
-					desc = "Helps you get back on your feet after a long day of robot maintenance. Can also be used as a substitute for motor oil."
+					desc = "Helps you get back on my feet after a long day of robot maintenance. Can also be used as a substitute for motor oil."
 				if(GREYTEA)
 					icon_state = GREYTEA
 					name = "Tide"
@@ -711,7 +711,7 @@
 				else
 					icon_state ="mug_what"
 					name = "mug of ..something?"
-					desc = "You aren't really sure what this is."
+					desc = "I amn't really sure what this is."
 		else
 			icon_state = "mug_empty"
 			name = "mug"

@@ -30,7 +30,7 @@
 
 	var/obj/item/weapon/cylinder/C = cylinder
 	C.cycle()
-	to_chat(user, "You cycle \the [src]'s [C] to the next chamber.")
+	to_chat(user, "I cycle \the [src]'s [C] to the next chamber.")
 	playsound(user, 'sound/weapons/switchblade.ogg', 50, 1)
 
 /obj/item/weapon/gun/projectile/revialver/proc/spin()
@@ -46,9 +46,9 @@
 			to_chat(user, "There is already a cylinder loaded into \the [src].")
 			return
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
 			return 1
-		to_chat(user, "You load \the [W] into \the [src].")
+		to_chat(user, "I load \the [W] into \the [src].")
 		cylinder = W
 		icon_state = "revialver1"
 		user.update_inv_hands()
@@ -68,7 +68,7 @@
 	set src in range(0)
 
 	if(usr.isUnconscious())
-		to_chat(usr, "You can't do that while unconscious.")
+		to_chat(usr, "I can't do that while unconscious.")
 		return
 
 	if(!cylinder)
@@ -78,7 +78,7 @@
 	C.forceMove(usr.loc)
 	usr.put_in_hands(C)
 	cylinder = null
-	to_chat(usr, "You remove \the [C] from \the [src].")
+	to_chat(usr, "I remove \the [C] from \the [src].")
 	icon_state = "revialver0"
 	usr.update_inv_hands()
 
@@ -90,13 +90,13 @@
 	set src in range(0)
 
 	if(usr.isUnconscious())
-		to_chat(usr, "You can't do that while unconscious.")
+		to_chat(usr, "I can't do that while unconscious.")
 		return
 
 	if(!cylinder)
 		return
 
-	to_chat(usr, "You spin \the [src]'s cylinder.")
+	to_chat(usr, "I spin \the [src]'s cylinder.")
 	spin()
 	playsound(usr, 'sound/weapons/revolver_spin.ogg', 50, 1)
 

@@ -43,7 +43,7 @@
 		if (radiation > 100)
 			radiation = 100
 			if(!container)//If it's not in an MMI
-				to_chat(src, "<span class='warning'>You feel weak.</span>")
+				to_chat(src, "<span class='warning'>I feel weak.</span>")
 			else//Fluff-wise, since the brain can't detect anything itself, the MMI handles thing like that
 				to_chat(src, "<span class='warning'>STATUS: CRITICAL AMOUNTS OF RADIATION DETECTED.</span>")
 
@@ -60,7 +60,7 @@
 				if(prob(5))
 					radiation -= 5
 					if(!container)
-						to_chat(src, "<span class='warning'>You feel weak.</span>")
+						to_chat(src, "<span class='warning'>I feel weak.</span>")
 					else
 						to_chat(src, "<span class='warning'>STATUS: DANGEROUS LEVELS OF RADIATION DETECTED.</span>")
 				updatehealth()

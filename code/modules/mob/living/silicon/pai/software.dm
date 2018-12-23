@@ -152,7 +152,7 @@
 			radio.attack_self(src)
 
 		if("image")
-			var/newImage = input("Select your new display image.", "Display Image", "Happy") in list("Happy", "Cat", "Extremely Happy",
+			var/newImage = input("Select my new display image.", "Display Image", "Happy") in list("Happy", "Cat", "Extremely Happy",
 								 "Face", "Laugh", "Off", "Sad", "Angry", "What", "longface", "sick", "high", "love", "electric", "pissed",
 								 "nose", "kawaii", "cry")
 			var/pID = 1
@@ -230,7 +230,7 @@
 					M = M.loc
 					count++
 					if(count >= 6)
-						to_chat(src, "You are not being carried by anyone!")
+						to_chat(src, "I am not being carried by anyone!")
 						return 0
 				spawn CheckDNA(M, src)
 
@@ -290,7 +290,7 @@
 		if("chemsynth")
 			if(href_list["chem"])
 				if(!istype(src.loc.loc,/mob/living/carbon))
-					to_chat(src, "<span class='warning'>You must have a carrier to inject with chemicals!</span>")
+					to_chat(src, "<span class='warning'>I must have a carrier to inject with chemicals!</span>")
 				else if(chargeloop("chemsynth"))
 					if(istype(src.loc.loc,/mob/living/carbon)) //Sanity
 						var/mob/living/M = src.loc.loc
@@ -403,7 +403,7 @@
 /mob/living/silicon/pai/proc/directives()
 	var/dat = ""
 
-	dat += {"[(src.master) ? "Your master: [src.master] ([src.master_dna])" : "You are bound to no one."]
+	dat += {"[(src.master) ? "My master: [src.master] ([src.master_dna])" : "I am bound to no one."]
 		<br><br>
 		<a href='byond://?src=\ref[src];software=directive;getdna=1'>Request carrier DNA sample</a><br>
 		<h2>Directives</h2><br>
@@ -415,13 +415,13 @@
 			 comprehending the subtle nuances of human language. You may parse the \"spirit\" of a directive and follow its intent,
 			 rather than tripping over pedantics and getting snared by technicalities. Above all, you are machine in name and build
 			 only. In all other aspects, you may be seen as the ideal, unwavering human companion that you are.</i></p><br>
-			 <p><b>Your prime directive comes before all others. Should a supplemental directive conflict with it, you are capable of
+			 <p><b>My prime directive comes before all others. Should a supplemental directive conflict with it, you are capable of
 			 simply discarding this inconsistency, ignoring the conflicting supplemental directive and continuing to fulfill your
-			 prime directive to the best of your ability.</b></p><br>"}
+			 prime directive to the best of my ability.</b></p><br>"}
 	return dat
 
 /mob/living/silicon/pai/proc/CheckDNA(var/mob/M, var/mob/living/silicon/pai/P)
-	var/answer = input(M, "[P] is requesting a DNA sample from you. Will you allow it to confirm your identity?", "[P] Check DNA", "No") in list("Yes", "No")
+	var/answer = input(M, "[P] is requesting a DNA sample from you. Will you allow it to confirm my identity?", "[P] Check DNA", "No") in list("Yes", "No")
 	if(answer == "Yes")
 		var/turf/T = get_turf(P.loc)
 		for (var/mob/v in viewers(T))

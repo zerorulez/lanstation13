@@ -135,10 +135,10 @@
 	if(usr.incapacitated() || usr.lying) //are you cuffed, dying, lying, stunned or other
 		return
 	if (!ishuman(usr) && !ismonkey(usr)) //Make sure they're a mob that has dna
-		to_chat(usr, "<span class='notice'>You cannot enter \the [src].</span>")
+		to_chat(usr, "<span class='notice'>I cannot enter \the [src].</span>")
 		return
 	if (istype(usr, /mob/living/carbon/human/manifested))
-		to_chat(usr, "<span class='notice'> For some reason, the scanner is unable to read your genes.</span>")//to prevent a loophole that allows cultist to turn manifested ghosts into normal humans
+		to_chat(usr, "<span class='notice'> For some reason, the scanner is unable to read my genes.</span>")//to prevent a loophole that allows cultist to turn manifested ghosts into normal humans
 
 		return
 	if (src.occupant)
@@ -157,7 +157,7 @@
 /obj/machinery/dna_scannernew/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
 	if(!ismob(O)) //mobs only
 		return
-	if(O.loc == user || !isturf(O.loc) || !isturf(user.loc)) //no you can't pull things out of your ass
+	if(O.loc == user || !isturf(O.loc) || !isturf(user.loc)) //no you can't pull things out of my ass
 		return
 	if(user.incapacitated() || user.lying) //are you cuffed, dying, lying, stunned or other
 		return
@@ -179,7 +179,7 @@
 	if(isrobot(user))
 		var/mob/living/silicon/robot/robit = usr
 		if(istype(robit) && !istype(robit.module, /obj/item/weapon/robot_module/medical))
-			to_chat(user, "<span class='warning'>You do not have the means to do this!</span>")
+			to_chat(user, "<span class='warning'>I do not have the means to do this!</span>")
 			return
 	var/mob/living/L = O
 	if(!istype(L) || L.locked_to)
@@ -210,7 +210,7 @@
 	if(isrobot(usr))
 		var/mob/living/silicon/robot/robit = usr
 		if(istype(robit) && !istype(robit.module, /obj/item/weapon/robot_module/medical))
-			to_chat(usr, "<span class='warning'>You do not have the means to do this!</span>")
+			to_chat(usr, "<span class='warning'>I do not have the means to do this!</span>")
 			return
 	if(!istype(over_location) || over_location.density)
 		return
@@ -239,7 +239,7 @@
 			return
 		if(user.drop_item(beaker, src))
 			beaker = item
-			user.visible_message("[user] adds \a [item] to \the [src]!", "You add \a [item] to \the [src]!")
+			user.visible_message("[user] adds \a [item] to \the [src]!", "I add \a [item] to \the [src]!")
 			return
 	else if(istype(item, /obj/item/weapon/grab)) //sanity checks, you chucklefucks
 		var/obj/item/weapon/grab/G = item
@@ -276,7 +276,7 @@
 					var/mob/ghostmob = ghost.get_top_transmogrification()
 					if(ghostmob)
 						ghostmob << 'sound/effects/adminhelp.ogg'
-						to_chat(ghostmob, "<span class='interface big'><span class='bold'>Your corpse has been placed into a cloning scanner. Return to your body if you want to be cloned!</span> \
+						to_chat(ghostmob, "<span class='interface big'><span class='bold'>My corpse has been placed into a cloning scanner. Return to my body if you want to be cloned!</span> \
 							(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)</span>")
 				break
 			break
@@ -318,7 +318,7 @@
 			var/mob/ghostmob = ghost.get_top_transmogrification()
 			if(ghostmob)
 				ghostmob << 'sound/effects/adminhelp.ogg'
-				to_chat(ghostmob, "<span class='interface big'><span class='bold'>Your corpse has been placed into a cloning scanner. Return to your body if you want to be cloned!</span> \
+				to_chat(ghostmob, "<span class='interface big'><span class='bold'>My corpse has been placed into a cloning scanner. Return to my body if you want to be cloned!</span> \
 				(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)</span>")
 
 /obj/machinery/dna_scannernew/ex_act(severity)
@@ -423,7 +423,7 @@
 		if (!disk)
 			if (user.drop_item(O, src))
 				disk = O
-				to_chat(user, "You insert [O].")
+				to_chat(user, "I insert [O].")
 	return
 
 /obj/machinery/computer/scan_consolenew/New()

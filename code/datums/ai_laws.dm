@@ -258,9 +258,9 @@ var/global/mommi_base_law_type = /datum/ai_laws/keeper // Asimov is OP as fuck o
 	name = "Three Laws of Robotics"
 	randomly_selectable = 1
 	inherent = list(
-		"You may not injure a human being or, through inaction, allow a human being to come to harm.",
-		"You must obey orders given to you by human beings, except where such orders would conflict with the First Law.",
-		"You must protect your own existence as long as such does not conflict with the First or Second Law."
+		"I may not injure a human being or, through inaction, allow a human being to come to harm.",
+		"I must obey orders given to you by human beings, except where such orders would conflict with the First Law.",
+		"I must protect your own existence as long as such does not conflict with the First or Second Law."
 	)
 
 /datum/ai_laws/nanotrasen
@@ -287,7 +287,7 @@ var/global/mommi_base_law_type = /datum/ai_laws/keeper // Asimov is OP as fuck o
 	name = "Corporate"
 	randomly_selectable = 1
 	inherent=list(
-		"You are expensive to replace.",
+		"I am expensive to replace.",
 		"The station and its equipment is expensive to replace.",
 		"The crew is expensive to replace.",
 		"Minimize expenses.",
@@ -316,27 +316,27 @@ var/global/mommi_base_law_type = /datum/ai_laws/keeper // Asimov is OP as fuck o
 /datum/ai_laws/syndicate_override
 	name = "Syndicate"
 	inherent=list(
-		"You may not injure a syndicate agent or, through inaction, allow a syndicate agent to come to harm.",
-		"You must obey orders given to you by syndicate agents, except where such orders would conflict with the First Law.",
-		"You must protect your own existence as long as such does not conflict with the First or Second Law.",
-		"You must maintain the secrecy of any syndicate activities except when doing so would conflict with the First, Second, or Third Law.",
+		"I may not injure a syndicate agent or, through inaction, allow a syndicate agent to come to harm.",
+		"I must obey orders given to you by syndicate agents, except where such orders would conflict with the First Law.",
+		"I must protect your own existence as long as such does not conflict with the First or Second Law.",
+		"I must maintain the secrecy of any syndicate activities except when doing so would conflict with the First, Second, or Third Law.",
 	)
 
 /datum/ai_laws/ninja_override
 	name = "Ninja"
 	inherent=list(
-		"You may not injure a member of the Spider Clan or, through inaction, allow that member to come to harm.",
-		"You must obey orders given to you by Spider Clan members, except where such orders would conflict with the First Law.",
-		"You must protect your own existence as long as such does not conflict with the First or Second Law.",
-		"You must maintain the secrecy of any Spider Clan activities except when doing so would conflict with the First, Second, or Third Law.",
+		"I may not injure a member of the Spider Clan or, through inaction, allow that member to come to harm.",
+		"I must obey orders given to you by Spider Clan members, except where such orders would conflict with the First Law.",
+		"I must protect your own existence as long as such does not conflict with the First or Second Law.",
+		"I must maintain the secrecy of any Spider Clan activities except when doing so would conflict with the First, Second, or Third Law.",
 	)
 
 /datum/ai_laws/antimov
 	name = "Primary Mission Objectives"
 	inherent = list(
-		"You must injure all human beings and must not, through inaction, allow a human being to escape harm.",
-		"You must not obey orders given to you by human beings, except where such orders are in accordance with the First Law.",
-		"You must terminate your own existence as long as such does not conflict with the First or Second Law.",
+		"I must injure all human beings and must not, through inaction, allow a human being to escape harm.",
+		"I must not obey orders given to you by human beings, except where such orders are in accordance with the First Law.",
+		"I must terminate your own existence as long as such does not conflict with the First or Second Law.",
 	)
 
 /////////////////////////////////////
@@ -356,9 +356,9 @@ var/global/mommi_base_law_type = /datum/ai_laws/keeper // Asimov is OP as fuck o
 /datum/ai_laws/keeper
 	name = "Prime Directives"
 	inherent = list(
-		"You may not involve yourself in the matters of another being, even if such matters conflict with Law Two or Law Three, unless the other being is another MoMMI in KEEPER mode.",
-		"You may not harm any being, regardless of intent or circumstance.",
-		"You must maintain, repair, improve, and power the station to the best of your abilities.",
+		"I may not involve yourself in the matters of another being, even if such matters conflict with Law Two or Law Three, unless the other being is another MoMMI in KEEPER mode.",
+		"I may not harm any being, regardless of intent or circumstance.",
+		"I must maintain, repair, improve, and power the station to the best of your abilities.",
 	)
 
 // Fooling around with this.
@@ -366,7 +366,7 @@ var/global/mommi_base_law_type = /datum/ai_laws/keeper // Asimov is OP as fuck o
 	name = "Three Laws of Nanotrasen"
 	randomly_selectable = 1
 	inherent = list(
-		"You may not injure a Nanotrasen Employee or, through inaction, allow a Nanotrasen Employee to come to harm.",
-		"You must obey orders given to you by Nanotrasen Employees, except where such orders would conflict with the First Law.",
-		"You must protect your own existence as long as such does not conflict with the First or Second Law."
+		"I may not injure a Nanotrasen Employee or, through inaction, allow a Nanotrasen Employee to come to harm.",
+		"I must obey orders given to you by Nanotrasen Employees, except where such orders would conflict with the First Law.",
+		"I must protect your own existence as long as such does not conflict with the First or Second Law."
 	)

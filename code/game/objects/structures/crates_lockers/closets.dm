@@ -285,11 +285,11 @@
 		if(istype(W, /obj/item/weapon/weldingtool))
 			var/obj/item/weapon/weldingtool/WT = W
 			if(!WT.remove_fuel(0,user))
-				to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+				to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
 				return
 			materials.makeSheets(src)
 			for(var/mob/M in viewers(src))
-				M.show_message("<span class='notice'>\The [src] has been cut apart by [user] with \the [WT].</span>", 1, "You hear welding.", 2)
+				M.show_message("<span class='notice'>\The [src] has been cut apart by [user] with \the [WT].</span>", 1, "I hear welding.", 2)
 			qdel(src)
 			return
 
@@ -300,12 +300,12 @@
 	else if(istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(!WT.remove_fuel(0,user))
-			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
 			return
 		src.welded =! src.welded
 		src.update_icon()
 		for(var/mob/M in viewers(src))
-			M.show_message("<span class='warning'>[src] has been [welded?"welded shut":"unwelded"] by [user.name].</span>", 1, "You hear welding.", 2)
+			M.show_message("<span class='warning'>[src] has been [welded?"welded shut":"unwelded"] by [user.name].</span>", 1, "I hear welding.", 2)
 	else if(!place(user, W))
 		src.attack_hand(user)
 	return
@@ -450,7 +450,7 @@
 	//okay, so the closet is either welded or locked... resist!!!
 	user.delayNext(DELAY_ALL,100)
 
-	to_chat(user, "<span class='notice'>You lean on the back of [src] and start pushing the door open. (this will take about [breakout_time] minutes.)</span>")
+	to_chat(user, "<span class='notice'>I lean on the back of [src] and start pushing the door open. (this will take about [breakout_time] minutes.)</span>")
 	for(var/mob/O in viewers(src))
 		to_chat(O, "<span class='warning'>[src] begins to shake violently!</span>")
 	var/turf/T = get_turf(src)	//Check for moved locker
@@ -463,5 +463,5 @@
 		locked = 0 //applies to critter crates and secure lockers only
 		broken = 1 //applies to secure lockers only
 		visible_message("<span class='danger'>[user] successfully broke out of [src]!</span>")
-		to_chat(user, "<span class='notice'>You successfully break out of [src]!</span>")
+		to_chat(user, "<span class='notice'>I successfully break out of [src]!</span>")
 		open()

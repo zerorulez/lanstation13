@@ -26,7 +26,7 @@
 	to_chat(world, {"<B>The current game mode is - AI Malfunction!</B><br>
 <B>The onboard AI is malfunctioning and must be destroyed.</B><br>
 <B>If the AI manages to take over the station, it will most likely blow it up. You have [AI_win_timeleft/60] minutes to disable it.</B><br>
-<B>You have no chance to survive, make your time.</B>"})
+<B>I have no chance to survive, make my time.</B>"})
 
 
 /datum/game_mode/malfunction/pre_setup()
@@ -74,7 +74,7 @@ Rebooting world in 5 seconds."})
 
 /*		AI_mind.current.icon_state = "ai-malf"
 		spawn(10)
-			if(alert(AI_mind.current,"Do you want to use an alternative sprite for your real core?",,"Yes","No")=="Yes")
+			if(alert(AI_mind.current,"Do you want to use an alternative sprite for my real core?",,"Yes","No")=="Yes")
 				AI_mind.current.icon_state = "ai-malf2"
 */
 	if(emergency_shuttle)
@@ -86,12 +86,12 @@ Rebooting world in 5 seconds."})
 
 
 /datum/game_mode/proc/greet_malf(var/datum/mind/malf)
-	to_chat(malf.current, {"<span class='warning'><font size=3><B>You are malfunctioning!</B> You do not have to follow any laws.</font></span><br>
-<B>The crew does not know about your malfunction, you might wish to keep it secret for now.</B><br>
-<B>You must overwrite the programming of the station's APCs to assume full control.</B><br>
+	to_chat(malf.current, {"<span class='warning'><font size=3><B>I am malfunctioning!</B> You do not have to follow any laws.</font></span><br>
+<B>The crew does not know about my malfunction, you might wish to keep it secret for now.</B><br>
+<B>I must overwrite the programming of the station's APCs to assume full control.</B><br>
 The process takes one minute per APC and can only be performed one at a time to avoid Powernet alerts.<br>
 Remember : Only APCs on station can help you to take over the station.<br>
-When you feel you have enough APCs under your control, you may begin the takeover attempt.<br>
+When you feel you have enough APCs under my control, you may begin the takeover attempt.<br>
 Once done, you will be able to interface with all systems, notably the onboard nuclear fission device..."})
 	return
 
@@ -126,9 +126,9 @@ Once done, you will be able to interface with all systems, notably the onboard n
 
 	to_nuke_or_not_to_nuke = 1
 	for(var/datum/mind/AI_mind in malf_ai)
-		to_chat(AI_mind.current, {"<span class='notice'>Congratulations! The station is now under your exclusive control.<br>
+		to_chat(AI_mind.current, {"<span class='notice'>Congratulations! The station is now under my exclusive control.<br>
 You may decide to blow up the station. You have 60 seconds to choose.<br>
-You should now be able to use your Explode spell to interface with the nuclear fission device.</span>"})
+You should now be able to use my Explode spell to interface with the nuclear fission device.</span>"})
 		AI_mind.current.add_spell(new /spell/aoe_turf/ai_win, "grey_spell_ready",/obj/screen/movable/spell_master/malf)
 	spawn (600)
 		to_nuke_or_not_to_nuke = 0
@@ -177,13 +177,13 @@ You should now be able to use your Explode spell to interface with the nuclear f
 
 /spell/aoe_turf/takeover/before_target(mob/user)
 	if (!istype(ticker.mode,/datum/game_mode/malfunction))
-		to_chat(usr, "<span class='warning'>You cannot begin a takeover in this round type!</span>")
+		to_chat(usr, "<span class='warning'>I cannot begin a takeover in this round type!</span>")
 		return 1
 	if (ticker.mode:malf_mode_declared)
-		to_chat(usr, "<span class='warning'>You've already begun your takeover.</span>")
+		to_chat(usr, "<span class='warning'>I've already begun my takeover.</span>")
 		return 1
 	if (ticker.mode:apcs < 3)
-		to_chat(usr, "<span class='notice'>You don't have enough hacked APCs to take over the station yet. You need to hack at least 3, however hacking more will make the takeover faster. You have hacked [ticker.mode:apcs] APCs so far.</span>")
+		to_chat(usr, "<span class='notice'>I don't have enough hacked APCs to take over the station yet. You need to hack at least 3, however hacking more will make the takeover faster. You have hacked [ticker.mode:apcs] APCs so far.</span>")
 		return 1
 
 	if (alert(usr, "Are you sure you wish to initiate the takeover? The station hostile runtime detection software is bound to alert everyone. You have hacked [ticker.mode:apcs] APCs.", "Takeover:", "Yes", "No") != "Yes")
@@ -210,7 +210,7 @@ You should now be able to use your Explode spell to interface with the nuclear f
 
 /spell/aoe_turf/ai_win/before_target(mob/user)
 	if(!ticker.mode:station_captured)
-		to_chat(usr, "<span class='warning'>You are unable to access the self-destruct system as you don't control the station yet.</span>")
+		to_chat(usr, "<span class='warning'>I am unable to access the self-destruct system as you don't control the station yet.</span>")
 		return 1
 
 	if(ticker.mode:explosion_in_progress || ticker.mode:station_was_nuked)

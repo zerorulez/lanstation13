@@ -29,7 +29,7 @@
 						qdel(O)
 						O = null
 
-					to_chat(user, "You insert [count] metal sheet\s into the fabricator.")
+					to_chat(user, "I insert [count] metal sheet\s into the fabricator.")
 					src.overlays -= image(icon = icon, icon_state = "fab-load-metal")
 					updateDialog()
 		else

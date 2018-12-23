@@ -106,14 +106,14 @@ var/available_staff_transforms=list("monkey","robot","slime","xeno","human","fur
 		to_chat(user, "<span class='warning'>[src] is still recharging.</span>")
 		return
 
-	var/selected = input("You squint at the dial conspicuously mounted on the side of your staff.","Staff of Change") as null|anything in list("random")+available_staff_transforms
+	var/selected = input("I squint at the dial conspicuously mounted on the side of my staff.","Staff of Change") as null|anything in list("random")+available_staff_transforms
 	if(!selected)
 		return
 
 	if (selected == "furry")
-		to_chat(user, "<span class='danger'>You monster.</span>")
+		to_chat(user, "<span class='danger'>I monster.</span>")
 	else
-		to_chat(user, "<span class='info'>You have selected to make your next victim have a [selected] form.</span>")
+		to_chat(user, "<span class='info'>I have selected to make my next victim have a [selected] form.</span>")
 
 	switch(selected)
 		if("random")
@@ -166,7 +166,7 @@ var/available_staff_transforms=list("monkey","robot","slime","xeno","human","fur
 
 /obj/item/weapon/gun/energy/staff/necro/attack_self(mob/user)
 	if(next_change > world.timeofday)
-		to_chat(user, "<span class='warning'>You must wait longer to decide on a minion type.</span>")
+		to_chat(user, "<span class='warning'>I must wait longer to decide on a minion type.</span>")
 		return
 	/*if(raisetype < FAITHLESS)
 		raisetype = !raisetype
@@ -174,7 +174,7 @@ var/available_staff_transforms=list("monkey","robot","slime","xeno","human","fur
 		raisetype = ZOMBIE*/
 	raisetype = !raisetype
 
-	to_chat(user, "<span class='notice'>You will now raise [raisetype < 2 ? (raisetype ? "skeletal" : "zombified") : "unknown"] minions from corpses.</span>")
+	to_chat(user, "<span class='notice'>I will now raise [raisetype < 2 ? (raisetype ? "skeletal" : "zombified") : "unknown"] minions from corpses.</span>")
 	next_change = world.timeofday + 30
 
 /obj/item/weapon/gun/energy/staff/necro/afterattack(atom/target, mob/user, proximity)
@@ -235,7 +235,7 @@ var/available_staff_transforms=list("monkey","robot","slime","xeno","human","fur
 			if(!lifekiller)
 				to_chat(user, "<span class='notice'>[src] fizzles quietly.</span>")
 			else
-				to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
+				to_chat(user, "<span class='warning'>[src] is not ready to fire again.</span>")
 			return
 		mouthshoot = 1
 		target.visible_message("<span class='warning'>[user] turns [src] on themself, ready to invoke its power...</span>")
@@ -270,13 +270,13 @@ var/available_staff_transforms=list("monkey","robot","slime","xeno","human","fur
 			log_attack("[user.name] ([user.ckey]) gibbed [target] [ismob(target) ? "([target:ckey])" : ""] with [src] at ([target.x],[target.y],[target.z])[struggle ? " due to being disarmed." :""]" )
 			L.gib()
 			user.visible_message("<span class='warning'>[user] destroys [target] with [src]!</span>", \
-								 "<span class='warning'>You destroy [target] with [src]!</span>")
+								 "<span class='warning'>I destroy [target] with [src]!</span>")
 			playsound(user, fire_sound, 50, 1)
 			power_supply.use(charge_cost)
 		else if(istype(target, /turf))
 			if(istype(target, /turf/simulated/wall))
 				user.visible_message("<span class='warning'>[user] erases the [target.name] with [src]!</span>", \
-									 "<span class='warning'>You erase the [target.name] with [src]!</span>")
+									 "<span class='warning'>I erase the [target.name] with [src]!</span>")
 				playsound(user, fire_sound, 50, 1)
 				power_supply.use(charge_cost)
 				if(istype(target, /turf/simulated/wall/r_wall))
@@ -291,12 +291,12 @@ var/available_staff_transforms=list("monkey","robot","slime","xeno","human","fur
 				return
 		else
 			user.visible_message("<span class='warning'>[user] erases the [target.name] with [src]!</span>", \
-								 "<span class='warning'>You erase the [target.name] with [src]!</span>")
+								 "<span class='warning'>I erase the [target.name] with [src]!</span>")
 			playsound(user, fire_sound, 50, 1)
 			power_supply.use(charge_cost)
 			qdel(target)
 	else
-		to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
+		to_chat(user, "<span class='warning'>[src] is not ready to fire again.</span>")
 
 /obj/item/weapon/gun/energy/floragun
 	name = "floral somatoray"
@@ -383,7 +383,7 @@ var/available_staff_transforms=list("monkey","robot","slime","xeno","human","fur
 			mutstrength = 25
 			charge_cost = mutstrength * 10
 			projectile_type = "/obj/item/projectile/energy/floramut/emag"
-			to_chat(user, "<span class='warning'>You short out the safety limit of the [src.name]!</span>")
+			to_chat(user, "<span class='warning'>I short out the safety limit of the [src.name]!</span>")
 			desc += " It seems to have it's safety features de-activated."
 			playsound(get_turf(user), 'sound/effects/sparks4.ogg', 50, 1)
 			modifystate = "floraemag"
@@ -624,10 +624,10 @@ obj/item/weapon/gun/energy/ricochet/Fire(atom/target as mob|obj|turf|area, mob/l
 	power_supply.charge = min(power_supply.charge + 200,power_supply.maxcharge)
 	if(power_supply.charge >= power_supply.maxcharge)
 		playsound(get_turf(src), 'sound/machines/click.ogg', 25, 1)
-		to_chat(user, "<span class='rose'>You pull the pump at the back of the gun. Looks like the inner battery is fully charged now.</span>")
+		to_chat(user, "<span class='rose'>I pull the pump at the back of the gun. Looks like the inner battery is fully charged now.</span>")
 	else
 		playsound(get_turf(src), 'sound/weapons/bison_reload.ogg', 25, 1)
-		to_chat(user, "<span class='rose'>You pull the pump at the back of the gun.</span>")
+		to_chat(user, "<span class='rose'>I pull the pump at the back of the gun.</span>")
 	sleep(5)
 	pumping = 0
 	update_icon()

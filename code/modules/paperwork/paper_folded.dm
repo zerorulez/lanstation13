@@ -72,7 +72,7 @@
 	if(unfolded)
 		user.put_in_hands(unfolded)
 		user.visible_message("<span class='notice'>[user] unfolds \the [src].</span>", \
-			"<span class='notice'>You unfold \the [src].</span>")
+			"<span class='notice'>I unfold \the [src].</span>")
 	unfolded = null
 	qdel(src) //goodbye cruel world
 
@@ -80,10 +80,10 @@
 	if(!user)
 		return 0
 	if(user.incapacitated())
-		to_chat(user, "<span class='notice'>You can't do that while restrained.</span>")
+		to_chat(user, "<span class='notice'>I can't do that while restrained.</span>")
 		return 0
 	if(!user.is_holding_item(P))
-		to_chat(user, "<span class='notice'>You'll need \the [src] in your hands to do that.</span>")
+		to_chat(user, "<span class='notice'>I'll need \the [src] in my hands to do that.</span>")
 		return 0
 	return 1
 
@@ -94,7 +94,7 @@
 	var/frame = 0
 /obj/item/weapon/p_folded/crane/attack_self(mob/user)
 	if(user.stat || user.restrained())
-		to_chat(user, "<span class='notice'>You can't do that while restrained.</span>")
+		to_chat(user, "<span class='notice'>I can't do that while restrained.</span>")
 		return 0
 	frame = !frame
 	icon_state = (frame ? "crane_2" : "crane_1")
@@ -114,17 +114,17 @@
 		if(ishuman(target) && (user.zone_sel.selecting == "eyes" || prob(40)))
 			var/mob/living/carbon/human/H = target
 			if (H.check_body_part_coverage(EYES))
-				to_chat(H, "<span class='warning'>\The [src] flies right into your eyes! Luckily your eyewear protects you.</span>")
+				to_chat(H, "<span class='warning'>\The [src] flies right into my eyes! Luckily my eyewear protects you.</span>")
 			else
 				if (src.nano)
-					to_chat(H, "<span class='warning'>OW! Something sharp stabs your [pick("right","left")] eye!</span>")
+					to_chat(H, "<span class='warning'>OW! Something sharp stabs my [pick("right","left")] eye!</span>")
 					H.eye_blurry = max(H.eye_blurry, rand(10,15))
 					H.eye_blind = max(H.eye_blind, 2)
 					H.Stun(2)
 					var/datum/organ/internal/eyes/eyes = H.internal_organs_by_name["eyes"]
 					eyes.damage += 3
 				else
-					to_chat(H, "<span class='warning'>\The [src] flies right into your [pick("right","left")] eye!</span>")
+					to_chat(H, "<span class='warning'>\The [src] flies right into my [pick("right","left")] eye!</span>")
 					H.eye_blurry = max(H.eye_blurry, rand(3,6))
 					H.eye_blind = max(H.eye_blind, src.nano)
 
@@ -176,10 +176,10 @@
 	var/list/fortunes = list(\
 		"Get out of there.",\
 		"The Syndicate will soon collect a favor from you.",\
-		"Don't leave your department today.",\
+		"Don't leave my department today.",\
 		"Be wary of [pick("silicons","clowns","doctors","Vox")].",\
 		"[pick("R&D","Cargo","The Chemist")] will leave you a gift.",\
-		"You will soon find yourself in [pick("Medbay","Brig","outer space","the Morgue")].",\
+		"I will soon find yourself in [pick("Medbay","Brig","outer space","the Morgue")].",\
 		"Don't count in the escape shuttle.",\
 		"The [pick("Clown","Head of Security","Chaplain","Janitor")] is after you.")
 	var/flop = 0
@@ -200,5 +200,5 @@
 		flop = !flop
 		sleep(4)
 	available_numbers = (flop? list(1, 2, 6, 5) : list(8, 3, 7, 4))
-	alert("[fortunes[input("What's your fortune?") in available_numbers]]", "Your fortune is...", "OK")
+	alert("[fortunes[input("What's my fortune?") in available_numbers]]", "Your fortune is...", "OK")
 	icon_state = "fortuneteller_closed"*/

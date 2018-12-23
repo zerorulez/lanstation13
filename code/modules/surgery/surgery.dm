@@ -143,7 +143,7 @@ proc/do_surgery(mob/living/M, mob/living/user, obj/item/tool)
 					S.doing_surgery.Remove(null) //get rid of that now null reference
 				return	1	  												//don't want to do weapony things after surgery
 	if (user.a_intent == I_HELP)
-		to_chat(user, "<span class='warning'>You can't see any useful way to use [tool] on [M].</span>")
+		to_chat(user, "<span class='warning'>I can't see any useful way to use [tool] on [M].</span>")
 		return 1
 	return 0
 

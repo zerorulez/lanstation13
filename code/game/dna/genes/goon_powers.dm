@@ -3,8 +3,8 @@
 // WAS: /datum/bioEffect/alcres
 /datum/dna/gene/basic/sober
 	name="Sober"
-	activation_messages=list("You feel unusually sober.")
-	deactivation_messages = list("You feel like you could use a stiff drink.")
+	activation_messages=list("I feel unusually sober.")
+	deactivation_messages = list("I feel like you could use a stiff drink.")
 
 	mutation=M_SOBER
 
@@ -15,8 +15,8 @@
 /datum/dna/gene/basic/psychic_resist
 	name="Psy-Resist"
 	desc = "Boosts efficiency in sectors of the brain commonly associated with meta-mental energies."
-	activation_messages = list("Your mind feels closed.")
-	deactivation_messages = list("You feel oddly exposed.")
+	activation_messages = list("My mind feels closed.")
+	deactivation_messages = list("I feel oddly exposed.")
 
 	mutation=M_PSY_RESIST
 
@@ -44,8 +44,8 @@
 /*/datum/dna/gene/basic/stealth/darkcloak
 	name = "Cloak of Darkness"
 	desc = "Enables the subject to bend low levels of light around themselves, creating a cloaking effect."
-	activation_messages = list("You begin to fade into the shadows.")
-	deactivation_messages = list("You become fully visible.")
+	activation_messages = list("I begin to fade into the shadows.")
+	deactivation_messages = list("I become fully visible.")
 
 	New()
 		block=SHADOWBLOCK
@@ -63,8 +63,8 @@
 /datum/dna/gene/basic/stealth/chameleon
 	name = "Chameleon"
 	desc = "The subject becomes able to subtly alter light patterns to become invisible, as long as they remain still."
-	activation_messages = list("You feel one with your surroundings.")
-	deactivation_messages = list("You feel oddly exposed.")
+	activation_messages = list("I feel one with my surroundings.")
+	deactivation_messages = list("I feel oddly exposed.")
 
 	New()
 		block=CHAMELEONBLOCK
@@ -122,11 +122,11 @@
 /datum/dna/gene/basic/grant_spell/cryo
 	name = "Cryokinesis"
 	desc = "Allows the subject to lower the body temperature of others."
-	activation_messages = list("You notice a strange cold tingle in your fingertips.")
-	deactivation_messages = list("Your fingers feel warmer.")
+	activation_messages = list("I notice a strange cold tingle in my fingertips.")
+	deactivation_messages = list("My fingers feel warmer.")
 
-	drug_activation_messages=list("Your skin is icy to the touch.")
-	drug_deactivation_messages=list("Your skin stops feeling icy.")
+	drug_activation_messages=list("My skin is icy to the touch.")
+	drug_deactivation_messages=list("My skin stops feeling icy.")
 
 	spelltype = /spell/targeted/cryokinesis
 
@@ -166,10 +166,10 @@
 					handle_suit = 1
 					if(H.internal)
 						H.visible_message("<span class='warning'>A cloud of fine ice crystals engulfs [H]!</span>",
-											"<span class='notice'>A cloud of fine ice crystals cover your [H.head]'s visor.</span>")
+											"<span class='notice'>A cloud of fine ice crystals cover my [H.head]'s visor.</span>")
 					else
 						H.visible_message("<span class='warning'>A cloud of fine ice crystals engulfs [H]!</span>",
-											"<span class='warning'>A cloud of fine ice crystals cover your [H.head]'s visor and make it into your air vents!.</span>")
+											"<span class='warning'>A cloud of fine ice crystals cover my [H.head]'s visor and make it into my air vents!.</span>")
 						H.bodytemperature = max(T0C + 31, H.bodytemperature - 3)
 						H.adjustFireLoss(5)
 		if(!handle_suit)
@@ -187,11 +187,11 @@
 /datum/dna/gene/basic/grant_spell/mattereater
 	name = "Matter Eater"
 	desc = "Allows the subject to eat just about anything without harm."
-	activation_messages = list("You feel hungry.")
-	deactivation_messages = list("You don't feel quite so hungry anymore.")
+	activation_messages = list("I feel hungry.")
+	deactivation_messages = list("I don't feel quite so hungry anymore.")
 
-	drug_activation_messages=list("You are getting the munchies.")
-	drug_deactivation_messages=list("You no longer getting the munchies.")
+	drug_activation_messages=list("I am getting the munchies.")
+	drug_deactivation_messages=list("I no longer getting the munchies.")
 
 	spelltype=	/spell/targeted/eat
 
@@ -345,10 +345,10 @@
 	if(!the_item || !the_item.Adjacent(user))
 		return
 	// if(istype(the_item, /obj/item/organ/external/head))
-	// 	to_chat(user, "<span class='warning'>You try to put the [the_item] in your mouth, but the ears tickle your throat!</span>")
+	// 	to_chat(user, "<span class='warning'>I try to put the [the_item] in my mouth, but the ears tickle my throat!</span>")
 	// 	return 0
 	// else if(isbrain(the_item))
-	// 	to_chat(user, "<span class='warning'>You try to put [the_item] in your mouth, but the texture makes you gag!</span>")
+	// 	to_chat(user, "<span class='warning'>I try to put [the_item] in my mouth, but the texture makes you gag!</span>")
 	// 	return 0
 	else if(ishuman(the_item))
 		//My gender
@@ -360,26 +360,26 @@
 		var/mob/living/carbon/human/H = the_item
 		var/datum/organ/external/limb = H.get_organ(usr.zone_sel.selecting)
 		if(!istype(limb))
-			to_chat(user, "<span class='warning'>You can't eat this part of them!</span>")
+			to_chat(user, "<span class='warning'>I can't eat this part of them!</span>")
 			return 0
 		if(istype(limb, /datum/organ/external/head))
 			//Bullshit, but prevents being unable to clone someone.
-			to_chat(user, "<span class='warning'>You try to put [the_item]'s [limb.display_name] in your mouth, but \his ears tickle your throat!</span>")
+			to_chat(user, "<span class='warning'>I try to put [the_item]'s [limb.display_name] in my mouth, but \his ears tickle my throat!</span>")
 			return 0
 		if(istype(limb, /datum/organ/external/chest))
 			//Bullshit, but you cannot break it anyways
-			to_chat(user, "<span class='warning'>You try to put [the_item]'s [limb.display_name] in your mouth, but it's too big to fit!</span>")
+			to_chat(user, "<span class='warning'>I try to put [the_item]'s [limb.display_name] in my mouth, but it's too big to fit!</span>")
 			return 0
 		if(istype(limb, /datum/organ/external/groin))
 			//Bullshit, but you cannot break it anyways
-			to_chat(user, "<span class='warning'>You try to put [the_item]'s [limb.display_name] in your mouth, but it feels far too inappropriate!</span>")
+			to_chat(user, "<span class='warning'>I try to put [the_item]'s [limb.display_name] in my mouth, but it feels far too inappropriate!</span>")
 			return 0
 		user.visible_message("<span class='danger'>[user] begins stuffing [the_item]'s [limb.display_name] into [m_his] gaping maw!</span>")
 		if(!do_mob(user, the_item,EAT_MOB_DELAY))
-			to_chat(user, "<span class='warning'>You were interrupted before you could eat [the_item]'s [limb.display_name]!</span>")
+			to_chat(user, "<span class='warning'>I was interrupted before I could eat [the_item]'s [limb.display_name]!</span>")
 		else
 			user.visible_message("<span class='danger'>[user] eats [the_item]'s [limb.display_name].</span>", \
-			"<span class='danger'>You eat [the_item]'s [limb.display_name].</span>")
+			"<span class='danger'>I eat [the_item]'s [limb.display_name].</span>")
 			playsound(get_turf(user), 'sound/items/eatfood.ogg', 50, 0)
 			message_admins("[user] ate [the_item]'s [limb]: (<A href='?_src_=holder;jumpto=\ref[user]'><b>Jump to</b></A>)")
 			log_game("[user] ate \the [the_item]'s [limb] at [user.x], [user.y], [user.z]")
@@ -401,8 +401,8 @@
 	name = "Jumpy"
 	desc = "Allows the subject to leap great distances.</span>"
 	//cooldown = 30
-	activation_messages = list("Your leg muscles feel taut and strong.")
-	deactivation_messages = list("Your leg muscles shrink back to normal.")
+	activation_messages = list("My leg muscles feel taut and strong.")
+	deactivation_messages = list("My leg muscles shrink back to normal.")
 
 	drug_activation_messages=list()
 	drug_deactivation_messages=list()
@@ -435,7 +435,7 @@
 /spell/targeted/leap/cast(list/targets, mob/user)
 	for(var/mob/living/target in targets)
 		if (istype(target.loc,/mob/) || target.lying || target.stunned || target.locked_to)
-			to_chat(target, "<span class='warning'>You can't jump right now!</span>")
+			to_chat(target, "<span class='warning'>I can't jump right now!</span>")
 			continue
 
 		var/failed_leap = 0
@@ -458,8 +458,8 @@
 				target.Knockdown(5)
 				target.Stun(5)
 				target.visible_message("<span class='warning'> \the [usr] attempts to leap away but is slammed back down to the ground!</span>",
-									"<span class='warning'>You attempt to leap away but are suddenly slammed back down to the ground!</span>",
-									"<span class='notice'>You hear the flexing of powerful muscles and suddenly a crash as a body hits the floor.</span>")
+									"<span class='warning'>I attempt to leap away but are suddenly slammed back down to the ground!</span>",
+									"<span class='notice'>I hear the flexing of powerful muscles and suddenly a crash as a body hits the floor.</span>")
 				continue
 
 			var/prevLayer = target.layer
@@ -484,7 +484,7 @@
 
 		if (istype(target.loc,/obj/))
 			var/obj/container = target.loc
-			to_chat(target, "<span class='warning'>You leap and slam your head against the inside of [container]! Ouch!</span>")
+			to_chat(target, "<span class='warning'>I leap and slam my head against the inside of [container]! Ouch!</span>")
 			target.AdjustParalysis(3)
 			target.AdjustKnockdown(5)
 			container.visible_message("<span class='warning'><b>[container]</b> emits a loud thump and rattles a bit.</span>")
@@ -510,8 +510,8 @@
 
 	spelltype = /spell/targeted/polymorph
 	//cooldown = 1800
-	activation_messages = list("You don't feel entirely like yourself somehow.")
-	deactivation_messages = list("You feel secure in your identity.")
+	activation_messages = list("I don't feel entirely like yourself somehow.")
+	deactivation_messages = list("I feel secure in my identity.")
 
 	drug_activation_messages=list()
 	drug_deactivation_messages=list()
@@ -558,11 +558,11 @@
 	desc = "The subject becomes able to read the minds of others for certain information."
 
 	spelltype = /spell/targeted/empath
-	activation_messages = list("You suddenly notice more about others than you did before.")
-	deactivation_messages = list("You no longer feel able to sense intentions.")
+	activation_messages = list("I suddenly notice more about others than you did before.")
+	deactivation_messages = list("I no longer feel able to sense intentions.")
 
-	drug_activation_messages=list("You feel more social!")
-	drug_deactivation_messages=list("You feel less social.")
+	drug_activation_messages=list("I feel more social!")
+	drug_deactivation_messages=list("I feel less social.")
 
 	New()
 		..()
@@ -601,7 +601,7 @@
 		return 1
 
 	if (M_PSY_RESIST in M.mutations)
-		to_chat(user, "<span class='warning'>You can't see into [M.name]'s mind at all!</span>")
+		to_chat(user, "<span class='warning'>I can't see into [M.name]'s mind at all!</span>")
 		return 1
 
 	if (M.stat == 2)
@@ -668,9 +668,9 @@
 	to_chat(user, "<span class='notice'> <b>Thoughts</b>: [M.name] is currently [thoughts].</span>")
 
 	if (/spell/targeted/empath in M.spell_list)
-		to_chat(M, "<span class='warning'>You sense [usr.name] reading your mind.</span>")
+		to_chat(M, "<span class='warning'>I sense [usr.name] reading my mind.</span>")
 	else if (prob(5) || (M.mind && M.mind.assigned_role=="Chaplain"))
-		to_chat(M, "<span class='warning'>You sense someone intruding upon your thoughts...</span>")
+		to_chat(M, "<span class='warning'>I sense someone intruding upon my thoughts...</span>")
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -678,8 +678,8 @@
 /datum/dna/gene/basic/superfart
 	name = "High-Pressure Intestines"
 	desc = "Vastly increases the gas capacity of the subject's digestive tract."
-	activation_messages = list("You feel bloated and gassy.")
-	deactivation_messages = list("You no longer feel gassy. What a relief!")
+	activation_messages = list("I feel bloated and gassy.")
+	deactivation_messages = list("I no longer feel gassy. What a relief!")
 
 	drug_activation_messages = list()
 	drug_deactivation_messages = list()
@@ -695,8 +695,8 @@
 	// pretty sure this doesn't do jack shit, putting it here until it does
 	name = "Strong"
 	desc = "Enhances the subject's ability to build and retain heavy muscles."
-	activation_messages = list("You feel buff!")
-	deactivation_messages = list("You feel wimpy and weak.")
+	activation_messages = list("I feel buff!")
+	deactivation_messages = list("I feel wimpy and weak.")
 
 	mutation = M_STRONG
 

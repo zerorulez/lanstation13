@@ -78,11 +78,11 @@
 	//If we have brain worms, dump 'em.
 	var/mob/living/simple_animal/borer/B=has_brain_worms()
 	if(B && B.controlling)
-		to_chat(src, "<span class='danger'>Your host has died.  You reluctantly release control.</span>")
-		to_chat(B.host_brain, "<span class='danger'>Just before your body passes, you feel a brief return of sensation.  You are now in control...</span>")
+		to_chat(src, "<span class='danger'>My host has died.  I reluctantly release control.</span>")
+		to_chat(B.host_brain, "<span class='danger'>Just before my body passes, I feel a brief return of sensation.  I am now in control...</span>")
 		do_release_control(0)
 
-	to_chat(src, "<span class='danger'>YOU DIED</span>")
+	to_chat(src, "<span class='danger'>I died</span>")
 
 	//Check for heist mode kill count.
 	if(ticker.mode && ( istype( ticker.mode,/datum/game_mode/heist) ) )

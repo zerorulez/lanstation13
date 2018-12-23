@@ -21,7 +21,7 @@
 	Standard mob ClickOn()
 	Handles exceptions: Buildmode, middle click, modified clicks, mech actions
 
-	After that, mostly just check your state, check whether you're holding an item,
+	After that, mostly just check my state, check whether you're holding an item,
 	check whether you're adjacent to the target, then pass off the click to whoever
 	is recieving it.
 	The most common are:
@@ -305,7 +305,7 @@
 		..()
 		handle_regular_hud_updates()
 	else
-		to_chat(src, "<span class='warning'>You're out of energy!  You need food!</span>")
+		to_chat(src, "<span class='warning'>I am out of energy!  You need food!</span>")
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(var/atom/A)

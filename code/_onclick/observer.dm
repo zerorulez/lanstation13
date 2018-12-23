@@ -3,7 +3,7 @@
 		build_click(src, client.buildmode, params, A)
 		return
 	if(can_reenter_corpse && mind && mind.current)
-		if(A == mind.current || (mind.current in A)) // double click your corpse or whatever holds it
+		if(A == mind.current || (mind.current in A)) // double click my corpse or whatever holds it
 			reenter_corpse()						// (cloning scanner, body bag, closet, mech, etc)
 			return									// seems legit.
 

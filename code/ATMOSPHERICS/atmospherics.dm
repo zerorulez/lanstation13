@@ -291,33 +291,33 @@ Pipelines + Other Objects -> Pipe network
 		return ..()
 	var/turf/T = src.loc
 	if (level==LEVEL_BELOW_FLOOR && isturf(T) && T.intact)
-		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
+		to_chat(user, "<span class='warning'>I must remove the plating first.</span>")
 		return 1
 	var/datum/gas_mixture/int_air = return_air()
 	var/datum/gas_mixture/env_air = loc.return_air()
 	add_fingerprint(user)
 	if ((int_air.return_pressure()-env_air.return_pressure()) > 2*ONE_ATMOSPHERE)
 		if(istype(W, /obj/item/weapon/wrench/socket) && istype(src, /obj/machinery/atmospherics/pipe))
-			to_chat(user, "<span class='warning'>You begin to open the pressure release valve on the pipe...</span>")
+			to_chat(user, "<span class='warning'>I begin to open the pressure release valve on the pipe...</span>")
 			if(do_after(user, src, 50))
 				if(!loc)
 					return
 				playsound(get_turf(src), 'sound/machines/hiss.ogg', 50, 1)
 				user.visible_message("[user] vents \the [src].",
-									"You have vented \the [src].",
-									"You hear a ratchet.")
+									"I have vented \the [src].",
+									"I hear a ratchet.")
 				var/datum/gas_mixture/internal_removed = int_air.remove(int_air.total_moles()*starting_volume/int_air.volume)
 				env_air.merge(internal_removed)
 		else
-			to_chat(user, "<span class='warning'>You cannot unwrench this [src], it's too exerted due to internal pressure.</span>")
+			to_chat(user, "<span class='warning'>I cannot unwrench this [src], it's too exerted due to internal pressure.</span>")
 			return 1
 	playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
-	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+	to_chat(user, "<span class='notice'>I begin to unfasten \the [src]...</span>")
 	if (do_after(user, src, 40))
 		user.visible_message( \
 			"[user] unfastens \the [src].", \
-			"<span class='notice'>You have unfastened \the [src].</span>", \
-			"You hear a ratchet.")
+			"<span class='notice'>I have unfastened \the [src].</span>", \
+			"I hear a ratchet.")
 		getFromPool(/obj/item/pipe, loc, null, null, src)
 		investigation_log(I_ATMOS,"was removed by [user]/([user.ckey]) at [formatJumpTo(loc)].")
 		//P.New(loc, make_from=src) //new /obj/item/pipe(loc, make_from=src)
@@ -340,7 +340,7 @@ Pipelines + Other Objects -> Pipe network
 		if(is_type_in_list(target_move, ventcrawl_machinery) && target_move.can_crawl_through())
 			user.remove_ventcrawl()
 			user.forceMove(target_move.loc) //handles entering and so on
-			user.visible_message("You hear something squeezing through the ducts.", "You climb out the ventilation system.")
+			user.visible_message("I hear something squeezing through the ducts.", "I climb out of the ventilation system.")
 		else if(target_move.can_crawl_through())
 			if(target_move.return_network(target_move) != return_network(src))
 				user.remove_ventcrawl()
@@ -357,7 +357,7 @@ Pipelines + Other Objects -> Pipe network
 		if((direction & initialize_directions) || is_type_in_list(src, ventcrawl_machinery) && src.can_crawl_through()) //if we move in a way the pipe can connect, but doesn't - or we're in a vent
 			user.remove_ventcrawl()
 			user.forceMove(src.loc)
-			user.visible_message("You hear something squeezing through the pipes.", "You climb out the ventilation system.")
+			user.visible_message("I hear something squeezing through the pipes.", "I climb out of the ventilation system.")
 	user.canmove = 0
 	spawn(1)
 		user.canmove = 1

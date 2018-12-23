@@ -1,6 +1,6 @@
 /obj/structure/bed/chair
 	name = "chair"
-	desc = "You sit in this. Either by will or force."
+	desc = "I sit in this. Either by will or force."
 	icon_state = "chair"
 	sheet_amt = 1
 	var/image/buckle_overlay = null // image for overlays when a mob is buckled to the chair
@@ -90,17 +90,17 @@
 				M.visible_message(\
 					"<span class='notice'>[M.name] has no butt, and slides right out of [src]!</span>",\
 					"Having no butt, you slide right out of the [src]",\
-					"You hear metal clanking.")
+					"I hear metal clanking.")
 
 			else
 				M.visible_message(\
 					"<span class='notice'>[M.name] has no butt, and slides right out of [src]!</span>",\
 					"Having no butt, you slide right out of the [src]",\
-					"You hear metal clanking.")
+					"I hear metal clanking.")
 
 			M.Knockdown(5)
 		else
-			to_chat(user, "You can't buckle [M.name] to [src], They just fell out!")
+			to_chat(user, "I can't buckle [M.name] to [src], They just fell out!")
 
 	else
 		buckle_mob(M, user)
@@ -204,7 +204,7 @@
 			return
 
 		if (user.drop_item(W, src))
-			to_chat(user, "You hide \the [W] between \the [src]'s cushions.")
+			to_chat(user, "I hide \the [W] between \the [src]'s cushions.")
 
 		return TRUE
 
@@ -216,7 +216,7 @@
 
 	for (var/obj/item/I in src)
 		user.put_in_hands(I)
-		to_chat(user, "You pull out \the [I] between \the [src]'s cushions.")
+		to_chat(user, "I pull out \the [I] between \the [src]'s cushions.")
 
 /obj/structure/bed/chair/comfy/brown
 	icon_state = "comfychair_brown"

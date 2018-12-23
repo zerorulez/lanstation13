@@ -51,7 +51,7 @@
 
 /obj/machinery/optable/attack_hand(mob/user as mob)
 	if (M_HULK in usr.mutations)
-		to_chat(usr, text("<span class='notice'>You destroy the table.</span>"))
+		to_chat(usr, text("<span class='notice'>I destroy the table.</span>"))
 		visible_message("<span class='warning'>[usr] destroys the operating table!</span>")
 		src.density = 0
 		qdel(src)
@@ -77,7 +77,7 @@
 	else
 		if(!ismob(O)) //humans only
 			return
-		if(O.loc == user || !isturf(O.loc) || !isturf(user.loc)) //no you can't pull things out of your ass
+		if(O.loc == user || !isturf(O.loc) || !isturf(user.loc)) //no you can't pull things out of my ass
 			return
 		if(user.incapacitated() || user.lying) //are you cuffed, dying, lying, stunned or other
 			return
@@ -133,7 +133,7 @@
 		C.update_canmove() //but for as long as it does we're adding sanity to it
 
 	if (C == user)
-		user.visible_message("[user] climbs on the operating table.","You climb on the operating table.")
+		user.visible_message("[user] climbs on the operating table.","I climb on the operating table.")
 	else
 		visible_message("<span class='warning'>[C] has been laid on the operating table by [user].</span>")
 

@@ -228,8 +228,8 @@ var/global/list/alert_overlays_global = list()
 		if(W.remove_fuel(0, user))
 			blocked = !blocked
 			user.visible_message("<span class='attack'>\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W].</span>",\
-			"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",\
-			"You hear something being welded.")
+			"I [blocked ? "weld" : "unweld"] \the [src] with \the [W].",\
+			"I hear something being welded.")
 			update_icon()
 			return
 
@@ -294,7 +294,7 @@ var/global/list/alert_overlays_global = list()
 	else
 		user.visible_message("<span class='notice'>\The [src] [density ? "open" : "close"]s for \the [user].</span>",\
 		"\The [src] [density ? "open" : "close"]s.",\
-		"You hear a beep, and a door opening.")
+		"I hear a beep, and a door opening.")
 		// Accountability!
 		if(!users_to_open)
 			users_to_open = list()
@@ -335,14 +335,14 @@ var/global/list/alert_overlays_global = list()
 
 	if( blocked )
 		user.visible_message("<span class='attack'>\The [istype(user.loc,/obj/mecha) ? "[user.loc.name]" : "[user]"] pries at \the [src][istype(C) ? " with \a [C]" : ""], but \the [src] is welded in place!</span>",\
-		"You try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",\
-		"You hear someone struggle and metal straining.")
+		"I try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",\
+		"I hear someone struggle and metal straining.")
 		return
 
 	//thank you Tigercat2000
 	user.visible_message("<span class='attack'>\The [istype(user.loc,/obj/mecha) ? "[user.loc.name]" : "[user]"] forces \the [src] [density ? "open" : "closed"][istype(C) ? " with \a [C]" : ""]!</span>",\
-		"You force \the [src] [density ? "open" : "closed"][istype(C) ? " with \the [C]" : ""]!",\
-		"You hear metal strain, and a door [density ? "open" : "close"].")
+		"I force \the [src] [density ? "open" : "closed"][istype(C) ? " with \the [C]" : ""]!",\
+		"I hear metal strain, and a door [density ? "open" : "close"].")
 
 	if(density)
 		spawn(0)

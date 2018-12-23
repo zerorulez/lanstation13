@@ -172,7 +172,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 			take_charge(user, skipcharge)
 		after_cast(targets) //generates the sparks, smoke, target messages etc.
 
-//This is used with the wait_for_click spell flag to prepare spells to be cast on your next click
+//This is used with the wait_for_click spell flag to prepare spells to be cast on my next click
 /spell/proc/channel_spell(mob/user = usr, skipcharge = 0, force_remove = 0)
 	if(!holder)
 		holder = user //just in case
@@ -324,13 +324,13 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 
 
 	if(!(src in user.spell_list) && holder == user)
-		to_chat(user, "<span class='warning'>You shouldn't have this spell! Something's wrong.</span>")
+		to_chat(user, "<span class='warning'>I shouldn't have this spell! Something's wrong.</span>")
 		return 0
 
 	if(silenced > 0)
 		return
 	if(user.reagents && user.reagents.has_reagent(ZOMBIEPOWDER))
-		to_chat(user, "<span class='warning'>You just can't seem to focus enough to do this.</span>")
+		to_chat(user, "<span class='warning'>I just can't seem to focus enough to do this.</span>")
 		return 0
 
 	var/ourz = user.z
@@ -352,7 +352,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	if(istype(user, /mob/living/simple_animal) && holder == user)
 		var/mob/living/simple_animal/SA = user
 		if(SA.purge)
-			to_chat(SA, "<span class='warning'>The nullrod's power interferes with your own!</span>")
+			to_chat(SA, "<span class='warning'>The nullrod's power interferes with my own!</span>")
 			return 0
 
 	if(!src.check_charge(skipcharge, user)) //sees if we can cast based on charges alone
@@ -484,16 +484,16 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	name = initial(name)
 	switch(level_max[Sp_SPEED] - spell_levels[Sp_SPEED])
 		if(3)
-			temp = "You have improved [name] into Efficient [name]."
+			temp = "I have improved [name] into Efficient [name]."
 			name = "Efficient [name]"
 		if(2)
-			temp = "You have improved [name] into Quickened [name]."
+			temp = "I have improved [name] into Quickened [name]."
 			name = "Quickened [name]"
 		if(1)
-			temp = "You have improved [name] into Free [name]."
+			temp = "I have improved [name] into Free [name]."
 			name = "Free [name]"
 		if(0)
-			temp = "You have improved [name] into Instant [name]."
+			temp = "I have improved [name] into Instant [name]."
 			name = "Instant [name]"
 
 	return temp

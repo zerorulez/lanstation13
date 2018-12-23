@@ -3,6 +3,6 @@
 
 /obj/item/weapon/contraband //stupid define tbh
 	name = "contraband item"
-	desc = "You probably shouldn't be holding this."
+	desc = "I probably shouldn't be holding this."
 	icon = 'icons/obj/posters.dmi'
 	force = 0

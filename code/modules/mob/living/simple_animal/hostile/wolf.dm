@@ -176,8 +176,8 @@
 			if(prob(25))
 				if(!pack_alpha)
 					pack_alpha = user
-					to_chat(user, "<span class='info'>You have gained \the [src]'s trust.</span>")
-					var/n_name = copytext(sanitize(input(user, "What would you like to name your new friend?", "Wolf Name", null) as text|null), 1, MAX_NAME_LEN)
+					to_chat(user, "<span class='info'>I have gained \the [src]'s trust.</span>")
+					var/n_name = copytext(sanitize(input(user, "What would you like to name my new friend?", "Wolf Name", null) as text|null), 1, MAX_NAME_LEN)
 					if(n_name && !user.incapacitated())
 						name = n_name
 					var/image/heart = image('icons/mob/animal.dmi',src,"heart-ani2")

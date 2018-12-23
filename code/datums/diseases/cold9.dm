@@ -16,7 +16,7 @@
 		if(2)
 			affected_mob.bodytemperature--
 			if(prob(1) && prob(10))
-				to_chat(affected_mob, "<span class='notice'>You feel better.</span>")
+				to_chat(affected_mob, "<span class='notice'>I feel better.</span>")
 				cure()
 				return
 			if(prob(1))
@@ -24,9 +24,9 @@
 			if(prob(1))
 				affected_mob.audible_cough()
 			if(prob(1))
-				to_chat(affected_mob, "<span class='warning'>Your throat feels sore.</span>")
+				to_chat(affected_mob, "<span class='warning'>My throat feels sore.</span>")
 			if(prob(5))
-				to_chat(affected_mob, "<span class='warning'>You feel stiff.</span>")
+				to_chat(affected_mob, "<span class='warning'>I feel stiff.</span>")
 		if(3)
 			affected_mob.bodytemperature -= 2
 			if(prob(1))
@@ -34,6 +34,6 @@
 			if(prob(1))
 				affected_mob.audible_cough()
 			if(prob(1))
-				to_chat(affected_mob, "<span class='warning'>Your throat feels sore.</span>")
+				to_chat(affected_mob, "<span class='warning'>My throat feels sore.</span>")
 			if(prob(10))
-				to_chat(affected_mob, "<span class='warning'>You feel stiff.</span>")
+				to_chat(affected_mob, "<span class='warning'>I feel stiff.</span>")

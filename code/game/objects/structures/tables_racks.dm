@@ -399,7 +399,7 @@
 					M.do_attack_animation(src, M)
 					playsound(get_turf(src), 'sound/weapons/tablehit1.ogg', 50, 1)
 				else
-					to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+					to_chat(user, "<span class='warning'>I need a better grip to do that!</span>")
 					return
 			else
 				G.affecting.forceMove(loc)
@@ -445,7 +445,7 @@
 	if (user.stat)	//zombie goasts go away
 		return 0
 	if (issilicon(user))
-		to_chat(user, "<span class='notice'>You need hands for this.</span>")
+		to_chat(user, "<span class='notice'>I need hands for this.</span>")
 		return 0
 	return 1
 
@@ -596,7 +596,7 @@
 
 				return
 			else
-				user << "<span class='warning'>\The [W] is stuck to your hands!</span>"
+				user << "<span class='warning'>\The [W] is stuck to my hands!</span>"
 				return
 
 	else if (istype(W, /obj/item/weapon/weldingtool))
@@ -652,7 +652,7 @@
 					new /obj/item/weapon/table_parts(src.loc)
 					qdel(src)
 				else
-					to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+					to_chat(user, "<span class='warning'>I need a better grip to do that!</span>")
 					return
 			else
 				G.affecting.forceMove(loc)
@@ -665,7 +665,7 @@
 		user.do_attack_animation(src, W)
 		health -= W.force
 		user.visible_message("<span class='warning'>\The [user] hits \the [src] with \the [W].</span>", \
-		"<span class='warning'>You hit \the [src] with \the [W].</span>")
+		"<span class='warning'>I hit \the [src] with \the [W].</span>")
 		playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 50, 1)
 		checkhealth()
 

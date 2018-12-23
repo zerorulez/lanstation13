@@ -60,8 +60,8 @@
 
 /datum/dna/gene/disability/hallucinate
 	name="Hallucinate"
-	activation_message="Your mind says 'Hello'."
-	deactivation_message = "Your mind no longer speaks to you."
+	activation_message="My mind says 'Hello'."
+	deactivation_message = "My mind no longer speaks to you."
 	mutation=M_HALLUCINATE
 
 	New()
@@ -69,8 +69,8 @@
 
 /datum/dna/gene/disability/epilepsy
 	name="Epilepsy"
-	activation_message="You get a headache."
-	deactivation_message = "Your headache disappears."
+	activation_message="I get a headache."
+	deactivation_message = "My headache disappears."
 	disability=EPILEPSY
 
 	New()
@@ -78,7 +78,7 @@
 
 /datum/dna/gene/disability/cough
 	name="Coughing"
-	activation_message="You start coughing."
+	activation_message="I start coughing."
 	deactivation_message = "The need to cough disappears."
 	disability=COUGHING
 
@@ -87,8 +87,8 @@
 
 /datum/dna/gene/disability/clumsy
 	name="Clumsiness"
-	activation_message="You feel lightheaded."
-	deactivation_message = "You no longer feel lightheaded."
+	activation_message="I feel lightheaded."
+	deactivation_message = "I no longer feel lightheaded."
 	mutation=M_CLUMSY
 	flags = GENE_UNNATURAL // Clown-specific.
 
@@ -97,8 +97,8 @@
 
 /datum/dna/gene/disability/tourettes
 	name="Tourettes"
-	activation_message="You twitch."
-	deactivation_message = "You stop twitching."
+	activation_message="I twitch."
+	deactivation_message = "I stop twitching."
 	disability=TOURETTES
 	flags = GENE_UNNATURAL // Game-wrecking
 
@@ -107,8 +107,8 @@
 
 /datum/dna/gene/disability/nervousness
 	name="Nervousness"
-	activation_message="You feel nervous."
-	deactivation_message = "You feel calmer."
+	activation_message="I feel nervous."
+	deactivation_message = "I feel calmer."
 	disability=NERVOUS
 
 	New()
@@ -122,8 +122,8 @@
 
 /datum/dna/gene/disability/blindness
 	name="Blindness"
-	activation_message="You can't seem to see anything."
-	deactivation_message = "You can see again."
+	activation_message="I can't seem to see anything."
+	deactivation_message = "I can see again."
 	sdisability=BLIND
 	flags = GENE_UNNATURAL
 
@@ -133,7 +133,7 @@
 /datum/dna/gene/disability/deaf
 	name="Deafness"
 	activation_message="It's kinda quiet."
-	deactivation_message = "You can hear again."
+	deactivation_message = "I can hear again."
 	sdisability=DEAF
 	flags = GENE_UNNATURAL
 
@@ -146,8 +146,8 @@
 
 /datum/dna/gene/disability/nearsighted
 	name="Nearsightedness"
-	activation_message="Your eyes feel weird..."
-	deactivation_message = "Your eyes no longer feel weird..."
+	activation_message="My eyes feel weird..."
+	deactivation_message = "My eyes no longer feel weird..."
 	disability=NEARSIGHTED
 
 	New()
@@ -158,7 +158,7 @@
 	name = "Lisp"
 	desc = "I wonder wath thith doeth."
 	activation_message = "Thomething doethn't feel right."
-	deactivation_message = "You now feel able to pronounce consonants."
+	deactivation_message = "I now feel able to pronounce consonants."
 
 	New()
 		..()

@@ -64,13 +64,13 @@
 	switch (get_area_type())
 		if (AREA_SPACE)
 			text += {"
-<p>According to the blueprints, you are now in <b>outer space</b>.  Hold your breath.</p>
+<p>According to the blueprints, you are now in <b>outer space</b>.  Hold my breath.</p>
 <p><a href='?src=\ref[src];action=create_area'>Mark this place as new area.</a></p>
 "}
 		if (AREA_STATION)
 			text += {"
 <p>According to the blueprints, you are now in <b>\"[A.name]\"</b>.</p>
-<p>You may <a href='?src=\ref[src];action=edit_area'>
+<p>I may <a href='?src=\ref[src];action=edit_area'>
 move an amendment</a> to the drawing.</p>
 "}
 		if (AREA_SPECIAL)
@@ -80,7 +80,7 @@ move an amendment</a> to the drawing.</p>
 		if (AREA_BLUEPRINTS)
 			text += {"
 <p>According to the blueprints, you are now in <b>\"[A.name]\"</b> This place seems to be relatively new on the blueprints.</p>"}
-			text += "<p>You may <a href='?src=\ref[src];action=edit_area'>move an amendment</a> to the drawing.</p>"//, or <a href='?src=\ref[src];action=delete_area'>erase</a> this place from the blueprints."
+			text += "<p>I may <a href='?src=\ref[src];action=edit_area'>move an amendment</a> to the drawing.</p>"//, or <a href='?src=\ref[src];action=delete_area'>erase</a> this place from the blueprints."
 
 		else
 			return
@@ -165,7 +165,7 @@ move an amendment</a> to the drawing.</p>
 	areachanged.name = str
 	for(var/atom/allthings in areachanged.contents)
 		allthings.change_area_name(prevname,str)
-	to_chat(usr, "<span class='notice'>You set the area '[prevname]' title to '[str]'.</span>")
+	to_chat(usr, "<span class='notice'>I set the area '[prevname]' title to '[str]'.</span>")
 	interact()
 
 /obj/item/blueprints/proc/delete_area(var/mob/user) //This functionality is currently commented out!
@@ -189,7 +189,7 @@ move an amendment</a> to the drawing.</p>
 
 		for(var/atom/movable/AM in T.contents)
 			AM.change_area(areadeleted,space)
-	to_chat(usr, "You've erased the \"[areadeleted]\" from the blueprints.")
+	to_chat(usr, "I've erased the \"[areadeleted]\" from the blueprints.")
 
 /obj/item/blueprints/proc/check_tile_is_border(var/turf/T2,var/dir)
 	if (istype(T2, /turf/space))

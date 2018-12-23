@@ -3,7 +3,7 @@
 
 
 	if(stat || !use_me && usr == src)
-		to_chat(usr, "You are unable to emote.")
+		to_chat(usr, "I am unable to emote.")
 		return
 
 	var/muzzled = istype(src.wear_mask, /obj/item/clothing/mask/muzzle)
@@ -52,11 +52,11 @@
 
 
 	if(client.prefs.muted & MUTE_DEADCHAT)
-		to_chat(src, "<span class='warning'>You cannot send deadchat emotes (muted).</span>")
+		to_chat(src, "<span class='warning'>I cannot send deadchat emotes (muted).</span>")
 		return
 
 	if(!(client.prefs.toggles & CHAT_DEAD))
-		to_chat(src, "<span class='warning'>You have deadchat muted.</span>")
+		to_chat(src, "<span class='warning'>I have deadchat muted.</span>")
 		return
 
 	var/input

@@ -891,22 +891,22 @@
 
 	if(istype(W, /obj/item/weapon/reagent_containers/glass/paint/red))
 		src.color = PIPE_COLOR_RED
-		to_chat(user, "<span class='notice'>You paint the pipe red.</span>")
+		to_chat(user, "<span class='notice'>I paint the pipe red.</span>")
 		update_icon()
 		return 1
 	if(istype(W, /obj/item/weapon/reagent_containers/glass/paint/blue))
 		src.color = PIPE_COLOR_BLUE
-		to_chat(user, "<span class='notice'>You paint the pipe blue.</span>")
+		to_chat(user, "<span class='notice'>I paint the pipe blue.</span>")
 		update_icon()
 		return 1
 	if(istype(W, /obj/item/weapon/reagent_containers/glass/paint/green))
 		src.color = PIPE_COLOR_GREEN
-		to_chat(user, "<span class='notice'>You paint the pipe green.</span>")
+		to_chat(user, "<span class='notice'>I paint the pipe green.</span>")
 		update_icon()
 		return 1
 	if(istype(W, /obj/item/weapon/reagent_containers/glass/paint/yellow))
 		src.color = PIPE_COLOR_ORANGE
-		to_chat(user, "<span class='notice'>You paint the pipe yellow.</span>")
+		to_chat(user, "<span class='notice'>I paint the pipe yellow.</span>")
 		update_icon()
 		return 1
 
@@ -1129,12 +1129,12 @@
 				layer_mod = -1
 
 		user.ventcrawl_layer = Clamp(user.ventcrawl_layer + layer_mod, PIPING_LAYER_MIN, PIPING_LAYER_MAX)
-		to_chat(user, "You align yourself with the [user.ventcrawl_layer]\th output.")
+		to_chat(user, "I align yourself with the [user.ventcrawl_layer]\th output.")
 		return 1
 	else
 		if(direction != dir && user.ventcrawl_layer != PIPING_LAYER_DEFAULT) // The mob is moving to the single pipe outlet, we need to align it if it's on a layer that's not the default layer
 			user.ventcrawl_layer = PIPING_LAYER_DEFAULT
-			to_chat(user, "You are redirected into the [user.ventcrawl_layer]\th piping layer.")
+			to_chat(user, "I am redirected into the [user.ventcrawl_layer]\th piping layer.")
 
 		return ..()
 
@@ -1299,5 +1299,5 @@
 	// Autoset layer
 	if(direction & initialize_directions)
 		user.ventcrawl_layer = (direction == dir) ? PIPING_LAYER_DEFAULT : piping_layer
-		to_chat(user, "You are redirected into the [user.ventcrawl_layer]\th piping layer.")
+		to_chat(user, "I am redirected into the [user.ventcrawl_layer]\th piping layer.")
 		return ..()

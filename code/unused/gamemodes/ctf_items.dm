@@ -89,7 +89,7 @@
 					sleep(300)
 					world.Reboot()
 		else
-			to_chat(user, "<span class='warning'>You need to have your flag in the beginning position!</span>")
+			to_chat(user, "<span class='warning'>I need to have my flag in the beginning position!</span>")
 	else if(istype(C, /obj/item/weapon/ctf_flag/red))
 		to_chat(world, "<B>[user.real_name] has tried to score with their own flag! Idiot!</B>")
 	src.operating = 0
@@ -131,7 +131,7 @@
 					sleep(300)
 					world.Reboot()
 		else
-			to_chat(user, "<span class='warning'>You need to have your flag in the beginning position!</span>")
+			to_chat(user, "<span class='warning'>I need to have my flag in the beginning position!</span>")
 	else if(istype(C, /obj/item/weapon/ctf_flag/green))
 		to_chat(world, "<B>[user.real_name] has tried to score with their own flag! Idiot!</B>")
 	src.operating = 0

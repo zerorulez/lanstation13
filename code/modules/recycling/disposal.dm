@@ -82,7 +82,7 @@
 		return
 
 	if(!user.has_hand_check())
-		to_chat(user, "<span class='warning'>You don't have any hands!</span>")
+		to_chat(user, "<span class='warning'>I don't have any hands!</span>")
 		return
 
 	src.add_fingerprint(user)
@@ -94,12 +94,12 @@
 			if(mode==0) // It's off but still not unscrewed
 				mode=-1 // Set it to doubleoff l0l
 				playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
-				to_chat(user, "You remove the screws around the power connection.")
+				to_chat(user, "I remove the screws around the power connection.")
 				return
 			else if(mode==-1)
 				mode=0
 				playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
-				to_chat(user, "You attach the screws around the power connection.")
+				to_chat(user, "I attach the screws around the power connection.")
 				return
 		else if(istype(I,/obj/item/weapon/weldingtool) && mode==-1)
 			if(contents.len > 0)
@@ -108,12 +108,12 @@
 			var/obj/item/weapon/weldingtool/W = I
 			if(W.remove_fuel(0,user))
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 100, 1)
-				to_chat(user, "You start slicing the floorweld off the disposal unit.")
+				to_chat(user, "I start slicing the floorweld off the disposal unit.")
 
 				if(do_after(user, src,20))
 					if(gcDestroyed || !W.isOn())
 						return
-					to_chat(user, "You sliced the floorweld off the disposal unit.")
+					to_chat(user, "I sliced the floorweld off the disposal unit.")
 					var/obj/structure/disposalconstruct/C = new (src.loc)
 					src.transfer_fingerprints_to(C)
 					C.ptype = 6 // 6 = disposal unit
@@ -123,7 +123,7 @@
 					qdel(src)
 				return
 			else
-				to_chat(user, "You need more welding fuel to complete this task.")
+				to_chat(user, "I need more welding fuel to complete this task.")
 				return
 
 	if(isrobot(user) && !istype(I, /obj/item/weapon/storage/bag/trash) && !istype(user,/mob/living/silicon/robot/mommi) )
@@ -133,9 +133,9 @@
 		var/obj/item/weapon/storage/bag/B = I
 		if(B.contents.len == 0)
 			if(user.drop_item(I, src))
-				to_chat(user, "<span class='notice'>You throw away the empty [B].</span>")
+				to_chat(user, "<span class='notice'>I throw away the empty [B].</span>")
 				return
-		to_chat(user, "<span class='notice'>You empty the [B].</span>")
+		to_chat(user, "<span class='notice'>I empty the [B].</span>")
 		B.mass_remove(src)
 		B.update_icon()
 		update_icon()
@@ -147,13 +147,13 @@
 			var/mob/GM = G.affecting
 			user.attack_log += "<span class='warning'> [user]([user.ckey]) has attempted to put [GM]([GM.ckey]) in disposals.</span>"
 			GM.attack_log += "<span class='warning'> [user]([user.ckey]) has attempted to put [GM]([GM.ckey]) in disposals.</span>"
-			user.visible_message("[usr] starts putting [GM.name] into \the [src].", "You start putting \the [GM.name] into the [src].", "You hear some clunking.")
+			user.visible_message("[usr] starts putting [GM.name] into \the [src].", "I start putting \the [GM.name] into the [src].", "I hear some clunking.")
 			if(do_after(usr, src, 20))
 				if (GM.client)
 					GM.client.perspective = EYE_PERSPECTIVE
 					GM.client.eye = src
 				GM.forceMove(src)
-				user.visible_message("<span class='warning'>[GM.name] has been placed in \the [src] by [user].</span>", "<span class='warning'>[GM.name] has been placed in \the [src] by you.</span>", "<span class='warning'>You hear a loud clunk.</span>")
+				user.visible_message("<span class='warning'>[GM.name] has been placed in \the [src] by [user].</span>", "<span class='warning'>[GM.name] has been placed in \the [src] by you.</span>", "<span class='warning'>I hear a loud clunk.</span>")
 				qdel(G)
 				log_attack("<font color='red'>[usr] ([usr.ckey]) placed [GM] ([GM.ckey]) in a disposals unit.</font>")
 		return
@@ -162,7 +162,7 @@
 		return
 
 	if(user.drop_item(I, src))
-		user.visible_message("[user.name] places \the [I] into the [src].", "You place \the [I] into the [src].")
+		user.visible_message("[user.name] places \the [I] into the [src].", "I place \the [I] into the [src].")
 
 	update_icon()
 
@@ -206,7 +206,7 @@
 // human interact with machine
 /obj/machinery/disposal/attack_hand(mob/user as mob)
 	if(user && user.loc == src)
-		to_chat(usr, "<span class='warning'>You cannot reach the controls from inside.</span>")
+		to_chat(usr, "<span class='warning'>I cannot reach the controls from inside.</span>")
 		return
 	/*
 	if(mode==-1)
@@ -241,7 +241,7 @@
 // handle machine interaction
 /obj/machinery/disposal/Topic(href, href_list)
 	if(usr.loc == src)
-		to_chat(usr, "<span class='warning'>You cannot reach the controls from inside.</span>")
+		to_chat(usr, "<span class='warning'>I cannot reach the controls from inside.</span>")
 		return
 
 	if(mode==-1 && !href_list["eject"]) // only allow ejecting if mode is -1
@@ -476,14 +476,14 @@
 		return
 
 	if(target == user)
-		target.visible_message("[target] starts climbing into \the [src].", "You start climbing into \the [src].")
+		target.visible_message("[target] starts climbing into \the [src].", "I start climbing into \the [src].")
 
 	else
 
 		if(isanimal(user))
 			return //Animals cannot put mobs other than themselves into disposal
 
-		user.visible_message("[user] starts stuffing \the [target] into \the [src].", "You start stuffing \the [target] into \the [src].")
+		user.visible_message("[user] starts stuffing \the [target] into \the [src].", "I start stuffing \the [target] into \the [src].")
 
 	if(!do_after(user, src, 20))
 		return
@@ -498,11 +498,11 @@
 		return
 
 	if(target == user)
-		target.visible_message("[target] climbs into \the [src].", "You climb into \the [src].")
+		target.visible_message("[target] climbs into \the [src].", "I climb into \the [src].")
 
 	else
 
-		user.visible_message("[user] stuffed \the [target] into \the [src]!", "You stuffed \the [target] into \the [src]!")
+		user.visible_message("[user] stuffed \the [target] into \the [src]!", "I stuffed \the [target] into \the [src]!")
 		log_attack("<span class='warning'>[key_name(user)] stuffed [key_name(target)] into a disposal unit/([src]).</span>")
 
 	add_fingerprint(user)
@@ -904,13 +904,13 @@
 
 		if(W.remove_fuel(0,user))
 			playsound(get_turf(src), 'sound/items/Welder2.ogg', 100, 1)
-			to_chat(user, "You start slicing the disposal pipe.")
+			to_chat(user, "I start slicing the disposal pipe.")
 			if(do_after(user, src, 3 SECONDS))
 				if(gcDestroyed || !W.isOn())
 					return
 				welded()
 		else
-			to_chat(user, "You need more welding fuel to cut the pipe.")
+			to_chat(user, "I need more welding fuel to cut the pipe.")
 			return
 
 // called when pipe is cut with welder
@@ -1398,13 +1398,13 @@
 
 		if(W.remove_fuel(0,user))
 			playsound(get_turf(src), 'sound/items/Welder2.ogg', 100, 1)
-			to_chat(user, "You start slicing the disposal pipe.")
+			to_chat(user, "I start slicing the disposal pipe.")
 			if(do_after(user, src, 3 SECONDS))
 				if(gcDestroyed || !W.isOn())
 					return
 				welded()
 		else
-			to_chat(user, "You need more welding fuel to cut the pipe.")
+			to_chat(user, "I need more welding fuel to cut the pipe.")
 			return
 
 	// would transfer to next pipe segment, but we are in a trunk
@@ -1531,22 +1531,22 @@
 		if(mode==0)
 			mode=1
 			playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
-			to_chat(user, "You remove the screws around the power connection.")
+			to_chat(user, "I remove the screws around the power connection.")
 			return
 		else if(mode==1)
 			mode=0
 			playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
-			to_chat(user, "You attach the screws around the power connection.")
+			to_chat(user, "I attach the screws around the power connection.")
 			return
 	else if(istype(I,/obj/item/weapon/weldingtool) && mode==1)
 		var/obj/item/weapon/weldingtool/W = I
 		if(W.remove_fuel(0,user))
 			playsound(get_turf(src), 'sound/items/Welder2.ogg', 100, 1)
-			to_chat(user, "You start slicing the floorweld off the disposal outlet.")
+			to_chat(user, "I start slicing the floorweld off the disposal outlet.")
 			if(do_after(user, src, 20))
 				if(gcDestroyed || !W.isOn())
 					return
-				to_chat(user, "You sliced the floorweld off the disposal outlet.")
+				to_chat(user, "I sliced the floorweld off the disposal outlet.")
 				var/obj/structure/disposalconstruct/C = new (src.loc)
 				src.transfer_fingerprints_to(C)
 				C.ptype = 7 // 7 =  outlet
@@ -1556,7 +1556,7 @@
 				qdel(src)
 			return
 		else
-			to_chat(user, "You need more welding fuel to complete this task.")
+			to_chat(user, "I need more welding fuel to complete this task.")
 			return
 
 

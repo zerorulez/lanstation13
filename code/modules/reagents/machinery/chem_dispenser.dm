@@ -256,7 +256,7 @@ USE THIS CHEMISTRY DISPENSER FOR MAPS SO THEY START AT 100 ENERGY
 
 /obj/machinery/chem_dispenser/togglePanelOpen(var/obj/toggleitem, mob/user)
 	if(container)
-		to_chat(user, "You can't reach the maintenance panel with \a [container] in the way!")
+		to_chat(user, "I can't reach the maintenance panel with \a [container] in the way!")
 		return
 	return ..()
 
@@ -278,7 +278,7 @@ USE THIS CHEMISTRY DISPENSER FOR MAPS SO THEY START AT 100 ENERGY
 			return
 		else if(!panel_open)
 			if(!user.drop_item(D, src))
-				to_chat(user, "<span class='warning'>You can't let go of \the [D]!</span>")
+				to_chat(user, "<span class='warning'>I can't let go of \the [D]!</span>")
 				return
 
 			src.container =  D
@@ -286,12 +286,12 @@ USE THIS CHEMISTRY DISPENSER FOR MAPS SO THEY START AT 100 ENERGY
 				var/mob/living/silicon/robot/R = user
 				R.uneq_active()
 
-			to_chat(user, "You add \the [D] to the machine!")
+			to_chat(user, "I add \the [D] to the machine!")
 
 			nanomanager.update_uis(src) // update all UIs attached to src
 			return 1
 		else
-			to_chat(user, "You can't add \a [D] to the machine while the panel is open.")
+			to_chat(user, "I can't add \a [D] to the machine while the panel is open.")
 			return
 
 /obj/machinery/chem_dispenser/attack_ai(mob/user as mob)

@@ -33,12 +33,12 @@
 /datum/dna/gene/proc/can_activate(var/mob/M, var/flags)
 	return 0
 
-// Called when the gene activates.  Do your magic here.
+// Called when the gene activates.  Do my magic here.
 /datum/dna/gene/proc/activate(var/mob/M, var/connected, var/flags)
 	return
 
 /**
-* Called when the gene deactivates.  Undo your magic here.
+* Called when the gene deactivates.  Undo my magic here.
 * Only called when the block is deactivated.
 */
 
@@ -112,12 +112,12 @@
 	var/list/deactivation_messages=list()
 
 	// Activation messages which are shown when drugged
-	var/list/drug_activation_messages=list("You feel different.","You feel wonky.","You feel new!","You feel amazing.","You feel wobbly.","You feel goofy.",\
-		"You feel strong!","You feel weak.","You think you can speak vox pidgin now.","You feel like killing a space bear!","You are no longer afraid of carps.")
+	var/list/drug_activation_messages=list("I feel different.","I feel wonky.","I feel new!","I feel amazing.","I feel wobbly.","I feel goofy.",\
+		"I feel strong!","I feel weak.","I think you can speak vox pidgin now.","I feel like killing a space bear!","I am no longer afraid of carps.")
 
 	// Deactivation messages which are shown when drugged
-	var/list/drug_deactivation_messages=list("You feel like you've lost a friend.","You get a feeling of loss.","Your mind feels less burdened.","You feel old.",\
-		"You're not sure what's going on.","You feel concerned.","You feel like you forgot something important.","You feel trippy.","Your brain hurts.")
+	var/list/drug_deactivation_messages=list("I feel like you've lost a friend.","I get a feeling of loss.","My mind feels less burdened.","I feel old.",\
+		"I am not sure what's going on.","I feel concerned.","I feel like you forgot something important.","I feel trippy.","My brain hurts.")
 
 /datum/dna/gene/basic/can_activate(var/mob/M,var/flags)
 	if(flags & MUTCHK_FORCED)

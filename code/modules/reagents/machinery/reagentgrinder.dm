@@ -121,13 +121,13 @@
 
 /obj/machinery/reagentgrinder/togglePanelOpen(var/obj/toggleitem, mob/user)
 	if(beaker)
-		to_chat(user, "You can't reach \the [src]'s maintenance panel with the beaker in the way!")
+		to_chat(user, "I can't reach \the [src]'s maintenance panel with the beaker in the way!")
 		return -1
 	return ..()
 
 /obj/machinery/reagentgrinder/crowbarDestroy(mob/user)
 	if(beaker)
-		to_chat(user, "You can't do that while \the [src] has a beaker loaded!")
+		to_chat(user, "I can't do that while \the [src] has a beaker loaded!")
 		return -1
 	return ..()
 
@@ -143,14 +143,14 @@
 		if (beaker)
 			return 0
 		if (panel_open)
-			to_chat(user, "You can't load a beaker while the maintenance panel is open.")
+			to_chat(user, "I can't load a beaker while the maintenance panel is open.")
 			return 0
 		if (O.w_class > W_CLASS_SMALL)
 			to_chat(user, "<span class='warning'>\The [O] is too big to fit.</span>")
 			return 0
 		else
 			if(!user.drop_item(O, src))
-				to_chat(user, "<span class='warning'>You can't let go of \the [O]!</span>")
+				to_chat(user, "<span class='warning'>I can't let go of \the [O]!</span>")
 				return
 
 			src.beaker =  O
@@ -174,11 +174,11 @@
 			B.remove_from_storage(G,src)
 			holdingitems += G
 			if(holdingitems && holdingitems.len >= limit) //Sanity checking so the blender doesn't overfill
-				to_chat(user, "You fill the All-In-One grinder to the brim.")
+				to_chat(user, "I fill the All-In-One grinder to the brim.")
 				break
 
 		if(!O.contents.len)
-			to_chat(user, "You empty the [O] into the All-In-One grinder.")
+			to_chat(user, "I empty the [O] into the All-In-One grinder.")
 
 		src.updateUsrDialog()
 		return 0
@@ -188,7 +188,7 @@
 		return 1
 
 	if(!user.drop_item(O, src))
-		user << "<span class='notice'>\The [O] is stuck to your hands!</span>"
+		user << "<span class='notice'>\The [O] is stuck to my hands!</span>"
 		return 1
 
 	holdingitems += O

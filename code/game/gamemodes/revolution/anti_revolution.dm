@@ -100,7 +100,7 @@
 /datum/game_mode/proc/greet_head(var/datum/mind/head_mind, var/you_are=1)
 	var/obj_count = 1
 	if (you_are)
-		to_chat(head_mind.current, "<span class='notice'>It looks like this shift CentComm has some special orders for you.. check your objectives.</span>")
+		to_chat(head_mind.current, "<span class='notice'>It looks like this shift CentComm has some special orders for you.. check my objectives.</span>")
 		to_chat(head_mind.current, "<span class='notice'>Note that you can ignore these objectives, but resisting NT's orders probably means demotion or worse.</span>")
 	for(var/datum/objective/objective in head_mind.objectives)
 		to_chat(head_mind.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
@@ -220,4 +220,4 @@
 
 	src.verbs -= /mob/proc/ResignFromHeadPosition
 
-	to_chat(src, "<span class='warning'>You resigned from your position, now you have the consequences.</span>")
+	to_chat(src, "<span class='warning'>I resigned from my position, now you have the consequences.</span>")

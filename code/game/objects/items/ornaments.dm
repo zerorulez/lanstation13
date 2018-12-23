@@ -43,9 +43,9 @@
 				user.put_in_hands(O)
 			qdel(src)
 			if(color_string)
-				to_chat(user, "You color \the [src] [color_string].")
+				to_chat(user, "I color \the [src] [color_string].")
 			else
-				to_chat(user, "You lightly shade \the [src] with \the [W] until it appears silver.")
+				to_chat(user, "I lightly shade \the [src] with \the [W] until it appears silver.")
 
 /obj/item/ornament/preattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if (!proximity_flag)
@@ -58,7 +58,7 @@
 
 /obj/item/ornament/throw_impact(atom/hit_atom)
 	..()
-	src.visible_message("<span class='warning'>\The [src] shatters!</span>","<span  class='warning'>You hear a shatter!</span>")
+	src.visible_message("<span class='warning'>\The [src] shatters!</span>","<span  class='warning'>I hear a shatter!</span>")
 	if(get_turf(src))
 		playsound(get_turf(src), 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)
 	if(prob(33))

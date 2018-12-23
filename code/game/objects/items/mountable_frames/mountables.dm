@@ -21,7 +21,7 @@
 	if (proximity_flag != 1) //if we aren't next to the wall
 		return
 	if (!( get_dir(user,on_wall) in cardinal))
-		to_chat(user, "<span class='rose'>You need to be standing next to a wall to place \the [src].</span>")
+		to_chat(user, "<span class='rose'>I need to be standing next to a wall to place \the [src].</span>")
 		return
 
 	if(gotwallitem(get_turf(user), get_dir(user,on_wall)))

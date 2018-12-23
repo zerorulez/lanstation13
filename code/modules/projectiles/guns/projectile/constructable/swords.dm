@@ -23,7 +23,7 @@
 /obj/item/weapon/sword/attack_self(mob/user as mob)
 	if(!hypo)
 		return
-	to_chat(user, "You remove \the [hypo] from \the [src].")
+	to_chat(user, "I remove \the [hypo] from \the [src].")
 	hypo.forceMove(get_turf(user.loc))
 	user.put_in_hands(hypo)
 	hypo = null
@@ -37,7 +37,7 @@
 
 /obj/item/weapon/sword/attackby(obj/item/weapon/W, mob/user)
 	if(istype(W, /obj/item/weapon/metal_blade))
-		to_chat(user, "You attach \the [W] to \the [src].")
+		to_chat(user, "I attach \the [W] to \the [src].")
 		if(src.loc == user)
 			user.drop_item(src, force_drop = 1)
 			var/obj/item/weapon/sword/executioner/I = new (get_turf(user))
@@ -47,13 +47,13 @@
 		qdel(src)
 		qdel(W)
 	if(W.type == /obj/item/weapon/reagent_containers/hypospray || W.type == /obj/item/weapon/reagent_containers/hypospray/creatine)
-		to_chat(user, "You wrap \the [src]'s grip around \the [W], affixing it to the base of \the [src].")
+		to_chat(user, "I wrap \the [src]'s grip around \the [W], affixing it to the base of \the [src].")
 		user.drop_item(W, force_drop = 1)
 		hypo = W
 		W.forceMove(src)
 		update_icon()
 	if(hypo && istype(W, /obj/item/weapon/aluminum_cylinder))
-		to_chat(user, "You affix \the [W] to the bottom of \the [src]'s [hypo.name].")
+		to_chat(user, "I affix \the [W] to the bottom of \the [src]'s [hypo.name].")
 		if(src.loc == user)
 			user.drop_item(src, force_drop = 1)
 			var/obj/item/weapon/sword/venom/I = new (get_turf(user))
@@ -168,7 +168,7 @@
 		B.forceMove(user.loc)
 		user.put_in_hands(B)
 		beaker = null
-		to_chat(user, "You remove \the [B] from \the [src].")
+		to_chat(user, "I remove \the [B] from \the [src].")
 		icon_state = "venom_sword"
 		update_color()
 
@@ -182,14 +182,14 @@
 			to_chat(user, "<span class='warning'>That beaker is too large to fit into \the [src]'s beaker port.</span>")
 			return
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
 			return 1
 		beaker = W
-		to_chat(user, "You insert \the [W] into \the [src]'s beaker port.")
+		to_chat(user, "I insert \the [W] into \the [src]'s beaker port.")
 		icon_state = "venom_sword_beaker"
 		update_color()
 	if(iscrowbar(W))
-		to_chat(user, "You pry the aluminum cylinder off of \the [src].")
+		to_chat(user, "I pry the aluminum cylinder off of \the [src].")
 		var/obj/item/weapon/sword/I = new (get_turf(src))
 		if(HY)
 			I.hypo = HY
@@ -216,7 +216,7 @@
 		update_color()
 		return
 
-	to_chat(M, "<span class='warning'>The blade's coating seeps into your wound!</span>")
+	to_chat(M, "<span class='warning'>The blade's coating seeps into my wound!</span>")
 
 	B.reagents.reaction(M, INGEST)
 
@@ -256,7 +256,7 @@
 /obj/item/weapon/sword/executioner/attack_self(mob/user as mob)
 	if(complete)
 		return
-	to_chat(user, "You detach the metal blade from \the [src].")
+	to_chat(user, "I detach the metal blade from \the [src].")
 	new /obj/item/weapon/metal_blade(get_turf(user.loc))
 	new /obj/item/weapon/sword(get_turf(user.loc))
 	qdel(src)
@@ -265,10 +265,10 @@
 	if(istype(W, /obj/item/weapon/weldingtool) && !complete)
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
-			to_chat(user, "You begin welding the metal blade onto \the [src].")
+			to_chat(user, "I begin welding the metal blade onto \the [src].")
 			playsound(user, 'sound/items/Welder.ogg', 50, 1)
 			if(do_after(user, src, 30))
-				to_chat(user, "You weld the metal blade onto \the [src].")
+				to_chat(user, "I weld the metal blade onto \the [src].")
 				desc = "A huge sword. It looks almost too heavy to lift."
 				icon_state = "executioners_sword"
 				hitsound = "sound/weapons/bloodyslice.ogg"
@@ -284,5 +284,5 @@
 					H.update_inv_hands()
 					H.update_inv_back()
 		else
-			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
 			return

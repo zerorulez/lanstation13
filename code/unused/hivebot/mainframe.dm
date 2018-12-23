@@ -90,7 +90,7 @@
 
 
 	if(usr.stat == 2 || (usr.status_flags & FAKEDEATH))
-		to_chat(usr, "You can't deploy because you are dead!")
+		to_chat(usr, "I can't deploy because you are dead!")
 		return
 
 	var/list/bodies = new/list()
@@ -141,7 +141,7 @@
 
 /mob/living/silicon/hive_mainframe/proc/Namepick()
 	var/randomname = pick(ai_names)
-	var/newname = input(src,"You are the a Mainframe Unit. Would you like to change your name to something else?", "Name change",randomname)
+	var/newname = input(src,"I am the a Mainframe Unit. Would you like to change my name to something else?", "Name change",randomname)
 
 	if (length(newname) == 0)
 		newname = randomname

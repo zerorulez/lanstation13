@@ -31,7 +31,7 @@
 
 /obj/structure/coatrack/attack_hand(mob/user)
 	if(suit)
-		to_chat(user, "<span class='notice'>You pick up \the [suit] from \the [src]</span>")
+		to_chat(user, "<span class='notice'>I pick up \the [suit] from \the [src]</span>")
 		playsound(get_turf(src), "rustle", 50, 1, -5)
 		suit.forceMove(get_turf(src))
 		if(!user.get_active_hand())
@@ -41,7 +41,7 @@
 		return
 
 	if(hat)
-		to_chat(user, "<span class='notice'>You pick up \the [hat] from \the [src]</span>")
+		to_chat(user, "<span class='notice'>I pick up \the [hat] from \the [src]</span>")
 		playsound(get_turf(src), "rustle", 50, 1, -5)
 		hat.forceMove(get_turf(src))
 		if(!user.get_active_hand())
@@ -53,13 +53,13 @@
 /obj/structure/coatrack/attackby(obj/item/C, mob/user)
 	if (istype(C, /obj/item/clothing/suit) && !suit && is_type_in_list(C, allowed_suits))
 		if(user.drop_item(C, src))
-			to_chat(user, "<span class='notice'>You place your [C] on \the [src]</span>")
+			to_chat(user, "<span class='notice'>I place my [C] on \the [src]</span>")
 			playsound(get_turf(src), "rustle", 50, 1, -5)
 			suit = C
 			update_icon()
 	else if (istype(C, /obj/item/clothing/head) && !hat && is_type_in_list(C, allowed_hats))
 		if(user.drop_item(C, src))
-			to_chat(user, "<span class='notice'>You place your [C] on \the [src]</span>")
+			to_chat(user, "<span class='notice'>I place my [C] on \the [src]</span>")
 			playsound(get_turf(src), "rustle", 50, 1, -5)
 			hat = C
 			update_icon()

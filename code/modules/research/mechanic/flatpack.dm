@@ -61,10 +61,10 @@
 			return 1 */
 	if(iscrowbar(A) && !assembling)
 		if(stacked.len)
-			to_chat(user, "<span class='rose'>You can't open this flatpack while others are stacked on top of it!</span>")
+			to_chat(user, "<span class='rose'>I can't open this flatpack while others are stacked on top of it!</span>")
 			return
 		assembling = 1
-		user.visible_message("<span class='notice'>[user] begins to open the flatpack...</span>", "<span class='notice'>You begin to open the flatpack...</span>")
+		user.visible_message("<span class='notice'>[user] begins to open the flatpack...</span>", "<span class='notice'>I begin to open the flatpack...</span>")
 		if(do_after(user, src, rand(10,40)))
 			if(machine)
 				to_chat(user, "<span class='notice'>\icon[src]You successfully unpack \the [machine]!</span>")
@@ -121,7 +121,7 @@
 			bottom_pack.add_stack(newpack)
 
 		user.visible_message("[user] removes the top [bottom_pack.stacked.len + 1] flatpack\s from the stack.",
-								"You remove the top [bottom_pack.stacked.len + 1] flatpack\s from the stack.")
+								"I remove the top [bottom_pack.stacked.len + 1] flatpack\s from the stack.")
 
 		return 1
 
@@ -142,13 +142,13 @@
 	if(istype(dropping, /obj/structure/closet/crate/flatpack) && dropping != src)
 		var/obj/structure/closet/crate/flatpack/stacking = dropping
 /*		if(assembling || stacking.assembling)
-			to_chat(user, "You can't stack opened flatpacks.")
+			to_chat(user, "I can't stack opened flatpacks.")
 			return */
 		if((stacked.len + stacking.stacked.len + 2) >= MAX_FLATPACK_STACKS) //how many flatpacks we can in a stack (including the bases)
-			to_chat(user, "You can't stack flatpacks that high.")
+			to_chat(user, "I can't stack flatpacks that high.")
 			return
 		user.visible_message("[user] adds [stacking.stacked.len + 1] flatpack\s to the stack.",
-								"You add [stacking.stacked.len + 1] flatpack\s to the stack.")
+								"I add [stacking.stacked.len + 1] flatpack\s to the stack.")
 		add_stack(stacking)
 		return 1
 	return
@@ -238,7 +238,7 @@
 
 		var/obj/item/current_tool = current_step[Co_KEY]
 
-		instructions += "<b>You see a small pictogram of \a [initial(current_tool.name)].</b><br> The minute script says: \"Be sure to [current_step[Fl_ACTION]] [pick("on a clear carpet", "with an adult", "with your friends", "under the captain's watchful gaze")].\"<br>"
+		instructions += "<b>I see a small pictogram of \a [initial(current_tool.name)].</b><br> The minute script says: \"Be sure to [current_step[Fl_ACTION]] [pick("on a clear carpet", "with an adult", "with my friends", "under the captain's watchful gaze")].\"<br>"
 	return list("instructions" = instructions, "misprint" = misprinted)
 
 /datum/construction/flatpack_unpack/action(atom/used_atom, mob/user as mob)

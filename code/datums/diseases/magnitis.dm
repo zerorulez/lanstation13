@@ -8,7 +8,7 @@
 	affected_species = list("Human")
 	curable = 0
 	permeability_mod = 0.75
-	desc = "This disease disrupts the magnetic field of your body, making it act as if a powerful magnet. Injections of iron help stabilize the field."
+	desc = "This disease disrupts the magnetic field of my body, making it act as if a powerful magnet. Injections of iron help stabilize the field."
 	severity = "Medium"
 
 /datum/disease/magnitis/stage_act()
@@ -16,7 +16,7 @@
 	switch(stage)
 		if(2)
 			if(prob(2))
-				to_chat(affected_mob, "<span class='warning'>You feel a slight shock course through your body.</span>")
+				to_chat(affected_mob, "<span class='warning'>I feel a slight shock course through my body.</span>")
 			if(prob(2))
 				for(var/obj/M in orange(2,affected_mob))
 					if(!M.anchored && (M.is_conductor()))
@@ -37,9 +37,9 @@
 						*/
 		if(3)
 			if(prob(2))
-				to_chat(affected_mob, "<span class='warning'>You feel a strong shock course through your body.</span>")
+				to_chat(affected_mob, "<span class='warning'>I feel a strong shock course through my body.</span>")
 			if(prob(2))
-				to_chat(affected_mob, "<span class='warning'>You feel like clowning around.</span>")
+				to_chat(affected_mob, "<span class='warning'>I feel like clowning around.</span>")
 			if(prob(4))
 				for(var/obj/M in orange(4,affected_mob))
 					if(!M.anchored && (M.is_conductor()))
@@ -66,9 +66,9 @@
 						*/
 		if(4)
 			if(prob(2))
-				to_chat(affected_mob, "<span class='warning'>You feel a powerful shock course through your body.</span>")
+				to_chat(affected_mob, "<span class='warning'>I feel a powerful shock course through my body.</span>")
 			if(prob(2))
-				to_chat(affected_mob, "<span class='warning'>You query upon the nature of miracles.</span>")
+				to_chat(affected_mob, "<span class='warning'>I query upon the nature of miracles.</span>")
 			if(prob(8))
 				for(var/obj/M in orange(6,affected_mob))
 					if(!M.anchored && (M.is_conductor()))

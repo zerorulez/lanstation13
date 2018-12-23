@@ -65,7 +65,7 @@
 		playsound(user, 'sound/machines/click.ogg', 60, 1)
 		in_use = 0
 		animate(user, pixel_y = pixel_y, time = 3)
-		var/finishmessage = pick("You feel stronger!","You feel like you can take on the world!","You feel robust!","You feel indestructible!")
+		var/finishmessage = pick("I feel stronger!","I feel like you can take on the world!","I feel robust!","I feel indestructible!")
 		icon_state = "fitnesslifter"
 		to_chat(user, "<span class='notice'>[finishmessage]</span>")
 
@@ -109,7 +109,7 @@
 		playsound(user, 'sound/machines/click.ogg', 60, 1)
 		in_use = 0
 		animate(user, pixel_y = pixel_y, time = 3)
-		var/finishmessage = pick("You feel stronger!","You feel like you can take on the world!","You feel robust!","You feel indestructible!")
+		var/finishmessage = pick("I feel stronger!","I feel like you can take on the world!","I feel robust!","I feel indestructible!")
 		icon_state = "fitnessweight"
 		overlays -= W
 		to_chat(user, "<span class='notice'>[finishmessage]</span>")

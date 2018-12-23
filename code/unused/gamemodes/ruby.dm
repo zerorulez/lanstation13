@@ -176,7 +176,7 @@
 	for(var/mob/living/carbon/human/H in player_list)
 		if(!H.client || H.client == src)
 			continue
-		to_chat(src, "Your work is not done. You will not find release until they are all free.")
+		to_chat(src, "My work is not done. You will not find release until they are all free.")
 		return
 	usr.gib(1)
 	ticker.mode:abominationwins = 1

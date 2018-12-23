@@ -272,7 +272,7 @@
 /obj/machinery/sleeper/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
 	if(!ismob(O)) //mobs only
 		return
-	if(O.loc == user || !isturf(O.loc) || !isturf(user.loc)) //no you can't pull things out of your ass
+	if(O.loc == user || !isturf(O.loc) || !isturf(user.loc)) //no you can't pull things out of my ass
 		return
 	if(user.incapacitated() || user.lying) //are you cuffed, dying, lying, stunned or other
 		return
@@ -290,7 +290,7 @@
 	if(isrobot(user))
 		var/mob/living/silicon/robot/robit = usr
 		if(istype(robit) && !istype(robit.module, /obj/item/weapon/robot_module/medical))
-			to_chat(user, "<span class='warning'>You do not have the means to do this!</span>")
+			to_chat(user, "<span class='warning'>I do not have the means to do this!</span>")
 			return
 	var/mob/living/L = O
 	if(!istype(L) || L.locked_to)
@@ -311,7 +311,7 @@
 	L.forceMove(src)
 	L.reset_view()
 	src.occupant = L
-	to_chat(L, "<span class='notice'><b>You feel an anaesthetising air surround you. You go numb as your senses turn inward.</b></span>")
+	to_chat(L, "<span class='notice'><b>I feel an anaesthetising air surround you. You go numb as my senses turn inward.</b></span>")
 	connected.process()
 	for(var/obj/OO in src)
 		OO.forceMove(src.loc)
@@ -336,7 +336,7 @@
 	if(isrobot(usr))
 		var/mob/living/silicon/robot/robit = usr
 		if(istype(robit) && !istype(robit.module, /obj/item/weapon/robot_module/medical))
-			to_chat(usr, "<span class='warning'>You do not have the means to do this!</span>")
+			to_chat(usr, "<span class='warning'>I do not have the means to do this!</span>")
 			return
 	if(!istype(over_location) || over_location.density)
 		return
@@ -377,7 +377,7 @@
 
 /obj/machinery/sleeper/crowbarDestroy(mob/user)
 	if(occupant)
-		to_chat(user, "<span class='warning'>You cannot disassemble \the [src], it's occupied.</span>")
+		to_chat(user, "<span class='warning'>I cannot disassemble \the [src], it's occupied.</span>")
 		return
 	return ..()
 
@@ -424,7 +424,7 @@
 	M.reset_view()
 	src.occupant = M
 
-	to_chat(M, "<span class='notice'><b>You feel an anaesthetising air surround you. You go numb as your senses turn inward.</b></span>")
+	to_chat(M, "<span class='notice'><b>I feel an anaesthetising air surround you. You go numb as my senses turn inward.</b></span>")
 	connected.process()
 	for(var/obj/O in src)
 		O.forceMove(src.loc)
@@ -578,7 +578,7 @@
 		return
 	for(var/mob/living/carbon/slime/M in range(1,usr))
 		if(M.Victim == usr)
-			to_chat(usr, "You're too busy getting your life sucked out of you.")
+			to_chat(usr, "I am too busy getting my life sucked out of you.")
 			return
 	if(usr.locked_to)
 		return
@@ -660,7 +660,7 @@
 	if(!emagged)
 		emagged = 1
 		connected.emagged = 1
-		to_chat(user, "<span class='warning'>You short out the safety features of \the [src], and feel like a MAN!	</span>")
+		to_chat(user, "<span class='warning'>I short out the safety features of \the [src], and feel like a MAN!	</span>")
 		available_options = list("Thermoregulate" = 50,"Rare" = 500,"Medium" = 600,"Well Done" = 700)
 		update_icon()
 		connected.name = "THE MANCROWAVE"

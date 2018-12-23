@@ -138,17 +138,17 @@ var/list/holomap_cache = list()
 		to_chat(H, "<span class='warning'>This device needs to be set on a uniform first.</span>")
 
 	if(H.get_item_by_slot(slot_w_uniform) != attached_to)
-		to_chat(H, "<span class='warning'>You need to wear the suit first</span>")
+		to_chat(H, "<span class='warning'>I need to wear the suit first</span>")
 		return
 
 	if(activator)
 		deactivate_holomap()
-		to_chat(H, "<span class='notice'>You disable the holomap.</span>")
+		to_chat(H, "<span class='notice'>I disable the holomap.</span>")
 	else
 		activator = H
 		processing_objects.Add(src)
 		process()
-		to_chat(H, "<span class='notice'>You enable the holomap.</span>")
+		to_chat(H, "<span class='notice'>I enable the holomap.</span>")
 
 
 

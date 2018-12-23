@@ -364,7 +364,7 @@ var/list/admin_verbs_mod = list(
 	verbs.Remove(/client/proc/hide_most_verbs, admin_verbs_hideable)
 	verbs += /client/proc/show_verbs
 
-	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")
+	to_chat(src, "<span class='interface'>Most of my adminverbs have been hidden.</span>")
 	feedback_add_details("admin_verb","HMV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
@@ -373,7 +373,7 @@ var/list/admin_verbs_mod = list(
 	set category = "Admin"
 	remove_admin_verbs()
 	verbs += /client/proc/show_verbs
-	to_chat(src, "<span class='interface'>Almost all of your adminverbs have been hidden.</span>")
+	to_chat(src, "<span class='interface'>Almost all of my adminverbs have been hidden.</span>")
 	feedback_add_details("admin_verb","TAVVH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
@@ -383,7 +383,7 @@ var/list/admin_verbs_mod = list(
 
 	verbs -= /client/proc/show_verbs
 	add_admin_verbs()
-	to_chat(src, "<span class='interface'>All of your adminverbs are now visible.</span>")
+	to_chat(src, "<span class='interface'>All of my adminverbs are now visible.</span>")
 	feedback_add_details("admin_verb","TAVVS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -501,7 +501,7 @@ var/list/admin_verbs_mod = list(
 	set name = "OOC Text Color"
 	if(!holder)
 		return
-	var/new_ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color|null
+	var/new_ooccolor = input(src, "Please select my OOC colour.", "OOC colour") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
 		prefs.save_preferences_sqlite(src, ckey)
@@ -515,7 +515,7 @@ var/list/admin_verbs_mod = list(
 		if(holder.fakekey)
 			holder.fakekey = null
 		else
-			var/new_key = ckeyEx(input("Enter your desired display name.", "Fake Key", key) as text|null)
+			var/new_key = ckeyEx(input("Enter my desired display name.", "Fake Key", key) as text|null)
 			if(!new_key)
 				return
 			if(length(new_key) >= 26)
@@ -561,7 +561,7 @@ var/list/admin_verbs_mod = list(
 		ban_unban_log_save("[ckey] warned [warned_ckey] - [warn_reason], resulting in a [bantime] minute autoban.")
 		if(C)
 			message_admins("[key_name_admin(src)] has warned [key_name_admin(C)] - [warn_reason], resulting in a [bantime] minute ban.")
-			to_chat(C, "<span class='danger'><BIG>You have been autobanned due to a warning by [ckey] - Reason: [warn_reason].</BIG></span><br>This is a temporary ban, it will be removed in [bantime] minutes.")
+			to_chat(C, "<span class='danger'><BIG>I have been autobanned due to a warning by [ckey] - Reason: [warn_reason].</BIG></span><br>This is a temporary ban, it will be removed in [bantime] minutes.")
 		else
 			message_admins("[key_name_admin(src)] has warned [warned_ckey] - [warn_reason], resulting in a [bantime] minute ban.")
 		AddBan(warned_ckey, D.last_id, "Autobanning due to too many formal warnings - [warn_reason]", ckey, 1, bantime)
@@ -571,7 +571,7 @@ var/list/admin_verbs_mod = list(
 		del(C)
 	else
 		if(C)
-			to_chat(C, "<span class='danger'><BIG>You have been formally warned by an administrator - Reason: [warn_reason].</span></BIG><br>Further warnings will result in an autoban.</font>")
+			to_chat(C, "<span class='danger'><BIG>I have been formally warned by an administrator - Reason: [warn_reason].</span></BIG><br>Further warnings will result in an autoban.</font>")
 			message_admins("[key_name_admin(src)] has warned [key_name_admin(C)] - [warn_reason]. They have [MAX_WARNS-D.warns] strikes remaining. And have been warn banned [D.warnbans] [D.warnbans == 1 ? "time" : "times"]")
 		else
 			message_admins("[key_name_admin(src)] has warned [warned_ckey] (DC) - [warn_reason]. They have [MAX_WARNS-D.warns] strikes remaining. And have been warn banned [D.warnbans] [D.warnbans == 1 ? "time" : "times"]")
@@ -606,7 +606,7 @@ var/list/admin_verbs_mod = list(
 	D.warns-=1
 	var/strikesleft = MAX_WARNS-D.warns
 	if(C)
-		to_chat(C, "<font color='red'><BIG><B>One of your warnings has been removed.</B></BIG><br>You currently have [strikesleft] strike\s left</font>")
+		to_chat(C, "<font color='red'><BIG><B>One of my warnings has been removed.</B></BIG><br>I currently have [strikesleft] strike\s left</font>")
 		message_admins("[key_name_admin(src)] has unwarned [key_name_admin(C)]. They have [strikesleft] strike(s) remaining, and have been warn banned [D.warnbans] [D.warnbans == 1 ? "time" : "times"]")
 	else
 		message_admins("[key_name_admin(src)] has unwarned [warned_ckey] (DC). They have [strikesleft] strike(s) remaining, and have been warn banned [D.warnbans] [D.warnbans == 1 ? "time" : "times"]")
@@ -619,7 +619,7 @@ var/list/admin_verbs_mod = list(
 /client/proc/drop_bomb() // Some admin dickery that can probably be done better -- TLE
 	set category = "Special Verbs"
 	set name = "Drop Bomb"
-	set desc = "Cause an explosion of varying strength at your location."
+	set desc = "Cause an explosion of varying strength at my location."
 
 	var/turf/epicenter = mob.loc
 	var/list/choices = list("Small Bomb (1,2,3)", "Medium Bomb (2,3,4)", "Big Bomb (3,5,7)", "Custom Bomb")
@@ -647,7 +647,7 @@ var/list/admin_verbs_mod = list(
 /client/proc/drop_emp()
 	set category = "Special Verbs"
 	set name = "Drop EMP"
-	set desc = "Cause an EMP of varying strength at your location."
+	set desc = "Cause an EMP of varying strength at my location."
 
 	var/turf/epicenter = mob.loc
 	var/list/choices = list("Small EMP (1,2)", "Medium EMP (2,4)", "Big EMP (4,8)", "Custom EMP")
@@ -734,7 +734,7 @@ var/list/admin_verbs_mod = list(
 		deadmin()
 		verbs += /client/proc/readmin
 		deadmins += ckey
-		to_chat(src, "<span class='interface'>You are now a normal player.</span>")
+		to_chat(src, "<span class='interface'>I am now a normal player.</span>")
 	feedback_add_details("admin_verb","DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggle_log_hrefs()
@@ -765,7 +765,7 @@ var/list/admin_verbs_mod = list(
 		return
 
 	if(!istype(M, /mob/living/carbon/human))
-		to_chat(usr, "<span class='warning'>You can only do this to humans!</span>")
+		to_chat(usr, "<span class='warning'>I can only do this to humans!</span>")
 		return
 	switch(alert("Are you sure you wish to edit this mob's appearance? Skrell, Unathi, Vox and Tajaran can result in unintended consequences.",,"Yes","No"))
 		if("No")
@@ -859,7 +859,7 @@ var/list/admin_verbs_mod = list(
 /client/proc/readmin()
 	set name = "Re-admin self"
 	set category = "Admin"
-	set desc = "Regain your admin powers."
+	set desc = "Regain my admin powers."
 	var/datum/admins/D = admin_datums[ckey]
 	if(config.admin_legacy_system)
 		to_chat(src, "<span class='notice'>Legacy admins is not supported yet</span>")
@@ -870,7 +870,7 @@ var/list/admin_verbs_mod = list(
 			to_chat(src, "Warning, mysql database is not connected.")
 			return
 		if(D)
-			to_chat(src, "You are already an admin.")
+			to_chat(src, "I am already an admin.")
 			verbs -= /client/proc/readmin
 			return
 		var/sql_ckey = sanitizeSQL(ckey(ckey))
@@ -912,11 +912,11 @@ var/list/admin_verbs_mod = list(
 	if(!winner)
 		return
 
-	var/name = input("What will you call your achievement?", "Achievement Winner", "New Achievement", null) as null|text
+	var/name = input("What will you call my achievement?", "Achievement Winner", "New Achievement", null) as null|text
 	if(!name)
 		return
 
-	var/desc = input("What description will you give it?", "Achievement Description", "You Win", null) as null|text
+	var/desc = input("What description will you give it?", "Achievement Description", "I Win", null) as null|text
 	if(!desc)
 		return
 
@@ -934,7 +934,7 @@ var/list/admin_verbs_mod = list(
 		if(iscarbon(winner) && (winner.stat == CONSCIOUS))
 			winner.put_in_hands(C)
 	else
-		to_chat(winner, "<span class='danger'>You win [name]! [desc]</span>")
+		to_chat(winner, "<span class='danger'>I win [name]! [desc]</span>")
 
 	var/icon/cup = icon('icons/obj/drinks.dmi', "golden_cup")
 
@@ -1061,7 +1061,7 @@ var/list/admin_verbs_mod = list(
 			log_admin("[key_name(src)] is trying to load [ME.file_path].")
 
 		if("Load external .dmm file")
-			to_chat(src, "<span class='danger'>Do not load very large maps or files that aren't BYOND maps. If you want to be sure that your map won't hang up the game, try loading it on a local server first.</span>")
+			to_chat(src, "<span class='danger'>Do not load very large maps or files that aren't BYOND maps. If you want to be sure that my map won't hang up the game, try loading it on a local server first.</span>")
 			ME = new /datum/map_element
 			log_admin("[key_name(src)] is trying to load an external map file.")
 			var/new_file_path = input(usr, "Select a .dmm file.    WARNING: Very large map files WILL crash the server. Loading them is punishable by death.", "Map element loading") as null|file

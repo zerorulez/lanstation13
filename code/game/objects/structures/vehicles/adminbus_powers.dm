@@ -575,7 +575,7 @@
 */
 
 			M.forceMove(pick(tdomeobserve))
-			to_chat(M, "<span class='notice'>You have been sent to the Thunderdome. Thank you for riding with us and enjoy your games.</span>")
+			to_chat(M, "<span class='notice'>I have been sent to the Thunderdome. Thank you for riding with us and enjoy my games.</span>")
 
 		else if(isbot(A))
 			var/obj/machinery/bot/B = A
@@ -780,13 +780,13 @@
 			if("Red")
 				M.forceMove(pick(tdome2))
 
-		to_chat(M, "<span class='danger'>You have been chosen to fight for the [team] Team. [pick(\
+		to_chat(M, "<span class='danger'>I have been chosen to fight for the [team] Team. [pick(\
 		"The wheel of fate is turning!",\
 		"Heaven or Hell!",\
 		"Set Spell Card!",\
 		"Hologram Summer Again!",\
 		"Get ready for the next battle!",\
-		"Fight for your life!",\
+		"Fight for my life!",\
 		)]</span>")
 
 	else if(isbot(A))
@@ -908,11 +908,11 @@
 	if(!ishuman(M) && !ismonkey(M))
 		return
 
-	to_chat(M, "<span class='rose'>You feel like you forgot something important!</span>")
+	to_chat(M, "<span class='rose'>I feel like you forgot something important!</span>")
 
 	sleep(delay/2)
 
-	to_chat(M, "<span class='rose'>You're starting to remember...</span>")
+	to_chat(M, "<span class='rose'>I am starting to remember...</span>")
 
 	sleep(delay/2)
 

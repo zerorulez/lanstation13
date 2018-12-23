@@ -1,6 +1,6 @@
 /obj/item/weapon/pai_cable/proc/plugin(obj/machinery/M as obj, mob/user as mob)
 	if(istype(M, /obj/machinery/door) || istype(M, /obj/machinery/camera))
-		user.visible_message("[user] inserts [src] into a data port on [M].", "You insert [src] into a data port on [M].", "You hear the satisfying click of a wire jack fastening into place.")
+		user.visible_message("[user] inserts [src] into a data port on [M].", "I insert [src] into a data port on [M].", "I hear the satisfying click of a wire jack fastening into place.")
 		if(user && user.get_active_hand() == src)
 			user.drop_item(src, M, force_drop = 1)
 		src.machine = M

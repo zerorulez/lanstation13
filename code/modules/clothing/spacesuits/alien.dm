@@ -140,11 +140,11 @@
 	if(src.magpulse)
 		src.clothing_flags &= ~NOSLIP
 		src.magpulse = 0
-		to_chat(usr, "You relax your deathgrip on the flooring.")
+		to_chat(usr, "I relax my deathgrip on the flooring.")
 	else
 		src.clothing_flags |= NOSLIP
 		src.magpulse = 1
-		to_chat(usr, "You dig your claws deeply into the flooring, bracing yourself.")
+		to_chat(usr, "I dig my claws deeply into the flooring, bracing yourself.")
 
 
 // Vox Trader -- Same stats as civ gear, but looks like raiders. ///////////////////////////////

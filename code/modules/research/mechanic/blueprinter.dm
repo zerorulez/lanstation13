@@ -60,7 +60,7 @@
 		var/obj/item/weapon/paper_pack/PP = A
 		var/usingamount = 0
 		if(!PP.amount)
-			to_chat(user, "<span class='notice'>You have to have paper to load the [src]!</span>")
+			to_chat(user, "<span class='notice'>I have to have paper to load the [src]!</span>")
 		else
 			var/load_overlay = "[base_state][PP.pptype ? "nano" : "regular"]"
 			if(PP.pptype == "nano")
@@ -71,7 +71,7 @@
 				paper_loaded += usingamount
 			overlays += load_overlay
 			PP.usepaper(usingamount)
-			to_chat(user, "<span class='notice'>You successfully load [usingamount] sheets into the [src].</span>")
+			to_chat(user, "<span class='notice'>I successfully load [usingamount] sheets into the [src].</span>")
 			spawn(30)
 				overlays -= load_overlay
 		return

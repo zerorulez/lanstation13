@@ -72,7 +72,7 @@
 				return
 			if (src.client)
 				if (client.prefs.muted & MUTE_IC)
-					to_chat(src, "<span class = 'warning'>You cannot send IC messages (muted).</span>")
+					to_chat(src, "<span class = 'warning'>I cannot send IC messages (muted).</span>")
 					return
 				if (src.client.handle_spam_prevention(msg,MUTE_IC))
 					return
@@ -608,7 +608,7 @@
 						playsound(get_turf(src), 'sound/effects/superfart.ogg', 50, 1)
 						if(wearing_suit)
 							if(!wearing_mask)
-								to_chat(src, "<span class = 'warning'>You gas yourself!</span>")
+								to_chat(src, "<span class = 'warning'>I gas yourself!</span>")
 								reagents.add_reagent(SPACE_DRUGS, rand(10,50))
 						else
 							// Was /turf/, now /mob/
@@ -640,7 +640,7 @@
 						playsound(location, 'sound/effects/smoke.ogg', 50, 1, -3)
 						visible_message("<span class = 'warning'><b>[name]</b> hunches down and grits their teeth!</span>")
 						if(do_after(usr,usr,30))
-							visible_message("<span class = 'warning'><b>[name]</b> unleashes a [pick("tremendous","gigantic","colossal")] fart!</span>","<span class = 'warning'>You hear a [pick("tremendous","gigantic","colossal")] fart.</span>")
+							visible_message("<span class = 'warning'><b>[name]</b> unleashes a [pick("tremendous","gigantic","colossal")] fart!</span>","<span class = 'warning'>I hear a [pick("tremendous","gigantic","colossal")] fart.</span>")
 							playsound(location, 'sound/effects/superfart.ogg', 50, 0)
 							if(!wearing_suit)
 								for(var/mob/living/V in view(src,aoe_range))
@@ -649,13 +649,13 @@
 									shake_camera(V,10,5)
 									if (V == src)
 										continue
-									to_chat(V, "<span class = 'danger'>You're sent flying!</span>")
+									to_chat(V, "<span class = 'danger'>I am sent flying!</span>")
 									V.Knockdown(5) // why the hell was this set to 12 christ
 									step_away(V,location,15)
 									step_away(V,location,15)
 									step_away(V,location,15)
 						else
-							to_chat(usr, "<span class = 'notice'>You were interrupted and couldn't fart! Rude!</span>")
+							to_chat(usr, "<span class = 'notice'>I was interrupted and couldn't fart! Rude!</span>")
 
 					lastFart=world.time
 
@@ -665,11 +665,11 @@
 							to_chat(src, "<span class='sinister'>Nar-Sie shields you from [B.deity_name]'s wrath!</span>")
 						else
 							if(istype(src.head, /obj/item/clothing/head/fedora))
-								to_chat(src, "<span class='notice'>You feel incredibly enlightened after farting on [B]!</span>")
+								to_chat(src, "<span class='notice'>I feel incredibly enlightened after farting on [B]!</span>")
 								var/obj/item/clothing/head/fedora/F = src.head
 								F.tip_fedora()
 							else
-								to_chat(src, "<span class='danger'>You feel incredibly guilty for farting on [B]!</span>")
+								to_chat(src, "<span class='danger'>I feel incredibly guilty for farting on [B]!</span>")
 							if(prob(80)) //20% chance to escape God's justice
 								spawn(rand(10,30))
 									if(src && B)
@@ -678,7 +678,7 @@
 										sleep(10)
 
 										if(src && B)
-											to_chat(src, "<span class='danger'>You were disintegrated by [B.deity_name]'s bolt of lightning.</span>")
+											to_chat(src, "<span class='danger'>I was disintegrated by [B.deity_name]'s bolt of lightning.</span>")
 											src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Farted on a bible and suffered [B.deity_name]'s wrath.</font>")
 
 											explosion(get_turf(src),-1,-1,1,5) //Tiny explosion with flash

@@ -123,7 +123,7 @@ var/list/genescanner_addresses = list()
 			return
 
 		if (src.locked)
-			to_chat(usr, "<span class='danger'>You need to unlock the scanner first.</span>")
+			to_chat(usr, "<span class='danger'>I need to unlock the scanner first.</span>")
 			return
 
 		usr.pulling = null
@@ -148,7 +148,7 @@ var/list/genescanner_addresses = list()
 			return
 
 		if (src.locked)
-			to_chat(usr, "<span class='danger'>You need to unlock the scanner first.</span>")
+			to_chat(usr, "<span class='danger'>I need to unlock the scanner first.</span>")
 			return
 
 		if(!iscarbon(G.affecting))
@@ -191,7 +191,7 @@ var/list/genescanner_addresses = list()
 		if (usr.stat != 0 || (usr.status_flags & FAKEDEATH))
 			return
 		if (usr == src.occupant)
-			to_chat(usr, "<span class='danger'>You can't reach the scanner lock from the inside.</span>")
+			to_chat(usr, "<span class='danger'>I can't reach the scanner lock from the inside.</span>")
 			return
 
 		playsound(src.loc, 'click.ogg', 50, 1)
@@ -199,12 +199,12 @@ var/list/genescanner_addresses = list()
 			src.locked = 0
 			usr.visible_message("<b>[usr]</b> unlocks the scanner.")
 			if (src.occupant)
-				to_chat(src.occupant, "<span class='warning'>You hear the scanner's lock slide out of place.</span>")
+				to_chat(src.occupant, "<span class='warning'>I hear the scanner's lock slide out of place.</span>")
 		else
 			src.locked = 1
 			usr.visible_message("<b>[usr]</b> locks the scanner.")
 			if (src.occupant)
-				to_chat(src.occupant, "<span class='warning'>You hear the scanner's lock click into place.</span>")
+				to_chat(src.occupant, "<span class='warning'>I hear the scanner's lock click into place.</span>")
 
 	proc/go_out()
 		if (!src.occupant)

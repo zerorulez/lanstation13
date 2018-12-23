@@ -24,7 +24,7 @@
 
 /obj/effect/portal/attackby(obj/item/weapon/O as obj, mob/user as mob)
 	if(O == creator)
-		to_chat(user, "<span class='warning'>You close the portal prematurely.</span>")
+		to_chat(user, "<span class='warning'>I close the portal prematurely.</span>")
 		qdel(src)
 	else
 		spawn()

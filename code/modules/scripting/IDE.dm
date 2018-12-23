@@ -13,13 +13,13 @@
 				src << output(null, "tcserror") // clear the errors
 			else
 				src << output(null, "tcserror")
-				src << output("<font color = red>Failed to save: Unable to locate server machine. (Back up your code before exiting the window!)</font color>", "tcserror")
+				src << output("<font color = red>Failed to save: Unable to locate server machine. (Back up my code before exiting the window!)</font color>", "tcserror")
 		else
 			src << output(null, "tcserror")
-			src << output("<font color = red>Failed to save: Unable to locate machine. (Back up your code before exiting the window!)</font color>", "tcserror")
+			src << output("<font color = red>Failed to save: Unable to locate machine. (Back up my code before exiting the window!)</font color>", "tcserror")
 	else
 		src << output(null, "tcserror")
-		src << output("<font color = red>Failed to save: Unable to locate machine. (Back up your code before exiting the window!)</font color>", "tcserror")
+		src << output("<font color = red>Failed to save: Unable to locate machine. (Back up my code before exiting the window!)</font color>", "tcserror")
 
 
 /client/verb/tcscompile()
@@ -70,13 +70,13 @@
 
 			else
 				src << output(null, "tcserror")
-				src << output("<font color = red>Failed to compile: Unable to locate server machine. (Back up your code before exiting the window!)</font color>", "tcserror")
+				src << output("<font color = red>Failed to compile: Unable to locate server machine. (Back up my code before exiting the window!)</font color>", "tcserror")
 		else
 			src << output(null, "tcserror")
-			src << output("<font color = red>Failed to compile: Unable to locate machine. (Back up your code before exiting the window!)</font color>", "tcserror")
+			src << output("<font color = red>Failed to compile: Unable to locate machine. (Back up my code before exiting the window!)</font color>", "tcserror")
 	else
 		src << output(null, "tcserror")
-		src << output("<font color = red>Failed to compile: Unable to locate machine. (Back up your code before exiting the window!)</font color>", "tcserror")
+		src << output("<font color = red>Failed to compile: Unable to locate machine. (Back up my code before exiting the window!)</font color>", "tcserror")
 
 /client/verb/tcsrun()
 	set hidden = 1
@@ -105,13 +105,13 @@
 
 			else
 				src << output(null, "tcserror")
-				src << output("<font color = red>Failed to run: Unable to locate server machine. (Back up your code before exiting the window!)</font color>", "tcserror")
+				src << output("<font color = red>Failed to run: Unable to locate server machine. (Back up my code before exiting the window!)</font color>", "tcserror")
 		else
 			src << output(null, "tcserror")
-			src << output("<font color = red>Failed to run: Unable to locate machine. (Back up your code before exiting the window!)</font color>", "tcserror")
+			src << output("<font color = red>Failed to run: Unable to locate machine. (Back up my code before exiting the window!)</font color>", "tcserror")
 	else
 		src << output(null, "tcserror")
-		src << output("<font color = red>Failed to run: Unable to locate machine. (Back up your code before exiting the window!)</font color>", "tcserror")
+		src << output("<font color = red>Failed to run: Unable to locate machine. (Back up my code before exiting the window!)</font color>", "tcserror")
 
 
 /client/verb/exittcs()

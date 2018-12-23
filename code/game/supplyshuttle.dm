@@ -40,7 +40,7 @@ var/list/mechtoys = list(
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 		else
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-		user.visible_message("[user] [airtight? "loosen the [src] from" : "tighten the [src] into"] an airtight position.", "You [airtight? "loosen the [src] from" : "tighten the [src] into"] an airtight position.")
+		user.visible_message("[user] [airtight? "loosen the [src] from" : "tighten the [src] into"] an airtight position.", "I [airtight? "loosen the [src] from" : "tighten the [src] into"] an airtight position.")
 		airtight = !airtight
 		name = "\improper [airtight? "Airtight p" : "P"]lastic flaps"
 		desc = "[airtight? "Heavy duty, airtight, plastic flaps." : "I definitely can't get past those. No way."]"
@@ -50,7 +50,7 @@ var/list/mechtoys = list(
 			playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
 		else
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-		user.visible_message("[user] [anchored? "loosens" : "tightens"] the flap from its anchoring.", "You [anchored? "loosen" : "tighten"] the flap from its anchoring.")
+		user.visible_message("[user] [anchored? "loosens" : "tightens"] the flap from its anchoring.", "I [anchored? "loosen" : "tighten"] the flap from its anchoring.")
 		anchored = !anchored
 		return 1
 	else if (iswelder(I) && anchored == 0)
@@ -75,7 +75,7 @@ var/list/mechtoys = list(
 
 	else if(isliving(mover)) // You Shall Not Pass!
 		var/mob/living/M = mover
-		if(!M.lying && !istype(M, /mob/living/carbon/monkey) && !istype(M, /mob/living/carbon/slime) && !istype(M, /mob/living/simple_animal/mouse))  //If your not laying down, or a small creature, no pass.
+		if(!M.lying && !istype(M, /mob/living/carbon/monkey) && !istype(M, /mob/living/carbon/slime) && !istype(M, /mob/living/simple_animal/mouse))  //If my not laying down, or a small creature, no pass.
 			return 0
 	if(!istype(mover)) // Aircheck!
 		return !airtight
@@ -533,7 +533,7 @@ var/list/mechtoys = list(
 		if(((P.cost + SUPPLY_TAX) * crates + total_money_req > account.money))
 			// Tell them how many they can actually afford if they can't afford their order
 			var/max_crates = round((account.money - total_money_req) / (P.cost + SUPPLY_TAX))
-			to_chat(usr, "<span class='warning'>You can only afford [max_crates] crates.</span>")
+			to_chat(usr, "<span class='warning'>I can only afford [max_crates] crates.</span>")
 			return
 		var/reason = copytext(sanitize(input(usr,"Reason:","Why do you require this item?","") as null|text),1,REASON_LEN)
 		if(world.time > timeout)
@@ -634,7 +634,7 @@ var/list/mechtoys = list(
 				A.anchored = 1
 				qdel(src)
 			else
-				to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
+				to_chat(user, "<span class='notice'>I disconnect the monitor.</span>")
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( loc )
 				var/obj/item/weapon/circuitboard/supplycomp/M = new /obj/item/weapon/circuitboard/supplycomp( A )
 				if(can_order_contraband)
@@ -713,7 +713,7 @@ var/list/mechtoys = list(
 	//Calling the shuttle
 	if(href_list["send"])
 		if(!map.linked_to_centcomm)
-			to_chat(usr, "<span class='warning'>You aren't able to establish contact with central command, so the shuttle won't move.</span>")
+			to_chat(usr, "<span class='warning'>I amn't able to establish contact with central command, so the shuttle won't move.</span>")
 		else if(!supply_shuttle.can_move())
 			to_chat(usr, "<span class='warning'>For safety reasons the automated supply shuttle cannot transport live organisms, classified nuclear weaponry or homing beacons.</span>")
 		else if(supply_shuttle.at_station)
@@ -756,7 +756,7 @@ var/list/mechtoys = list(
 		// check they can afford the order
 		if((P.cost + SUPPLY_TAX) * crates + total_money_req > account.money)
 			var/max_crates = round((account.money - total_money_req) / (P.cost + SUPPLY_TAX))
-			to_chat(usr, "<span class='warning'>You can only afford [max_crates] crates.</span>")
+			to_chat(usr, "<span class='warning'>I can only afford [max_crates] crates.</span>")
 			return
 		var/timeout = world.time + 600
 		var/reason = copytext(sanitize(input(usr, "Reason:", "Why do you require this item?", "") as null|text), 1, REASON_LEN)

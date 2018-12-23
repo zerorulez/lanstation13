@@ -1981,7 +1981,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/ijzerkoekje_helper_dummy
 	name = "Helper Dummy"
-	desc = "You should never see this text."
+	desc = "I should never see this text."
 
 /obj/item/weapon/reagent_containers/food/snacks/ijzerkoekje_helper_dummy/New()
 	for(var/i = 1 to 6)

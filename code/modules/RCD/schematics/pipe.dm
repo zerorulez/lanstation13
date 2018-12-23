@@ -127,7 +127,7 @@
 	else
 		O.color = selected_color
 		O.update_icon()
-	user.visible_message("<span class='notice'>[user] paints \the [O] [selected_color].</span>","<span class='notice'>You paint \the [O] [selected_color].</span>")
+	user.visible_message("<span class='notice'>[user] paints \the [O] [selected_color].</span>","<span class='notice'>I paint \the [O] [selected_color].</span>")
 
 /datum/rcd_schematic/paint_pipes/Topic(var/href, var/list/href_list)
 	if(href_list["set_color"])

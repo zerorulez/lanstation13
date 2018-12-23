@@ -63,7 +63,7 @@ for reference:
 
 /obj/machinery/deployable/barrier
 	name = "deployable barrier"
-	desc = "A deployable barrier. Swipe your ID card to lock/unlock it."
+	desc = "A deployable barrier. Swipe my ID card to lock/unlock it."
 	icon = 'icons/obj/objects.dmi'
 	anchored = 0.0
 	density = 1.0
@@ -84,11 +84,11 @@ for reference:
 	if (src.emagged == 0)
 		src.emagged = 1
 		src.req_access = 0
-		to_chat(user, "You break the ID authentication lock on the [src].")
+		to_chat(user, "I break the ID authentication lock on the [src].")
 		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 		s.set_up(2, 1, src)
 		s.start()
-		desc = "A deployable barrier. Swipe your ID card to lock/unlock it. Seems like it's malfunctioning"
+		desc = "A deployable barrier. Swipe my ID card to lock/unlock it. Seems like it's malfunctioning"
 		return
 
 /obj/machinery/deployable/barrier/attackby(obj/item/weapon/W as obj, mob/user as mob)

@@ -55,14 +55,14 @@
 	if(!job_title)
 		job_title = src.title
 
-	to_chat(M, "<B>You are a [job_title].</B>")
+	to_chat(M, "<B>I am a [job_title].</B>")
 
 	if(map && map.nameShort == "meta") //Shitty way to do it, but whatever - traders start on a shuttle wreckage on metaclub, not on the vox outpost
-		to_chat(M, "<b>A while ago you got your equipment together and boarded a small shuttle, heading for your destination (whatever it may be). Everything was great, until the shuttle somehow crashed into an asteroid. You're still alive, but you're not quite sure where you are. Maybe some of your friends know - unless they died in the crash...</b>")
+		to_chat(M, "<b>A while ago you got my equipment together and boarded a small shuttle, heading for my destination (whatever it may be). Everything was great, until the shuttle somehow crashed into an asteroid. You're still alive, but you're not quite sure where you are. Maybe some of my friends know - unless they died in the crash...</b>")
 	else
-		to_chat(M, "<b>You've finally got your equipment together, such as it is. Now it's time for action and adventure! In the rush of excitement, you've forgotten where you were going to go. If only you had any friends that could remind you...</b>")
+		to_chat(M, "<b>I've finally got my equipment together, such as it is. Now it's time for action and adventure! In the rush of excitement, you've forgotten where you were going to go. If only you had any friends that could remind you...</b>")
 
 	to_chat(M, "<b>Despite not being a member of the crew, by default you are <u>not</u> an antagonist. Cooperating with antagonists is allowed - within reason. Ask admins via adminhelp if you're not sure.</b>")
 
 	if(req_admin_notify)
-		to_chat(M, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
+		to_chat(M, "<b>I am playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")

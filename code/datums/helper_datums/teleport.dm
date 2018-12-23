@@ -166,7 +166,7 @@
 		precision = max(rand(1,100)*bagholding.len,100)
 		if(istype(teleatom, /mob/living))
 			var/mob/living/MM = teleatom
-			to_chat(MM, "<span class='warning'>The Bluespace interface on your Bag of Holding interferes with the teleport!</span>")
+			to_chat(MM, "<span class='warning'>The Bluespace interface on my Bag of Holding interferes with the teleport!</span>")
 	return 1
 
 /datum/teleport/instant/science/teleportChecks()
@@ -202,13 +202,13 @@
 		if(istype(M,/mob/living/carbon/human)) //Tinfoil hats resist teleportation, but only when worn
 			var/mob/living/carbon/human/H = M
 			if(H.head && istype(H.head,/obj/item/clothing/head/tinfoil))
-				to_chat(H, "<span class'info'>Your headgear has 'foiled' a teleport!</span>")
+				to_chat(H, "<span class'info'>My headgear has 'foiled' a teleport!</span>")
 				return 0
 
 		if(istype(M, /mob/living))
 			var/mob/living/MM = M
 			if(MM.locked_to_z != 0 && destination.z != MM.locked_to_z)
-				MM.visible_message("<span class='danger'>\The [teleatom] bounces off the portal!</span>", "<span class='warning'>You're unable to go to that destination!</span>")
+				MM.visible_message("<span class='danger'>\The [teleatom] bounces off the portal!</span>", "<span class='warning'>I am unable to go to that destination!</span>")
 				return 0
 
 	if(!isemptylist(recursive_type_check(teleatom, /obj/item/clothing/head/tinfoil)))

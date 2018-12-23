@@ -46,7 +46,7 @@
 	if(cell)
 		var/obj/item/weapon/cell/C = cell
 		if(C.charge < powercost)
-			user.visible_message("[user] presses the button on \the [src], but the flash bulb merely flickers.","You press the button on \the [src], but the flash bulb merely flickers.")
+			user.visible_message("[user] presses the button on \the [src], but the flash bulb merely flickers.","I press the button on \the [src], but the flash bulb merely flickers.")
 			to_chat(user, "<span class='warning'>There's not enough energy in the cell to power the flash bulb!</span>")
 			playsound(get_turf(src), 'sound/weapons/empty.ogg', 100, 1)
 			return
@@ -58,7 +58,7 @@
 			flash(get_turf(M), M)
 
 
-		user.visible_message("<span class='danger'>[user] overloads \the [src]'s flash bulb!</span>","<span class='danger'>You overload \the [src]'s flash bulb!</span>")
+		user.visible_message("<span class='danger'>[user] overloads \the [src]'s flash bulb!</span>","<span class='danger'>I overload \the [src]'s flash bulb!</span>")
 		to_chat(user, "<span class='warning'>\The [src]'s flash bulb shatters!</span>")
 
 		C.charge -= powercost
@@ -73,13 +73,13 @@
 
 	if(issilicon(M))
 		M.Knockdown(rand(5, 10))
-		M.visible_message("<span class='warning'>[M]'s sensors are overloaded by the flash of light!</span>","<span class='warning'>Your sensors are overloaded by the flash of light!</span>")
+		M.visible_message("<span class='warning'>[M]'s sensors are overloaded by the flash of light!</span>","<span class='warning'>My sensors are overloaded by the flash of light!</span>")
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/datum/organ/internal/eyes/E = H.internal_organs_by_name["eyes"]
 		if (E && E.damage >= E.min_bruised_damage)
-			to_chat(M, "<span class='warning'>Your eyes start to burn badly!</span>")
+			to_chat(M, "<span class='warning'>My eyes start to burn badly!</span>")
 	M.update_icons()
 
 /obj/item/device/blinder/proc/update_verbs()
@@ -98,7 +98,7 @@
 	set src in range(0)
 
 	if(usr.isUnconscious())
-		to_chat(usr, "You can't do that while unconscious.")
+		to_chat(usr, "I can't do that while unconscious.")
 		return
 
 	if(!cell)
@@ -109,7 +109,7 @@
 		usr.put_in_hands(C)
 		cell = null
 		desc = "A polaroid camera. The film chamber is filled with wire for some reason."
-		to_chat(usr, "You remove \the [C] from \the [src].")
+		to_chat(usr, "I remove \the [C] from \the [src].")
 	update_verbs()
 
 /obj/item/device/blinder/verb/remove_bulb()
@@ -118,7 +118,7 @@
 	set src in range(0)
 
 	if(usr.isUnconscious())
-		to_chat(usr, "You can't do that while unconscious.")
+		to_chat(usr, "I can't do that while unconscious.")
 		return
 
 	if(!bulb)
@@ -130,7 +130,7 @@
 		usr.put_in_hands(B)
 		bulb = 0
 		burnedout = 0
-		to_chat(usr, "You remove the broken [B.name] from \the [src].")
+		to_chat(usr, "I remove the broken [B.name] from \the [src].")
 	update_verbs()
 
 /obj/item/device/blinder/attackby(obj/item/weapon/W, mob/user)
@@ -139,17 +139,17 @@
 			to_chat(user, "<span class='warning'>There is already a power cell inside \the [src].</span>")
 			return
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
 			return 1
 		cell = W
-		user.visible_message("[user] inserts \the [W] into \the [src].","You insert \the [W] into \the [src].")
+		user.visible_message("[user] inserts \the [W] into \the [src].","I insert \the [W] into \the [src].")
 		desc = "A polaroid camera. There is a power cell in the film chamber for some reason."
 		update_verbs()
 
 	if(istype(W, /obj/item/weapon/light/bulb))
 		if(bulb)
 			if(burnedout)
-				to_chat(user, "<span class='warning'>You need to remove the damaged bulb first.</span>")
+				to_chat(user, "<span class='warning'>I need to remove the damaged bulb first.</span>")
 				return
 			else
 				to_chat(user, "There is already a perfectly good bulb inside \the [src].")
@@ -162,7 +162,7 @@
 			to_chat(user, "<span class='warning'>That [B.name] is burned out, it won't function in \the [src].</span>")
 			return
 		bulb = 1
-		user.visible_message("[user] inserts \the [W] into \the [src].","You insert \the [W] into \the [src].")
+		user.visible_message("[user] inserts \the [W] into \the [src].","I insert \the [W] into \the [src].")
 		qdel(W)
 		update_verbs()
 
@@ -172,9 +172,9 @@
 
 	if(iswirecutter(W))
 		if(cell)
-			to_chat(user, "<span class='warning'>You can't reach the wires with the power cell in the way.</span>")
+			to_chat(user, "<span class='warning'>I can't reach the wires with the power cell in the way.</span>")
 			return
-		to_chat(user, "You cut the wires out of the film chamber.")
+		to_chat(user, "I cut the wires out of the film chamber.")
 		playsound(user, 'sound/items/Wirecutter.ogg', 50, 1)
 		if(src.loc == user)
 			user.drop_item(src, force_drop = 1)

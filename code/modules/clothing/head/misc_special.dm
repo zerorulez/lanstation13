@@ -45,13 +45,13 @@
 			src.body_parts_covered = FACE
 			eyeprot = 3
 			icon_state = initial(icon_state)
-			to_chat(usr, "You flip the [src] down to protect your eyes.")
+			to_chat(usr, "I flip the [src] down to protect my eyes.")
 		else
 			src.up = !src.up
 			src.body_parts_covered = HEAD
 			icon_state = "[initial(icon_state)]up"
 			eyeprot = 0
-			to_chat(usr, "You push the [src] up out of your face.")
+			to_chat(usr, "I push the [src] up out of my face.")
 		usr.update_inv_head()	//so our mob-overlays update
 		usr.update_inv_wear_mask()
 		usr.update_inv_glasses()
@@ -124,11 +124,11 @@
 		src.icon_state = "ushankaup"
 		src.item_state = "ushankaup"
 		body_parts_covered = HEAD
-		to_chat(user, "You raise the ear flaps on the ushanka.")
+		to_chat(user, "I raise the ear flaps on the ushanka.")
 	else
 		src.icon_state = "ushankadown"
 		src.item_state = "ushankadown"
-		to_chat(user, "You lower the ear flaps on the ushanka.")
+		to_chat(user, "I lower the ear flaps on the ushanka.")
 		body_parts_covered = EARS|HEAD
 
 /*
@@ -147,7 +147,7 @@
 
 	attack_self(mob/user)
 		if(!isturf(user.loc))
-			to_chat(user, "You cannot turn the light on while in this [user.loc]")//To prevent some lighting anomalities.
+			to_chat(user, "I cannot turn the light on while in this [user.loc]")//To prevent some lighting anomalities.
 
 			return
 		on = !on

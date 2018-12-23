@@ -98,13 +98,13 @@
 		icon = src.loc
 
 	if ((istype(W, /obj/item/device/analyzer)) && get_dist(user, src) <= 1)
-		user.visible_message("<span class='attack'>[user] has used [W] on \icon[icon] [src]</span>", "<span class='attack'>You use \the [W] on \icon[icon] [src]</span>")
+		user.visible_message("<span class='attack'>[user] has used [W] on \icon[icon] [src]</span>", "<span class='attack'>I use \the [W] on \icon[icon] [src]</span>")
 		var/obj/item/device/analyzer/analyzer = W
 		user.show_message(analyzer.output_gas_scan(src.air_contents, src, 0), 1)
 		src.add_fingerprint(user)
 	else if (istype(W, /obj/item/clothing/gloves/latex) || (istype(W, /obj/item/toy/balloon) && !istype(W, /obj/item/toy/balloon/inflated)))
 		if(air_contents.return_pressure() >= ONE_ATMOSPHERE)
-			to_chat(user, "You inflate \the [W] using \the [src].")
+			to_chat(user, "I inflate \the [W] using \the [src].")
 			user.drop_item(W, force_drop = 1)
 			if(istype(W, /obj/item/toy/balloon))
 				var/obj/item/toy/balloon/B = W
@@ -193,17 +193,17 @@
 			if(location.internal == src)
 				location.internal = null
 				location.internals.icon_state = "internal0"
-				to_chat(usr, "<span class='notice'>You close the tank release valve.</span>")
+				to_chat(usr, "<span class='notice'>I close the tank release valve.</span>")
 				if (location.internals)
 					location.internals.icon_state = "internal0"
 			else
 				if(location.wear_mask && (location.wear_mask.clothing_flags & MASKINTERNALS))
 					location.internal = src
-					to_chat(usr, "<span class='notice'>You open \the [src] valve.</span>")
+					to_chat(usr, "<span class='notice'>I open \the [src] valve.</span>")
 					if (location.internals)
 						location.internals.icon_state = "internal1"
 				else
-					to_chat(usr, "<span class='notice'>You need something to connect to \the [src].</span>")
+					to_chat(usr, "<span class='notice'>I need something to connect to \the [src].</span>")
 
 	src.add_fingerprint(usr)
 	return 1

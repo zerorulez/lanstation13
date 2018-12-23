@@ -32,7 +32,7 @@ minus the pound (#) symbol.
 
 **************************************/
 //AMERICANISATION (AMERICANIZATION)
-// Allows you to use your inferior American spellings! ;-)
+// Allows you to use my inferior American spellings! ;-)
 
 #define color2html(X) colour2html(X)
 #define html_colors html_colours

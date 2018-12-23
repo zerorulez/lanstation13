@@ -333,7 +333,7 @@ var/global/list/PDA_Manifest = list()
 	var/victim = null
 	icon_state = "empty"
 	name = "Geas"
-	desc = "You can't resist."
+	desc = "I can't resist."
 	// name = ""
 
 /obj/effect/stop/Uncross(atom/movable/mover)

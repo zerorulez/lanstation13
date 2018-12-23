@@ -26,7 +26,7 @@
 /obj/item/device/mmi/posibrain/attack_self(mob/user as mob)
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
-		to_chat(user, "<span class='notice'>You carefully locate the manual activation switch and start \the [src]'s boot process.</span>")
+		to_chat(user, "<span class='notice'>I carefully locate the manual activation switch and start \the [src]'s boot process.</span>")
 		search_for_candidates()
 
 /obj/item/device/mmi/posibrain/proc/search_for_candidates()
@@ -45,7 +45,7 @@
 	for(var/mob/dead/observer/O in get_active_candidates(ROLE_POSIBRAIN))
 		if(O.client)
 			if(check_observer(O))
-				to_chat(O, "<span class=\"recruit\">You are a possible candidate for \a [src]. Get ready. (<a href='?src=\ref[O];jump=\ref[src]'>Teleport</a> | <a href='?src=\ref[src];signup=\ref[O]'>Retract</a>)</span>")
+				to_chat(O, "<span class=\"recruit\">I am a possible candidate for \a [src]. Get ready. (<a href='?src=\ref[O];jump=\ref[src]'>Teleport</a> | <a href='?src=\ref[src];signup=\ref[O]'>Retract</a>)</span>")
 				ghost_volunteers += O
 
 /obj/item/device/mmi/posibrain/proc/check_observer(var/mob/dead/observer/O)
@@ -77,9 +77,9 @@
 	src.brainmob.stat = 0
 	src.name = "positronic brain ([src.brainmob.name])"
 
-	to_chat(src.brainmob, "<b>You are \a [src], brought into existence on [station_name()].</b>")
+	to_chat(src.brainmob, "<b>I am \a [src], brought into existence on [station_name()].</b>")
 	to_chat(src.brainmob, "<b>As a synthetic intelligence, you answer to all crewmembers, as well as the AI.</b>")
-	to_chat(src.brainmob, "<b>Remember, the purpose of your existence is to serve the crew and the station. Above all else, do no harm.</b>")
+	to_chat(src.brainmob, "<b>Remember, the purpose of my existence is to serve the crew and the station. Above all else, do no harm.</b>")
 	src.brainmob.mind.assigned_role = "Positronic Brain"
 
 	var/turf/T = get_turf(src.loc)
@@ -119,9 +119,9 @@
 		ghost_volunteers.Remove(O)
 		return
 	if(!check_observer(O))
-		to_chat(O, "<span class='warning'>You cannot be \a [src].</span>")
+		to_chat(O, "<span class='warning'>I cannot be \a [src].</span>")
 		return
-	to_chat(O., "<span class='notice'>You've been added to the list of ghosts that may become this [src].  Click again to unvolunteer.</span>")
+	to_chat(O., "<span class='notice'>I've been added to the list of ghosts that may become this [src].  Click again to unvolunteer.</span>")
 	ghost_volunteers.Add(O)
 
 /obj/item/device/mmi/posibrain/examine(mob/user)
@@ -176,12 +176,12 @@
 	else
 		if(!brainmob.ckey && last_ping_time + ping_cooldown <= world.time)
 			last_ping_time = world.time
-			visible_message(message = "<span class='notice'>\The [src] pings softly.</span>", blind_message = "<span class='danger'>You hear what you think is a microwave finishing.</span>")
+			visible_message(message = "<span class='notice'>\The [src] pings softly.</span>", blind_message = "<span class='danger'>I hear what you think is a microwave finishing.</span>")
 		else
 			to_chat(O, "[src] is recharging. Try again in a few moments.")
 
 /obj/item/device/mmi/posibrain/OnMobDeath(var/mob/living/carbon/brain/B)
 	if(istype(B))
-		visible_message(message = "<span class='danger'>[B] begins to go dark, having seemingly thought itself to death</span>", blind_message = "<span class='danger'>You hear the wistful sigh of a hopeful machine powering off with a tone of finality.</span>")
+		visible_message(message = "<span class='danger'>[B] begins to go dark, having seemingly thought itself to death</span>", blind_message = "<span class='danger'>I hear the wistful sigh of a hopeful machine powering off with a tone of finality.</span>")
 		icon_state = "posibrain"
 		searching = 0

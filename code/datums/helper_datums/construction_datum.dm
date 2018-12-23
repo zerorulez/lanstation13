@@ -97,7 +97,7 @@
 /datum/construction/proc/fixText(text,user,self=0)
 	if(self)
 		text = replacetext(text, "{s}", "")
-		text = replacetext(text, "{USER}", "You")
+		text = replacetext(text, "{USER}", "I")
 	else
 		text = replacetext(text, "{s}", "s")
 		text = replacetext(text,"{USER}","[user]")
@@ -169,7 +169,7 @@
 		if(istype(used_atom,/obj/item/stack) && !(Co_TAKE in given_step))
 			var/obj/item/stack/stack=used_atom
 			if(stack.amount < amount)
-				to_chat(user, "<span class='notice'>You start adding [stack] to \the [holder]. It still needs [amount - stack.amount] [stack.singular_name].</span>")
+				to_chat(user, "<span class='notice'>I start adding [stack] to \the [holder]. It still needs [amount - stack.amount] [stack.singular_name].</span>")
 				given_step[Co_AMOUNT] -= stack.amount
 				stack.use(stack.amount)
 				return 0
@@ -178,10 +178,10 @@
 		else if(istype(used_atom,/obj/item/weapon/weldingtool) && !(Co_TAKE in given_step))
 			var/obj/item/weapon/weldingtool/welder=used_atom
 			if(!welder.isOn())
-				to_chat(user, "<span class='notice'>You tap \the [holder] with your unlit welder.  [pick("Ding","Dong")].</span>")
+				to_chat(user, "<span class='notice'>I tap \the [holder] with my unlit welder.  [pick("Ding","Dong")].</span>")
 				return 0
 			if(!welder.remove_fuel(amount,user))
-				to_chat(user, "<span class='warning'>You don't have enough fuel!</span>")
+				to_chat(user, "<span class='warning'>I don't have enough fuel!</span>")
 				return 0
 		//generic things
 		else
@@ -193,7 +193,7 @@
 				qdel(used_atom)
 			given_step[Co_AMOUNT]--
 			if(given_step[Co_AMOUNT] > 0)
-				to_chat(user, "<span class='notice'>You add \a [atom_name] to \the [holder]. It still needs [amount -1 ] [atom_name]\s.</span>")
+				to_chat(user, "<span class='notice'>I add \a [atom_name] to \the [holder]. It still needs [amount -1 ] [atom_name]\s.</span>")
 				return 0
 		given_step[Co_AMOUNT] = given_step[Co_MAX_AMOUNT]
 	return 1
@@ -342,7 +342,7 @@
 		if(istype(used_atom,/obj/item/stack) && !(Co_TAKE in given_step))
 			var/obj/item/stack/stack=used_atom
 			if(stack.amount < amount)
-				to_chat(user, "<span class='notice'>You start adding [stack] to \the [holder]. It still needs [amount - stack.amount] [stack.singular_name].</span>")
+				to_chat(user, "<span class='notice'>I start adding [stack] to \the [holder]. It still needs [amount - stack.amount] [stack.singular_name].</span>")
 				given_step[Co_AMOUNT] -= stack.amount
 				stack.use(stack.amount)
 				return 0
@@ -351,10 +351,10 @@
 		else if(istype(used_atom,/obj/item/weapon/weldingtool) && !(Co_TAKE in given_step))
 			var/obj/item/weapon/weldingtool/welder=used_atom
 			if(!welder.isOn())
-				to_chat(user, "<span class='notice'>You tap \the [holder] with your unlit welder.  [pick("Ding","Dong")].</span>")
+				to_chat(user, "<span class='notice'>I tap \the [holder] with my unlit welder.  [pick("Ding","Dong")].</span>")
 				return 0
 			if(!welder.remove_fuel(amount,user))
-				to_chat(user, "<span class='rose'>You don't have enough fuel!</span>")
+				to_chat(user, "<span class='rose'>I don't have enough fuel!</span>")
 				return 0
 		//generic things
 		else
@@ -368,7 +368,7 @@
 				qdel(used_atom)
 			given_step[Co_AMOUNT]--
 			if(given_step[Co_AMOUNT] > 0)
-				to_chat(user, "<span class='notice'>You add \a [atom_name] to \the [holder]. It still needs [amount -1 ] [atom_name]\s.</span>")
+				to_chat(user, "<span class='notice'>I add \a [atom_name] to \the [holder]. It still needs [amount -1 ] [atom_name]\s.</span>")
 				return 0
 		given_step[Co_AMOUNT] = given_step[Co_MAX_AMOUNT]
 

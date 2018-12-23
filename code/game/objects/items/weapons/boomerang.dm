@@ -82,7 +82,7 @@
 			var/mob/living/carbon/L = hit_atom
 
 			if(L.get_active_hand() == null)
-				to_chat(hit_atom, "<span class='info'>You catch \the [src]!</span>")
+				to_chat(hit_atom, "<span class='info'>I catch \the [src]!</span>")
 				L.put_in_active_hand(src)
 				throwing = 0
 				return

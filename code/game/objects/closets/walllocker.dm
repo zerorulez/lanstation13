@@ -32,7 +32,7 @@
 		to_chat(usr, "<spawn class='notice'>It's empty.")
 		return
 	if(amount)
-		to_chat(usr, "<spawn class='notice'>You take out some items from \the [src].")
+		to_chat(usr, "<spawn class='notice'>I take out some items from \the [src].")
 		for(var/path in spawnitems)
 			new path(src.loc)
 		amount--
@@ -75,7 +75,7 @@
 			to_chat(usr, "<span class='notice'>It's empty.</span>")
 			return
 		else
-			to_chat(usr, "<span class='notice'>You pull out an emergency defibrillator from \the [src].</span>")
+			to_chat(usr, "<span class='notice'>I pull out an emergency defibrillator from \the [src].</span>")
 			defib.forceMove(get_turf(src))
 			defib = null
 			update_icon()
@@ -83,7 +83,7 @@
 		to_chat(usr, "<span class='notice'>It's empty.</span>")
 		return
 	if(defib)
-		to_chat(usr, "<span class='notice'>You take out an emergency defibrillator from \the [src].</san>")
+		to_chat(usr, "<span class='notice'>I take out an emergency defibrillator from \the [src].</san>")
 		//new /obj/item/weapon/melee/defibrillator(src.loc)
 		usr.put_in_hands(defib)
 		defib = null
@@ -97,7 +97,7 @@
 			return
 		else
 			if(user.drop_item(G, src))
-				to_chat(usr, "<span class='notice'>You put \the [G] in \the [src].</span>")
+				to_chat(usr, "<span class='notice'>I put \the [G] in \the [src].</span>")
 				defib = G
 				update_icon()
 				return

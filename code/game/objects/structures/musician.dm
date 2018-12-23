@@ -192,7 +192,7 @@
 			if(!in_range(instrumentObj, usr))
 				return
 			if(lentext(t) >= INSTRUMENT_MAX_LINE_LENGTH*INSTRUMENT_MAX_LINE_NUMBER)
-				var/cont = input(usr, "Your message is too long! Would you like to continue editing it?", "", "yes") in list("yes", "no")
+				var/cont = input(usr, "My message is too long! Would you like to continue editing it?", "", "yes") in list("yes", "no")
 				if(cont == "no")
 					break
 		while(lentext(t) > INSTRUMENT_MAX_LINE_LENGTH*INSTRUMENT_MAX_LINE_NUMBER)
@@ -234,7 +234,7 @@
 		spawn()
 			playsong(usr)
 	else if(href_list["newline"])
-		var/newline = html_encode(input("Enter your line: ", instrumentObj.name) as text|null)
+		var/newline = html_encode(input("Enter my line: ", instrumentObj.name) as text|null)
 		if(!newline || !in_range(instrumentObj, usr))
 			return
 		if(lines.len > INSTRUMENT_MAX_LINE_NUMBER)
@@ -249,7 +249,7 @@
 		lines.Cut(num, num+1)
 	else if(href_list["modifyline"])
 		var/num = round(text2num(href_list["modifyline"]),1)
-		var/content = html_encode(input("Enter your line: ", instrumentObj.name, lines[num]) as text|null)
+		var/content = html_encode(input("Enter my line: ", instrumentObj.name, lines[num]) as text|null)
 		if(!content || !in_range(instrumentObj, usr))
 			return
 		if(lentext(content) > INSTRUMENT_MAX_LINE_LENGTH)
@@ -311,7 +311,7 @@
 
 /obj/structure/piano/attack_hand(mob/user)
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
 		return 1
 	if(broken)
 		to_chat(user, "<span class='warning'>\The [src] is broken for good.</span>")
@@ -336,8 +336,8 @@
 			if (do_after(user, 20, target = src))
 				user.visible_message( \
 					"[user] tightens \the [src]'s casters.", \
-					"<span class='notice'>You tighten \the [src]'s casters. Now it can be played again.</span>", \
-					"<span class='italics'>You hear a ratchet.</span>")
+					"<span class='notice'>I tighten \the [src]'s casters. Now it can be played again.</span>", \
+					"<span class='italics'>I hear a ratchet.</span>")
 				anchored = 1
 		else if(anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
@@ -345,8 +345,8 @@
 			if (do_after(user, 40, target = src))
 				user.visible_message( \
 					"[user] loosens \the [src]'s casters.", \
-					"<span class='notice'>You loosen \the [src]. Now it can be pulled somewhere else.</span>", \
-					"<span class='italics'>You hear a ratchet.</span>")
+					"<span class='notice'>I loosen \the [src]. Now it can be pulled somewhere else.</span>", \
+					"<span class='italics'>I hear a ratchet.</span>")
 				anchored = 0
 	else
 		..()

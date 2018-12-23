@@ -95,7 +95,7 @@
 			return
 	var/t = "<B>Shield Capacitor Control Console</B><br><br>"
 	if(locked)
-		t += "<i>Swipe your ID card to begin.</i>"
+		t += "<i>Swipe my ID card to begin.</i>"
 	else
 		t += {"This capacitor is: [active ? "<font color=green>Online</font>" : "<font color=red>Offline</font>" ] <a href='?src=\ref[src];toggle=1'>[active ? "\[Deactivate\]" : "\[Activate\]"]</a><br>
 			[time_since_fail > 2 ? "<font color=green>Charging stable.</font>" : "<font color=red>Warning, low charge!</font>"]<br>

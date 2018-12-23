@@ -63,7 +63,7 @@
 
 /datum/universal_state/meteor_storm/OnShuttleCall(var/mob/user)
 	if(user)
-		to_chat(user, "<span class='sinister'>You hear an automatic dispatch from Nanotrasen. It states that Centcomm is being shielded due to an incoming meteor storm and that regular shuttle service has been interrupted.</span>")
+		to_chat(user, "<span class='sinister'>I hear an automatic dispatch from Nanotrasen. It states that Centcomm is being shielded due to an incoming meteor storm and that regular shuttle service has been interrupted.</span>")
 	return 0
 
 /datum/universal_state/meteor_storm/OnEnter()

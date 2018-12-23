@@ -120,7 +120,7 @@
 					to_chat(user, "<span class='warning'>Access denied.</span>")
 				updateDialog()
 			else
-				to_chat(user, "You must open the cover first!")
+				to_chat(user, "I must open the cover first!")
 		return
 
 	attack_ai(var/mob/user)

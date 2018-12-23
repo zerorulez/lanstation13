@@ -164,7 +164,7 @@
 		if(do_after(user,src,30))
 			var/obj/item/stack/nanopaste/C = W
 			new src.component (src.loc)
-			to_chat(user, "<span class='notice'>You fix the broken component.</span>")
+			to_chat(user, "<span class='notice'>I fix the broken component.</span>")
 			C.use(1)
 			qdel(src)
 
@@ -190,7 +190,7 @@
 
 /obj/item/device/robotanalyzer/attack(mob/living/M as mob, mob/living/user as mob)
 	if(( clumsy_check(user) || user.getBrainLoss() >= 60) && prob(50))
-		to_chat(user, text("<span class='warning'>You try to analyze the floor's vitals!</span>"))
+		to_chat(user, text("<span class='warning'>I try to analyze the floor's vitals!</span>"))
 		for(var/mob/O in viewers(M, null))
 			O.show_message(text("<span class='warning'>[user] has analyzed the floor's vitals!</span>"), 1)
 		user.show_message(text("<span class='notice'>Analyzing Results for The floor:\n\t Overall Status: Healthy</span>"), 1)
@@ -199,13 +199,13 @@
 		user.show_message("<span class='notice'>Body Temperature: ???</span>", 1)
 		return
 	if (!user.dexterity_check())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
 		return
 	if(!istype(M, /mob/living/silicon/robot))
-		to_chat(user, "<span class='warning'>You can't analyze non-robotic things!</span>")
+		to_chat(user, "<span class='warning'>I can't analyze non-robotic things!</span>")
 		return
 
-	user.visible_message("<span class='notice'> [user] has analyzed [M]'s components.","<span class='notice'>You have analyzed [M]'s components.")
+	user.visible_message("<span class='notice'> [user] has analyzed [M]'s components.","<span class='notice'>I have analyzed [M]'s components.")
 	var/BU = M.getFireLoss() > 50 	? 	"<b>[M.getFireLoss()]</b>" 		: M.getFireLoss()
 	var/BR = M.getBruteLoss() > 50 	? 	"<b>[M.getBruteLoss()]</b>" 	: M.getBruteLoss()
 	user.show_message("<span class='notice'>Analyzing Results for [M]:\n\t Overall Status: [M.stat > 1 ? "fully disabled" : "[M.health - M.halloss]% functional"]</span>")

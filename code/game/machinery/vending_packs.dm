@@ -81,7 +81,7 @@
 	icon_state = "sovietsoda"
 
 /obj/structure/vendomatpack/tool
-	name = "YouTool recharge pack"
+	name = "ITool recharge pack"
 	targetvendomat = /obj/machinery/vending/tool
 	icon_state = "tool"
 
@@ -164,7 +164,7 @@
 
 /obj/item/emptyvendomatpack
 	name = "Empty vendomat recharge pack"
-	desc = "You could return it to cargo or just flatten it."
+	desc = "I could return it to cargo or just flatten it."
 	icon = 'icons/obj/vending_pack.dmi'
 	icon_state = "generic"
 	item_state = "syringe_kit"
@@ -178,7 +178,7 @@
 	fire_fuel = 2
 
 /obj/item/emptyvendomatpack/attack_self()
-	to_chat(usr, "<span class='notice'>You fold [src] flat.</span>")
+	to_chat(usr, "<span class='notice'>I fold [src] flat.</span>")
 	new src.foldable(get_turf(src),foldable_amount)
 	qdel(src)
 
@@ -194,7 +194,7 @@
 	flags = FPRINT
 
 /obj/structure/stackopacks/attack_hand(mob/user as mob)
-	to_chat(user, "<span class='notice'>You need some wirecutters to remove the coil first!</span>")
+	to_chat(user, "<span class='notice'>I need some wirecutters to remove the coil first!</span>")
 	return
 
 /obj/structure/stackopacks/attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -202,7 +202,7 @@
 		var/turf/T = get_turf(src)
 		for(var/obj/O in contents)
 			O.forceMove(T)
-		to_chat(user, "<span class='notice'>You remove the protective coil.</span>")
+		to_chat(user, "<span class='notice'>I remove the protective coil.</span>")
 		qdel(src)
 	else
 		return attack_hand(user)
@@ -211,19 +211,19 @@
 	var/turf/T = get_turf(src)
 	for(var/obj/O in contents)
 		O.forceMove(T)
-	to_chat(M, "<span class='notice'>You rip the protective coil apart.</span>")
+	to_chat(M, "<span class='notice'>I rip the protective coil apart.</span>")
 	qdel(src)
 
 /obj/structure/stackopacks/attack_paw(mob/M as mob)
 	var/turf/T = get_turf(src)
 	for(var/obj/O in contents)
 		O.forceMove(T)
-	to_chat(M, "<span class='notice'>You rip the protective coil apart.</span>")
+	to_chat(M, "<span class='notice'>I rip the protective coil apart.</span>")
 	qdel(src)
 
 /obj/structure/stackopacks/attack_alien(mob/living/carbon/alien/humanoid/M as mob)
 	var/turf/T = get_turf(src)
 	for(var/obj/O in contents)
 		O.forceMove(T)
-	to_chat(M, "<span class='notice'>You rip the protective coil apart.</span>")
+	to_chat(M, "<span class='notice'>I rip the protective coil apart.</span>")
 	qdel(src)

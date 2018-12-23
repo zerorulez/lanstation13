@@ -728,7 +728,7 @@ var/list/genetics_computers = list()
 				var/amount = input("50 credits per 1 point.","Buying Materials") as null|num
 				if (amount + genResearch.researchMaterial > genResearch.max_material)
 					amount = genResearch.max_material - genResearch.researchMaterial
-					to_chat(usr, "You cannot exceed [genResearch.max_material] research materials with this option.")
+					to_chat(usr, "I cannot exceed [genResearch.max_material] research materials with this option.")
 				if (!amount || amount <= 0)
 					return
 

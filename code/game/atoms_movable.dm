@@ -346,7 +346,7 @@
 	return 0
 
 // Previously known as HasEntered()
-// This is automatically called when something enters your square
+// This is automatically called when something enters my square
 /atom/movable/Crossed(atom/movable/AM)
 	return
 

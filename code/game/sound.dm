@@ -124,7 +124,7 @@ var/const/SURROUND_CAP = 7
 		var/dz = turf_source.y - T.y // Hearing from infront/behind
 		S.z = round(Clamp(dz, -SURROUND_CAP, SURROUND_CAP), 1)
 
-		// The y value is for above your head, but there is no ceiling in 2d spessmens.
+		// The y value is for above my head, but there is no ceiling in 2d spessmens.
 		S.y = 1
 
 		S.falloff = (falloff ? falloff : FALLOFF_SOUNDS)

@@ -190,7 +190,7 @@
 			src.reagent_glass.forceMove(get_turf(src))
 			src.reagent_glass = null
 		else
-			to_chat(usr, "<span class='notice'>You cannot eject the beaker because the panel is locked.</span>")
+			to_chat(usr, "<span class='notice'>I cannot eject the beaker because the panel is locked.</span>")
 
 	else if ((href_list["togglevoice"]) && (!src.locked || issilicon(usr)))
 		src.shut_up = !src.shut_up
@@ -220,7 +220,7 @@
 
 	else if (istype(W, /obj/item/weapon/reagent_containers/glass))
 		if(src.locked)
-			to_chat(user, "<span class='notice'>You cannot insert a beaker because the panel is locked.</span>")
+			to_chat(user, "<span class='notice'>I cannot insert a beaker because the panel is locked.</span>")
 			return
 		if(!isnull(src.reagent_glass))
 			to_chat(user, "<span class='notice'>There is already a beaker loaded.</span>")
@@ -231,7 +231,7 @@
 
 		if(user.drop_item(W, src))
 			src.reagent_glass = W
-			to_chat(user, "<span class='notice'>You insert [W].</span>")
+			to_chat(user, "<span class='notice'>I insert [W].</span>")
 			investigation_log(I_CHEMS, "was loaded with \a [W] by [key_name(user)], containing [W.reagents.get_reagent_ids(1)]")
 			src.updateUsrDialog()
 			return
@@ -246,7 +246,7 @@
 	if(open && !locked)
 		declare_crit = 0
 		if(user)
-			to_chat(user, "<span class='warning'>You short out [src]'s reagent synthesis circuits.</span>")
+			to_chat(user, "<span class='warning'>I short out [src]'s reagent synthesis circuits.</span>")
 		spawn(0)
 			for(var/mob/O in hearers(src, null))
 				O.show_message("<span class='danger'>[src] buzzes oddly!</span>", 1)
@@ -309,7 +309,7 @@
 				src.last_found = world.time
 				spawn(0)
 					if((src.last_newpatient_speak + 100) < world.time) //Don't spam these messages!
-						var/message = pick("Hey, you! Hold on, I'm coming.","Wait! I want to help!","You appear to be injured!")
+						var/message = pick("Hey, you! Hold on, I'm coming.","Wait! I want to help!","I appear to be injured!")
 						src.speak(message)
 						src.last_newpatient_speak = world.time
 						if(declare_treatment)
@@ -584,7 +584,7 @@
 
 	//Making a medibot!
 	if(src.contents.len >= 1)
-		to_chat(user, "<span class='notice'>You need to empty [src] out first.</span>")
+		to_chat(user, "<span class='notice'>I need to empty [src] out first.</span>")
 		return
 
 	var/obj/item/weapon/firstaid_arm_assembly/A = new /obj/item/weapon/firstaid_arm_assembly
@@ -598,7 +598,7 @@
 	qdel(S)
 	S = null
 	user.put_in_hands(A)
-	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
+	to_chat(user, "<span class='notice'>I add the robot arm to the first aid kit.</span>")
 	user.drop_from_inventory(src)
 	qdel(src)
 
@@ -619,7 +619,7 @@
 					if(user.drop_item(W))
 						qdel(W)
 						src.build_step++
-						to_chat(user, "<span class='notice'>You add the health sensor to [src].</span>")
+						to_chat(user, "<span class='notice'>I add the health sensor to [src].</span>")
 						src.name = "First aid/robot arm/health analyzer assembly"
 						src.overlays += image('icons/obj/aibots.dmi', "na_scanner")
 
@@ -628,7 +628,7 @@
 					if(user.drop_item(W))
 						qdel(W)
 						src.build_step++
-						to_chat(user, "<span class='notice'>You complete the Medibot! Beep boop.</span>")
+						to_chat(user, "<span class='notice'>I complete the Medibot! Beep boop.</span>")
 						var/turf/T = get_turf(src)
 						var/obj/machinery/bot/medbot/S = new /obj/machinery/bot/medbot(T)
 						S.skin = src.skin
@@ -678,16 +678,16 @@
 	declare()
 
 /obj/machinery/bot/medbot/swapkey_integrated_pai(mob/living/silicon/pai/user)	//called when integrated pAI uses the swap_hand() hotkey
-	pai_analyze_mode ? to_chat(user, "<span class='info'>You switch to inject mode.</span>") : to_chat(user, "<span class='info'>You switch to analyze mode.</span>")
+	pai_analyze_mode ? to_chat(user, "<span class='info'>I switch to inject mode.</span>") : to_chat(user, "<span class='info'>I switch to analyze mode.</span>")
 	pai_analyze_mode = !pai_analyze_mode
 
 /obj/machinery/bot/medbot/state_controls_pai(obj/item/device/paicard/P)
-	to_chat(P.pai, "<span class='info'><b>Welcome to your new body. Remember: you're a pAI inside a medbot, not a medbot.</b></span>")
+	to_chat(P.pai, "<span class='info'><b>Welcome to my new body. Remember: you're a pAI inside a medbot, not a medbot.</b></span>")
 	to_chat(P.pai, "<span class='info'>It is highly recommended to download the Medical Supplement from the pAI software interface as it gives you MedHUD.</span>")
-	to_chat(P.pai, "<span class='info'>Your controls are:</span>")
+	to_chat(P.pai, "<span class='info'>My controls are:</span>")
 	to_chat(P.pai, "<span class='info'>- (Q) Drop hotkey: You state there's a patient in critical condition</span>")
 	to_chat(P.pai, "<span class='info'>- (X) Swap hands:  You switch to inject or analyze mode.</span>")
-	to_chat(P.pai, "<span class='info'>- Click on somebody: Depending on your mode, you inject or analyze a person.</span>")
+	to_chat(P.pai, "<span class='info'>- Click on somebody: Depending on my mode, you inject or analyze a person.</span>")
 	to_chat(P.pai, "<span class='info'>What you inject depends on the medbot's configuration. You can't modify it</span>")
 	to_chat(P.pai, "<span class='info'>If you want to exit the medbot, somebody has to right-click you and press 'Remove pAI'.</span>")
 

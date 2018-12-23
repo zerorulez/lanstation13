@@ -21,7 +21,7 @@
 			src.r_store = W
 			update_inv_pockets(redraw_mob)
 		else
-			to_chat(usr, "<span class='warning'>You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</span>")
+			to_chat(usr, "<span class='warning'>I am trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</span>")
 			return
 
 	W.hud_layerise()

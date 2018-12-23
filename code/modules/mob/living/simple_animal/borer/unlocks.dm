@@ -34,11 +34,11 @@
 
 // INTERNAL: Begin unlocking process.
 /datum/unlockable/borer/begin_unlock()
-	to_chat(borer, "<span class='warning'>You begin concentrating intensely on producing the necessary changes.</span>")
-	to_chat(borer, "<span class='danger'>You will be unable to use any borer abilities until the process completes.</span>")
+	to_chat(borer, "<span class='warning'>I begin concentrating intensely on producing the necessary changes.</span>")
+	to_chat(borer, "<span class='danger'>I will be unable to use any borer abilities until the process completes.</span>")
 
 /datum/unlockable/borer/end_unlock()
-//	to_chat(Redundant borer, "<span class='info'>You finally finish your task.</span>")
+//	to_chat(Redundant borer, "<span class='info'>I finally finish my task.</span>")
 	tree.unlocked.Add(src.id)
 	borer.chemicals -= cost
 
@@ -70,7 +70,7 @@
 	var/datum/borer_chem/C = new chem_type()
 	borer.avail_chems[C.name]=C
 	borer.unlocked_chems_head[C.name]=C
-	to_chat(borer, "<span class='info'>You learned how to secrete [C.name]!</span>")
+	to_chat(borer, "<span class='info'>I learned how to secrete [C.name]!</span>")
 
 /datum/unlockable/borer/head/chem_unlock/peridaxon
 	id = "peridaxon"
@@ -124,7 +124,7 @@
 	var/datum/borer_chem/C = new chem_type()
 	borer.avail_chems[C.name]=C
 	borer.unlocked_chems_chest[C.name]=C
-	to_chat(borer, "<span class='info'>You learned how to secrete [C.name]!</span>")
+	to_chat(borer, "<span class='info'>I learned how to secrete [C.name]!</span>")
 
 /datum/unlockable/borer/chest/chem_unlock/nutriment
 	id = "nutriment"
@@ -196,7 +196,7 @@
 	var/datum/borer_chem/C = new chem_type()
 	borer.avail_chems[C.name]=C
 	borer.unlocked_chems_arm[C.name]=C
-	to_chat(borer, "<span class='info'>You learned how to secrete [C.name]!</span>")
+	to_chat(borer, "<span class='info'>I learned how to secrete [C.name]!</span>")
 
 /datum/unlockable/borer/arm/chem_unlock/cafe_latte
 	id = "cafe_latte"
@@ -226,7 +226,7 @@
 	var/datum/borer_chem/C = new chem_type()
 	borer.avail_chems[C.name]=C
 	borer.unlocked_chems_leg[C.name]=C
-	to_chat(borer, "<span class='info'>You learned how to secrete [C.name]!</span>")
+	to_chat(borer, "<span class='info'>I learned how to secrete [C.name]!</span>")
 
 /datum/unlockable/borer/leg/chem_unlock/bustanut
 	id = "bustanut"
@@ -267,7 +267,7 @@
 				host.update_mutations()
 				break
 
-	to_chat(borer, "<span class='info'>You feel the genetic changes take hold in your host.</span>")
+	to_chat(borer, "<span class='info'>I feel the genetic changes take hold in my host.</span>")
 
 /datum/unlockable/borer/head/gene_unlock/relock_action()
 	// This is inefficient, but OK because it doesn't happen often.
@@ -285,7 +285,7 @@
 /datum/unlockable/borer/head/gene_unlock/farsight
 	id = "farsight"
 	name = "Telephoto Vision"
-	desc = "Adjusts your host's eyes to see farther."
+	desc = "Adjusts my host's eyes to see farther."
 	cost = 200
 	time = 1 MINUTES
 	gene_name = "FARSIGHT"
@@ -309,7 +309,7 @@
 				host.update_mutations()
 				break
 
-	to_chat(borer, "<span class='info'>You feel the genetic changes take hold in your host.</span>")
+	to_chat(borer, "<span class='info'>I feel the genetic changes take hold in my host.</span>")
 
 /datum/unlockable/borer/chest/gene_unlock/relock_action()
 	// This is inefficient, but OK because it doesn't happen often.
@@ -326,7 +326,7 @@
 /datum/unlockable/borer/chest/gene_unlock/resist_cold
 	id = "resist_cold"
 	name = "Cold Resistance"
-	desc = "Adjusts your host's skin to be capable of reducing heat lost to the environment."
+	desc = "Adjusts my host's skin to be capable of reducing heat lost to the environment."
 	cost = 200
 	time = 1 MINUTES
 	gene_name = "FIRE"
@@ -335,7 +335,7 @@
 /datum/unlockable/borer/chest/gene_unlock/resist_heat
 	id = "resist_heat"
 	name = "Heat Resistance"
-	desc = "Adjusts your host's skin to be capable of reducing heat gained from the environment."
+	desc = "Adjusts my host's skin to be capable of reducing heat gained from the environment."
 	cost = 200
 	time = 1 MINUTES
 	gene_name = "COLD"
@@ -369,7 +369,7 @@
 				host.update_mutations()
 				break
 
-	to_chat(borer, "<span class='info'>You feel the genetic changes take hold in your host.</span>")
+	to_chat(borer, "<span class='info'>I feel the genetic changes take hold in my host.</span>")
 
 /datum/unlockable/borer/arm/gene_unlock/relock_action()
 	// This is inefficient, but OK because it doesn't happen often.
@@ -386,7 +386,7 @@
 /datum/unlockable/borer/arm/gene_unlock/strong
 	id = "strong"
 	name = "Increase Strength"
-	desc = "Improves your host's musculature, increasing your host's strength."
+	desc = "Improves my host's musculature, increasing my host's strength."
 	cost = 200
 	time = 1 MINUTES
 	gene_name = "STRONG"
@@ -395,7 +395,7 @@
 /datum/unlockable/borer/arm/gene_unlock/regeneration
 	id = "regeneration"
 	name = "Regeneration"
-	desc = "Modifies your host's immune system to provide a small amount of damage regeneration."
+	desc = "Modifies my host's immune system to provide a small amount of damage regeneration."
 	cost = 200
 	time = 1 MINUTES
 	gene_name = "REGENERATE"
@@ -404,7 +404,7 @@
 /datum/unlockable/borer/arm/gene_unlock/shock_immunity
 	id = "shock_immunity"
 	name = "Shock Immunity"
-	desc = "Adjusts your host's skin to be more resistant to electrical currents."
+	desc = "Adjusts my host's skin to be more resistant to electrical currents."
 	cost = 200
 	time = 1 MINUTES
 	gene_name = "SHOCKIMMUNITY"
@@ -429,7 +429,7 @@
 				host.update_mutations()
 				break
 
-	to_chat(borer, "<span class='info'>You feel the genetic changes take hold in your host.</span>")
+	to_chat(borer, "<span class='info'>I feel the genetic changes take hold in my host.</span>")
 
 /datum/unlockable/borer/leg/gene_unlock/relock_action()
 	// This is inefficient, but OK because it doesn't happen often.
@@ -446,7 +446,7 @@
 /datum/unlockable/borer/leg/gene_unlock/run
 	id = "run"
 	name = "Improve Run"
-	desc = "Improves your host's slow-twitch leg muscles to negate speed loss from environmental factors."
+	desc = "Improves my host's slow-twitch leg muscles to negate speed loss from environmental factors."
 	cost = 150
 	time = 20 SECONDS
 	gene_name = "INCREASERUN"
@@ -454,7 +454,7 @@
 /datum/unlockable/borer/leg/gene_unlock/jump
 	id = "jump"
 	name = "Improve Jump"
-	desc = "Improves your host's fast-twitch leg muscles to enable huge leaps."
+	desc = "Improves my host's fast-twitch leg muscles to enable huge leaps."
 	cost = 200
 	time = 30 SECONDS
 	gene_name = "JUMP"
@@ -473,7 +473,7 @@
 		borer.attached_verbs_head|=verb_type
 	if(give_when_detached)
 		borer.detached_verbs|=verb_type
-	to_chat(borer, "<span class='info'>You learned [name]!</span>")
+	to_chat(borer, "<span class='info'>I learned [name]!</span>")
 	borer.update_verbs(BORER_MODE_ATTACHED_HEAD)
 
 /datum/unlockable/borer/head/verb_unlock/relock_action()
@@ -481,13 +481,13 @@
 		borer.attached_verbs_head-=verb_type
 	if(give_when_detached)
 		borer.detached_verbs-=verb_type
-	to_chat(borer, "<span class='warning'>You forgot [name]!</span>")
+	to_chat(borer, "<span class='warning'>I forgot [name]!</span>")
 	//borer.update_verbs(borer.attached)
 
 /datum/unlockable/borer/head/verb_unlock/taste_blood
 	id="taste_blood"
 	name = "Taste Blood"
-	desc = "Gain the ability to check your host's blood for chemicals."
+	desc = "Gain the ability to check my host's blood for chemicals."
 	cost=50
 	time=5 SECONDS
 	verb_type = /obj/item/verbs/borer/attached/taste_blood
@@ -496,7 +496,7 @@
 /datum/unlockable/borer/head/verb_unlock/night_vision
 	id = "night_vision"
 	name = "Night Vision"
-	desc = "Learn how to expend chemicals constantly in order to convert visual data from your host's eyes into the infrared spectrum."
+	desc = "Learn how to expend chemicals constantly in order to convert visual data from my host's eyes into the infrared spectrum."
 	cost = 200
 	time = 2 MINUTES
 	verb_type = /obj/item/verbs/borer/attached_head/night_vision
@@ -505,7 +505,7 @@
 
 /obj/item/verbs/borer/attached/taste_blood/verb/taste_blood()
 	set name = "Taste Blood"
-	set desc = "See if there's anything within the blood of your host."
+	set desc = "See if there's anything within the blood of my host."
 	set category = "Alien"
 
 	var/mob/living/simple_animal/borer/B=loc
@@ -526,7 +526,7 @@
 		borer.attached_verbs_chest|=verb_type
 	if(give_when_detached)
 		borer.detached_verbs|=verb_type
-	to_chat(borer, "<span class='info'>You learned [name]!</span>")
+	to_chat(borer, "<span class='info'>I learned [name]!</span>")
 	borer.update_verbs(BORER_MODE_ATTACHED_CHEST)
 
 /datum/unlockable/borer/chest/verb_unlock/relock_action()
@@ -534,13 +534,13 @@
 		borer.attached_verbs_chest-=verb_type
 	if(give_when_detached)
 		borer.detached_verbs-=verb_type
-	to_chat(borer, "<span class='warning'>You forgot [name]!</span>")
+	to_chat(borer, "<span class='warning'>I forgot [name]!</span>")
 	//borer.update_verbs(borer.attached)
 
 /datum/unlockable/borer/chest/verb_unlock/taste_blood
 	id="taste_blood"
 	name = "Taste Blood"
-	desc = "Gain the ability to check your host's blood for chemicals."
+	desc = "Gain the ability to check my host's blood for chemicals."
 	cost=50
 	time=5 SECONDS
 	verb_type = /obj/item/verbs/borer/attached/taste_blood
@@ -549,7 +549,7 @@
 /datum/unlockable/borer/chest/verb_unlock/brute_resist
 	id="brute_resist"
 	name = "Brute Damage Resistance"
-	desc = "Learn how to expend chemicals constantly in order to mitigate brute damage done to your host."
+	desc = "Learn how to expend chemicals constantly in order to mitigate brute damage done to my host."
 	cost=200
 	time=60 SECONDS
 	verb_type = /obj/item/verbs/borer/attached_chest/brute_resist
@@ -558,7 +558,7 @@
 /datum/unlockable/borer/chest/verb_unlock/burn_resist
 	id="burn_resist"
 	name = "Burn Damage Resistance"
-	desc = "Learn how to expend chemicals constantly in order to mitigate burn damage done to your host."
+	desc = "Learn how to expend chemicals constantly in order to mitigate burn damage done to my host."
 	cost=200
 	time=60 SECONDS
 	verb_type = /obj/item/verbs/borer/attached_chest/burn_resist
@@ -577,7 +577,7 @@
 		borer.attached_verbs_arm|=verb_type
 	if(give_when_detached)
 		borer.detached_verbs|=verb_type
-	to_chat(borer, "<span class='info'>You learned [name]!</span>")
+	to_chat(borer, "<span class='info'>I learned [name]!</span>")
 	borer.update_verbs(BORER_MODE_ATTACHED_ARM)
 
 /datum/unlockable/borer/arm/verb_unlock/relock_action()
@@ -585,13 +585,13 @@
 		borer.attached_verbs_arm-=verb_type
 	if(give_when_detached)
 		borer.detached_verbs-=verb_type
-	to_chat(borer, "<span class='warning'>You forgot [name]!</span>")
+	to_chat(borer, "<span class='warning'>I forgot [name]!</span>")
 	//borer.update_verbs(borer.attached)
 
 /datum/unlockable/borer/arm/verb_unlock/taste_blood
 	id="taste_blood"
 	name = "Taste Blood"
-	desc = "Gain the ability to check your host's blood for chemicals."
+	desc = "Gain the ability to check my host's blood for chemicals."
 	cost=50
 	time=5 SECONDS
 	verb_type = /obj/item/verbs/borer/attached/taste_blood
@@ -600,7 +600,7 @@
 /datum/unlockable/borer/arm/verb_unlock/bone_sword
 	id="bone_sword"
 	name = "Bone Sword"
-	desc = "Learn how to expend chemicals constantly in order to form a large blade of bone for your host. Learning this will lock you into the Offense tree."
+	desc = "Learn how to expend chemicals constantly in order to form a large blade of bone for my host. Learning this will lock you into the Offense tree."
 	cost=100
 	time=30 SECONDS
 	verb_type = /obj/item/verbs/borer/attached_arm/bone_sword
@@ -610,7 +610,7 @@
 /datum/unlockable/borer/arm/verb_unlock/bone_hammer
 	id="bone_hammer"
 	name = "Bone Hammer"
-	desc = "Learn how to expend chemicals constantly in order to form a large, heavy mass of bone on your host's arm."
+	desc = "Learn how to expend chemicals constantly in order to form a large, heavy mass of bone on my host's arm."
 	cost=200
 	time=1 MINUTES
 	verb_type = /obj/item/verbs/borer/attached_arm/bone_hammer
@@ -620,7 +620,7 @@
 /datum/unlockable/borer/arm/verb_unlock/bone_shield
 	id="bone_shield"
 	name = "Bone Shield"
-	desc = "Learn how to expend chemicals constantly in order to form a large shield of bone for your host. Learning this will lock you into the Defense tree."
+	desc = "Learn how to expend chemicals constantly in order to form a large shield of bone for my host. Learning this will lock you into the Defense tree."
 	cost=100
 	time=30 SECONDS
 	verb_type = /obj/item/verbs/borer/attached_arm/bone_shield
@@ -630,7 +630,7 @@
 /datum/unlockable/borer/arm/verb_unlock/bone_cocoon
 	id="bone_cocoon"
 	name = "Bone Cocoon"
-	desc = "Learn how to expend chemicals constantly in order to form a large protective cocoon of bone around your host."
+	desc = "Learn how to expend chemicals constantly in order to form a large protective cocoon of bone around my host."
 	cost=200
 	time=1 MINUTES
 	verb_type = /obj/item/verbs/borer/attached_arm/bone_cocoon
@@ -650,7 +650,7 @@
 /datum/unlockable/borer/arm/verb_unlock/repair_bone
 	id="repair_bone"
 	name = "Repair Bone"
-	desc = "Learn how to expend chemicals in order to repair bones in your host's arm. Learning this will lock you into the Utility tree."
+	desc = "Learn how to expend chemicals in order to repair bones in my host's arm. Learning this will lock you into the Utility tree."
 	cost=50
 	time=10 SECONDS
 	verb_type = /obj/item/verbs/borer/attached_arm/repair_bone
@@ -662,12 +662,12 @@
 
 /datum/unlockable/borer/arm/extend_o_arm_unlock/unlock_action()
 	borer.extend_o_arm_unlocked = 1
-	to_chat(borer, "<span class='info'>You learned [name]!</span>")
+	to_chat(borer, "<span class='info'>I learned [name]!</span>")
 
 /datum/unlockable/borer/arm/extend_o_arm_unlock/extend_o_arm
 	id="extend_o_arm"
 	name = "Extensible Arm"
-	desc = "Gain the ability to extrude a prehensile length of flesh from your host's arm."
+	desc = "Gain the ability to extrude a prehensile length of flesh from my host's arm."
 	cost=200
 	time=1 MINUTES
 	prerequisites=list("repair_bone")
@@ -685,7 +685,7 @@
 		borer.attached_verbs_leg|=verb_type
 	if(give_when_detached)
 		borer.detached_verbs|=verb_type
-	to_chat(borer, "<span class='info'>You learned [name]!</span>")
+	to_chat(borer, "<span class='info'>I learned [name]!</span>")
 	borer.update_verbs(BORER_MODE_ATTACHED_LEG)
 
 /datum/unlockable/borer/leg/verb_unlock/relock_action()
@@ -693,13 +693,13 @@
 		borer.attached_verbs_leg-=verb_type
 	if(give_when_detached)
 		borer.detached_verbs-=verb_type
-	to_chat(borer, "<span class='warning'>You forgot [name]!</span>")
+	to_chat(borer, "<span class='warning'>I forgot [name]!</span>")
 	//borer.update_verbs(borer.attached)
 
 /datum/unlockable/borer/leg/verb_unlock/taste_blood
 	id="taste_blood"
 	name = "Taste Blood"
-	desc = "Gain the ability to check your host's blood for chemicals."
+	desc = "Gain the ability to check my host's blood for chemicals."
 	cost=50
 	time=5 SECONDS
 	verb_type = /obj/item/verbs/borer/attached/taste_blood
@@ -717,7 +717,7 @@
 /datum/unlockable/borer/leg/verb_unlock/bone_talons
 	id="bone_talons"
 	name = "Bone Talons"
-	desc = "Learn how to expend chemicals constantly in order to create strong bony talons on your host's foot."
+	desc = "Learn how to expend chemicals constantly in order to create strong bony talons on my host's foot."
 	cost=50
 	time=10 SECONDS
 	verb_type = /obj/item/verbs/borer/attached_leg/bone_talons

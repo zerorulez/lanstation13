@@ -80,7 +80,7 @@
 			if(destroyed)
 				to_chat(user, "<span class='warning'>\The [src.name] is destroyed beyond repair.</span>")
 			add_fingerprint(user)
-			user.visible_message("<span class='notice'>[user] has fixed some of the dents on \the [src].</span>", "<span class='notice'>You fix some of the dents on \the [src]</span>")
+			user.visible_message("<span class='notice'>[user] has fixed some of the dents on \the [src].</span>", "<span class='notice'>I fix some of the dents on \the [src]</span>")
 			health += 20
 			HealthCheck()
 		else
@@ -88,9 +88,9 @@
 			return
 	else if(istype(W, /obj/item/key))
 		if(keytype)
-			to_chat(user, "Hold \the [W] in one of your hands while you drive \the [src].")
+			to_chat(user, "Hold \the [W] in one of my hands while you drive \the [src].")
 		else
-			to_chat(user, "You don't need a key.")
+			to_chat(user, "I don't need a key.")
 
 /obj/structure/bed/chair/vehicle/proc/check_key(var/mob/user)
 	if(!keytype)
@@ -103,7 +103,7 @@
 		unlock_atom(user)
 		return
 	if(!check_key(user))
-		to_chat(user, "<span class='notice'>You'll need the keys in one of your hands to drive \the [src].</span>")
+		to_chat(user, "<span class='notice'>I'll need the keys in one of my hands to drive \the [src].</span>")
 		return 0
 	if(empstun > 0)
 		if(user)
@@ -166,7 +166,7 @@
 
 	M.visible_message(\
 		"<span class='notice'>[M] climbs onto \the [nick]!</span>",\
-		"<span class='notice'>You climb onto \the [nick]!</span>")
+		"<span class='notice'>I climb onto \the [nick]!</span>")
 
 	lock_atom(M, /datum/locking_category/buckle/chair/vehicle)
 

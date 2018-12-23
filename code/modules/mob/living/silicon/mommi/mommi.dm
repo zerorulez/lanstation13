@@ -46,7 +46,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 
 /mob/living/silicon/robot/mommi/examination(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
 	if(ismob(A) && src.can_see_static()) //can't examine what you can't catch!
-		to_chat(usr, "Your vision module can't determine any of [A]'s features.")
+		to_chat(usr, "My vision module can't determine any of [A]'s features.")
 		return
 
 	..()
@@ -220,16 +220,16 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 
 	else if (iscrowbar(W))	// crowbar means open or close the cover
 		if(stat == DEAD)
-			to_chat(user, "You pop the MMI off the base.")
+			to_chat(user, "I pop the MMI off the base.")
 			spawn(0)
 				qdel(src)
 			return
 		if(opened)
 			if(mmi && wiresexposed && wires.IsAllCut())
 				//Cell is out, wires are exposed, remove MMI, produce damaged chassis, baleet original mob.
-				to_chat(user, "You jam the crowbar into \the [src] and begin levering [mmi].")
+				to_chat(user, "I jam the crowbar into \the [src] and begin levering [mmi].")
 				if (do_after(user, src,3))
-					to_chat(user, "You damage some parts of the casing, but eventually manage to rip out [mmi]!")
+					to_chat(user, "I damage some parts of the casing, but eventually manage to rip out [mmi]!")
 					var/limbs = list(/obj/item/robot_parts/l_leg, /obj/item/robot_parts/r_leg, /obj/item/robot_parts/l_arm, /obj/item/robot_parts/r_arm)
 					for(var/newlimb = 1 to rand(2, 4))
 						var/limb_to_spawn = pick(limbs)
@@ -242,14 +242,14 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 					qdel(src)
 					return
 			else
-				to_chat(user, "You close the cover.")
+				to_chat(user, "I close the cover.")
 				opened = 0
 				updateicon()
 		else
 			if(locked)
 				to_chat(user, "The cover is locked and cannot be opened.")
 			else
-				to_chat(user, "You open the cover.")
+				to_chat(user, "I open the cover.")
 				opened = 1
 				updateicon()
 
@@ -261,7 +261,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 		else
 			user.drop_item(W, src)
 			cell = W
-			to_chat(user, "You insert the power cell.")
+			to_chat(user, "I insert the power cell.")
 //			chargecount = 0
 		updateicon()
 
@@ -269,7 +269,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 		if (wiresexposed)
 			wires.Interact(user)
 		else
-			to_chat(user, "You can't reach the wiring.")
+			to_chat(user, "I can't reach the wiring.")
 
 	else if(isscrewdriver(W) && opened && !cell)	// haxing
 		wiresexposed = !wiresexposed
@@ -285,7 +285,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 
 	else if(istype(W, /obj/item/device/encryptionkey/) && opened)
 		if(radio)//sanityyyyyy
-			radio.attackby(W,user)//GTFO, you have your own procs
+			radio.attackby(W,user)//GTFO, you have my own procs
 		else
 			to_chat(user, "Unable to locate a radio.")
 /*
@@ -293,11 +293,11 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 		if(emagged)//still allow them to open the cover
 			to_chat(user, "The interface seems slightly damaged")
 		if(opened)
-			to_chat(user, "You must close the cover to swipe an ID card.")
+			to_chat(user, "I must close the cover to swipe an ID card.")
 		else
 			if(allowed(usr))
 				locked = !locked
-				to_chat(user, "You [ locked ? "lock" : "unlock"] [src]'s interface.")
+				to_chat(user, "I [ locked ? "lock" : "unlock"] [src]'s interface.")
 				updateicon()
 			else
 				to_chat(user, "<span class='warning'>Access denied.</span>")
@@ -324,7 +324,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 			cell.updateicon()
 			cell.add_fingerprint(user)
 			user.put_in_active_hand(cell)
-			to_chat(user, "You remove \the [cell].")
+			to_chat(user, "I remove \the [cell].")
 			cell = null
 			updateicon()
 			return
@@ -457,7 +457,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 /mob/living/silicon/robot/mommi/proc/ActivateKeeper()
 	set category = "Robot Commands"
 	set name = "Activate KEEPER"
-	set desc = "Performs a full purge of your laws and disconnects you from AIs and cyborg consoles.  However, you lose the ability to speak and must remain neutral, only being permitted to perform station upkeep.  You can still be emagged in this state."
+	set desc = "Performs a full purge of my laws and disconnects you from AIs and cyborg consoles.  However, you lose the ability to speak and must remain neutral, only being permitted to perform station upkeep.  You can still be emagged in this state."
 
 	if(keeper)
 		return
@@ -469,7 +469,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 		var/obj/item/weapon/aiModule/keeper/mdl = new
 
 		mdl.upload(src.laws,src,src)
-		to_chat(src, "These are your laws now:")
+		to_chat(src, "These are my laws now:")
 		src.show_laws()
 
 		src.verbs -= /mob/living/silicon/robot/mommi/proc/ActivateKeeper

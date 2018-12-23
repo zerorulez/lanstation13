@@ -243,7 +243,7 @@
 		visible_message( \
 			"<span class='warning'>[src] was shocked by the [source]!</span>", \
 			"<span class='danger'>Energy pulse detected, system damaged!</span>", \
-			"<span class='warning'>You hear a heavy electrical crack.</span>" \
+			"<span class='warning'>I hear a heavy electrical crack.</span>" \
 		)
 
 		if(prob(20))
@@ -322,7 +322,7 @@
 
 		H.knock_out_teeth()
 	else
-		to_chat(H, "<span class='info'>Your self-preservation instinct prevents you from breaking your teeth on \the [src].</span>")
+		to_chat(H, "<span class='info'>My self-preservation instinct prevents you from breaking my teeth on \the [src].</span>")
 
 /mob/living/silicon/flash_eyes(intensity = 1, override_blindness_check = 0, affect_silicon = 0, visual = 0, type = /obj/screen/fullscreen/flash/noise)
 	if(affect_silicon)

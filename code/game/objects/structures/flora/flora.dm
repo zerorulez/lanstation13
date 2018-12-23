@@ -39,7 +39,7 @@
 			O.pixel_x = Clamp(text2num(params_list["icon-x"]) - clamp_x, -clamp_x, clamp_x)+(((((clicked.Width()/32)-1)*16)*PIXEL_MULTIPLIER))
 			O.pixel_y = (Clamp(text2num(params_list["icon-y"]) - clamp_y, -clamp_y, clamp_y)+((((clicked.Height()/32)-1)*16)*PIXEL_MULTIPLIER))-(5*PIXEL_MULTIPLIER)
 			overlays += O
-			to_chat(user, "You hang \the [I] on \the [src].")
+			to_chat(user, "I hang \the [I] on \the [src].")
 			return 1
 
 /obj/structure/flora/attack_hand(mob/user)
@@ -51,7 +51,7 @@
 			if(count < 1)
 				return
 			I = contents[count]
-		user.visible_message("<span class='notice'>[user] plucks \the [I] off \the [src].</span>", "You take \the [I] off \the [src].")
+		user.visible_message("<span class='notice'>[user] plucks \the [I] off \the [src].</span>", "I take \the [I] off \the [src].")
 		I.forceMove(loc)
 		user.put_in_active_hand(I)
 		overlays -= overlays[overlays.len]
@@ -293,7 +293,7 @@
 			to_chat(user, "There is already something in the pot.")
 			return
 	if(user.drop_item(I, src))
-		user.visible_message("<span class='notice'>[user] stuffs something into the pot.</span>", "You stuff \the [I] into the [src].")
+		user.visible_message("<span class='notice'>[user] stuffs something into the pot.</span>", "I stuff \the [I] into the [src].")
 
 /obj/structure/flora/pottedplant/attack_hand(mob/user)
 	if(contents.len)
@@ -302,17 +302,17 @@
 		while(istype(I, /obj/item/ornament))
 			count++
 			if(count > contents.len)	//pot is emptied of non-ornament items
-				user.visible_message("<span class='notice'>[user] plucks \the [I] off \the [src].</span>", "You take \the [I] off \the [src].")
+				user.visible_message("<span class='notice'>[user] plucks \the [I] off \the [src].</span>", "I take \the [I] off \the [src].")
 				I.forceMove(loc)
 				user.put_in_active_hand(I)
 				overlays -= overlays[overlays.len]
 				return
 			I = contents[count]
-		user.visible_message("<span class='notice'>[user] retrieves something from the pot.</span>", "You retrieve \the [I] from the [src].")
+		user.visible_message("<span class='notice'>[user] retrieves something from the pot.</span>", "I retrieve \the [I] from the [src].")
 		I.forceMove(loc)
 		user.put_in_active_hand(I)
 	else
-		to_chat(user, "You root around in the roots.")
+		to_chat(user, "I root around in the roots.")
 
 /obj/structure/flora/pottedplant/attack_paw(mob/user)
 	return attack_hand(user)
@@ -323,7 +323,7 @@
 
 /obj/structure/flora/pottedplant/cyberplant
 	name = "holographic plant"
-	desc = "Add to your Space a bit of the comfort from old Earth, by buying this blue buddy. A nuclear battery and a rugged case guarantee that your flower will survive journey to another galaxy, and variety of plant types won't let you to get bored along the way!"
+	desc = "Add to my Space a bit of the comfort from old Earth, by buying this blue buddy. A nuclear battery and a rugged case guarantee that my flower will survive journey to another galaxy, and variety of plant types won't let you to get bored along the way!"
 	icon = 'icons/obj/cyberplants.dmi'
 	icon_state = "holopot"
 	light_color = "#3C94C5"
@@ -362,7 +362,7 @@
 	if(emaged)
 		return
 	name = "holographic skeleton"
-	desc = "A holographic skeleton and a malfunctioning holographic plant. It sends shivers down your spine."
+	desc = "A holographic skeleton and a malfunctioning holographic plant. It sends shivers down my spine."
 	emaged = TRUE
 	overlays -= plant
 	plant = prepare_icon("emaged")
@@ -398,7 +398,7 @@
 /obj/structure/flora/pottedplant/claypot/examine(mob/user)
 	..()
 	if(plant_name)
-		to_chat(user, "<span class='info'>You can see [plant_name] planted in it.</span>")
+		to_chat(user, "<span class='info'>I can see [plant_name] planted in it.</span>")
 
 /obj/structure/flora/pottedplant/claypot/attackby(var/obj/item/O,var/mob/user)
 	if(istype(O,/obj/item/weapon/wrench))
@@ -407,14 +407,14 @@
 			anchored = !anchored
 			user.visible_message(	"<span class='notice'>[user] [anchored ? "wrench" : "unwrench"]es \the [src] [anchored ? "in place" : "from its fixture"].</span>",
 									"<span class='notice'>\icon[src] You [anchored ? "wrench" : "unwrench"] \the [src] [anchored ? "in place" : "from its fixture"].</span>",
-									"<span class='notice'>You hear a ratchet.</span>")
+									"<span class='notice'>I hear a ratchet.</span>")
 	else if(plant_name && istype(O,/obj/item/weapon/pickaxe/shovel))
 		to_chat(user, "<span class='notice'>\icon[src] You start removing the [plant_name] from \the [src].</span>")
 		if(do_after(user, src, 30))
 			playsound(loc, 'sound/items/shovel.ogg', 50, 1)
 			user.visible_message(	"<span class='notice'>[user] removes the [plant_name] from \the [src].</span>",
 									"<span class='notice'>\icon[src] You remove the [plant_name] from \the [src].</span>",
-									"<span class='notice'>You hear some digging.</span>")
+									"<span class='notice'>I hear some digging.</span>")
 			for(var/atom/movable/I in contents)
 				I.forceMove(loc)
 			var/obj/item/claypot/C = new(loc)

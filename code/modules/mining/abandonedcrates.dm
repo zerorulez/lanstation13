@@ -27,7 +27,7 @@ var/global/list/valid_abandoned_crate_types = typesof(/obj/structure/closet/crat
 				to_chat(user, "<span class='notice'>The crate unlocks!</span>")
 				locked = 0
 			else if (input == null || input > max || input < min)
-				to_chat(user, "<span class='notice'>You leave the crate alone.</span>")
+				to_chat(user, "<span class='notice'>I leave the crate alone.</span>")
 			else
 				to_chat(user, "<span class='warning'>A red light flashes.</span>")
 				lastattempt = input
@@ -41,7 +41,7 @@ var/global/list/valid_abandoned_crate_types = typesof(/obj/structure/closet/crat
 					qdel(src)
 					return
 		else
-			to_chat(user, "<span class='notice'>You attempt to interact with the device using a hand gesture, but it appears this crate is from before the DECANECT came out.</span>")
+			to_chat(user, "<span class='notice'>I attempt to interact with the device using a hand gesture, but it appears this crate is from before the DECANECT came out.</span>")
 			return
 	else
 		return ..()

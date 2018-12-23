@@ -83,25 +83,25 @@
 /obj/structure/cage/attackby(obj/item/W, mob/user)
 	if(iswrench(W))
 		if(anchored)
-			to_chat(user, "<span class='info'>You start unsecuring \the [src] from \the [loc].</span>")
+			to_chat(user, "<span class='info'>I start unsecuring \the [src] from \the [loc].</span>")
 		else
 			if(!istype(loc, /turf/simulated/floor)) //Can't secure the cage to space
 				return
 
-			to_chat(user, "<span class='info'>You start securing \the [src] to \the [loc].</span>")
+			to_chat(user, "<span class='info'>I start securing \the [src] to \the [loc].</span>")
 
 		spawn()
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 100, 1)
 			if(do_after(user, src, 50))
 				anchored = !anchored
-				to_chat(user, "<span class='info'>[anchored ? "You successfully secure \the [src] to \the [loc]." : "You successfully unsecure \the [src] from \the [loc]."]")
+				to_chat(user, "<span class='info'>[anchored ? "I successfully secure \the [src] to \the [loc]." : "I successfully unsecure \the [src] from \the [loc]."]")
 
 		return 1
 	else if(door_state == C_CLOSED)
 		if(W.force >= 20 && (W.is_sharp() >= 1.0 || W.is_hot()))
 			var/time = 15 SECONDS
 
-			user.visible_message("<span class='danger'>[user] starts forcing \the [src]'s door open with \the [W]!</span>", "<span class='info'>You start forcing \the [src]'s door open with \the [W]. This will take around [(time / 10)] seconds.</span>")
+			user.visible_message("<span class='danger'>[user] starts forcing \the [src]'s door open with \the [W]!</span>", "<span class='info'>I start forcing \the [src]'s door open with \the [W]. This will take around [(time / 10)] seconds.</span>")
 			if(do_after(user, src, time))
 				if(door_state == C_CLOSED)
 					toggle_door(user)
@@ -120,7 +120,7 @@
 		var/time = 30 SECONDS
 		time -= ((user.get_strength() - 1) * 12.5) //Being strong reduces the time needed, down to 5 seconds
 
-		to_chat(user, "<span class='info'>You attempt to open \the [src]'s cover from inside. This will take around [(time / 10)] seconds.</span>")
+		to_chat(user, "<span class='info'>I attempt to open \the [src]'s cover from inside. This will take around [(time / 10)] seconds.</span>")
 		if(do_after(user, src, time + rand(-5 SECONDS, 5 SECONDS)))
 			if(cover_state == C_CLOSED)
 				toggle_cover(user)
@@ -134,7 +134,7 @@
 			var/time = 180 SECONDS
 			time -= ((user.get_strength() - 1) * 60) //Being strong reduces the time needed, down to 60 seconds
 
-			to_chat(user, "<span class='info'>You attempt to open \the [src]'s door from inside. This will take around [(time / 10)] seconds.</span>")
+			to_chat(user, "<span class='info'>I attempt to open \the [src]'s door from inside. This will take around [(time / 10)] seconds.</span>")
 			if(do_after(user, src, time + rand(-5 SECONDS, 5 SECONDS)))
 				if(door_state == C_CLOSED)
 					toggle_door(user)
@@ -150,8 +150,8 @@
 				if(door_state == current_door_state)
 					toggle_door(user)
 					user.visible_message("<span class='notice'>\The [user] [door_state == C_OPENED ? "opens" : "closes"] \the [src]!</span>", \
-						"<span class='info'>You [door_state == C_OPENED ? "open" : "close"] \the [src].</span>", \
-						self_drugged_message = "<span class='info'>You [door_state == C_OPENED ? "open the magic wardrobe. The world of Narnia awaits!" : "close the magic wardrobe. Goodbye, Narnia."]")
+						"<span class='info'>I [door_state == C_OPENED ? "open" : "close"] \the [src].</span>", \
+						self_drugged_message = "<span class='info'>I [door_state == C_OPENED ? "open the magic wardrobe. The world of Narnia awaits!" : "close the magic wardrobe. Goodbye, Narnia."]")
 
 		return 1
 
@@ -217,10 +217,10 @@
 		if(C_OPENED) //Cover is opened - mob is atom locked to the cage
 			victim.forceMove(get_turf(src))
 			lock_atom(victim, /datum/locking_category/cage)
-			to_chat(victim, "<span class='notice'>You suddenly find yourself locked in a cage!</span>")
+			to_chat(victim, "<span class='notice'>I suddenly find yourself locked in a cage!</span>")
 		if(C_CLOSED) //Cover is closed - mob is stored inside the cage
 			victim.forceMove(src)
-			to_chat(victim, "<span class='notice'>You suddenly find yourself locked in a cage!</span>")
+			to_chat(victim, "<span class='notice'>I suddenly find yourself locked in a cage!</span>")
 
 /obj/structure/cage/proc/mob_is_inside(mob/checked)
 	if (contents.Find(checked))

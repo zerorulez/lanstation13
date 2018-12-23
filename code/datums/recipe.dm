@@ -8,7 +8,7 @@
  * * reagents are reagents. Acid, milc, booze, etc.
  * * items are objects. Fruits, tools, circuit boards.
  * * result is type to create as new object
- * * time is optional parameter, you shall use in in your machine,
+ * * time is optional parameter, you shall use in in my machine,
      default /datum/recipe/ procs does not rely on this parameter.
  *
  *  Functions you need:
@@ -105,7 +105,7 @@
 		qdel(O) //Delete the object, he has outlived his usefulness
 	container.reagents.clear_reagents() //Clear all the reagents we haven't transfered, for instance if we need to cook in water
 	score["meals"]++ //Yes, it's a weird placement, but it's sure to work correctly as long as make_food() is used for food
-	return result_obj //Here we go, your result sire
+	return result_obj //Here we go, my result sire
 
 //Find what to do with all this shit in the microwave dynamically, without blowing up the station
 //We consider all recipes in the game, obj (typecast as obj and estimated as obj because fuck you) and wherever or not its ingredients are exact based on what we learned from the last two procs

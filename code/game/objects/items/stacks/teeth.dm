@@ -34,7 +34,7 @@
 		var/obj/item/stack/cable_coil/C = W
 
 		if(src.amount < 10)
-			to_chat(user, "<span class='info'>You need at least 10 teeth to create a necklace.</span>")
+			to_chat(user, "<span class='info'>I need at least 10 teeth to create a necklace.</span>")
 			return
 
 		if(C.use(5))
@@ -46,11 +46,11 @@
 			X.teeth_amount = amount
 			X.update_name()
 			user.put_in_active_hand(X)
-			to_chat(user, "<span class='info'>You create a [X.name] out of [amount] [src] and \the [C].</span>")
+			to_chat(user, "<span class='info'>I create a [X.name] out of [amount] [src] and \the [C].</span>")
 
 			qdel(src)
 		else
-			to_chat(user, "<span class='info'>You need at least 5 lengths of cable to do this!</span>")
+			to_chat(user, "<span class='info'>I need at least 5 lengths of cable to do this!</span>")
 
 /obj/item/stack/teeth/copy_evidences(obj/item/stack/from as obj)
 	.=..()

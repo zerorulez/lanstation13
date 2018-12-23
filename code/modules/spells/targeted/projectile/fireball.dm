@@ -59,7 +59,7 @@
 		else
 			return
 
-	return "You have improved Fireball into [name]. [explosion_description]"
+	return "I have improved Fireball into [name]. [explosion_description]"
 
 /spell/targeted/projectile/dumbfire/fireball/is_valid_target(var/atom/target)
 	if(!istype(target))

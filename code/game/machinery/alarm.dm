@@ -207,7 +207,7 @@
 		if(!regulating_temperature)
 			regulating_temperature = 1
 			visible_message("\The [src] clicks as it starts [environment.temperature > target_temperature ? "cooling" : "heating"] the room.",\
-			"You hear a click and a faint electronic hum.")
+			"I hear a click and a faint electronic hum.")
 
 		if(target_temperature > T0C + MAX_TEMPERATURE)
 			target_temperature = T0C + MAX_TEMPERATURE
@@ -231,7 +231,7 @@
 			if (abs(environment.temperature - target_temperature) <= 0.5)
 				regulating_temperature = 0
 				visible_message("\The [src] clicks quietly as it stops [environment.temperature > target_temperature ? "cooling" : "heating"] the room.",\
-				"You hear a click as a faint electronic humming stops.")
+				"I hear a click as a faint electronic humming stops.")
 
 	var/old_level = local_danger_level
 	var/new_danger = calculate_local_danger_level(environment)
@@ -812,7 +812,7 @@
 			else if(wiresexposed && wires.IsAllCut() && iswirecutter(W))
 				buildstage = 1
 				update_icon()
-				user.visible_message("<span class='attack'>[user] has cut the wiring from \the [src]!</span>", "You have cut the last of the wiring from \the [src].")
+				user.visible_message("<span class='attack'>[user] has cut the wiring from \the [src]!</span>", "I have cut the last of the wiring from \the [src].")
 				playsound(get_turf(src), 'sound/items/Wirecutter.ogg', 50, 1)
 				getFromPool(/obj/item/stack/cable_coil, get_turf(user), 5)
 				return
@@ -823,7 +823,7 @@
 				else
 					if(allowed(user) && !wires.IsIndexCut(AALARM_WIRE_IDSCAN))
 						locked = !locked
-						to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the Air Alarm interface.</span>")
+						to_chat(user, "<span class='notice'>I [ locked ? "lock" : "unlock"] the Air Alarm interface.</span>")
 					else
 						to_chat(user, "<span class='warning'>Access denied.</span>")
 			return ..() //Sanity
@@ -832,12 +832,12 @@
 			if(iscoil(W))
 				var/obj/item/stack/cable_coil/coil = W
 				if(coil.amount < 5)
-					to_chat(user, "You need more cable for this!")
+					to_chat(user, "I need more cable for this!")
 					return
 				for(var/i, i<= 5, i++)
 					wires.UpdateCut(i,1)
 
-				to_chat(user, "You wire \the [src]!")
+				to_chat(user, "I wire \the [src]!")
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 				coil.use(5)
 				buildstage = 2
@@ -846,17 +846,17 @@
 				return
 
 			else if(iscrowbar(W))
-				to_chat(user, "You start prying out the circuit...")
+				to_chat(user, "I start prying out the circuit...")
 				playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
 				if(do_after(user, src, 20) && buildstage == 1)
-					to_chat(user, "You pry out the circuit!")
+					to_chat(user, "I pry out the circuit!")
 					new /obj/item/weapon/circuitboard/air_alarm(get_turf(user))
 					buildstage = 0
 					update_icon()
 				return
 		if(0)
 			if(istype(W, /obj/item/weapon/circuitboard/air_alarm))
-				to_chat(user, "You insert the circuit!")
+				to_chat(user, "I insert the circuit!")
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 				qdel(W)
 				buildstage = 1
@@ -864,7 +864,7 @@
 				return
 
 			else if(iswrench(W))
-				to_chat(user, "You remove the air alarm assembly from the wall!")
+				to_chat(user, "I remove the air alarm assembly from the wall!")
 				new /obj/item/mounted/frame/alarm_frame(get_turf(user))
 				playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 				qdel(src)
@@ -978,46 +978,46 @@ FIRE ALARM
 			if(2)
 				if (ismultitool(W))
 					src.detecting = !( src.detecting )
-					user.visible_message("<span class='attack'>[user] has [detecting ? "re" : "dis"]connected [src]'s detecting unit!</span>", "You have [detecting ? "re" : "dis"]reconnected [src]'s detecting unit.")
+					user.visible_message("<span class='attack'>[user] has [detecting ? "re" : "dis"]connected [src]'s detecting unit!</span>", "I have [detecting ? "re" : "dis"]reconnected [src]'s detecting unit.")
 					playsound(get_turf(src), 'sound/items/healthanalyzer.ogg', 50, 1)
 				if(iswirecutter(W))
-					to_chat(user, "You begin to cut the wiring...")
+					to_chat(user, "I begin to cut the wiring...")
 					playsound(get_turf(src), 'sound/items/Wirecutter.ogg', 50, 1)
 					if (do_after(user, src,  50) && buildstage == 2 && wiresexposed)
 						buildstage=1
-						user.visible_message("<span class='attack'>[user] has cut the wiring from \the [src]!</span>", "You have cut the last of the wiring from \the [src].")
+						user.visible_message("<span class='attack'>[user] has cut the wiring from \the [src]!</span>", "I have cut the last of the wiring from \the [src].")
 						update_icon()
 						getFromPool(/obj/item/stack/cable_coil, get_turf(user), 5)
 			if(1)
 				if(iscoil(W))
 					var/obj/item/stack/cable_coil/coil = W
 					if(coil.amount < 5)
-						to_chat(user, "You need more cable for this!")
+						to_chat(user, "I need more cable for this!")
 						return
 					coil.use(5)
 
 					buildstage = 2
-					to_chat(user, "You wire \the [src]!")
+					to_chat(user, "I wire \the [src]!")
 					update_icon()
 
 				else if(iscrowbar(W))
-					to_chat(user, "You start prying out the circuit...")
+					to_chat(user, "I start prying out the circuit...")
 					playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
 					if (do_after(user, src,  20) && buildstage == 1)
-						to_chat(user, "You pry out the circuit!")
+						to_chat(user, "I pry out the circuit!")
 						new /obj/item/weapon/circuitboard/fire_alarm(get_turf(user))
 						buildstage = 0
 						update_icon()
 			if(0)
 				if(istype(W, /obj/item/weapon/circuitboard/fire_alarm))
-					to_chat(user, "You insert the circuit!")
+					to_chat(user, "I insert the circuit!")
 					playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 					qdel(W)
 					buildstage = 1
 					update_icon()
 
 				else if(iswrench(W))
-					to_chat(user, "You remove the fire alarm assembly from the wall!")
+					to_chat(user, "I remove the fire alarm assembly from the wall!")
 					new /obj/item/mounted/frame/firealarm(get_turf(user))
 					playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 					qdel(src)

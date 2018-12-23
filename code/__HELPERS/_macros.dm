@@ -1,5 +1,5 @@
 ///MACRO FILE//
-//Define your macros here if they're used in general code
+//Define my macros here if they're used in general code
 
 //Typechecking macros
 // fun if you want to typecast humans/monkeys/etc without writing long path-filled lines.

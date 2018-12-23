@@ -132,7 +132,7 @@
 	return
 
 /datum/game_mode/traitor/double_agents/greet_traitor(var/datum/mind/traitor)
-	to_chat(traitor.current, "<B><font size=3 color=red>You are the double agent.<br>Relations with the other groups in the Syndicate Coalition have gone south, take the other agents out before they do the same to you.</font></B>")
+	to_chat(traitor.current, "<B><font size=3 color=red>I am the double agent.<br>Relations with the other groups in the Syndicate Coalition have gone south, take the other agents out before they do the same to you.</font></B>")
 	var/obj_count = 1
 	for(var/datum/objective/objective in traitor.objectives)
 		to_chat(traitor.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")

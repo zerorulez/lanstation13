@@ -75,7 +75,7 @@ Remotes have procs for when attack_self() is called to handle which button is pr
 			if(get_button_by_id(button_id))
 				var/obj/item/device/remote_button/removed = remove_button(button_id)
 				if(removed)
-					to_chat(user, "You pop out \the [removed].")
+					to_chat(user, "I pop out \the [removed].")
 					user.put_in_hands(removed)
 				else
 					to_chat(user, "The button doesn't seem to be removable.")
@@ -84,7 +84,7 @@ Remotes have procs for when attack_self() is called to handle which button is pr
 		if(istype(used_item, /obj/item/device/remote_button))
 			if(user.drop_item(used_item, holder))
 				if(add_button(used_item, return_clicked_id_by_params(params) )) //attempt to plug the button on
-					to_chat(user, "You click \the [used_item] into \the [holder].")
+					to_chat(user, "I click \the [used_item] into \the [holder].")
 					return 1
 				else
 					used_item.forceMove(get_turf(src))

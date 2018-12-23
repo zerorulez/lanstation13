@@ -322,22 +322,22 @@
 					return
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 50, 1)
 				if(!welded)
-					user.visible_message("[user] welds the vent shut.", "You weld the vent shut.", "You hear welding.")
+					user.visible_message("[user] welds the vent shut.", "I weld the vent shut.", "I hear welding.")
 					welded = 1
 					update_icon()
 				else
-					user.visible_message("[user] unwelds the vent.", "You unweld the vent.", "You hear welding.")
+					user.visible_message("[user] unwelds the vent.", "I unweld the vent.", "I hear welding.")
 					welded = 0
 					update_icon()
 			else
 				to_chat(user, "<span class='notice'>The welding tool needs to be on to start this task.</span>")
 		else
-			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
 			return 1
 	if (!iswrench(W))
 		return ..()
 	if (!(stat & NOPOWER) && on)
-		to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
+		to_chat(user, "<span class='warning'>I cannot unwrench this [src], turn it off first.</span>")
 		return 1
 	return ..()
 

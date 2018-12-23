@@ -74,16 +74,16 @@
 /obj/machinery/door/mineral/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/weapon/pickaxe))
 		var/obj/item/weapon/pickaxe/digTool = W
-		to_chat(user, "You start digging \the [src].")
+		to_chat(user, "I start digging \the [src].")
 		if(do_after(user, src, digTool.digspeed*hardness) && src)
-			to_chat(user, "You finished digging.")
+			to_chat(user, "I finished digging.")
 			return Dismantle()
 	else if(istype(W, /obj/item/weapon/card))
-		to_chat(user, "You swipe your card at \the [src], petulantly expecting a result.")
+		to_chat(user, "I swipe my card at \the [src], petulantly expecting a result.")
 		return
 	else
 		hardness -= W.force/100
-		to_chat(user, "You hit \the [src] with your [W.name]!")
+		to_chat(user, "I hit \the [src] with my [W.name]!")
 		user.delayNextAttack(10)
 		CheckHardness()
 	return

@@ -366,7 +366,7 @@ About the new airlock wires panel:
 			else /*if(src.justzap)*/
 				return
 		else if(user.hallucination > 50 && prob(10) && src.operating == 0)
-			to_chat(user, "<span class='danger'>You feel a powerful shock course through your body!</span>")
+			to_chat(user, "<span class='danger'>I feel a powerful shock course through my body!</span>")
 			user.halloss += 10
 			user.stunned += 10
 			return
@@ -747,7 +747,7 @@ About the new airlock wires panel:
 					if(src.isWireCut(AIRLOCK_WIRE_IDSCAN))
 						to_chat(usr, "The IdScan wire has been cut - So, you can't disable it, but it is already disabled anyways.")
 					else if(src.aiDisabledIdScanner)
-						to_chat(usr, "You've already disabled the IdScan feature.")
+						to_chat(usr, "I've already disabled the IdScan feature.")
 					else
 						if(isobserver(usr) && !canGhostWrite(usr,src,"disabled IDScan on"))
 							to_chat(usr, "<span class='warning'>Nope.</span>")
@@ -777,7 +777,7 @@ About the new airlock wires panel:
 				if(4)
 					//drop door bolts
 					if(src.isWireCut(AIRLOCK_WIRE_DOOR_BOLTS))
-						to_chat(usr, "You can't drop the door bolts - The door bolt dropping wire has been cut.")
+						to_chat(usr, "I can't drop the door bolts - The door bolt dropping wire has been cut.")
 					else if(src.locked!=1)
 						if(isobserver(usr) && !canGhostWrite(usr,src,"dropped bolts on"))
 							to_chat(usr, "<span class='warning'>Nope.</span>")
@@ -873,7 +873,7 @@ About the new airlock wires panel:
 				if(1)
 					//enable idscan
 					if(src.isWireCut(AIRLOCK_WIRE_IDSCAN))
-						to_chat(usr, "You can't enable IdScan - The IdScan wire has been cut.")
+						to_chat(usr, "I can't enable IdScan - The IdScan wire has been cut.")
 					else if(src.aiDisabledIdScanner)
 						if(isobserver(usr) && !canGhostWrite(usr,src,"enabled ID Scan on"))
 							to_chat(usr, "<span class='warning'>Nope.</span>")
@@ -1050,9 +1050,9 @@ About the new airlock wires panel:
 	if(locked || welded || jammed)
 		to_chat(user, "<span class='notice'>The airlock won't budge!</span>")
 	else if(arePowerSystemsOn() && !(stat & NOPOWER))
-		to_chat(user, "<span class='notice'>You start forcing the airlock [density ? "open" : "closed"].</span>")
+		to_chat(user, "<span class='notice'>I start forcing the airlock [density ? "open" : "closed"].</span>")
 		visible_message("<span class='warning'>\The [src]'s motors whine as something begins trying to force it [density ? "open" : "closed"]!</span>",\
-						"<span class='notice'>You hear groaning metal and overworked motors.</span>")
+						"<span class='notice'>I hear groaning metal and overworked motors.</span>")
 		if(do_after(user,src,100))
 			if(locked || welded || jammed) //if it got welded/bolted during the do_after
 				to_chat(user, "<span class='notice'>The airlock won't budge!</span>")
@@ -1087,17 +1087,17 @@ About the new airlock wires panel:
 		var/breaktime = 60 //Same amount of time as drilling a wall, then a girder
 		if(welded)
 			breaktime += 30 //Welding buys you a little time
-		src.visible_message("<span class='warning'>[user] is battering down [src]!</span>", "<span class='warning'>You begin to batter [src].</span>")
+		src.visible_message("<span class='warning'>[user] is battering down [src]!</span>", "<span class='warning'>I begin to batter [src].</span>")
 		playsound(get_turf(src), 'sound/effects/shieldbash.ogg', 50, 1)
 		if(do_after(user,src, breaktime))
 			//Calculate bolts separtely, in case they dropped in the last 6-9 seconds.
 			if(src.locked == 1)
 				playsound(get_turf(src), 'sound/effects/shieldbash.ogg', 50, 1)
-				src.visible_message("<span class='warning'>[user] is battering the bolts!</span>", "<span class='warning'>You begin to smash the bolts...</span>")
+				src.visible_message("<span class='warning'>[user] is battering the bolts!</span>", "<span class='warning'>I begin to smash the bolts...</span>")
 				if(!do_after(user, src,190)) //Same amount as drilling an R-wall, longer if it was welded
 					return //If they moved, cancel us out
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-			src.visible_message("<span class='warning'>[user] broke down the door!</span>", "<span class='warning'>You broke the door!</span>")
+			src.visible_message("<span class='warning'>[user] broke down the door!</span>", "<span class='warning'>I broke the door!</span>")
 			bashed_in(user)
 		return
 
@@ -1134,15 +1134,15 @@ About the new airlock wires panel:
 			beingcrowbarred = 0
 		if( beingcrowbarred && (operating == -1 || density && welded && !operating && src.panel_open && (!src.arePowerSystemsOn() || stat & NOPOWER) && !src.locked) )
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 100, 1)
-			user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove electronics from the airlock assembly.")
+			user.visible_message("[user] removes the electronics from the airlock assembly.", "I start to remove electronics from the airlock assembly.")
 			// TODO: refactor the called proc
 			if (do_after(user, src, 40))
-				to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
+				to_chat(user, "<span class='notice'>I removed the airlock electronics!</span>")
 				revert(user,null)
 				qdel(src)
 				return
 		else if(arePowerSystemsOn() && !(stat & NOPOWER))
-			to_chat(user, "<span class='notice'>The airlock's motors resist your efforts to force it.</span>")
+			to_chat(user, "<span class='notice'>The airlock's motors resist my efforts to force it.</span>")
 		else if(locked)
 			to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
 		else if( !welded && !operating )
@@ -1152,7 +1152,7 @@ About the new airlock wires panel:
 					if(F.wielded)
 						spawn(0)	open(1)
 					else
-						to_chat(user, "<span class='warning'>You need to be wielding \the [F] to do that.</span>")
+						to_chat(user, "<span class='warning'>I need to be wielding \the [F] to do that.</span>")
 				else
 					spawn(0)	open(1)
 			else
@@ -1161,7 +1161,7 @@ About the new airlock wires panel:
 					if(F.wielded)
 						spawn(0)	close(1)
 					else
-						to_chat(user, "<span class='warning'>You need to be wielding \the [F] to do that.</span>")
+						to_chat(user, "<span class='warning'>I need to be wielding \the [F] to do that.</span>")
 				else
 					spawn(0)	close(1)
 		src.busy = 0

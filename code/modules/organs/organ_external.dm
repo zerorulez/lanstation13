@@ -34,7 +34,7 @@
 	//Internal organs of this body part
 	var/list/datum/organ/internal/internal_organs
 
-	var/damage_msg = "<span class='warning'>You feel an intense pain</span>"
+	var/damage_msg = "<span class='warning'>I feel an intense pain</span>"
 	var/broken_description
 
 	var/open = 0
@@ -260,8 +260,8 @@
 				W.open_wound(damage)
 				if(prob(25))
 					owner.visible_message("<span class='warning'>The wound on [owner.name]'s [display_name] widens with a nasty ripping sound.</span>", \
-					"<span class='warning'>The wound on your [display_name] widens with a nasty ripping sound.</span>", \
-					"You hear a nasty ripping noise, as if flesh is being torn apart.")
+					"<span class='warning'>The wound on my [display_name] widens with a nasty ripping sound.</span>", \
+					"I hear a nasty ripping noise, as if flesh is being torn apart.")
 				return
 
 	//Creating wound
@@ -292,7 +292,7 @@
 		if(!internal_bleeding)
 			var/datum/wound/internal_bleeding/I = new (15)
 			wounds += I
-			owner.custom_pain("You feel something rip in your [display_name]!", 1)
+			owner.custom_pain("I feel something rip in my [display_name]!", 1)
 
 	//Check whether we can add the wound to an existing wound
 	for(var/datum/wound/other in wounds)
@@ -371,13 +371,13 @@
 		return 1
 
 	switch(cancer_stage)
-		if(CANCER_STAGE_SMALL_TUMOR to CANCER_STAGE_LARGE_TUMOR) //Small tumors will not damage your limb, but might flash pain
+		if(CANCER_STAGE_SMALL_TUMOR to CANCER_STAGE_LARGE_TUMOR) //Small tumors will not damage my limb, but might flash pain
 			if(prob(1))
-				owner.custom_pain("You feel a stabbing pain in your [display_name]!", 1)
-		if(CANCER_STAGE_LARGE_TUMOR to CANCER_STAGE_METASTASIS) //Large tumors will start damaging your limb and give the owner DNA damage (bodywide, can't go per limb)
+				owner.custom_pain("I feel a stabbing pain in my [display_name]!", 1)
+		if(CANCER_STAGE_LARGE_TUMOR to CANCER_STAGE_METASTASIS) //Large tumors will start damaging my limb and give the owner DNA damage (bodywide, can't go per limb)
 			if(prob(20))
 				take_damage(0.5, 0, 0, used_weapon = "tumor growth")
-				owner.custom_pain("You feel a stabbing pain in your [display_name]!", 1)
+				owner.custom_pain("I feel a stabbing pain in my [display_name]!", 1)
 			if(prob(1))
 				owner.apply_damage(0.5, CLONE, src)
 		if(CANCER_STAGE_METASTASIS to INFINITY) //Metastasis achieved, limb will start breaking down very rapidly, and cancer will spread to all other limbs in short order through bloodstream
@@ -449,7 +449,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		germ_level-- //Since germ_level increases at a rate of 1 per second with dirty wounds, prob(60) should give us about 5 minutes before level one.
 
 	if(germ_level >= INFECTION_LEVEL_ONE)
-		//Having an infection raises your body temperature
+		//Having an infection raises my body temperature
 		var/fever_temperature = (owner.species.heat_level_1 - owner.species.body_temperature - 5)* min(germ_level/INFECTION_LEVEL_TWO, 1) + owner.species.body_temperature
 		//Need to make sure we raise temperature fast enough to get around environmental cooling preventing us from reaching fever_temperature
 		owner.bodytemperature += Clamp((fever_temperature - T20C) / BODYTEMP_COLD_DIVISOR + 1, 0, fever_temperature - owner.bodytemperature)
@@ -496,7 +496,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(germ_level >= INFECTION_LEVEL_THREE && antibiotics < 30)	//Overdosing is necessary to stop severe infections
 		if(!(status & ORGAN_DEAD))
 			status |= ORGAN_DEAD
-			to_chat(owner, "<span class='notice'>You can't feel your [display_name] anymore.</span>")
+			to_chat(owner, "<span class='notice'>I can't feel my [display_name] anymore.</span>")
 			owner.update_body(1)
 
 		germ_level++
@@ -520,7 +520,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!owner.reagents.has_reagent(CLOTTING_AGENT) && !owner.reagents.has_reagent(BIOFOAM))	//Clotting agent and biofoam stop bleeding entirely.
 				owner.vessel.remove_reagent(BLOOD, 0.02 * W.damage * wound_update_accuracy)
 			if(prob(1 * wound_update_accuracy))
-				owner.custom_pain("You feel a stabbing pain in your [display_name]!", 1)
+				owner.custom_pain("I feel a stabbing pain in my [display_name]!", 1)
 
 		// slow healing
 		var/heal_amt = 0
@@ -533,7 +533,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 		//We only update wounds once in [wound_update_accuracy] ticks so have to emulate realtime
 		heal_amt = heal_amt * wound_update_accuracy
-		//Configurable regen speed woo, no-regen hardcore or instaheal hugbox, choose your destiny
+		//Configurable regen speed woo, no-regen hardcore or instaheal hugbox, choose my destiny
 		heal_amt = heal_amt * config.organ_regeneration_multiplier
 		//Amount of healing is spread over all the wounds
 		heal_amt = heal_amt / (wounds.len + 1)
@@ -670,7 +670,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		status |= ORGAN_DESTROYED
 	if(status & ORGAN_DESTROYED)
 		destspawn = 1
-		//If your whole leg is missing, then yes, your foot is considered as "cleanly amputated".
+		//If my whole leg is missing, then yes, my foot is considered as "cleanly amputated".
 		setAmputatedTree()
 
 		if(spawn_limb)
@@ -707,7 +707,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		src.species = null
 
 		if(body_part == LOWER_TORSO)
-			to_chat(owner, "<span class='danger'>You are now sterile.</span>")
+			to_chat(owner, "<span class='danger'>I am now sterile.</span>")
 
 		if(slots_to_drop && slots_to_drop.len)
 			for(var/slot_id in slots_to_drop)
@@ -719,8 +719,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 		//Robotic limbs explode if sabotaged.
 		if(status & ORGAN_ROBOT && !no_explode && sabotaged)
 			owner.visible_message("<span class='danger'>\The [owner]'s [display_name] explodes violently!</span>", \
-			"<span class='danger'>Your [display_name] explodes violently!</span>", \
-			"<span class='danger'>You hear an explosion followed by a scream!</span>")
+			"<span class='danger'>My [display_name] explodes violently!</span>", \
+			"<span class='danger'>I hear an explosion followed by a scream!</span>")
 			explosion(get_turf(owner), -1, -1, 2, 3)
 			var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 			spark_system.set_up(5, 0, owner)
@@ -733,12 +733,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(organ)
 			if(display_message)
 				owner.visible_message("<span class='danger'>[owner.name]'s [display_name] flies off in an arc.</span>", \
-				"<span class='danger'>Your [display_name] goes flying off!</span>", \
-				"<span class='danger'>You hear a terrible sound of ripping tendons and flesh.</span>")
+				"<span class='danger'>My [display_name] goes flying off!</span>", \
+				"<span class='danger'>I hear a terrible sound of ripping tendons and flesh.</span>")
 
 			var/severed_sound = pick('sound/effects/gore/chop2.ogg', 'sound/effects/gore/chop3.ogg', 'sound/effects/gore/chop4.ogg')
 			playsound(owner, severed_sound, 100, 0)
-			
+
 			//Throw organs around
 			var/randomdir = pick(cardinal)
 			step(organ, randomdir)
@@ -746,7 +746,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		owner.update_body(1)
 		owner.handle_organs(1)
 
-		//OK so maybe your limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!
+		//OK so maybe my limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!
 		release_restraints()
 
 		if(vital)
@@ -881,9 +881,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return
 	if(status & ORGAN_BROKEN)
 		return
-	owner.visible_message("<span class='danger'>You hear a loud cracking sound coming from \the [owner].</span>", \
-	"<span class='danger'>Something feels like it shattered in your [display_name]!</span>", \
-	"<span class='danger'>You hear a sickening crack.</span>")
+	owner.visible_message("<span class='danger'>I hear a loud cracking sound coming from \the [owner].</span>", \
+	"<span class='danger'>Something feels like it shattered in my [display_name]!</span>", \
+	"<span class='danger'>I hear a sickening crack.</span>")
 
 	if(owner.feels_pain())
 		owner.emote("scream", , , 1)
@@ -1115,7 +1115,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /datum/organ/external/proc/skeletify()
 	if(istype(species, /datum/species/skellington))
 		return
-	owner.visible_message("<span class = 'warning'>The flesh falls off of \the [owner]'s [display_name]!</span>","<span class = 'warning'>The flesh is falling off of your [display_name]!</span>")
+	owner.visible_message("<span class = 'warning'>The flesh falls off of \the [owner]'s [display_name]!</span>","<span class = 'warning'>The flesh is falling off of my [display_name]!</span>")
 	var/new_species_name
 	if(isvox(owner))
 		new_species_name = "Skeletal Vox"
@@ -1413,20 +1413,20 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return
 
 	if(type == "brute")
-		owner.visible_message("<span class='warning'>You hear a sickening cracking sound coming from \the [owner]'s face.</span>",
-		                      "<span class='danger'>Your face becomes an unrecognizable, mangled mess!</span>",
-		                      "<span class='warning'>You hear a sickening crack.</span>")
+		owner.visible_message("<span class='warning'>I hear a sickening cracking sound coming from \the [owner]'s face.</span>",
+		                      "<span class='danger'>My face becomes an unrecognizable, mangled mess!</span>",
+		                      "<span class='warning'>I hear a sickening crack.</span>")
 	else if (type == "burn")
 		owner.visible_message("<span class='warning'>[owner]'s face melts away, turning into a mangled mess!</span>",
-		                      "<span class='danger'>Your face melts away into an unrecognizable, mangled mess!</span>",
-		                      "<span class='warning'>You hear a sickening sizzle.</span>")
+		                      "<span class='danger'>My face melts away into an unrecognizable, mangled mess!</span>",
+		                      "<span class='warning'>I hear a sickening sizzle.</span>")
 	else if (type == "frostbite")
 		owner.visible_message("<span class='warning'>[owner]'s frozen face blisters and cracks.</span>",
-		                      "<span class='danger'>Your face blisters and numbs away!</span>",
-							  "<span class='warning'>You hear a sickening crackling.</span>")
+		                      "<span class='danger'>My face blisters and numbs away!</span>",
+							  "<span class='warning'>I hear a sickening crackling.</span>")
 	else // Generic message, shouldn't happen
 		owner.visible_message("<span class='warning'>[owner]'s face disfigures.</span>",
-		                      "<span class='danger'>Your face becomes an unrecognizable, mangled mess!</span>")
+		                      "<span class='danger'>My face becomes an unrecognizable, mangled mess!</span>")
 
 	disfigured = 1
 
@@ -1737,7 +1737,7 @@ obj/item/organ/external/head/New(loc, mob/living/carbon/human/H)
 				var/mob/living/carbon/human/L = H.lastattacker
 				if(L.mind && L.mind.special_role == HIGHLANDER)
 					L.revive(0)
-					to_chat(L, "<span class='notice'>You absorb \the [brainmob]'s power!</span>")
+					to_chat(L, "<span class='notice'>I absorb \the [brainmob]'s power!</span>")
 					var/turf/T1 = get_turf(H)
 					make_tracker_effects(T1, L)
 
@@ -1758,13 +1758,13 @@ obj/item/organ/external/head/attackby(obj/item/weapon/W as obj, mob/user as mob)
 			switch(brain_op_stage)
 				if(0)
 					user.visible_message("<span class='warning'>[user] cuts [brainmob]'s head open with \the [W].</span>", \
-					"<span class='notice'>You cut [brainmob]'s open with \the [W]!</span>")
+					"<span class='notice'>I cut [brainmob]'s open with \the [W]!</span>")
 
 					brain_op_stage = 1
 
 				if(2)
 					user.visible_message("<span class='warning'>[user] severs [brainmob]'s brain connections delicately with \the [W].</span>", \
-					"<span class='notice'>You sever [brainmob]'s brain connections delicately with \the [W]!</span>")
+					"<span class='notice'>I sever [brainmob]'s brain connections delicately with \the [W]!</span>")
 
 					brain_op_stage = 3.0
 
@@ -1778,12 +1778,12 @@ obj/item/organ/external/head/attackby(obj/item/weapon/W as obj, mob/user as mob)
 			switch(brain_op_stage)
 				if(1)
 					user.visible_message("<span class='warning'>[user] saws [brainmob]'s head open with \the [W].</span>", \
-					"<span class='notice'>You saw [brainmob]'s head open with \the [W].</span>")
+					"<span class='notice'>I saw [brainmob]'s head open with \the [W].</span>")
 
 					brain_op_stage = 2
 				if(3)
 					user.visible_message("<span class='warning'>[user] severs [brainmob]'s spine connections delicately with \the [W].</span>", \
-					"<span class='notice'>You sever [brainmob]'s spine connections delicately with \the [W]!</span>")
+					"<span class='notice'>I sever [brainmob]'s spine connections delicately with \the [W]!</span>")
 
 					user.attack_log += "\[[time_stamp()]\]<font color='red'> Debrained [brainmob.name] ([brainmob.ckey]) with [W.name] (INTENT: [uppertext(user.a_intent)])</font>"
 					brainmob.attack_log += "\[[time_stamp()]\]<font color='orange'> Debrained by [user.name] ([user.ckey]) with [W.name] (INTENT: [uppertext(user.a_intent)])</font>"
@@ -1811,7 +1811,7 @@ obj/item/organ/external/head/attackby(obj/item/weapon/W as obj, mob/user as mob)
 		W.capture_soul_head(src,user)
 		return
 	else if(istype(W,/obj/item/device/healthanalyzer))
-		to_chat(user, "<span class='notice'>You use \the [W] to induce a small electric shock into \the [src].</span>")
+		to_chat(user, "<span class='notice'>I use \the [W] to induce a small electric shock into \the [src].</span>")
 		playsound(get_turf(src),'sound/weapons/electriczap.ogg',50,1)
 		animate(src, pixel_x = pixel_x + rand(-2,2), pixel_y = pixel_y + rand(-2,2) , time = 0.5 SECONDS, easing = BOUNCE_EASING) //Give it a little shake
 		animate(src, pixel_x = initial(pixel_x), pixel_y = initial(pixel_y), time = 0.5 SECONDS, easing = LINEAR_EASING) //Then calm it down
@@ -1831,7 +1831,7 @@ obj/item/organ/external/head/attackby(obj/item/weapon/W as obj, mob/user as mob)
 						mind_found = 1
 						to_chat(user, "<span class='notice'>\The [src] stares blankly forward. The pupils dilate but otherwise it does not react to stimuli.</span>")
 						ghostmob << 'sound/effects/adminhelp.ogg'
-						to_chat(ghostmob, "<span class='interface big'><span class='bold'>Someone has found your head. Return to it if you want to be resurrected!</span> \
+						to_chat(ghostmob, "<span class='interface big'><span class='bold'>Someone has found my head. Return to it if you want to be resurrected!</span> \
 							(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)</span>")
 			if(!mind_found)
 				to_chat(user, "<span class='danger'>\The [src] seems unresponsive to shock stimuli.</span>")

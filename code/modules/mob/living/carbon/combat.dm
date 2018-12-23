@@ -11,7 +11,7 @@
 			throw_mode_off()
 			return 1
 		else
-			to_chat(src, "<span class='warning'>You fail to catch \the [I]!")
+			to_chat(src, "<span class='warning'>I fail to catch \the [I]!")
 	return ..()
 
 /mob/living/carbon/proc/can_catch(var/item/I, var/speed)

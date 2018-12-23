@@ -155,14 +155,14 @@
 			if(active)
 				turn_off()
 				user.visible_message("<span class='warning'>[user] turns \the [src] off.", \
-				"<span class='notice'>You turn \the [src] off.")
+				"<span class='notice'>I turn \the [src] off.")
 				message_admins("Emitter turned off by [key_name(user, user.client)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 				log_game("Emitter turned off by [user.ckey]([user]) in ([x],[y],[z])")
 				investigation_log(I_SINGULO,"turned <font color='red'>off</font> by [user.key]")
 			else
 				turn_on()
 				user.visible_message("<span class='warning'>[user] turns \the [src] on.", \
-				"<span class='notice'>You turn \the [src] on.")
+				"<span class='notice'>I turn \the [src] on.")
 				message_admins("Emitter turned on by [key_name(user, user.client)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 				log_game("Emitter turned on by [user.ckey]([user]) in ([x],[y],[z])")
 				investigation_log(I_SINGULO,"turned <font color='green'>on</font> by [user.key]")
@@ -247,7 +247,7 @@
 	if(!emagged)
 		locked = 0
 		emagged = 1
-		user.visible_message("<span class='danger'>[user] shorts out \the [src]'s lock.</span>", "<span class='warning'>You short out \the [src]'s lock.</span>")
+		user.visible_message("<span class='danger'>[user] shorts out \the [src]'s lock.</span>", "<span class='warning'>I short out \the [src]'s lock.</span>")
 		return
 
 /obj/machinery/power/emitter/wrenchAnchor(mob/user)

@@ -25,7 +25,7 @@
 			var/weakness = GetAnomalySusceptibility(C)
 			if(prob(weakness * 100))
 				if(prob(10))
-					to_chat(C, "<span class='warning'>You feel a painful force radiating from something nearby.</span>")
+					to_chat(C, "<span class='warning'>I feel a painful force radiating from something nearby.</span>")
 				C.adjustBruteLoss(1 * weakness)
 				C.adjustFireLoss(1 * weakness)
 				C.adjustToxLoss(1 * weakness)

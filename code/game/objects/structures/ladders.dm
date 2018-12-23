@@ -61,7 +61,7 @@ var/list/ladders = list()
 	else if(down)
 		icon_state = "ladder01"
 
-	else	//wtf make your ladders properly assholes
+	else	//wtf make my ladders properly assholes
 		icon_state = "ladder00"
 
 /obj/structure/ladder/attack_hand(mob/user as mob)
@@ -69,12 +69,12 @@ var/list/ladders = list()
 		switch( alert("Go up or down the ladder?", "Ladder", "Up", "Down", "Cancel") )
 			if("Up")
 				user.visible_message("<span class='notice'>[user] climbs up \the [src]!</span>", \
-									 "<span class='notice'>You climb up \the [src]!</span>")
+									 "<span class='notice'>I climb up \the [src]!</span>")
 				climb(user, get_turf(up))
 				up.add_fingerprint(user)
 			if("Down")
 				user.visible_message("<span class='notice'>[user] climbs down \the [src]!</span>", \
-									 "<span class='notice'>You climb down \the [src]!</span>")
+									 "<span class='notice'>I climb down \the [src]!</span>")
 				climb(user, get_turf(down))
 				down.add_fingerprint(user)
 			if("Cancel")
@@ -82,13 +82,13 @@ var/list/ladders = list()
 
 	else if(up)
 		user.visible_message("<span class='notice'>[user] climbs up \the [src]!</span>", \
-							 "<span class='notice'>You climb up \the [src]!</span>")
+							 "<span class='notice'>I climb up \the [src]!</span>")
 		climb(user, get_turf(up))
 		up.add_fingerprint(user)
 
 	else if(down)
 		user.visible_message("<span class='notice'>[user] climbs down \the [src]!</span>", \
-							 "<span class='notice'>You climb down \the [src]!</span>")
+							 "<span class='notice'>I climb down \the [src]!</span>")
 		climb(user, get_turf(down))
 		down.add_fingerprint(user)
 

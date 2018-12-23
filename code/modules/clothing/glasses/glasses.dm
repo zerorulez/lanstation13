@@ -39,7 +39,7 @@
 	prescription = 1
 
 /obj/item/clothing/glasses/regular/kick_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H] stomps on \the [src], crushing them!</span>", "<span class='danger'>You crush \the [src] under your foot.</span>")
+	H.visible_message("<span class='danger'>[H] stomps on \the [src], crushing them!</span>", "<span class='danger'>I crush \the [src] under my foot.</span>")
 	playsound(get_turf(src), "shatter", 50, 1)
 
 	var/obj/item/weapon/shard/S = new(get_turf(src))
@@ -82,7 +82,7 @@
 	..()
 
 /obj/item/clothing/glasses/sunglasses/kick_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H] stomps on \the [src], crushing them!</span>", "<span class='danger'>You crush \the [src] under your foot.</span>")
+	H.visible_message("<span class='danger'>[H] stomps on \the [src], crushing them!</span>", "<span class='danger'>I crush \the [src] under my foot.</span>")
 	playsound(get_turf(src), "shatter", 50, 1)
 
 	var/obj/item/weapon/shard/S = new(get_turf(src))
@@ -145,13 +145,13 @@
 			eyeprot = 2
 			body_parts_covered |= EYES
 			icon_state = initial(icon_state)
-			to_chat(C, "You flip the [src] down to protect your eyes.")
+			to_chat(C, "I flip the [src] down to protect my eyes.")
 		else
 			src.up = !src.up
 			eyeprot = 0
 			body_parts_covered &= ~EYES
 			icon_state = "[initial(icon_state)]up"
-			to_chat(C, "You push the [src] up out of your face.")
+			to_chat(C, "I push the [src] up out of my face.")
 
 		C.update_inv_glasses()
 
@@ -169,7 +169,7 @@
 	item_state = "blindfold"
 	see_invisible = SEE_INVISIBLE_LIVING
 	vision_flags = BLIND
-	eyeprot = 4 //What you can't see can't burn your eyes out
+	eyeprot = 4 //What you can't see can't burn my eyes out
 	species_fit = list(VOX_SHAPED)
 	min_harm_label = 0
 

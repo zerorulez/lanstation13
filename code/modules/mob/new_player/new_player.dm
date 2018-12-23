@@ -29,7 +29,7 @@
 		if(!ready)
 			output += "<p><a href='byond://?src=\ref[src];ready=1'>Declare Ready</A></p>"
 		else
-			output += "<p><b>You are ready</b> (<a href='byond://?src=\ref[src];ready=2'>Cancel</A>)</p>"
+			output += "<p><b>I am ready</b> (<a href='byond://?src=\ref[src];ready=2'>Cancel</A>)</p>"
 
 	else
 		ready = 0 // prevent setup character issues
@@ -113,21 +113,21 @@
 
 	if(href_list["show_preferences"])
 		if(!client.prefs.saveloaded)
-			to_chat(usr, "<span class='warning'>Your character preferences have not yet loaded.</span>")
+			to_chat(usr, "<span class='warning'>My character preferences have not yet loaded.</span>")
 			return
 		client.prefs.ShowChoices(src)
 		return 1
 
 	if(href_list["ready"])
 		if(!client.prefs.saveloaded)
-			to_chat(usr, "<span class='warning'>Your character preferences have not yet loaded.</span>")
+			to_chat(usr, "<span class='warning'>My character preferences have not yet loaded.</span>")
 			return
 		switch(text2num(href_list["ready"]))
 			if(1)
 				ready = 1
 			if(2)
 				ready = 0
-		to_chat(usr, "<span class='recruit'>You [ready ? "have declared ready" : "have unreadied"].</span>")
+		to_chat(usr, "<span class='recruit'>I [ready ? "have declared ready" : "have unreadied"].</span>")
 		new_player_panel_proc()
 		//testing("[usr] topic call took [(world.timeofday - timestart)/10] seconds")
 		return 1
@@ -138,7 +138,7 @@
 
 	if(href_list["observe"])
 		if(!client.prefs.saveloaded)
-			to_chat(usr, "<span class='warning'>Your character preferences have not yet loaded.</span>")
+			to_chat(usr, "<span class='warning'>My character preferences have not yet loaded.</span>")
 			return
 		if(alert(src,"Are you sure you wish to observe? You will not be able to play this round!","Player Setup","Yes","No") == "Yes")
 			if(!client)
@@ -181,7 +181,7 @@
 		if(client.prefs.species != "Human")
 
 			if(!is_alien_whitelisted(src, client.prefs.species) && config.usealienwhitelist)
-				to_chat(src, alert("You are currently not whitelisted to play [client.prefs.species]."))
+				to_chat(src, alert("I am currently not whitelisted to play [client.prefs.species]."))
 				return 0
 
 		LateChoices()
@@ -196,7 +196,7 @@
 			return
 
 		if(!is_alien_whitelisted(src, client.prefs.species) && config.usealienwhitelist)
-			to_chat(src, alert("You are currently not whitelisted to play [client.prefs.species]."))
+			to_chat(src, alert("I am currently not whitelisted to play [client.prefs.species]."))
 			return 0
 
 		AttemptLateSpawn(href_list["SelectedJob"])
@@ -226,7 +226,7 @@
 
 		if(!config.poll_results_url)
 			return
-		if(alert("This will open the results page in your browser. Are you sure?",,"Yes","No")=="No")
+		if(alert("This will open the results page in my browser. Are you sure?",,"Yes","No")=="No")
 			return
 		var/pollid = href_list["pollresult"]
 		var/link = "[config.poll_results_url]/[pollid]"
@@ -364,8 +364,8 @@
 		character.equip_to_slot_or_del(new /obj/item/clothing/suit/space/bomberman(character), slot_wear_suit)
 		character.equip_to_slot_or_del(new /obj/item/weapon/bomberman/(character), slot_s_store)
 		character.update_icons()
-		to_chat(character, "<span class='notice'>Tip: Use the BBD in your suit's pocket to place bombs.</span>")
-		to_chat(character, "<span class='notice'>Try to keep your BBD and escape this hell hole alive!</span>")
+		to_chat(character, "<span class='notice'>Tip: Use the BBD in my suit's pocket to place bombs.</span>")
+		to_chat(character, "<span class='notice'>Try to keep my BBD and escape this hell hole alive!</span>")
 
 	ticker.mode.latespawn(character)
 
@@ -466,7 +466,7 @@ Round Duration: [round(hours)]h [round(mins)]m<br>"}
 	new_character.dna.ready_dna(new_character)
 
 	if(new_character.mind)
-		new_character.mind.store_memory("<b>Your blood type is:</b> [new_character.dna.b_type]<br>")
+		new_character.mind.store_memory("<b>My blood type is:</b> [new_character.dna.b_type]<br>")
 
 	if(client.prefs.disabilities & DISABILITY_FLAG_NEARSIGHTED)
 		new_character.dna.SetSEState(GLASSESBLOCK,1,1)

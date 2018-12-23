@@ -15,7 +15,7 @@ log transactions
 
 /obj/machinery/atm
 	name = "Nanotrasen Automatic Teller Machine"
-	desc = "For all your monetary needs!"
+	desc = "For all my monetary needs!"
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "atm"
 	anchored = 1
@@ -79,9 +79,9 @@ log transactions
 
 /obj/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
 	if(iswrench(I))
-		user.visible_message("<span class='notice'>[user] begins to take apart the [src]!</span>", "<span class='notice'>You start to take apart the [src]</span>")
+		user.visible_message("<span class='notice'>[user] begins to take apart the [src]!</span>", "<span class='notice'>I start to take apart the [src]</span>")
 		if(do_after(user, src, 40))
-			user.visible_message("<span class='notice'>[user] disassembles the [src]!</span>", "<span class='notice'>You disassemble the [src]</span>")
+			user.visible_message("<span class='notice'>[user] disassembles the [src]!</span>", "<span class='notice'>I disassemble the [src]</span>")
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 100, 1)
 			new /obj/item/stack/sheet/metal (src.loc,2)
 			qdel(src)
@@ -114,7 +114,7 @@ log transactions
 			T.time = worldtime2text()
 			authenticated_account.transaction_log.Add(T)
 
-			to_chat(user, "<span class='info'>You insert [I] into [src].</span>")
+			to_chat(user, "<span class='info'>I insert [I] into [src].</span>")
 			src.attack_hand(user)
 			qdel(I)
 	else
@@ -122,7 +122,7 @@ log transactions
 
 /obj/machinery/atm/attack_hand(mob/user as mob,var/fail_safe=0)
 	if(isobserver(user))
-		to_chat(user, "<span class='warning'>Your ghostly limb passes right through \the [src].</span>")
+		to_chat(user, "<span class='warning'>My ghostly limb passes right through \the [src].</span>")
 		return
 	if(istype(user, /mob/living/silicon))
 		to_chat(user, "<span class='warning'>Artificial unit recognized. Artificial units do not currently receive monetary compensation, as per Nanotrasen regulation #1005.</span>")
@@ -134,7 +134,7 @@ log transactions
 
 		//js replicated from obj/machinery/computer/card
 		var/dat = {"<h1>Nanotrasen Automatic Teller Machine</h1>
-			For all your monetary needs!<br>
+			For all my monetary needs!<br>
 			<i>This terminal is</i> [machine_id]. <i>Report this code when contacting Nanotrasen IT Support</i><br/>
 			Card: <a href='?src=\ref[src];choice=insert_card'>[held_card ? held_card.name : "------"]</a><br><br><hr>"}
 
@@ -144,7 +144,7 @@ log transactions
 			switch(view_screen)
 				if(CHANGE_SECURITY_LEVEL)
 					dat += "Select a new security level for this account:<br><hr>"
-					var/text = "Zero - Either the account number or card is required to access this account. Vendor transactions will pay from your bank account if your virtual wallet has insufficient funds."
+					var/text = "Zero - Either the account number or card is required to access this account. Vendor transactions will pay from my bank account if my virtual wallet has insufficient funds."
 					if(authenticated_account.security_level != 0)
 						text = "<A href='?src=\ref[src];choice=change_security_level;new_security_level=0'>[text]</a>"
 					dat += "[text]<hr>"
@@ -271,7 +271,7 @@ log transactions
 							to_chat(usr, "\icon[src]<span class='warning'>Funds transfer failed.</span>")
 
 					else
-						to_chat(usr, "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "\icon[src]<span class='warning'>I don't have enough funds to do that!</span>")
 			if("view_screen")
 				view_screen = text2num(href_list["view_screen"])
 			if("change_security_level")
@@ -353,11 +353,11 @@ log transactions
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 					else
-						to_chat(usr, "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "\icon[src]<span class='warning'>I don't have enough funds to do that!</span>")
 			if("withdraw_to_wallet")
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				if(!held_card)
-					to_chat(usr, "<span class='notice'>You must insert your ID card before you can transfer funds to it.</span>")
+					to_chat(usr, "<span class='notice'>I must insert my ID card before you can transfer funds to it.</span>")
 					return
 				if(amount <= 0)
 					alert("That is not a valid amount.")
@@ -385,11 +385,11 @@ log transactions
 						T.time = worldtime2text()
 						held_card.virtual_wallet.transaction_log.Add(T)
 					else
-						to_chat(usr, "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "\icon[src]<span class='warning'>I don't have enough funds to do that!</span>")
 			if("deposit_from_wallet")
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				if(!held_card)
-					to_chat(usr, "<span class='notice'>You must insert your ID card before you can transfer funds from its virtual wallet.</span>")
+					to_chat(usr, "<span class='notice'>I must insert my ID card before you can transfer funds from its virtual wallet.</span>")
 					return
 				if(amount <= 0)
 					alert("That is not a valid amount.")
@@ -417,7 +417,7 @@ log transactions
 						T.time = worldtime2text()
 						held_card.virtual_wallet.transaction_log.Add(T)
 					else
-						to_chat(usr, "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "\icon[src]<span class='warning'>I don't have enough funds to do that!</span>")
 			if("balance_statement")
 				if(authenticated_account)
 					if(world.timeofday < lastprint + PRINT_DELAY)
@@ -473,7 +473,7 @@ log transactions
 		var/mob/living/carbon/human/H = user
 		if(istype(H.wear_id,/obj/item/weapon/storage/wallet))
 			dispense_cash(arbitrary_sum,H.wear_id)
-			to_chat(usr, "\icon[src]<span class='notice'>Funds were transferred into your physical wallet!</span>")
+			to_chat(usr, "\icon[src]<span class='notice'>Funds were transferred into my physical wallet!</span>")
 			return
 	dispense_cash(arbitrary_sum,get_step(get_turf(src),turn(dir,180))) // Spawn on the ATM.
 

@@ -28,7 +28,7 @@
 	if(istype(O, /obj/item/weapon/card/id) && !scan)
 		if(usr.drop_item(O, src))
 			scan = O
-			to_chat(user, "You insert \the [O].")
+			to_chat(user, "I insert \the [O].")
 	..()
 
 /obj/machinery/computer/secure_data/attack_ai(mob/user as mob)
@@ -43,7 +43,7 @@
 	if(..())
 		return
 	if (src.z > 6)
-		to_chat(user, "<span class='danger'>Unable to establish a connection: </span>You're too far away from the station!")
+		to_chat(user, "<span class='danger'>Unable to establish a connection: </span>I am too far away from the station!")
 		return
 	var/dat
 
@@ -464,7 +464,7 @@ What a mess.*/
 								</ul>"}
 					if("rank")
 						var/list/L = list( "Head of Personnel", "Captain", "AI" )
-						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
+						//This was so silly before the change. Now it actually works without beating my head against the keyboard. /N
 						if ((istype(active1, /datum/data/record) && L.Find(rank)))
 
 							temp = {"<h5>Rank:</h5>
@@ -473,7 +473,7 @@ What a mess.*/
 								temp += "<li><a href='?src=\ref[src];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
 							temp += "</ul>"
 						else
-							alert(usr, "You do not have the required rank to do this!")
+							alert(usr, "I do not have the required rank to do this!")
 					if("species")
 						if (istype(active1, /datum/data/record))
 							var/norange = (usr.mutations && usr.mutations.len && (M_TK in usr.mutations))

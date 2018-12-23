@@ -3,9 +3,9 @@
 	set category = "Object"
 	firerate = !firerate
 	if (firerate == 1)
-		to_chat(loc, "You will now continue firing when your target moves.")
+		to_chat(loc, "I will now continue firing when my target moves.")
 	else
-		to_chat(loc, "You will now only fire once, then lower your aim, when your target moves.")
+		to_chat(loc, "I will now only fire once, then lower my aim, when my target moves.")
 
 /obj/item/weapon/gun/verb/lower_aim()
 	set name = "Lower Aim"
@@ -167,7 +167,7 @@ mob/living/proc/Targeted(var/obj/item/weapon/gun/I) //Self explanitory.
 		I.target += src
 	else if(I.target.len >= 5)
 		if(ismob(I.loc))
-			to_chat(I.loc, "You can only target 5 people at once!")
+			to_chat(I.loc, "I can only target 5 people at once!")
 		return
 	else
 		return
@@ -178,7 +178,7 @@ mob/living/proc/Targeted(var/obj/item/weapon/gun/I) //Self explanitory.
 		targeted_by = list()
 	targeted_by += I
 	I.lock_time = world.time + 20 //Target has 2 second to realize they're targeted and stop (or target the opponent).
-	to_chat(src, "((<span class='danger'>Your character is being targeted. They have 2 seconds to stop any click or move actions. </span>While targeted, they may \
+	to_chat(src, "((<span class='danger'>My character is being targeted. They have 2 seconds to stop any click or move actions. </span>While targeted, they may \
 	drag and drop items in or into the map, speak, and click on interface buttons. Clicking on the map objects (floors and walls are fine), their items \
 	 (other than a weapon to de-target), or moving will result in being fired upon. <span class='warning'>The aggressor may also fire manually, </span>\
 	 so try not to get on their bad side.\black ))")
@@ -202,7 +202,7 @@ mob/living/proc/Targeted(var/obj/item/weapon/gun/I) //Self explanitory.
 			I.lower_aim()
 			return
 		if(m_intent == "run" && T.client.target_can_move == 1 && T.client.target_can_run == 0 && (ishuman(T)))
-			to_chat(src, "<spanclass='warning'>Your captive is allowing you to walk. Make sure to change your move intent to walk before trying to move, or you will be fired upon.</span>")//Self explanitory.
+			to_chat(src, "<spanclass='warning'>My captive is allowing me to walk. I must make sure to change my move intent to walk before trying to move, or I will be fired upon.</span>")//Self explanitory.
 
 			//set_m_intent("walk") -there's a real fucked up exploit behind this, so it's been removed. Needs testing. -Angelite-
 
@@ -293,10 +293,10 @@ client/verb/ToggleGunMode()
 	set hidden = 1
 	gun_mode = !gun_mode
 	if(gun_mode)
-		to_chat(usr, "You will now take people captive.")
+		to_chat(usr, "I will now take people captive.")
 		add_gun_icons()
 	else
-		to_chat(usr, "You will now shoot where you target.")
+		to_chat(usr, "I will now shoot where I target.")
 		for(var/obj/item/weapon/gun/G in usr)
 			G.stop_aim()
 		remove_gun_icons()
@@ -330,12 +330,12 @@ client/verb/AllowTargetMove()
 		if(G.target)
 			for(var/mob/living/M in G.target)
 				if(target_can_move)
-					to_chat(M, "Your character may now <b>walk</b> at the discretion of their targeter.")
+					to_chat(M, "I may now <b>walk</b> at the discretion of their targeter.")
 					if(!target_can_run && (ishuman(M)))
-						to_chat(M, "<span class='warning'>Your move intent is now set to walk, as your targeter permits it.</span>")
+						to_chat(M, "<span class='warning'>My move intent is now set to walk, as my targeter permits it.</span>")
 						M.set_m_intent("walk")
 				else
-					to_chat(M, "<span class='danger'>Your character will now be shot if they move.</span>")
+					to_chat(M, "<span class='danger'>I will be shot if I move.</span>")
 
 mob/living/proc/set_m_intent(var/intent)
 	if (intent != "walk" && intent != "run")
@@ -366,9 +366,9 @@ client/verb/AllowTargetRun()
 		if(G.target)
 			for(var/mob/living/M in G.target)
 				if(target_can_run)
-					to_chat(M, "Your character may now <b>run</b> at the discretion of their targeter.")
+					to_chat(M, "I may now <b>run</b> at the discretion of my targeter.")
 				else
-					to_chat(M, "<span class='danger'>Your character will now be shot if they run.</span>")
+					to_chat(M, "<span class='danger'>I will now be shot if I run.</span>")
 
 client/verb/AllowTargetClick()
 	set hidden=1
@@ -390,6 +390,6 @@ client/verb/AllowTargetClick()
 		if(G.target)
 			for(var/mob/living/M in G.target)
 				if(target_can_click)
-					to_chat(M, "Your character may now <b>use items</b> at the discretion of their targeter.")
+					to_chat(M, "I may now <b>use items</b> at the discretion of my targeter.")
 				else
-					to_chat(M, "<span class='danger'>Your character will now be shot if they use items.</span>")
+					to_chat(M, "<span class='danger'>I will now be shot if I use items.</span>")

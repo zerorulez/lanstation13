@@ -154,7 +154,7 @@ proc/move_mining_shuttle()
 /obj/machinery/computer/mining_shuttle/emag(mob/user as mob)
 	..()
 	src.req_access = list()
-	to_chat(usr, "You disable the console's access requirement.")
+	to_chat(usr, "I disable the console's access requirement.")
 */
 /******************************Lantern*******************************/
 
@@ -214,7 +214,7 @@ proc/move_mining_shuttle()
 /obj/item/weapon/pickaxe/hammer
 	name = "sledgehammer"
 	//icon_state = "sledgehammer" Waiting on sprite
-	desc = "A mining hammer made of reinforced metal. You feel like smashing your boss in the face with this."
+	desc = "A mining hammer made of reinforced metal. You feel like smashing my boss in the face with this."
 	drill_verb = "hammering"
 
 /obj/item/weapon/pickaxe/silver
@@ -278,7 +278,7 @@ proc/move_mining_shuttle()
 	item_state = "jackhammer"
 	digspeed = 20
 	origin_tech = Tc_MATERIALS + "=2;" + Tc_POWERSTORAGE + "=3;" + Tc_ENGINEERING + "=2"
-	desc = "Yours is the drill that will pierce through the rock walls."
+	desc = "Irs is the drill that will pierce through the rock walls."
 	drill_verb = "drilling"
 
 	diggables = DIG_ROCKS | DIG_SOIL //drills are multipurpose
@@ -291,7 +291,7 @@ proc/move_mining_shuttle()
 	item_state = "jackhammer"
 	digspeed = 5 //Digs through walls, girders, and can dig up sand
 	origin_tech = Tc_MATERIALS + "=6;" + Tc_POWERSTORAGE + "=4;" + Tc_ENGINEERING + "=5"
-	desc = "Yours is the drill that will pierce the heavens!"
+	desc = "Irs is the drill that will pierce the heavens!"
 
 	diggables = DIG_ROCKS | DIG_SOIL | DIG_WALLS | DIG_RWALLS
 
@@ -364,7 +364,7 @@ proc/move_mining_shuttle()
 /obj/item/device/wormhole_jaunter/attack_self(mob/user as mob)
 	var/turf/device_turf = get_turf(user)
 	if(!device_turf||device_turf.z==CENTCOMM_Z||device_turf.z>=map.zLevels.len)
-		to_chat(user, "<span class='notice'>You're having difficulties getting the [src.name] to work.</span>")
+		to_chat(user, "<span class='notice'>I am having difficulties getting the [src.name] to work.</span>")
 		return
 	else
 		user.visible_message("<span class='notice'>[user.name] activates the [src.name]!</span>")
@@ -527,7 +527,7 @@ proc/move_mining_shuttle()
 /obj/item/weapon/mining_drone_cube/attack_self(mob/user)
 
 	user.visible_message("<span class='warning'>\The [src] suddenly expands into a fully functional mining drone!</span>", \
-	"<span class='warning'>You carefully unwrap \the [src] and it suddenly expands into a fully functional mining drone!</span>")
+	"<span class='warning'>I carefully unwrap \the [src] and it suddenly expands into a fully functional mining drone!</span>")
 	new /mob/living/simple_animal/hostile/mining_drone(get_turf(src))
 	qdel(src)
 
@@ -584,10 +584,10 @@ proc/move_mining_shuttle()
 			else
 				health += 10
 				user.visible_message("<span class='notice'>[user] repairs some of the armor on \the [src].</span>", \
-				"<span class='notice'>You repair some of the armor on \the [src].</span>")
+				"<span class='notice'>I repair some of the armor on \the [src].</span>")
 			return
 	if(istype(I, /obj/item/device/mining_scanner))
-		to_chat(user, "<span class='notice'>You instruct \the [src] to drop any collected ore.</span>")
+		to_chat(user, "<span class='notice'>I instruct \the [src] to drop any collected ore.</span>")
 		DropOre()
 		return
 	..()
@@ -709,7 +709,7 @@ proc/move_mining_shuttle()
 
 				loaded = 0
 				user.visible_message("<span class='warning'>[user] injects [M] with \the [src], reviving it.</span>", \
-				"<span class='notice'>You inject [M] with \the [src], reviving it.</span>")
+				"<span class='notice'>I inject [M] with \the [src], reviving it.</span>")
 				playsound(src,'sound/effects/refill.ogg',50,1)
 				update_icon()
 				return
@@ -761,7 +761,7 @@ proc/move_mining_shuttle()
 			to_chat(user, "<span class='warning'>\The [src] briefly flashes an error.</span>")
 			return 0
 		spawn()
-			var/mname = sanitize(input("Choose a name for your friend.", "Name your friend", contained_mob.name) as text|null)
+			var/mname = sanitize(input("Choose a name for my friend.", "Name my friend", contained_mob.name) as text|null)
 			if(mname)
 				contained_mob.name = mname
 				to_chat(user, "<span class='notice'>Renaming successful, say hello to [contained_mob]!</span>")

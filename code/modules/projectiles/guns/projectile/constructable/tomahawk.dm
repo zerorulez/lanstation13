@@ -11,10 +11,10 @@
 /obj/item/weapon/hatchet/tomahawk/attackby(obj/item/weapon/W, mob/user)
 	..()
 	if(istype(W, /obj/item/weapon/surgicaldrill))
-		to_chat(user, "You begin drilling a hole through the handle of \the [src].")
+		to_chat(user, "I begin drilling a hole through the handle of \the [src].")
 		playsound(user, 'sound/machines/juicer.ogg', 50, 1)
 		if(do_after(user, src, 30))
-			to_chat(user, "You drill a hole through the handle of \the [src].")
+			to_chat(user, "I drill a hole through the handle of \the [src].")
 			if(src.loc == user)
 				user.drop_item(src, force_drop = 1)
 				if(ismetal)
@@ -111,7 +111,7 @@
 /obj/item/weapon/hatchet/tomahawk/drilled/attackby(obj/item/weapon/W, mob/user)
 	..()
 	if(istype(W, /obj/item/ashtray))
-		to_chat(user, "You affix \the [W] to the end of \the [src].")
+		to_chat(user, "I affix \the [W] to the end of \the [src].")
 		if(src.loc == user)
 			user.drop_item(src, force_drop = 1)
 			var/obj/item/weapon/hatchet/tomahawk/pipe/I = new (get_turf(user))
@@ -135,7 +135,7 @@
 /obj/item/weapon/hatchet/tomahawk/metal/drilled/attackby(obj/item/weapon/W, mob/user)
 	..()
 	if(istype(W, /obj/item/ashtray))
-		to_chat(user, "You affix \the [W] to the end of \the [src].")
+		to_chat(user, "I affix \the [W] to the end of \the [src].")
 		if(src.loc == user)
 			user.drop_item(src, force_drop = 1)
 			var/obj/item/weapon/hatchet/tomahawk/pipe/metal/I = new (get_turf(user))
@@ -180,7 +180,7 @@
 		if(current_blunt)
 			to_chat(user, "<span class='notice'>There is already crushed [blunt_name] in the bowl.</span>")
 			return
-		to_chat(user, "<span class='notice'>You crush \the [W] into \the [src].</span>")
+		to_chat(user, "<span class='notice'>I crush \the [W] into \the [src].</span>")
 		var/obj/item/clothing/mask/cigarette/blunt/rolled/B = new/obj/item/clothing/mask/cigarette/blunt/rolled(src)
 		blunt_hook = B.on_destroyed.Add(src, "burnout")
 		B.inside_item = 1
@@ -224,7 +224,7 @@
 		C.lit = 0
 		C.update_brightness()
 		set_light(0)
-		user.visible_message("<span class='notice'>[user] snuffs out \his [src].</span>","<span class='notice'>You snuff out \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] snuffs out \his [src].</span>","<span class='notice'>I snuff out \the [src].</span>")
 		is_lit = 0
 		if(ismetal)
 			icon_state = "pipe_tomahawk_metal"
@@ -239,11 +239,11 @@
 	set src in range(0)
 
 	if(usr.isUnconscious())
-		to_chat(usr, "You can't do that while unconscious.")
+		to_chat(usr, "I can't do that while unconscious.")
 		return
 
 	if(current_blunt)
-		to_chat(usr, "<span class='notice'>You empty the crushed [blunt_name] out of \the [src].</span>")
+		to_chat(usr, "<span class='notice'>I empty the crushed [blunt_name] out of \the [src].</span>")
 		not_burned_out = 1
 		qdel(current_blunt)
 		current_blunt = null
@@ -255,7 +255,7 @@
 	is_lit = 0
 	if(ismob(loc) && !not_burned_out)
 		var/mob/living/M = loc
-		to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
+		to_chat(M, "<span class='notice'>My [name] goes out.</span>")
 	not_burned_out = 0
 	if(ismetal)
 		icon_state = "pipe_tomahawk_metal"
@@ -308,7 +308,7 @@
 
 /obj/item/weapon/broken_pipe_tomahawk/attackby(obj/item/weapon/W, mob/user)
 	if(istype(W, /obj/item/weapon/shard))
-		to_chat(user, "You fasten \the [W] to \the [src].")
+		to_chat(user, "I fasten \the [W] to \the [src].")
 		if(current_blunt)
 			to_chat(user, "The crushed [blunt_name] falls out in the process.")
 		if(src.loc == user)
@@ -323,7 +323,7 @@
 		if(current_blunt)
 			to_chat(user, "<span class='notice'>There is already crushed [blunt_name] in the bowl.</span>")
 			return
-		to_chat(user, "<span class='notice'>You crush \the [W] into \the [src].</span>")
+		to_chat(user, "<span class='notice'>I crush \the [W] into \the [src].</span>")
 		var/obj/item/clothing/mask/cigarette/blunt/rolled/B = new/obj/item/clothing/mask/cigarette/blunt/rolled(src)
 		blunt_hook = B.on_destroyed.Add(src, "burnout")
 		B.inside_item = 1
@@ -363,7 +363,7 @@
 		C.lit = 0
 		C.update_brightness()
 		set_light(0)
-		user.visible_message("<span class='notice'>[user] snuffs out \his [src].</span>","<span class='notice'>You snuff out \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] snuffs out \his [src].</span>","<span class='notice'>I snuff out \the [src].</span>")
 		is_lit = 0
 		icon_state = "pipe_tomahawk_broken"
 		item_state = "pipe_tomahawk_broken"
@@ -374,11 +374,11 @@
 	set src in range(0)
 
 	if(usr.isUnconscious())
-		to_chat(usr, "You can't do that while unconscious.")
+		to_chat(usr, "I can't do that while unconscious.")
 		return
 
 	if(current_blunt)
-		to_chat(usr, "<span class='notice'>You empty the crushed [blunt_name] out of \the [src].</span>")
+		to_chat(usr, "<span class='notice'>I empty the crushed [blunt_name] out of \the [src].</span>")
 		not_burned_out = 1
 		qdel(current_blunt)
 		current_blunt = null
@@ -390,7 +390,7 @@
 	is_lit = 0
 	if(ismob(loc) && !not_burned_out)
 		var/mob/living/M = loc
-		to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
+		to_chat(M, "<span class='notice'>My [name] goes out.</span>")
 	not_burned_out = 0
 	icon_state = "pipe_tomahawk_broken"
 	item_state = "pipe_tomahawk_broken"

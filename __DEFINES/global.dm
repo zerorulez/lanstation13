@@ -169,7 +169,7 @@ var/datum/nanomanager/nanomanager = new()
 #define FIRE_DAMAGE_MODIFIER 0.0215 //Higher values result in more external fire damage to the skin (default 0.0215)
 #define AIR_DAMAGE_MODIFIER 2.025 //More means less damage from hot air scalding lungs, less = more damage. (default 2.025)
 
-	//Don't set this very much higher then 1024 unless you like inviting people in to dos your server with message spam
+	//Don't set this very much higher then 1024 unless you like inviting people in to dos my server with message spam
 #define MAX_MESSAGE_LEN 1024
 #define MAX_PAPER_MESSAGE_LEN 3072
 #define MAX_BOOK_MESSAGE_LEN 9216

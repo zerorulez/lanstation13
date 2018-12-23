@@ -65,7 +65,7 @@
 			magazine = A
 			update_icon()
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 25, 1)
-			to_chat(user, "<span class='info'>You insert a new magazine.</span>")
+			to_chat(user, "<span class='info'>I insert a new magazine.</span>")
 			user.regenerate_icons()
 
 	else if(istype(A, /obj/item/osipr_core))
@@ -76,7 +76,7 @@
 			qdel(A)
 			energy_balls++
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 25, 1)
-			to_chat(user, "<span class='info'>You insert \the [A].</span>")
+			to_chat(user, "<span class='info'>I insert \the [A].</span>")
 	else
 		..()
 
@@ -87,7 +87,7 @@
 		magazine = null
 		update_icon()
 		playsound(get_turf(src), 'sound/machines/click.ogg', 25, 1)
-		to_chat(user, "<span class='info'>You remove the magazine.</span>")
+		to_chat(user, "<span class='info'>I remove the magazine.</span>")
 		user.regenerate_icons()
 	else
 		..()

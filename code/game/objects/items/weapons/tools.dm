@@ -32,7 +32,7 @@
  */
 /obj/item/weapon/wrench
 	name = "wrench"
-	desc = "A wrench with common uses. Can be found in your hand."
+	desc = "A wrench with common uses. Can be found in my hand."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "wrench"
 	item_state = "wrench"
@@ -55,7 +55,7 @@
 	if(user.is_in_modules(src))
 		return
 	if(istype(W, /obj/item/weapon/handcuffs/cable) && !istype(src, /obj/item/weapon/wrench/socket))
-		to_chat(user, "<span class='notice'>You wrap the cable restraint around the top of the wrench.</span>")
+		to_chat(user, "<span class='notice'>I wrap the cable restraint around the top of the wrench.</span>")
 		if(src.loc == user)
 			user.drop_item(src, force_drop = 1)
 			var/obj/item/weapon/wrench_wired/I = new (get_turf(user))
@@ -77,7 +77,7 @@
  */
 /obj/item/weapon/screwdriver
 	name = "screwdriver"
-	desc = "You can be totally screwy with this."
+	desc = "I can be totally screwy with this."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "screwdriver"
 	item_state = "screwdriver"
@@ -151,7 +151,7 @@
 			if(!istype(M.loc,/turf))
 				return
 			if(C.amount < 10)
-				to_chat(usr, "<span class='warning'>You need at least 10 lengths to make a bolas wire!</span>")
+				to_chat(usr, "<span class='warning'>I need at least 10 lengths to make a bolas wire!</span>")
 				return
 			var/obj/item/weapon/legcuffs/bolas/cable/B = new /obj/item/weapon/legcuffs/bolas/cable(usr.loc)
 			qdel(src)
@@ -159,10 +159,10 @@
 			B.cable_color = C._color
 			B.screw_state = item_state
 			B.screw_istate = icon_state
-			to_chat(M, "<span class='notice'>You wind some cable around the screwdriver handle to make a bolas wire.</span>")
+			to_chat(M, "<span class='notice'>I wind some cable around the screwdriver handle to make a bolas wire.</span>")
 			C.use(10)
 		else
-			to_chat(usr, "<span class='warning'>You cannot do that.</span>")
+			to_chat(usr, "<span class='warning'>I cannot do that.</span>")
 	else
 		..()
 /*
@@ -201,8 +201,8 @@
 /obj/item/weapon/wirecutters/attack(mob/living/carbon/C as mob, mob/user as mob)
 	if((iscarbon(C)) && (C.handcuffed) && (istype(C.handcuffed, /obj/item/weapon/handcuffs/cable)))
 		usr.visible_message("\The [user] cuts \the [C]'s [C.handcuffed.name] with \the [src]!",\
-		"You cut \the [C]'s [C.handcuffed.name] with \the [src]!",\
-		"You hear cable being cut.")
+		"I cut \the [C]'s [C.handcuffed.name] with \the [src]!",\
+		"I hear cable being cut.")
 		qdel(C.handcuffed)
 		return
 	else
@@ -268,7 +268,7 @@
 			return
 		status = !status
 		if(status)
-			to_chat(user, "<span class='notice'>You resecure the welder.</span>")
+			to_chat(user, "<span class='notice'>I resecure the welder.</span>")
 		else
 			to_chat(user, "<span class='notice'>The welder can now be attached and modified.</span>")
 		src.add_fingerprint(user)
@@ -382,7 +382,7 @@
 		return 1
 	else
 		if(M)
-			to_chat(M, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+			to_chat(M, "<span class='notice'>I need more welding fuel to complete this task.</span>")
 		return 0
 
 //Returns whether or not the welding tool is currently on.
@@ -440,7 +440,7 @@
 	if (src.welding)
 		if (remove_fuel(1))
 			if(user && istype(user))
-				to_chat(user, "<span class='notice'>You switch the [src] on.</span>")
+				to_chat(user, "<span class='notice'>I switch the [src] on.</span>")
 			src.force = 15
 			src.damtype = "fire"
 			update_icon()
@@ -452,7 +452,7 @@
 			return
 	else
 		if(user && istype(user))
-			to_chat(usr, "<span class='notice'>You switch the [src] off.</span>")
+			to_chat(usr, "<span class='notice'>I switch the [src] off.</span>")
 		else
 			visible_message("<span class='notice'>\The [src] shuts off!</span>")
 		src.force = 3
@@ -472,19 +472,19 @@
 		if(!E)
 			return
 		if(E.welding_proof)
-			user.simple_message("<span class='notice'>Your eyelenses darken to accommodate for the welder's glow.</span>")
+			user.simple_message("<span class='notice'>My eyelenses darken to accommodate for the welder's glow.</span>")
 			return
 		if(safety < 2)
 			switch(safety)
 				if(1)
-					user.simple_message("<span class='warning'>Your eyes sting a little.</span>",\
-						"<span class='warning'>You shed a tear.</span>")
+					user.simple_message("<span class='warning'>My eyes sting a little.</span>",\
+						"<span class='warning'>I shed a tear.</span>")
 					E.damage += rand(1, 2)
 					if(E.damage > 12)
 						user.eye_blurry += rand(3,6)
 				if(0)
-					user.simple_message("<span class='warning'>Your eyes burn.</span>",\
-						"<span class='warning'>Some tears fall down from your eyes.</span>")
+					user.simple_message("<span class='warning'>My eyes burn.</span>",\
+						"<span class='warning'>Some tears fall down from my eyes.</span>")
 					E.damage += rand(2, 4)
 					if(E.damage > 10)
 						E.damage += rand(4,10)
@@ -492,18 +492,18 @@
 					var/obj/item/clothing/to_blame = H.head //blame the hat
 					if(!to_blame || (istype(to_blame) && H.glasses && H.glasses.eyeprot < to_blame.eyeprot)) //if we don't have a hat, the issue is the glasses. Otherwise, if the glasses are worse, blame the glasses
 						to_blame = H.glasses
-					user.simple_message("<span class='warning'>Your [to_blame] intensifies the welder's glow. Your eyes itch and burn severely.</span>",\
+					user.simple_message("<span class='warning'>My [to_blame] intensifies the welder's glow. Your eyes itch and burn severely.</span>",\
 						"<span class='warning'>Somebody's cutting onions.</span>")
 					user.eye_blurry += rand(12,20)
 					E.damage += rand(12, 16)
 			if(E.damage > 10 && safety < 2)
-				user.simple_message("<span class='warning'>Your eyes are really starting to hurt. This can't be good for you!</span>",\
+				user.simple_message("<span class='warning'>My eyes are really starting to hurt. This can't be good for you!</span>",\
 					"<span class='warning'>This is too sad! You start to cry.</span>")
 			if (E.damage >= E.min_broken_damage)
-				user.simple_message("<span class='warning'>You go blind!</span>","<span class='warning'>Somebody turns the lights off.</span>")
+				user.simple_message("<span class='warning'>I go blind!</span>","<span class='warning'>Somebody turns the lights off.</span>")
 				user.sdisabilities |= BLIND
 			else if (E.damage >= E.min_bruised_damage)
-				user.simple_message("<span class='warning'>You go blind!</span>","<span class='warning'>Somebody turns the lights off.</span>")
+				user.simple_message("<span class='warning'>I go blind!</span>","<span class='warning'>Somebody turns the lights off.</span>")
 				user.eye_blind = 5
 				user.eye_blurry = 5
 				user.disabilities |= NEARSIGHTED
@@ -625,12 +625,12 @@
 			S.heal_damage(15,0,0,1)
 			if(user != M)
 				user.visible_message("<span class='attack'>\The [user] patches some dents on \the [M]'s [S.display_name] with \the [src]</span>",\
-				"<span class='attack'>You patch some dents on \the [M]'s [S.display_name]</span>",\
-				"You hear a welder.")
+				"<span class='attack'>I patch some dents on \the [M]'s [S.display_name]</span>",\
+				"I hear a welder.")
 			else
 				user.visible_message("<span class='attack'>\The [user] patches some dents on their [S.display_name] with \the [src]</span>",\
-				"<span class='attack'>You patch some dents on your [S.display_name]</span>",\
-				"You hear a welder.")
+				"<span class='attack'>I patch some dents on my [S.display_name]</span>",\
+				"I hear a welder.")
 		else
 			to_chat(user, "Nothing to fix!")
 	else
@@ -657,7 +657,7 @@
 
 	attack_self(mob/user as mob)
 		open = !open
-		to_chat(user, "<span class='notice'>You [open?"open" : "close"] the conversion kit.</span>")
+		to_chat(user, "<span class='notice'>I [open?"open" : "close"] the conversion kit.</span>")
 		update_icon()
 
 /*
@@ -725,8 +725,8 @@
 					"<span class='warning'>The tool isn't thirsty.</span>")
 				return
 			var/transfer_amount = min(G.amount_per_transfer_from_this,space)
-			user.simple_message("<span class='info'>You transfer [transfer_amount] units to the [src].</span>",
-				"<span class='info'>The tool gulps down your drink!</span>")
+			user.simple_message("<span class='info'>I transfer [transfer_amount] units to the [src].</span>",
+				"<span class='info'>The tool gulps down my drink!</span>")
 			G.reagents.trans_id_to(src,SACID,transfer_amount)
 			update_icon()
 	else
@@ -779,7 +779,7 @@
 		reagents = slotzero
 	slot = !slot
 	update_icon()
-	to_chat(user, "<span class='notice'>You switch the stopper to the other side.</span>")
+	to_chat(user, "<span class='notice'>I switch the stopper to the other side.</span>")
 
 /obj/item/weapon/reagent_containers/glass/fuelcan/examine(mob/user)
 	..()

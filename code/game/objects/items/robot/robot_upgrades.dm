@@ -38,7 +38,7 @@
 		return FAILED_TO_ADD
 
 	if(!R.opened)
-		to_chat(user, "<span class='warning'>You must first open \the [src]'s cover!</span>")
+		to_chat(user, "<span class='warning'>I must first open \the [src]'s cover!</span>")
 		return FAILED_TO_ADD
 
 	if(!multi_upgrades && (src.type in R.module.upgrades))
@@ -51,7 +51,7 @@
 		for(var/module_to_add in modules_to_add)
 			R.module.modules += new module_to_add(R.module)
 
-	to_chat(user, "<span class='notice'>You successfully apply \the [src] to [R].</span>")
+	to_chat(user, "<span class='notice'>I successfully apply \the [src] to [R].</span>")
 	user.drop_item(src, R)
 
 // Medical Cyborg Stuff
@@ -103,7 +103,7 @@
 	R.real_name = ""
 	R.updatename()
 	R.updateicon()
-	to_chat(R, "<span class='warning'>You may now change your name.</span>")
+	to_chat(R, "<span class='warning'>I may now change my name.</span>")
 
 /obj/item/borg/upgrade/restart
 	name = "robot emergency restart module"
@@ -113,7 +113,7 @@
 
 /obj/item/borg/upgrade/restart/attempt_action(var/mob/living/silicon/robot/R,var/mob/living/user)
 	if(R.health < 0)
-		to_chat(user, "You have to repair the robot before using this module!")
+		to_chat(user, "I have to repair the robot before using this module!")
 		return 0
 
 	if(!R.key)

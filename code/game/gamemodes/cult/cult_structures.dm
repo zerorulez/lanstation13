@@ -38,31 +38,31 @@
 /obj/structure/cult/pylon/proc/attackpylon(mob/user as mob, var/damage)
 	if(!isbroken)
 		if(prob(1+ damage * 5))
-			to_chat(user, "You hit the pylon, and its crystal breaks apart!")
+			to_chat(user, "I hit the pylon, and its crystal breaks apart!")
 			for(var/mob/M in viewers(src))
 				if(M == user)
 					continue
-				M.show_message("[user.name] smashed the pylon!", 1, "You hear a tinkle of crystal shards.", 2)
+				M.show_message("[user.name] smashed the pylon!", 1, "I hear a tinkle of crystal shards.", 2)
 			playsound(get_turf(src), 'sound/effects/Glassbr3.ogg', 75, 1)
 			isbroken = 1
 			density = 0
 			icon_state = "pylon-broken"
 			set_light(0)
 		else
-			to_chat(user, "You hit the pylon!")
+			to_chat(user, "I hit the pylon!")
 			playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)
 	else
 		if(prob(damage * 2))
-			to_chat(user, "You pulverize what was left of the pylon!")
+			to_chat(user, "I pulverize what was left of the pylon!")
 			qdel(src)
 		else
-			to_chat(user, "You hit the pylon!")
+			to_chat(user, "I hit the pylon!")
 		playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)
 
 
 /obj/structure/cult/pylon/proc/repair(mob/user as mob)
 	if(isbroken)
-		to_chat(user, "You repair the pylon.")
+		to_chat(user, "I repair the pylon.")
 		isbroken = 0
 		density = 1
 		icon_state = "pylon"
@@ -70,7 +70,7 @@
 
 /obj/structure/cult/tome
 	name = "Desk"
-	desc = "A desk covered in arcane manuscripts and tomes in unknown languages. Looking at the text makes your skin crawl."
+	desc = "A desk covered in arcane manuscripts and tomes in unknown languages. Looking at the text makes my skin crawl."
 	icon_state = "tomealtar"
 	light_range = 2
 	light_color = LIGHT_COLOR_RED
@@ -91,7 +91,7 @@
 
 /obj/effect/gateway
 	name = "gateway"
-	desc = "You're pretty sure that abyss is staring back."
+	desc = "I am pretty sure that abyss is staring back."
 	icon = 'icons/obj/cult.dmi'
 	icon_state = "hole"
 	density = 1
@@ -190,4 +190,4 @@
 		else
 			new_mob.key = M.key
 
-		to_chat(new_mob, "<B>Your form morphs into that of a cluwne.</B>")
+		to_chat(new_mob, "<B>My form morphs into that of a cluwne.</B>")

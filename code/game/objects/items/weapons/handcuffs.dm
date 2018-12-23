@@ -27,7 +27,7 @@
 		return
 
 	if(!user.dexterity_check())
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(usr, "<span class='warning'>I don't have the dexterity to do this!</span>")
 		return
 
 	if(M.handcuffed)
@@ -57,7 +57,7 @@
 
 	playsound(get_turf(src), cuffing_sound, 30, 1, -2)
 	user.visible_message("<span class='danger'>[user] is trying to handcuff \the [C]!</span>",
-						 "<span class='danger'>You try to handcuff \the [C]!</span>")
+						 "<span class='danger'>I try to handcuff \the [C]!</span>")
 
 	if(do_after(user, C, cuffingtime))
 		if(istype(src, /obj/item/weapon/handcuffs/cable))
@@ -100,9 +100,9 @@
 
 	switch(mode)
 		if(SYNDICUFFS_ON_APPLY)
-			to_chat(user, "<span class='notice'>You pull the rotating arm back until you hear two clicks. \The [src] will detonate a few seconds after being applied.</span>")
+			to_chat(user, "<span class='notice'>I pull the rotating arm back until you hear two clicks. \The [src] will detonate a few seconds after being applied.</span>")
 		if(SYNDICUFFS_ON_REMOVE)
-			to_chat(user, "<span class='notice'>You pull the rotating arm back until you hear one click. \The [src] will detonate when removed.</span>")
+			to_chat(user, "<span class='notice'>I pull the rotating arm back until you hear one click. \The [src] will detonate when removed.</span>")
 
 /obj/item/weapon/handcuffs/syndicate/equipped(var/mob/user, var/slot)
 	..()
@@ -214,6 +214,6 @@
 		user.before_take_item(src)
 
 		user.put_in_hands(W)
-		to_chat(user, "<span class='notice'>You wrap the cable restraint around the top of the rod.</span>")
+		to_chat(user, "<span class='notice'>I wrap the cable restraint around the top of the rod.</span>")
 
 		qdel(src)

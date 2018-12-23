@@ -142,7 +142,7 @@
 	var/wizard_name_second = pick(wizard_second)
 	var/randomname = "[wizard_name_first] [wizard_name_second]"
 	spawn(0)
-		var/newname = copytext(sanitize(input(wizard_mob, "You are the Space Wizard. Would you like to change your name to something else?", "Name change", randomname) as null|text),1,MAX_NAME_LEN)
+		var/newname = copytext(sanitize(input(wizard_mob, "I am the Space Wizard. Would you like to change my name to something else?", "Name change", randomname) as null|text),1,MAX_NAME_LEN)
 
 		if (!newname)
 			newname = randomname
@@ -154,7 +154,7 @@
 /datum/game_mode/proc/greet_wizard(var/datum/mind/wizard, var/you_are=1)
 	if (you_are)
 		var/wikiroute = role_wiki[ROLE_WIZARD]
-		to_chat(wizard.current, "<span class='danger'>You are the Space Wizard!</span> <span class='info'><a HREF='?src=\ref[wizard.current];getwiki=[wikiroute]'>(Wiki Guide)</a></span>")
+		to_chat(wizard.current, "<span class='danger'>I am the Space Wizard!</span> <span class='info'><a HREF='?src=\ref[wizard.current];getwiki=[wikiroute]'>(Wiki Guide)</a></span>")
 	to_chat(wizard.current, "<B>The Space Wizards Federation has given you the following tasks:</B>")
 
 	var/obj_count = 1
@@ -209,9 +209,9 @@
 	// For Vox and plasmadudes.
 	//wizard_mob.species.handle_post_spawn(wizard_mob)
 
-	to_chat(wizard_mob, "You will find a list of available spells in your spell book. Choose your magic arsenal carefully.")
-	to_chat(wizard_mob, "In your pockets you will find a teleport scroll. Use it as needed.")
-	wizard_mob.mind.store_memory("<B>Remember:</B> do not forget to prepare your spells.")
+	to_chat(wizard_mob, "I will find a list of available spells in my spell book. Choose my magic arsenal carefully.")
+	to_chat(wizard_mob, "In my pockets you will find a teleport scroll. Use it as needed.")
+	wizard_mob.mind.store_memory("<B>Remember:</B> do not forget to prepare my spells.")
 	wizard_mob.update_icons()
 	return 1
 

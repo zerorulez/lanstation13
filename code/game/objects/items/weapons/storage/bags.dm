@@ -362,7 +362,7 @@
 	name = "money bag"
 	icon_state = "moneybag"
 
-	desc = "You had an uncle who was obsessed with these once."
+	desc = "I had an uncle who was obsessed with these once."
 
 	flags = FPRINT
 	w_class = W_CLASS_LARGE
