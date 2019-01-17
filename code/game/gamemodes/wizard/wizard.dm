@@ -142,7 +142,7 @@
 	var/wizard_name_second = pick(wizard_second)
 	var/randomname = "[wizard_name_first] [wizard_name_second]"
 	spawn(0)
-		var/newname = copytext(sanitize(input(wizard_mob, "I am the Space Wizard. Would you like to change my name to something else?", "Name change", randomname) as null|text),1,MAX_NAME_LEN)
+		var/newname = copytext(sanitize(input(wizard_mob, "I am the Space Wizard. Would I like to change my name to something else?", "Name change", randomname) as null|text),1,MAX_NAME_LEN)
 
 		if (!newname)
 			newname = randomname
@@ -155,7 +155,7 @@
 	if (you_are)
 		var/wikiroute = role_wiki[ROLE_WIZARD]
 		to_chat(wizard.current, "<span class='danger'>I am the Space Wizard!</span> <span class='info'><a HREF='?src=\ref[wizard.current];getwiki=[wikiroute]'>(Wiki Guide)</a></span>")
-	to_chat(wizard.current, "<B>The Space Wizards Federation has given you the following tasks:</B>")
+	to_chat(wizard.current, "<B>The Space Wizards Federation has given me the following tasks:</B>")
 
 	var/obj_count = 1
 	for(var/datum/objective/objective in wizard.objectives)

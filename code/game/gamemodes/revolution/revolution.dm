@@ -211,7 +211,7 @@
 		return ADD_REVOLUTIONARY_FAIL_IS_REV
 
 	revolutionaries += rev_mind
-	to_chat(rev_mind.current, "<span class='warning'><FONT size = 3> You are now a revolutionary! Help my cause. Do not harm my fellow freedom fighters. You can identify my comrades by the red \"R\" icons, and my leaders by the blue \"R\" icons. Help them kill the heads to win the revolution!</FONT></span>")
+	to_chat(rev_mind.current, "<span class='warning'><FONT size = 3> I am now a revolutionary! I must help the cause. I will not harm my fellow freedom fighters. I can identify my comrades by the red \"R\" icons, and my leaders by the blue \"R\" icons. I shall help them kill the heads to win the revolution!</FONT></span>")
 	rev_mind.special_role = "Revolutionary"
 	update_rev_icons_added(rev_mind)
 
@@ -225,10 +225,10 @@
 		rev_mind.special_role = null
 
 		if(beingborged)
-			to_chat(rev_mind.current, "<span class='danger'><FONT size = 3>The frame's firmware detects and deletes my neural reprogramming!  You remember nothing from the moment you were flashed until now.</FONT></span>")
+			to_chat(rev_mind.current, "<span class='danger'><FONT size = 3>The frame's firmware detects and deletes my neural reprogramming!  I remember nothing from the moment I was flashed until now.</FONT></span>")
 
 		else
-			to_chat(rev_mind.current, "<span class='danger'><FONT size = 3>I have been brainwashed! You are no longer a revolutionary! Your memory is hazy from the time you were a rebel...the only thing you remember is the name of the one who brainwashed you...</FONT></span>")
+			to_chat(rev_mind.current, "<span class='danger'><FONT size = 3>I have been brainwashed! I am no longer a revolutionary. My memory is hazy from the time I was rebel...the only thing I remember is the name of the one who brainwashed me...</FONT></span>")
 
 		update_rev_icons_removed(rev_mind)
 		for(var/mob/living/M in view(rev_mind.current))

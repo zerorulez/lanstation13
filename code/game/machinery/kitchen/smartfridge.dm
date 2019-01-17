@@ -26,7 +26,7 @@
 									/obj/item/weapon/reagent_containers/food/snacks/egg,
 									/obj/item/weapon/reagent_containers/food/condiment)
 
-	machine_flags = SCREWTOGGLE | CROWDESTROY | EJECTNOTDEL
+	machine_flags = SCREWTOGGLE | CROWDESTROY | EJECTNOTDEL | WRENCHMOVE
 
 	light_color = LIGHT_COLOR_CYAN
 	power_change()
@@ -85,6 +85,8 @@
 /obj/machinery/smartfridge/Destroy()
 	for(var/key in piles)
 		returnToPool(piles[key])
+	piles.Cut()
+
 	..()
 
 /obj/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj, var/mob/user as mob)
@@ -303,7 +305,10 @@
 		return 1
 	piles = sortList(piles)
 	updateUsrDialog()
-	return 1
+	return TRUE
+
+/obj/machinery/smartfridge/wrenchAnchor(var/mob/user, var/time_to_wrench = 10 SECONDS)
+	..()
 
 /obj/machinery/smartfridge/var/icon/clicked //Because BYOND can't give us runtime icon access, this is basically just a click catcher
 /obj/machinery/smartfridge/New()
@@ -437,6 +442,12 @@
 				display_miniicons = MINIICONS_ON
 
 	src.updateUsrDialog()
+
+/obj/machinery/smartfridge/Cross(atom/movable/mover, turf/target, height=1.5, air_group = 0)
+	if(!istype(mover))
+		return !anchored
+	return ..()
+
 
 #undef MAX_SHELVES
 #undef MINIICONS_ON

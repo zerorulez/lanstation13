@@ -94,9 +94,10 @@
 		else if(!has_eyes())           //Eyes cut out? Permablind.
 			eye_blind =  1
 			blinded =    1
-			eye_blurry = 1
+			eye_blurry = 0
 		else if(sdisabilities & BLIND) //Disabled-blind, doesn't get better on its own
 			blinded =    1
+			eye_blurry = 0
 		else if(eye_blind)		       //Blindness, heals slowly over time
 			eye_blind =  max(eye_blind - 1, 0)
 			blinded =    1

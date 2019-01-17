@@ -709,7 +709,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 	var/image/progbar
 	if(user && user.client && user.client.prefs.progress_bars)
 		if(!progbar)
-			progbar = image("icon" = 'icons/effects/progessbar.dmi', "loc" = target, "icon_state" = "prog_bar_0")
+			progbar = image("icon" = 'icons/effects/doafter_icon.dmi', "loc" = target, "icon_state" = "prog_bar_0")
 			progbar.plane = HUD_PLANE
 			progbar.layer = HUD_ABOVE_ITEM_LAYER
 			progbar.pixel_z = WORLD_ICON_SIZE
@@ -720,7 +720,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 	for (var/i = 1 to numticks)
 		if(user && user.client && user.client.prefs.progress_bars && progbar)
 			//oldstate = progbar.icon_state
-			progbar.icon_state = "prog_bar_[round(((i / numticks) * 100), 5)]"
+			progbar.icon_state = "prog_bar_[round(((i / numticks) * 100), 10)]"
 			user.client.images |= progbar
 		sleep(delayfraction)
 		if(!user || !target)
@@ -765,7 +765,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 	//var/image/barbar
 	if(user && user.client && user.client.prefs.progress_bars && target)
 		if(!progbar)
-			progbar = image("icon" = 'icons/effects/progessbar.dmi', "loc" = target, "icon_state" = "prog_bar_0")
+			progbar = image("icon" = 'icons/effects/doafter_icon.dmi', "loc" = target, "icon_state" = "prog_bar_0")
 			progbar.pixel_z = WORLD_ICON_SIZE
 			progbar.plane = HUD_PLANE
 			progbar.layer = HUD_ABOVE_ITEM_LAYER
@@ -783,7 +783,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 				progbar.layer = HUD_ABOVE_ITEM_LAYER
 				progbar.appearance_flags = RESET_COLOR
 			//oldstate = progbar.icon_state
-			progbar.icon_state = "prog_bar_[round(((i / numticks) * 100), 5)]"
+			progbar.icon_state = "prog_bar_[round(((i / numticks) * 100), 10)]"
 			user.client.images |= progbar
 		sleep(delayfraction)
 		//if(user.client && progbar.icon_state != oldstate)
