@@ -9,33 +9,33 @@ var/global/list/special_roles = list(
 	ROLE_ALIEN        = 1, //always show
 	ROLE_BLOB         = 1,
 	ROLE_BORER        = 1,
-	ROLE_CHANGELING   = IS_MODE_COMPILED("changeling"),
-	ROLE_CULTIST      = IS_MODE_COMPILED("cult"),
+	ROLE_CHANGELING   = 1,
+	ROLE_CULTIST      = 1,
 	ROLE_PLANT        = 1,
 //	"infested monkey" = IS_MODE_COMPILED("monkey"),
-	ROLE_MALF         = IS_MODE_COMPILED("malfunction"),
+	ROLE_MALF         = 1,
 	//ROLE_NINJA        = 1,
-	ROLE_OPERATIVE    = IS_MODE_COMPILED("nuclear"),
+	ROLE_OPERATIVE    = 1,
 	ROLE_PAI          = 1, // -- TLE
 	ROLE_POSIBRAIN    = 1,
-	ROLE_REV          = IS_MODE_COMPILED("revolution"),
-	ROLE_TRAITOR      = IS_MODE_COMPILED("traitor"),
-	ROLE_VAMPIRE      = IS_MODE_COMPILED("vampire"),
-	ROLE_VOXRAIDER    = IS_MODE_COMPILED("heist"),
+	ROLE_REV          = 1,
+	ROLE_TRAITOR      = 1,
+	ROLE_VAMPIRE      = 1,
+	ROLE_VOXRAIDER    = 1,
 	ROLE_WIZARD       = 1,
 )
 
 var/list/antag_roles = list(
 	ROLE_ALIEN        = 1,
 	ROLE_BLOB         = 1,
-	ROLE_CHANGELING   = IS_MODE_COMPILED("changeling"),
-	ROLE_CULTIST      = IS_MODE_COMPILED("cult"),
-	ROLE_MALF         = IS_MODE_COMPILED("malfunction"),
-	ROLE_OPERATIVE    = IS_MODE_COMPILED("nuclear"),
-	ROLE_REV          = IS_MODE_COMPILED("revolution"),
-	ROLE_TRAITOR      = IS_MODE_COMPILED("traitor"),
-	ROLE_VAMPIRE      = IS_MODE_COMPILED("vampire"),
-	ROLE_VOXRAIDER    = IS_MODE_COMPILED("heist"),
+	ROLE_CHANGELING   = 1,
+	ROLE_CULTIST      = 1,
+	ROLE_MALF         = 1,
+	ROLE_OPERATIVE    = 1,
+	ROLE_REV          = 1,
+	ROLE_TRAITOR      = 1,
+	ROLE_VAMPIRE      = 1,
+	ROLE_VOXRAIDER    = 1,
 	ROLE_WIZARD       = 1,
 //	"infested monkey" = IS_MODE_COMPILED("monkey"),
 )
@@ -248,14 +248,12 @@ var/const/MAX_SAVE_SLOTS = 8
 	<a href='?_src_=prefs;preference=all'>Always Random Body: [be_random_body ? "Yes" : "No"]</A><br>
 	<table width='100%'><tr><td width='24%' valign='top'>
 	<b>Species:</b> <a href='?_src_=prefs;preference=species;task=input'>[species]</a><BR>
-	<b>Secondary Language:</b> <a href='byond://?src=\ref[user];preference=language;task=input'>[language]</a><br>
-	<b>Skin Tone:</b> <a href='?_src_=prefs;preference=s_tone;task=input'>[species == "Human" ? "[-s_tone + 35]/220" : "[s_tone]"]</a><br><BR>
+	<b>Skin Tone:</b> <a href='?_src_=prefs;preference=s_tone;task=input'>[species == "Human" ? "[-s_tone + 35]/220" : "[s_tone]"]</a><br>
 	<b>Handicaps:</b> <a href='byond://?src=\ref[user];task=input;preference=disabilities'><b>Set</a></b><br>
 	<b>Limbs:</b> <a href='byond://?src=\ref[user];preference=limbs;task=input'>Set</a><br>
 	<b>Organs:</b> <a href='byond://?src=\ref[user];preference=organs;task=input'>Set</a><br>
 	<b>Underwear:</b> [gender == MALE ? "<a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_m[underwear]]</a>" : "<a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_f[underwear]]</a>"]<br>
 	<b>Backpack:</b> <a href ='?_src_=prefs;preference=bag;task=input'><b>[backbaglist[backbag]]</a><br>
-	<b>Nanotrasen Relation</b>:<br><a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>
 	<b>Flavor Text:</b><a href='byond://?src=\ref[user];preference=flavor_text;task=input'>Set</a><br>
 	</td><td valign='top' width='21%'>
 	<h3>Hair Style</h3>

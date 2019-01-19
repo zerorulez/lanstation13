@@ -511,7 +511,7 @@ var/global/list/bad_changing_colour_ckeys = list()
 #define INV_SLOT_SIGHT "sight_slot"
 #define INV_SLOT_TOOL "tool_slot"
 
-#define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
+//#define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
 
 var/list/global_mutations = list() // list of hidden mutation things
@@ -815,8 +815,8 @@ SEE_PIXELS	256
 #define ROLE_WIZARD     "wizard"
 
 
-#define AGE_MIN 15			//youngest a character can be
-#define AGE_MAX 85			//oldest a character can be
+#define AGE_MIN 17			//youngest a character can be
+#define AGE_MAX 110			//oldest a character can be
 
 /*//Languages!
 #define LANGUAGE_HUMAN		1

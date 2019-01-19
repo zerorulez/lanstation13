@@ -176,9 +176,8 @@
 
 
 /datum/game_mode/proc/send_intercept()
-
-
-	var/intercepttext = {"<FONT size = 3><B>[command_name()] Update</B> Requested status information:</FONT><HR>
+	return
+/*	var/intercepttext = {"<FONT size = 3><B>[command_name()] Update</B> Requested status information:</FONT><HR>
 <B> In case you have misplaced my copy, attached is a list of personnel whom reliable sources&trade; suspect may be affiliated with the Syndicate:</B><br> <I>Reminder: Acting upon this information without solid evidence will result in termination of my working contract with Nanotrasen.</I></br>"}
 	var/list/suspects = list()
 	for(var/mob/living/carbon/human/man in player_list) if(man.client && man.mind)
@@ -236,8 +235,7 @@
 			M << sound('sound/AI/intercept.ogg')
 	if(security_level < SEC_LEVEL_BLUE)
 		set_security_level(SEC_LEVEL_BLUE)*/
-
-
+*/
 /datum/game_mode/proc/get_players_for_role(var/role, override_jobbans=1, poll=0)
 	var/list/players = list()
 	var/list/candidates = list()

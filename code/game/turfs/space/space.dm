@@ -14,6 +14,8 @@
 	luminosity = 1
 	can_border_transition = 1
 
+	var/transit = FALSE
+
 /*	var/image/I = image('icons/turf/space_parallax1.dmi',"[icon_state]")
 	I.plane = PLANE_SPACE_BACKGROUND
 	I.alpha = 80
@@ -21,7 +23,8 @@
 	overlays += I*/
 
 /turf/space/initialize()
-	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+	if(!transit)
+		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
 	if(loc)
 		var/area/A = loc
