@@ -63,7 +63,7 @@
 			bloodDNA = null
 
 
-			// Floorlength braids?  Enjoy my tripping.
+	/*		// Floorlength braids?  Enjoy my tripping.
 			if(H.h_style && !H.check_hidden_head_flags(HIDEHEADHAIR))
 				var/datum/sprite_accessory/hair_style = hair_styles_list[H.h_style]
 				if(hair_style && (hair_style.flags & HAIRSTYLE_CANTRIP))
@@ -71,7 +71,7 @@
 						if (H.Slip(4, 5))
 							step(H, H.dir)
 							to_chat(H, "<span class='notice'>I tripped over my hair!</span>")
-
+*/
 		switch(src.wet)
 			if(1) //Water
 				if (M.Slip(5, 3))
