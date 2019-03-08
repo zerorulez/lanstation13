@@ -1,145 +1,121 @@
-// The overlay that provides the shading.
 /atom/movable/lighting_overlay
-	name			= ""
-	mouse_opacity	= 0
+	name          = ""
 
-	anchored		= TRUE
-	ignoreinvert    = TRUE
+	anchored      = TRUE
+	ignoreinvert  = TRUE
 
-	icon_state		= "light1"
-	icon			= LIGHTING_ICON
-	layer			= LIGHTING_LAYER
-	plane           = LIGHTING_PLANE
-	invisibility	= INVISIBILITY_LIGHTING
+	icon             = LIGHTING_ICON
+	color            = LIGHTING_BASE_MATRIX
+	plane            = LIGHTING_PLANE
+	mouse_opacity    = 0
+	layer            = LIGHTING_LAYER
+	invisibility     = INVISIBILITY_LIGHTING
 
-	blend_mode      = BLEND_ADD
-
-	color			= "#000000"
-
-	var/lum_r
-	var/lum_g
-	var/lum_b
+	blend_mode    = BLEND_ADD
 
 	var/needs_update = FALSE
 
-// Cut our verbs so we're invisible on right-click.
-/atom/movable/lighting_overlay/New()
+	#if WORLD_ICON_SIZE != 32
+	transform = matrix(WORLD_ICON_SIZE / 32, 0, (WORLD_ICON_SIZE - 32) / 2, 0, WORLD_ICON_SIZE / 32, (WORLD_ICON_SIZE - 32) / 2)
+	#endif
+
+/atom/movable/lighting_overlay/New(var/atom/loc, var/no_update = FALSE)
 	. = ..()
 	verbs.Cut()
 
-	// BYOND was too stupid to realise this is constant.
-	alpha = 255 - round(LIGHTING_SOFT_THRESHOLD * 255) // All overlays should start softly lit.
-
-	var/turf/T = loc
+	var/turf/T         = loc // If this runtimes atleast we'll know what's creating overlays in things that aren't turfs.
 	T.lighting_overlay = src
-	T.luminosity = 0
+	T.luminosity       = 0
+
+	if (no_update)
+		return
 
 	update_overlay()
 
-// This proc should be used to change the lumcounts of the overlay, it applies the changes and queus the overlay for updating, but only the latter if needed.
-/atom/movable/lighting_overlay/proc/update_lumcount(delta_r, delta_g, delta_b)
-	if(!delta_r && !delta_g && !delta_b) //Nothing is being changed all together.
-		return
-
-	var/should_update = FALSE
-
-	if(!needs_update) //If this isn't true, we're already updating anyways.
-		if(max(lum_r, lum_g, lum_b) < 1) //Any change that could happen WILL change appearance.
-			should_update = TRUE
-
-		else if(max(lum_r + delta_r, lum_g + delta_g, lum_b + delta_b) < 1) //The change would bring us under 1 max lum, again, guaranteed to change appearance.
-			should_update = TRUE
-
-		else //We need to make sure that the colour ratios won't change in this code block.
-			var/mx1 = max(lum_r, lum_g, lum_b)
-			var/mx2 = max(lum_r + delta_r, lum_g + delta_g, lum_b + delta_b)
-
-			if(lum_r / mx1 != (lum_r + delta_r) / mx2 || lum_g / mx1 != (lum_g + delta_g) / mx2 || lum_b / mx1 != (lum_b + delta_b) / mx2) //Stuff would change.
-				should_update = TRUE
-
-	lum_r += delta_r
-	lum_g += delta_g
-	lum_b += delta_b
-
-	if(!needs_update && should_update)
-		needs_update = TRUE
-		lighting_update_overlays |= src
-
-// This proc changes the colour of us (the actual "colour" the light emits).
-/atom/movable/lighting_overlay/proc/update_overlay()
-	var/mx = max(lum_r, lum_g, lum_b) // Scale it so 1 is the strongest lum, if it is below 1.
-	. = 1 // factor
-	if(mx > 1)
-		. = 1 / mx
-
-	// If there is any light at all, but below the soft light threshold, modify the factor so the highest lumcount is always LIGHTING_SOFT_THRESHOLD.
-	else if(mx < LIGHTING_SOFT_THRESHOLD && mx > LIGHTING_ROUND_VALUE)
-		. = LIGHTING_SOFT_THRESHOLD / mx
-
-	// Change the colour of the overlay, if we are using dynamic lighting we use animate(), else we don't.
-	#if LIGHTING_TRANSITIONS == 1
-	animate(src,
-		color = rgb(lum_r * 255 * ., lum_g * 255 * ., lum_b * 255 * .),
-		alpha = (mx ? 255 : 255 - round(LIGHTING_SOFT_THRESHOLD * 255)),
-		LIGHTING_TRANSITION_SPEED
-	)
-	#else
-	color = rgb(lum_r * 255 * ., lum_g * 255 * ., lum_b * 255 * .)
-	if(mx <= LIGHTING_SOFT_THRESHOLD)
-		alpha = 255 - round(LIGHTING_SOFT_THRESHOLD * 255) // BYOND I fucking hope you do this at compile time.
-
-	else
-		alpha = 255
-	#endif
-
-	var/turf/T = loc
-
-	if(istype(T)) // Incase we're not on a turf, pool ourselves, something happened.
-		if(max(lum_r, lum_g, lum_b) > LIGHTING_SOFT_THRESHOLD)
-			luminosity = 1
-		else  // Practically no light, disable luminosity so only people up close (or with high see_in_dark) can see this tile.
-			#if LIGHTING_TRANSITIONS == 1
-			spawn(LIGHTING_TRANSITION_SPEED)
-				luminosity = 0
-			#else
-			luminosity = 0
-			#endif
-
-		universe.OnTurfTick(T) // Do a turf tick, yes this is a weird place to put it I know.
-	else
-		// PANIC.
-		if(loc)
-			warning("A lighting overlay realised its loc was NOT a turf (actual loc: [loc], [loc.type]) in update_overlay() and got pooled!")
-		else
-			warning("A lighting overlay realised it was in nullspace in update_overlay() and got pooled!")
-		returnToPool(src)
-
-// Special override of resetVariables() in the interest of speed.
-/atom/movable/lighting_overlay/resetVariables()
-	loc = null
-
-	lum_r = 0
-	lum_g = 0
-	lum_b = 0
-
-	color = "#000000"
-
-	invisibility = INVISIBILITY_LIGHTING // Fuck you whoever put invisibility = 101 in the parent Destroy().
-
-	needs_update = 0
-
-// Standard reference removal stuff.
 /atom/movable/lighting_overlay/Destroy()
-	lighting_update_overlays -= src
+	global.lighting_update_overlays     -= src
 
-	var/turf/T = loc
-	if(istype(T))
+	var/turf/T   = loc
+	if (istype(T))
 		T.lighting_overlay = null
 		T.luminosity = 1
+
 	..()
 
-// Variety of overrides so the overlays don't get affected by weird things.
+/atom/movable/lighting_overlay/proc/update_overlay()
+	var/turf/T = loc
+	if (!istype(T)) // Erm...
+		if (loc)
+			warning("A lighting overlay realised its loc was NOT a turf (actual loc: [loc], [loc.type]) in update_overlay() and got pooled!")
 
+		else
+			warning("A lighting overlay realised it was in nullspace in update_overlay() and got pooled!")
+
+		returnToPool(src)
+		return
+
+	// To the future coder who sees this and thinks
+	// "Why didn't he just use a loop?"
+	// Well my man, it's because the loop performed like shit.
+	// And there's no way to improve it because
+	// without a loop you can make the list all at once which is the fastest you're gonna get.
+	// Oh it's also shorter line wise.
+	// Including with these comments.
+
+	// See LIGHTING_CORNER_DIAGONAL in lighting_corner.dm for why these values are what they are.
+	// No I seriously cannot think of a more efficient method, fuck off Comic.
+	var/datum/lighting_corner/cr  = T.corners[3] || dummy_lighting_corner
+	var/datum/lighting_corner/cg  = T.corners[2] || dummy_lighting_corner
+	var/datum/lighting_corner/cb  = T.corners[4] || dummy_lighting_corner
+	var/datum/lighting_corner/ca  = T.corners[1] || dummy_lighting_corner
+
+	var/max = max(cr.cache_mx, cg.cache_mx, cb.cache_mx, ca.cache_mx)
+
+	var/rr = cr.cache_r
+	var/rg = cr.cache_g
+	var/rb = cr.cache_b
+
+	var/gr = cg.cache_r
+	var/gg = cg.cache_g
+	var/gb = cg.cache_b
+
+	var/br = cb.cache_r
+	var/bg = cb.cache_g
+	var/bb = cb.cache_b
+
+	var/ar = ca.cache_r
+	var/ag = ca.cache_g
+	var/ab = ca.cache_b
+
+	#if LIGHTING_SOFT_THRESHOLD != 0
+	var/set_luminosity = max > LIGHTING_SOFT_THRESHOLD
+	#else
+	// Because of floating points??, it won't even be a flat 0.
+	// This number is mostly arbitrary.
+	var/set_luminosity = max > 1e-6
+	#endif
+
+	if((rr & gr & br & ar) && (rg + gg + bg + ag + rb + gb + bb + ab == 8))
+	//anything that passes the first case is very likely to pass the second, and addition is a little faster in this case
+		icon_state = "transparent"
+		color = null
+	else if(!set_luminosity)
+		icon_state = "dark"
+		color = null
+	else
+		icon_state = null
+		color = list(
+			rr, rg, rb, 00,
+			gr, gg, gb, 00,
+			br, bg, bb, 00,
+			ar, ag, ab, 00,
+			00, 00, 00, 01
+		)
+
+	luminosity = set_luminosity
+
+
+// Variety of overrides so the overlays don't get affected by weird things.
 
 /atom/movable/lighting_overlay/ex_act(severity)
 	return 0
@@ -154,12 +130,17 @@
 	return
 
 /atom/movable/lighting_overlay/singularity_pull()
-	return 0
+	return
 
 /atom/movable/lighting_overlay/blob_act()
-	return 0
+	return
 
 // Override here to prevent things accidentally moving around overlays.
-/atom/movable/lighting_overlay/forceMove(atom/destination, var/harderforce = 0)
+/atom/movable/lighting_overlay/forceMove(atom/destination, var/no_tp=FALSE, var/harderforce = FALSE)
 	if(harderforce)
 		. = ..()
+
+/atom/movable/lighting_overlay/resetVariables(...)
+	color = LIGHTING_BASE_MATRIX
+
+	return ..("color")

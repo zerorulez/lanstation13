@@ -72,8 +72,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/holomap_marker = null
 	var/list/holomap_filter = list()
 
-	var/dynamic_lighting = TRUE			// Disabling this variable on an area disables dynamic lighting.
-
 /*Adding a wizard area teleport list because motherfucking lag -- Urist*/
 /*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
 var/list/teleportlocs = list()
