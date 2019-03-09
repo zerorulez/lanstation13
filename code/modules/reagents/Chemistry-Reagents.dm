@@ -3864,8 +3864,8 @@
 
 	if(..())
 		return 1
-	if(causes_jitteriness)
-		M.Jitter(5)
+//	if(causes_jitteriness)
+//		M.Jitter(5)
 	if(adj_temp > 0 && holder.has_reagent("frostoil"))
 		holder.remove_reagent("frostoil", 10 * REAGENTS_METABOLISM)
 

@@ -190,7 +190,7 @@
 			return
 		else
 			to_chat(M.current, "<span class='warning'>My piercing gaze knocks out [C.name].</span>")
-			to_chat(C, "<span class='sinister'>I find yourself unable to move and barely able to speak.</span>")
+			to_chat(C, "<span class='sinister'>I find myself unable to move and barely able to speak.</span>")
 			C.stuttering = 50
 			C.Paralyse(20)
 	else
