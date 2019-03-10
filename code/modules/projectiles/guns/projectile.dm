@@ -25,12 +25,6 @@
 
 	var/gun_flags = EMPTYCASINGS	//Yay, flags
 
-	var/loading_ammocasing_sound = 'sound/items/Deconstruct.ogg'
-
-	var/loading_magazine_sound   = 'sound/weapons/guns/glockmagazine.ogg'
-	var/ejecting_magazine_sound  = 'sound/weapons/guns/glockmagazine.ogg'
-	var/cocking_sound		 = 'sound/weapons/guns/glockreload.ogg'
-
 /obj/item/weapon/gun/projectile/isHandgun() //fffuuuuuuck non-abstract base types
 	return TRUE
 
@@ -38,6 +32,7 @@
 	..()
 	if(mag_type && load_method == 2)
 		stored_magazine = new mag_type(src)
+		chamber_round()
 	else
 		for(var/i = 1, i <= max_shells, i++)
 			if(ammo_type)
@@ -45,50 +40,29 @@
 	update_icon()
 	return
 
-/obj/item/weapon/gun/projectile/CtrlClick()
-	load_chamber()
-	return
-
-/obj/item/weapon/gun/projectile/proc/LoadChamber(var/mob/user)
-	if(!user.is_holding_item(src))	//if we're not in his hands
-		to_chat(user, "<span class='notice'>I'll need [src] in my hands to do that.</span>")
-		return FALSE
-	user.visible_message("<span class='warning'>[user.name] cocks \the [name].</span>")
-	playsound(get_turf(src), cocking_sound, 50, 1)
-	var/obj/item/ammo_casing/AC = getAC()
-	var/live = (AC && AC.BB)
-	chamber_round(live)
-	update_icon()
-
 //loads the argument magazine into the gun
 /obj/item/weapon/gun/projectile/proc/LoadMag(var/obj/item/ammo_storage/magazine/AM, var/mob/user)
 	if(istype(AM, text2path(mag_type)) && !stored_magazine)
 		if(user)
-			if(!user.is_holding_item(src))
-				to_chat(user, "I must hold \the [name] in my hands before inserting the magazine.")
-				return FALSE
 			if(user.drop_item(AM, src))
-				user.visible_message(\
-				"<span class='warning'>[user.name] inserts the magazine into \the [name].</span>",\
-				"I insert the magazine into \the [name].")
-				playsound(get_turf(src), loading_magazine_sound, 25, 1)
+				to_chat(usr, "<span class='notice'>You load the magazine into \the [src].</span>")
 			else
-				return FALSE
+				return
 
 		stored_magazine = AM
+		chamber_round()
 		AM.update_icon()
 		update_icon()
 
 		if(user)
 			user.update_inv_hands()
-
-		return TRUE
-	return FALSE
+		return 1
+	return 0
 
 /obj/item/weapon/gun/projectile/proc/RemoveMag(var/mob/user)
 	if(stored_magazine)
 		if(jammed)
-			to_chat(usr, "<span class='notice'>I begin unjamming \the [name]...</span>")
+			to_chat(usr, "<span class='notice'>You begin unjamming \the [name]...</span>")
 			if(do_after(usr,src,50))
 				jammed = 0
 				in_chamber = null
@@ -100,7 +74,7 @@
 					AC.forceMove(get_turf(user))
 					dropped_bullets++
 					stored_magazine.update_icon()
-				to_chat(usr, "<span class='notice'>I unjam the [name], and spill [dropped_bullets] bullet\s in the process.</span>")
+				to_chat(usr, "<span class='notice'>You unjam the [name], and spill [dropped_bullets] bullet\s in the process.</span>")
 				chamber_round()
 				update_icon()
 				return 0
@@ -108,10 +82,7 @@
 		stored_magazine.forceMove(get_turf(src.loc))
 		if(user)
 			user.put_in_hands(stored_magazine)
-			user.visible_message(\
-			"<span class='warning'>[user.name] ejects the magazine from \the [name].</span>",\
-			"I eject the magazine from \the [name].")
-			playsound(get_turf(src), ejecting_magazine_sound, 25, 1)
+			to_chat(usr, "<span class='notice'>You pull the magazine out of \the [src]!</span>")
 		stored_magazine.update_icon()
 		stored_magazine = null
 		update_icon()
@@ -120,81 +91,67 @@
 		return 1
 	return 0
 
-/obj/item/weapon/gun/projectile/verb/load_chamber()
-	set name = "Cock Gun"
-	set category = "Object"
-	set src in range(0)
-
-	if(usr.incapacitated())
-		to_chat(usr, "<span class='rose'>I can't do this.</span>")
-		return
-
-	if(load_method == MAGAZINE)
-		LoadChamber(usr)
-
 /obj/item/weapon/gun/projectile/verb/force_removeMag()
 	set name = "Remove Ammo / Magazine"
 	set category = "Object"
 	set src in range(0)
-
 	if(usr.incapacitated())
-		to_chat(usr, "<span class='rose'>I can't do this.</span>")
+		to_chat(usr, "<span class='rose'>You can't do this!</span>")
 		return
-
 	if(stored_magazine)
 		RemoveMag(usr)
 	else
-		to_chat(usr, "<span class='rose'>There is no magazine to remove.</span>")
+		to_chat(usr, "<span class='rose'>There is no magazine to remove!</span>")
 
 
-/obj/item/weapon/gun/projectile/proc/chamber_round(var/live_casing) //Only used by guns with magazine
+/obj/item/weapon/gun/projectile/proc/chamber_round() //Only used by guns with magazine
 	if(chambered || !stored_magazine)
-		process_chambered(live_casing)
-		return FALSE
+		return 0
 	else
 		var/obj/item/ammo_casing/round = stored_magazine.get_round()
 		if(istype(round))
 			chambered = round
 			chambered.forceMove(src)
-			return TRUE
-	return FALSE
+			return 1
+	return 0
 
 /obj/item/weapon/gun/projectile/proc/getAC()
 	var/obj/item/ammo_casing/AC = null
-	if(mag_type && load_method == MAGAZINE)
+	if(mag_type && load_method == 2)
 		AC = chambered
 	else if(getAmmo())
 		AC = loaded[1] //load next casing.
 	return AC
 
-/obj/item/weapon/gun/projectile/process_chambered(var/live_casing)
+/obj/item/weapon/gun/projectile/process_chambered()
 	var/obj/item/ammo_casing/AC = getAC()
+	if(in_chamber)
+		return 1 //{R}
 	if(isnull(AC) || !istype(AC))
-		return FALSE
-	if(mag_type && load_method == MAGAZINE)
+		return
+	if(mag_type && load_method == 2)
 		chambered = null //Remove casing from chamber.
+		chamber_round()
 	else
 		loaded -= AC //Remove casing from loaded list.
-	if(gun_flags & EMPTYCASINGS)
+	if(gun_flags &EMPTYCASINGS)
 		AC.forceMove(get_turf(src)) //Eject casing onto ground.
-		if(live_casing)
-			return TRUE
 	if(AC.BB)
 		in_chamber = AC.BB //Load projectile into chamber.
 		AC.BB.forceMove(src) //Set projectile loc to gun.
 		AC.BB = null //Empty casings
 		AC.update_icon()
-		return TRUE
-	return FALSE
+		return 1
+	return 0
 
 /obj/item/weapon/gun/projectile/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/gun_part/silencer) && src.gun_flags &SILENCECOMP)
 		if(!user.is_holding_item(src))	//if we're not in his hands
-			to_chat(user, "<span class='notice'>I'll need [src] in my hands to do that.</span>")
+			to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
 			return
 
 		if(user.drop_item(A, src)) //put the silencer into the gun
-			to_chat(user, "<span class='notice'>I screw [A] onto [src].</span>")
+			to_chat(user, "<span class='notice'>You screw [A] onto [src].</span>")
 			silenced = A	//dodgy?
 			w_class = W_CLASS_MEDIUM
 			update_icon()
@@ -209,12 +166,12 @@
 			else
 				to_chat(user, "<span class='rose'>There is already a magazine loaded in \the [src]!</span>")
 		else
-			to_chat(user, "<span class='rose'>I can't load \the [src] with a magazine, dummy!</span>")
+			to_chat(user, "<span class='rose'>You can't load \the [src] with a magazine, dummy!</span>")
 	if(istype(A, /obj/item/ammo_storage) && load_method != MAGAZINE)
 		var/obj/item/ammo_storage/AS = A
 		var/success_load = AS.LoadInto(AS, src)
 		if(success_load)
-			to_chat(user, "<span class='notice'>I successfully fill the [src] with [success_load] shell\s from the [AS].</span>")
+			to_chat(user, "<span class='notice'>You successfully fill the [src] with [success_load] shell\s from the [AS].</span>")
 	if(istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/AC = A
 		//message_admins("Loading the [src], with [AC], [AC.caliber] and [caliber.len]") //Enable this for testing
@@ -223,15 +180,15 @@
 				if(user.drop_item(AC, src))
 					chambered = AC
 					num_loaded++
-					playsound(get_turf(src), loading_ammocasing_sound, 25, 1)
+					playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 25, 1)
 			else if(getAmmo() < max_shells && load_method != MAGAZINE)
 				if(user.drop_item(AC, src))
 					loaded += AC
 					num_loaded++
-					playsound(get_turf(src), loading_ammocasing_sound, 25, 1)
+					playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 25, 1)
 
 	if(num_loaded)
-		to_chat(user, "<span class='notice'>I load [num_loaded] shell\s into \the [src]!</span>")
+		to_chat(user, "<span class='notice'>You load [num_loaded] shell\s into \the [src]!</span>")
 	A.update_icon()
 	update_icon()
 	return
@@ -244,7 +201,7 @@
 			var/obj/item/ammo_casing/AC = loaded[1]
 			loaded -= AC
 			AC.forceMove(get_turf(src)) //Eject casing onto ground.
-			to_chat(user, "<span class='notice'>I unload \the [AC] from \the [src]!</span>")
+			to_chat(user, "<span class='notice'>You unload \the [AC] from \the [src]!</span>")
 			update_icon()
 			return
 		if (load_method == MAGAZINE && stored_magazine)
@@ -252,14 +209,16 @@
 	else if(loc == user)
 		if(chambered) // So it processing unloading of a bullet first
 			var/obj/item/ammo_casing/AC = chambered
-			LoadChamber(user)
-			to_chat(user, "<span class='notice'>I unload \the [AC] from \the [src]!</span>")
+			AC.forceMove(get_turf(src)) //Eject casing onto ground.
+			chambered = null
+			to_chat(user, "<span class='notice'>You unload \the [AC] from \the [src]!</span>")
+			update_icon()
 			return
 		if(silenced)
 			if(!user.is_holding_item(src))
 				..()
 				return
-			to_chat(user, "<span class='notice'>I unscrew [silenced] from [src].</span>")
+			to_chat(user, "<span class='notice'>You unscrew [silenced] from [src].</span>")
 			user.put_in_hands(silenced)
 			silenced = 0
 			w_class = W_CLASS_SMALL
@@ -284,10 +243,10 @@
 	..()
 	if(conventional_firearm)
 		to_chat(user, "<span class='info'>Has [getAmmo()] round\s remaining.</span>")
-		if(in_chamber && !loaded.len)
-			to_chat(usr, "However, it has a chambered round.")
-		if(in_chamber && loaded.len)
-			to_chat(usr, "It also has a chambered round.")
+//		if(in_chamber && !loaded.len)
+//			to_chat(usr, "However, it has a chambered round.")
+//		if(in_chamber && loaded.len)
+//			to_chat(usr, "It also has a chambered round." {R})
 	if(istype(silenced, /obj/item/gun_part/silencer))
 		to_chat(user, "<span class='warning'>It has a supressor attached to the barrel.</span>")
 
