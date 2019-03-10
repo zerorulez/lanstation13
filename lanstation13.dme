@@ -1747,6 +1747,7 @@
 #include "code\modules\projectiles\projectile\bullets.dm"
 #include "code\modules\projectiles\projectile\change.dm"
 #include "code\modules\projectiles\projectile\energy.dm"
+#include "code\modules\projectiles\projectile\energyprojectiles.dm"
 #include "code\modules\projectiles\projectile\flare.dm"
 #include "code\modules\projectiles\projectile\force.dm"
 #include "code\modules\projectiles\projectile\gravitywell.dm"

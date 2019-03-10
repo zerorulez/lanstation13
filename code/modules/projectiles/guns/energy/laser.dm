@@ -8,12 +8,12 @@
 	starting_materials = list(MAT_IRON = 2000)
 	w_type = RECYK_ELECTRONIC
 	origin_tech = Tc_COMBAT + "=3;" + Tc_MAGNETS + "=2"
-	projectile_type = "/obj/item/projectile/beam"
+	projectile_type = "/obj/item/projectile/laser"
 
 /obj/item/weapon/gun/energy/laser/practice
 	name = "practice laser gun"
 	desc = "A modified version of the basic laser gun, this one fires less concentrated energy bolts designed for target practice."
-	projectile_type = "/obj/item/projectile/beam/practice"
+	projectile_type = "/obj/item/projectile/laser/practice"
 	clumsy_check = 0
 	mech_flags = null // So it can be scanned by the Device Analyser
 
@@ -23,7 +23,7 @@
 	icon_state = "xcomlaserpistol"
 	item_state = null
 	w_class = W_CLASS_TINY
-	projectile_type = /obj/item/projectile/beam/lightlaser
+	projectile_type = /obj/item/projectile/laser
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guninhands_left.dmi', "right_hand" = 'icons/mob/in-hand/right/guninhands_right.dmi')
 	charge_cost = 100 // holds less "ammo" then the rifle variant.
 
@@ -36,9 +36,9 @@
 	icon_state = "xcomlasergun"
 	item_state = null
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guninhands_left.dmi', "right_hand" = 'icons/mob/in-hand/right/guninhands_right.dmi')
-	projectile_type = /obj/item/projectile/beam
+	projectile_type = /obj/item/projectile/laser
 	charge_cost = 50
-
+/*
 /obj/item/weapon/gun/energy/laser/failure_check(var/mob/living/carbon/human/M)
 	if(istext(projectile_type))
 		projectile_type = text2path(projectile_type)
@@ -86,14 +86,14 @@
 	in_chamber = new projectile_type(src)
 	fire_delay +=3
 	to_chat(M, "<span class='warning'>Something inside \the [src] pops.</span>")
-
+*/
 /obj/item/weapon/gun/energy/laser/admin
 	name = "infinite laser gun"
 	desc = "Spray and /pray."
 	icon_state = "laseradmin"
 	item_state = "laseradmin"
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guns.dmi', "right_hand" = 'icons/mob/in-hand/right/guns.dmi')
-	projectile_type = /obj/item/projectile/beam
+	projectile_type = /obj/item/projectile/laser
 	charge_cost = 0
 
 /obj/item/weapon/gun/energy/laser/admin/update_icon()
@@ -109,7 +109,7 @@
 	..()
 	if(prob(50))
 		charge_cost = 0
-		projectile_type = /obj/item/projectile/beam/practice/stormtrooper
+		projectile_type = /obj/item/projectile/laser/practice/stormtrooper
 		desc = "Don't expect to hit anything with this."
 
 /obj/item/weapon/gun/energy/laser/blaster/update_icon()
@@ -120,7 +120,7 @@
 	item_state = null
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guninhands_left.dmi', "right_hand" = 'icons/mob/in-hand/right/guninhands_right.dmi')
 	desc = "An older model of the basic lasergun, no longer used by Nanotrasen's security or military forces. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
-	projectile_type = /obj/item/projectile/beam/retro
+	projectile_type = /obj/item/projectile/laser/retro
 
 /obj/item/weapon/gun/energy/laser/retro/isHandgun()
 	return TRUE
@@ -133,7 +133,7 @@
 	force = 10
 	origin_tech = null
 	var/charge_tick = 0
-	projectile_type = "/obj/item/projectile/beam/captain"
+	projectile_type = /obj/item/projectile/laser/captain
 
 /obj/item/weapon/gun/energy/laser/captain/isHandgun()
 	return TRUE
@@ -217,7 +217,7 @@
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guninhands_left.dmi', "right_hand" = 'icons/mob/in-hand/right/guninhands_right.dmi')
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 	origin_tech = Tc_COMBAT + "=4;" + Tc_MATERIALS + "=3;" + Tc_POWERSTORAGE + "=3"
-	projectile_type = "/obj/item/projectile/beam/heavylaser"
+	projectile_type = /obj/item/projectile/laser/heavylaser
 
 	fire_delay = 2
 
@@ -252,7 +252,7 @@
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guninhands_left.dmi', "right_hand" = 'icons/mob/in-hand/right/guninhands_right.dmi')
 	fire_sound = 'sound/weapons/laser3.ogg'
 	origin_tech = Tc_COMBAT + "=5;" + Tc_MATERIALS + "=3;" + Tc_MAGNETS + "=2;" + Tc_SYNDICATE + "=2"
-	projectile_type = "/obj/item/projectile/beam/xray"
+	projectile_type = "/obj/item/projectile/laser/xray"
 	charge_cost = 50
 
 
@@ -376,7 +376,7 @@
 
 	name = "rainbow laser"
 	desc = "A fearsome gun used by clown special forces. Its design is flawed however as clumsy users find it hard to operate."
-	projectile_type = "/obj/item/projectile/beam/white"
+	projectile_type = "/obj/item/projectile/laser/white"
 	var/current_color = 1
 	var/static/list/color_list = list("#FF0000","#FF8C00","#FFFF00","#00FF00","#00BFFF","#0000FF","#9400D3")
 	var/fire_mode = 1 // 1 = laser, 0 = braindamage.
@@ -387,13 +387,13 @@
 		if(0)
 			fire_mode = 1
 			to_chat(user, "<span class='warning'>\The [src.name] is now set to kill.</span>")
-			projectile_type = "/obj/item/projectile/beam/white"
+			projectile_type = "/obj/item/projectile/laser/white"
 			playsound(user,'sound/weapons/egun_toggle_noammo.ogg',73,0,-5)
 			fire_sound = 'sound/weapons/Laser.ogg'
 		if(1)
 			fire_mode = 0
 			to_chat(user, "<span class='warning'>\The [src.name] is now set to mindflay.</span>")
-			projectile_type = "/obj/item/projectile/beam/rainbow/braindamage"
+			projectile_type = "/obj/item/projectile/laser/rainbow/braindamage"
 			playsound(user,'sound/weapons/egun_toggle_noammo.ogg',73,0,-5)
 			fire_sound = 'sound/items/quack.ogg'
 
