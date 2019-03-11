@@ -390,7 +390,7 @@
 	mymob.zone_sel.overlays.len = 0
 	mymob.zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[mymob.zone_sel.selecting]")
 
-	//Handle the gun settings buttons
+/*	//Handle the gun settings buttons
 	mymob.gun_setting_icon = getFromPool(/obj/screen/gun/mode)
 	if (mymob.client)
 		if (mymob.client.gun_mode) // If in aim mode, correct the sprite
@@ -409,7 +409,7 @@
 					mymob.gun_run_icon.dir = 1
 				src.adding += mymob.gun_run_icon
 			src.adding += mymob.gun_move_icon
-
+	*/
 	mymob.client.reset_screen()
 
 	mymob.client.screen += list( mymob.throw_icon, mymob.kick_icon, mymob.bite_icon, mymob.zone_sel, mymob.oxygen, mymob.pressure, mymob.toxin, mymob.bodytemp, mymob.internals, mymob.fire, mymob.healths, mymob.nutrition_icon, mymob.pullin, mymob.gun_setting_icon) //, mymob.hands, mymob.rest, mymob.sleep) //, mymob.mach )

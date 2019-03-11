@@ -41,14 +41,14 @@
 	flag = SCIENTIST
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 5
+	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the research director"
 	selection_color = "#ffeeff"
 	idtype = /obj/item/weapon/card/id/research
 	access = list(access_robotics, access_rnd, access_tox_storage, access_science, access_xenobiology)
 	minimal_access = list(access_rnd, access_tox_storage, access_science, access_xenobiology)
-	alt_titles = list("Xenoarcheologist", "Anomalist", "Plasma Researcher", "Xenobiologist", "Research Botanist")
+	alt_titles = list("Anomalist", "Plasma Researcher", "Xenobiologist", "Research Botanist")
 
 	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/toxins
@@ -86,6 +86,38 @@
 	else
 		H.equip_or_collect(new H.species.survival_gear(H.back), slot_in_backpack)
 	return 1
+
+/datum/job/xenoarch
+	title = "Xenoarcheologist"
+	flag = XENOARCH
+	department_flag = MEDSCI
+	faction = "Station"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the research director"
+	selection_color = "#ffeeff"
+	idtype = /obj/item/weapon/card/id/research
+	access = list(access_robotics, access_rnd, access_tox_storage, access_science, access_xenobiology, access_cargo, access_cargo_bot, access_mint, access_mining, access_mining_station)
+	minimal_access = list(access_rnd, access_tox_storage, access_science, access_xenobiology, access_cargo, access_cargo_bot, access_mint, access_mining, access_mining_station)
+
+	pdaslot=slot_belt
+	pdatype=/obj/item/device/pda/toxins
+
+/datum/job/xenoarch/equip(var/mob/living/carbon/human/H)
+	if(!H)
+		return 0
+	H.equip_or_collect(new /obj/item/device/radio/headset/headset_sci(H), slot_ears)
+	H.equip_or_collect(new /obj/item/clothing/under/rank/xenoarch(H), slot_w_uniform)
+
+	if(H.backbag == 3)
+		H.equip_or_collect(new /obj/item/weapon/storage/backpack/satchel_tox(H), slot_back)
+
+	H.equip_or_collect(new /obj/item/clothing/shoes/white(H), slot_shoes)
+	H.equip_or_collect(new /obj/item/clothing/suit/storage/labcoat/science(H), slot_wear_suit)
+	if(H.backbag == 1)
+		H.put_in_hand(GRASP_RIGHT_HAND, new H.species.survival_gear(H))
+	else
+		H.equip_or_collect(new H.species.survival_gear(H.back), slot_in_backpack)
 
 /datum/job/roboticist
 	title = "Roboticist"

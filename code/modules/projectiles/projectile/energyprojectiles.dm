@@ -15,15 +15,11 @@
 
 /obj/item/projectile/laser/captain
 	name = "captain laser"
-	icon_state = "heavylaser_old"
 	damage = 40
 
 /obj/item/projectile/laser/retro
-	icon_state = "laser_old"
 
 /obj/item/projectile/laser/practice
-	name = "laser"
-	icon_state = "laser_old"
 	damage = 0
 
 /obj/item/projectile/laser/practice/stormtrooper
@@ -51,7 +47,7 @@
 	name = "pulse"
 	icon_state = "u_laser_old"
 	damage = 50
-	destroy = 1
+	destroy = TRUE
 	fire_sound = 'sound/weapons/pulse.ogg'
 
 /obj/item/projectile/laser/deathlaser
@@ -62,10 +58,7 @@
 ////////Laser Tag////////////////////
 /obj/item/projectile/laser/lasertag
 	name = "lasertag beam"
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 0
-	damage_type = BURN
-	flag = "laser"
 	icon_state = "bluelaser_old"
 	var/list/enemy_vest_types = list(/obj/item/clothing/suit/redtag)
 
