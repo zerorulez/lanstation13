@@ -4,7 +4,6 @@
 	icon = 'icons/obj/gun.dmi'
 	icon_state = "detective"
 	item_state = "gun"
-	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/guninhands_left.dmi', "right_hand" = 'icons/mob/in-hand/right/guninhands_right.dmi')
 	flags = FPRINT
 	siemens_coefficient = 1
 	slot_flags = SLOT_BELT
@@ -48,11 +47,17 @@
 						//1 for keep shooting until aim is lowered
 	var/fire_delay = 2
 	var/last_fired = 0
+	var/delay_user = 4	//how much to delay the user's next attack by after firing
 
 	var/conventional_firearm = 1	//Used to determine whether, when examined, an /obj/item/weapon/gun/projectile will display the amount of rounds remaining.
 	var/jammed = 0
 
 	var/projectile_color = null
+
+	var/pai_safety = TRUE	//To allow the pAI to activate or deactivate firing capability
+
+	
+
 
 /obj/item/weapon/gun/proc/ready_to_fire()
 	if(world.time >= last_fired + fire_delay)
@@ -74,15 +79,19 @@
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
+/obj/item/weapon/gun/proc/can_discharge() //because process_chambered() is an atrocity
+	return 0
+
 /obj/item/weapon/gun/afterattack(atom/A as mob|obj|turf|area, mob/living/user as mob|obj, flag, params, struggle = 0)
 	if(flag)
 		return //we're placing gun on a table or in backpack
 	if(harm_labeled >= min_harm_label)
-		to_chat(user, "<span class='warning'>A label sticks the trigger to the trigger guard.</span>")//Such a new feature, the player might not know what's wrong if it doesn't tell them.
+		to_chat(user, "<span class='warning'>A label sticks the trigger to the trigger guard!</span>")//Such a new feature, the player might not know what's wrong if it doesn't tell them.
 
 		return
 	if(istype(target, /obj/machinery/recharger) && istype(src, /obj/item/weapon/gun/energy))
 		return//Shouldnt flag take care of this?
+
 	if(user && user.client && user.client.gun_mode && !(A in target))
 		PreFire(A,user,params, "struggle" = struggle) //They're using the new gun system, locate what they're aiming at.
 	else
@@ -104,7 +113,7 @@
 			firing_dexterity = 0
 	if(!firing_dexterity)
 		if(display_message)
-			to_chat(user, "<span class='warning'>I don't have the dexterity to do this.</span>")
+			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return 0
 
 	if(istype(user, /mob/living))
@@ -112,33 +121,42 @@
 			var/mob/living/M = user
 			if (M_HULK in M.mutations)
 				if(display_message)
-					to_chat(M, "<span class='warning'>My finger is much too large for the trigger guard.</span>")
+					to_chat(M, "<span class='warning'>Your meaty finger is much too large for the trigger guard!</span>")
 				return 0
 	if(ishuman(user))
 		var/mob/living/carbon/human/H=user
 		if(golem_check)
 			if(isgolem(H))
 				if(display_message)
-					to_chat(user, "<span class='warning'>My fat fingers don't fit in the trigger guard.</span>")
+					to_chat(user, "<span class='warning'>Your fat fingers don't fit in the trigger guard!</span>")
 				return 0
 		var/datum/organ/external/a_hand = H.get_active_hand_organ()
 		if(!a_hand.can_use_advanced_tools())
 			if(display_message)
-				to_chat(user, "<span class='warning'>My [a_hand] doesn't have the dexterity to do this.</span>")
+				to_chat(user, "<span class='warning'>Your [a_hand] doesn't have the dexterity to do this!</span>")
 			return 0
 	return 1
 
 /obj/item/weapon/gun/proc/Fire(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, params, reflex = 0, struggle = 0, var/use_shooter_turf = FALSE)//TODO: go over this
 	//Exclude lasertag guns from the M_CLUMSY check.
-	if(clumsy_check)
-		if(istype(user, /mob/living))
-			var/mob/living/M = user
-			if (clumsy_check(M) && prob(50))
-				to_chat(M, "<span class='danger'>[src] blows up in my face.</span>")
+	var/explode = FALSE
+	var/dehand = FALSE
+	if(istype(user, /mob/living))
+		var/mob/living/M = user
+		if(clumsy_check && clumsy_check(M) && prob(50))
+			explode = TRUE
+		if(explode)
+			if(dehand)
+				var/limb_index = user.is_holding_item(src)
+				var/datum/organ/external/L = M.find_organ_by_grasp_index(limb_index)
+				visible_message("<span class='sinister'>[src] blows up in [M]'s [L.display_name]!</span>")
+				L.droplimb(1)
+			else
+				to_chat(M, "<span class='danger'>[src] blows up in your face.</span>")
 				M.take_organ_damage(0,20)
-				M.drop_item(src, force_drop = 1)
-				qdel(src)
-				return
+			M.drop_item(src, force_drop = 1)
+			qdel(src)
+			return
 
 	if(!can_Fire(user, 1))
 		return
@@ -162,7 +180,7 @@
 
 	if (!ready_to_fire())
 		if (world.time % 3) //to prevent spam
-			to_chat(user, "<span class='warning'>[src] is not ready to fire again.")
+			to_chat(user, "<span class='warning'>[src] is not ready to fire again!")
 		return
 
 	if(!process_chambered() || jammed) //CHECK
@@ -170,7 +188,6 @@
 
 	if(!in_chamber)
 		return
-
 	if(defective)
 		if(!failure_check(user))
 			return
@@ -229,14 +246,14 @@
 		else if (in_chamber.fire_sound)
 			playsound(user, in_chamber.fire_sound, fire_volume, 1)
 		user.visible_message("<span class='warning'>[user] fires [src][reflex ? " by reflex":""]!</span>", \
-		"<span class='warning'>I fire [src][reflex ? "by reflex":""]!</span>", \
-		"I hear a [istype(in_chamber, /obj/item/projectile/beam) ? "laser blast" : "gunshot"]!")
+		"<span class='warning'>You fire [src][reflex ? "by reflex":""]!</span>", \
+		"You hear a [istype(in_chamber, /obj/item/projectile/beam) ? "laser blast" : "gunshot"]!")
 
 	in_chamber.original = target
 	in_chamber.forceMove(get_turf(user))
 	in_chamber.starting = get_turf(user)
 	in_chamber.shot_from = src
-	user.delayNextAttack(4) // TODO: Should be delayed per-gun.
+	user.delayNextAttack(delay_user) // TODO: Should be delayed per-gun.
 	in_chamber.silenced = silenced
 	in_chamber.current = curloc
 	in_chamber.OnFired()
@@ -258,11 +275,6 @@
 	sleep(1)
 	in_chamber = null
 
-	if(istype(src, /obj/item/weapon/gun/projectile))
-		var/obj/item/weapon/gun/projectile/P = src
-		if(P.load_method == 2)
-			P.chamber_round()
-
 	update_icon()
 
 	user.update_inv_hand(user.active_hand)
@@ -270,7 +282,7 @@
 	if(defective && recoil && prob(3))
 		var/throwturf = get_ranged_target_turf(user, pick(alldirs), 7)
 		user.drop_item()
-		user.visible_message("\The [src] jumps out of [user]'s hands!","\The [src] jumps out of my hands!")
+		user.visible_message("\The [src] jumps out of [user]'s hands!","\The [src] jumps out of your hands!")
 		throw_at(throwturf, rand(3, 6), 3)
 		return 1
 
@@ -290,9 +302,9 @@
 	else
 		if(empty_sound)
 			src.visible_message("*click click*")
-			playsound(get_turf(src), empty_sound, 100, 1)
+			playsound(src, empty_sound, 100, 1)
 
-/obj/item/weapon/gun/attack(mob/living/M as mob, mob/living/user as mob, def_zone)
+/obj/item/weapon/gun/attack(mob/living/M, mob/living/user, def_zone)
 	//Suicide handling.
 	if (M == user && user.zone_sel.selecting == "mouth" && !mouthshoot)
 		if(istype(M.wear_mask, /obj/item/clothing/mask/happy))
@@ -322,7 +334,7 @@
 				user.stat=2 // Just to be sure
 				user.death()
 				var/suicidesound = pick('sound/misc/suicide/suicide1.ogg','sound/misc/suicide/suicide2.ogg','sound/misc/suicide/suicide3.ogg','sound/misc/suicide/suicide4.ogg','sound/misc/suicide/suicide5.ogg','sound/misc/suicide/suicide6.ogg')
-				playsound(get_turf(src), pick(suicidesound), 10, channel = 125)
+				playsound(src, pick(suicidesound), 10, channel = 125)
 				log_attack("<font color='red'>[key_name(user)] committed suicide with \the [src].</font>")
 				user.attack_log += "\[[time_stamp()]\] <font color='red'> [user.real_name] committed suicide with \the [src]</font>"
 			else
@@ -337,14 +349,15 @@
 			mouthshoot = 0
 			return
 
-	if (src.process_chambered())
+	if (can_discharge()) //Need to have something to fire but not load it up yet
 		//Point blank shooting if on harm intent or target we were targeting.
 		if(user.a_intent == I_HURT)
-			user.visible_message("<span class='danger'> \The [user] fires \the [src] point blank at [M]!</span>")
-			in_chamber.damage *= 1.3
+			if (process_chambered()) //Load whatever it is we fire
+				in_chamber.damage *= 1.3 //Some guns don't work with damage / chambers, like dart guns!
 			src.Fire(M,user,0,0,1)
 			return
 		else if(target && M in target)
+			process_chambered()
 			src.Fire(M,user,0,0,1) ///Otherwise, shoot!
 			return
 		else
@@ -352,14 +365,43 @@
 	else
 		return ..() //Pistolwhippin'
 
+/obj/item/weapon/gun/state_controls_pai(obj/item/device/paicard/P)
+	if(P.pai)
+		to_chat(P.pai, "<span class='info'><b>You have been connected to \a [src].</b></span>")
+		to_chat(P.pai, "<span class='info'>Your controls are:</span>")
+		to_chat(P.pai, "<span class='info'>- PageDown / Z(hotkey mode): Connect or disconnect from \the [src]'s firing mechanism.</span>")
+		to_chat(P.pai, "<span class='info'>- Click on a target: Fire \the [src] at the target.</span>")
+
+/obj/item/weapon/gun/attack_integrated_pai(mob/living/silicon/pai/user)
+	if(!pai_safety)
+		to_chat(user, "<span class='notice'>You connect to \the [src]'s firing mechanism.</span>")
+	else
+		to_chat(user, "<span class='notice'>You disconnect from \the [src]'s firing mechanism.</span>")
+	pai_safety = !pai_safety
+
 /obj/item/weapon/gun/on_integrated_pai_click(mob/living/silicon/pai/user, var/atom/A)	//to allow any gun to be pAI-compatible, on a basic level, just by varediting
 	if(check_pai_can_fire(user))
 		Fire(A,user,use_shooter_turf = TRUE)
-	else
-		to_chat(user, "<span class='warning'>I can't aim the gun properly from this location!</span>")
 
 /obj/item/weapon/gun/proc/check_pai_can_fire(mob/living/silicon/pai/user)	//for various restrictions on when pAIs can fire a gun into which they're integrated
 	if(get_holder_of_type(user, /obj/structure/disposalpipe) || get_holder_of_type(user, /obj/machinery/atmospherics/pipe))	//can't fire the gun from inside pipes or disposal pipes
+		to_chat(user, "<span class='warning'>You can't aim \the [src] properly from this location!</span>")
+		return FALSE
+	else if(!pai_safety)
+		to_chat(user, "<span class='warning'>You're not connected to \the [src]'s firing mechanism!</span>")
 		return FALSE
 	else
 		return TRUE
+
+/obj/item/weapon/gun/attackby(var/obj/item/A, mob/user)
+	if(istype(A, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/G = A
+		if(isHandgun() && G.isHandgun())
+			var/obj/item/weapon/gun/akimbo/AA = new /obj/item/weapon/gun/akimbo(get_turf(src),src,G)
+			if(user.drop_item(G, AA) && user.drop_item(src, AA))
+				user.put_in_hands(AA)
+				AA.update_icon(user)
+			else
+				to_chat(user, "<span class = 'warning'>You can not combine \the [G] and \the [src].</span>")
+				qdel(AA)
+	..()
