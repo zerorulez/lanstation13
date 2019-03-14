@@ -33,9 +33,7 @@
 		WARNING("[__FILE__]L[__LINE__]: turf/isSmoothableNeighbor given bad atom")
 		return 0
 	if(isInTypes(A, canSmoothWith))
-		// COLON OPERATORS ARE TERRIBLE BUT I HAVE NO CHOICE
-		if(src.mineral == A:mineral)
-			return 1
+		return 1
 
 	return 0
 

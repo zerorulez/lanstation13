@@ -4,8 +4,8 @@ var/list/nest_locations = list()
 	name = "alien hunter"
 	desc = "Hiss!"
 	icon = 'icons/mob/alien.dmi'
-	icon_state = "alienh_running"
-	icon_living = "alienh_running"
+	icon_state = "alienh"
+	icon_living = "alienh"
 	icon_dead = "alienh_dead"
 	icon_gib = "gibbed-a"
 	response_help = "pokes the"
@@ -47,13 +47,13 @@ var/list/nest_locations = list()
 	var/turf/T = get_turf(src)
 	if(weed < 50)
 		weed++
-		if(locate(/obj/effect/alien/weeds) in T)
+		if(locate(/obj/structure/alien/weeds) in T)
 			weed += 4
 	else if(!stat && !client && !istype(locked_to, /obj/structure/cage))
-		if(!(locate(/obj/effect/alien/weeds) in T) && !(locate(/obj/structure/bed/nest) in T) && !(locate(/obj/effect/alien/egg) in T) && isturf(src.loc) && !istype(T, /turf/space))
+		if(!(locate(/obj/structure/alien/weeds) in T) && !(locate(/obj/structure/bed/nest) in T) && !(locate(/obj/structure/alien/egg) in T) && isturf(src.loc) && !istype(T, /turf/space))
 			weed = 0
 			visible_message("<span class='alien'>[src] has planted some alien weeds!</span>")
-			new /obj/effect/alien/weeds/node(T)
+			new /obj/structure/alien/weeds/node(T)
 
 	if(acid < 200)
 		acid++
@@ -254,8 +254,8 @@ var/list/nest_locations = list()
 
 /mob/living/simple_animal/hostile/alien/drone
 	name = "alien drone"
-	icon_state = "aliend_running"
-	icon_living = "aliend_running"
+	icon_state = "aliend"
+	icon_living = "aliend"
 	icon_dead = "aliend_dead"
 	health = 60
 	melee_damage_lower = 15
@@ -263,8 +263,8 @@ var/list/nest_locations = list()
 
 /mob/living/simple_animal/hostile/alien/sentinel
 	name = "alien sentinel"
-	icon_state = "aliens_running"
-	icon_living = "aliens_running"
+	icon_state = "aliens"
+	icon_living = "aliens"
 	icon_dead = "aliens_dead"
 	health = 120
 	melee_damage_lower = 15
@@ -276,8 +276,8 @@ var/list/nest_locations = list()
 
 /mob/living/simple_animal/hostile/alien/queen
 	name = "alien queen"
-	icon_state = "alienq_running"
-	icon_living = "alienq_running"
+	icon_state = "alienq"
+	icon_living = "alienq"
 	icon_dead = "alienq_dead"
 	health = 250
 	maxHealth = 250
@@ -297,10 +297,10 @@ var/list/nest_locations = list()
 	var/turf/T = get_turf(src)
 	if(nest < 75)
 		nest++
-		if(locate(/obj/effect/alien/weeds) in T)
+		if(locate(/obj/structure/alien/weeds) in T)
 			nest += 4
 	else if(!stat && !client && !istype(locked_to, /obj/structure/cage))
-		if(!(locate(/obj/effect/alien/weeds/node) in T) && !(locate(/obj/structure/bed/nest) in T) && !(locate(/obj/effect/alien/egg) in T) && isturf(src.loc) && !istype(T, /turf/space))
+		if(!(locate(/obj/structure/alien/weeds/node) in T) && !(locate(/obj/structure/bed/nest) in T) && !(locate(/obj/structure/alien/egg) in T) && isturf(src.loc) && !istype(T, /turf/space))
 			var/nearby_nests = 0
 			for(var/obj/structure/bed/nest/N in range(5,src))
 				nearby_nests++
@@ -311,22 +311,22 @@ var/list/nest_locations = list()
 
 	if(egg < 75)
 		egg++
-		if(locate(/obj/effect/alien/weeds) in T)
+		if(locate(/obj/structure/alien/weeds) in T)
 			egg += 4
 	else if(!stat && !client && !istype(locked_to, /obj/structure/cage))
-		if(!(locate(/obj/effect/alien/weeds/node) in T) && !(locate(/obj/structure/bed/nest) in T) && !(locate(/obj/effect/alien/egg) in T) && isturf(src.loc) && !istype(T, /turf/space))
+		if(!(locate(/obj/structure/alien/weeds/node) in T) && !(locate(/obj/structure/bed/nest) in T) && !(locate(/obj/structure/alien/egg) in T) && isturf(src.loc) && !istype(T, /turf/space))
 			var/nearby_eggs = 0
-			for(var/obj/effect/alien/egg/E in range(3,src))
+			for(var/obj/structure/alien/egg/E in range(3,src))
 				nearby_eggs++
 			if(nearby_eggs < 3)
 				egg = 0
 				visible_message("<span class='alien'>[src] has laid an egg!</span>")
-				new /obj/effect/alien/egg(T)
+				new /obj/structure/alien/egg(T)
 
 /mob/living/simple_animal/hostile/alien/queen/wander_move(var/turf/dest)
-	var/obj/effect/alien/weeds/W = locate() in range(src,3)
+	var/obj/structure/alien/weeds/W = locate() in range(src,3)
 	if(W)
-		if(locate(/obj/effect/alien/weeds) in range(dest,1))//we want the queen to remain relatively close to the weed-covered area
+		if(locate(/obj/structure/alien/weeds) in range(dest,1))//we want the queen to remain relatively close to the weed-covered area
 			..()
 	else
 		..()

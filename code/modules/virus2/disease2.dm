@@ -48,7 +48,7 @@ var/global/list/disease2_list = list()
 	infectionchance = rand(60,90)
 	antigen |= text2num(pick(ANTIGENS))
 	antigen |= text2num(pick(ANTIGENS))
-	spreadtype = prob(70) ? "Airborne" : prob(20) ? "Blood" :"Contact" //Try for airborne then try for blood.
+	spreadtype = prob(40) ? "Airborne" : prob(40) ? "Blood" :"Contact" //Try for airborne then try for blood.
 
 /proc/virus2_make_custom(client/C)
 	if(!C.holder || !istype(C))
@@ -235,7 +235,7 @@ var/global/list/virusDB = list()
 	r += "<BR>Progress Speed : [stageprob]"
 	for(var/datum/disease2/effect/e in effects)
 		r += "<BR>Effect:[e.name]. Strength : [e.multiplier]. Verosity : [e.chance]. Type : [e.stage]."
-
+		r += "<BR>[e.desc]"
 	r += "<BR>Antigen pattern: [antigens2string(antigen)]"
 	return r
 

@@ -88,6 +88,8 @@
 #define ui_alien_toxin "EAST-1:[28*PIXEL_MULTIPLIER],NORTH-2:[25*PIXEL_MULTIPLIER]"
 #define ui_alien_fire "EAST-1:[28*PIXEL_MULTIPLIER],NORTH-3:[25*PIXEL_MULTIPLIER]"
 #define ui_alien_oxygen "EAST-1:[28*PIXEL_MULTIPLIER],NORTH-4:[25*PIXEL_MULTIPLIER]"
+#define ui_alien_nightvision "EAST-1:28,CENTER+2:25"
+#define ui_alien_storage_r "CENTER+1:18,SOUTH:5"//alien
 
 //Middle right (status indicators)
 #define ui_nutrition "EAST-1:[28*PIXEL_MULTIPLIER],CENTER-3:[11*PIXEL_MULTIPLIER]"

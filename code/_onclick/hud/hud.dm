@@ -21,6 +21,7 @@ var/global/obj/screen/clicker/catcher = new()
 	var/obj/screen/lingchemdisplay
 	var/obj/screen/vampire_blood_display // /vg/
 	var/list/obj/screen/hand_hud_objects = list()
+	var/obj/screen/nightvisionicon
 	var/obj/screen/action_intent
 	var/obj/screen/move_intent
 

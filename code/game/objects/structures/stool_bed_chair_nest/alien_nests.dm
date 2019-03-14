@@ -24,6 +24,8 @@
 				"<span class='notice'>[user.name] pulls [M.name] free from the sticky nest!</span>",\
 				"<span class='notice'>[user.name] pulls you free from the gelatinous resin.</span>",\
 				"<span class='notice'>I hear squelching...</span>")
+			M.pixel_x = 0
+			M.pixel_y = 0
 			unlock_atom(M)
 			overlays.len = 0
 		else
@@ -34,6 +36,8 @@
 
 			if(do_after(user,src,1200,60,needhand = FALSE))
 				if(user && M && (user.locked_to == src))
+					M.pixel_x = 0
+					M.pixel_y = 0
 					unlock_atom(M)
 					overlays.len = 0
 		src.add_fingerprint(user)
@@ -59,6 +63,8 @@
 			"<span class='notice'>[user.name] secretes a thick vile goo, securing [M.name] into \the [src]!</span>",\
 			"<span class='warning'>[user.name] drenches you in a foul-smelling resin, trapping you in \the [src]!</span>",\
 			"<span class='notice'>I hear squelching...</span>")
+	M.pixel_x = 2
+	M.pixel_y = 1
 	lock_atom(M, /datum/locking_category/buckle/bed/nest)
 	src.add_fingerprint(user)
 	var/image/nest_covering = image(icon,"nest-covering")

@@ -1896,3 +1896,10 @@ mob/proc/on_foot()
 		see_invisible = see_invisible_override
 #undef MOB_SPACEDRUGS_HALLUCINATING
 #undef MOB_MINDBREAKER_HALLUCINATING
+
+
+/mob/proc/sync_lighting_plane_alpha()
+	if(client)
+		var/obj/screen/plane_master/lighting/L = locate() in client.screen
+		if (L)
+			L.alpha = lighting_alpha

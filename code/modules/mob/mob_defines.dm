@@ -37,6 +37,8 @@
 	var/obj/screen/gun/run/gun_run_icon = null
 	var/obj/screen/gun/mode/gun_setting_icon = null
 
+	var/obj/screen/leap_icon = null
+
 	//monkey inventory icons
 	var/obj/screen/m_suitclothes = null
 	var/obj/screen/m_suitclothesbg = null
@@ -288,6 +290,8 @@
 	var/see_invisible_override = 0
 
 	var/scrambling = 0//For crawling.
+
+	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
 /mob/resetVariables()
 	..("callOnFace", "pinned", "embedded", "abilities", "grabbed_by", "requests", "mapobjs", "mutations", "spell_list", "viruses", "resistances", "radar_blips", "active_genes", "attack_log", "speak_emote", args)

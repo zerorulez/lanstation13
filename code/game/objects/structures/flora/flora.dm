@@ -268,7 +268,7 @@
 	name = "potted plant"
 	desc = "Oh, no. Not again."
 	icon = 'icons/obj/plants.dmi'
-	icon_state = "plant-26"
+	icon_state = "plant-13"
 	layer = FLY_LAYER
 	plane = ABOVE_HUMAN_PLANE
 
@@ -319,7 +319,7 @@
 
 /obj/structure/flora/pottedplant/random/New()
 	..()
-	icon_state = "plant-[rand(1,26)]"
+	icon_state = "plant-[rand(1,13)]"
 
 /obj/structure/flora/pottedplant/cyberplant
 	name = "holographic plant"

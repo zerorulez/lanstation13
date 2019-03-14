@@ -18,6 +18,8 @@
 
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/xenomeat
 
+	see_in_dark = 8
+
 	var/plasma = 250
 	var/max_plasma = 500
 	var/neurotoxin_cooldown = 0
@@ -36,6 +38,25 @@
 	var/fire_alert = 0
 
 	var/heat_protection = 0.5
+
+	var/leaping = FALSE
+	var/leap_on_click = 0
+
+/mob/living/carbon/alien/verb/nightvisiontoggle()
+	set name = "Toggle Night Vision"
+	set category = "Alien"
+
+	if(!nightvision)
+		lighting_alpha = LIGHTING_PLANE_ALPHA_NIGHTVISION
+		nightvision = TRUE
+		hud_used.nightvisionicon.icon_state = "nightvision1"
+	else if(nightvision)
+		lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+		nightvision = FALSE
+		hud_used.nightvisionicon.icon_state = "nightvision0"
+
+	to_chat(src, "Nightvision is now [nightvision?"on":"off"].")
+	sync_lighting_plane_alpha()
 
 /mob/living/carbon/alien/AdjustPlasma(amount)
 	plasma = min(max(plasma + amount,0),max_plasma) //upper limit of max_plasma, lower limit of 0
@@ -103,7 +124,7 @@ In all, this is a lot like the monkey code. /N
 		health = maxHealth - getOxyLoss() - getFireLoss() - getBruteLoss() - getCloneLoss()
 
 /mob/living/carbon/alien/proc/handle_environment(var/datum/gas_mixture/environment)
-	if(locate(/obj/effect/alien/weeds) in loc)
+	if(locate(/obj/structure/alien/weeds) in loc)
 		if(health < maxHealth - getCloneLoss())
 			adjustBruteLoss(-heal_rate)
 			adjustFireLoss(-heal_rate)

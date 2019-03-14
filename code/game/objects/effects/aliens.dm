@@ -1,120 +1,130 @@
-/* Alien Effects!
+/* Alien shit!
  * Contains:
- *		effect/alien
+ *		structure/alien
  *		Resin
  *		Weeds
- *		Acid
  *		Egg
+ *		effect/acid
  */
 
-/*
- * effect/alien
- */
-/obj/effect/alien
-	name = "alien thing"
-	desc = "theres something alien about this"
+
+/obj/structure/alien
 	icon = 'icons/mob/alien.dmi'
-	w_type=NOT_RECYCLABLE
 
 /*
  * Resin
  */
-/obj/effect/alien/resin
+/obj/structure/alien/resin
 	name = "resin"
-	desc = "Looks like some kind of slimy growth."
+	desc = "Looks like some kind of thick resin."
 	icon_state = "resin"
-
 	density = 1
 	opacity = 1
 	anchored = 1
 	var/health = 200
-	var/turf/linked_turf
+	var/resintype = null
 
-/obj/effect/alien/resin/wall
-	name = "resin wall"
-	desc = "Purple slime solidified into a wall."
-	icon_state = "resinwall" //same as resin, but consistency ho!
-
-/obj/effect/alien/resin/membrane
-	name = "resin membrane"
-	desc = "Purple slime just thin enough to let light pass through."
-	icon_state = "resinmembrane"
-	opacity = 0
-	health = 120
-	plane = ABOVE_HUMAN_PLANE
-	layer = ABOVE_OBJ_LAYER
-
-/obj/effect/alien/resin/New()
-	..()
-	linked_turf = get_turf(src)
-	linked_turf.thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
-
-/obj/effect/alien/resin/Destroy()
-	if(linked_turf)
-		linked_turf.thermal_conductivity = initial(linked_turf.thermal_conductivity)
-	..()
-
-
-/obj/effect/alien/resin/proc/healthcheck()
+/obj/structure/alien/resin/proc/healthcheck()
 	if(health <=0)
 		density = 0
 		qdel(src)
 
-/obj/effect/alien/resin/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/alien/resin/New(location)
+	relativewall()
+	relativewall_neighbours()
+	..()
+	return
+
+/obj/structure/alien/resin/Destroy()
+	spawn(10)
+		var/turf/T = loc
+		T.relativewall_neighbours()
+	..()
+
+/obj/structure/alien/resin/Move()
+	..()
+
+/obj/structure/alien/resin/relativewall()
+	var/junction=findSmoothingNeighbors()
+	icon_state = "[resintype][junction]"
+
+/obj/structure/alien/resin/wall
+	name = "resin wall"
+	desc = "Thick resin solidified into a wall."
+	icon_state = "wall0"	//same as resin, but consistency ho!
+	resintype = "wall"
+	canSmoothWith = "/obj/structure/alien/resin/wall=0&/obj/structure/alien/resin/membrane=0"
+
+/obj/structure/alien/resin/wall/New()
+	relativewall_neighbours()
+	..()
+
+
+/obj/structure/alien/resin/membrane
+	name = "resin membrane"
+	desc = "Resin just thin enough to let light pass through."
+	icon_state = "membrane0"
+	opacity = 0
+	health = 120
+	resintype = "membrane"
+	canSmoothWith = "/obj/structure/alien/resin/wall=0&/obj/structure/alien/resin/membrane=0"
+
+/obj/structure/alien/resin/membrane/New()
+	relativewall_neighbours()
+	..()
+
+/obj/structure/alien/resin/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
 
-/obj/effect/alien/resin/ex_act(severity)
+
+/obj/structure/alien/resin/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			health-=50
+			health -= 150
 		if(2.0)
-			health-=50
+			health -= 100
 		if(3.0)
-			if (prob(50))
-				health-=50
-			else
-				health-=25
+			health -= 50
 	healthcheck()
 
-/obj/effect/alien/resin/blob_act()
-	health-=50
+
+/obj/structure/alien/resin/blob_act()
+	health -= 50
 	healthcheck()
 
-/obj/effect/alien/resin/hitby(AM as mob|obj)
+
+/obj/structure/alien/resin/hitby(atom/movable/AM)
 	..()
-	for(var/mob/O in viewers(src, null))
-		O.show_message("<span class='danger'>[src] was hit by [AM].</span>", 1)
+	visible_message("<span class='danger'>[src] was hit by [AM].</span>")
 	var/tforce = 0
-	if(ismob(AM))
+	if(!isobj(AM))
 		tforce = 10
 	else
-		tforce = AM:throwforce
+		var/obj/O = AM
+		tforce = O.throwforce
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	health = max(0, health - tforce)
+	health -= tforce
 	healthcheck()
-	..()
 
-/obj/effect/alien/resin/attack_hand(mob/user)
+
+/obj/structure/alien/resin/attack_hand(mob/user)
 	user.delayNextAttack(10)
 	user.do_attack_animation(src, user)
-	if (M_HULK in usr.mutations)
-		to_chat(usr, "<span class='notice'>I easily destroy the [name].</span>")
-		for(var/mob/O in oviewers(src))
-			O.show_message("<span class='warning'>[user] destroys the [name]!</span>", 1)
+	if(M_HULK in user.mutations)
+		user.visible_message("<span class='danger'>[user] destroys [src]!</span>")
 		health = 0
 	else
-		to_chat(user, "<span class='notice'>I claw at the [name].</span>")
-		for(var/mob/O in oviewers(src))
-			O.show_message("<span class='warning'>[user] claws at the [name]!</span>", 1)
+		user.visible_message("<span class='warning'>[user] claws at the [name]!</span>")
 		health -= rand(5,10)
 	healthcheck()
 
-/obj/effect/alien/resin/attack_paw()
-	return attack_hand()
+/obj/structure/alien/resin/attack_paw(mob/user)
+	return attack_hand(user)
 
-/obj/effect/alien/resin/attack_alien(mob/living/user)
+
+/obj/structure/alien/resin/attack_alien(mob/living/user)
 	if (islarva(user))//Safety check for larva. /N
 		return
 	user.do_attack_animation(src, user)
@@ -129,7 +139,9 @@
 			O.show_message("<span class='warning'>[user] slices the [name] apart!</span>", 1)
 	healthcheck()
 
-/obj/effect/alien/resin/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
+
+
+/obj/structure/alien/resin/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
 	/*if (istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
 		var/obj/item/weapon/grab/G = W
 		if(isalien(user)&&(ishuman(G.affecting)||ismonkey(G.affecting)))
@@ -158,166 +170,69 @@
 	healthcheck()
 	..()
 
-/obj/effect/alien/resin/Cross(atom/movable/mover, turf/target, height=1.5, air_group = 0)
-	if(air_group)
-		return 0
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return !opacity
-	return !density
-
 
 /*
  * Weeds
  */
+
 #define NODERANGE 3
-#define HEARTBEAT_RATE 300
 
-/obj/effect/alien/weeds
-	name = "weeds"
-	desc = "Weird purple weeds."
+/obj/structure/alien/weeds
+	name = "resin floor"
+	desc = "A thick resin surface covers the floor."
 	icon_state = "weeds"
-
 	anchored = 1
 	density = 0
 	plane = ABOVE_TURF_PLANE
 	layer = WEED_LAYER
-	var/health = 14
-	var/obj/effect/alien/weeds/node/linked_node = null
-	var/obj/machinery/door/jammin = null
+	var/health = 15
+	var/obj/structure/alien/weeds/node/linked_node = null
 
-/obj/effect/alien/weeds/Destroy()
-	if(linked_node && linked_node.connected_weeds)
-		linked_node.connected_weeds.Remove(src)
-		linked_node = null
-	if(jammin)
-		jammin.jammed = null
-		jammin = null
+
+/obj/structure/alien/weeds/New(pos, node)
 	..()
-
-/obj/effect/alien/weeds/node
-	icon_state = "weednode"
-	name = "purple sac"
-	desc = "Weird purple octopus-like thing."
-	luminosity = NODERANGE
-	var/node_range = NODERANGE
-	var/list/obj/effect/alien/weeds/connected_weeds
-
-
-/obj/effect/alien/weeds/node/New()
-	connected_weeds = new()
-	..(src.loc, src)
-
-/obj/effect/alien/weeds/node/Destroy()
-	for(var/obj/effect/alien/weeds/W in connected_weeds)
-		W.health -= 2 * get_dist(W, src)//so the further ones are more likely to disappear first
-		W.linked_node = null
-		spawn()
-			W.DieWeed()
-	connected_weeds = null
-	..()
-
-/obj/effect/alien/weeds/New(pos, var/obj/effect/alien/weeds/node/N)
-	..()
-
+	linked_node = node
 	if(istype(loc, /turf/space))
 		qdel(src)
 		return
-
-	for(var/obj/machinery/door/D in loc)
-		if(istype(D,/obj/machinery/door/mineral/resin))
-			continue
-		if(!D.density && !D.operating)
-			D.jammed = src
-			jammin = D
-
-	linked_node = N
-	if(linked_node)
-		linked_node.connected_weeds.Add(src)
-
 	if(icon_state == "weeds")
 		icon_state = pick("weeds", "weeds1", "weeds2")
-	spawn(rand(100, 250))
+	fullUpdateWeedOverlays()
+	spawn(rand(150, 200))
 		if(src)
 			Life()
 
-/obj/effect/alien/weeds/node/New()
-	..()
-	spawn(HEARTBEAT_RATE)
-		heartbeat()
 
-/obj/effect/alien/weeds/node/proc/heartbeat()
-	flick("weednode-heartbeat",src)
-
-	for(var/obj/effect/alien/weeds/W in connected_weeds)
-		if(W.health == 15)
-			spawn()
-				W.Life()
-	spawn(HEARTBEAT_RATE)
-		if(!gcDestroyed)
-			heartbeat()
-
-/obj/effect/alien/weeds/proc/Life()
-	health = 15
+/obj/structure/alien/weeds/proc/Life()
+	set background = BACKGROUND_ENABLED
 	var/turf/U = get_turf(src)
-	if (istype(U, /turf/space))
+
+	if(istype(U, /turf/space))
 		qdel(src)
-		return
-
-	if(!linked_node || !linked_node.loc)
-		return
-
-	if((get_dist(linked_node, src) > linked_node.node_range))
 		return
 
 	direction_loop:
 		for(var/dirn in cardinal)
-
 			var/turf/T = get_step(src, dirn)
 
-			if (!istype(T) || T.density || istype(T.loc, /area/arrival) || istype(T, /turf/space))
+			if (!istype(T) || T.density || locate(/obj/structure/alien/weeds) in T || istype(T, /turf/space))
 				continue
 
-			var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in T
-			if (W)
-				if(!W.linked_node)
-					W.linked_node = linked_node
-					W.health = 15
-				continue
-
-	//		if (locate(/obj/movable, T)) // don't propogate into movables
-	//			continue
+			if(!linked_node || get_dist(linked_node, src) > linked_node.node_range)
+				return
 
 			for(var/obj/O in T)
 				if(O.density)
 					continue direction_loop
 
-			new /obj/effect/alien/weeds(T, linked_node)
+			new /obj/structure/alien/weeds(T, linked_node)
 
 
-/obj/effect/alien/weeds/proc/DieWeed()
-	sleep(rand(100, 250))
-	if(!linked_node || !linked_node.loc)
-		if(prob(max(100-((health*6) + 20),0)))
-			qdel(src)
+/obj/structure/alien/weeds/ex_act(severity)
+	qdel(src)
 
-		health--
 
-		DieWeed()
-	else
-		Life()
-
-/obj/effect/alien/weeds/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-		if(2.0)
-			if (prob(50))
-				qdel(src)
-		if(3.0)
-			if (prob(5))
-				qdel(src)
-
-/obj/effect/alien/weeds/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/structure/alien/weeds/attackby(var/obj/item/weapon/W, var/mob/user)
 	user.delayNextAttack(10)
 	if(W.attack_verb && W.attack_verb.len)
 		visible_message("<span class='warning'><B>[user] [pick(W.attack_verb)] \the [src] with \the [W]!</span>")
@@ -332,28 +247,187 @@
 	src.health -= damage
 	src.healthcheck()
 
-
-/obj/effect/alien/weeds/proc/healthcheck()
+/obj/structure/alien/weeds/proc/healthcheck()
 	if(health <= 0)
 		qdel(src)
 
-
-/obj/effect/alien/weeds/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/structure/alien/weeds/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300)
 		health -= 5
 		healthcheck()
 
-/*/obj/effect/alien/weeds/burn(fi_amount)
-	if (fi_amount > 18000)
-		spawn( 0 )
-			del(src)
-			return
-		return 0
-	return 1
-*/
+
+/obj/structure/alien/weeds/proc/updateWeedOverlays()
+
+	overlays.Cut()
+	var/turf/N = get_step(src, NORTH)
+	var/turf/S = get_step(src, SOUTH)
+	var/turf/E = get_step(src, EAST)
+	var/turf/W = get_step(src, WEST)
+	if(!locate(/obj/structure/alien) in N.contents)
+		if(istype(N, /turf/simulated/floor))
+			src.overlays += image('icons/mob/alien.dmi', "weeds_side_s", layer=2.6, pixel_y = 32)
+	if(!locate(/obj/structure/alien) in S.contents)
+		if(istype(S, /turf/simulated/floor))
+			src.overlays += image('icons/mob/alien.dmi', "weeds_side_n", layer=2.6, pixel_y = -32)
+	if(!locate(/obj/structure/alien) in E.contents)
+		if(istype(E, /turf/simulated/floor))
+			src.overlays += image('icons/mob/alien.dmi', "weeds_side_w", layer=2.6, pixel_x = 32)
+	if(!locate(/obj/structure/alien) in W.contents)
+		if(istype(W, /turf/simulated/floor))
+			src.overlays += image('icons/mob/alien.dmi', "weeds_side_e", layer=2.6, pixel_x = -32)
+
+
+/obj/structure/alien/weeds/proc/fullUpdateWeedOverlays()
+	for (var/obj/structure/alien/weeds/W in range(1,src))
+		W.updateWeedOverlays()
+
+//Weed nodes
+/obj/structure/alien/weeds/node
+	name = "glowing resin"
+	desc = "Blue bioluminescence shines from beneath the surface."
+	icon_state = "weednode"
+	luminosity = NODERANGE
+	var/node_range = NODERANGE
+
+
+/obj/structure/alien/weeds/node/New()
+	..(loc, src)
 
 #undef NODERANGE
 
+
+/*
+ * Egg
+ */
+
+//for the status var
+#define BURST 0
+#define BURSTING 1
+#define GROWING 2
+#define GROWN 3
+#define MIN_GROWTH_TIME 1800	//time it takes to grow a hugger
+#define MAX_GROWTH_TIME 3000
+
+/obj/structure/alien/egg
+	name = "egg"
+	desc = "A large mottled egg."
+	icon_state = "egg_growing"
+	density = 0
+	anchored = 1
+	var/health = 100
+	var/status = GROWING	//can be GROWING, GROWN or BURST; all mutually exclusive
+
+
+/obj/structure/alien/egg/New()
+	new /obj/item/clothing/mask/facehugger(src)
+	..()
+	spawn(rand(MIN_GROWTH_TIME, MAX_GROWTH_TIME))
+		Grow()
+
+
+/obj/structure/alien/egg/attack_paw(mob/user)
+	if(isalien(user))
+		switch(status)
+			if(BURST)
+				user << "<span class='notice'>You clear the hatched egg.</span>"
+				playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
+				qdel(src)
+				return
+			if(GROWING)
+				user << "<span class='notice'>The child is not developed yet.</span>"
+				return
+			if(GROWN)
+				user << "<span class='notice'>You retrieve the child.</span>"
+				Burst(0)
+				return
+	else
+		return attack_hand(user)
+
+
+/obj/structure/alien/egg/attack_hand(mob/user)
+	user << "<span class='notice'>It feels slimy.</span>"
+
+
+/obj/structure/alien/egg/proc/GetFacehugger()
+	return locate(/obj/item/clothing/mask/facehugger) in contents
+
+
+/obj/structure/alien/egg/proc/Grow()
+	icon_state = "egg"
+	status = GROWN
+
+
+/obj/structure/alien/egg/proc/Burst(var/kill = 1)	//drops and kills the hugger if any is remaining
+	if(status == GROWN || status == GROWING)
+		icon_state = "egg_hatched"
+		flick("egg_opening", src)
+		status = BURSTING
+		spawn(15)
+			status = BURST
+			var/obj/item/clothing/mask/facehugger/child = GetFacehugger()
+			if(child)
+				child.loc = get_turf(src)
+				if(kill && istype(child))
+					child.Die()
+				else
+					for(var/mob/M in range(1,src))
+						if(CanHug(M))
+							child.Attach(M)
+							break
+
+
+/obj/structure/alien/egg/bullet_act(obj/item/projectile/Proj)
+	health -= Proj.damage
+	..()
+	healthcheck()
+
+/obj/structure/alien/egg/attackby(var/obj/item/weapon/W, var/mob/user)
+	user.delayNextAttack(10)
+	if(W.attack_verb && W.attack_verb.len)
+		src.visible_message("<span class='warning'><B>[user] [pick(W.attack_verb)] \the [src] with \the [W]!</span>")
+	else
+		src.visible_message("<span class='warning'><B>[user] attacks \the [src] with \the [W]!</span>")
+
+	var/damage = W.force
+
+	if(W.is_hot())
+		damage = damage * 2.0
+
+	src.health -= damage
+	src.healthcheck()
+
+/obj/structure/alien/egg/proc/healthcheck()
+	if(health <= 0)
+		if(status != BURST && status != BURSTING)
+			Burst()
+		else if(status == BURST && prob(50))
+			qdel(src)	//Remove the egg after it has been hit after bursting.
+
+
+/obj/structure/alien/egg/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+	if(exposed_temperature > 500)
+		health -= 5
+		healthcheck()
+
+
+/obj/structure/alien/egg/HasProximity(atom/movable/AM)
+	if(status == GROWN)
+		if(!CanHug(AM))
+			return
+
+		var/mob/living/carbon/C = AM
+		if(C.stat == CONSCIOUS && C.status_flags & XENO_HOST)
+			return
+
+		Burst(0)
+
+#undef BURST
+#undef BURSTING
+#undef GROWING
+#undef GROWN
+#undef MIN_GROWTH_TIME
+#undef MAX_GROWTH_TIME
 
 /*
  * Acid
@@ -361,6 +435,7 @@
 /obj/effect/alien/acid
 	name = "acid"
 	desc = "Burbling corrossive stuff. I wouldn't want to touch it."
+	icon = 'icons/mob/alien.dmi'
 	icon_state = "acid"
 
 	density = 0
@@ -375,7 +450,7 @@
 /obj/effect/alien/acid/hyper
 	name = "hyper acid"
 	desc = "Burbling corrossive stuff. The radical kind."
-	icon_state = "acid-hyper"
+	icon_state = "acid"
 
 /datum/locking_category/acid
 
@@ -437,137 +512,3 @@
 		else
 			qdel(target)
 		qdel(src)
-/*
- * Egg
- */
-/var/const //for the status var
-	BURST = 0
-	BURSTING = 1
-	GROWING = 2
-	GROWN = 3
-
-	MIN_GROWTH_TIME = 1800 //time it takes to grow a hugger
-	MAX_GROWTH_TIME = 3000
-
-/obj/effect/alien/egg
-	desc = "It looks like a weird egg"
-	name = "egg"
-	icon_state = "egg_growing"
-	density = 0
-	anchored = 1
-
-	var/health = 50
-	var/status = GROWING //can be GROWING, GROWN or BURST; all mutually exclusive
-
-	flags = PROXMOVE
-
-/obj/effect/alien/egg/New()
-	if(aliens_allowed)
-		..()
-		spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
-			Grow()
-	else
-		qdel(src)
-
-/obj/effect/alien/egg/attack_paw(user as mob)
-	if(isalien(user))
-		switch(status)
-			if(BURST)
-				to_chat(user, "<span class='warning'>I clear the hatched egg.</span>")
-				qdel(src)
-				return
-			if(GROWING)
-				to_chat(user, "<span class='warning'>The child is not developed yet.</span>")
-				return
-			if(GROWN)
-				to_chat(user, "<span class='warning'>I retrieve the child.</span>")
-				Burst(0)
-				return
-	else
-		return attack_hand(user)
-
-/obj/effect/alien/egg/attack_hand(user as mob)
-	to_chat(user, "<span class='warning'>It feels slimy.</span>")
-
-/obj/effect/alien/egg/proc/GetFacehugger()
-	return locate(/obj/item/clothing/mask/facehugger) in contents
-
-/obj/effect/alien/egg/proc/Grow()
-	icon_state = "egg"
-	status = GROWN
-	new /obj/item/clothing/mask/facehugger(src)
-
-	for(var/mob/M in range(2,src))
-		if(CanHug(M))
-			Burst(0)
-			break
-
-/obj/effect/alien/egg/proc/Burst(var/kill = 1) //drops and kills the hugger if any is remaining
-	if(status == GROWN || status == GROWING)
-		var/obj/item/clothing/mask/facehugger/child = GetFacehugger()
-		icon_state = "egg_hatched"
-		flick("egg_opening", src)
-		status = BURSTING
-		spawn(15)
-			status = BURST
-			if(!child)
-				src.visible_message("<span class='warning'>The egg bursts apart, revealing nothing!</span>")
-				status = "GROWN"
-				getFromPool(/obj/effect/decal/cleanable/blood/xeno, src)
-				health = min(health,0)
-				return
-			child.forceMove(loc)
-			if(kill && istype(child))
-				child.Die()
-			else
-				for(var/mob/M in range(1,src))
-					if(CanHug(M))
-						child.Attach(M)
-						break
-				if(!ismob(child.loc))
-					child.findtarget()
-	health = min(health,0)
-
-/obj/effect/alien/egg/bullet_act(var/obj/item/projectile/Proj)
-	health -= Proj.damage
-	..()
-	healthcheck()
-
-
-/obj/effect/alien/egg/attackby(var/obj/item/weapon/W, var/mob/user)
-	user.delayNextAttack(10)
-	if(W.attack_verb && W.attack_verb.len)
-		src.visible_message("<span class='warning'><B>[user] [pick(W.attack_verb)] \the [src] with \the [W]!</span>")
-	else
-		src.visible_message("<span class='warning'><B>[user] attacks \the [src] with \the [W]!</span>")
-
-	var/damage = W.force
-
-	if(W.is_hot())
-		damage = damage * 2.0
-
-	src.health -= damage
-	src.healthcheck()
-
-
-/obj/effect/alien/egg/proc/healthcheck()
-	if(health <= 0)
-		Burst()
-	if(health <= -20)
-		qdel(src)
-
-/obj/effect/alien/egg/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	if(exposed_temperature > 500)
-		health -= 5
-		healthcheck()
-
-/obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
-	if(status == GROWN)
-		if(!CanHug(AM))
-			return
-
-		var/mob/living/carbon/C = AM
-		if(C.stat == CONSCIOUS && C.status_flags & XENO_HOST)
-			return
-
-		Burst(0)

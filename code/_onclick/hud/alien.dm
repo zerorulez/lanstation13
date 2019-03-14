@@ -83,7 +83,7 @@
 	src.adding += using
 
 //equippable shit
-	//suit
+/*	//suit
 	inv_box = getFromPool(/obj/screen/inventory)
 	inv_box.name = "o_clothing"
 	inv_box.dir = SOUTH
@@ -93,7 +93,7 @@
 	inv_box.slot_id = slot_wear_suit
 	inv_box.layer = HUD_BASE_LAYER
 	src.adding += inv_box
-
+*/
 	init_hand_icons('icons/mob/screen1_alien.dmi')
 
 	using = getFromPool(/obj/screen/inventory)
@@ -174,6 +174,12 @@
 	mymob.healths.name = "health"
 	mymob.healths.screen_loc = ui_alien_health
 
+	nightvisionicon = getFromPool(/obj/screen)
+	nightvisionicon.icon ='icons/mob/screen1_alien.dmi'
+	nightvisionicon.icon_state = "nightvision0"
+	nightvisionicon.name = "nightvision"
+	nightvisionicon.screen_loc = ui_alien_nightvision
+
 	mymob.pullin = getFromPool(/obj/screen)
 	mymob.pullin.icon = 'icons/mob/screen1_alien.dmi'
 	mymob.pullin.icon_state = "pull0"
@@ -185,11 +191,19 @@
 	mymob.zone_sel.overlays.len = 0
 	mymob.zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[mymob.zone_sel.selecting]")
 
+	if(istype(mymob, /mob/living/carbon/alien/humanoid/hunter))
+		mymob.leap_icon = getFromPool(/obj/screen)
+		mymob.leap_icon.name = "leap"
+		mymob.leap_icon.icon = 'icons/mob/screen1_alien.dmi'
+		mymob.leap_icon.icon_state = "leap_off"
+		mymob.leap_icon.screen_loc = ui_alien_storage_r
+		adding += mymob.leap_icon
+
 	plasma_hud()
 
 	mymob.client.reset_screen()
 
-	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.toxin, mymob.fire, mymob.healths, mymob.pullin, vampire_blood_display) //, mymob.hands, mymob.rest, mymob.sleep, mymob.mach )
+	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.toxin, mymob.fire, mymob.healths, nightvisionicon, mymob.pullin, vampire_blood_display) //, mymob.hands, mymob.rest, mymob.sleep, mymob.mach )
 	mymob.client.screen += src.adding + src.other
 
 /datum/hud/proc/plasma_hud()

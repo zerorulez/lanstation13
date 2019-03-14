@@ -7,6 +7,11 @@
 	var/obj/item/weapon/r_store = null
 	var/obj/item/weapon/l_store = null
 	var/caste = ""
+
+	var/pounce_cooldown = 0
+	var/pounce_cooldown_time = 30
+
+
 	update_icon = 1
 
 	species_type = /mob/living/carbon/alien/humanoid

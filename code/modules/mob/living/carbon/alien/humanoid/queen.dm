@@ -1,15 +1,15 @@
 /mob/living/carbon/alien/humanoid/queen
 	name = "alien queen" //The alien queen, not Alien Queen. Even if there's only one at a time
 	caste = "q"
-	maxHealth = 300
-	health = 300
+	maxHealth = 400
+	health = 400
 	icon_state = "alienq_s"
 	status_flags = CANPARALYSE
 	heal_rate = 5
 	plasma_rate = 20
 
 /mob/living/carbon/alien/humanoid/queen/movement_delay()
-	var/tally = 5 + move_delay_add + config.alien_delay //Queens are slow as fuck
+	var/tally = 2.5 + move_delay_add + config.alien_delay //Queens are slow as fuck
 
 	var/turf/T = loc
 	if(istype(T))

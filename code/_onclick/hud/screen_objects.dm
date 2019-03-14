@@ -572,6 +572,15 @@
 		if("Toggle Gun Mode")
 			usr.client.ToggleGunMode()
 
+		if("nightvision")
+			if(isalien(usr))
+				var/mob/living/carbon/alien/humanoid/A = usr
+				A.nightvisiontoggle()
+
+		if("leap")
+			if(istype(usr, /mob/living/carbon/alien/humanoid))
+				var/mob/living/carbon/alien/humanoid/hunter/AH = usr
+				AH.toggle_leap()
 		else
 			return 0
 	return 1

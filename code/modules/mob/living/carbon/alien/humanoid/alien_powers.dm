@@ -31,7 +31,7 @@ Doesn't work on other aliens/AI.*/
 	insufficient_holder_msg = "<span class='alien'>Not enough plasma stored.</span>"
 	spell_flags = IGNORESPACE|IGNOREDENSE|NODUPLICATE
 
-	summon_type = list(/obj/effect/alien/weeds/node)
+	summon_type = list(/obj/structure/alien/weeds/node)
 	override_base = "alien"
 
 /*
@@ -133,16 +133,16 @@ Doesn't work on other aliens/AI.*/
 
 	charge_type = Sp_HOLDVAR|Sp_RECHARGE
 	holder_var_type = "plasma"
-	holder_var_amount = 50
+	holder_var_amount = 25
 	insufficient_holder_msg = "<span class='alien'>Not enough plasma stored.</span>"
 	still_recharging_msg = "<span class='alien'>I must regenerate my neurotoxin stores first.</span>"
-	charge_max = 50
+	charge_max = 5 SECONDS
 
 	spell_flags = WAIT_FOR_CLICK
 	proj_type = /obj/item/projectile/energy/neurotoxin
 	cast_sound = 'sound/weapons/pierce.ogg'
 	duration = 20
-	proj_step_delay = 0.2
+	proj_step_delay = -1
 
 /spell/targeted/projectile/alienneurotoxin/is_valid_target(var/target, mob/user)
 	if(!(spell_flags & INCLUDEUSER) && target == usr)
@@ -185,11 +185,11 @@ Doesn't work on other aliens/AI.*/
 
 	charge_type = Sp_HOLDVAR
 	holder_var_type = "plasma"
-	holder_var_amount = 75
+	holder_var_amount = 50
 	insufficient_holder_msg = "<span class='alien'>Not enough plasma stored.</span>"
 
 	spell_flags = IGNORESPACE|IGNOREDENSE|NODUPLICATE
-	full_list = list("Resin Door" = /obj/machinery/door/mineral/resin,"Resin Wall" = /obj/effect/alien/resin/wall,"Resin Membrane" = /obj/effect/alien/resin/membrane,"Resin Nest" = /obj/structure/bed/nest)
+	full_list = list("Resin Wall" = /obj/structure/alien/resin/wall,"Resin Membrane" = /obj/structure/alien/resin/membrane,"Resin Nest" = /obj/structure/bed/nest)
 
 /spell/alienacid
 	name = "Corrosive Acid"
@@ -200,9 +200,9 @@ Doesn't work on other aliens/AI.*/
 
 	spell_flags = WAIT_FOR_CLICK
 	charge_type = Sp_HOLDVAR|Sp_RECHARGE
-	charge_max = 8 SECONDS
+	charge_max = 10 SECONDS
 	holder_var_type = "plasma"
-	holder_var_amount = 200
+	holder_var_amount = 100
 	insufficient_holder_msg = "<span class='alien'>Not enough plasma stored.</span>"
 
 	range = 1
@@ -219,14 +219,14 @@ Doesn't work on other aliens/AI.*/
 	acidify(targets[1], user)
 
 /mob/living/carbon/alien/humanoid/proc/corrosive_acid(atom/O as obj|turf in oview(1)) //If they right click to corrode, an error will flash if its an invalid target./N
-	set name = "Corrosive Acid (200)"
+	set name = "Corrosive Acid (100)"
 	set desc = "Drench an object in acid, destroying it over time."
 	set category = null
 
 	if(ismob(O)) //This sort of thing may be possible by manually calling the verb, not sure
 		return
 
-	if(powerc(200))
+	if(powerc(100))
 		if(O in oview(1))
 			acidify(O, usr)
 		else
@@ -273,7 +273,7 @@ Doesn't work on other aliens/AI.*/
 
 	spell_flags = IGNORESPACE|NODUPLICATE
 
-	summon_type = list(/obj/effect/alien/egg)
+	summon_type = list(/obj/structure/alien/egg)
 a
 /spell/aoe_turf/conjure/alienegg/cast(list/targets, mob/user)
 	. = ..()

@@ -123,11 +123,11 @@
 				if(locate(/obj/effect/alien) in weed_turf)
 					continue
 				if(weed_turf && !egged)
-					new /obj/effect/alien/weeds/node(weed_turf)
+					new /obj/structure/alien/weeds/node(weed_turf)
 					weeds += weed_turf
 					break
 
 		for(var/e=0;e<eggs_left;e++)
 			var/turf/egg_turf = pick(all_floors)
 			if(egg_turf && !(locate(/obj/effect/alien) in egg_turf))
-				new /obj/effect/alien/egg(egg_turf)
+				new /obj/structure/alien/egg(egg_turf)

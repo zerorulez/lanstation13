@@ -50,6 +50,12 @@
 	mymob.healths.name = "health"
 	mymob.healths.screen_loc = ui_alien_health
 
+	nightvisionicon = getFromPool(/obj/screen)
+	nightvisionicon.icon ='icons/mob/screen1_alien.dmi'
+	nightvisionicon.icon_state = "nightvision1"
+	nightvisionicon.name = "nightvision"
+	nightvisionicon.screen_loc = ui_alien_nightvision
+
 	mymob.pullin = getFromPool(/obj/screen)
 	mymob.pullin.icon = 'icons/mob/screen1_alien.dmi'
 	mymob.pullin.icon_state = "pull0"
@@ -62,5 +68,5 @@
 
 	mymob.client.reset_screen()
 
-	mymob.client.screen += list( mymob.zone_sel, mymob.oxygen, mymob.toxin, mymob.fire, mymob.healths, mymob.pullin) //, mymob.rest, mymob.sleep, mymob.mach )
+	mymob.client.screen += list( mymob.zone_sel, mymob.oxygen, mymob.toxin, mymob.fire, mymob.healths, nightvisionicon, mymob.pullin) //, mymob.rest, mymob.sleep, mymob.mach )
 	mymob.client.screen += src.adding + src.other

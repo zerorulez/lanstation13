@@ -73,6 +73,8 @@
 
 	var/list/advanced_butchery //Includes a list of the tools used to butcher the mob, detectable via autopsy scanner rather than examine.
 
+	var/nightvision = 0
+
 /mob/living/proc/unsubLife(datum/sub)
 	while("\ref[sub]" in callOnLife)
 		callOnLife -= "\ref[sub]"
