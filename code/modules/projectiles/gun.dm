@@ -56,7 +56,7 @@
 
 	var/pai_safety = TRUE	//To allow the pAI to activate or deactivate firing capability
 
-	
+
 
 
 /obj/item/weapon/gun/proc/ready_to_fire()

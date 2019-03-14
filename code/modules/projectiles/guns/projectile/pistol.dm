@@ -12,7 +12,8 @@
 	ammo_type = "/obj/item/ammo_casing/c45"
 	mag_type = "/obj/item/ammo_storage/magazine/c45"
 	load_method = 2
-
+/obj/item/weapon/gun/projectile/silenced/isHandgun()
+	return TRUE
 
 /obj/item/weapon/gun/projectile/deagle
 	name = "desert eagle"
@@ -28,6 +29,9 @@
 	load_method = 2
 
 	gun_flags = EMPTYCASINGS
+
+/obj/item/weapon/gun/projectile/deagle/isHandgun()
+	return TRUE
 
 /obj/item/weapon/gun/projectile/deagle/gold
 	desc = "A gold plated gun folded over a million times by superior martian gunsmiths. Uses .50 AE ammo."
@@ -66,6 +70,9 @@
 			icon_state = "gyropistol"
 		return
 
+/obj/item/weapon/gun/projectile/gyropistol/isHandgun()
+	return TRUE
+
 /obj/item/weapon/gun/projectile/pistol
 	name = "\improper Stechtkin pistol"
 	desc = "A small, easily concealable gun. Uses 9mm rounds."
@@ -85,6 +92,10 @@
 	..()
 	icon_state = "[initial(icon_state)][silenced ? "-silencer" : ""][chambered ? "" : "-e"]"
 	return
+
+/obj/item/weapon/gun/projectile/pistol/isHandgun()
+	return TRUE
+
 
 /obj/item/weapon/gun/projectile/handgun //mime fingergun
 	name = "hand-gun"
@@ -133,4 +144,5 @@
 
 /obj/item/weapon/gun/projectile/sec/fancy/update_icon()
 	..()
+	icon_state = "secgunfancy[chambered ? "" : "-e"]"
 	icon_state = "secgunfancy[chambered ? "" : "-e"]"

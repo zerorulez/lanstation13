@@ -19,7 +19,7 @@
 
 
 /obj/item/weapon/gun/projectile/automatic/isHandgun()
-	return FALSE
+	return TRUE
 
 /obj/item/weapon/gun/projectile/automatic/verb/ToggleFire()
 	set name = "Toggle Burstfire"
@@ -114,6 +114,10 @@
 
 	gun_flags = EMPTYCASINGS
 
+
+/obj/item/weapon/gun/projectile/automatic/c20r/isHandgun()
+	return FALSE
+
 /obj/item/weapon/gun/projectile/automatic/c20r/update_icon()
 	..()
 	if(stored_magazine)
@@ -139,6 +143,10 @@
 	load_method = 2
 	gun_flags = EMPTYCASINGS
 
+/obj/item/weapon/gun/projectile/automatic/xcom/isHandgun()
+	return FALSE
+
+
 /obj/item/weapon/gun/projectile/automatic/xcom/lockbox
 	mag_type = "/obj/item/ammo_storage/magazine/a12mm/empty"
 
@@ -161,6 +169,8 @@
 	load_method = 2
 	var/cover_open = 0
 
+/obj/item/weapon/gun/projectile/automatic/l6_saw/isHandgun()
+ 		return FALSE
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/attack_self(mob/user as mob)
 	cover_open = !cover_open

@@ -10,6 +10,9 @@
 	origin_tech = Tc_COMBAT + "=3;" + Tc_MAGNETS + "=2"
 	projectile_type = "/obj/item/projectile/laser"
 
+/obj/item/weapon/gun/energy/laser/isHandgun()
+	return TRUE
+
 /obj/item/weapon/gun/energy/laser/practice
 	name = "practice laser gun"
 	desc = "A modified version of the basic laser gun, this one fires less concentrated energy bolts designed for target practice."
