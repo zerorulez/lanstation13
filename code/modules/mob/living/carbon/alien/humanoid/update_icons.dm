@@ -26,6 +26,7 @@
 			icon_state = "alien[caste]_dead"
 		for(var/image/I in overlays_lying)
 			overlays += I
+		return
 	else if(lying)
 		dir = SOUTH
 		if(resting)
@@ -36,6 +37,7 @@
 			alpha = 75
 		for(var/image/I in overlays_lying)
 			overlays += I
+		return
 	else
 		if(m_intent == "run")
 			icon_state = "alien[caste]"
