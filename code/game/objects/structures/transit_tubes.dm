@@ -1,3 +1,4 @@
+#define TUBE_POD_UNLOAD_LIMIT 20
 
 // Basic transit tubes. Straight pieces, curved sections,
 //  and basic splits/joins (no routing logic).
@@ -30,6 +31,7 @@
 	enter_delay = 3
 	var/pod_moving = 0
 	var/automatic_launch_time = 100
+	var/open = FALSE
 
 	var/const/OPEN_DURATION = 6
 	var/const/CLOSE_DURATION = 6
@@ -52,7 +54,7 @@
 	..()
 
 // When destroyed by explosions, properly handle contents.
-obj/structure/ex_act(severity)
+obj/structure/transit_tube_pod/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/AM in contents)
@@ -80,7 +82,6 @@ obj/structure/ex_act(severity)
 	air_contents.pressure = ONE_ATMOSPHERE
 	air_contents.total_moles = MOLES_CELLSTANDARD
 	air_contents.temperature = T20C
-
 	// Give auto tubes time to align before trying to start moving
 	spawn (5)
 		follow_tube()
@@ -91,57 +92,97 @@ obj/structure/ex_act(severity)
 	if (tube_dirs == null)
 		init_dirs()
 
-/obj/structure/transit_tube/to_bumped(mob/AM as mob|obj)
-	var/obj/structure/transit_tube/tube = locate() in AM.loc
-	if(tube)
-		to_chat(AM, "<span class='warning'>The tube's support pylons block my way.</span>")
+/obj/structure/transit_tube/Cross(atom/movable/mover, turf/target, height = 1.5, air_group = 0)
+	if(test_blocked(get_dir(src, mover)))
+		return ..() //If there's an opening on the side they're trying to enter, only let them do so if they can normally pass dense structures.
+	return TRUE //Otherwise, whatever.
+
+
+/obj/structure/transit_tube/station/Cross(atom/movable/mover, turf/target, height = 1.5, air_group = 0)
+	if(open && get_dir(src, mover) == dir) //This actually isn't necessary right now, but will be if BYOND movecode ever becomes not flaming garbage.
+		return FALSE
+	return ..()
+
+
+/obj/structure/transit_tube/Crossed(atom/movable/mover)
+	if(density && isliving(mover)) //Don't want it showing up for ghosts, etc.
+		to_chat(mover, "<span class='info'>You slip under the tube.</span>")
+
+
+/obj/structure/transit_tube/station/Crossed(atom/movable/mover)
+	if(!open) //Don't show the text if they're getting out of the pod. This also stops them from getting it if they just walk under it from behind while it's open, but oh well. Thanks BYOND.
 		return ..()
-	else
-		var/turf/T = get_turf(src)
-		var/list/large_dense = list()
-		for(var/atom/movable/border_obstacle in T)
-			if(border_obstacle.flags&ON_BORDER)
-				if(!border_obstacle.Cross(AM, AM.loc) && AM != border_obstacle)
-					return ..()
-			else if(border_obstacle != src)
-				large_dense += border_obstacle
-
-		//Then, check the turf itself
-		if (!T.Cross(AM, T))
-			return ..()
-
-		//Finally, check objects/mobs to block entry that are not on the border
-		for(var/atom/movable/obstacle in large_dense)
-			if(!obstacle.Cross(AM, AM.loc) && AM != obstacle)
-				return ..()
-		AM.forceMove(src.loc)
-		to_chat(AM, "<span class='info'>I slip under the tube.</span>")
 
 
-/obj/structure/transit_tube/station/New(loc)
-	..(loc)
+/obj/structure/transit_tube/to_bumped(atom/movable/mover)
+	to_chat(mover, "<span class='warning'>The tube's support pylons block your way.</span>")
 
 
+/obj/structure/transit_tube/station/to_bumped(atom/movable/mover)
+	if(!pod_moving && open && (get_dir(src, mover) == dir) && isliving(mover))
+		var/obj/structure/transit_tube_pod/pod = locate() in loc
+		if(pod && !pod.moving && (pod.dir in directions()))
+			mover.forceMove(pod)
+			return
+	..()
 
-/obj/structure/transit_tube/station/to_bumped(mob/AM as mob|obj)
-	if(!pod_moving && icon_state == "open" && istype(AM, /mob))
-		for(var/obj/structure/transit_tube_pod/pod in loc)
-			if(!pod.moving && pod.dir in directions())
-				AM.forceMove(pod)
-				return
 
-
-
-/obj/structure/transit_tube/station/attack_hand(mob/user as mob)
+/obj/structure/transit_tube/station/attack_hand(mob/user)
 	if(!pod_moving)
 		for(var/obj/structure/transit_tube_pod/pod in loc)
 			if(!pod.moving && pod.dir in directions())
-				if(icon_state == "closed")
-					open_animation()
+				if(open)
+					if(!user.lying && user.loc != pod)
+						var/unloaded = 0
+						var/incomplete = FALSE
 
-				else if(icon_state == "open")
+						for(var/atom/movable/AM in pod)
+							if(isobserver(AM))
+								continue
+							if(unloaded >= TUBE_POD_UNLOAD_LIMIT)
+								incomplete = TRUE
+								break
+							AM.forceMove(get_step(loc, dir))
+							unloaded++
+
+						if(unloaded)
+							user.visible_message("<span class='notice'>[user] unloads [incomplete ? "some things" : "everything"] from the tube pod.</span>", \
+							"<span class='notice'>You unload [incomplete ? "some things" : "everything"] from the tube pod.</span>")
+							return
+
 					close_animation()
 
+				else
+					open_animation()
+
+
+/obj/structure/transit_tube/station/attack_robot(mob/user)
+	if(Adjacent(user))
+		attack_hand(user)
+
+
+/obj/structure/transit_tube_pod/examine(mob/user)
+	..()
+	show_occupants(user)
+
+
+/obj/structure/transit_tube/examine(mob/user)
+	..()
+	for(var/obj/structure/transit_tube_pod/pod in loc)
+		pod.show_occupants(user)
+
+
+/obj/structure/transit_tube_pod/proc/show_occupants(mob/user)
+	if(contents.len)
+		var/list/occupants = contents.Copy()
+		for(var/atom/movable/O in occupants)
+			if(O.invisibility > user.see_invisible)
+				occupants -= O
+		if(occupants.len)
+			to_chat(user, "<span class='info'>The tube pod contains [english_list(occupants)].</span>")
+			return
+
+	to_chat(user, "<span class='info'>The tube pod looks empty.</span>")
 
 
 /obj/structure/transit_tube/station/proc/open_animation()
@@ -150,6 +191,7 @@ obj/structure/ex_act(severity)
 		spawn(OPEN_DURATION)
 			if(icon_state == "opening")
 				icon_state = "open"
+				open = TRUE
 
 
 
@@ -159,6 +201,7 @@ obj/structure/ex_act(severity)
 		spawn(CLOSE_DURATION)
 			if(icon_state == "closing")
 				icon_state = "closed"
+				open = FALSE
 
 
 
@@ -180,7 +223,7 @@ obj/structure/ex_act(severity)
 				if(!nexttube)
 					pod.dir = turn(pod.dir, 180)
 
-				if(icon_state == "closed" && pod)
+				if(!open && pod)
 					pod.follow_tube()
 
 				pod_moving = 0
@@ -221,7 +264,7 @@ obj/structure/ex_act(severity)
 				sleep(wait_step)
 				i += wait_step
 
-				if(pod_moving || icon_state != "open")
+				if(pod_moving || !open)
 					return
 
 			launch_pod()
@@ -274,6 +317,9 @@ obj/structure/ex_act(severity)
 			near_dir = direction
 
 	return near_dir
+
+/obj/structure/transit_tube/proc/test_blocked(in_dir)	//You can now only squeeze under transit tubes if you can go out the same way you came in.
+	return (get_exit(in_dir) || get_exit(turn(in_dir, 180)))
 
 
 
@@ -337,12 +383,11 @@ obj/structure/ex_act(severity)
 			dir = next_dir
 			forceMove(next_loc) // When moving from one tube to another, skip collision and such.
 			density = current_tube.density
-
 			if(current_tube && current_tube.should_stop_pod(src, next_dir))
 				current_tube.pod_stopped(src, dir)
 				break
 
-		density = 1
+		density = TRUE
 
 		// If the pod is no longer in a tube, move in a line until stopped or slowed to a halt.
 		//  /turf/inertial_drift appears to only work on mobs, and re-implementing some of the
@@ -360,6 +405,7 @@ obj/structure/ex_act(severity)
 			while(isturf(loc) && Move(get_step(loc, dir)))
 
 		moving = 0
+
 
 
 // Should I return a copy here? If the caller edits or del()s the returned
@@ -426,17 +472,11 @@ obj/structure/ex_act(severity)
 			for(var/obj/structure/transit_tube/station/station in loc)
 				if(dir in station.directions())
 					if(!station.pod_moving)
-						if(direction == station.dir)
-							if(station.icon_state == "open")
-								mob.forceMove(loc)
-								mob.client.Move(get_step(loc, direction), direction)
-
-							else
-								station.open_animation()
-
-						else if(direction in station.directions())
-							dir = direction
-							station.launch_pod()
+						if(station.open)
+							mob.forceMove(loc)
+							mob.client.Move(get_step(loc, direction), direction)
+						else
+							station.open_animation()
 					return
 
 			for(var/obj/structure/transit_tube/tube in loc)
@@ -462,7 +502,7 @@ obj/structure/ex_act(severity)
 		tube_dirs = parse_dirs(icon_state)
 
 		if(copytext(icon_state, 1, 3) == "D-" || findtextEx(icon_state, "Pass"))
-			density = 0
+			density = FALSE
 
 
 
@@ -643,3 +683,5 @@ obj/structure/ex_act(severity)
 			return "SW"
 		else
 	return
+
+#undef TUBE_POD_UNLOAD_LIMIT
