@@ -233,6 +233,9 @@ var/datum/controller/gameticker/ticker
 
 	wageSetup()
 
+	ooc_allowed = FALSE
+	to_chat(world, "<B>The OOC channel has been globally disabled!</B>")
+
 	return 1
 
 /datum/controller/gameticker
@@ -414,6 +417,8 @@ var/datum/controller/gameticker/ticker
 
 
 		spawn(50)
+			ooc_allowed = TRUE
+			to_chat(world, "<B>The OOC channel has been globally enabled!</B>")
 			if (mode.station_was_nuked)
 				feedback_set_details("end_proper","nuke")
 				if(!delay_end && !watchdog.waiting)

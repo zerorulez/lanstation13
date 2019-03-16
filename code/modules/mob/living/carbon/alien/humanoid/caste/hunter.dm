@@ -11,7 +11,6 @@
 /mob/living/carbon/alien/humanoid/hunter/proc/toggle_leap()
 	leap_on_click = !leap_on_click
 	leap_icon.icon_state = "leap_[leap_on_click ? "on":"off"]"
-	src << "<span class='noticealien'>You will now [leap_on_click ? "leap at":"slash at"] enemies!</span>"
 	update_icons()
 
 /mob/living/carbon/alien/humanoid/hunter/movement_delay()
@@ -41,7 +40,7 @@
 		to_chat(src, "<span class='alertalien'>You are too fatigued to pounce right now!</span>")
 		return
 
-
+	pass_flags |= PASSTABLE
 	var/turf/T = get_turf(src)
 	var/area/AR = get_area(T)
 	if(!T.has_gravity() || !AR.has_gravity)
@@ -55,6 +54,9 @@
 		throw_at(A,MAX_ALIEN_LEAP_DIST,1)
 		leaping = FALSE
 		update_icons()
+	toggle_leap()
+
+	pass_flags &= ~PASSTABLE
 
 /mob/living/carbon/alien/humanoid/hunter/throw_impact(atom/A)
 	if(!leaping)
@@ -62,13 +64,19 @@
 
 	if(A)
 		if(isliving(A))
+			var/blocked = FALSE
 			var/mob/living/L = A
-			L.visible_message("<span class ='danger'>[src] pounces on [L]!</span>", "<span class ='userdanger'>[src] pounces on you!</span>")
-			L.Knockdown(50)
-			sleep(2)//Runtime prevention (infinite bump() calls on hulks)
-			step_towards(src,L)
-	toggle_leap(0)
-
+			if(ishuman(A))
+				var/mob/living/carbon/human/H = A
+				if(H.check_shields(0, "the [name]"))
+					blocked = TRUE
+			if(!blocked)
+				L.visible_message("<span class ='danger'>[src] pounces on [L]!</span>", "<span class ='userdanger'>[src] pounces on you!</span>")
+				L.Knockdown(50)
+				sleep(2)//Runtime prevention (infinite bump() calls on hulks)
+				step_towards(src,L)
+			else
+				Knockdown(50)
 	if(leaping)
 		leaping = FALSE
 		update_canmove()

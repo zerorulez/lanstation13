@@ -24,8 +24,6 @@
 				"<span class='notice'>[user.name] pulls [M.name] free from the sticky nest!</span>",\
 				"<span class='notice'>[user.name] pulls you free from the gelatinous resin.</span>",\
 				"<span class='notice'>I hear squelching...</span>")
-			M.pixel_x = 0
-			M.pixel_y = 0
 			unlock_atom(M)
 			overlays.len = 0
 		else
@@ -63,8 +61,6 @@
 			"<span class='notice'>[user.name] secretes a thick vile goo, securing [M.name] into \the [src]!</span>",\
 			"<span class='warning'>[user.name] drenches you in a foul-smelling resin, trapping you in \the [src]!</span>",\
 			"<span class='notice'>I hear squelching...</span>")
-	M.pixel_x = 2
-	M.pixel_y = 1
 	lock_atom(M, /datum/locking_category/buckle/bed/nest)
 	src.add_fingerprint(user)
 	var/image/nest_covering = image(icon,"nest-covering")
@@ -116,4 +112,5 @@
 #undef ALIEN_NEST_LOCKED_Y_OFFSET
 
 /datum/locking_category/buckle/bed/nest
-	pixel_y_offset = 6 * PIXEL_MULTIPLIER
+	pixel_y_offset = 1 * PIXEL_MULTIPLIER
+	pixel_x_offset = 2 * PIXEL_MULTIPLIER

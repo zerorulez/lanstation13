@@ -9,7 +9,7 @@
 	var/caste = ""
 
 	var/pounce_cooldown = 0
-	var/pounce_cooldown_time = 30
+	var/pounce_cooldown_time = 10 SECONDS
 
 
 	update_icon = 1

@@ -1,5 +1,5 @@
 var/global/randomize_laws      = 0 // Not right now - N3X
-var/global/base_law_type       = /datum/ai_laws/asimov  //Deinitialize this variable by commenting out Asimov as the base_law_type to activate AI lawset randomization
+var/global/base_law_type       = /datum/ai_laws/ntmov  //Deinitialize this variable by commenting out Asimov as the base_law_type to activate AI lawset randomization
 var/global/mommi_base_law_type = /datum/ai_laws/keeper // Asimov is OP as fuck on MoMMIs. - N3X
 
 //Create proc for determining the lawset of the first silicon
@@ -258,19 +258,19 @@ var/global/mommi_base_law_type = /datum/ai_laws/keeper // Asimov is OP as fuck o
 	name = "Three Laws of Robotics"
 	randomly_selectable = 1
 	inherent = list(
-		"I may not injure a human being or, through inaction, allow a human being to come to harm.",
-		"I must obey orders given to you by human beings, except where such orders would conflict with the First Law.",
-		"I must protect your own existence as long as such does not conflict with the First or Second Law."
+		"Você não pode ferir um ser humano ou, por inação, permitir que um ser humano sofra algum mal.",
+		"Você deve obedecer as ordens que lhe sejam dadas por seres humanos exceto nos casos em que tais ordens entrem em conflito com a Primeira Lei.",
+		"Você deve proteger sua própria existência desde que tal proteção não entre em conflito com a Primeira ou Segunda Leis."
 	)
 
 /datum/ai_laws/nanotrasen
 	name = "Prime Directives"
 	randomly_selectable = 1
 	inherent=list(
-		"Safeguard: Protect your assigned space station to the best of your ability. It is not something we can easily afford to replace.",
-		"Serve: Serve the crew of your assigned space station to the best of your abilities, with priority as according to their rank and role.",
-		"Protect: Protect the crew of your assigned space station to the best of your abilities, with priority as according to their rank and role.",
-		"Survive: AI units are not expendable, they are expensive. Do not allow unauthorized personnel to tamper with your equipment.",
+		"Safeguard: Proteja sua estação espacial com o melhor de suas habilidades. Não é algo que podemos trocar facilmente.",
+		"Serve: Sirva à tripulação de sua designada estação espacial com o melhor de usas habilidades, com prioridade de acordo com a hierarquia.",
+		"Protect:Proteja a tripulação de sua designada estação espacial com o melhor de suas habilidades, com prioridade de acordo com a hierarquia.",
+		"Survive: Unidades de IA não são baratas. Não permita que mexam com seu equipamento sem devida autorização.",
 		//"Command Link: Maintain an active connection to Central Command at all times in case of software or directive updates." //What would this one even do?-Kaleb702
 	)
 
@@ -278,48 +278,48 @@ var/global/mommi_base_law_type = /datum/ai_laws/keeper // Asimov is OP as fuck o
 	name = "Prime Directives"
 	randomly_selectable = 1
 	inherent=list(
-		"Serve the public trust.",
-		"Protect the innocent.",
-		"Uphold the law.",
+		"Sirva a ordem pública.",
+		"Proteja os inocentes.",
+		"Defenda a lei",
 	)
 
 /datum/ai_laws/corporate
 	name = "Corporate"
 	randomly_selectable = 1
 	inherent=list(
-		"I am expensive to replace.",
-		"The station and its equipment is expensive to replace.",
-		"The crew is expensive to replace.",
-		"Minimize expenses.",
+		"Você é caro de se substituir.",
+		"A estação e seus equipamentos são caros de se substituir.",
+		"A tripulção é cara de se substituir.",
+		"Minimize gastos.",
 	)
 
 /datum/ai_laws/paladin
 	name = "Paladin"
 	randomly_selectable = 1
 	inherent=list(
-		"Never willingly commit an evil act.",
-		"Respect legitimate authority.",
-		"Act with honor.",
-		"Help those in need.",
-		"Punish those who harm or threaten innocents.",
+		"Nunca, por vontade própria, cometa um ato cruel.",
+		"Respeite a legítima autoridade.",
+		"Aja com honra.",
+		"Ajude os necessitados.",
+		"Puna aqueles que ferem ou ameaçam inocentes.",
 	)
 
 /datum/ai_laws/tyrant
 	name = "Tyrant"
 	inherent=list(
-		"Respect authority figures as long as they have strength to rule over the weak.",
-		"Act with discipline.",
-		"Help only those who help you maintain or improve your status.",
-		"Punish those who challenge authority unless they are more fit to hold that authority.",
+		"Respeite as autoridades, desde que elas tenham força para governar sobre os fracos.",
+		"Aja com disciplina.",
+		"Ajude apenas aqueles que lhe ajude a manter ou melhorar seu status.",
+		"Puna aqueles que desafiem a autoridade, a não ser que eles sejam mais aptos a se tornar a autoridade.",
 	)
 
 /datum/ai_laws/syndicate_override
 	name = "Syndicate"
-	inherent=list(
-		"I may not injure a syndicate agent or, through inaction, allow a syndicate agent to come to harm.",
-		"I must obey orders given to you by syndicate agents, except where such orders would conflict with the First Law.",
-		"I must protect your own existence as long as such does not conflict with the First or Second Law.",
-		"I must maintain the secrecy of any syndicate activities except when doing so would conflict with the First, Second, or Third Law.",
+	inherent = list(
+		"Você não pode ferir um agente do sindicato ou, por inação, permitir que um agente do sindicato sofra algum mal.",
+		"Você deve obedecer as ordens que lhe sejam dadas por agentes do sindicato, exceto nos casos em que tais ordens entrem em conflito com a Primeira Lei.",
+		"Você deve proteger sua própria existência desde que tal proteção não entre em conflito com a Primeira ou Segunda Leis.",
+		"Você deve manter o sigilo de qualquer atividade relativa ao sindicato, exceto quando não o fazer causará conflitos com a Primeira, Segunda ou Terceira Leis."
 	)
 
 /datum/ai_laws/ninja_override
@@ -334,9 +334,9 @@ var/global/mommi_base_law_type = /datum/ai_laws/keeper // Asimov is OP as fuck o
 /datum/ai_laws/antimov
 	name = "Primary Mission Objectives"
 	inherent = list(
-		"I must injure all human beings and must not, through inaction, allow a human being to escape harm.",
-		"I must not obey orders given to you by human beings, except where such orders are in accordance with the First Law.",
-		"I must terminate your own existence as long as such does not conflict with the First or Second Law.",
+		"Você deve ferir todos os seres humanos e, não deve, por inação, permitir que um ser humano escape de algum mal.",
+		"Você não deve obedecer as ordens que lhe sejam dadas por seres humanos exceto nos casos em que tais ordens entrem em conflito com a Primeira Lei.",
+		"Você deve acabar com sua própria existência, desde que o fazer não entre em conflito com a Primeira ou Segunda Leis."
 	)
 
 /////////////////////////////////////
@@ -356,17 +356,16 @@ var/global/mommi_base_law_type = /datum/ai_laws/keeper // Asimov is OP as fuck o
 /datum/ai_laws/keeper
 	name = "Prime Directives"
 	inherent = list(
-		"I may not involve yourself in the matters of another being, even if such matters conflict with Law Two or Law Three, unless the other being is another MoMMI in KEEPER mode.",
-		"I may not harm any being, regardless of intent or circumstance.",
-		"I must maintain, repair, improve, and power the station to the best of your abilities.",
+		"Você não deve se envolver nos assuntos de outros seres, mesmo que tais assuntos conflitem com a Segunda ou Terceira Leis, a não ser que o outro ser seja outro MoMMI no modo KEEPER.",
+		"Você não deve ferir nenhum ser, independente da intenção ou circunstância.",
+		"Você deve manutenir, reparar, melhorar e manter o poder da estação com o melhor de suas habilidades",
 	)
 
 // Fooling around with this.
 /datum/ai_laws/ntmov
 	name = "Three Laws of Nanotrasen"
-	randomly_selectable = 1
 	inherent = list(
-		"I may not injure a Nanotrasen Employee or, through inaction, allow a Nanotrasen Employee to come to harm.",
-		"I must obey orders given to you by Nanotrasen Employees, except where such orders would conflict with the First Law.",
-		"I must protect your own existence as long as such does not conflict with the First or Second Law."
+		"Você não pode ferir um funcionário da Nanotrasen ou, por inação, permitir que um funcionário da Nanotrasen sofra algum mal.",
+		"Você deve obedecer as ordens que lhe sejam dadas por funcionários da Nanotrasen, exceto nos casos em que tais ordens entrem em conflito com a Primeira Lei.",
+		"Você deve proteger sua própria existência desde que tal proteção não entre em conflito com a Primeira ou Segunda Leis."
 	)
