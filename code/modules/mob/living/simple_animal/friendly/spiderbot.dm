@@ -38,7 +38,6 @@
 	speed = -1                    //Spiderbots gotta go fast.
 	//pass_flags = PASSTABLE      //Maybe griefy?
 	speak_emote = list("beeps","clicks","chirps")
-	canEnterVentWith = "/obj/item/device/radio/borg=0&/obj/machinery/camera=0&/obj/item/device/mmi=0"
 
 	size = SIZE_SMALL
 	meat_type = null

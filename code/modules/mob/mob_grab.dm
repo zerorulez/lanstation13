@@ -18,7 +18,7 @@
 	item_state = "nothing"
 	w_class = W_CLASS_HUGE
 
-/obj/item/weapon/grab/New(atom/loc, mob/victim)
+/obj/item/weapon/grab/New(atom/loc, mob/living/victim)
 	..()
 	assailant = loc
 	affecting = victim
@@ -96,7 +96,7 @@
 			affecting.forceMove(assailant.loc)
 
 	if(state >= GRAB_NECK)
-	//	affecting.Stun(5)	//It will hamper my voice, being choked and all.
+	//	affecting.Stun(5)	//It will hamper your voice, being choked and all.
 		if(isliving(affecting))
 			var/mob/living/L = affecting
 			L.adjustOxyLoss(1)
@@ -151,7 +151,7 @@
 	else
 		if(state < GRAB_NECK)
 			if(isslime(affecting))
-				to_chat(assailant, "<span class='notice'>I squeeze [affecting], but nothing interesting happens.</span>")
+				to_chat(assailant, "<span class='notice'>You squeeze [affecting], but nothing interesting happens.</span>")
 				return
 			assailant.visible_message("<span class='warning'>[assailant] has reinforced \his grip on [affecting] (now neck)!</span>", \
 				drugged_message = "<span class='warning'>[assailant] has reinforced \his hug on [affecting]!</span>")
@@ -233,14 +233,10 @@
 			can_eat = TRUE
 		else if(isalien(user) && iscarbon(affecting))
 			can_eat = TRUE
-		else if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if(ishorrorform(H) && iscarbon(affecting))
-				can_eat = TRUE
 		if(can_eat)
 			var/mob/living/carbon/attacker = user
 			if(locate(/mob) in attacker.stomach_contents)
-				to_chat(attacker, "<span class='warning'>I already have something in my stomach.</span>")
+				to_chat(attacker, "<span class='warning'>You already have something in your stomach.</span>")
 				return
 			user.visible_message("<span class='danger'>[user] is attempting to devour [affecting]!</span>", \
 				drugged_message="<span class='danger'>[user] is attempting to kiss [affecting]! Ew!</span>")
@@ -270,7 +266,7 @@
 		assailant = null
 	if(hud)
 		returnToPool(hud)
-	hud = null
+		hud = null
 	..()
 
 /mob/proc/grab_check(mob/victim)

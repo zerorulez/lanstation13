@@ -58,12 +58,12 @@
 				pai_container.dropkey_integrated_pai(pai_override)
 				return
 			if(mob.remove_spell_channeling()) //Interrupt to remove spell channeling on dropping
-				to_chat(usr, "<span class='notice'>I cease waiting to use my power")
+				to_chat(usr, "<span class='notice'>You cease waiting to use your power")
 				return
 			if(iscarbon(usr))
 				var/mob/living/carbon/C = usr
 				if(!C.get_active_hand())
-					to_chat(usr, "<span class='warning'>I have nothing to drop in my hand.</span>")
+					to_chat(usr, "<span class='warning'>You have nothing to drop in your hand.</span>")
 					return
 				if(ishuman(C))
 					var/mob/living/carbon/human/H = C
@@ -79,7 +79,7 @@
 			else if(isMoMMI(usr))
 				var/mob/living/silicon/robot/mommi/M = usr
 				if(!M.get_active_hand())
-					to_chat(M, "<span class='warning'>I have nothing to drop or store.</span>")
+					to_chat(M, "<span class='warning'>You have nothing to drop or store.</span>")
 					return
 				M.uneq_active()
 			else if(isrobot(usr))
@@ -105,7 +105,7 @@
 							H.drop_item(held)
 							return
 						else
-							to_chat(usr, "<span class='warning'>My host has nothing to drop in [H.gender == FEMALE ? "her" : "his"] [H.get_index_limb_name(OE.grasp_id)].</span>")
+							to_chat(usr, "<span class='warning'>Your host has nothing to drop in [H.gender == FEMALE ? "her" : "his"] [H.get_index_limb_name(OE.grasp_id)].</span>")
 			else
 				to_chat(usr, "<span class='warning'>This mob type cannot drop items.</span>")
 
@@ -114,7 +114,7 @@
 	set hidden = 1
 
 	if(!usr.pulling)
-		to_chat(usr, "<span class='notice'>I am not pulling anything.</span>")
+		to_chat(usr, "<span class='notice'>You are not pulling anything.</span>")
 		return
 	usr.stop_pulling()
 
@@ -244,35 +244,35 @@
 		var/obj/O = mob.orient_object
 		O.dir = direct
 
-/client/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
+/client/Move(loc,dir)
 	if(move_delayer.next_allowed > world.time)
 		return 0
 
 	// /vg/ - Deny clients from moving certain mobs. (Like cluwnes :^)
 	if(mob.deny_client_move)
-		to_chat(src, "<span class='warning'>I cannot move this mob.</span>")
+		to_chat(src, "<span class='warning'>You cannot move this mob.</span>")
 		return
 
 	if(mob.control_object)
-		Move_object(Dir)
+		Move_object(dir)
 
 	if(mob.orient_object)
-		Dir_object(Dir)
+		Dir_object(dir)
 		return
 
 	if(mob.incorporeal_move)
-		Process_Incorpmove(Dir)
+		Process_Incorpmove(dir)
 		return
 
 	if(mob.stat == DEAD)
 		return
 
 	if(isAI(mob))
-		return AIMove(NewLoc,Dir,mob)
+		return AIMove(loc,dir,mob)
 
 	if(ispAI(mob))
 		var/mob/living/silicon/pai/P = mob
-		P.relaymove(Dir)
+		P.relaymove(dir)
 		return
 
 	if(mob.monkeyizing)
@@ -282,7 +282,7 @@
 		return
 
 	if(mob.locked_to) //if we're locked_to to something, tell it we moved.
-		return mob.locked_to.relaymove(mob, Dir)
+		return mob.locked_to.relaymove(mob, dir)
 
 	if(!mob.canmove)
 		return
@@ -312,12 +312,12 @@
 	if(isturf(mob.loc))
 		if(mob.restrained()) //Why being pulled while cuffed prevents you from moving
 			if(mob.grabbed_by.len)
-				to_chat(src, "<span class='notice'>I am restrained! You can't move!</span>")
+				to_chat(src, "<span class='notice'>You're restrained! You can't move!</span>")
 				return 0
 			for(var/mob/M in range(mob, 1))
 				if(M.pulling == mob)
 					if(!M.incapacitated() && M.canmove && mob.Adjacent(M))
-						to_chat(src, "<span class='notice'>I am restrained! You can't move!</span>")
+						to_chat(src, "<span class='notice'>You're restrained! You can't move!</span>")
 						return 0
 					else
 						M.stop_pulling()
@@ -325,15 +325,15 @@
 				var/datum/chain/chain_datum = mob.tether.chain_datum
 				if(chain_datum.extremity_A == mob)
 					if(istype(chain_datum.extremity_B,/mob/living))
-						to_chat(src, "<span class='notice'>I am restrained! You can't move!</span>")
+						to_chat(src, "<span class='notice'>You're restrained! You can't move!</span>")
 						return 0
 				else if(chain_datum.extremity_B == mob)
 					if(istype(chain_datum.extremity_A,/mob/living))
-						to_chat(src, "<span class='notice'>I am restrained! You can't move!</span>")
+						to_chat(src, "<span class='notice'>You're restrained! You can't move!</span>")
 						return 0
 
 		if(mob.pinned.len)
-			to_chat(src, "<span class='notice'>I am pinned to a wall by [mob.pinned[1]]!</span>")
+			to_chat(src, "<span class='notice'>You're pinned to a wall by [mob.pinned[1]]!</span>")
 			return 0
 
 		// COMPLEX MOVE DELAY SHIT
@@ -361,7 +361,6 @@
 
 		mob.set_glide_size(DELAY2GLIDESIZE(move_delay))
 		mob.delayNextMove(move_delay)
-
 		//Something with pulling things
 		if(Findgrab)
 			var/list/L = mob.ret_grab()
@@ -387,7 +386,7 @@
 							M.animate_movement = 3
 					for(var/mob/M in L)
 						spawn( 0 )
-							step(M, Dir)
+							step(M, dir)
 							return
 						spawn( 1 )
 							M.other_mobs = null
@@ -401,14 +400,14 @@
 			if (prefs.stumble && ((world.time - mob.last_movement) > 5 && move_delay < 2))
 				mob.delayNextMove(3)	//if set, delays the second step when a mob starts moving to attempt to make precise high ping movement easier
 			//	to_chat(src, "<span class='notice'>First Step</span>")
-			step(mob, Dir)
+			step(mob, dir)
 			mob.last_movement=world.time
 
 		if(mob.dir != old_dir)
 			mob.Facing()
 
 ///Process_Grab()
-///Called by client/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
+///Called by client/Move()
 ///Checks to see if you are being grabbed and if so attemps to break it
 /client/proc/Process_Grab()
 	if(locate(/obj/item/weapon/grab, locate(/obj/item/weapon/grab, mob.grabbed_by.len)))
@@ -438,7 +437,7 @@
 
 
 ///Process_Incorpmove
-///Called by client/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
+///Called by client/Move()
 ///Allows mobs to run though walls
 /client/proc/Process_Incorpmove(direct)
 	switch(mob.incorporeal_move)
@@ -447,27 +446,22 @@
 				var/mob/dead/observer/observer = mob
 				if(observer.locked_to) //Ghosts can move at any time to unlock themselves (in theory from following a mob)
 					observer.manual_stop_follow(observer.locked_to)
-
-			var/movedelay = GHOST_MOVEDELAY
-			if(isobserver(mob))
-				var/mob/dead/observer/observer = mob
-				movedelay = observer.movespeed
-			mob.set_glide_size(DELAY2GLIDESIZE(movedelay))
-
 			var/turf/T = get_step(mob, direct)
 			var/area/A = get_area(T)
 			if(A && A.anti_ethereal && !isAdminGhost(mob))
 				to_chat(mob, "<span class='sinister'>A dark forcefield prevents you from entering the area.</span>")
 			else
 				if((T && T.holy) && isobserver(mob) && ((mob.invisibility == 0) || (ticker.mode && (mob.mind in ticker.mode.cult))))
-					to_chat(mob, "<span class='warning'>I cannot get past holy grounds while you are in this plane of existence!</span>")
+					to_chat(mob, "<span class='warning'>You cannot get past holy grounds while you are in this plane of existence!</span>")
 				else
 					mob.forceEnter(get_step(mob, direct))
 					mob.dir = direct
-			mob.delayNextMove(movedelay)
+			if(isobserver(mob))
+				var/mob/dead/observer/observer = mob
+				mob.delayNextMove(observer.movespeed)
+			else
+				mob.delayNextMove(1)
 		if(INCORPOREAL_ETHEREAL) //Jaunting, without needing to be done through relaymove
-			var/movedelay = ETHEREAL_MOVEDELAY
-			mob.set_glide_size(DELAY2GLIDESIZE(movedelay))
 			var/turf/newLoc = get_step(mob,direct)
 			if(!(newLoc.turf_flags & NOJAUNT))
 				mob.forceEnter(newLoc)
@@ -475,7 +469,7 @@
 			else
 				to_chat(mob, "<span class='warning'>Some strange aura is blocking the way!</span>")
 			INVOKE_EVENT(mob.on_moved,list("dir"=direct))
-			mob.delayNextMove(movedelay)
+			mob.delayNextMove(2)
 			return 1
 	// Crossed is always a bit iffy
 	for(var/obj/S in mob.loc)
@@ -486,7 +480,7 @@
 
 
 ///Process_Spacemove
-///Called by /client/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
+///Called by /client/Move()
 ///For moving in space
 ///Return 1 for movement 0 for none
 /mob/Process_Spacemove(var/check_drift = 0,var/ignore_slip = 0)
@@ -500,7 +494,7 @@
 	if(..())
 		//Check to see if we slipped
 		if(!ignore_slip && on_foot() && prob(Process_Spaceslipping(5)))
-			to_chat(src, "<span class='notice'><B>I slipped!</B></span>")
+			to_chat(src, "<span class='notice'><B>You slipped!</B></span>")
 			src.inertia_dir = src.last_move
 			step(src, src.inertia_dir)
 			return 0
