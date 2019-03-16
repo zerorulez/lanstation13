@@ -95,7 +95,17 @@
 	..()
 	total_positions = 3
 	spawn_positions = 3
+	var/datum/job/cap = job_master.GetJob("Captain")
+	if(!(cap.current_positions > 0))
+		access = list(access_weapons, access_security, access_sec_doors, access_brig, access_court, access_maint_tunnels, access_morgue, access_eva, access_heads, access_hop, access_RC_announce, access_keycard_auth)
+		minimal_access = list(access_weapons, access_security, access_sec_doors, access_brig, access_court, access_maint_tunnels, access_morgue, access_eva, access_heads, access_hop, access_RC_announce, access_keycard_auth)
 
+/datum/job/detective/New()
+	..()
+	var/datum/job/cap = job_master.GetJob("Captain")
+	if(!(cap.current_positions > 0))
+		access = list(access_weapons, access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_court, access_eva, access_heads, access_hop, access_RC_announce, access_keycard_auth)
+		minimal_access = list(access_weapons, access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_court, access_eva, access_heads, access_hop, access_RC_announce, access_keycard_auth)
 // Civilian
 
 /datum/job/hydro/New()
