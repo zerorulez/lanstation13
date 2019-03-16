@@ -1,5 +1,10 @@
 //Disabled jobs - handled by other jobs
 
+/datum/job/assistant
+	..()
+	total_positions = 0
+	spawn_positions = 0
+
 /datum/job/chef
 	..()
 	total_positions = 0
