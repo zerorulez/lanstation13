@@ -1499,6 +1499,7 @@ var/proccalls = 1
 #define HOLOMAP_MARKER_SYNDISHUTTLE		"syndishuttle"
 
 #define DEFAULT_BLOOD "#A10808"
+#define DEFAULT_FLESH "#FFC896"
 
 //Changing the order of these needlessly will break functionality of the client holding lists
 #define NO_ANIMATION 0
