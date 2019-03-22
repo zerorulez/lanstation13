@@ -305,7 +305,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		ghostize(1)
 	else if(stat == DEAD)
 		ghostize(1)
-	else
+/*	else
 		var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you will not be able to re-enter my current body!  You can't change my mind so choose wisely!)","Are you sure you want to ghost?","Ghost","Stay in body")
 		if(response != "Ghost")
 			return	//didn't want to ghost after-all
@@ -315,7 +315,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			ghost.timeofdeath = world.time // Because the living mob won't have a time of death and we want the respawn timer to work properly.
 			if(ghost.client)
 				ghost.client.time_died_as_mouse = world.time //We don't want people spawning infinite mice on the station
-	return
+	return*/
 
 // Check for last poltergeist activity.
 /mob/dead/observer/proc/can_poltergeist(var/start_cooldown=1)
