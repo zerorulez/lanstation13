@@ -209,7 +209,7 @@
 			m_type = VISIBLE
 
 		if ("blush")
-			msg = "<B>[src]</B> fica corado."
+			msg = "<B>[src]</B> fica [gender == MALE ?"corado":"corada"]."
 			m_type = VISIBLE
 
 		if ("wave")
@@ -476,7 +476,7 @@
 					m_type = HEARABLE
 
 		if ("wink")
-			msg = "<B>[src]</B> [pick("dá uma piscadela.","pisca")]"
+			msg = "<B>[src]</B> dá uma piscadela."
 			m_type = VISIBLE
 
 		if ("spin")
@@ -533,6 +533,7 @@
 						msg = "<B>[src]</B> segura a mão de [M]."
 
 		if ("scream")
+			m_type = HEARABLE
 			if(world.time - last_emote_sound >= 30)
 				agony_scream()
 				last_emote_sound = world.time
