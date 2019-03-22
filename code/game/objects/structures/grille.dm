@@ -66,7 +66,7 @@
 	attack_hand(user)
 
 /obj/structure/grille/attack_hand(mob/living/user as mob)
-	user.do_attack_animation(src, user)
+//	user.do_attack_animation(src, user)
 	var/humanverb = pick(list("kick", "slam", "elbow")) //Only verbs with a third person "s", thank you
 	user.delayNextAttack(8)
 	user.visible_message("<span class='warning'>[user] [humanverb]s \the [src].</span>", \
@@ -82,7 +82,7 @@
 /obj/structure/grille/attack_alien(mob/user as mob)
 	if(istype(user, /mob/living/carbon/alien/larva))
 		return
-	user.do_attack_animation(src, user)
+//	user.do_attack_animation(src, user)
 	var/alienverb = pick(list("slam", "rip", "claw")) //See above
 	user.delayNextAttack(8)
 	user.visible_message("<span class='warning'>[user] [alienverb]s \the [src].</span>", \
@@ -95,7 +95,7 @@
 /obj/structure/grille/attack_slime(mob/user as mob)
 	if(!istype(user, /mob/living/carbon/slime/adult))
 		return
-	user.do_attack_animation(src, user)
+//	user.do_attack_animation(src, user)
 	user.delayNextAttack(8)
 	user.visible_message("<span class='warning'>[user] smashes against \the [src].</span>", \
 						 "<span class='warning'>I smash against \the [src].</span>", \
@@ -109,7 +109,7 @@
 	M.delayNextAttack(8)
 	if(M.melee_damage_upper == 0)
 		return
-	M.do_attack_animation(src, M)
+//	M.do_attack_animation(src, M)
 	M.visible_message("<span class='warning'>[M] smashes against \the [src].</span>", \
 					  "<span class='warning'>I smash against \the [src].</span>", \
 					  "I hear twisting metal.")
@@ -211,7 +211,7 @@
 			health -= W.force //Fire-based tools like welding tools are ideal to work through small metal rods !
 		if("brute")
 			health -= W.force * 0.5 //Rod matrices have an innate resistance to brute damage
-	user.do_attack_animation(src, W)
+//	user.do_attack_animation(src, W)
 	shock(user, 100 * W.siemens_coefficient) //Chance of getting shocked is proportional to conductivity
 	healthcheck(hitsound = 1)
 	..()

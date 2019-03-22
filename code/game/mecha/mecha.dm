@@ -512,7 +512,7 @@
 /obj/mecha/attack_hand(mob/living/user as mob)
 	src.log_message("Attack by hand/paw. Attacker - [user].",1)
 
-	user.do_attack_animation(src, user)
+//	user.do_attack_animation(src, user)
 
 	if ((M_HULK in user.mutations) && !prob(src.deflect_chance))
 		src.take_damage(15)
@@ -525,12 +525,12 @@
 	user.delayNextAttack(10)
 
 /obj/mecha/attack_paw(mob/living/user as mob)
-	user.do_attack_animation(src, user)
+//	user.do_attack_animation(src, user)
 	return src.attack_hand(user)
 
 
 /obj/mecha/attack_alien(mob/living/user as mob)
-	user.do_attack_animation(src, user)
+//	user.do_attack_animation(src, user)
 	src.log_message("Attack by alien. Attacker - [user].",1)
 	if(!prob(src.deflect_chance))
 		src.take_damage(15)
@@ -548,7 +548,7 @@
 	user.delayNextAttack(10)
 
 /obj/mecha/attack_animal(mob/living/simple_animal/user as mob)
-	user.do_attack_animation(src, user)
+//	user.do_attack_animation(src, user)
 	src.log_message("Attack by simple animal. Attacker - [user].",1)
 	if(user.melee_damage_upper == 0)
 		user.emote("[user.friendly] [src]")
@@ -728,7 +728,7 @@
 
 /obj/mecha/proc/dynattackby(obj/item/weapon/W as obj, mob/user as mob)
 	user.delayNextAttack(8)
-	user.do_attack_animation(src, W)
+//	user.do_attack_animation(src, W)
 	src.log_message("Attacked by [W]. Attacker - [user]")
 	if(prob(src.deflect_chance))
 		to_chat(user, "<span class='attack'>The [W] bounces off [src.name] armor.</span>")

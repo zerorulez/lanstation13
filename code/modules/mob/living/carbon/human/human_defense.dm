@@ -216,7 +216,7 @@ emp_act
 			affecting.sabotaged = 1
 		return 0
 
-	user.do_attack_animation(src, I)
+//	user.do_attack_animation(src, I)
 	user.delayNextAttack(1)
 	if(istype(I.attack_verb, /list) && I.attack_verb.len && !(I.flags & NO_ATTACK_MSG))
 		visible_message("<span class='danger'>[user] [pick(I.attack_verb)] [src] in the [hit_area] with \the [I.name]!</span>", \

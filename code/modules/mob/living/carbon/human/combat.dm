@@ -32,7 +32,7 @@
 	if(target.disarmed_by(src))
 		return
 
-	do_attack_animation(target, src)
+//	do_attack_animation(target, src)
 
 	var/datum/organ/external/affecting = get_organ(ran_zone(zone_sel.selecting))
 	if(prob(40)) //40% miss chance

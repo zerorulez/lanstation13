@@ -348,8 +348,6 @@ var/const/MAX_SAVE_SLOTS = 8
 	<a href='?_src_=prefs;preference=special_popup'><b>[special_popup ? "Yes" : "No"]</b></a><br>
 	<b>Character Records:<b>
 	[jobban_isbanned(user, "Records") ? "Banned" : "<a href=\"byond://?src=\ref[user];preference=records;record=1\">Set</a></b><br>"]
-	<b>Attack Animations:<b>
-	<a href='?_src_=prefs;preference=attack_animation'><b>[attack_animation ? "Yes" : "No"]</b></a><br>
   </div>
 </div>"}
 

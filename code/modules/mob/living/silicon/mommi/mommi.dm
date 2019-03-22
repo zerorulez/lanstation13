@@ -312,7 +312,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 		return 0
 
 	else
-		user.do_attack_animation(src, W)
+	//	user.do_attack_animation(src, W)
 		spark_system.start()
 		return ..()
 

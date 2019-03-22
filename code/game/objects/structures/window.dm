@@ -136,7 +136,7 @@
 
 /obj/structure/window/kick_act(mob/living/carbon/human/H)
 	playsound(get_turf(src), 'sound/effects/glassknock.ogg', 100, 1)
-	H.do_attack_animation(src, H)
+//	H.do_attack_animation(src, H)
 
 	H.visible_message("<span class='danger'>\The [H] kicks \the [src].</span>", \
 	"<span class='danger'>I kick \the [src].</span>")
@@ -189,7 +189,7 @@
 /obj/structure/window/attack_hand(mob/user as mob)
 
 	if(M_HULK in user.mutations)
-		user.do_attack_animation(src, user)
+//		user.do_attack_animation(src, user)
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
 		user.visible_message("<span class='danger'>[user] smashes \the [src]!</span>")
 		health -= 25
@@ -198,7 +198,7 @@
 
 	//Bang against the window
 	else if(usr.a_intent == I_HURT)
-		user.do_attack_animation(src, user)
+	//	user.do_attack_animation(src, user)
 		user.delayNextAttack(10)
 		playsound(get_turf(src), 'sound/effects/glassknock.ogg', 100, 1)
 		user.visible_message("<span class='warning'>[user] bangs against \the [src]!</span>", \
@@ -220,7 +220,7 @@
 
 /obj/structure/window/proc/attack_generic(mob/user as mob, damage = 0)	//used by attack_alien, attack_animal, and attack_slime
 
-	user.do_attack_animation(src, user)
+//	user.do_attack_animation(src, user)
 	user.delayNextAttack(10)
 	health -= damage
 	user.visible_message("<span class='danger'>\The [user] smashes into \the [src]!</span>", \
@@ -254,7 +254,7 @@
 			var/mob/living/M = G.affecting
 			var/gstate = G.state
 			returnToPool(W)	//Gotta delete it here because if window breaks, it won't get deleted
-			user.do_attack_animation(src, W)
+//			user.do_attack_animation(src, W)
 			switch(gstate)
 				if(GRAB_PASSIVE)
 					M.apply_damage(5) //Meh, bit of pain, window is fine, just a shove
@@ -394,7 +394,7 @@
 				to_chat(user, "<span class='warning'>I need more welding fuel to complete this task.</span>")
 				return
 
-	user.do_attack_animation(src, W)
+//	user.do_attack_animation(src, W)
 
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		user.delayNextAttack(10)

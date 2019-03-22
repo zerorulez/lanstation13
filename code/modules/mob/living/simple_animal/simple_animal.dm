@@ -413,7 +413,7 @@ var/global/list/animal_count = list() //Stores types, and amount of animals of t
 
 
 		else
-			L.do_attack_animation(src, L)
+		//	L.do_attack_animation(src, L)
 			var/damage = rand(5, 10)
 			visible_message("<span class='danger'>[L] bites [src]!</span>")
 
@@ -468,7 +468,7 @@ var/global/list/animal_count = list() //Stores types, and amount of animals of t
 	else
 		user.delayNextAttack(8)
 		if(O.force)
-			user.do_attack_animation(src, O)
+		//	user.do_attack_animation(src, O)
 
 			var/damage = O.force
 			if (O.damtype == HALLOSS)

@@ -720,7 +720,7 @@
 	return (!src.anchored && !(src.pulledby && src.pulledby.Adjacent(src)))
 
 
-/atom/movable/proc/do_attack_animation(atom/target, atom/tool)
+/*/atom/movable/proc/do_attack_animation(atom/target, atom/tool)
 	set waitfor = 0
 
 	ASSERT(tool) //If no tool, shut down the proc and call the coder police
@@ -762,4 +762,4 @@
 		animate(pixel_x = pixel_x, pixel_y = pixel_y, time = 1)
 		sleep(2)
 		for(var/client/C in viewers)
-			C.images -= override_image
+			C.images -= override_image*/

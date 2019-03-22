@@ -47,7 +47,7 @@
 	if(!istype(W))
 		return
 
-	user.do_attack_animation(src, W)
+//	user.do_attack_animation(src, W)
 
 	//Calculate damage
 	var/aforce = W.force

@@ -246,7 +246,7 @@
 		if(I_HURT)
 			M.unarmed_attack_mob(src)
 		if(I_DISARM)
-			M.do_attack_animation(src, M)
+		//	M.do_attack_animation(src, M)
 			M.disarm_mob(src)
 		if(I_GRAB)
 			M.grab_mob(src)
@@ -271,14 +271,14 @@
 			help_shake_act(M)
 
 		if(I_HURT)
-			M.do_attack_animation(src, M)
+		//	M.do_attack_animation(src, M)
 			M.unarmed_attack_mob(src)
 
 		if(I_GRAB)
 			M.grab_mob(src)
 
 		if(I_DISARM)
-			M.do_attack_animation(src, M)
+		//	M.do_attack_animation(src, M)
 			M.disarm_mob(src)
 	return
 
@@ -294,7 +294,7 @@
 			return M.grab_mob(src)
 
 		if (I_DISARM)
-			M.do_attack_animation(src, M)
+		//	M.do_attack_animation(src, M)
 			return M.disarm_mob(src)
 
 /mob/living/carbon/monkey/attack_slime(mob/living/carbon/slime/M)
