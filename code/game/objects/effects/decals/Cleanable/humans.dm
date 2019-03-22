@@ -15,7 +15,7 @@ var/global/list/blood_list = list()
 
 	plane = ABOVE_TURF_PLANE
 	layer = BLOOD_LAYER
-	appearance_flags = TILE_BOUND
+	appearance_flags = TILE_BOUND|LONG_GLIDE
 	var/base_icon = 'icons/effects/blood.dmi'
 
 	basecolor=DEFAULT_BLOOD // Color when wet.

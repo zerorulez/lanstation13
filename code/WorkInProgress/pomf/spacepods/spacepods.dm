@@ -25,7 +25,7 @@
 	var/next_firetime = 0
 	var/list/pod_overlays
 	var/health = 400
-	appearance_flags = 0
+	appearance_flags = LONG_GLIDE
 
 	var/datum/delay_controller/move_delayer = new(0.1, ARBITRARILY_LARGE_NUMBER) //See setup.dm, 12
 	var/movement_delay = 0.4 //Speed of the vehicle decreases as this value increases. Anything above 6 is slow, 1 is fast and 0 is very fast

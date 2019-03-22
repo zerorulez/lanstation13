@@ -41,7 +41,7 @@ var/global/list/ghdel_profiling = list()
 	var/ignoreinvert = 0
 	var/timestopped
 
-	appearance_flags = TILE_BOUND|PIXEL_SCALE
+	appearance_flags = TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
 
 /atom/proc/beam_connect(var/obj/effect/beam/B)
 	if(!last_beamchecks)
@@ -91,6 +91,7 @@ var/global/list/ghdel_profiling = list()
 	else if(isobj(hit_atom))
 		var/obj/O = hit_atom
 		if(!O.anchored)
+			O.set_glide_size(0)
 			step(O, src.dir)
 		O.hitby(src,speed)
 

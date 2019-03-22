@@ -56,3 +56,6 @@
 #define SS_DISPLAY_TICKER         -10
 #define SS_DISPLAY_UNSPECIFIED     0
 #define SS_DISPLAY_SUN             10
+
+
+#define SS_WAIT_MACHINERY		   2 SECONDS
