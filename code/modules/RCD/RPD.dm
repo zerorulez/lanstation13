@@ -45,6 +45,8 @@
 		/datum/rcd_schematic/pipe/he_bent,
 		/datum/rcd_schematic/pipe/juntion,
 		/datum/rcd_schematic/pipe/heat_exchanger,
+		/datum/rcd_schematic/pipe/he_manifold,
+		/datum/rcd_schematic/pipe/he_manifold4w,
 
 		/* Insulated Pipes */
 		/datum/rcd_schematic/pipe/insulated,
