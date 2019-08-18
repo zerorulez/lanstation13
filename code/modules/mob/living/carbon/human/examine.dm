@@ -2,6 +2,8 @@
 #define JITTER_HIGH 300
 
 /mob/living/carbon/human/examine(mob/user)
+	if(!isobserver(user))
+		user.visible_message("<font size=1>[user.name] looks at [src].</font>")
 	var/list/obscured = check_obscured_slots()
 	var/skipgloves = 0
 	//var/skipsuitstorage = 0

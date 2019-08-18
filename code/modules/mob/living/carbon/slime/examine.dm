@@ -1,4 +1,6 @@
 /mob/living/carbon/slime/examine(mob/user)
+	if(!isobserver(user))
+		user.visible_message("<font size=1>[user.name] looks at [src].</font>")
 	var/msg = "<span class='info'>*---------*\nThis is \icon[src] \a <EM>[src]</EM>!\n"
 	if (src.stat == DEAD)
 		msg += "<span class='deadsay'>It is limp and unresponsive.</span>\n"

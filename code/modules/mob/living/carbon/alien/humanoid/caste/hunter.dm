@@ -72,11 +72,11 @@
 					blocked = TRUE
 			if(!blocked)
 				L.visible_message("<span class ='danger'>[src] pounces on [L]!</span>", "<span class ='userdanger'>[src] pounces on you!</span>")
-				L.Knockdown(50)
+				L.Knockdown(10)
 				sleep(2)//Runtime prevention (infinite bump() calls on hulks)
 				step_towards(src,L)
 			else
-				Knockdown(50)
+				Knockdown(20)
 	if(leaping)
 		leaping = FALSE
 		update_canmove()

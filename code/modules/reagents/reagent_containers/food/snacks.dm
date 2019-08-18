@@ -121,17 +121,14 @@
 
 			var/fullness = target.nutrition + (target.reagents.get_reagent_amount(NUTRIMENT) * 25) //This reminds me how unlogical mob nutrition is
 
-			if(fullness <= 50)
-				target.visible_message("<span class='notice'>[target] hungrily [eatverb]s some of \the [src] and gobbles it down!</span>", \
-				"<span class='notice'>I hungrily [eatverb] some of \the [src] and gobble it down!</span>")
-			else if(fullness > 50 && fullness < 150)
-				target.visible_message("<span class='notice'>[target] hungrily [eatverb]s \the [src].</span>", \
+			if(fullness <= 150)
+				target.visible_message("<span class='notice'>[target] [eatverb]s \the [src].</span>", \
 				"<span class='notice'>I hungrily [eatverb] \the [src].</span>")
 			else if(fullness > 150 && fullness < 350)
 				target.visible_message("<span class='notice'>[target] [eatverb]s \the [src].</span>", \
 				"<span class='notice'>I [eatverb] \the [src].</span>")
 			else if(fullness > 350 && fullness < 550)
-				target.visible_message("<span class='notice'>[target] unwillingly [eatverb]s some of \the [src].</span>", \
+				target.visible_message("<span class='notice'>[target] [eatverb]s \the [src].</span>", \
 				"<span class='notice'>I unwillingly [eatverb] some of \the [src].</span>")
 
 		else //Feeding someone else, target is eating, user is feeding
@@ -172,18 +169,16 @@
 
 	if(messages)
 		var/fullness = eater.nutrition + (eater.reagents.get_reagent_amount(NUTRIMENT) * 25)
-		if(fullness <= 50)
-			eater.visible_message("<span class='notice'>[eater] hungrily [eatverb]s some of \the [src] and gobbles it down!</span>", \
-			"<span class='notice'>I hungrily [eatverb] some of \the [src] and gobble it down!</span>")
-		else if(fullness > 50 && fullness < 150)
-			eater.visible_message("<span class='notice'>[eater] hungrily [eatverb]s \the [src].</span>", \
-			"<span class='notice'>I hungrily [eatverb] \the [src].</span>")
+		if(fullness <= 150)
+			eater.visible_message("<span class='notice'>[eater] [eatverb]s \the [src].</span>", \
+			"<span class='notice'>I hungrily [eatverb] some of \the [src].</span>")
 		else if(fullness > 150 && fullness < 350)
 			eater.visible_message("<span class='notice'>[eater] [eatverb]s \the [src].</span>", \
 			"<span class='notice'>I [eatverb] \the [src].</span>")
 		else if(fullness > 350 && fullness < 550)
-			eater.visible_message("<span class='notice'>[eater] unwillingly [eatverb]s some of \the [src].</span>", \
+			eater.visible_message("<span class='notice'>[eater] [eatverb]s \the [src].</span>", \
 			"<span class='notice'>I unwillingly [eatverb] some of \the [src].</span>")
+
 
 	var/datum/reagents/reagentreference = reagents //Even when the object is qdeleted, the reagents exist until this ref gets removed
 	if(reagentreference)	//Handle ingestion of any reagents (Note : Foods always have reagents)

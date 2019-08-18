@@ -70,7 +70,7 @@
 	force = 30
 	w_class = W_CLASS_LARGE
 	sharpness = sharpness_on
-	sharpness_flags = SHARP_TIP | SHARP_BLADE | INSULATED_EDGE | HOT_EDGE | CHOPWOOD
+	sharpness_flags = SHARP_TIP | SHARP_BLADE | INSULATED_EDGE | HOT_EDGE | CHOPWOOD | CUT_WALL | CUT_AIRLOCK
 	hitsound = "sound/weapons/blade1.ogg"
 	update_icon()
 

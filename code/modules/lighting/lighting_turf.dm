@@ -6,7 +6,6 @@
 
 	var/tmp/list/datum/light_source/affecting_lights       // List of light sources affecting this turf.
 	var/tmp/atom/movable/lighting_overlay/lighting_overlay // Our lighting overlay.
-	var/tmp/list/datum/lighting_corner/corners
 	var/tmp/has_opaque_atom = FALSE // Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
 
 /turf/New()
@@ -24,9 +23,6 @@
 	if (lighting_overlay)
 		returnToPool(lighting_overlay)
 
-	for (var/datum/lighting_corner/C in corners)
-		C.update_active()
-
 // Builds a lighting overlay for us, but only if our area is dynamic.
 /turf/proc/lighting_build_overlay()
 	if (lighting_overlay)
@@ -34,27 +30,14 @@
 
 	var/area/A = loc
 	if (A.dynamic_lighting)
-		if (!lighting_corners_initialised)
-			generate_missing_corners()
-
 		getFromPool(/atom/movable/lighting_overlay, src)
-
-		for (var/datum/lighting_corner/C in corners)
-			if (!C.active) // We would activate the corner, calculate the lighting for it.
-				for (var/L in C.affecting)
-					var/datum/light_source/S = L
-					S.recalc_corner(C)
-
-				C.active = TRUE
 
 // Used to get a scaled lumcount.
 /turf/proc/get_lumcount(var/minlum = 0, var/maxlum = 1)
 	if (!lighting_overlay)
 		return 0.5
 
-	var/totallums = 0
-	for (var/datum/lighting_corner/L in corners)
-		totallums += L.lum_r + L.lum_b + L.lum_g
+	var/totallums = lighting_overlay.lum_r + lighting_overlay.lum_b + lighting_overlay.lum_g
 
 	totallums /= 12 // 4 corners, each with 3 channels, get the average.
 
@@ -91,20 +74,3 @@
 
 		else
 			lighting_clear_overlay()
-
-/turf/proc/get_corners()
-	if (has_opaque_atom)
-		return null // Since this proc gets used in a for loop, null won't be looped though.
-
-	return corners
-
-/turf/proc/generate_missing_corners()
-	lighting_corners_initialised = TRUE
-	if (!corners)
-		corners = list(null, null, null, null)
-
-	for (var/i = 1 to 4)
-		if (corners[i]) // Already have a corner on this direction.
-			continue
-
-		corners[i] = new/datum/lighting_corner(src, LIGHTING_CORNER_DIAGONAL[i])
