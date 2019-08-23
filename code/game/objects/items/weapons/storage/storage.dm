@@ -29,6 +29,7 @@
 	var/foldable = null	// BubbleWrap - if set, can be folded (when empty) into a sheet of cardboard
 	var/foldable_amount = 1 // Number of foldables to produce, if any - N3X
 	var/internal_store = 0
+	var/needs_to_hold = TRUE // needs to hold on hands in order to take off items
 
 /obj/item/weapon/storage/MouseDrop(obj/over_object as obj)
 	if (ishuman(usr) || ismonkey(usr)) //so monkeys can take off their backpacks -- Urist
@@ -354,6 +355,12 @@
 	if(!force && istype(new_location, /obj/item/weapon/storage))
 		var/obj/item/weapon/storage/A = new_location
 		if(!A.can_be_inserted(W, 1))
+			return 0
+
+	if(ismob(loc) && needs_to_hold)
+		var/mob/M = new_location
+		if(!M.is_holding_item(src))
+			to_chat(M, "You need to hold [src] on your hands first.")
 			return 0
 
 	if(istype(src, /obj/item/weapon/storage/fancy))

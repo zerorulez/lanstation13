@@ -71,7 +71,7 @@ var/roundstart_delay = rand(20, 50)
 //	if((active_with_role["Engineer"] > 1) && (active_with_role["Security"] > 1) && (living >= BLOB_CORE_PROPORTION))
 //		possibleEvents[/datum/event/thing_storm/blob_storm] = 10//Blob Conglomerate
 
-	possibleEvents[/datum/event/radiation_storm] = 30
+//	possibleEvents[/datum/event/radiation_storm] = 30
 
 	if(active_with_role["Medical"] > 1)
 //		possibleEvents[/datum/event/viral_infection] = 30

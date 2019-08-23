@@ -953,7 +953,7 @@ FIRE ALARM
 	return src.attack_hand(user)
 
 /obj/machinery/firealarm/bullet_act(BLAH)
-	return src.alarm()
+	return
 
 /obj/machinery/firealarm/attack_paw(mob/user as mob)
 	return src.attack_hand(user)
@@ -1022,8 +1022,6 @@ FIRE ALARM
 					playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 					qdel(src)
 		return
-
-	src.alarm()
 
 /obj/machinery/firealarm/process()//Note: this processing was mostly phased out due to other code, and only runs when needed
 	if(stat & (NOPOWER|BROKEN))

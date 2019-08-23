@@ -55,7 +55,7 @@
 	light_color = LIGHT_COLOR_CYAN
 	use_auto_lights = 1
 	light_range_on = 3
-	light_power_on = 2
+	light_power_on = 0.75
 
 /obj/machinery/dna_scannernew/New()
 	. = ..()

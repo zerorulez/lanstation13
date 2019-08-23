@@ -125,6 +125,7 @@ var/global/list/tv_monitors = list()
 	circuit = null
 
 	light_color = null
+	light_power_on = 0.5
 
 /obj/machinery/computer/security/wooden_tv
 	name = "Security Cameras"
@@ -132,6 +133,7 @@ var/global/list/tv_monitors = list()
 	icon_state = "security_det"
 
 	light_color = null
+	light_power_on = 0.5
 
 /obj/machinery/computer/security/mining
 	name = "Outpost Cameras"
@@ -141,6 +143,7 @@ var/global/list/tv_monitors = list()
 	circuit = "/obj/item/weapon/circuitboard/mining"
 
 	light_color = LIGHT_COLOR_PINK
+	light_power_on = 0.5
 
 /obj/machinery/computer/security/engineering
 	name = "Engineering Cameras"

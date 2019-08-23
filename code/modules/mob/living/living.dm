@@ -723,6 +723,9 @@ Thanks.
 	if ((s_active && !is_holder_of(src, s_active)))
 		s_active.close(src)
 
+	handle_footstep(loc)
+	step_count++
+
 	if(update_slimes)
 		for(var/mob/living/carbon/slime/M in view(1,src))
 			M.UpdateFeed(src)
@@ -740,6 +743,11 @@ Thanks.
 				for(var/mob/living/M in G.target)
 					if(M && !(M in view(src)))
 						M.NotTargeted(G)
+
+/mob/living/proc/handle_footstep(turf/T)
+	if(istype(T))
+		return TRUE
+	return FALSE
 
 /mob/living/proc/handle_hookchain(var/direct)
 	for(var/obj/item/weapon/gun/hookshot/hookshot in src)

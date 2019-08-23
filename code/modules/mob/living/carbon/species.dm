@@ -140,6 +140,8 @@ var/global/list/whitelisted_species = list("Human")
 
 	var/gender	//For races with only one or neither
 
+	var/silent_steps = 0          // Stops step noises
+
 /datum/species/New()
 	..()
 	if(all_species[name])

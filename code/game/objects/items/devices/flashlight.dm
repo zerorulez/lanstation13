@@ -152,7 +152,7 @@
 	desc = "A red Nanotrasen issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = W_CLASS_SMALL
 	brightness_on = 4 // Pretty bright.
-	light_power = 2.5
+	light_power = 1
 	icon_state = "flare"
 	item_state = "flare"
 	action_button_name = null //just pull it manually, neckbeard.

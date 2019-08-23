@@ -7,7 +7,7 @@
 
 	var/welding_proof=0
 	var/eyeprot=0
-	var/see_in_dark=2
+	var/see_in_dark=8
 	var/list/colourmatrix = list()
 
 

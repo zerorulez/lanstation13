@@ -72,6 +72,7 @@ var/global/list/all_money_accounts = list()
 	M.remote_access_pin = rand(11, 99)
 	M.money = starting_funds
 	M.wage_gain = wage_payout
+	M.security_level = 0
 
 	//create an entry in the account transaction log for when it was created
 	var/datum/transaction/T = new()
@@ -85,7 +86,7 @@ var/global/list/all_money_accounts = list()
 		T.time = "[rand(0,24)]:[rand(11,59)]"														//prompting everyone to get a new account one day prior.
 		T.source_terminal = "NTGalaxyNet Terminal #[multinum_display(rand(111,1111),4)]"								//The point being to partly to justify the transaction history being empty at the beginning of the round.
 
-		M.account_number = rand(111, 999)
+		M.account_number = rand(100, 999)
 	else
 		T.date = current_date_string
 		T.time = worldtime2text()

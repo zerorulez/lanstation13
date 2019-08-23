@@ -41,6 +41,8 @@ var/global/list/ghdel_profiling = list()
 	var/ignoreinvert = 0
 	var/timestopped
 
+	var/list/footstep_sounds = list() // Footsteps sound
+
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
 
 /atom/proc/beam_connect(var/obj/effect/beam/B)
@@ -371,7 +373,7 @@ its easier to just keep the beam vertical.
 		f_name += "<span class='danger'>blood-stained</span> [name]!"
 
 	if(!isobserver(user))
-		user.visible_message("<font size=1>[user.name] looks at [src].</font>")
+		user.visible_message("<font size=1><b>[user.name]</b> looks at <b>[src].</b></font>")
 
 	to_chat(user, "\icon[src] That's [f_name]" + size)
 	if(desc)

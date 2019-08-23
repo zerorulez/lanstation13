@@ -196,6 +196,9 @@
 	var/has_penalized_speed = 0 //does nothing, merely for checking
 	var/list/heard_by = list()
 
+	var/hud_typing = 0 //set when typing in an input window instead of chatline
+	var/atom/movable/overlay/typing_indicator/typing_indicator = null
+
 //Generic list for proc holders. Only way I can see to enable certain verbs/procs. Should be modified if needed.
 	var/proc_holder_list[] = list()//Right now unused.
 	//Also unlike the spell list, this would only store the object in contents, not an object in itself.

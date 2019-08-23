@@ -443,6 +443,7 @@
 				to_chat(user, "<span class='notice'>I switch the [src] on.</span>")
 			src.force = 15
 			src.damtype = "fire"
+			playsound(loc, 'sound/items/welderactivate.ogg', 50, 1)
 			update_icon()
 			processing_objects.Add(src)
 		else
@@ -455,6 +456,7 @@
 			to_chat(usr, "<span class='notice'>I switch the [src] off.</span>")
 		else
 			visible_message("<span class='notice'>\The [src] shuts off!</span>")
+		playsound(loc, 'sound/items/welderdeactivate.ogg', 50, 1)
 		src.force = 3
 		src.damtype = "brute"
 		update_icon()

@@ -331,6 +331,7 @@ Pipelines + Other Objects -> Pipe network
 		var/mob/living/L = Obj
 		L.ventcrawl_layer = src.piping_layer
 
+
 /obj/machinery/atmospherics/relaymove(mob/living/user, direction)
 	if(!(direction & initialize_directions)) //can't go in a way we aren't connecting to
 		return
@@ -338,9 +339,16 @@ Pipelines + Other Objects -> Pipe network
 	var/obj/machinery/atmospherics/target_move = findConnecting(direction, user.ventcrawl_layer)
 	if(target_move)
 		if(is_type_in_list(target_move, ventcrawl_machinery) && target_move.can_crawl_through())
-			user.remove_ventcrawl()
-			user.forceMove(target_move.loc) //handles entering and so on
-			user.visible_message("I hear something squeezing through the ducts.", "I climb out of the ventilation system.")
+			if(user.special_delayer.blocked())
+				return
+			user.delayNextSpecial(10)
+			user.visible_message("Something is squeezing through the ducts...", "You start crawling out the ventilation system.")
+			target_move.shake(2, 3)
+			spawn(0)
+				if(do_after(user, target_move, 10))
+					user.remove_ventcrawl()
+					user.forceMove(target_move.loc) //handles entering and so on
+					user.visible_message("You hear something squeeze through the ducts.", "You climb out the ventilation system.")
 		else if(target_move.can_crawl_through())
 			if(target_move.return_network(target_move) != return_network(src))
 				user.remove_ventcrawl()
@@ -356,11 +364,12 @@ Pipelines + Other Objects -> Pipe network
 	else
 		if((direction & initialize_directions) || is_type_in_list(src, ventcrawl_machinery) && src.can_crawl_through()) //if we move in a way the pipe can connect, but doesn't - or we're in a vent
 			user.remove_ventcrawl()
-			user.forceMove(src.loc)
-			user.visible_message("I hear something squeezing through the pipes.", "I climb out of the ventilation system.")
+			user.forceMove(src.loc, glide_size_override = DELAY2GLIDESIZE(1))
+			user.visible_message("You hear something squeezing through the pipes.", "You climb out the ventilation system.")
 	user.canmove = 0
 	spawn(1)
 		user.canmove = 1
+
 
 /obj/machinery/atmospherics/proc/can_crawl_through()
 	return 1

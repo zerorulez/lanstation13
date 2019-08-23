@@ -14,7 +14,7 @@
 
 	light_color = LIGHT_COLOR_CYAN
 	light_range_on = 3
-	light_power_on = 2
+	light_power_on = 0.75
 	use_auto_lights = 1
 
 	var/prints_prosthetics

@@ -5,6 +5,9 @@
 	if(say_disabled)
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
+
+	remove_typing_indicator()
+
 	usr.say(message)
 
 /mob/verb/whisper(message as text)
@@ -29,6 +32,7 @@
 		return
 
 	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
+	remove_typing_indicator()
 
 	if(usr.stat == DEAD)
 		usr.emote_dead(message)

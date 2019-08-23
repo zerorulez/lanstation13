@@ -16,6 +16,8 @@
 	var/extinguishingProb = 15
 	var/can_extinguish = FALSE
 
+	var/silence_steps = FALSE
+
 
 /obj/item/clothing/Destroy()
 	for(var/obj/item/clothing/accessory/A in accessories)

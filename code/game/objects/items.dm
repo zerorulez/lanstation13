@@ -193,7 +193,8 @@
 	if (istype(src.loc, /obj/item/weapon/storage))
 		//If the item is in a storage item, take it out.
 		var/obj/item/weapon/storage/S = src.loc
-		S.remove_from_storage(src, user)
+		if(!S.remove_from_storage(src, user))
+			return
 
 	src.throwing = 0
 	if (src.loc == user)

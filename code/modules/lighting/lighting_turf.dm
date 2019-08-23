@@ -21,7 +21,7 @@
 
 /turf/proc/lighting_clear_overlay()
 	if (lighting_overlay)
-		returnToPool(lighting_overlay)
+		qdel(lighting_overlay)
 
 // Builds a lighting overlay for us, but only if our area is dynamic.
 /turf/proc/lighting_build_overlay()
@@ -30,7 +30,7 @@
 
 	var/area/A = loc
 	if (A.dynamic_lighting)
-		getFromPool(/atom/movable/lighting_overlay, src)
+		lighting_overlay = new /atom/movable/lighting_overlay(src)
 
 // Used to get a scaled lumcount.
 /turf/proc/get_lumcount(var/minlum = 0, var/maxlum = 1)

@@ -479,6 +479,13 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 	//icon_plating = "asteroid"
 	var/dug = 0       //0 = has not yet been dug, 1 = has already been dug
 
+	footstep_sounds = list("human" = list(\
+		'sound/effects/footstep/asteroid1.ogg',\
+		'sound/effects/footstep/asteroid2.ogg',\
+		'sound/effects/footstep/asteroid3.ogg',\
+		'sound/effects/footstep/asteroid4.ogg',\
+		'sound/effects/footstep/asteroid5.ogg'))
+
 /turf/unsimulated/floor/asteroid/air
 	oxygen = MOLES_O2STANDARD
 	nitrogen = MOLES_N2STANDARD

@@ -265,7 +265,7 @@
 	idle_power_usage = 50
 	active_power_usage = 500 //This shit's able to compress tiny little diamonds into really big diamonds, of course this uses a lot of power.
 	machine_flags = SCREWTOGGLE | CROWDESTROY | MULTITOOL_MENU
-	light_power_on = 2
+	light_power_on = 0.75
 	light_range_on = 3
 	light_color = LIGHT_COLOR_ORANGE
 

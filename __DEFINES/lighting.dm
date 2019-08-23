@@ -36,7 +36,7 @@
 
 
 //Nightvision
-#define LIGHTING_PLANE_ALPHA_VISIBLE 255
+#define LIGHTING_PLANE_ALPHA_VISIBLE 250
 #define LIGHTING_PLANE_ALPHA_NIGHTVISION 220
 
 //Defines for lighting status, see power/lighting.dm

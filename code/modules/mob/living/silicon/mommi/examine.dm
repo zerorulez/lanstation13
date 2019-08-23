@@ -1,6 +1,6 @@
 /mob/living/silicon/robot/mommi/examine(mob/user)
 	if(!isobserver(user))
-		user.visible_message("<font size=1>[user.name] looks at [src].</font>")
+		user.visible_message("<font size=1><b>[user.name]</b> looks at <b>[src].</b></font>")
 	var/msg = "<span class='info'>*---------*\nThis is \icon[src] \a <EM>[src]</EM>!\n"
 
 	msg += {"<p>It's like a crab, but it has a utility tool on one arm and a crude metal claw on the other.  That, and you doubt it'd survive in an ocean for very long.</p><span class='warning'>"}

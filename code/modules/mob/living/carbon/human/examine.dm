@@ -3,7 +3,7 @@
 
 /mob/living/carbon/human/examine(mob/user)
 	if(!isobserver(user))
-		user.visible_message("<font size=1>[user.name] looks at [src].</font>")
+		user.visible_message("<font size=1><b>[user.name]</b> looks at <b>[src].</b></font>")
 	var/list/obscured = check_obscured_slots()
 	var/skipgloves = 0
 	//var/skipsuitstorage = 0

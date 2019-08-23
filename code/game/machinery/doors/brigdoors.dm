@@ -189,7 +189,7 @@
 				var/tp = text2num(href_list["tp"])
 				var/timeleft = timeleft()
 				timeleft += tp
-				timeleft = min(max(round(timeleft), 0), 3600)
+				timeleft = min(max(round(timeleft), 0), 600)
 				timeset(timeleft)
 				//src.timing = 1
 				//src.closedoor()

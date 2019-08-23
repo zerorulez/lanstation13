@@ -42,6 +42,13 @@ var/image/list/w_overlays = list("wet" = image('icons/effects/water.dmi',icon_st
 
 	plane = TURF_PLANE
 
+	footstep_sounds = list("human" = list(\
+		'sound/effects/footstep/floor1.ogg',\
+		'sound/effects/footstep/floor2.ogg',\
+		'sound/effects/footstep/floor3.ogg',\
+		'sound/effects/footstep/floor4.ogg',\
+		'sound/effects/footstep/floor5.ogg'))
+
 /turf/simulated/floor/New()
 	..()
 	if(!floor_tile)

@@ -10,7 +10,7 @@
 
 	use_auto_lights = 1
 	light_range_on = 3
-	light_power_on = 1
+	light_power_on = 0.75
 	light_color = LIGHT_COLOR_YELLOW
 
 	//computer stuff

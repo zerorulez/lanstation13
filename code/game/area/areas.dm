@@ -478,6 +478,17 @@ var/area/space_area
 		if(L.stat)
 			src.Exited(L)
 
+/area/proc/has_gravity()
+	return has_gravity
+
+/proc/has_gravity(atom/AT, turf/T)
+	if(!T)
+		T = get_turf(AT)
+	var/area/A = get_area(T)
+	if(A && A.has_gravity())
+		return 1
+	return 0
+
 /area/proc/gravitychange(var/gravitystate = 0, var/area/A)
 
 

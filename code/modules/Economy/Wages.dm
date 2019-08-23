@@ -23,7 +23,7 @@ var/global/roundstart_enable_wages = 0
 			T.time = worldtime2text()
 			T.source_terminal = "Nanotrasen Payroll Server"
 			Acc.transaction_log.Add(T)
-	command_alert(/datum/command_alert/wages)
+//	command_alert(/datum/command_alert/wages)
 
 /proc/WageLoop()
 	set waitfor = 0

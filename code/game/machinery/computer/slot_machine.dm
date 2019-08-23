@@ -25,6 +25,10 @@
 
 	machine_flags = SCREWTOGGLE | CROWDESTROY | WRENCHMOVE | FIXED2WORK
 
+	use_auto_lights= 0
+	light_power_on = 0
+	light_range_on = 0
+
 	var/show_name
 
 	var/image/overlay_1

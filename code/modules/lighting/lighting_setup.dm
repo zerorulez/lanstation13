@@ -13,4 +13,4 @@
 		if (!A.dynamic_lighting)
 			continue
 
-		getFromPool(/atom/movable/lighting_overlay, T, TRUE)
+		T.lighting_overlay = new /atom/movable/lighting_overlay(T)

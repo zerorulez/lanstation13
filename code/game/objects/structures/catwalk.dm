@@ -60,3 +60,7 @@
 		var/obj/item/stack/cable_coil/coil = C
 		if(get_turf(src) == src.loc)
 			coil.turf_place(src.loc, user)
+
+/obj/structure/catwalk/Crossed()
+	if(isliving(usr))
+		playsound(src, pick('sound/effects/footstep/catwalk1.ogg', 'sound/effects/footstep/catwalk2.ogg', 'sound/effects/footstep/catwalk3.ogg', 'sound/effects/footstep/catwalk4.ogg', 'sound/effects/footstep/catwalk5.ogg'), 100, 1)

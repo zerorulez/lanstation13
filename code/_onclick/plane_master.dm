@@ -20,6 +20,8 @@
 	name = "lighting plane master"
 	plane = LIGHTING_PLANE
 	blend_mode = BLEND_MULTIPLY
+	show_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	mouse_opacity = 0
 
 /obj/screen/plane_master/lighting/backdrop(mob/mymob)

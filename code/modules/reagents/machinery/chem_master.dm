@@ -30,7 +30,7 @@ var/global/list/pillIcon2Name = list("oblong purple-pink", "oblong green-white",
 
 	light_color = LIGHT_COLOR_BLUE
 	light_range_on = 3
-	light_power_on = 2
+	light_power_on = 0.75
 	use_auto_lights = 1
 
 	machine_flags = SCREWTOGGLE | CROWDESTROY | WRENCHMOVE | FIXED2WORK

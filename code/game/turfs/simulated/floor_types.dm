@@ -16,6 +16,12 @@
 	//icon = 'icons/turf/shuttle-debug.dmi'
 	oxygen=0 // BIRDS HATE OXYGEN FOR SOME REASON
 	nitrogen = MOLES_O2STANDARD+MOLES_N2STANDARD // So it totals to the same pressure
+	footstep_sounds = list("human" = list(\
+		'sound/effects/footstep/plating1.ogg',\
+		'sound/effects/footstep/plating2.ogg',\
+		'sound/effects/footstep/plating3.ogg',\
+		'sound/effects/footstep/plating4.ogg',\
+		'sound/effects/footstep/plating5.ogg'))
 
 /turf/simulated/floor/plating/vox/New()
 	..()
@@ -41,7 +47,12 @@
 	fire_fuel = 10
 	soot_type = null
 	melt_temperature = 0 // Doesn't melt.
-
+	footstep_sounds = list("human" = list(\
+		'sound/effects/footstep/wood1.ogg',\
+		'sound/effects/footstep/wood2.ogg',\
+		'sound/effects/footstep/wood3.ogg',\
+		'sound/effects/footstep/wood4.ogg',\
+		'sound/effects/footstep/wood5.ogg'))
 /turf/simulated/floor/vox/wood/New()
 	if(floor_tile)
 		returnToPool(floor_tile)
@@ -77,6 +88,12 @@
 	fire_fuel = 10
 	soot_type = null
 	melt_temperature = 0 // Doesn't melt.
+	footstep_sounds = list("human" = list(\
+		'sound/effects/footstep/wood1.ogg',\
+		'sound/effects/footstep/wood2.ogg',\
+		'sound/effects/footstep/wood3.ogg',\
+		'sound/effects/footstep/wood4.ogg',\
+		'sound/effects/footstep/wood5.ogg'))
 
 /turf/simulated/floor/wood/New()
 	floor_tile = getFromPool(/obj/item/stack/tile/wood,null)
@@ -183,6 +200,12 @@
 	icon_state = "plating"
 	intact = 0
 	plane = PLATING_PLANE
+	footstep_sounds = list("human" = list(\
+		'sound/effects/footstep/plating1.ogg',\
+		'sound/effects/footstep/plating2.ogg',\
+		'sound/effects/footstep/plating3.ogg',\
+		'sound/effects/footstep/plating4.ogg',\
+		'sound/effects/footstep/plating5.ogg'))
 
 /turf/simulated/floor/plating/deck
 	name = "deck"
@@ -291,6 +314,12 @@
 	icon_state = "carpet"
 	floor_tile
 	var/has_siding=1
+	footstep_sounds = list("human" = list(\
+	'sound/effects/footstep/carpet1.ogg', \
+	'sound/effects/footstep/carpet2.ogg', \
+	'sound/effects/footstep/carpet3.ogg', \
+	'sound/effects/footstep/carpet4.ogg', \
+	'sound/effects/footstep/carpet5.ogg'))
 
 /turf/simulated/floor/carpet/New()
 	if(floor_tile)

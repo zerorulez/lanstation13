@@ -29,7 +29,7 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 
 	light_color = LIGHT_COLOR_GREEN
 	light_range_on = 1
-	light_power_on = 2
+	light_power_on = 0.75
 	use_auto_lights = 1
 
 /obj/machinery/atmospherics/unary/cryo_cell/New()

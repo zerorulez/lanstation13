@@ -1,6 +1,6 @@
 /mob/living/silicon/robot/examine(mob/user)
 	if(!isobserver(user))
-		user.visible_message("<font size=1>[user.name] looks at [src].</font>")
+		user.visible_message("<font size=1><b>[user.name]</b> looks at <b>[src].</b></font>")
 	var/msg = {"<span class='info'>*---------*\nThis is \icon[src] \a <EM>[src]</EM>[custom_name ? ", [modtype] [braintype]" : ""]!\n
 <span class='warning'>"}
 	if (src.getBruteLoss())
