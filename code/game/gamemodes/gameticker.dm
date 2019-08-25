@@ -63,8 +63,7 @@ var/datum/controller/gameticker/ticker
 
 	login_music = fcopy_rsc(oursong)
 
-	send2mainirc("**Server is loaded** and in pre-game lobby at `[config.server]`" : "byond://[world.address]:[world.port]"]`")
-
+	send2mainirc("**Server is loaded** and in pre-game lobby.")
 
 	do
 		var/delay_timetotal = 3000 //actually 5 minutes or incase this is changed from 3000, (time_in_seconds * 10)
@@ -199,6 +198,9 @@ var/datum/controller/gameticker/ticker
 
 		stat_collection.death_stats = list() // Get rid of the corpses that spawn on startup.
 		to_chat(world, "<FONT color='blue'><B>Enjoy the game!</B></FONT>")
+
+		send2mainirc("**The game has started.**")
+
 //		world << sound('sound/AI/welcome.ogg')// Skie //Out with the old, in with the new. - N3X15
 
 		if(!config.shut_up_automatic_diagnostic_and_announcement_system)

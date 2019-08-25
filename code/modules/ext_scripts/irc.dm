@@ -3,9 +3,9 @@
 
 /proc/send2irc(var/channel, var/msg)
 	if(config.use_irc_bot)
-		var/a=" --key=\"[config.comms_password]\""
-		a +=" --host=\"[config.irc_bot_host]\""
-		a += " --channel=\"[channel]\""
+		var/a= "[config.comms_password]"
+		a += " [config.irc_bot_host]"
+		a += " [channel]"
 		msg = replacetext(msg,"\"","\\\"")
 		ext_python("ircbot_message.py", "[a] [msg]")
 	return
