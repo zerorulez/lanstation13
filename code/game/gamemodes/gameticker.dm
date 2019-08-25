@@ -63,7 +63,7 @@ var/datum/controller/gameticker/ticker
 
 	login_music = fcopy_rsc(oursong)
 
-	send2mainirc("**Server is loaded** and in pre-game lobby at `[config.server? "byond://[config.server]" : "byond://[world.address]:[world.port]"]`")
+	send2mainirc("**Server is loaded** and in pre-game lobby at `[config.server]`" : "byond://[world.address]:[world.port]"]`")
 
 
 	do
