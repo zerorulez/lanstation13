@@ -212,6 +212,7 @@ var/savefile/panicfile
 			s["gamestate"] = ticker.current_state
 		s["active_players"] = get_active_player_count()
 		s["revision"] = return_revision()
+		s["stationtime"] = worldtime2text()
 		var/n = 0
 		var/admins = 0
 
