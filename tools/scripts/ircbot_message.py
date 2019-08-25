@@ -14,7 +14,7 @@ def pack():
     except:
         data = "NO DATA SPECIFIED"
     data = str(data)
-    data = bytes(data, "ascii")
+    data = bytes(data.encode("ascii"))
     nudge(data)
 
 def nudge(data):
