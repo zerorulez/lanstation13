@@ -569,7 +569,7 @@ proc/move_mining_shuttle()
 	ranged_cooldown_cap = 3
 	projectiletype = /obj/item/projectile/beam
 	projectilesound = 'sound/weapons/Laser.ogg'
-	wanted_objects = list(/obj/item/weapon/ore)
+	wanted_objects = list(/obj/item/stack/ore)
 	meat_type = null
 
 /mob/living/simple_animal/hostile/mining_drone/attackby(obj/item/I as obj, mob/user as mob)
@@ -637,13 +637,13 @@ proc/move_mining_shuttle()
 	icon_state = "mining_drone_offense"
 
 /mob/living/simple_animal/hostile/mining_drone/AttackingTarget()
-	if(istype(target, /obj/item/weapon/ore))
+	if(istype(target, /obj/item/stack/ore))
 		CollectOre()
 		return
 	..()
 
 /mob/living/simple_animal/hostile/mining_drone/proc/CollectOre()
-	var/obj/item/weapon/ore/O
+	var/obj/item/stack/ore/O
 	for(O in src.loc)
 		O.forceMove(src)
 	for(var/dir in alldirs)
@@ -655,7 +655,7 @@ proc/move_mining_shuttle()
 /mob/living/simple_animal/hostile/mining_drone/proc/DropOre()
 	if(!contents.len)
 		return
-	for(var/obj/item/weapon/ore/O in contents)
+	for(var/obj/item/stack/ore/O in contents)
 		contents -= O
 		O.forceMove(src.loc)
 	return

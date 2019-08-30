@@ -210,9 +210,9 @@
 	blood_overlay_type = "armor"
 	body_parts_covered = 0
 
-//Head of Personnell
+//Lieutenantl
 /obj/item/clothing/suit/storage/Hop_Coat
-	name = "Head of Personnel's dress jacket"
+	name = "Lieutenant's dress jacket"
 	desc = "A slightly armoured greatcoat. It looks like it's mostly ceremonial."
 	icon_state = "HoP_Coat"
 	item_state = "HoP_Coat"

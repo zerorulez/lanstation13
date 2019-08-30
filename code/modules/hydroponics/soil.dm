@@ -12,8 +12,7 @@
 	if(istype(W, /obj/item/weapon/pickaxe/shovel))
 		if(!seed)
 			to_chat(user, "I clear up [src]!")
-			new /obj/item/weapon/ore/glass(loc)//we get some of the dirt back
-			new /obj/item/weapon/ore/glass(loc)
+			drop_stack(/obj/item/stack/ore/glass, src, 2)
 			qdel(src)
 			return 1
 		else

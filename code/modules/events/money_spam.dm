@@ -92,7 +92,7 @@
 					sender = "Sponsored Content from " + pick("*buzzFeed", "ViralBluespace", "Clickvox", "Daily Honk")
 					message = pick("This Assistant Died and Not a Word Was Said, Here’s Why", \
 					"Five SME Setups That Will Make You Say, \"I Can't Believe That Works!\" (Number Four Will Shock You)", \
-					"Is Your HoP A Traitor?... He Is, If He Does These Five Things. Click And Find Out!", \
+					"Is Your Lieutenant A Traitor?... He Is, If He Does These Five Things. Click And Find Out!", \
 					"These Scientists TRIPLED An Assistant's IQ - The Results Will Break Your Heart", \
 					"Throw Away Your Slim-Belt! What This One Woman Did With a Plastic Bag Will Shock You!", \
 					"Two Close Friends Went Exploring A Derelict Station. What They Found Is Chilling.", \

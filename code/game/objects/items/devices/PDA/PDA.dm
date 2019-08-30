@@ -286,7 +286,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	icon_state = "pda-h"
 
 /obj/item/device/pda/heads/hop
-	name = "Head of Personnel PDA"
+	name = "Lieutenant PDA"
 	default_cartridge = /obj/item/weapon/cartridge/hop
 	icon_state = "pda-hop"
 

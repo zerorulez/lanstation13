@@ -80,7 +80,7 @@
 	item_state = "roman_c"
 
 /obj/item/clothing/head/helmet/hopcap
-	name = "Head of Personnel's Cap"
+	name = "Lieutenant's Cap"
 	desc = "Papers, Please."
 	armor = list(melee = 25, bullet = 0, laser = 15, energy = 10, bomb = 5, bio = 0, rad = 0)
 	item_state = "hopcap"

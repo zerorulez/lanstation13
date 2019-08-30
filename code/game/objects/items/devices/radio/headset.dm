@@ -166,7 +166,7 @@
 	..()
 
 /obj/item/device/radio/headset/heads/hop
-	name = "head of personnel's headset"
+	name = "lieutenant's headset"
 	desc = "The headset of the guy who will one day be captain. Channels are as follows: :u - supply, :d - service, :c - command, :s - security"
 	icon_state = "com_headset"
 	item_state = "headset"

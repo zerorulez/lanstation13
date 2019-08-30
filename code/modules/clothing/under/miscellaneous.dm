@@ -160,7 +160,7 @@
 	species_fit = list(GREY_SHAPED)
 
 /obj/item/clothing/under/gimmick/rank/head_of_personnel/suit
-	name = "head of personnel's suit"
+	name = "lieutenant's suit"
 	desc = "A teal suit and yellow necktie. An authoritative yet tacky ensemble."
 	icon_state = "teal_suit"
 	item_state = "g_suit"
@@ -324,8 +324,8 @@
 	_color = "dress_cap"
 
 /obj/item/clothing/under/dress/dress_hop
-	name = "head of personal dress uniform"
-	desc = "Feminine fashion for the style concious HoP."
+	name = "lieutenant dress uniform"
+	desc = "Feminine fashion for the style concious lieutenant."
 	icon_state = "dress_hop"
 	_color = "dress_hop"
 

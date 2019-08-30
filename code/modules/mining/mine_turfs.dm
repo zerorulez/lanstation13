@@ -11,7 +11,6 @@
 	blocks_air = 1
 	//temperature = TCMB
 	var/mineral/mineral
-	var/mined_ore = 0
 	var/last_act = 0
 	var/datum/geosample/geologic_data
 	var/excavation_level = 0
@@ -339,7 +338,7 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 			next_rock += P.excavation_amount * 10
 			while(next_rock > 100)
 				next_rock -= 100
-				var/obj/item/weapon/ore/O = new(src)
+				var/obj/item/stack/ore/O = new(src)
 				if(!geologic_data)
 					geologic_data = new/datum/geosample(src)
 				geologic_data.UpdateNearbyArtifactInfo(src)
@@ -355,19 +354,11 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 /turf/unsimulated/mineral/proc/DropMineral()
 	if(!mineral)
 		return
-
-	var/obj/item/weapon/ore/O = new mineral.ore (src)
-	if(istype(O))
-		if(!geologic_data)
-			geologic_data = new/datum/geosample(src)
-		geologic_data.UpdateNearbyArtifactInfo(src)
-		O.geologic_data = geologic_data
-	return O
+	return mineral.DropMineral(src)
 
 /turf/unsimulated/mineral/proc/GetDrilled(var/artifact_fail = 0)
 	if (mineral && mineral.result_amount)
-		for (var/i = 1 to mineral.result_amount - mined_ore)
-			DropMineral()
+		DropMineral()
 
 	//destroyed artifacts have weird, unpleasant effects
 	//make sure to destroy them before changing the turf though
@@ -547,11 +538,11 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 /turf/unsimulated/floor/asteroid/proc/gets_dug()
 	if(dug)
 		return
-	new/obj/item/weapon/ore/glass(src)
-	new/obj/item/weapon/ore/glass(src)
-	new/obj/item/weapon/ore/glass(src)
-	new/obj/item/weapon/ore/glass(src)
-	new/obj/item/weapon/ore/glass(src)
+	new/obj/item/stack/ore/glass(src)
+	new/obj/item/stack/ore/glass(src)
+	new/obj/item/stack/ore/glass(src)
+	new/obj/item/stack/ore/glass(src)
+	new/obj/item/stack/ore/glass(src)
 	dug = 1
 	//icon_plating = "asteroid_dug"
 	icon_state = "asteroid_dug"

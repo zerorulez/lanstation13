@@ -596,8 +596,7 @@ turf/simulated/floor/update_icon()
 	else if(istype(C, /obj/item/weapon/pickaxe/shovel))
 		if(is_grass_floor())
 			playsound(src, 'sound/items/shovel.ogg', 50, 1)
-			new /obj/item/weapon/ore/glass(src)
-			new /obj/item/weapon/ore/glass(src) //Make some sand if you shovel grass
+			drop_stack(/obj/item/stack/ore/glass, src, 2) //Make some sand if you shovel grass
 			to_chat(user, "<span class='notice'>I shovel the grass.</span>")
 			make_plating()
 		else

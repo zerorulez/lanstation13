@@ -175,7 +175,7 @@ proc/get_id_photo(var/mob/living/carbon/human/H)
 
 	var/icon/clothes_s = null
 	switch(H.mind.assigned_role)
-		if("Head of Personnel")
+		if("Lieutenant")
 			clothes_s = new /icon('icons/mob/uniform.dmi', "hop_s")
 			clothes_s.Blend(new /icon('icons/mob/feet.dmi', "brown"), ICON_UNDERLAY)
 		if("Bartender")

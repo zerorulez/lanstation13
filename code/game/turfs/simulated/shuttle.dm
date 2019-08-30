@@ -5,9 +5,14 @@
 	thermal_conductivity = 0.05
 	heat_capacity = 0
 	dynamic_lighting = 1 //We dynamic lighting now // maybe one day // maybe today
-
 	soot_type = null
 	melt_temperature = 0 // Doesn't melt.
+	footstep_sounds = list("human" = list(\
+		'sound/effects/footstep/plating1.ogg',\
+		'sound/effects/footstep/plating2.ogg',\
+		'sound/effects/footstep/plating3.ogg',\
+		'sound/effects/footstep/plating4.ogg',\
+		'sound/effects/footstep/plating5.ogg'))
 
 /turf/simulated/shuttle/wall
 	name = "wall"

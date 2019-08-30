@@ -413,7 +413,7 @@
 		if(access_xenobiology)
 			return "Xenobiology Lab"
 		if(access_hop)
-			return "Head of Personnel"
+			return "Lieutenant"
 		if(access_hos)
 			return "Head of Security"
 		if(access_ce)

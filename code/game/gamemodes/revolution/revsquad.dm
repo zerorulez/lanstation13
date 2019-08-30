@@ -7,7 +7,7 @@
 /datum/game_mode/revsquad
 	name = "Revolution Squad"
 	config_tag = "revsquad"
-	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Mobile MMI","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Internal Affairs Agent", "Trader")
+	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Mobile MMI","Captain", "Lieutenant", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Internal Affairs Agent", "Trader")
 
 	required_players = 4
 	required_players_secret = 25

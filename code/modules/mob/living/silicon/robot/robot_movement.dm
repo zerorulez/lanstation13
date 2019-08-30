@@ -32,6 +32,6 @@
 			var/obj/item/weapon/storage/bag/ore/ore_bag = locate(/obj/item/weapon/storage/bag/ore) in get_all_slots() //find it in our modules
 			if(ore_bag)
 				var/atom/newloc = NewLoc //NewLoc isn't actually typecast
-				for(var/obj/item/weapon/ore/ore in newloc.contents)
+				for(var/obj/item/stack/ore/ore in newloc.contents)
 					ore_bag.preattack(NewLoc, src, 1) //collects everything
 					break

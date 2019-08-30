@@ -73,7 +73,7 @@
 		if("Captain")
 			suit=/obj/item/clothing/suit/space/plasmaman/security/captain
 			helm=/obj/item/clothing/head/helmet/space/plasmaman/security/captain
-		if("Head of Personnel")
+		if("Lieutenant")
 			suit=/obj/item/clothing/suit/space/plasmaman/security/hop
 			helm=/obj/item/clothing/head/helmet/space/plasmaman/security/hop
 		if("Medical Doctor")

@@ -190,7 +190,7 @@ proc/get_space_area()
 	return global.space_area
 
 //1 line helper procs compressed into defines.
-#define Clamp(x, y, z) 	(x <= y ? y : (x >= z ? z : x))
+#define Clamp(x, y, z) 	min(max(x, y), z)
 //x is the number you want to clamp
 //y is the minimum
 //z is the maximum

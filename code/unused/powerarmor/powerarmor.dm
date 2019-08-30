@@ -181,7 +181,7 @@
 						to_chat(user, "<span class='warning'>The generator already has plenty of plasma.</span>")
 						return
 
-				if(/obj/item/weapon/ore/plasma) //raw plasma has impurities, so it doesn't provide as much fuel. --NEO
+				if(/obj/item/stack/ore/plasma) //raw plasma has impurities, so it doesn't provide as much fuel. --NEO
 					if(fuel < 50)
 						to_chat(user, "<span class='notice'>I feed some plasma into the armor's generator.</span>")
 						power:fuel += 15

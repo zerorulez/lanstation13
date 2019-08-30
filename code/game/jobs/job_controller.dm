@@ -297,7 +297,7 @@ var/global/datum/controller/occupations/job_master
 	//People who wants to be assistants, sure, go on.
 	var/count = 0
 	var/datum/job/officer = job_master.GetJob("Security Officer")
-	var/datum/job/hop = job_master.GetJob("Head of Personnel")
+	var/datum/job/hop = job_master.GetJob("Lieutenant")
 	var/datum/job/captain = job_master.GetJob("Captain")
 	count = (officer.current_positions + hop.current_positions + captain.current_positions)
 	Debug("DO, Running Assistant Check 1")

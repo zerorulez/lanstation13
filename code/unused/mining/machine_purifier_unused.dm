@@ -43,31 +43,31 @@
 	if(href_list["purify"])
 		if (src.output)
 			processing = 1;
-			var/obj/item/weapon/ore/O
+			var/obj/item/stack/ore/O
 			processed = 0;
-			while(locate(/obj/item/weapon/ore, input.loc))
-				O = locate(/obj/item/weapon/ore, input.loc)
-				if (istype(O,/obj/item/weapon/ore/iron))
+			while(locate(/obj/item/stack/ore, input.loc))
+				O = locate(/obj/item/stack/ore, input.loc)
+				if (istype(O,/obj/item/stack/ore/iron))
 					var/obj/item/stack/sheet/metal/M = getFromPool(/obj/item/stack/sheet/metal, get_turf(output))
 					M.amount = 1
 					qdel(O)
-				if (istype(O,/obj/item/weapon/ore/diamond))
+				if (istype(O,/obj/item/stack/ore/diamond))
 					new /obj/item/stack/sheet/mineral/diamond(output.loc)
 					qdel(O)
-				if (istype(O,/obj/item/weapon/ore/plasma))
+				if (istype(O,/obj/item/stack/ore/plasma))
 					new /obj/item/stack/sheet/mineral/plasma(output.loc)
 					qdel(O)
-				if (istype(O,/obj/item/weapon/ore/gold))
+				if (istype(O,/obj/item/stack/ore/gold))
 					new /obj/item/stack/sheet/mineral/gold(output.loc)
 					qdel(O)
-				if (istype(O,/obj/item/weapon/ore/silver))
+				if (istype(O,/obj/item/stack/ore/silver))
 					new /obj/item/stack/sheet/mineral/silver(output.loc)
 					qdel(O)
-				if (istype(O,/obj/item/weapon/ore/uranium))
-					new /obj/item/weapon/ore/mineral/uranium(output.loc)
+				if (istype(O,/obj/item/stack/ore/uranium))
+					new /obj/item/stack/ore/mineral/uranium(output.loc)
 					qdel(O)
-				/*if (istype(O,/obj/item/weapon/ore/adamantine))
-					new /obj/item/weapon/ore/adamantine(output.loc)
+				/*if (istype(O,/obj/item/stack/ore/adamantine))
+					new /obj/item/stack/ore/adamantine(output.loc)
 					qdel(O)*/ //Dunno what this area does so I'll keep it commented out for now -Durandan
 				processed++
 				sleep(5);

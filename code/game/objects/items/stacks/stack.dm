@@ -325,6 +325,8 @@
  */
 
 /proc/drop_stack(new_stack_type = /obj/item/stack, turf/loc, add_amount = 1, mob/user)
+	if(!ispath(new_stack_type, /obj/item/stack))
+		return new new_stack_type(loc)
 	for(var/obj/item/stack/S in loc)
 		if(S.can_stack_with(new_stack_type))
 			if(S.max_amount >= S.amount + add_amount)
@@ -333,8 +335,11 @@
 				to_chat(user, "<span class='info'>I add [add_amount] item\s to the stack. It now contains [S.amount] [CORRECT_STACK_NAME(S)].</span>")
 				return S
 
-	var/obj/item/stack/S = getFromPool(new_stack_type, loc)
-	S.amount = add_amount
+	var/obj/item/stack/S = new_stack_type
+	for(var/i = 0 to round(add_amount/initial(S.max_amount)))
+		S = new new_stack_type(loc)
+		S.amount = min(add_amount, S.max_amount)
+		add_amount -= S.amount
 	return S
 
 /obj/item/stack/verb_pickup(mob/living/user)

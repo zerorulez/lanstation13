@@ -270,11 +270,11 @@
 	base_state = "plasmaman_HoS_helmet"
 
 /obj/item/clothing/suit/space/plasmaman/security/hop
-	name = "plasmaman head of personnel suit"
+	name = "plasmaman lieutenant suit"
 	icon_state = "plasmaman_HoP"
 
 /obj/item/clothing/head/helmet/space/plasmaman/security/hop
-	name = "plasmaman head of personnel helmet"
+	name = "plasmaman lieutenant helmet"
 	icon_state = "plasmaman_HoP_helmet0"
 	base_state = "plasmaman_HoP_helmet"
 

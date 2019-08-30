@@ -23,7 +23,7 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 
 /obj/machinery/nuclearbomb/New()
 	..()
-	r_code = "[rand(10000, 99999.0)]"//Creates a random code upon object spawn.
+	r_code = "[rand(100, 999)]"//Creates a random code upon object spawn.
 
 /obj/machinery/nuclearbomb/process()
 	if (src.timing)
@@ -214,7 +214,7 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 						src.code = null
 					else
 						src.code += text("[]", href_list["type"])
-						if (length(src.code) > 5)
+						if (length(src.code) > 3)
 							src.code = "ERROR"
 			if (src.yes_code)
 				if (href_list["time"])
@@ -296,8 +296,7 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 	var/off_station = 0
 	var/turf/bomb_location = get_turf(src)
 	if( bomb_location && (bomb_location.z == map.zMainStation) )
-		if( (bomb_location.x < (world.maxx/2-NUKERANGE)) || (bomb_location.x > (world.maxx/2+NUKERANGE)) || (bomb_location.y < (world.maxy-NUKERANGE)) || (bomb_location.y > (world.maxy+NUKERANGE)) )
-			off_station = 1
+		off_station = FALSE
 	else
 		off_station = 2
 

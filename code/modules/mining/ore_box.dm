@@ -10,20 +10,20 @@
 	starting_materials = list()
 
 /obj/structure/ore_box/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/weapon/ore))
-		var/obj/item/weapon/ore/O = W
+	if (istype(W, /obj/item/stack/ore))
+		var/obj/item/stack/ore/O = W
 		if(O.material)
-			materials.addAmount(O.material, 1)
+			materials.addAmount(O.material, O.amount)
 			user.u_equip(W,0)
 			returnToPool(W)
 	if (istype(W, /obj/item/weapon/storage))
 		var/turf/T=get_turf(src)
 		var/obj/item/weapon/storage/S = W
 		S.hide_from(usr)
-		for(var/obj/item/weapon/ore/O in S.contents)
+		for(var/obj/item/stack/ore/O in S.contents)
 			if(O.material)
 				S.remove_from_storage(O,T) //This will remove the item.
-				materials.addAmount(O.material, 1)
+				materials.addAmount(O.material, O.amount)
 				returnToPool(O)
 		to_chat(user, "<span class='notice'>I empty \the [W] into the box.</span>")
 	return
@@ -53,9 +53,8 @@
 /obj/structure/ore_box/proc/dump_everything()
 	for(var/ore_id in materials.storage)
 		var/datum/material/mat = materials.getMaterial(ore_id)
-		if(mat.oretype)
-			for(var/i=0;i<materials.storage[ore_id];i++)
-				getFromPool(mat.oretype, get_turf(src))
+		if(mat.oretype && materials.storage[ore_id])
+			drop_stack(mat.oretype, get_turf(src), materials.storage[ore_id])
 			materials.removeAmount(ore_id, materials.storage[ore_id])
 
 /obj/structure/ore_box/ex_act(severity)

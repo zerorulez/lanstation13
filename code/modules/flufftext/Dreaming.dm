@@ -5,7 +5,7 @@ mob/living/carbon/proc/dream()
 		"deep space","a doctor","the engine","a traitor","an ally","darkness","light","a scientist","a monkey",
 		"a loved one","warmth","the sun","a hat","the Luna","a planet","plasma","air","the medical bay","the bridge",
 		"blinking lights","a blue light","Nanotrasen","healing","power","respect","riches","space","happiness","pride",
-		"water","melons","flying","the eggs","money","the head of personnel","the head of security","a chief engineer",
+		"water","melons","flying","the eggs","money","the lieutenant","the head of security","a chief engineer",
 		"a research director","a chief medical officer","the detective","the warden","a member of the internal affairs",
 		"a station engineer","the janitor","atmospheric technician","the quartermaster","a cargo technician","the botanist",
 		"a shaft miner","a psychologist","the chemist","the geneticist","the virologist","the roboticist","the chef","the bartender",

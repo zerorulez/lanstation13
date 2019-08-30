@@ -8,6 +8,7 @@
 	anchored = 1
 	circuit = "/obj/item/weapon/circuitboard/smeltcomp"
 	light_color = LIGHT_COLOR_GREEN
+	req_access = list(access_mining)
 
 	var/frequency = FREQ_DISPOSAL //Same as conveyors.
 	var/smelter_tag = null
@@ -46,7 +47,7 @@
 		id.forceMove(get_turf(src))
 		user.put_in_hands(id)
 
-		to_chat(user, "<span class='notify'>I pry the ID card out of \the [src]</span>")
+		to_chat(user, "<span class='notify'>You pry the ID card out of \the [src]</span>")
 		id = null
 
 	interact(user)
@@ -69,14 +70,14 @@
 	var/dat = {"
 	<div style="overflow:hidden;">
 	<div class="block">
-	\The [src] is currently <A href='?src=\ref[src];toggle_power=1' class='[smelter_data["on"] ? "linkOn" : "linkDanger"]'>[smelter_data["on"] ? "processing" : "disabled"]</a>
+	The ore processor is currently <A href='?src=\ref[src];toggle_power=1' class='[smelter_data["on"] ? "linkOn" : "linkDanger"]'>[smelter_data["on"] ? "processing" : "disabled"]</a>
 	"}
 
 	if(smelter_data["credits"] != -1)
 		dat += "<br>Current unclaimed credits: $[num2septext(smelter_data["credits"])]<br>"
 
 		if(istype(id))
-			dat += "I have [id.GetBalance(format = 1)] credits in my bank account. <A href='?src=\ref[src];eject=1'>Eject ID.</A><br>"
+			dat += "You have [id.GetBalance(format = 1)] credits in your bank account. <A href='?src=\ref[src];eject=1'>Eject ID.</A><br>"
 			dat += "<A href='?src=\ref[src];claim=1'>Claim points.</A><br>"
 		else
 			dat += text("No ID inserted. <A href='?src=\ref[src];insert=1'>Insert ID.</A><br>")
@@ -184,6 +185,10 @@
 			to_chat(usr, "<span class='notify'>There is already an ID in the console!</span>")
 			return 1
 
+		if(!allowed(usr))
+			to_chat(usr, "<span class='warning'>The machine rejects your access credentials.</span>")
+			return 1
+
 		var/obj/item/weapon/card/id/I = usr.get_active_hand()
 		if(istype(I))
 			if(usr.drop_item(I, src))
@@ -265,7 +270,7 @@
 	idle_power_usage = 50
 	active_power_usage = 500 //This shit's able to compress tiny little diamonds into really big diamonds, of course this uses a lot of power.
 	machine_flags = SCREWTOGGLE | CROWDESTROY | MULTITOOL_MENU
-	light_power_on = 0.75
+	light_power_on = 2
 	light_range_on = 3
 	light_color = LIGHT_COLOR_ORANGE
 
@@ -394,23 +399,23 @@
 		if(sheets_this_tick >= sheets_per_tick)
 			break
 
-		if(!istype(A, /obj/item/weapon/ore))//Check if it's an ore
+		if(!istype(A, /obj/item/stack/ore))//Check if it's an ore
 			A.forceMove(out_T)
 			continue
 
-		var/obj/item/weapon/ore/O = A
+		var/obj/item/stack/ore/O = A
 		if(!O.material)
 			continue
 
-		ore.addAmount(O.material, 1)//1 per ore
+		ore.addAmount(O.material, O.amount)
 
 		var/datum/material/mat = ore.getMaterial(O.material)
 		if(!mat)
 			continue
 
-		credits += mat.value //Dosh.
+		credits += mat.value*O.amount //Dosh.
 
-		qdel(O)
+		returnToPool(O)
 
 /obj/machinery/mineral/processing_unit/process()
 	if(stat & (NOPOWER | BROKEN))
@@ -437,7 +442,7 @@
 				ore.removeAmount(ore_id, 1)
 				score["oremined"] += 1 //Count this ore piece as processed for the scoreboard
 
-			getFromPool(R.yieldtype, out_T)
+			drop_stack(R.yieldtype, out_T)
 
 			sheets_this_tick++
 			if(sheets_this_tick >= sheets_per_tick)

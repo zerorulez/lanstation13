@@ -206,7 +206,7 @@ We don't care about names, DNA, accounts, activity, any of that. We're just gonn
 	return dat
 
 /datum/controller/occupations/proc/predict_manifest()
-	crystal_ball = list("AI" = 0, "Cyborg" = 0, "Captain" = 0, "Head of Personnel" = 0, "Head of Security" = 0, "Chief Engineer" = 0, "Chief Medical Officer" = 0, "Research Director" = 0)
+	crystal_ball = list("AI" = 0, "Cyborg" = 0, "Captain" = 0, "Lieutenant" = 0, "Head of Security" = 0, "Chief Engineer" = 0, "Chief Medical Officer" = 0, "Research Director" = 0)
 	//We always want to list these first, the rest can be random for all we care.
 	for(var/mob/new_player/player in player_list)
 		if(!player.ready)

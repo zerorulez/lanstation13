@@ -118,11 +118,7 @@ obj/item/asteroid/basilisk_hide
 	icon_state = "Diamond ore"
 
 obj/item/asteroid/basilisk_hide/New()
-	var/counter
-	for(counter=0, counter<2, counter++)
-		var/obj/item/weapon/ore/diamond/D = new /obj/item/weapon/ore/diamond(src.loc)
-		D.plane = MOB_PLANE
-		D.layer = MOB_LAYER + 0.001
+	drop_stack(/obj/item/stack/ore/diamond, loc, 5)
 	..()
 	qdel(src)
 
@@ -150,8 +146,8 @@ obj/item/asteroid/basilisk_hide/New()
 	throw_message = "sinks in slowly, before being pushed out of "
 	status_flags = CANPUSH
 	search_objects = 1
-	wanted_objects = list(/obj/item/weapon/ore/diamond, /obj/item/weapon/ore/gold, /obj/item/weapon/ore/silver,
-						  /obj/item/weapon/ore/uranium)
+	wanted_objects = list(/obj/item/stack/ore/diamond, /obj/item/stack/ore/gold, /obj/item/stack/ore/silver,
+						  /obj/item/stack/ore/uranium)
 
 	var/list/ore_types_eaten = list()
 	var/alerted = 0
@@ -161,7 +157,7 @@ obj/item/asteroid/basilisk_hide/New()
 /mob/living/simple_animal/hostile/asteroid/goldgrub/GiveTarget(var/new_target)
 	target = new_target
 	if(target != null)
-		if(istype(target, /obj/item/weapon/ore))
+		if(istype(target, /obj/item/stack/ore))
 			visible_message("<span class='notice'>The [src.name] looks at [target.name] with hungry eyes.</span>")
 			stance = HOSTILE_STANCE_ATTACK
 			return
@@ -176,18 +172,16 @@ obj/item/asteroid/basilisk_hide/New()
 	return
 
 /mob/living/simple_animal/hostile/asteroid/goldgrub/AttackingTarget()
-	if(istype(target, /obj/item/weapon/ore))
+	if(istype(target, /obj/item/stack/ore))
 		EatOre(target)
 		return
 	..()
 
 /mob/living/simple_animal/hostile/asteroid/goldgrub/proc/EatOre(var/atom/targeted_ore)
-	for(var/obj/item/weapon/ore/O in targeted_ore.loc)
+	for(var/obj/item/stack/ore/O in targeted_ore.loc)
 		ore_eaten++
-		if(!(O.type in ore_types_eaten))
-			ore_types_eaten += O.type
-		qdel(O)
-		O = null
+		ore_types_eaten[O.type]++
+		O.use(1)
 	if(ore_eaten > 5)//Limit the scope of the reward you can get, or else things might get silly
 		ore_eaten = 5
 	visible_message("<span class='notice'>The ore was swallowed whole!</span>")
@@ -204,10 +198,8 @@ obj/item/asteroid/basilisk_hide/New()
 	if(!ore_eaten || ore_types_eaten.len == 0)
 		return
 	visible_message("<span class='danger'>[src] spits up the contents of its stomach before dying!</span>")
-	var/counter
 	for(var/R in ore_types_eaten)
-		for(counter=0, counter < ore_eaten, counter++)
-			new R(src.loc)
+		drop_stack(R, loc, ore_types_eaten[R])
 	ore_types_eaten.len = 0
 	ore_eaten = 0
 

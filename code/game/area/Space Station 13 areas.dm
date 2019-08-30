@@ -962,7 +962,7 @@ proc/process_adminbus_teleport_locs()
 	holomap_color = HOLOMAP_AREACOLOR_COMMAND
 
 /area/crew_quarters/heads/hop
-	name = "\improper Head of Personnel's Quarters"
+	name = "\improper Lieutenant's Quarters"
 	icon_state = "head_quarters"
 	jammed=1
 
@@ -992,7 +992,7 @@ proc/process_adminbus_teleport_locs()
 	holomap_color = HOLOMAP_AREACOLOR_SECURITY
 
 /area/crew_quarters/hop
-	name = "\improper Head of Personnel's Office"
+	name = "\improper Lieutenant's Office"
 	icon_state = "head_quarters"
 	holomap_color = HOLOMAP_AREACOLOR_COMMAND
 	jammed=1

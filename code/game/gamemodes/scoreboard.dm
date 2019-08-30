@@ -157,7 +157,7 @@
 		for(var/mob/living/carbon/human/player in mob_list)
 			if(player.mind)
 				var/role = player.mind.assigned_role
-				if(role in list("Captain", "Head of Security", "Head of Personnel", "Chief Engineer", "Research Director"))
+				if(role in list("Captain", "Head of Security", "Lieutenant", "Chief Engineer", "Research Director"))
 					if(player.stat == DEAD)
 						score["deadcommand"]++
 
@@ -381,7 +381,7 @@
 		for(var/mob/living/carbon/human/player in mob_list)
 			if(player.mind)
 				var/role = player.mind.assigned_role
-				if(role in list("Captain", "Head of Security", "Head of Personnel", "Chief Engineer", "Research Director"))
+				if(role in list("Captain", "Head of Security", "Lieutenant", "Chief Engineer", "Research Director"))
 					if(player.stat != 2)
 						comcount++
 				else

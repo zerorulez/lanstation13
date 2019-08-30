@@ -11,7 +11,7 @@
 	req_admin_notify = 1
 	access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
-	minimal_player_age = 14
+	minimal_player_age = 3
 
 	species_whitelist = list("Human")
 
@@ -58,7 +58,7 @@
 
 
 /datum/job/hop
-	title = "Head of Personnel"
+	title = "Lieutenant"
 	flag = HOP
 	department_flag = CIVILIAN
 	faction = "Station"
@@ -68,7 +68,7 @@
 	selection_color = "#ddddff"
 	idtype = /obj/item/weapon/card/id/silver
 	req_admin_notify = 1
-	minimal_player_age = 10
+	minimal_player_age = 2
 
 	species_whitelist = list("Human")
 
@@ -84,8 +84,6 @@
 			            access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
 			            access_theatre, access_chapel_office, access_library, access_science, access_mining, access_heads_vault, access_mining_station,
 			            access_clown, access_mime, access_hop, access_RC_announce, access_keycard_auth, access_gateway, access_taxi)
-
-	alt_titles = list("Lieutenant")
 
 	pdaslot=slot_l_store
 	pdatype=/obj/item/device/pda/heads/hop

@@ -1097,7 +1097,7 @@
 	reagents = list(WATER = 10)
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/grown/banana,
-		/obj/item/weapon/ore/clown,
+		/obj/item/stack/ore/clown,
 		)
 	result = /obj/item/weapon/reagent_containers/food/snacks/clownstears
 
@@ -1957,7 +1957,7 @@
 /datum/recipe/claypot//it just works
 	reagents = list(WATER = 10)
 	items = list(
-		/obj/item/weapon/ore/glass,
+		/obj/item/stack/ore/glass,
 		)
 	result = /obj/item/claypot
 
