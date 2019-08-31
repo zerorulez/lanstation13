@@ -166,7 +166,7 @@
 		feedback_set("escaped_on_pod_5",escaped_on_pod_5)
 
 	//send2mainirc("A round of [src.name] has ended - [surviving_total] survivors, [ghosts] ghosts.")
-	send2mainirc("A round of **[name]** has ended - **[surviving_total]** survivors, **[ghosts]** ghosts.")
+	send2mainirc("A round of **[name]** has ended.")
 
 	return 0
 

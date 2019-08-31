@@ -138,7 +138,7 @@ var/savefile/panicfile
 
 	//sleep_offline = 1
 
-	send2mainirc("**Server starting up** on `[config.server? "byond://[config.server]" : "byond://[world.address]:[world.port]"]`. Map is **[map.nameLong]**.")
+	send2mainirc("**Server starting up**. Map is **[map.nameLong]**.")
 
 	spawn(1)
 		turfs = new/list(maxx*maxy*maxz)

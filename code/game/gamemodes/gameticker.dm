@@ -63,13 +63,12 @@ var/datum/controller/gameticker/ticker
 
 	login_music = fcopy_rsc(oursong)
 
-	send2mainirc("**Server is loaded** and in pre-game lobby.")
-
 	do
 		var/delay_timetotal = 3000 //actually 5 minutes or incase this is changed from 3000, (time_in_seconds * 10)
 		pregame_timeleft = world.timeofday + delay_timetotal
 		to_chat(world, "<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
 		to_chat(world, "Please, setup your character and select ready. Game will start in [(pregame_timeleft - world.timeofday) / 10] seconds.")
+		send2mainirc("**Server is loaded** and in pre-game lobby.")
 
 		spawn(30)
 			for(var/client/C in clients)
