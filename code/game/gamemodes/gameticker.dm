@@ -141,6 +141,11 @@ var/datum/controller/gameticker/ticker
 		job_master.ResetOccupations()
 		return 0
 
+	if(!job_master.crystal_ball["Captain"] && !job_master.crystal_ball["Lieutenant"] && !job_master.crystal_ball["Security Officer"])
+		to_chat(world, "<B>A estação precisa de um Capitão, um Tenente ou um Segurança para começar. Voltando ao lobby.")
+		current_state = GAME_STATE_PREGAME
+		return 0
+
 	//Configure mode and assign player to special mode stuff
 	job_master.DivideOccupations() //Distribute jobs
 	var/can_continue = src.mode.pre_setup()//Setup special modes

@@ -26,7 +26,6 @@
 
 	output += {"<p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</A></p>"}
 	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
-		output += "<a href='byond://?src=\ref[src];predict=1'>Crew Prediction</A><br>"
 		if(!ready)
 			output += "<p><a href='byond://?src=\ref[src];ready=1'>Declare Ready</A></p>"
 		else
@@ -38,7 +37,7 @@
 			<p><a href='byond://?src=\ref[src];late_join=1'>Join Game!</A></p>"}
 
 	output += "<p><a href='byond://?src=\ref[src];observe=1'>Observe</A></p>"
-	if(!IsGuestKey(src.key))
+/*	if(!IsGuestKey(src.key))
 		establish_db_connection()
 
 		if(dbcon.IsConnected())
@@ -56,7 +55,7 @@
 				output += "<p><b><a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"
 			else
 				output += "<p><a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A></p>"
-
+*/
 	output += "</div>"
 
 	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 210, 250)
@@ -89,6 +88,14 @@
 
 		if(SSticker.initialized && ticker.current_state == GAME_STATE_PREGAME)
 			stat("Players:", "[totalPlayers]")
+
+			if(job_master)
+				stat("---", null)
+				job_master.predict_manifest()
+				for(var/job in job_master.crystal_ball)
+					if(!job_master.crystal_ball[job])
+						continue //If 0, skip
+					stat("[job]", "[job_master.crystal_ball[job]]")
 
 			if(client.holder)
 				stat("--- ADMIN ONLY BELOW ---", null)
