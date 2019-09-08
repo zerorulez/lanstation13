@@ -45,7 +45,7 @@ var/datum/controller/gameticker/ticker
 
 #define LOBBY_TICKING 1
 #define LOBBY_TICKING_RESTARTED 2
-/datum/controller/gameticker/proc/pregame()
+/datum/controller/gameticker/proc/pregame(var/delay_difference = 0)
 	var/path = "sound/lobbysongs/"
 	var/list/filenames = flist(path)
 
@@ -65,7 +65,7 @@ var/datum/controller/gameticker/ticker
 
 	do
 		var/delay_timetotal = 3000 //actually 5 minutes or incase this is changed from 3000, (time_in_seconds * 10)
-		pregame_timeleft = world.timeofday + delay_timetotal
+		pregame_timeleft = world.timeofday + delay_timetotal + delay_difference
 		to_chat(world, "<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
 		to_chat(world, "Please, setup your character and select ready. Game will start in [(pregame_timeleft - world.timeofday) / 10] seconds.")
 		send2mainirc("**Server is loaded** and in pre-game lobby.")
@@ -141,8 +141,8 @@ var/datum/controller/gameticker/ticker
 		job_master.ResetOccupations()
 		return 0
 
-	if(!job_master.crystal_ball["Captain"] && !job_master.crystal_ball["Lieutenant"] && !job_master.crystal_ball["Security Officer"])
-		to_chat(world, "<B>A estação precisa de um Capitão, um Tenente ou um Segurança para começar. Voltando ao lobby.")
+	if(!job_master.crystal_ball["Captain"] && !job_master.crystal_ball["Lieutenant"])
+		to_chat(world, "<B>A estação precisa de um Capitão ou um Tenente para começar o expediente. Voltando ao lobby.")
 		current_state = GAME_STATE_PREGAME
 		return 0
 
