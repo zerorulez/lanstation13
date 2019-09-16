@@ -13,7 +13,7 @@
 			if(ATTACK_KICK)
 				if(can_kick(A))
 
-					delayNextAttack(10)
+					delayNextAttack(20)
 
 					special_attack_result = A.kick_act(src)
 					if(special_attack_result != SPECIAL_ATTACK_CANCEL) //kick_act returns that value if there's no interaction specified
@@ -27,14 +27,12 @@
 			if(ATTACK_BITE)
 				if(can_bite(A))
 
-					delayNextAttack(10)
+					delayNextAttack(20)
 
 					special_attack_result = A.bite_act(src)
 					if(special_attack_result != SPECIAL_ATTACK_CANCEL) //bite_act returns that value if there's no interaction specified
 						after_special_attack(A, attack_type, special_attack_result)
 						return
-
-					delayNextAttack(-10) //This is only called when the bite fails
 				else
 					set_attack_type() //Reset attack type
 
@@ -45,7 +43,7 @@
 		return
 
 	if(ismob(A))
-		delayNextAttack(10)
+		delayNextAttack(20)
 
 	if(src.can_use_hand())
 		A.attack_hand(src, params)

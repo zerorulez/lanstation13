@@ -327,8 +327,8 @@
 	icon = 'icons/obj/cyberplants.dmi'
 	icon_state = "holopot"
 	light_color = "#3C94C5"
-	light_power = 1.5
-	light_range = 1.5
+	light_power = 0.75
+	light_range = 2
 	var/autostripes = TRUE
 	var/emaged = FALSE
 	var/interference = FALSE

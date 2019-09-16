@@ -100,7 +100,8 @@
 		var/obj/item/clothing/gloves/G = gloves
 		return G.get_hitsound_added()
 	var/datum/species/S = get_organ_species(get_active_hand_organ())
-	return (S.attack_verb == "punches" ? "punch" : 'sound/weapons/slice.ogg')
+	var/list/punch_sounds = list('sound/weapons/punch1.ogg', 'sound/weapons/punch2.ogg', 'sound/weapons/punch3.ogg', 'sound/weapons/punch4.ogg')
+	return (S.attack_verb == "punches" ? pick(punch_sounds) : 'sound/weapons/slice.ogg')
 
 /mob/living/carbon/human/get_unarmed_miss_sound()
 	var/datum/species/S = get_organ_species(get_active_hand_organ())
@@ -162,7 +163,7 @@
 	show_combat_stat("Knockout chance: [knockout_chance]")
 	if(prob(knockout_chance))
 		visible_message("<span class='danger'>[src] has knocked down \the [target]!</span>")
-		target.apply_effect(2, WEAKEN, armor)
+		target.apply_effect(5, WEAKEN, armor)
 
 
 	//Hand transplants increase punch damage

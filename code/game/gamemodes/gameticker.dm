@@ -75,6 +75,7 @@ var/datum/controller/gameticker/ticker
 				C.playtitlemusic()
 
 		while(current_state <= GAME_STATE_PREGAME)
+			job_master.predict_manifest()
 			for(var/i=0, i<10, i++)
 				sleep(1)
 				vote.process()
@@ -140,6 +141,8 @@ var/datum/controller/gameticker/ticker
 		current_state = GAME_STATE_PREGAME
 		job_master.ResetOccupations()
 		return 0
+
+	job_master.predict_manifest()
 
 	if(!job_master.crystal_ball["Captain"] && !job_master.crystal_ball["Lieutenant"])
 		to_chat(world, "<B>A estação precisa de um Capitão ou um Tenente para começar o expediente. Voltando ao lobby.")

@@ -230,14 +230,12 @@
 			msg += "<span class='warning'>[t_He] does not appear to be breathing.</span>\n"
 
 		if(ishuman(user) && !user.isUnconscious() && distance <= 1)
-			user.visible_message("<span class='info'>[user] checks [src]'s pulse.</span>")
-
-			spawn(15)
-				if(user && distance <= 1 && !user.isUnconscious())
-					if(pulse == PULSE_NONE || (status_flags & FAKEDEATH))
-						to_chat(user, "<span class='deadsay'>[t_He] has no pulse[src.client ? "" : " and [t_his] soul has departed"]...</span>")
-					else
-						to_chat(user, "<span class='deadsay'>[t_He] has a pulse!</span>")
+			user.visible_message("<span class='info'><b>[user]</b> checks <b>[src]</b>'s pulse.</span>")
+			if(user && distance <= 1 && !user.isUnconscious())
+				if(pulse == PULSE_NONE || (status_flags & FAKEDEATH))
+					to_chat(user, "<span class='deadsay'>[t_He] has no pulse[src.client ? "" : " and [t_his] soul has departed"]...</span>")
+				else
+					to_chat(user, "<span class='deadsay'>[t_He] has a pulse!</span>")
 
 	msg += "<span class='warning'>"
 

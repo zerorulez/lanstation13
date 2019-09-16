@@ -463,26 +463,24 @@
 
 	to_chat(usr, "<span class='notice'>I start washing my hands.</span>")
 
-	busy = 1
-	sleep(40)
-	busy = 0
 
-	if(!Adjacent(M))
-		return		//Person has moved away from the sink
+	playsound(get_turf(src), 'sound/effects/sink.ogg', 50, 1)
 
-	M.clean_blood()
-	if(ishuman(M))
-		M:update_inv_gloves()
-	for(var/mob/V in viewers(src, null))
-		V.show_message("<span class='notice'>[M] washes their hands using \the [src].</span>")
+	busy = TRUE
+	if(do_after(M, src, 30))
+		M.clean_blood()
+		if(ishuman(M))
+			M:update_inv_gloves()
+		M.visible_message("<span class='notice'>[M] washes their hands using \the [src].</span>")
+	busy = FALSE
 
 /obj/structure/sink/mop_act(obj/item/weapon/mop/M, mob/user)
 	if(busy)
 		return 1
 	user.visible_message("<span class='notice'>[user] puts \the [M] underneath the running water.","<span class='notice'>I put \the [M] underneath the running water.</span>")
-	busy = 1
+	busy = TRUE
 	sleep(40)
-	busy = 0
+	busy = FALSE
 	M.clean_blood()
 	if(M.reagents.maximum_volume > M.reagents.total_volume)
 		playsound(get_turf(src), 'sound/effects/slosh.ogg', 25, 1)
@@ -542,7 +540,7 @@
 	if (isitem(O))
 		to_chat(user, "<span class='notice'>I start washing \the [O].</span>")
 		busy = TRUE
-
+		playsound(get_turf(src), 'sound/effects/sink.ogg', 50, 1)
 		if (do_after(user,src, 40))
 			O.clean_blood()
 			user.visible_message( \

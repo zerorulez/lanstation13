@@ -95,7 +95,7 @@
 	if(is_bruised())
 		var/chance = min(50, (damage-min_bruised_damage)/min_broken_damage*50)
 		if(prob(chance))
-			spawn owner.emote("me", 1, "gasps for air!")
+			spawn owner.emote("gasp")
 			if (owner.losebreath <= 30)
 				owner.losebreath += 5
 		else if(prob(chance))

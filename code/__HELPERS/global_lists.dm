@@ -51,6 +51,9 @@ var/global/list/sec_hud_users = list() //list of all entities using a security H
 		var/datum/surgery_step/S = new T
 		surgery_steps += S
 	sort_surgeries()
+	for(var/path in subtypesof(/datum/emote))
+		var/datum/emote/E = new path()
+		E.emote_list[E.key] = E
 
 
 /* // Uncomment to debug chemical reaction list.

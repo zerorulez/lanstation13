@@ -1134,6 +1134,13 @@
 		)
 	result = /obj/item/weapon/reagent_containers/food/snacks/primordialsoup
 
+/datum/recipe/monkeysoup
+	reagents = list(WATER = 10, VINEGAR = 5)
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/monkeycube
+		)
+	result = /obj/item/weapon/reagent_containers/food/snacks/monkeysoup
+
 // Sandwiches //////////////////////////////////////////////////
 
 /datum/recipe/sandwich

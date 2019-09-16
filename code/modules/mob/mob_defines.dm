@@ -296,6 +296,9 @@
 
 	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
+	var/last_emote = 0
+	var/last_emote_sound = 0
+
 /mob/resetVariables()
 	..("callOnFace", "pinned", "embedded", "abilities", "grabbed_by", "requests", "mapobjs", "mutations", "spell_list", "viruses", "resistances", "radar_blips", "active_genes", "attack_log", "speak_emote", args)
 	callOnFace = list()

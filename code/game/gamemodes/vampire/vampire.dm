@@ -7,7 +7,7 @@
 /datum/game_mode/vampire
 	name = "vampire"
 	config_tag = "vampire"
-	restricted_jobs = list("AI", "Cyborg", "Mobile MMI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Chaplain") //Consistent screening has filtered all infiltration attempts on high value jobs
+	restricted_jobs = list("Detective", "AI", "Cyborg", "Mobile MMI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Chaplain") //Consistent screening has filtered all infiltration attempts on high value jobs
 	protected_jobs = list()
 	required_players = 1
 	required_players_secret = 5
@@ -640,7 +640,7 @@ You are weak to holy things and starlight. Don't go into space and avoid the Cha
 					to_chat(src, "<span class='danger'>I continue to burn!</span>")
 				fire_stacks += 5
 				IgniteMob()
-		emote("scream",,, 1)
+		audible_scream()
 	else
 		switch(health)
 			if((-INFINITY) to 60)

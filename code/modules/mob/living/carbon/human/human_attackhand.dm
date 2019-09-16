@@ -166,6 +166,7 @@
 	..()
 
 	if((M != src) && check_shields(0, M.name))
+		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 		visible_message("<span class='danger'>[M] attempts to touch [src]!</span>")
 		return 0
 

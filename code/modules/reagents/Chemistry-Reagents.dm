@@ -391,7 +391,7 @@
 							if(affecting.take_damage(25, 0))
 								H.UpdateDamageIcon(1)
 							H.status_flags |= DISFIGURED
-							H.emote("scream", , , 1)
+							H.audible_scream()
 					else
 						M.take_organ_damage(min(15, volume * 2)) //Uses min() and volume to make sure they aren't being sprayed in trace amounts (1 unit != insta rape) -- Doohl
 			else
@@ -845,7 +845,7 @@
 									if(affecting.take_damage(30, 0))
 										H.UpdateDamageIcon(1)
 									H.status_flags |= DISFIGURED
-									H.emote("scream",,, 1)
+									H.audible_scream()
 								else
 									to_chat(H, "<span class='warning'>A freezing liquid covers my face. Your vampiric powers protect you!</span>")
 									H.mind.vampire.smitecounter += 12 //Ditto above
@@ -1149,7 +1149,7 @@
 					if(affecting.take_damage(25, 0))
 						H.UpdateDamageIcon(1)
 					H.status_flags |= DISFIGURED
-					H.emote("scream", , , 1)
+					H.audible_scream()
 			else
 				M.take_organ_damage(min(15, volume * 2)) //uses min() and volume to make sure they aren't being sprayed in trace amounts (1 unit != insta rape) -- Doohl
 	else
@@ -1221,7 +1221,7 @@
 				var/datum/organ/external/affecting = H.get_organ(LIMB_HEAD)
 				if(affecting.take_damage(15, 0))
 					H.UpdateDamageIcon(1)
-				H.emote("scream", , , 1)
+				H.audible_scream()
 
 		else if(ismonkey(M))
 			var/mob/living/carbon/monkey/MK = M
@@ -1244,7 +1244,7 @@
 				var/datum/organ/external/affecting = H.get_organ(LIMB_HEAD)
 				if(affecting.take_damage(15, 0))
 					H.UpdateDamageIcon(1)
-				H.emote("scream", , , 1)
+				H.audible_scream()
 				H.status_flags |= DISFIGURED
 			else
 				M.take_organ_damage(min(15, volume * 4))
@@ -2939,11 +2939,11 @@
 				return
 			else if(eyes_covered) //Eye cover is better than mouth cover
 				H << "<span class='warning'>My [eyes_covered] protects my eyes from the pepperspray!</span>"
-				H.emote("scream", , , 1)
+				H.audible_scream()
 				H.eye_blurry = max(M.eye_blurry, 5)
 				return
 			else //Oh dear
-				H.emote("scream", , , 1)
+				H.audible_scream()
 				H << "<span class='danger'>I am sprayed directly in the eyes with pepperspray!</span>"
 				H.eye_blurry = max(M.eye_blurry, 25)
 				H.eye_blind = max(M.eye_blind, 10)
@@ -5132,12 +5132,7 @@ var/global/list/chifir_doesnt_remove = list("chifir", "blood")
 
 	if(prob(30))
 		M.emote("spin")
-	var/prev_dir = M.dir
-	M.confused++
-	for(var/i in list(1, 4, 2, 8, 1, 4, 2, 8, 1, 4, 2, 8, 1, 4, 2, 8))
-		M.dir = i
-		sleep(1)
-	M.dir = prev_dir
+
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		for(var/zone in list(LIMB_LEFT_LEG, LIMB_RIGHT_LEG, LIMB_LEFT_FOOT, LIMB_RIGHT_FOOT))

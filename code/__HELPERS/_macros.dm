@@ -218,3 +218,5 @@ proc/get_space_area()
 
 
 #define subtypesof(A) (typesof(A) - A)
+
+#define issilent(A) (A.silent)

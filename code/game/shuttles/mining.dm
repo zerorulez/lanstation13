@@ -24,4 +24,4 @@ var/global/datum/shuttle/mining/mining_shuttle = new(starting_area = /area/shutt
 	areaname = "mining outpost"
 
 /obj/docking_port/destination/mining/research
-	areaname = "mining research"
+	areaname = "research outpost"

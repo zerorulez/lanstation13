@@ -34,6 +34,7 @@
 
 #if !defined(MAP_OVERRIDE_FILES)
 	#define MAP_OVERRIDE_FILES
+	#include "mini2\misc.dm"
 	#include "lanstation\misc.dm"
 	#include "lanstation\job\jobs.dm"
 	#include "lanstation\job\removed.dm"

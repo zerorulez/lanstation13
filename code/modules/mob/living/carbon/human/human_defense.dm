@@ -218,10 +218,10 @@ emp_act
 
 //	user.do_attack_animation(src, I)
 	user.delayNextAttack(1)
-	if(istype(I.attack_verb, /list) && I.attack_verb.len && !(I.flags & NO_ATTACK_MSG))
+	if(istype(I.attack_verb, /list) && I.attack_verb.len && !(I.flags & NO_ATTACK_MSG) && I.force)
 		visible_message("<span class='danger'>[user] [pick(I.attack_verb)] [src] in the [hit_area] with \the [I.name]!</span>", \
 			"<span class='userdanger'>[user] [pick(I.attack_verb)] me in the [hit_area] with \the [I.name]!</span>")
-	else if(!(I.flags & NO_ATTACK_MSG))
+	else if(!(I.flags & NO_ATTACK_MSG) && I.force)
 		visible_message("<span class='danger'>[user] attacks [src] in the [hit_area] with \the [I.name]!</span>", \
 			"<span class='userdanger'>[user] attacks me in the [hit_area] with \the [I.name]!</span>")
 
@@ -263,10 +263,10 @@ emp_act
 		switch(hit_area)
 			if(LIMB_HEAD)//Harder to score a stun but if you do it lasts a bit longer
 				if(prob(I.force))
-					apply_effect(20, PARALYZE, armor)
+					apply_effect(10, PARALYZE, armor)
 					visible_message("<span class='danger'>[src] has been knocked unconscious!</span>")
-					if(src != user && I.damtype == BRUTE)
-						ticker.mode.remove_revolutionary(mind)
+//					if(src != user && I.damtype == BRUTE)
+//						ticker.mode.remove_revolutionary(mind)
 
 				if(bloody)//Apply blood
 					if(wear_mask)

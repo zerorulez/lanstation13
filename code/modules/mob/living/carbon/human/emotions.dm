@@ -16,12 +16,6 @@
 
 	emote("salute")
 
-/mob/living/carbon/human/verb/hem()
-	set name = "Hem"
-	set category = "Emotes"
-
-	emote("hem")
-
 /mob/living/carbon/human/verb/clap()
 	set name = "Clap"
 	set category = "Emotes"
@@ -33,13 +27,7 @@
 	set category = "Emotes"
 
 	emote("eyebrow")
-/*
-/mob/living/carbon/human/verb/chuckle()
-	set name = "Chuckle"
-	set category = "Emotes"
 
-	emote("chuckle")
-*/
 /mob/living/carbon/human/verb/cough()
 	set name = "Cough"
 	set category = "Emotes"
@@ -76,12 +64,6 @@
 
 	emote("giggle")
 
-/mob/living/carbon/human/verb/look()
-	set name = "Look"
-	set category = "Emotes"
-
-	emote("look")
-
 /mob/living/carbon/human/verb/grin()
 	set name = "Grin"
 	set category = "Emotes"
@@ -105,24 +87,6 @@
 	set category = "Emotes"
 
 	emote("laugh")
-
-/mob/living/carbon/human/verb/mumble()
-	set name = "Mumble"
-	set category = "Emotes"
-
-	emote("mumble")
-
-/mob/living/carbon/human/verb/grumble()
-	set name = "Grumble"
-	set category = "Emotes"
-
-	emote("grumble")
-
-/mob/living/carbon/human/verb/groan()
-	set name = "Groan"
-	set category = "Emotes"
-
-	emote("groan")
 
 /mob/living/carbon/human/verb/mmoan()
 	set name = "Moan"
@@ -148,12 +112,6 @@
 
 	emote("smile")
 
-/mob/living/carbon/human/verb/whimper()
-	set name = "Whimper"
-	set category = "Emotes"
-
-	emote("whimper")
-
 /mob/living/carbon/human/verb/wink()
 	set name = "Wink"
 	set category = "Emotes"
@@ -177,3 +135,15 @@
 	set category = "Emotes"
 
 	emote("clearthroat")
+
+/mob/living/carbon/human/verb/pale()
+	set name = "Go Pale"
+	set category = "Emotes"
+
+	emote("pale")
+
+/mob/living/carbon/human/verb/surrender()
+	set name = "Surrender"
+	set category = "Emotes"
+
+	emote("Surrender")

@@ -91,7 +91,6 @@
 
 			if(job_master)
 				stat("---", null)
-				job_master.predict_manifest()
 				for(var/job in job_master.crystal_ball)
 					if(!job_master.crystal_ball[job])
 						continue //If 0, skip

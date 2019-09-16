@@ -106,7 +106,7 @@
 		if(0) //damage
 			var/dmg = rand(10,20)
 			to_chat(L, "<span class='userdanger'>Pain surges through my body!</span>")
-			L.emote("scream", , , 1)
+			L.audible_scream()
 			L.adjustBruteLoss(dmg)
 		if(1) //deaf
 			var/mob/living/carbon/human/H = L
@@ -201,7 +201,7 @@
 		if(0) //damage
 			var/dmg = rand(10,20)
 			to_chat(L, "<span class='userdanger'>I writhe in agony!</span>")
-			L.emote("scream", , , 1)
+			L.audible_scream()
 			L.adjustBruteLoss(dmg)
 		if(1) //deaf
 			var/mob/living/carbon/human/H = L

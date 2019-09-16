@@ -359,10 +359,15 @@
 		if(!A.can_be_inserted(W, 1))
 			return 0
 
+	if(istype(loc, /obj/item/weapon/storage) && ismob(new_location))
+		var/mob/M = new_location
+		to_chat(M, "<b>You need to hold [src] in your hands first.</b>")
+		return 0
+
 	if(ismob(loc) && ismob(new_location) && needs_to_hold)
 		var/mob/M = new_location
 		if(!M.is_holding_item(src))
-			to_chat(M, "You need to hold [src] on your hands first.")
+			to_chat(M, "<b>You need to hold [src] in your hands first.</b>")
 			return 0
 
 	if(istype(src, /obj/item/weapon/storage/fancy))

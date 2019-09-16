@@ -325,8 +325,8 @@
 				type = alt_type
 		if((type & MESSAGE_HEAR) && is_deaf()) //Hearing related //We can't hear what the person is saying. Too bad
 			if(!(alt))
-				to_chat(src, "<span class='notice'>I can almost hear someone talking.</span>")//Well, not THAT deaf
-
+				if(stat != UNCONSCIOUS)
+					to_chat(src, "<span class='notice'>I can almost hear someone talking.</span>")//Well, not THAT deaf
 				return //And that does it
 			else
 				msg = alt
@@ -336,19 +336,8 @@
 	//Added voice muffling for Issue 41.
 	//This has been changed to only work with audible messages, because you can't hear a frown
 	//This blocks "audible" emotes like gasping and screaming, but that's such a small loss. Who wants to hear themselves gasping to death ? I don't
-	if(stat == UNCONSCIOUS || sleeping > 0) //No-one's home
-		if((type & MESSAGE_SEE)) //This is an emote
-			if(!(alt)) //No alternative message
-				return //We can't see it, we're a bit too dying over here
-			else //Hey look someone passed an alternative message
-				to_chat(src, "<span class='notice'>I can almost hear someone talking.</span>")//Now we can totally not hear it!
 
-				return //And we're good
-		else //This is not an emote
-			to_chat(src, "<span class='notice'>I can almost hear someone talking.</span>")//The sweet silence of death
-
-			return //All we ever needed to hear
-	else //We're fine
+	if(stat != UNCONSCIOUS && !sleeping) //No-one's home
 		to_chat(src, msg)//Send it
 
 	return

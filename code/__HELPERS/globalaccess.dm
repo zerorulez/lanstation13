@@ -1321,8 +1321,6 @@
 			return global.admin_verbs_permissions;
 		if("admin_verbs_rejuv")
 			return global.admin_verbs_rejuv;
-		if("admin_verbs_polling")
-			return global.admin_verbs_polling;
 		if("admin_verbs_hideable")
 			return global.admin_verbs_hideable;
 		if("admin_verbs_mod")
@@ -3115,8 +3113,6 @@
 			global.admin_verbs_permissions=newval
 		if("admin_verbs_rejuv")
 			global.admin_verbs_rejuv=newval
-		if("admin_verbs_polling")
-			global.admin_verbs_polling=newval
 		if("admin_verbs_hideable")
 			global.admin_verbs_hideable=newval
 		if("admin_verbs_mod")

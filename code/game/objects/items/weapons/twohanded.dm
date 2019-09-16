@@ -74,7 +74,7 @@
 /obj/item/weapon/fireaxe/update_wield(mob/user)
 	..()
 	item_state = "fireaxe[wielded ? 1 : 0]"
-	force = wielded ? 40 : initial(force)
+	force = wielded ? 25 : initial(force)
 	if(user)
 		user.update_inv_hands()
 

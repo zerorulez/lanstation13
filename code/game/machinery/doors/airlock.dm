@@ -1296,7 +1296,7 @@ About the new airlock wires panel:
 					qdel(S)
 					S = null
 
-				L.emote("scream",,, 1)
+				L.audible_scream()
 
 				if (istype(loc, /turf/simulated))
 					T.add_blood(L)
