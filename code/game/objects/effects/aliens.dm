@@ -111,7 +111,7 @@
 
 /obj/structure/alien/resin/attack_hand(mob/user)
 	user.delayNextAttack(10)
-//	user.do_attack_animation(src, user)
+	user.do_attack_animation(src, user)
 	if(M_HULK in user.mutations)
 		user.visible_message("<span class='danger'>[user] destroys [src]!</span>")
 		health = 0
@@ -127,7 +127,7 @@
 /obj/structure/alien/resin/attack_alien(mob/living/user)
 	if (islarva(user))//Safety check for larva. /N
 		return
-//	user.do_attack_animation(src, user)
+	user.do_attack_animation(src, user)
 	to_chat(user, "<span class='good'>I claw at the [name].</span>")
 	for(var/mob/O in oviewers(src))
 		O.show_message("<span class='warning'>[usr] claws at the resin!</span>", 1)
@@ -163,7 +163,7 @@
 				to_chat(user, "<span class='warning'>This wall is already occupied.</span>")
 		return */
 	user.delayNextAttack(10)
-//	user.do_attack_animation(src, W)
+	user.do_attack_animation(src, W)
 	var/aforce = W.force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)

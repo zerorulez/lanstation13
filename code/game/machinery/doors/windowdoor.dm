@@ -177,7 +177,7 @@
 		if(src.operating)
 			return
 		user.delayNextAttack(8)
-//		user.do_attack_animation(src, user)
+		user.do_attack_animation(src, user)
 		src.health = max(0, src.health - 25)
 		playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)
 		visible_message("<span class='warning'>\The [user] smashes against \the [src.name].</span>", 1)
@@ -196,7 +196,7 @@
 	if(M.melee_damage_upper <= 0)
 		return
 	user.delayNextAttack(8)
-//	user.do_attack_animation(src, user)
+	user.do_attack_animation(src, user)
 	src.health = max(0, src.health - M.melee_damage_upper)
 	playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)
 	visible_message("<span class='warning'>\The [M] [M.attacktext] against \the [src.name].</span>", 1)
@@ -229,7 +229,7 @@
 	if(src.density && istype(I, /obj/item/weapon) && !istype(I, /obj/item/weapon/card))
 		var/aforce = I.force
 		user.delayNextAttack(8)
-//		user.do_attack_animation(src, I)
+		user.do_attack_animation(src, I)
 		if(I.damtype == BRUTE || I.damtype == BURN)
 			src.health = max(0, src.health - aforce)
 		playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)

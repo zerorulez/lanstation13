@@ -79,7 +79,6 @@
 	to_chat(H, "<span class='danger'>Dumb move! You strain a muscle.</span>")
 
 	H.apply_damage(rand(1,2), BRUTE, pick(LIMB_RIGHT_LEG, LIMB_LEFT_LEG, LIMB_RIGHT_FOOT, LIMB_LEFT_FOOT))
-//	H.do_attack_animation(src, H)
 	return SPECIAL_ATTACK_FAILED
 
 
@@ -345,7 +344,7 @@ var/global/list/obj/machinery/light/alllights = list()
 	else if(status != LIGHT_BROKEN && status != LIGHT_EMPTY)
 
 
-	//	user.do_attack_animation(src, W)
+		user.do_attack_animation(src, W)
 		if(prob(1+W.force * 5))
 
 			to_chat(user, "I hit the light, and it smashes!")
@@ -450,7 +449,7 @@ var/global/list/obj/machinery/light/alllights = list()
 		to_chat(user, "<span class='good'>That object is useless to you.</span>")
 		return
 	else if (status == LIGHT_OK||status == LIGHT_BURNED)
-	//	user.do_attack_animation(src, user)
+		user.do_attack_animation(src, user)
 		for(var/mob/M in viewers(src))
 			M.show_message("<span class='attack'>[user.name] smashed the light!</span>", 1, "I hear a tinkle of breaking glass", 2)
 		broken()
@@ -463,7 +462,7 @@ var/global/list/obj/machinery/light/alllights = list()
 		to_chat(M, "<span class='warning'>That object is useless to you.</span>")
 		return
 	else if (status == LIGHT_OK||status == LIGHT_BURNED)
-	//	M.do_attack_animation(src, M)
+		M.do_attack_animation(src, M)
 		for(var/mob/O in viewers(src))
 			O.show_message("<span class='attack'>[M.name] smashed the light!</span>", 1, "I hear a tinkle of breaking glass", 2)
 		broken()

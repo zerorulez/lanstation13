@@ -1196,7 +1196,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	containername = "particle accelerator crate"
 	access = access_ce
 	group = "Engineering"
-
+/*
 /datum/supply_packs/mecha_ripley
 	name = "Circuit Crate (\"Ripley\" APLU)"
 	contains = list(/obj/item/weapon/book/manual/ripley_build_and_repair,
@@ -1216,7 +1216,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	containertype = /obj/structure/closet/crate/secure/scisec
 	containername = "\improper \"Odysseus\" circuit crate"
 	access = access_robotics
-	group = "Engineering"
+	group = "Engineering"*/
 
 /datum/supply_packs/shieldgens
 	name = "Shield Generators"

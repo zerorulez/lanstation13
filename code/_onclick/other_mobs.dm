@@ -43,7 +43,7 @@
 		return
 
 	if(ismob(A))
-		delayNextAttack(20)
+		delayNextAttack(15)
 
 	if(src.can_use_hand())
 		A.attack_hand(src, params)

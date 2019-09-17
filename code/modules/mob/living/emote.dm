@@ -137,7 +137,7 @@
 /datum/emote/living/surrender
 	key = "surrender"
 	key_third_person = "surrenders"
-	message = "coloca as mãos na cabeça e deita ao chão."
+	message = "coloca as mãos na cabeça e deita no chão."
 
 /datum/emote/living/surrender/run_emote(mob/user, params)
 	. = ..()

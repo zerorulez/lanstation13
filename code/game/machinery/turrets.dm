@@ -279,7 +279,7 @@
 	return
 
 /obj/machinery/turret/attackby(obj/item/weapon/W, mob/living/user)//I can't believe no one added this before/N
-//	user.do_attack_animation(src, W)
+	user.do_attack_animation(src, W)
 	user.delayNextAttack(10)
 	if(..())
 		return 1
@@ -423,7 +423,7 @@
 	if(M.melee_damage_upper == 0)
 		return
 	if(!(stat & BROKEN))
-	//	M.do_attack_animation(src, M)
+		M.do_attack_animation(src, M)
 		visible_message("<span class='danger'>[M] [M.attacktext] [src]!</span>")
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 		//src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
@@ -439,7 +439,7 @@
 
 /obj/machinery/turret/attack_alien(mob/living/carbon/alien/humanoid/M as mob)
 	if(!(stat & BROKEN))
-	//	M.do_attack_animation(src, M)
+		M.do_attack_animation(src, M)
 		playsound(get_turf(src), 'sound/weapons/slash.ogg', 25, 1, -1)
 		visible_message("<span class='danger'>[] has slashed at []!</span>", M, src)
 		src.health -= 15
@@ -560,7 +560,7 @@
 
 
 /obj/structure/turret/gun_turret/attack_alien(mob/user as mob)
-//	user.do_attack_animation(src, user)
+	user.do_attack_animation(src, user)
 	user.visible_message("[user] slashes at [src]", "I slash at [src]")
 	src.take_damage(15)
 	return

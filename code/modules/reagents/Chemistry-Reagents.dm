@@ -746,7 +746,7 @@
 		M.adjustToxLoss(REM)
 	else
 		if(M.losebreath >= 10)
-			M.losebreath = max(10, M.losebreath - 5)
+			M.losebreath = max(0, M.losebreath - 10)
 
 /datum/reagent/space_drugs
 	name = "Space drugs"

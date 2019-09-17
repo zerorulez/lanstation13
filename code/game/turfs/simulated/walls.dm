@@ -86,7 +86,7 @@
 
 /turf/simulated/wall/attack_animal(var/mob/living/simple_animal/M)
 	M.delayNextAttack(8)
-//	M.do_attack_animation(src, M)
+	M.do_attack_animation(src, M)
 	if(M.environment_smash >= 2)
 		if(istype(src, /turf/simulated/wall/r_wall))
 			if(M.environment_smash == 3)
@@ -108,7 +108,7 @@
 /turf/simulated/wall/attack_hand(mob/user as mob)
 	user.delayNextAttack(8)
 	if(M_HULK in user.mutations)
-	//	user.do_attack_animation(src, user)
+		user.do_attack_animation(src, user)
 		if(prob(100 - hardness) || rotting)
 			dismantle_wall(1)
 			user.visible_message("<span class='danger'>[user] smashes through \the [src].</span>", \

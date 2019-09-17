@@ -463,18 +463,15 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 /obj/machinery/atmospherics/unary/cryo_cell/proc/go_out(var/exit = src.loc)
 	if(!occupant || ejecting)
 		return 0
-	if (occupant.bodytemperature > T0C+31)
-		boot_contents(exit, regulatetemp = 0) //No temperature regulation cycle required
-	else
-		ejecting = 1
-		playsound(get_turf(src), 'sound/machines/pressurehiss.ogg', 40, 1)
-		modify_occupant_bodytemp() //Start to heat them up a little bit immediately
-		nanomanager.update_uis(src)
-		spawn(4 SECONDS)
-			if(!src || !src.ejecting)
-				return
-			ejecting = 0
-			boot_contents(exit)
+	ejecting = 1
+	playsound(get_turf(src), 'sound/machines/pressurehiss.ogg', 40, 1)
+	modify_occupant_bodytemp() //Start to heat them up a little bit immediately
+	nanomanager.update_uis(src)
+	spawn(4 SECONDS)
+		if(!src || !src.ejecting)
+			return
+		ejecting = 0
+		boot_contents(exit)
 	return 1
 
 /obj/machinery/atmospherics/unary/cryo_cell/proc/boot_contents(var/exit = src.loc, var/regulatetemp = 1)
@@ -488,8 +485,11 @@ var/global/list/cryo_health_indicator = list(	"full" = image("icon" = 'icons/obj
 		else
 			occupant.forceMove(exit)
 		occupant.reset_view()
-		if (regulatetemp && occupant.bodytemperature < T0C+34.5)
-			occupant.bodytemperature = T0C+34.5 //just a little bit chilly still
+		if (regulatetemp && occupant.bodytemperature < T0C+37)
+			occupant.bodytemperature = (T0C+37)
+			occupant.sleeping = 5
+			occupant.paralysis = 0
+
 	//	occupant.metabslow = 0
 		occupant = null
 	update_icon()

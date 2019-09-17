@@ -694,6 +694,7 @@ window "mapwindow"
 		font-size = 7
 		is-default = true
 		saved-params = "icon-size"
+		zoom-mode = "distort"
 
 window "outputwindow"
 	elem "outputwindow"

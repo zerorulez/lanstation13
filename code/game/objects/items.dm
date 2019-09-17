@@ -10,7 +10,7 @@
 	var/hitsound = null
 
 	var/w_class = W_CLASS_MEDIUM
-	var/attack_delay = 10 //Delay between attacking with this item, in 1/10s of a second (default = 1 second)
+	var/attack_delay = 15 //Delay between attacking with this item, in 1/10s of a second (default = 1 second)
 
 	flags = FPRINT
 	var/slot_flags = 0		//This is used to determine on which slots an item can fit.
@@ -916,7 +916,7 @@
 		var/datum/organ/internal/eyes/eyes = H.internal_organs_by_name["eyes"]
 
 		if(M != user)
-		//	user.do_attack_animation(M, src)
+			user.do_attack_animation(M, src)
 			for(var/mob/O in (viewers(M) - user - M))
 				O.show_message("<span class='danger'>[user] stabs [M] in the eye with \the [src].</span>", 1)
 			to_chat(M, "<span class='userdanger'>[user] stabs you in the eye with \the [src]!</span>")

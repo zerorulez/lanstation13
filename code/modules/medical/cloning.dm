@@ -241,7 +241,7 @@
 		H.set_species(H.dna.species, 1)
 
 	H.adjustCloneLoss(150) //new damage var so you can't eject a clone early then stab them to abuse the current damage system --NeoFite
-	H.adjustBrainLoss(src.heal_level + 50 + rand(10, 30)) // The rand(10, 30) will come out as extra brain damage
+	H.adjustBrainLoss(src.heal_level + 50) // The rand(10, 30) will come out as extra brain damage
 	H.Paralyse(4)
 	H.stat = UNCONSCIOUS //There was a bug which allowed you to talk for a few seconds after being cloned, because my stat wasn't updated until next Life() tick. This is a fix for this!
 

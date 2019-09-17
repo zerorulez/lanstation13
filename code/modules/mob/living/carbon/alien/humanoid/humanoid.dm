@@ -146,8 +146,8 @@
 
 		if(I_DISARM)
 			if(!lying)
-		//		M.do_attack_animation(src, M)
-				if(prob(5)) //Very small chance to push an alien down.
+				M.do_attack_animation(src, M)
+				if(prob(20)) //Very small chance to push an alien down.
 					Knockdown(2)
 					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 					visible_message("<span class='danger'>[M] has pushed down \the [src] !</span>")

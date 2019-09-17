@@ -135,11 +135,13 @@
 	var/mob/living/L = M
 
 	var/hit = 1
+
+	user.do_attack_animation(M, src)
+
 	if(user.a_intent == I_HURT)
 		hit = ..()
 		if(hit)
 			playsound(loc, "swing_hit", 50, 1, -1)
-	//		user.do_attack_animation(M, src)
 	else
 		hit = -1
 		if(!status)

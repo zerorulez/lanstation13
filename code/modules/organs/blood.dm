@@ -1,7 +1,7 @@
 /****************************************************
 				BLOOD SYSTEM
 ****************************************************/
-#define BLOODLOSS_SPEED_MULTIPLIER 0.75
+#define BLOODLOSS_SPEED_MULTIPLIER 0.5
 
 //Blood levels
 var/const/BLOOD_VOLUME_MAX = 560

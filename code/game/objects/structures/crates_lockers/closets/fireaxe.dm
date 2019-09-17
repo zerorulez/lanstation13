@@ -73,7 +73,7 @@
 						update_icon()
 				return
 			else //We are hitting the closet
-	//			user.do_attack_animation(src, O)
+				user.do_attack_animation(src, O)
 				if(W.force < 15)
 					playsound(user, 'sound/effects/Glasshit.ogg', 100, 1)
 					visible_message("<span class='notice'>\The [src]'s protective glass glances off [user]'s hit with \the [O].")
