@@ -161,7 +161,7 @@
 			icon_state = "instrument"
 			if(prob(30))
 				apply_image_decorations = 1
-				additional_desc = "[pick("I am not sure how anyone could have played this",\
+				additional_desc = "[pick("You are not sure how anyone could have played this",\
 				"I wonder how many mouths the creator had",\
 				"I wonder what it sounds like",\
 				"I wonder what kind of music was made with it")]."

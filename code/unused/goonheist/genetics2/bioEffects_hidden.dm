@@ -85,7 +85,7 @@
 	can_reclaim = 0
 	can_copy = 0
 	msgGain = "I begin to rot."
-	msgLose = "I am no longer rotting."
+	msgLose = "You are no longer rotting."
 
 	OnAdd()
 		owner:mutantrace = new /datum/mutantrace/zombie(owner)

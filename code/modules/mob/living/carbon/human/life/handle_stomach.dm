@@ -58,7 +58,7 @@
 					return
 
 				if(prob(2))
-					to_chat(src, "<span class='notice'>[pick("I am very hungry","I really could use a meal right now")]</span>")
+					to_chat(src, "<span class='notice'>[pick("You are very hungry","I really could use a meal right now")]</span>")
 
 			if(STARVATION_WEAKNESS to STARVATION_NOTICE) //30-60
 				if(sleeping)

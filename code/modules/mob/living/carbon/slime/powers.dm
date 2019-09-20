@@ -122,7 +122,7 @@
 				if(prob(25))
 					to_chat(src, "<span class='warning'><i>[pick("This subject is incompatable</span>", \
 					"This subject does not have a life energy", "This subject is empty", \
-					"I am not satisified", "I can not feed from this subject", \
+					"You are not satisified", "I can not feed from this subject", \
 					"I do not feel nourished", "This subject is not food")]...</i>")
 
 			sleep(rand(15,45))

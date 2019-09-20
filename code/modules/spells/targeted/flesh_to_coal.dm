@@ -58,7 +58,7 @@
 		H.mind.objectives += new_objective
 		ticker.mode.traitors += H.mind
 		H.mind.special_role = "apprentice"
-		to_chat(H, "I am a coal golem. You move slowly, but are highly resistant to heat and cold as well as blunt trauma. You are unable to wear clothes, but can still use most tools. Serve [user], and assist them in completing their goals at any cost.")
+		to_chat(H, "You are a coal golem. You move slowly, but are highly resistant to heat and cold as well as blunt trauma. You are unable to wear clothes, but can still use most tools. Serve [user], and assist them in completing their goals at any cost.")
 
 		if(ticker.mode.name == "sandbox")
 			H.CanBuild()

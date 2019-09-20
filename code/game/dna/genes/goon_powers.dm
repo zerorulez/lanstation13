@@ -190,7 +190,7 @@
 	activation_messages = list("I feel hungry.")
 	deactivation_messages = list("I don't feel quite so hungry anymore.")
 
-	drug_activation_messages=list("I am getting the munchies.")
+	drug_activation_messages=list("You are getting the munchies.")
 	drug_deactivation_messages=list("I no longer getting the munchies.")
 
 	spelltype=	/spell/targeted/eat

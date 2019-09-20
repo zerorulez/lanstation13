@@ -1134,7 +1134,7 @@
 	else
 		if(direction != dir && user.ventcrawl_layer != PIPING_LAYER_DEFAULT) // The mob is moving to the single pipe outlet, we need to align it if it's on a layer that's not the default layer
 			user.ventcrawl_layer = PIPING_LAYER_DEFAULT
-			to_chat(user, "I am redirected into the [user.ventcrawl_layer]\th piping layer.")
+			to_chat(user, "You are redirected into the [user.ventcrawl_layer]\th piping layer.")
 
 		return ..()
 
@@ -1299,5 +1299,5 @@
 	// Autoset layer
 	if(direction & initialize_directions)
 		user.ventcrawl_layer = (direction == dir) ? PIPING_LAYER_DEFAULT : piping_layer
-		to_chat(user, "I am redirected into the [user.ventcrawl_layer]\th piping layer.")
+		to_chat(user, "You are redirected into the [user.ventcrawl_layer]\th piping layer.")
 		return ..()

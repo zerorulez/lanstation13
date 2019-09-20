@@ -310,7 +310,7 @@ proc/trigger_armed_response_team(var/force = 0, var/reason)
 	//Basic Uniform
 	equip_to_slot_or_del(new /obj/item/clothing/under/ert(src), slot_w_uniform)
 	equip_to_slot_or_del(new /obj/item/device/flashlight(src), slot_l_store)
-	equip_to_slot_or_del(new /obj/item/weapon/gun/energy/gun(src), slot_belt)
+	equip_to_slot_or_del(new /obj/item/weapon/gun/energy/gun/nuclear(src), slot_belt)
 
 	//Glasses
 	equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(src), slot_glasses)

@@ -5,7 +5,7 @@
 
 /datum/map/active
 	nameShort = "lan"
-	nameLong  = "/lan/station"
+	nameLong  = "lanstation"
 	map_dir   = "lanstation"
 	tDomeX = 128
 	tDomeY = 69

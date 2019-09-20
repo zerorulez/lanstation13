@@ -113,11 +113,11 @@
 
 	// Activation messages which are shown when drugged
 	var/list/drug_activation_messages=list("I feel different.","I feel wonky.","I feel new!","I feel amazing.","I feel wobbly.","I feel goofy.",\
-		"I feel strong!","I feel weak.","I think you can speak vox pidgin now.","I feel like killing a space bear!","I am no longer afraid of carps.")
+		"I feel strong!","I feel weak.","I think you can speak vox pidgin now.","I feel like killing a space bear!","You are no longer afraid of carps.")
 
 	// Deactivation messages which are shown when drugged
 	var/list/drug_deactivation_messages=list("I feel like you've lost a friend.","I get a feeling of loss.","My mind feels less burdened.","I feel old.",\
-		"I am not sure what's going on.","I feel concerned.","I feel like you forgot something important.","I feel trippy.","My brain hurts.")
+		"You are not sure what's going on.","I feel concerned.","I feel like you forgot something important.","I feel trippy.","My brain hurts.")
 
 /datum/dna/gene/basic/can_activate(var/mob/M,var/flags)
 	if(flags & MUTCHK_FORCED)

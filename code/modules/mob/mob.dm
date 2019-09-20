@@ -1606,11 +1606,11 @@ var/list/slot_equipment_priority = list( \
 	delayNextAttack(20)
 
 	if(usr.stat == 1)
-		to_chat(usr, "I am unconcious and cannot do that!")
+		to_chat(usr, "You are unconcious and cannot do that!")
 		return
 
 	if(usr.restrained())
-		to_chat(usr, "I am restrained and cannot do that!")
+		to_chat(usr, "You are restrained and cannot do that!")
 		return
 
 	var/mob/S = src

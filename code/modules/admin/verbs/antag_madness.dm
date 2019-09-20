@@ -418,7 +418,7 @@ client/proc/antag_madness(var/mob/M in mob_list)
 
 			var/explanation1 = "Disregard centcomm, aquire guns."
 			var/explanation2 = "Only kill if it helps you get rare guns, or if my life is in danger"
-			var/explanation3 = "I am really not eager to go back to centcomm. Do not let the shuttle get called."
+			var/explanation3 = "You are really not eager to go back to centcomm. Do not let the shuttle get called."
 
 			to_chat(M, "<B>Objective #1</B>: [explanation1]")
 			M.memory += "<B>Objective #1</B>: [explanation1]<BR>"

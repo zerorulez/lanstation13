@@ -32,7 +32,7 @@
 					if(commando_names.len)
 						randomname = pick(commando_names)
 						commando_names -= randomname
-					var/newname = input(M,"I am a death commando. Would you like to change my name?", "Character Creation", randomname)
+					var/newname = input(M,"You are a death commando. Would you like to change my name?", "Character Creation", randomname)
 					if(!length(newname))
 						newname = randomname
 					newname = strip_html(newname,40)

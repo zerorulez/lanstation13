@@ -83,7 +83,7 @@
 					"Wetskrell.nt only provides the higest quality of male entertaiment to Nanotrasen Employees.", \
 					"Simply enter my Nanotrasen Bank account system number and pin. With three easy steps this service could be yours!")
 				if(7)
-					sender = pick("I have won free tickets!","Click here to claim my prize!","I am the 1000th vistor!","I am our lucky grand prize winner!")
+					sender = pick("I have won free tickets!","Click here to claim my prize!","You are the 1000th vistor!","You are our lucky grand prize winner!")
 					message = pick("I have won tickets to the newest ACTION JAXSON MOVIE!", \
 					"I have won tickets to the newest crime drama DETECTIVE MYSTERY IN THE CLAMITY CAPER!", \
 					"I have won tickets to the newest romantic comedy 16 RULES OF LOVE!", \

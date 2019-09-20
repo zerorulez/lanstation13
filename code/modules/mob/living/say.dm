@@ -257,6 +257,10 @@ var/list/department_radio_keys = list(
 
 	send_speech_bubble(speech.message, bubble_type, listeners)
 
+/mob/living/carbon/human/send_speech(var/datum/speech/speech, var/message_range=7, var/bubble_type)
+	talkcount++
+	. = ..()
+
 /mob/living/proc/say_test(var/text)
 	var/ending = copytext(text, length(text))
 	if (ending == "?")

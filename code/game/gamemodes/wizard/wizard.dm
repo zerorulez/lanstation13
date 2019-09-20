@@ -24,6 +24,17 @@
 
 	can_be_mixed = TRUE
 
+	title_icon = "wizard"
+
+/datum/game_mode/wizards/credittext()
+	global.end_titles += "<center><h1>Magos:</h1></center><br><br>"
+	for(var/datum/mind/wizard in wizards)
+		global.end_titles += "<center><h2>[wizard.name] como mago.</h2>"
+	for(var/datum/mind/apprentice in apprentices)
+		global.end_titles += "<center><h2>[apprentice.name] como aprendiz de mago.</h2>"
+	global.end_titles += "<br>"
+	return
+
 /datum/game_mode/wizard/announce()
 	to_chat(world, "<B>The current game mode is - Wizard!</B>")
 	to_chat(world, "<B>There is a <span class='danger'>SPACE WIZARD on the station. You can't let him achieve his objective!</span>")
@@ -142,7 +153,7 @@
 	var/wizard_name_second = pick(wizard_second)
 	var/randomname = "[wizard_name_first] [wizard_name_second]"
 	spawn(0)
-		var/newname = copytext(sanitize(input(wizard_mob, "I am the Space Wizard. Would I like to change my name to something else?", "Name change", randomname) as null|text),1,MAX_NAME_LEN)
+		var/newname = copytext(sanitize(input(wizard_mob, "You are the Space Wizard. Would I like to change my name to something else?", "Name change", randomname) as null|text),1,MAX_NAME_LEN)
 
 		if (!newname)
 			newname = randomname

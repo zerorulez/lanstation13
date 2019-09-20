@@ -116,7 +116,7 @@
 	var/wizard_name_first = pick(wizard_first)
 	var/wizard_name_second = pick(wizard_second)
 	var/randomname = "[wizard_name_first] [wizard_name_second]"
-	var/newname = copytext(sanitize(input(M, "I am the wizard's apprentice. Would you like to change my name to something else?", "Name change", randomname) as null|text),1,MAX_NAME_LEN)
+	var/newname = copytext(sanitize(input(M, "You are the wizard's apprentice. Would you like to change my name to something else?", "Name change", randomname) as null|text),1,MAX_NAME_LEN)
 	if (!newname)
 		newname = randomname
 	M.fully_replace_character_name(M.real_name, newname)

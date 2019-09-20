@@ -687,7 +687,7 @@ AND players.player_slot = ? ;"}, ckey, slot)
 
 
 	if(slot > MAX_SAVE_SLOTS)
-		to_chat(user, "I am limited to 8 character slots.")
+		to_chat(user, "You are limited to 8 character slots.")
 		message_admins("[ckey] attempted to override character slot limit")
 		return 0
 

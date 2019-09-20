@@ -16,9 +16,7 @@
 		/datum/zLevel/space{
 			name = "spaceOldSat" ;
 			},
-		/datum/zLevel/space{
-			name = "derelict" ;
-			}
+		/datum/zLevel/mining
 		)
 	unavailable_items = list(
 		/obj/item/clothing/shoes/magboots/elite,

@@ -418,7 +418,7 @@
 
 /obj/item/clothing/under/batmansuit
 	name = "batsuit"
-	desc = "I am the night."
+	desc = "You are the night."
 	icon_state = "bmuniform"
 	_color = "bmuniform"
 

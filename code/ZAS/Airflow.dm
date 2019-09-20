@@ -58,9 +58,9 @@ mob/proc/airflow_stun()
 		to_chat(src, "<span class='notice'>I stay upright as the air rushes past me.</span>")
 		return 0
 
-	if(knockdown <= 0)
-		to_chat(src, "<span class='warning'>The sudden rush of air knocks me over!</span>")
-	SetKnockdown(5)
+//	if(knockdown <= 0)
+//		to_chat(src, "<span class='warning'>The sudden rush of air knocks me over!</span>")
+//	SetKnockdown(5)
 	last_airflow_stun = world.time
 	return
 

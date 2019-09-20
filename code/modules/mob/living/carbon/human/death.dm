@@ -82,7 +82,7 @@
 		to_chat(B.host_brain, "<span class='danger'>Just before my body passes, I feel a brief return of sensation.  I am now in control...</span>")
 		do_release_control(0)
 
-	to_chat(src, "<span class='danger'>I died</span>")
+	to_chat(src, "<span class='danger'>YOU DIED</span>")
 
 	//Check for heist mode kill count.
 	if(ticker.mode && ( istype( ticker.mode,/datum/game_mode/heist) ) )

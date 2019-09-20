@@ -207,9 +207,9 @@
 
 /obj/item/weapon/hand/proc/update_conceal()
 	if (src.concealed)
-		src.hi.updateContent("headbar", "I am currently concealing my hand. <a href=\"byond://?src=\ref[hi]&action=toggle_conceal\">Reveal my hand.</a>")
+		src.hi.updateContent("headbar", "You are currently concealing my hand. <a href=\"byond://?src=\ref[hi]&action=toggle_conceal\">Reveal my hand.</a>")
 	else
-		src.hi.updateContent("headbar", "I am currently revealing my hand. <a href=\"byond://?src=\ref[hi]&action=toggle_conceal\">Conceal my hand.</a>")
+		src.hi.updateContent("headbar", "You are currently revealing my hand. <a href=\"byond://?src=\ref[hi]&action=toggle_conceal\">Conceal my hand.</a>")
 
 /obj/item/weapon/hand/update_icon()
 	if (!cards.len)

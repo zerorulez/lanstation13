@@ -31,7 +31,7 @@
 
 	spawn(0) //We are done giving earthly belongings, now let's move on to spiritual matters
 
-		var/new_religion = sanitize(stripped_input(H, "I am the crew's Religious Services Chaplain. What religion do you follow and teach? (Please put my ID in my ID slot to prevent errors)", "Name of Religion", religion_name), 1, MAX_NAME_LEN)
+		var/new_religion = sanitize(stripped_input(H, "You are the crew's Religious Services Chaplain. What religion do you follow and teach? (Please put my ID in my ID slot to prevent errors)", "Name of Religion", religion_name), 1, MAX_NAME_LEN)
 
 		if(!new_religion)
 			new_religion = religion_name //Give them the default one

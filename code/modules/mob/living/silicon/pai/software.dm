@@ -230,7 +230,7 @@
 					M = M.loc
 					count++
 					if(count >= 6)
-						to_chat(src, "I am not being carried by anyone!")
+						to_chat(src, "You are not being carried by anyone!")
 						return 0
 				spawn CheckDNA(M, src)
 
@@ -403,7 +403,7 @@
 /mob/living/silicon/pai/proc/directives()
 	var/dat = ""
 
-	dat += {"[(src.master) ? "My master: [src.master] ([src.master_dna])" : "I am bound to no one."]
+	dat += {"[(src.master) ? "My master: [src.master] ([src.master_dna])" : "You are bound to no one."]
 		<br><br>
 		<a href='byond://?src=\ref[src];software=directive;getdna=1'>Request carrier DNA sample</a><br>
 		<h2>Directives</h2><br>

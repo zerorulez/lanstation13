@@ -711,7 +711,7 @@
 				else
 					icon_state ="mug_what"
 					name = "mug of ..something?"
-					desc = "I amn't really sure what this is."
+					desc = "You aren't really sure what this is."
 		else
 			icon_state = "mug_empty"
 			name = "mug"

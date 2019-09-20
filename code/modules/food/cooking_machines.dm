@@ -141,7 +141,7 @@ var/global/ingredientLimit = 10
 					to_chat(user, "<span class='notice'>I remove \the [src.ingredient.name] from \the [src.name].</span>")
 					src.ingredient = null
 				else
-					to_chat(user, "I am too far away from [src.name].")
+					to_chat(user, "You are too far away from [src.name].")
 			else
 				src.active = 0
 		else

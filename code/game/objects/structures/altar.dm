@@ -11,7 +11,7 @@
 	icon_state = "altar2_on"
 	density = 1
 	anchored = 1
-	var/on = TRUE
+	var/on = FALSE
 
 	light_range = 4
 	light_color = LIGHT_COLOR_ORANGE
@@ -41,28 +41,13 @@ obj/structure/altar/ex_act(severity)
 /obj/structure/altar/podium
 	name = "preachers podium"
 	desc = "For whatever reason, you feel obliged to listen to whoever speaks at this, no matter how ridiculous."
-	icon_state = "podium_on"
+	icon_state = "podium_off"
 	light_range = 2 //small candles
 	density = 0
 	plane = ABOVE_HUMAN_PLANE //Said person is BEHIND this object.
 
 /obj/structure/altar/podium/update_icon()
 	icon_state = "podium_[on ? "on" : "off"]"
-
-
-//podiums however, are not.
-/obj/structure/altar/podium/cultify()
-	if(prob(66))
-		qdel(src)
-
-/obj/structure/altar/podium/blob_act()
-	if(prob(66))
-		qdel(src)
-
-obj/structure/altar/podium/ex_act(severity)
-	if(prob(10*severity))
-		qdel(src)
-
 
 /obj/structure/altar/wood
 	name = "altar"

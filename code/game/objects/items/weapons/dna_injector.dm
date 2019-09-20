@@ -1015,7 +1015,7 @@
 
 /obj/item/weapon/dnainjector/nofail/antisweedish
 	name = "DNA-Injector (Anti-Sweedish)"
-	desc = "I am no fun."
+	desc = "You are no fun."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 14

@@ -228,6 +228,7 @@ What is the naming convention for planes or layers?
 	#define HUD_ITEM_LAYER 			2
 	#define HUD_ABOVE_ITEM_LAYER 	3
 
+#define CREDITS_PLANE			98
 #define MAPPING_PLANE			99		// Used by pipes and cables so they appear above other things on DM
 
 

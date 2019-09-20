@@ -135,7 +135,7 @@
 		ui.set_auto_update(FALSE)
 
 /obj/machinery/computer/telescience/attack_paw(mob/user)
-	to_chat(user, "I am too primitive to use this computer.")
+	to_chat(user, "You are too primitive to use this computer.")
 
 /obj/machinery/computer/telescience/attack_ai(mob/user)
 	return src.attack_hand(user)
@@ -537,7 +537,7 @@ var/list/telesci_warnings = list(
 		ui.set_auto_update(1)
 
 /obj/machinery/computer/telescience/attack_paw(mob/user)
-	to_chat(user, "I am too primitive to use this computer.")
+	to_chat(user, "You are too primitive to use this computer.")
 	return
 
 /obj/machinery/computer/telescience/attack_ai(mob/user)

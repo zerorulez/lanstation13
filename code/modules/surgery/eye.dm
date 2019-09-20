@@ -147,7 +147,7 @@
 
 /datum/surgery_step/eye/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("[user] is beginning to cauterize the incision around [target]'s eyes with \the [tool]." , \
-	"I am beginning to cauterize the incision around [target]'s eyes with \the [tool].")
+	"You are beginning to cauterize the incision around [target]'s eyes with \the [tool].")
 
 /datum/surgery_step/eye/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/internal/eyes/eyes = target.internal_organs_by_name["eyes"]

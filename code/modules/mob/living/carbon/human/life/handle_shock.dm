@@ -44,7 +44,7 @@
 
 	if(pain_shock_stage >= 120)
 		if(prob(2))
-			to_chat(src, "<span class='danger'>[pick("I black out", "I feel like I could die any moment now", "I am about to lose consciousness")]</span>")
+			to_chat(src, "<span class='danger'>[pick("I black out", "I feel like I could die any moment now", "You are about to lose consciousness")]</span>")
 			Paralyse(5)
 
 	if(pain_shock_stage == 150)

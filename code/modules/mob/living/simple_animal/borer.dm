@@ -399,7 +399,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 		return
 
 	if(hostlimb != LIMB_HEAD)
-		to_chat(src, "I am not attached to my host's brain.")
+		to_chat(src, "You are not attached to my host's brain.")
 		return
 
 	to_chat(src, "I begin delicately adjusting my connection to the host brain...")
@@ -766,7 +766,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 	set desc = "Infest a suitable humanoid host."
 
 	if(host)
-		to_chat(src, "I am already within a host.")
+		to_chat(src, "You are already within a host.")
 		return
 
 	if(stat == UNCONSCIOUS)

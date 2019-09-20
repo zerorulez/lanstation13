@@ -3,7 +3,7 @@ var/global/list/boo_phrases=list(
 	"I think you see a figure in my peripheral vision.",
 	"What was that?",
 	"The hairs stand up on the back of my neck.",
-	"I am filled with a great sadness.",
+	"You are filled with a great sadness.",
 	"Something doesn't feel right...",
 	"I feel a presence in the room.",
 	"It feels like someone's standing behind you.",
@@ -14,7 +14,7 @@ var/global/list/boo_phrases_drugs=list(
 	"I think you can see an elephant in my peripheral vision.",
 	"Was that a giraffe?",
 	"The hairs stand up on the back of my neck and applaud.",
-	"I am filled with happiness and delight.",
+	"You are filled with happiness and delight.",
 	"Oh wow! Great stuff!",
 	"I feel like a room without a roof.",
 )

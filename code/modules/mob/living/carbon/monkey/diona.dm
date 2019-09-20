@@ -88,7 +88,7 @@
 	set desc = "Grow to a more complex form."
 
 	if(!is_alien_whitelisted(src, "Diona") && config.usealienwhitelist)
-		to_chat(src, alert("I am currently not whitelisted to play an adult Diona."))
+		to_chat(src, alert("You are currently not whitelisted to play an adult Diona."))
 		return 0
 
 	if(stat == DEAD)
@@ -96,7 +96,7 @@
 		return
 
 	if(donors.len < 5)
-		to_chat(src, "I am not yet ready for my growth...")
+		to_chat(src, "You are not yet ready for my growth...")
 		return
 
 	if(nutrition < 400)

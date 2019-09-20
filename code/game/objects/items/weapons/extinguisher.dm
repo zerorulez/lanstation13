@@ -110,7 +110,7 @@
 			to_chat(user, "There's already something crammed into the nozzle.")
 			return
 		if(isrobot(user) && !isMoMMI(user)) // MoMMI's can but borgs can't
-			to_chat(user, "I am a robot. No.")
+			to_chat(user, "You are a robot. No.")
 			return
 		if(user.drop_item(W, src))
 			to_chat(user, "I cram \the [W] into the nozzle of \the [src].")

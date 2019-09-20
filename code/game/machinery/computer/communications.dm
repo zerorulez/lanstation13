@@ -131,7 +131,7 @@ var/shuttle_call/shuttle_calls[0]
 					tmp_alertlevel = 0
 				else
 					:
-					to_chat(usr, "I am not authorized to do this.")
+					to_chat(usr, "You are not authorized to do this.")
 					tmp_alertlevel = 0
 				setMenuState(usr,COMM_SCREEN_MAIN)
 			else

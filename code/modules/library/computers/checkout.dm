@@ -260,7 +260,7 @@
 		screenstate = 4
 	if(href_list["del"])
 		if(!usr.check_rights(R_ADMIN))
-			to_chat(usr, "I amn't an admin, piss off.")
+			to_chat(usr, "You aren't an admin, piss off.")
 			return
 		var/datum/cachedbook/target = getBookByID(href_list["del"]) // Sanitized in getBookByID
 		var/ans = alert(usr, "Are you sure you wish to delete \"[target.title]\", by [target.author]? This cannot be undone.", "Library System", "Yes", "No")
@@ -277,7 +277,7 @@
 
 	if(href_list["delbyckey"])
 		if(!usr.check_rights(R_ADMIN))
-			to_chat(usr, "I amn't an admin, piss off.")
+			to_chat(usr, "You aren't an admin, piss off.")
 			return
 		var/tckey = ckey(href_list["delbyckey"])
 		var/ans = alert(usr,"Are you sure you wish to delete all books by [tckey]? This cannot be undone.", "Library System", "Yes", "No")

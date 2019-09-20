@@ -82,7 +82,7 @@ obj/item/clothing/head/helmet/tactical/attack_self(mob/user)
 
 /obj/item/clothing/head/helmet/tactical/HoS/dermal
 	name = "Dermal Armour Patch"
-	desc = "I am not quite sure how you manage to take it on and off, but it implants nicely in my head."
+	desc = "You are not quite sure how you manage to take it on and off, but it implants nicely in my head."
 	icon_state = "dermal"
 	item_state = "dermal"
 	siemens_coefficient = 0.6

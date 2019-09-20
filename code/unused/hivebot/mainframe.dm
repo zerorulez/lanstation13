@@ -141,7 +141,7 @@
 
 /mob/living/silicon/hive_mainframe/proc/Namepick()
 	var/randomname = pick(ai_names)
-	var/newname = input(src,"I am the a Mainframe Unit. Would you like to change my name to something else?", "Name change",randomname)
+	var/newname = input(src,"You are the a Mainframe Unit. Would you like to change my name to something else?", "Name change",randomname)
 
 	if (length(newname) == 0)
 		newname = randomname

@@ -281,14 +281,14 @@ var/savefile/panicfile
 
 	Master.Shutdown()
 	paperwork_stop()
-
+/*
 	spawn()
 		world << sound(pick(
 			'sound/AI/newroundsexy.ogg',
 			'sound/misc/RoundEndSounds/bangindonk.ogg',
 			'sound/misc/RoundEndSounds/apcdestroyed.ogg',
 			)) // random end sounds!! - LastyBatsy
-
+*/
 	sleep(10)//should fix the issue of players not hearing the restart sound.
 
 	if(config.server)//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite

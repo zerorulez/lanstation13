@@ -9,6 +9,7 @@
 	var/list/possible_traitors
 	var/num_players = 0
 	can_be_mixed = TRUE
+	title_icon = "traitor"
 
 /datum/game_mode/traitor/autotraitor/announce()
 	..()

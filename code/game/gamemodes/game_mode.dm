@@ -42,6 +42,10 @@
 	var/rage = 0
 	var/can_be_mixed = FALSE
 
+	var/title_icon = "default"
+
+/datum/game_mode/proc/credittext()
+
 /datum/game_mode/proc/announce() //to be calles when round starts
 	to_chat(world, "<B>Notice</B>: [src] did not define announce()")
 
@@ -523,3 +527,87 @@ proc/get_nt_opposed()
 							var/I = image('icons/mob/mob.dmi', loc = t_mind.current, icon_state = "minion")
 							t_mind.current.client.images += I
 //							to_chat(world, "Adding minion overlay to [t_mind.current]")
+
+/*
+/datum/game_mode/proc/generate_credit_text()
+	var/list/round_credits = list()
+	var/len_before_addition
+
+	// HEADS OF STAFF
+	round_credits += "<center><h1>A Gloriosa Equipe de Comando:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.command_positions))
+		round_credits += "<center><h2>[current.name] como [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>A serious bureaucratic error has occurred!</h2>", "<center><h2>No one was in charge of the crew!</h2>")
+	round_credits += "<br>"
+
+	// SILICONS
+	round_credits += "<center><h1>A \"Inteligência\" Artificial:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_silicon())
+		round_credits += "<center><h2>[current.name] como [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += "<center><h2>A estação não tinha nenhuma inteligência artificial!</h2>"
+	round_credits += "<br>"
+
+	// SECURITY
+	round_credits += "<center><h1>Os Corajosos Seguranças:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.security_positions))
+		round_credits += "<center><h2>[current.name] como [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += "<center><h2>Não havia ninguém para proteger a estação!</h2>"
+	round_credits += "<br>"
+
+	// MEDICAL
+	round_credits += "<center><h1>The Wise Medical Department:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.medical_positions))
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>Healthcare was not included!</h2>", "<center><h2>There were no doctors today!</h2>")
+	round_credits += "<br>"
+
+	// ENGINEERING
+	round_credits += "<center><h1>The Industrious Engineers:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.engineering_positions))
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>[station_name()] probably did not last long!</h2>", "<center><h2>No one was holding the station together!</h2>")
+	round_credits += "<br>"
+
+	// SCIENCE
+	round_credits += "<center><h1>The Inventive Science Employees:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.science_positions))
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>No one was doing \"science\" today!</h2>", "<center><h2>Everyone probably made it out alright, then!</h2>")
+	round_credits += "<br>"
+
+	// CARGO
+	round_credits += "<center><h1>The Rugged Cargo Crew:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.supply_positions))
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>The station was freed from paperwork!</h2>", "<center><h2>No one worked in cargo today!</h2>")
+	round_credits += "<br>"
+
+	// CIVILIANS
+	var/list/human_garbage = list()
+	round_credits += "<center><h1>The Hardy Civilians:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.civilian_positions))
+		if(current.assigned_role == "Assistant")
+			human_garbage += current
+		else
+			round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>Everyone was stuck in traffic this morning!</h2>", "<center><h2>No civilians made it to work!</h2>")
+	round_credits += "<br>"
+
+	return round_credits
+	*/

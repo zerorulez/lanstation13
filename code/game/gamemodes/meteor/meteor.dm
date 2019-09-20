@@ -14,6 +14,7 @@
 
 	uplink_welcome = "EVIL METEOR Uplink Console:"
 	uplink_uses = 20
+	title_icon = "meteor"
 
 /datum/game_mode/meteor/announce()
 	to_chat(world, "<B>The current game mode is - Meteor!</B>")

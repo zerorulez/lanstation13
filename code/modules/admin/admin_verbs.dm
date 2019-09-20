@@ -864,7 +864,7 @@ var/list/admin_verbs_mod = list(
 			to_chat(src, "Warning, mysql database is not connected.")
 			return
 		if(D)
-			to_chat(src, "I am already an admin.")
+			to_chat(src, "You are already an admin.")
 			verbs -= /client/proc/readmin
 			return
 		var/sql_ckey = sanitizeSQL(ckey(ckey))

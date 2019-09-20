@@ -32,7 +32,7 @@ var/global/list/obj/machinery/keycard_auth/authenticators = list()
 	return
 
 /obj/machinery/keycard_auth/attack_paw(mob/user as mob)
-	to_chat(user, "I am too primitive to use this device.")
+	to_chat(user, "You are too primitive to use this device.")
 	return
 
 /obj/machinery/keycard_auth/attackby(obj/item/weapon/W as obj, mob/user as mob)

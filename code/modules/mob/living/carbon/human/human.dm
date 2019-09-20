@@ -1072,11 +1072,11 @@
 	usr.delayNextMove(20)
 
 	if(usr.isUnconscious())
-		to_chat(usr, "I am unconcious and cannot do that!")
+		to_chat(usr, "You are unconcious and cannot do that!")
 		return
 
 	if(usr.restrained())
-		to_chat(usr, "I am restrained and cannot do that!")
+		to_chat(usr, "You are restrained and cannot do that!")
 		return
 
 	var/list/valid_objects = list()

@@ -1,6 +1,6 @@
 /obj/machinery/wish_granter
 	name = "\improper Wish Granter"
-	desc = "I am not so sure about this anymore."
+	desc = "You are not so sure about this anymore."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "syndbeacon"
 

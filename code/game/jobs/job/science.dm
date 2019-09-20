@@ -86,7 +86,7 @@
 	else
 		H.equip_or_collect(new H.species.survival_gear(H.back), slot_in_backpack)
 	return 1
-
+/*
 /datum/job/xenoarch
 	title = "Xenoarcheologist"
 	flag = XENOARCH
@@ -118,7 +118,7 @@
 		H.put_in_hand(GRASP_RIGHT_HAND, new H.species.survival_gear(H))
 	else
 		H.equip_or_collect(new H.species.survival_gear(H.back), slot_in_backpack)
-
+*/
 /datum/job/roboticist
 	title = "Roboticist"
 	flag = ROBOTICIST

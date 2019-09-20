@@ -10,7 +10,7 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 	restricted_jobs = list("AI", "Cyborg", "Mobile MMI")
 	protected_jobs = list("Detective", "Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	required_players = 1
-	required_players_secret = 5
+	required_players_secret = 1
 	required_enemies = 1
 	recommended_enemies = 1
 
@@ -40,6 +40,15 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 	var/changeling_amount = 4
 
 	can_be_mixed = TRUE
+
+	title_icon = "changeling"
+
+/datum/game_mode/changeling/credittext()
+	global.end_titles += "<center><h1>Changelings:</h1></center><br><br>"
+
+	for(var/datum/mind/M in changelings)
+		global.end_titles += "<center><h2>[M.name]</h2>"
+	global.end_titles += "<br>"
 
 /datum/game_mode/changeling/announce()
 	to_chat(world, "<B>The current game mode is - Changeling!</B>")

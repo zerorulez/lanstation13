@@ -357,7 +357,7 @@
 */
 	for(var/mob/living/carbon/slime/M in range(1,usr))
 		if(M.Victim == usr)
-			to_chat(usr, "I am too busy getting the life sucked out of you by \the [M]!")
+			to_chat(usr, "You are too busy getting the life sucked out of you by \the [M]!")
 			return
 //	to_chat(usr, "I start climbing into [src.name]")
 

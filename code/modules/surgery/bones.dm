@@ -58,7 +58,7 @@
 /datum/surgery_step/set_bone/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("[user] is beginning to set the bone in [target]'s [affected.display_name] in place with \the [tool]." , \
-		"I am beginning to set the bone in [target]'s [affected.display_name] in place with \the [tool].")
+		"You are beginning to set the bone in [target]'s [affected.display_name] in place with \the [tool].")
 	target.custom_pain("The pain in my [affected.display_name] is going to make you pass out!",1)
 	..()
 
@@ -97,7 +97,7 @@
 
 /datum/surgery_step/mend_skull/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("[user] is beginning piece together [target]'s skull with \the [tool]."  , \
-		"I am beginning piece together [target]'s skull with \the [tool].")
+		"You are beginning piece together [target]'s skull with \the [tool].")
 	..()
 
 /datum/surgery_step/mend_skull/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

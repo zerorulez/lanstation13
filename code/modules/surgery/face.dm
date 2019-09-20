@@ -140,7 +140,7 @@
 
 /datum/surgery_step/face/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("[user] is beginning to cauterize the incision on [target]'s face and neck with \the [tool]." , \
-	"I am beginning to cauterize the incision on [target]'s face and neck with \the [tool].")
+	"You are beginning to cauterize the incision on [target]'s face and neck with \the [tool].")
 	..()
 
 /datum/surgery_step/face/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

@@ -395,7 +395,7 @@
 				to_chat(user, "<span class='warning'>Disconnect wires first.</span>")
 				return
 			playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
-			to_chat(user, "I am trying to remove the power control board...")//lpeters - fixed grammar issues
+			to_chat(user, "You are trying to remove the power control board...")//lpeters - fixed grammar issues
 
 			if (do_after(user, src, 50) && opened && !terminal && has_electronics == 1)
 				has_electronics = 0
@@ -905,7 +905,7 @@
 		var/mob/living/silicon/ai/malfai = usr
 		if(get_malf_status(malfai)==1)
 			if (malfai.malfhacking)
-				to_chat(malfai, "I am already hacking an APC.")
+				to_chat(malfai, "You are already hacking an APC.")
 				return 1
 			to_chat(malfai, "Beginning override of APC systems. This takes some time, and you cannot perform other actions during the process.")
 			malfai.malfhack = src

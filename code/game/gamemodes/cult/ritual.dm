@@ -129,7 +129,7 @@ var/global/list/rune_list = list() // HOLY FUCK WHY ARE WE LOOPING THROUGH THE W
 		to_chat(user, "I can't mouth the arcane scratchings without fumbling over them.")
 		return
 	if(istype(user.wear_mask, /obj/item/clothing/mask/muzzle))
-		to_chat(user, "I am unable to speak the words of the rune.")
+		to_chat(user, "You are unable to speak the words of the rune.")
 		return
 	if(!word1 || !word2 || !word3 || prob(user.getBrainLoss()))
 		return fizzle()

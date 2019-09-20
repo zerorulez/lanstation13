@@ -28,7 +28,7 @@ var/datum/controller/gameticker/ticker
 	var/random_players = 0 	// if set to nonzero, ALL players who latejoin or declare-ready join will have random appearances/genders
 
 	var/hardcore_mode = 0	//If set to nonzero, hardcore mode is enabled (current hardcore mode features: damage from hunger)
-							//Use the hardcore_mode_on macro - if(hardcore_mode_on) to_chat(user,"I am hardcore!")
+							//Use the hardcore_mode_on macro - if(hardcore_mode_on) to_chat(user,"You are hardcore!")
 
 	var/list/syndicate_coalition = list() // list of traitor-compatible factions
 	var/list/factions = list()			  // list of all factions
@@ -43,9 +43,11 @@ var/datum/controller/gameticker/ticker
 	// Hack
 	var/obj/machinery/media/jukebox/superjuke/thematic/theme = null
 
+	var/delay_difference = 0
+
 #define LOBBY_TICKING 1
 #define LOBBY_TICKING_RESTARTED 2
-/datum/controller/gameticker/proc/pregame(var/delay_difference = 0)
+/datum/controller/gameticker/proc/pregame()
 	var/path = "sound/lobbysongs/"
 	var/list/filenames = flist(path)
 
@@ -66,6 +68,7 @@ var/datum/controller/gameticker/ticker
 	do
 		var/delay_timetotal = 3000 //actually 5 minutes or incase this is changed from 3000, (time_in_seconds * 10)
 		pregame_timeleft = world.timeofday + delay_timetotal + delay_difference
+		delay_difference = 0
 		to_chat(world, "<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
 		to_chat(world, "Please, setup your character and select ready. Game will start in [(pregame_timeleft - world.timeofday) / 10] seconds.")
 		send2mainirc("**Server is loaded** and in pre-game lobby at `[config.server? "byond://[config.server]" : "byond://[world.address]:[world.port]"]`")
@@ -145,6 +148,7 @@ var/datum/controller/gameticker/ticker
 	job_master.predict_manifest()
 
 	if(!job_master.crystal_ball["Captain"] && !job_master.crystal_ball["Lieutenant"])
+		delay_difference = -2400
 		to_chat(world, "<B>A estação precisa de um Capitão ou um Tenente para começar o expediente. Voltando ao lobby.")
 		current_state = GAME_STATE_PREGAME
 		return 0
@@ -407,7 +411,15 @@ var/datum/controller/gameticker/ticker
 	var/mode_finished = mode.check_finished() || (emergency_shuttle.location == 2 && emergency_shuttle.alert == 1) || force_round_end
 	if(!mode.explosion_in_progress && mode_finished)
 		current_state = GAME_STATE_FINISHED
-
+//		SSpersistence.CollectData()
+		for(var/client/C in clients)
+			if(!C.holder && iscarbon(C.mob))
+				var/mob/living/carbon/CA = C.mob
+				CA.Paralyse(1000)
+				CA.silent += 1000
+		qdel(SSmob)
+		RollCredits()
+		sleep(130)
 		spawn
 			declare_completion()
 			if(config.map_voting)
@@ -421,12 +433,12 @@ var/datum/controller/gameticker/ticker
 				var/list/choices=list()
 				for(var/key in maps)
 					choices.Add(key)
-				var/mapname=pick(choices)
+				var/mapname
+				if(choices && choices.len)
+					mapname = pick(choices)
 				vote.chosen_map = maps[mapname] // Hack, but at this point I could not give a shit.
 				watchdog.chosen_map = copytext(mapname,1,(length(mapname)))
 				log_game("Server chose [watchdog.chosen_map]!")
-
-
 
 		spawn(50)
 			ooc_allowed = TRUE

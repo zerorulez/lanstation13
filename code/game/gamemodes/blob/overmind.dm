@@ -43,7 +43,7 @@
 	update_specialblobs()
 
 	to_chat(src, "<span class='blob'>I am the overmind!</span>")
-	to_chat(src, "I am the overmind and can control the blob! You can expand, which will attack people, and place special blob types.")
+	to_chat(src, "You are the overmind and can control the blob! You can expand, which will attack people, and place special blob types.")
 	to_chat(src, "The location of my thoughts (eye), nodes, and core can power my buildings and expand the blob much further, use them well!")
 	to_chat(src, "<b>Normal Blobs</b> will expand my reach and can be upgraded into other special blobs that perform certain functions.")
 	to_chat(src, "<b>Shield Blob</b> is a strong and expensive blob which can take more damage. It is fireproof and can block air, use this to protect yourself from station fires. It can also begin to repair itself when powered.")

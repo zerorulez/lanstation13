@@ -66,7 +66,6 @@
 	icon_state = "sun"
 	item_state = "sunglasses"
 	origin_tech = Tc_COMBAT + "=2"
-	darkness_view = -1
 	eyeprot = 1
 	species_fit = list(VOX_SHAPED, GREY_SHAPED)
 

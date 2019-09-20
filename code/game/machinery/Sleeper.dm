@@ -578,7 +578,7 @@
 		return
 	for(var/mob/living/carbon/slime/M in range(1,usr))
 		if(M.Victim == usr)
-			to_chat(usr, "I am too busy getting my life sucked out of you.")
+			to_chat(usr, "You are too busy getting my life sucked out of you.")
 			return
 	if(usr.locked_to)
 		return

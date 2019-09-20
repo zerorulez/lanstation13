@@ -189,6 +189,12 @@ proc/get_space_area()
 
 	return global.space_area
 
+// Macros for turfs
+
+#define iswallturf(A) (istype(A, /turf/simulated/wall))
+
+#define isfloorturf(A) (istype(A, /turf/simulated/floor))
+
 //1 line helper procs compressed into defines.
 #define Clamp(x, y, z) 	min(max(x, y), z)
 //x is the number you want to clamp

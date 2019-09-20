@@ -1012,7 +1012,7 @@ mob/living/carbon/slime/var/temperature_resistance = T0C+75
 	G.real_name = G.species.makeName()
 	G.forceMove(src.loc) //we use move to get the entering procs - this fixes gravity
 	G.key = ghost.key
-	to_chat(G, "I am an adamantine golem. You move slowly, but are highly resistant to heat and cold as well as impervious to burn damage. You are unable to wear most clothing, but can still use most tools. Serve [user], and assist them in completing their goals at any cost.")
+	to_chat(G, "You are an adamantine golem. You move slowly, but are highly resistant to heat and cold as well as impervious to burn damage. You are unable to wear most clothing, but can still use most tools. Serve [user], and assist them in completing their goals at any cost.")
 	qdel (src)
 	if(ticker.mode.name == "sandbox")
 		G.CanBuild()

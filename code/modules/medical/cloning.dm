@@ -225,6 +225,7 @@
 
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src, R.dna.species, delay_ready_dna=1)
 	occupant = H
+	H.talkcount = R.talkcount
 
 	if(!connected.emagged)
 		icon_state = "pod_1"

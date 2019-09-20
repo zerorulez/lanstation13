@@ -197,7 +197,7 @@ var/global/list/library_section_names = list("Fiction", "Non-Fiction", "Adult", 
 		if(user.drop_item(O, src))
 			user.visible_message("[user] loads some paper into [src].", "I load some paper into [src].")
 			src.visible_message("[src] begins to hum as it warms up its printing drums.")
-			sleep(rand(200,400))
+			sleep(50)
 			src.visible_message("[src] whirs as it prints and binds a new book.")
 			var/obj/item/weapon/book/b = new(src.loc)
 			b.dat = O:info

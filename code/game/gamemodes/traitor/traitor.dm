@@ -17,12 +17,20 @@
 	uplink_welcome = "Syndicate Uplink Console:"
 	uplink_uses = 20
 
+	title_icon = "traitor"
+
 	var/const/waittime_l = 600 //lower bound on time before intercept arrives (in tenths of seconds)
 	var/const/waittime_h = 1800 //upper bound on time before intercept arrives (in tenths of seconds)
 
 	var/traitors_possible = 4 //hard limit on traitors if scaling is turned off
 	var/const/traitor_scaling_coeff = 5.0 //how much does the amount of players get divided by to determine traitors
 
+/datum/game_mode/traitor/credittext()
+	global.end_titles += "<center><h1>Agentes do Sindicato:</h1></center><br><br>"
+	for(var/datum/mind/traitor in traitors)
+		global.end_titles += "<center><h2>[traitor.name] como um traidor.</h2>"
+	global.end_titles += "<br>"
+	return
 
 /datum/game_mode/traitor/announce()
 	to_chat(world, "<B>The current game mode is - Traitor!</B>")

@@ -40,12 +40,19 @@
 	var/sign_name = ""
 	var/list/barsigns=list()
 	var/cult = 0
+	var/canchange = TRUE
+
+/obj/structure/sign/double/barsign/church
+	name = "church"
+	desc = "I'm unsure about this."
+	icon_state = "church"
+	canchange = FALSE
 
 /obj/structure/sign/double/barsign/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/sign/double/barsign/attack_hand(mob/user as mob)
-	if (!src.allowed(user))
+	if (!src.allowed(user) || !canchange)
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 

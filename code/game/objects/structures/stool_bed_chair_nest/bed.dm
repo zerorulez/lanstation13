@@ -107,7 +107,7 @@
 	else
 		M.visible_message(\
 			"<span class='notice'>[M.name] is buckled in to [src] by [user.name]!</span>",\
-			"I am buckled in to [src] by [user.name].",\
+			"You are buckled in to [src] by [user.name].",\
 			"I hear metal clanking.")
 
 	playsound(get_turf(src), 'sound/misc/buckle_click.ogg', 50, 1)

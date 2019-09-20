@@ -36,6 +36,19 @@
 	var/minimum_heads = 2
 	var/const/waittime_l = 600 //lower bound on time before intercept arrives (in tenths of seconds)
 	var/const/waittime_h = 1800 //upper bound on time before intercept arrives (in tenths of seconds)
+
+	title_icon = "revolution"
+
+/datum/game_mode/revolution/credittext()
+	global.end_titles += "<center><h1>Revolucionários:</h1></center><br><br>"
+	for(var/datum/mind/headrev in head_revolutionaries)
+		global.end_titles += "<center><h2>[headrev.name] como líder dos revolucionários.</h2>"
+	for(var/datum/mind/grunt in revolutionaries)
+		global.end_titles += "<center><h2>[grunt.name] como revolucionário.</h2>"
+	global.end_titles += "<br>"
+	return
+
+
 ///////////////////////////
 //Announces the game type//
 ///////////////////////////

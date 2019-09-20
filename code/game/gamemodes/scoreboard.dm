@@ -463,7 +463,7 @@
 		if(-49999 to -5000)
 			score["rating"] = "Singularity Fodder"
 		if(-4999 to -1000)
-			score["rating"] = "I am All Fired"
+			score["rating"] = "You are All Fired"
 		if(-999 to -500)
 			score["rating"] = "A Waste of Perfectly Good Oxygen"
 		if(-499 to -250)

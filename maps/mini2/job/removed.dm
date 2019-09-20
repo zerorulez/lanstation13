@@ -20,11 +20,6 @@
 	total_positions = 0
 	spawn_positions = 0
 
-/datum/job/librarian
-	..()
-	total_positions = 0
-	spawn_positions = 0
-
 /datum/job/lawyer
 	..()
 	total_positions = 0
