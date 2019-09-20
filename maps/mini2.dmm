@@ -3127,7 +3127,7 @@
 "big" = (/obj/machinery/computer/security,/obj/machinery/light{dir = 4},/turf/simulated/shuttle/floor{icon_state = "floor3"},/area/shuttle/escape/centcom)
 "bih" = (/obj/machinery/computer/crew,/turf/simulated/shuttle/floor{icon_state = "floor3"},/area/shuttle/escape/centcom)
 "bii" = (/turf/simulated/shuttle/wall{icon_state = "swall_s5"},/area/shuttle/mining/station)
-"bij" = (/obj/docking_port/shuttle{dir = 2},/obj/machinery/door/unpowered/shuttle,/turf/space,/area/shuttle/mining/station)
+"bij" = (/obj/docking_port/shuttle{dir = 2},/obj/machinery/door/unpowered/shuttle,/turf/simulated/shuttle/floor,/area/shuttle/mining/station)
 "bik" = (/turf/simulated/shuttle/wall{icon_state = "swall_s9"},/area/shuttle/mining/station)
 "bil" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/plating,/area/shuttle/mining/station)
 "bim" = (/obj/machinery/door/airlock/external,/turf/unsimulated/floor{icon_state = "dark"},/area/centcom/specops)
