@@ -22,7 +22,7 @@
 	config_tag = "revolution"
 	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Mobile MMI","Captain", "Lieutenant", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Internal Affairs Agent")
 	required_players = 4
-	required_players_secret = 15
+	required_players_secret = 10
 	required_enemies = 2
 	recommended_enemies = 2
 

@@ -123,6 +123,7 @@ var/datum/controller/gameticker/ticker
 	if((master_mode=="random") || (master_mode=="secret"))
 		runnable_modes = config.get_runnable_modes()
 		if (runnable_modes.len==0)
+			delay_difference = -2400
 			current_state = GAME_STATE_PREGAME
 			to_chat(world, "<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
 			return 0
@@ -139,6 +140,7 @@ var/datum/controller/gameticker/ticker
 	else
 		src.mode = config.pick_mode(master_mode)
 	if (!src.mode.can_start())
+		delay_difference = -2400
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby.")
 		del(mode)
 		current_state = GAME_STATE_PREGAME
@@ -157,6 +159,7 @@ var/datum/controller/gameticker/ticker
 	job_master.DivideOccupations() //Distribute jobs
 	var/can_continue = src.mode.pre_setup()//Setup special modes
 	if(!can_continue)
+		delay_difference = -2400
 		current_state = GAME_STATE_PREGAME
 		to_chat(world, "<B>Error setting up [master_mode].</B> Reverting to pre-game lobby.")
 		log_admin("The gamemode setup for [mode.name] errored out.")

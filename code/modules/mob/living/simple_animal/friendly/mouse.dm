@@ -13,7 +13,7 @@
 	pass_flags = PASSTABLE
 	speak_chance = 1
 	turns_per_move = 5
-	see_in_dark = 6
+	see_in_dark = 8
 	maxHealth = 5
 	health = 5
 	response_help  = "pets the"
@@ -30,6 +30,8 @@
 	size = SIZE_TINY
 	holder_type = /obj/item/weapon/holder/animal/mouse
 	held_items = list()
+
+	movement_speed_modifier = 2.5
 
 	var/base_state = "mouse_gray"
 
@@ -83,6 +85,7 @@
 		client.time_died_as_mouse = world.time
 
 //copy paste from alien/larva, if that func is updated please update this one also
+/*
 /mob/living/simple_animal/mouse/verb/ventcrawl()
 	set name = "Crawl through Vent"
 	set desc = "Enter an air vent and crawl through the pipe system."
@@ -90,7 +93,7 @@
 	var/pipe = start_ventcrawl()
 	if(pipe)
 		handle_ventcrawl(pipe)
-
+*/
 //copy paste from alien/larva, if that func is updated please update this one also
 /mob/living/simple_animal/mouse/verb/hide()
 	set name = "Hide"

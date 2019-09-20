@@ -79,12 +79,12 @@ mob/living/carbon/human/airflow_stun()
 		if(CheckSlip() < 1)
 			return 0
 	if(!(status_flags & CANSTUN) && !(status_flags & CANKNOCKDOWN))
-		to_chat(src, "<span class='notice'>I stay upright as the air rushes past you.</span>")
+		to_chat(src, "<span class='notice'>You stay upright as the air rushes past you.</span>")
 		return 0
 
-	if(knockdown <= 0)
-		to_chat(src, "<span class='warning'>The sudden rush of air knocks me over!</span>")
-	SetKnockdown(rand(1,5))
+//	if(knockdown <= 0)
+//		to_chat(src, "<span class='warning'>The sudden rush of air knocks me over!</span>")
+//	SetKnockdown(rand(1,5))
 	last_airflow_stun = world.time
 	return
 

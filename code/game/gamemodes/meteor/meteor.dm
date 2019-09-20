@@ -10,7 +10,7 @@
 	var/meteor_announce_delay = 2400 //Default final announcement delay
 
 	required_players = 0
-	required_players_secret = 20
+	required_players_secret = 1
 
 	uplink_welcome = "EVIL METEOR Uplink Console:"
 	uplink_uses = 20
