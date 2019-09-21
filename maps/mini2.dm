@@ -13,10 +13,10 @@
 	zLevels = list(
 		/datum/zLevel/station,
 		/datum/zLevel/centcomm,
-		/datum/zLevel/space{
-			name = "spaceOldSat" ;
-			},
-		/datum/zLevel/mining
+		/datum/zLevel/space,
+		/datum/zLevel/mining,
+		/datum/zLevel/space,
+		/datum/zLevel/space
 		)
 	unavailable_items = list(
 		/obj/item/clothing/shoes/magboots/elite,

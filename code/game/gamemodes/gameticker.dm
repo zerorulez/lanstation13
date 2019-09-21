@@ -71,7 +71,7 @@ var/datum/controller/gameticker/ticker
 		delay_difference = 0
 		to_chat(world, "<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
 		to_chat(world, "Please, setup your character and select ready. Game will start in [(pregame_timeleft - world.timeofday) / 10] seconds.")
-		send2mainirc("**Server is loaded** and in pre-game lobby at `[config.server? "byond://[config.server]" : "byond://[world.address]:[world.port]"]`")
+		send2mainirc("@everyone, **server is loaded** and in pre-game lobby at `[config.server? "byond://[config.server]" : "byond://[world.address]:[world.port]"]`.")
 
 		spawn(30)
 			for(var/client/C in clients)

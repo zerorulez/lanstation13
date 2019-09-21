@@ -1,10 +1,10 @@
 "a" = (/turf/space,/area)
 "b" = (/turf/unsimulated/mineral,/area/vault/icetruck)
 "c" = (/obj/item/weapon/rack_parts,/turf/unsimulated/floor/snow,/area/vault/icetruck)
-"d" = (/obj/item/weapon/barricade_kit,/turf/unsimulated/floor/snow,/area/vault/icetruck)
+"d" = (/obj/item/weapon/rack_parts,/obj/item/stack/ore/diamond,/turf/unsimulated/floor/snow,/area/vault/icetruck)
 "e" = (/turf/unsimulated/floor/snow,/area/vault/icetruck)
 "f" = (/mob/living/simple_animal/hostile/bear/polarbear,/turf/unsimulated/floor/snow,/area/vault/icetruck)
-"g" = (/obj/item/weapon/reagent_containers/food/snacks/icecream,/turf/unsimulated/floor/snow,/area/vault/icetruck)
+"g" = (/obj/item/weapon/barricade_kit,/obj/item/stack/ore/diamond,/turf/unsimulated/floor/snow,/area/vault/icetruck)
 "h" = (/obj/effect/landmark/corpse/doctor,/turf/unsimulated/floor/snow,/area/vault/icetruck)
 "i" = (/obj/effect/decal/cleanable/cobweb2,/turf/unsimulated/floor/snow,/area/vault/icetruck)
 "j" = (/obj/item/weapon/paper,/turf/unsimulated/floor/snow,/area/vault/icetruck)
@@ -13,7 +13,7 @@
 "m" = (/obj/effect/landmark/corpse/scientist,/obj/item/weapon/lighter,/obj/item/weapon/lipstick/purple,/turf/unsimulated/floor/snow,/area/vault/icetruck)
 "n" = (/obj/item/weapon/crowbar,/turf/unsimulated/floor/snow,/area/vault/icetruck)
 "o" = (/obj/item/weapon/extinguisher/foam,/turf/unsimulated/floor/snow,/area/vault/icetruck)
-"p" = (/obj/item/weapon/ore/diamond,/turf/unsimulated/floor/snow,/area/vault/icetruck)
+"p" = (/obj/item/weapon/pickaxe/drill/diamond,/turf/unsimulated/floor/snow,/area/vault/icetruck)
 "q" = (/obj/item/weapon/reagent_containers/food/snacks/grown/icepepper,/turf/unsimulated/floor/snow,/area/vault/icetruck)
 "r" = (/turf/unsimulated/floor/asteroid,/area/vault/icetruck)
 "s" = (/obj/item/weapon/rack_parts,/turf/unsimulated/floor/asteroid,/area/vault/icetruck)
@@ -32,16 +32,20 @@
 "F" = (/turf/simulated/shuttle/wall{icon_state = "swall12"},/area/vault/icetruck)
 "G" = (/turf/simulated/shuttle/wall{icon_state = "swall13"},/area/vault/icetruck)
 "H" = (/turf/space,/turf/simulated/shuttle/wall{icon_state = "swall_f9"},/area/vault/icetruck)
+"I" = (/obj/item/stack/ore/diamond,/turf/unsimulated/floor/snow,/area/vault/icetruck)
+"J" = (/obj/item/stack/ore/diamond,/mob/living/simple_animal/hostile/bear/polarbear,/turf/unsimulated/floor/snow,/area/vault/icetruck)
+"K" = (/obj/item/stack/ore/diamond,/obj/item/stack/ore/diamond,/turf/unsimulated/floor/snow,/area/vault/icetruck)
+"L" = (/obj/item/weapon/reagent_containers/food/snacks/icecream,/obj/item/stack/ore/diamond,/turf/unsimulated/floor/snow,/area/vault/icetruck)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaa
 abaaaaaaabbbbbbbbaaabbaaa
 aaaaaabbbbbbbbbbbaaaabaaa
-aaaabbbbbbbbccbbbbaaaaaaa
-aaaabbbdeeefeeegbbbbaaaaa
-aaabbbbeeefheeeeibbbbbaaa
+aaaabbbbbbbbddbbbbaaaaaaa
+aaaabbbgIIIJKKILbbbbaaaaa
+aaabbbbIeefheeeeibbbbbaaa
 aaabbbbeejeeefeeebaaaaaaa
-aaabbeeekfleemfenbbbaaaaa
+aaabbIeekfleemfenbbbaaaaa
 aaabboeefeeeeeeepbbbbaaaa
 aaabbeeeeeeeeeeebbbbbaaaa
 aaaabbbqeerreeebbbbbaaaaa
