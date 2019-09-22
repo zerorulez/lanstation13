@@ -389,141 +389,6 @@ macro "hotkeymode"
 		name = "ALT+Return"
 		command = "fullscreen"
 
-
-menu "menu"
-	elem "client_menu"
-		name = "&Client"
-		command = ""
-		saved-params = "is-checked"
-	elem 
-		name = "&Quick screenshot\tF2"
-		command = ".screenshot auto"
-		category = "&Client"
-		saved-params = "is-checked"
-	elem 
-		name = "&Save screenshot as...\tShift+F2"
-		command = ".screenshot"
-		category = "&Client"
-		saved-params = "is-checked"
-	elem 
-		name = ""
-		command = ""
-		category = "&Client"
-		saved-params = "is-checked"
-	elem 
-		name = "Reconnect"
-		command = ".reconnect"
-		category = "&Client"
-		saved-params = "is-checked"
-	elem 
-		name = "&Quit"
-		command = ".quit"
-		category = "&Client"
-		saved-params = "is-checked"
-	elem 
-		name = "&Icons"
-		command = ""
-		saved-params = "is-checked"
-	elem "stretch"
-		name = "&Stretch to fit"
-		command = ".winset \"mapwindow.map.icon-size=0\""
-		category = "&Icons"
-		is-checked = true
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon64"
-		name = "&64x64 (2x)"
-		command = ".winset \"mapwindow.map.icon-size=64\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon64"
-		name = "&48x48 (1.5x)"
-		command = ".winset \"mapwindow.map.icon-size=48\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon32"
-		name = "&32x32"
-		command = ".winset \"mapwindow.map.icon-size=32\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem 
-		name = ""
-		command = ""
-		category = "&Icons"
-		saved-params = "is-checked"
-	elem "textmode"
-		name = "&Text"
-		command = ".winset \"menu.textmode.is-checked=true?mapwindow.map.text-mode=true:mapwindow.map.text-mode=false\""
-		category = "&Icons"
-		can-check = true
-		saved-params = "is-checked"
-	elem 
-		name = "&Help"
-		command = ""
-		saved-params = "is-checked"
-	elem 
-		name = "&Admin help\tF1"
-		command = "adminhelp"
-		category = "&Help"
-		saved-params = "is-checked"
-	elem 
-		name = "&Hotkeys"
-		command = "hotkeys-help"
-		category = "&Help"
-		saved-params = "is-checked"
-	elem "sweet"
-		name = "Settings"
-		command = ""
-		saved-params = "is-checked"
-	elem 
-		name = "General Settings"
-		command = "modifypreferences 1"
-		category = "Settings"
-		saved-params = "is-checked"
-	elem 
-		name = "Special Roles"
-		command = "modifypreferences 2"
-		category = "Settings"
-		saved-params = "is-checked"
-	elem "skinmenu"
-		name = "Skin"
-		command = ""
-		saved-params = "is-checked"
-	elem 
-		name = "Swap Sides"
-		command = "swapsides"
-		category = "Skin"
-		saved-params = "is-checked"
-	elem "server_menu"
-		name = "Server"
-		command = ""
-		is-disabled = true
-		saved-params = "is-checked"
-	elem 
-		name = "Profiler"
-		command = ".profile"
-		category = "Server"
-		saved-params = "is-checked"
-	elem 
-		name = ""
-		command = ""
-		category = "Server"
-		saved-params = "is-checked"
-	elem "reboot_menu_item"
-		name = "EMERGENCY REBOOT"
-		command = ".reboot"
-		category = "Server"
-		is-disabled = true
-		saved-params = "is-checked"
-
-
 window "Telecomms IDE"
 	elem "Telecomms IDE"
 		type = MAIN
@@ -627,21 +492,10 @@ window "mainwindow"
 		background-color = none
 		is-visible = false
 		saved-params = ""
-	elem "hotkey_toggle"
-		type = BUTTON
-		pos = 560,420
-		size = 80x20
-		anchor1 = 100,100
-		anchor2 = none
-		background-color = none
-		saved-params = ""
-		text = "Hotkey Toggle"
-		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
-		button-type = pushbox
 	elem "mainvsplit"
 		type = CHILD
-		pos = 3,0
-		size = 634x416
+		pos = 0,0
+		size = 640x440
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = none
@@ -649,15 +503,6 @@ window "mainwindow"
 		left = "mapwindow"
 		right = "rpane"
 		is-vert = true
-	elem "input"
-		type = INPUT
-		pos = 3,420
-		size = 557x20
-		anchor1 = 0,100
-		anchor2 = 100,100
-		is-default = true
-		border = sunken
-		saved-params = "command"
 	elem "tooltip"
 		type = BROWSER
 		pos = 849,57
@@ -677,6 +522,7 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -694,7 +540,7 @@ window "mapwindow"
 		font-size = 7
 		is-default = true
 		saved-params = "icon-size"
-		zoom-mode = "distort"
+		zoom-mode = distort
 
 window "outputwindow"
 	elem "outputwindow"
@@ -703,6 +549,7 @@ window "outputwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -710,10 +557,30 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+	elem "hotkey_toggle"
+		type = BUTTON
+		pos = 560,459
+		size = 80x20
+		anchor1 = 100,100
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = "Hotkey Toggle"
+		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
+		button-type = pushbox
+	elem "input"
+		type = INPUT
+		pos = 0,460
+		size = 557x20
+		anchor1 = 0,100
+		anchor2 = 100,100
+		is-default = true
+		border = sunken
+		saved-params = "command"
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
-		size = 640x480
+		size = 640x456
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-default = true
@@ -813,7 +680,6 @@ window "browserwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Browser"
 		is-pane = true
@@ -836,7 +702,6 @@ window "infowindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Info"
 		is-pane = true
@@ -849,7 +714,6 @@ window "infowindow"
 		is-default = true
 		saved-params = ""
 		highlight-color = #00aa00
-		tab-background-color = none
 		allow-html = false
 		on-show = ".winset\"rpane.infob.is-visible=true;rpane.browseb.is-visible=true?rpane.infob.pos=130,0:rpane.infob.pos=65,0 rpane.textb.is-visible=true rpane.infob.is-checked=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=infowindow\""
 		on-hide = ".winset\"rpane.infob.is-visible=false;rpane.browseb.is-visible=true?rpane.browseb.is-checked=true rpane.rpanewindow.left=browserwindow:rpane.textb.is-visible=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=\""
@@ -861,7 +725,6 @@ window "window1"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		border = sunken
 		saved-params = "pos;size;is-minimized;is-maximized"

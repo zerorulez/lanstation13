@@ -120,9 +120,11 @@
 	//CONNECT//
 	///////////
 /client/New(TopicData)
+	fullscreen()
 	// world.log << "creating chatOutput"
 	//chatOutput = new /datum/chatOutput(src) // Right off the bat.
 	// world.log << "Done creating chatOutput"
+
 	if(config)
 		winset(src, null, "outputwindow.output.style=[config.world_style_config];")
 		winset(src, null, "window1.msay_output.style=[config.world_style_config];") // it isn't possible to set two window elements in the same winset so we need to call it for each element we're assigning a stylesheet.
@@ -159,7 +161,7 @@
 	if(config.resource_urls)
 		src.preload_rsc = pick(config.resource_urls)
 	else
-		src.preload_rsc = 1 // If config.resource_urls is not set, preload like normal.
+		src.preload_rsc = 0 // If config.resource_urls is not set, preload like normal.
 
 	clients += src
 	directory[ckey] = src

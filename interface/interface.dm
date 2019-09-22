@@ -146,7 +146,7 @@ Admin:
 	set category = "OOC"
 
 	fullscreen = !fullscreen
-	to_chat(src, "<span class ='warning'>Modo fullscreen [fullscreen ? "ligado" : "desligado"].</span>")
+//	to_chat(src, "<span class ='warning'>Modo fullscreen [fullscreen ? "ligado" : "desligado"].</span>")
 
 	winset(src, "mainwindow", {"
 				titlebar     = [fullscreen ? "false" : "true"];

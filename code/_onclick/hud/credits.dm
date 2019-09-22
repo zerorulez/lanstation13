@@ -93,7 +93,7 @@ var/global/list/end_titles = list()
 	global.end_titles += "<center><h1>Elenco:<h1>"
 	global.end_titles += "<br>"
 	for(var/mob/living/carbon/human/H in mob_list)
-		if(!H.key || H.iscorpse || H.stat == DEAD)
+		if(!H.key || H.iscorpse)
 			continue
 		global.end_titles += "<center><h2>[H.real_name] como [H.mind.assigned_role]</h2>"
 
@@ -102,17 +102,5 @@ var/global/list/end_titles = list()
 			continue
 		global.end_titles += "<center><h2>[S.name] como [S.mind.assigned_role]</h2>"
 
-	var/list/corpses = list()
-	for(var/mob/living/carbon/human/H in dead_mob_list)
-		if(!H.key || H.iscorpse || H.stat != DEAD)
-			continue
-		corpses += H
-	if(corpses.len)
-		global.end_titles += "<br>"
-		global.end_titles += "<br>"
-		global.end_titles += "<center><h1>Em memória daqueles que não sobreviveram:</h1>"
-		global.end_titles += "<br>"
-		for(var/mob/living/carbon/human/DH in corpses)
-			global.end_titles += "<center><h2>[DH.real_name] como [DH.mind.assigned_role]</h2>"
 	global.end_titles += "<br>"
 	global.end_titles += "<br>"

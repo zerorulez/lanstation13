@@ -14,8 +14,7 @@ var/list/blob_overminds = list()
 
 	required_players = 10
 	required_players_secret = 10
-	restricted_jobs = list("Cyborg", "AI", "Mobile MMI", "Trader")
-
+	restricted_jobs = list("Detective", "Security Officer", "Warden", "Head of Security", "Lieutenant", "Captain", "Cyborg", "AI", "Mobile MMI", "Trader")
 	var/const/waittime_l = 600 //lower bound on time before intercept arrives (in tenths of seconds)
 	var/const/waittime_h = 1800 //upper bound on time before intercept arrives (in tenths of seconds)
 
@@ -28,7 +27,7 @@ var/list/blob_overminds = list()
 	var/blob_point_rate = 3
 
 	var/blobwincount = 750 // WAS: 500
-	var/blobnukeposs = 650 // At this point the nuke has a chance of being authorized by Centcomm
+	var/blobnukeposs = 300 // At this point the nuke has a chance of being authorized by Centcomm
 
 	var/list/infected_crew = list()
 	var/list/pre_escapees = list()

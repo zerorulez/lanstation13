@@ -1824,15 +1824,13 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 		if("set_role")
 			return SetRole(usr, href_list)
 
-/client/verb/modify_preferences(page as num)
-	set name = "modifypreferences"
-	set hidden = 1
+/client/verb/modify_preferences()
+	set name = "Modify Preferences"
+	set category = "OOC"
 	if(!prefs.saveloaded)
 		to_chat(src, "<span class='warning'>My character preferences have not yet loaded.</span>")
 		return
-	switch(page)
-		if(1)
-			prefs.current_tab = GENERAL_SETUP
-		if(2)
-			prefs.current_tab = SPECIAL_ROLES_SETUP
+
+	prefs.current_tab = GENERAL_SETUP
+
 	prefs.ShowChoices(usr)
