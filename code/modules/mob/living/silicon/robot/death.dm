@@ -37,7 +37,7 @@
 	if(stat == DEAD)
 		return
 	if(!gibbed)
-		emote("deathgasp", message = TRUE)
+		emote("deathgasp", ignore_status = TRUE)
 	stat = DEAD
 	update_canmove()
 	if(camera)

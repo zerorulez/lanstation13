@@ -1965,13 +1965,13 @@
 	if(..())
 		return 1
 
-	if(M.getOxyLoss() && prob(80))
+	if(M.getOxyLoss())
 		M.adjustOxyLoss(-REM)
-	if(M.getBruteLoss() && prob(80))
+	if(M.getBruteLoss())
 		M.heal_organ_damage(REM, 0)
-	if(M.getFireLoss() && prob(80))
+	if(M.getFireLoss())
 		M.heal_organ_damage(0, REM)
-	if(M.getToxLoss() && prob(80))
+	if(M.getToxLoss())
 		M.adjustToxLoss(-REM)
 
 //An OP chemical for admins and detecting exploits
@@ -2148,14 +2148,20 @@
 	if(..())
 		return 1
 
-	M.eye_blurry = max(M.eye_blurry - 5, 0)
-	M.eye_blind = max(M.eye_blind - 5, 0)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/datum/organ/internal/eyes/E = H.internal_organs_by_name["eyes"]
 		if(E && istype(E))
-			if(E.damage > 0)
-				E.damage--
+			E.damage = 0
+
+		if(H.sdisabilities & BLIND)
+			H.dna.SetSEState(BLINDBLOCK, FALSE)
+
+		if(H.disabilities & NEARSIGHTED)
+			H.disabilities &= ~NEARSIGHTED
+
+	M.eye_blurry = 0
+	M.eye_blind = 0
 
 /datum/reagent/inacusiate
 	name = "Inacusiate"
@@ -2169,6 +2175,11 @@
 
 	if(..())
 		return 1
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.sdisabilities & DEAF)
+			H.dna.SetSEState(DEAFBLOCK, FALSE)
 
 	M.ear_damage = 0
 	M.ear_deaf = 0
@@ -4655,13 +4666,13 @@
 		return 1
 
 	M.nutrition += nutriment_factor
-	if(M.getOxyLoss() && prob(50))
+	if(M.getOxyLoss())
 		M.adjustOxyLoss(-2)
-	if(M.getBruteLoss() && prob(60))
+	if(M.getBruteLoss())
 		M.heal_organ_damage(2, 0)
-	if(M.getFireLoss() && prob(50))
+	if(M.getFireLoss())
 		M.heal_organ_damage(0, 2)
-	if(M.getToxLoss() && prob(50))
+	if(M.getToxLoss())
 		M.adjustToxLoss(-2)
 	if(M.dizziness != 0)
 		M.dizziness = max(0, M.dizziness - 15)

@@ -630,7 +630,7 @@
 	C.update_canmove()
 	C.remove_changeling_powers()
 
-	C.emote("deathgasp", message = TRUE)
+	C.emote("deathgasp", ignore_status = TRUE)
 	C.tod = worldtime2text()
 
 	spawn(rand(800,1200))

@@ -543,7 +543,7 @@ var/global/list/animal_count = list() //Stores types, and amount of animals of t
 		return
 
 	if(!gibbed)
-		emote("deathgasp", message = TRUE)
+		emote("deathgasp", ignore_status = TRUE)
 
 	Die()
 

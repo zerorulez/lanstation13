@@ -152,17 +152,17 @@
 			switch(H.mind.role_alt_title)
 				if("Forensic Technician")
 					H.equip_or_collect(new /obj/item/clothing/suit/storage/forensics/blue(H), slot_wear_suit)
-					H.equip_or_collect(new /obj/item/clothing/shoes/brown(H), slot_shoes)
+					H.equip_or_collect(new /obj/item/clothing/shoes/jackboots(H), slot_shoes)
 				if("Gumshoe")
 					H.mutations += M_NOIR
 					H.dna.SetSEState(NOIRBLOCK,1)
 					H.equip_or_collect(new /obj/item/clothing/suit/storage/det_suit/noir(H), slot_wear_suit)
 					H.equip_or_collect(new /obj/item/clothing/head/det_hat/noir(H), slot_head)
-					H.equip_or_collect(new /obj/item/clothing/shoes/laceup(H), slot_shoes)
+					H.equip_or_collect(new /obj/item/clothing/shoes/jackboots(H), slot_shoes)
 				if("Detective")
 					H.equip_or_collect(new /obj/item/clothing/suit/storage/det_suit(H), slot_wear_suit)
 					H.equip_or_collect(new /obj/item/clothing/head/det_hat(H), slot_head)
-					H.equip_or_collect(new /obj/item/clothing/shoes/brown(H), slot_shoes)
+					H.equip_or_collect(new /obj/item/clothing/shoes/jackboots(H), slot_shoes)
 		H.equip_or_collect(new /obj/item/weapon/lighter/zippo(H), slot_l_store)
 
 		if(H.backbag == 1)//Why cant some of these things spawn in his office?

@@ -1420,8 +1420,6 @@ var/list/slot_equipment_priority = list( \
 		stop_pulling()
 		lying = 1
 		canmove = 0
-		var/sound = pick('sound/effects/bodyfall1.ogg', 'sound/effects/bodyfall2.ogg')
-		playsound(get_turf(src), sound, 50, 1, -1)
 	else if(stunned)
 //		lying = 0
 		canmove = 0

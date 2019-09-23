@@ -33,7 +33,7 @@
 	stat = DEAD
 
 	if(!gibbed)
-		emote("deathgasp", message = TRUE)
+		emote("deathgasp", ignore_status = TRUE)
 
 	update_canmove()
 

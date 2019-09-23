@@ -2,7 +2,7 @@
 	if(stat == DEAD)
 		return
 	if(!gibbed)
-		emote("deathgasp", message = TRUE)
+		emote("deathgasp", ignore_status = TRUE)
 
 	stat = DEAD
 	if("[icon_state]-crash" in icon_states(src.icon,1))

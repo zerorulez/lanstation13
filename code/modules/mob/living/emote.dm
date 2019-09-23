@@ -54,7 +54,6 @@
 	message_larva = "lets out a sickly hiss of air and falls limply to the floor..."
 	message_monkey = "lets out a faint chimper as it collapses and stops moving..."
 	message_simple =  "stops moving..."
-	stat_allowed = UNCONSCIOUS
 	mob_type_blacklist_typelist = list(/mob/living/carbon/brain) // Everyone can deathgasp
 
 /datum/emote/living/deathgasp/run_emote(mob/living/user, params)

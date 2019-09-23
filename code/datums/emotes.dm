@@ -161,7 +161,7 @@
 
 	if(isliving(user))
 		var/mob/living/L = user
-		if(L.silent)
+		if(L.silent && !status_check)
 			to_chat(user, "<span class='warning'>You cannot do that while silenced.</span>")
 			return FALSE
 

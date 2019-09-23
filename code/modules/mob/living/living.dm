@@ -187,7 +187,7 @@
 		src.attack_log += "[src] has succumbed to death with [health] points of health!"
 		src.apply_damage(maxHealth + src.health, OXY)
 		if (!from_deathgasp)
-			emote("deathgasp", message = TRUE)
+			emote("deathgasp", ignore_status = TRUE)
 		death(gibbed)
 		to_chat(src, "<span class='info'>I have given up life and succumbed to death.</span>")
 

@@ -1,4 +1,4 @@
-#define DNA_SE_LENGTH 53
+#define DNA_SE_LENGTH 52
 
 #define VOX_SHAPED "Vox","Skeletal Vox"
 

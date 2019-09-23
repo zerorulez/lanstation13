@@ -5,7 +5,7 @@ Obviously, requires DNA2.
 */
 
 // When hulk was first applied (world.time).
-/mob/living/carbon/human/var/hulk_time=0
+/mob/living/carbon/human/var/hulk_time = 0
 
 // In decaseconds.
 #define HULK_DURATION 300 // How long the effects last
@@ -14,15 +14,23 @@ Obviously, requires DNA2.
 /datum/dna/gene/basic/grant_spell/hulk
 	name = "Hulk"
 	desc = "Allows the subject to become the motherfucking Hulk."
-	activation_messages = list("My muscles hurt.")
-	deactivation_messages = list("My muscles quit tensing.")
+	activation_messages = list("Your muscles hurt.")
+	deactivation_messages = list("Your muscles quit tensing.")
 
-	drug_activation_messages=list("I feel strong! You must've been working out lately.")
-	drug_deactivation_messages=list("I return to my old lifestyle.")
+	drug_activation_messages = list("You feel strong! You must've been working out lately.")
+	drug_deactivation_messages = list("You return to your old lifestyle.")
 
 	flags = GENE_UNNATURAL // Do NOT spawn on roundstart.
 
 	spelltype = /spell/targeted/genetic/hulk
+
+/datum/dna/gene/basic/grant_spell/hulk/deactivate(var/mob/M, var/connected, var/flags)
+	M.mutations.Remove(M_HULK)
+	M.update_mutations()
+	if (ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.update_body()
+	return ..()
 
 /datum/dna/gene/basic/grant_spell/hulk/New()
 	..()
@@ -32,15 +40,15 @@ Obviously, requires DNA2.
 	if(!istype(M))
 		return
 	if(M_HULK in M.mutations)
-		var/timeleft=M.hulk_time - world.time
+		var/timeleft = M.hulk_time - world.time
 		if(M.health <= 25 || timeleft <= 0)
 			M.hulk_time=0 // Just to be sure.
 			M.mutations.Remove(M_HULK)
-			//M.dna.SetSEState(HULKBLOCK,0)
 			M.update_mutations()		//update our mutation overlays
 			M.update_body()
-			to_chat(M, "<span class='warning'>I suddenly feel very weak.</span>")
+			to_chat(M, "<span class='warning'>You suddenly feel very weak.</span>")
 			M.Knockdown(3)
+			M.Stun(3)
 			M.emote("collapse")
 
 /spell/targeted/genetic/hulk
@@ -66,7 +74,7 @@ Obviously, requires DNA2.
 
 /spell/targeted/genetic/hulk/cast(list/targets, mob/user)
 	if (istype(user.loc,/mob))
-		to_chat(usr, "<span class='warning'>I can't hulk out right now!</span>")
+		to_chat(usr, "<span class='warning'>You can't hulk out right now!</span>")
 		return 1
 	for(var/mob/living/carbon/human/M in targets)
 		M.hulk_time = world.time + src.duration
@@ -78,36 +86,53 @@ Obviously, requires DNA2.
 		message_admins("[key_name(M)] has hulked out! ([formatJumpTo(M)])")
 	return
 
-/datum/dna/gene/basic/farsight
+/datum/dna/gene/basic/grant_spell/farsight
 	name = "Farsight"
 	desc = "Increases the subjects ability to see things from afar."
-	activation_messages = list("My eyes focus.")
-	deactivation_messages = list("My eyes return to normal.")
+	activation_messages = list("Your eyes focus.")
+	deactivation_messages = list("Your eyes return to normal.")
+	drug_activation_messages = list("You start feeling like an eagle, man!")
+	drug_deactivation_messages = list("You feel less like an eagle and more like the rabbit!")
+	spelltype = /spell/targeted/farsight
 
-	drug_activation_messages=list("The world becomes huge! You feel like an ant.")
-	drug_deactivation_messages=list("I no longer feel like an insect.")
-
-	mutation = M_FARSIGHT
-
-/datum/dna/gene/basic/farsight/New()
-	block=FARSIGHTBLOCK
+/datum/dna/gene/basic/grant_spell/farsight/New()
+	block = FARSIGHTBLOCK
 	..()
-/datum/dna/gene/basic/farsight/activate(var/mob/M)
-	..()
-	if(M.client)
-		M.client.changeView(max(M.client.view, world.view+1))
 
-/datum/dna/gene/basic/farsight/deactivate(var/mob/M,var/connected,var/flags)
-	if(..())
-		if(M.client && M.client.view == world.view + 1)
-			M.client.changeView()
-
-/datum/dna/gene/basic/farsight/can_activate(var/mob/M,var/flags)
+/datum/dna/gene/basic/grant_spell/farsight/can_activate(var/mob/M,var/flags)
 	// Can't be big AND small.
 	if((M.sdisabilities & BLIND) || (M.disabilities & NEARSIGHTED))
 		return 0
 	return ..(M,flags)
 
+/datum/dna/gene/basic/grant_spell/farsight/deactivate(var/mob/M,var/connected,var/flags)
+	if(..())
+		if(M.client && M.client.view == world.view + 2)
+			M.client.changeView()
+
+/spell/targeted/farsight
+	name = "Far Sight"
+	desc = "Allows you to toggle farther vision at will."
+	panel = "Mutant Powers"
+	range = SELFCAST
+	charge_type = Sp_RECHARGE
+	charge_max = 50
+	invocation_type = SpI_NONE
+	spell_flags = INCLUDEUSER
+	override_base = "genetic"
+	hud_state = "wiz_sleepold"
+	var/active = 0
+
+/spell/targeted/farsight/cast(list/targets, mob/user)
+	for(var/mob/living/carbon/human/F in targets)
+		if(!active)
+			F.client.changeView(max(F.client.view, world.view+2))
+			to_chat(F, "<span class='notice'>You focus your eyes to see farther.</span>")
+			active = 1
+		else
+			F.client.changeView()
+			to_chat(F, "<span class='notice'>You no longer focus your eyes.</span>")
+			active = 0
 // NOIR
 
 /datum/dna/gene/basic/noir

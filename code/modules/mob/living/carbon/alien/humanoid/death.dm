@@ -6,7 +6,7 @@
 	stat = DEAD
 
 	if(!gibbed)
-		emote("deathgasp", message = TRUE)
+		emote("deathgasp", ignore_status = TRUE)
 
 	tod = worldtime2text() //weasellos time of death patch
 	if(mind)
