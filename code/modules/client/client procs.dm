@@ -120,7 +120,6 @@
 	//CONNECT//
 	///////////
 /client/New(TopicData)
-	fullscreen()
 	// world.log << "creating chatOutput"
 	//chatOutput = new /datum/chatOutput(src) // Right off the bat.
 	// world.log << "Done creating chatOutput"
@@ -217,6 +216,8 @@
 	//This is down here because of the browse() calls in tooltip/New()
 	if(!tooltips)
 		tooltips = new /datum/tooltip(src)
+
+	fullscreen()
 
 	//////////////
 	//DISCONNECT//

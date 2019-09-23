@@ -26,7 +26,7 @@
 	var/obj/effect/overlay/chain/tether = null
 	var/tether_pull = 0
 
-	glide_size = 8
+//	glide_size = 8
 
 	//Material datums - the fun way of doing things in a laggy manner
 	var/datum/materials/materials = null

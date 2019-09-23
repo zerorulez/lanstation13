@@ -180,10 +180,15 @@
 
 /mob/living/verb/succumb()
 	set hidden = 1
+	succumb_proc(0)
+
+/mob/living/proc/succumb_proc(var/gibbed = 0, var/from_deathgasp = FALSE)
 	if (src.health < 0 && stat != DEAD)
 		src.attack_log += "[src] has succumbed to death with [health] points of health!"
 		src.apply_damage(maxHealth + src.health, OXY)
-		death(0)
+		if (!from_deathgasp)
+			emote("deathgasp", message = TRUE)
+		death(gibbed)
 		to_chat(src, "<span class='info'>I have given up life and succumbed to death.</span>")
 
 
@@ -647,6 +652,7 @@ Thanks.
 	return
 
 /mob/living/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
+	var/old_loc = get_turf(loc)
 	if (locked_to && locked_to.loc != NewLoc)
 		var/datum/locking_category/category = locked_to.get_lock_cat_for(src)
 		if (locked_to.anchored || category.flags & CANT_BE_MOVED_BY_LOCKED_MOBS)
@@ -723,7 +729,6 @@ Thanks.
 	if ((s_active && !is_holder_of(src, s_active)))
 		s_active.close(src)
 
-	handle_footstep(loc)
 	step_count++
 
 	if(update_slimes)
@@ -744,8 +749,10 @@ Thanks.
 					if(M && !(M in view(src)))
 						M.NotTargeted(G)
 
-/mob/living/proc/handle_footstep(turf/T)
-	if(istype(T))
+	handle_footstep(old_loc, get_turf(loc))
+
+/mob/living/proc/handle_footstep(turf/T, turf/NT)
+	if(istype(T) && T != NT)
 		return TRUE
 	return FALSE
 
@@ -1037,7 +1044,6 @@ Thanks.
 		if(CM.on_fire && CM.canmove)
 			CM.fire_stacks -= 5
 			CM.SetKnockdown(3)
-			playsound(CM.loc, 'sound/effects/bodyfall.ogg', 50, 1)
 			CM.visible_message("<span class='danger'>[CM] rolls on the floor, trying to put themselves out!</span>",
 							   "<span class='warning'>I stop, drop, and roll!</span>")
 

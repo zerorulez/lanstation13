@@ -418,11 +418,11 @@ mob/airflow_hit(atom/A)
 		for(var/mob/M in hearers(src))
 			M.show_message("<span class='danger'>\The [src] slams into \a [A]!</span>",1,"<span class='warning'>I hear a loud slam!</span>",2)
 	//playsound(get_turf(src), "smash.ogg", 25, 1, -1)
-	if(istype(A,/obj/item))
+/*	if(istype(A,/obj/item))
 		var/obj/item/item = A
 		SetKnockdown(item.w_class)
 	else
-		SetKnockdown(rand(1,5))
+		SetKnockdown(rand(1,5))*/
 	. = ..()
 
 obj/airflow_hit(atom/A)
@@ -475,12 +475,12 @@ mob/living/carbon/human/airflow_hit(atom/A)
 		T.add_blood(src)
 		bloody_body(src)
 
-	if(zas_settings.Get(/datum/ZAS_Setting/airflow_push) || AirflowCanPush())
+/*	if(zas_settings.Get(/datum/ZAS_Setting/airflow_push) || AirflowCanPush())
 		if(airflow_speed > 10)
 			paralysis += round(airflow_speed * zas_settings.Get(/datum/ZAS_Setting/airflow_stun))
 			stunned = max(stunned,paralysis + 3)
 		else
-			stunned += round(airflow_speed * zas_settings.Get(/datum/ZAS_Setting/airflow_stun)/2)
+			stunned += round(airflow_speed * zas_settings.Get(/datum/ZAS_Setting/airflow_stun)/2)*/
 
 	. = ..()
 

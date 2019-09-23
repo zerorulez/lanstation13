@@ -99,8 +99,6 @@
 			H.mind.kills += "[name] ([ckey])"
 
 	if(!gibbed)
-//		emote("deathgasp") //Let the world KNOW WE ARE DEAD
-
 		update_canmove()
 
 	tod = worldtime2text() //Weasellos time of death patch

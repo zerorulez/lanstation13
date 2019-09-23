@@ -339,7 +339,7 @@ var/global/list/animal_count = list() //Stores types, and amount of animals of t
 			return "[emote], [text]"
 	return "says, [text]";
 
-/mob/living/simple_animal/emote(var/act, var/type, var/desc, var/auto)
+/mob/living/simple_animal/emote(var/act, var/type, var/desc, var/auto, var/message = null)
 	if(timestopped)
 		return //under effects of time magick
 	if(stat)
@@ -543,7 +543,7 @@ var/global/list/animal_count = list() //Stores types, and amount of animals of t
 		return
 
 	if(!gibbed)
-		visible_message("<span class='danger'>\the [src] stops moving...</span>")
+		emote("deathgasp", message = TRUE)
 
 	Die()
 

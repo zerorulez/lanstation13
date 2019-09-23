@@ -58,7 +58,7 @@
 
 	if (M)
 		if (M.dna)
-			O.dna = M.dna.Clone()
+			O.dna = M.dna
 			M.dna = null
 
 		if (M.suiciding)

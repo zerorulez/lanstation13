@@ -154,7 +154,7 @@
 		. = (istype(shoes, /obj/item/clothing/shoes/magboots) ? -1 : 0)
 	return .
 
-/mob/living/carbon/human/handle_footstep(atom/T)
+/mob/living/carbon/human/handle_footstep(var/turf/T, var/turf/NT)
 	if(..())
 		if(T.footstep_sounds["human"])
 			var/S = pick(T.footstep_sounds["human"])

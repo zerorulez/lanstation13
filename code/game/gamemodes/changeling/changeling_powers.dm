@@ -162,6 +162,7 @@
 	delayNextAttack(50)
 	icon = null
 	invisibility = 101
+	H.h_style = "Bald"
 
 	var/atom/movable/overlay/animation = new /atom/movable/overlay( loc )
 	H.visible_message("<span class = 'warning'>[src] emits a putrid odor as their torso splits open!</span>")
@@ -179,8 +180,8 @@
 	delayNextAttack(0)
 	icon = null
 	invisibility = initial(invisibility)
-	H.maxHealth = 800 /* Gonna need more than one egun to kill one of these bad boys*/
-	H.health = 800
+	H.maxHealth = 400 /* Gonna need more than one egun to kill one of these bad boys*/
+	H.health = 400
 	H.set_species("Horror")
 	H.client.verbs |= H.species.abilities // Force ability equip.
 	H.update_icons()
@@ -629,7 +630,7 @@
 	C.update_canmove()
 	C.remove_changeling_powers()
 
-	C.emote("deathgasp")
+	C.emote("deathgasp", message = TRUE)
 	C.tod = worldtime2text()
 
 	spawn(rand(800,1200))
@@ -1128,7 +1129,7 @@ var/list/datum/dna/hivemind_bank = list()
 
 	feedback_add_details("changeling_powers", "US")
 	return 1
-
+/*
 /obj/item/verbs/changeling/proc/changeling_DEATHsting()
 	set category = "Changeling"
 	set name = "Death Sting (40)"
@@ -1150,7 +1151,7 @@ var/list/datum/dna/hivemind_bank = list()
 		target.reagents.add_reagent(CYANIDE, 20)
 
 	feedback_add_details("changeling_powers", "DTHS")
-	return 1
+	return 1*/
 
 /obj/item/verbs/changeling/proc/changeling_extract_dna_sting()
 	set category = "Changeling"

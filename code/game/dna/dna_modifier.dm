@@ -49,7 +49,7 @@
 	var/locked = 0
 	var/mob/living/carbon/occupant = null
 	var/obj/item/weapon/reagent_containers/glass/beaker = null
-	var/injector_cooldown = 300 //Used by attachment
+	var/injector_cooldown = 100 //Used by attachment
 	machine_flags = SCREWTOGGLE | CROWDESTROY
 	var/obj/machinery/computer/connected
 
@@ -74,7 +74,7 @@
 /obj/machinery/dna_scannernew/RefreshParts()
 	var/efficiency = 0
 	for(var/obj/item/weapon/stock_parts/SP in component_parts) efficiency += SP.rating-1
-	injector_cooldown = initial(injector_cooldown) - 30*(efficiency)
+	injector_cooldown = initial(injector_cooldown) - 10 * (efficiency)
 
 /obj/machinery/dna_scannernew/allow_drop()
 	return 0
@@ -241,6 +241,8 @@
 		if(user.drop_item(beaker, src))
 			beaker = item
 			user.visible_message("[user] adds \a [item] to \the [src]!", "I add \a [item] to \the [src]!")
+			if(connected)
+				nanomanager.update_uis(connected)
 			return
 	else if(istype(item, /obj/item/weapon/grab)) //sanity checks, you chucklefucks
 		var/obj/item/weapon/grab/G = item
@@ -265,6 +267,9 @@
 	M.reset_view()
 	src.occupant = M
 	src.icon_state = "scanner_1"
+
+	if(connected)
+		nanomanager.update_uis(connected)
 
 	// search for ghosts, if the corpse is empty and the scanner is connected to a cloner
 	for(dir in cardinal)
@@ -304,6 +309,9 @@
 		var/obj/machinery/computer/cloning/C = locate(/obj/machinery/computer/cloning) in get_step(src, dir)
 		if(C)
 			C.update_icon()
+
+	if(connected)
+		nanomanager.update_uis(connected)
 
 	return 1
 
@@ -437,7 +445,7 @@
 		connected = findScanner()
 		connected.connected = src
 		spawn(250)
-			src.injector_ready = 1
+			setInjectorReady()
 		return
 	return
 
@@ -620,8 +628,6 @@
 		ui.set_initial_data(data)
 		// open the new ui window
 		ui.open()
-		// auto update every Master Controller tick
-		ui.set_auto_update(1)
 
 /obj/machinery/computer/scan_consolenew/Topic(href, href_list)
 	if(..())
@@ -640,7 +646,7 @@
 
 	if (href_list["selectMenuKey"])
 		selected_menu_key = href_list["selectMenuKey"]
-		return 1 // return 1 forces an update to all Nano uis attached to src
+		return // pulse_radiation() handles the updating
 
 	if (href_list["toggleLock"])
 		if ((src.connected && src.connected.occupant))
@@ -654,7 +660,7 @@
 		irradiating = src.radiation_duration
 		var/lock_state = src.connected.locked
 		src.connected.locked = 1//lock it
-
+		nanomanager.update_uis(src)
 		sleep(10*src.radiation_duration) // sleep for radiation_duration seconds
 
 		irradiating = 0
@@ -675,6 +681,7 @@
 
 		src.connected.occupant.radiation += ((src.radiation_intensity*3)+src.radiation_duration*3)
 		src.connected.locked = lock_state
+		nanomanager.update_uis(src)
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
 	if (href_list["radiationDuration"])
@@ -758,6 +765,7 @@
 		var/lock_state = src.connected.locked
 		src.connected.locked = 1//lock it
 
+		nanomanager.update_uis(src)
 		sleep(10*src.radiation_duration) // sleep for radiation_duration seconds
 
 		irradiating = 0
@@ -1041,7 +1049,7 @@
 					I.name += " ([buf.name])"
 					src.injector_ready = 0
 					spawn(connected.injector_cooldown)
-						src.injector_ready = 1
+						setInjectorReady()
 			return 1
 
 		if (bufferOption == "loadDisk")
@@ -1067,3 +1075,7 @@
 
 
 /////////////////////////// DNA MACHINES
+
+/obj/machinery/computer/scan_consolenew/proc/setInjectorReady()
+	injector_ready = 1
+	nanomanager.update_uis(src)

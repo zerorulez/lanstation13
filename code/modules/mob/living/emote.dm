@@ -44,6 +44,27 @@
 	message = "dances around happily."
 	restraint_check = TRUE
 
+/datum/emote/living/deathgasp
+	key = "deathgasp"
+	key_third_person = "deathgasps"
+	message = "dá seu último suspiro e seus olhos perdem a vida..."
+	message_robot = "shudders violently for a moment before falling still, its eyes slowly darkening."
+	message_AI = "lets out a flurry of sparks, its screen flickering as its systems slowly halt."
+	message_alien = "lets out a waning guttural screech, green blood bubbling from its maw..."
+	message_larva = "lets out a sickly hiss of air and falls limply to the floor..."
+	message_monkey = "lets out a faint chimper as it collapses and stops moving..."
+	message_simple =  "stops moving..."
+	stat_allowed = UNCONSCIOUS
+	mob_type_blacklist_typelist = list(/mob/living/carbon/brain) // Everyone can deathgasp
+
+/datum/emote/living/deathgasp/run_emote(mob/living/user, params)
+	. = ..()
+	if(. && isalienadult(user))
+		playsound(user.loc, 'sound/voice/hiss6.ogg', 80, 1, 1)
+	if (. && user.stat == UNCONSCIOUS && !params)
+		user.succumb_proc(0, 1)
+	message = initial(message)
+
 /datum/emote/living/carbon/drool
 	key = "drool"
 	key_third_person = "drools"

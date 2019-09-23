@@ -125,12 +125,12 @@ var/list/datum/power/changeling/powerinstances = list()
 	helptext = "The target does not notice they have been stung.  The effect occurs after 30 to 60 seconds."
 	genomecost = 3
 	verbpath = /obj/item/verbs/changeling/proc/changeling_lsdsting
-
+/*
 /datum/power/changeling/DeathSting
 	name = "Death Sting"
 	desc = "We silently sting a human, filling him with potent chemicals. His rapid death is all but assured."
 	genomecost = 8
-	verbpath = /obj/item/verbs/changeling/proc/changeling_DEATHsting
+	verbpath = /obj/item/verbs/changeling/proc/changeling_DEATHsting*/
 
 /datum/power/changeling/unfat_sting
 	name = "Unfat Sting"
