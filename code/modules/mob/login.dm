@@ -96,6 +96,3 @@
 		client.updating_colour = 0
 		bad_changing_colour_ckeys["[client.ckey]"] = 0
 	update_colour()
-
-	if(client)
-		client.CAN_MOVE_DIAGONALLY = 0

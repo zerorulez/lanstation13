@@ -1425,8 +1425,6 @@
 			return global.nonantag_roles;
 		if("role_wiki")
 			return global.role_wiki;
-		if("opposite_dirs")
-			return global.opposite_dirs;
 		if("holomap_chips")
 			return global.holomap_chips;
 		if("holomap_cache")
@@ -3217,8 +3215,6 @@
 			global.nonantag_roles=newval
 		if("role_wiki")
 			global.role_wiki=newval
-		if("opposite_dirs")
-			global.opposite_dirs=newval
 		if("holomap_chips")
 			global.holomap_chips=newval
 		if("holomap_cache")

@@ -1,7 +1,5 @@
 /mob/dead/observer/Login()
 	..()
-	if(client)
-		client.CAN_MOVE_DIAGONALLY = 1
 
 /mob/dead/observer/MouseDrop(atom/over)
 	if(!usr || !over)
