@@ -93,7 +93,7 @@
 		var/mob/master = master_spell.holder
 
 		if(istype(master))
-			to_chat(master, "<span class='warning'>As my golem is destroyed, my mana leaks away!</span>")
+			to_chat(master, "<span class='warning'>As your golem is destroyed, your mana leaks away!</span>")
 			for(var/spell/S in master.spell_list)
 				if(S.charge_type & Sp_RECHARGE)
 					if(S.charge_counter == S.charge_max) //Spell is fully charged - let the proc handle everything

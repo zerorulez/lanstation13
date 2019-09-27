@@ -114,7 +114,7 @@
 						var/greek = href_list["fuse"]
 						togglefuse(text2num(greek))
 				else
-					to_chat(L, "<span class='error'>I need a soldering tool!</span>")
+					to_chat(L, "<span class='error'>You need a soldering tool!</span>")
 
 			Interact(usr) //Update
 

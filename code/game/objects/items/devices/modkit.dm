@@ -36,7 +36,7 @@
 			parts_left = parts[i]
 			j = i
 	if(!to_type)
-		to_chat(user, "<span class='warning'>I cannot modify \the [O] with this kit.</span>")
+		to_chat(user, "<span class='warning'>You cannot modify \the [O] with this kit.</span>")
 		return
 	if(parts_left <= 0)
 		to_chat(user, "<span class='warning'>This kit has no parts for this modification left.</span>")
@@ -49,7 +49,7 @@
 		return
 	playsound(user.loc, 'sound/items/Screwdriver.ogg', 100, 1)
 	var/N = new to_type(O.loc)
-	user.visible_message("<span class='warning'>[user] opens \the [src] and modifies \the [O] into \the [N].</span>","<span class='warning'>I open \the [src] and modify \the [O] into \the [N].</span>")
+	user.visible_message("<span class='warning'>[user] opens \the [src] and modifies \the [O] into \the [N].</span>","<span class='warning'>You open \the [src] and modify \the [O] into \the [N].</span>")
 	qdel(O)
 
 

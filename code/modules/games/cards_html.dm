@@ -63,7 +63,7 @@
 		qdel (O)
 		O = null
 
-		user.show_message("I place my cards on the bottom of the deck.")
+		user.show_message("I place your cards on the bottom of the deck.")
 	else
 		return ..()
 
@@ -158,7 +158,7 @@
 /obj/item/weapon/hand/verb/discard(datum/playingcard/card in cards)
 	set category = "Object"
 	set name     = "Discard"
-	set desc     = "Place a card from my hand in front of you."
+	set desc     = "Place a card from your hand in front of you."
 
 	if (!card)
 		return
@@ -183,7 +183,7 @@
 /obj/item/weapon/hand/verb/toggle_conceal()
 	set category  = "Object"
 	set name      = "Toggle conceal"
-	set desc      = "Toggle concealment of my hand"
+	set desc      = "Toggle concealment of your hand"
 
 	src.concealed = !src.concealed
 
@@ -207,9 +207,9 @@
 
 /obj/item/weapon/hand/proc/update_conceal()
 	if (src.concealed)
-		src.hi.updateContent("headbar", "You are currently concealing my hand. <a href=\"byond://?src=\ref[hi]&action=toggle_conceal\">Reveal my hand.</a>")
+		src.hi.updateContent("headbar", "You are currently concealing your hand. <a href=\"byond://?src=\ref[hi]&action=toggle_conceal\">Reveal your hand.</a>")
 	else
-		src.hi.updateContent("headbar", "You are currently revealing my hand. <a href=\"byond://?src=\ref[hi]&action=toggle_conceal\">Conceal my hand.</a>")
+		src.hi.updateContent("headbar", "You are currently revealing your hand. <a href=\"byond://?src=\ref[hi]&action=toggle_conceal\">Conceal your hand.</a>")
 
 /obj/item/weapon/hand/update_icon()
 	if (!cards.len)

@@ -266,7 +266,7 @@
 			else
 				piles[O.name] = getFromPool(/datum/fridge_pile, O.name, src, 1, "\icon[O]")
 			user.visible_message("<span class='notice'>[user] has added \the [O] to \the [src].", \
-								 "<span class='notice'>I add \the [O] to \the [src].")
+								 "<span class='notice'>You add \the [O] to \the [src].")
 
 	else if(istype(O, /obj/item/weapon/storage/bag))
 		var/obj/item/weapon/storage/bag/bag = O
@@ -287,7 +287,7 @@
 		if(objects_loaded)
 
 			user.visible_message("<span class='notice'>[user] loads \the [src] with \the [bag].</span>", \
-								 "<span class='notice'>I load \the [src] with \the [bag].</span>")
+								 "<span class='notice'>You load \the [src] with \the [bag].</span>")
 			if(bag.contents.len > 0)
 				to_chat(user, "<span class='notice'>Some items are refused.</span>")
 
@@ -299,7 +299,7 @@
 			O.layer = BELOW_OBJ_LAYER //so it layers below the pills we'll be ejecting from the fridge. resets when picked up - i guess someone COULD drag the paper away but I'm not about to lose sleep over that
 			O.pixel_x = Clamp(text2num(params_list["icon-x"]) - clamp_x, -clamp_x, clamp_x)
 			O.pixel_y = Clamp(text2num(params_list["icon-y"]) - clamp_y, -clamp_y, clamp_y)
-			to_chat(user, "<span class='notice'>I hang \the [O.name] on the fridge.</span>")
+			to_chat(user, "<span class='notice'>You hang \the [O.name] on the fridge.</span>")
 	else
 		to_chat(user, "<span class='notice'>\The [src] smartly refuses [O].</span>")
 		return 1

@@ -44,12 +44,12 @@
 
 			if(IsMultiple(activeFor, 12))
 				originMachine.speak(pick("Try our aggressive new marketing strategies!", \
-										 "I should buy products to feed my lifestyle obession!", \
+										 "I should buy products to feed your lifestyle obession!", \
 										 "Consume!", \
 										 "My money can buy happiness!", \
 										 "Engage direct marketing!", \
 										 "Advertising is legalized lying! But don't let that put you off our great deals!", \
-										 "I don't want to buy anything? Yeah, well I didn't want to buy my mom either."))
+										 "I don't want to buy anything? Yeah, well I didn't want to buy your mom either."))
 
 /datum/event/brand_intelligence/end()
 	for(var/obj/machinery/vending/infectedMachine in infectedVendingMachines)

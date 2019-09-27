@@ -13,7 +13,7 @@
 	minimum_charge = 100
 	range = SELFCAST
 	cast_sound = 'sound/misc/grue_growl.ogg'
-	still_recharging_msg = "<span class='notice'>I am still regaining my strength.</span>"
+	still_recharging_msg = "<span class='notice'>You are still regaining your strength.</span>"
 
 /spell/swallow_light/cast(list/targets, mob/user)
 	user.set_light(8,-20)
@@ -43,7 +43,7 @@
 	spell_flags = null
 	range = SELFCAST
 	cast_sound = 'sound/misc/grue_screech.ogg'
-	still_recharging_msg = "<span class='notice'>I am still regaining my strength.</span>"
+	still_recharging_msg = "<span class='notice'>You are still regaining your strength.</span>"
 
 /spell/shatter_lights/cast(list/targets, mob/user)
 	playsound(user, cast_sound, 100)
@@ -70,7 +70,7 @@
 	charge_max = 100
 	range = SELFCAST
 	cast_sound = 'sound/effects/squelch1.ogg'
-	still_recharging_msg = "<span class='notice'>I am still regaining my strength.</span>"
+	still_recharging_msg = "<span class='notice'>You are still regaining your strength.</span>"
 
 /spell/regen_limbs/cast(list/targets, mob/user)
 	if(ishuman(user))
@@ -100,19 +100,19 @@
 							O.rejuvenate_limb()
 							has_regenerated = TRUE
 							user.visible_message("<span class='warning'>\The [user] sprouts a new [O.display_name]!</span>",\
- 								"<span class='notice'>I sprout a new [O.display_name]!</span>")
+ 								"<span class='notice'>You sprout a new [O.display_name]!</span>")
 				else if(H.nutrition >= 100)
 					H.nutrition -= 100
 					O.rejuvenate_limb()
 					has_regenerated = TRUE
 					user.visible_message("<span class='warning'>\The [user] sprouts a new [O.display_name]!</span>",\
-						"<span class='notice'>I sprout a new [O.display_name]!</span>")
+						"<span class='notice'>You sprout a new [O.display_name]!</span>")
 
 		H.resting = 0
 		H.regenerate_icons()
 		H.update_canmove()
 		if(!has_regenerated)
-			to_chat(user, "<span class='warning'>I don't have enough energy to regenerate!</span>")
+			to_chat(user, "<span class='warning'>You don't have enough energy to regenerate!</span>")
 
 /spell/regen_limbs/choose_targets(mob/user = usr)
 	var/list/targets = list()

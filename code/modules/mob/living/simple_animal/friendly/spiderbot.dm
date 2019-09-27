@@ -65,9 +65,9 @@
 			to_chat(user, "<span class='warning'>[O] does not seem to fit.</span>")
 			return
 		if(!user.drop_item(O, src))
-			user << "<span class='warning'>I can't let go of \the [O].</span>"
+			user << "<span class='warning'>You can't let go of \the [O].</span>"
 
-		to_chat(user, "<span class='notice'>I install [O] in [src]!</span>")
+		to_chat(user, "<span class='notice'>You install [O] in [src]!</span>")
 
 		src.mmi = O
 		src.transfer_personality(O)
@@ -91,7 +91,7 @@
 			return
 	else if(istype(O, /obj/item/weapon/card/id)||istype(O, /obj/item/device/pda))
 		if (!mmi)
-			to_chat(user, "<span class='warning'>There's no reason to swipe my ID - the spiderbot has no brain to remove.</span>")
+			to_chat(user, "<span class='warning'>There's no reason to swipe your ID - the spiderbot has no brain to remove.</span>")
 			return 0
 
 		var/obj/item/weapon/card/id/id_card
@@ -103,7 +103,7 @@
 			id_card = pda.id
 
 		if(access_robotics in id_card.access)
-			to_chat(user, "<span class='notice'>I swipe my access card and pop the brain out of [src].</span>")
+			to_chat(user, "<span class='notice'>You swipe your access card and pop the brain out of [src].</span>")
 			eject_brain()
 
 			if(held_item)
@@ -112,7 +112,7 @@
 
 			return 1
 		else
-			to_chat(user, "<span class='warning'>I swipe my card, with no effect.</span>")
+			to_chat(user, "<span class='warning'>You swipe your card, with no effect.</span>")
 			return 0
 	else if (istype(O, /obj/item/weapon/card/emag))
 		if (emagged)
@@ -120,9 +120,9 @@
 			return 0
 		else
 			emagged = 1
-			to_chat(user, "<span class='notice'>I short out the security protocols and overload [src]'s cell, priming it to explode in a short time.</span>")
-			spawn(100)	to_chat(src, "<span class='warning'>My cell seems to be outputting a lot of power...</span>")
-			spawn(200)	to_chat(src, "<span class='warning'>Internal heat sensors are spiking! Something is badly wrong with my cell!</span>")
+			to_chat(user, "<span class='notice'>You short out the security protocols and overload [src]'s cell, priming it to explode in a short time.</span>")
+			spawn(100)	to_chat(src, "<span class='warning'>Your cell seems to be outputting a lot of power...</span>")
+			spawn(200)	to_chat(src, "<span class='warning'>Internal heat sensors are spiking! Something is badly wrong with your cell!</span>")
 			spawn(300)	src.explode()
 
 	else
@@ -212,10 +212,10 @@
 
 	if (plane != HIDING_MOB_PLANE)
 		plane = HIDING_MOB_PLANE
-		to_chat(src, text("<span class='notice'>I am now hiding.</span>"))
+		to_chat(src, text("<span class='notice'>You are now hiding.</span>"))
 	else
 		plane = MOB_PLANE
-		to_chat(src, text("<span class='notice'>I have stopped hiding.</span>"))
+		to_chat(src, text("<span class='notice'>You have stopped hiding.</span>"))
 
 //Cannibalized from the parrot mob. ~Zuhayr
 
@@ -228,18 +228,18 @@
 		return
 
 	if(!held_item)
-		to_chat(usr, "<span class='warning'>I have nothing to drop!</span>")
+		to_chat(usr, "<span class='warning'>You have nothing to drop!</span>")
 		return 0
 
 	if(istype(held_item, /obj/item/weapon/grenade))
-		visible_message("<span class='warning'>[src] launches \the [held_item]!</span>", "<span class='warning'>I launch \the [held_item]!</span>", "I hear a skittering noise and a thump!")
+		visible_message("<span class='warning'>[src] launches \the [held_item]!</span>", "<span class='warning'>You launch \the [held_item]!</span>", "I hear a skittering noise and a thump!")
 		var/obj/item/weapon/grenade/G = held_item
 		G.forceMove(src.loc)
 		G.prime()
 		held_item = null
 		return 1
 
-	visible_message("<span class='notice'>[src] drops \the [held_item]!</span>", "<span class='notice'>I drop \the [held_item]!</span>", "I hear a skittering noise and a soft thump.")
+	visible_message("<span class='notice'>[src] drops \the [held_item]!</span>", "<span class='notice'>You drop \the [held_item]!</span>", "I hear a skittering noise and a soft thump.")
 
 	held_item.forceMove(src.loc)
 	held_item = null
@@ -257,7 +257,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, "<span class='warning'>I am already holding \the [held_item]</span>")
+		to_chat(src, "<span class='warning'>You are already holding \the [held_item]</span>")
 		return 1
 
 	var/list/items = list()
@@ -272,7 +272,7 @@
 			if(selection == I)
 				held_item = selection
 				selection.forceMove(src)
-				visible_message("<span class='notice'>[src] scoops up \the [held_item]!</span>", "<span class='notice'>I grab \the [held_item]!</span>", "I hear a skittering noise and a clink.")
+				visible_message("<span class='notice'>[src] scoops up \the [held_item]!</span>", "<span class='notice'>You grab \the [held_item]!</span>", "I hear a skittering noise and a clink.")
 				return held_item
 		to_chat(src, "<span class='warning'>\The [selection] is too far away.</span>")
 		return 0

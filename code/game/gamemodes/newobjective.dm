@@ -1429,7 +1429,7 @@ datum
 				return 1
 
 datum/objective/silence
-	explanation_text = "Do not allow anyone to escape the station.  Only allow the shuttle to be called when everyone is dead and my story is the only one left."
+	explanation_text = "Do not allow anyone to escape the station.  Only allow the shuttle to be called when everyone is dead and your story is the only one left."
 
 	check_completion()
 		if(emergency_shuttle.location<2)

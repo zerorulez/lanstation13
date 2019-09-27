@@ -156,7 +156,7 @@
 			to_chat(user, "There is already a set of rails in \the [src].")
 			return
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 			return 1
 		to_chat(user, "I insert \the [W] into the barrel of \the [src].")
 		rails = W
@@ -191,7 +191,7 @@
 			to_chat(user, "There is already a capacitor in the capacitor bank of \the [src].")
 			return
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 			return 1
 		to_chat(user, "I insert \the [W] into the capacitor bank of \the [src].")
 		capacitor = W
@@ -345,7 +345,7 @@
 
 	var/distance = 10
 
-	user.visible_message("<span class='danger'>[user] fires \the [src] and launches \the [object] at [target]!</span>","<span class='danger'>I fire \the [src] and launch \the [object] at [target]!</span>")
+	user.visible_message("<span class='danger'>[user] fires \the [src] and launches \the [object] at [target]!</span>","<span class='danger'>You fire \the [src] and launch \the [object] at [target]!</span>")
 	log_attack("[user.name] ([user.ckey]) fired \the [src] (proj:[object.name]) at [target] [ismob(target) ? "([target:ckey])" : ""] ([target.x],[target.y],[target.z])" )
 
 	object.forceMove(user.loc)

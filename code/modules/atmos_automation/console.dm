@@ -259,13 +259,13 @@
 				if(usr.drop_item(to_connect, src)) //Stick it in and connect it
 					linked_assemblies[id] = to_connect
 			else
-				to_chat(usr, "<span class='info'>Hold the assembly in my hand and press this button to connect it.</span>")
+				to_chat(usr, "<span class='info'>Hold the assembly in your hand and press this button to connect it.</span>")
 
 		else //Something connected - eject it
 			linked_assemblies[id] = null
 			A.forceMove(get_turf(src))
 
-			to_chat(usr, "<span class='info'>I eject \the [A] from socket #[id].</span>")
+			to_chat(usr, "<span class='info'>You eject \the [A] from socket #[id].</span>")
 
 		href_list["view_assemblies"] = 1 //Update the window!
 

@@ -8,7 +8,7 @@
  * * reagents are reagents. Acid, milc, booze, etc.
  * * items are objects. Fruits, tools, circuit boards.
  * * result is type to create as new object
- * * time is optional parameter, you shall use in in my machine,
+ * * time is optional parameter, you shall use in in your machine,
      default /datum/recipe/ procs does not rely on this parameter.
  *
  *  Functions you need:
@@ -35,7 +35,7 @@
 //The person who made this honestly thought that the average coder from the distant future of 2017 would understand any of this shit without a thorough and painful examination
 //And this is exactly why any Chemistry-related system is impenetrable to anyone but the best coders, even things theorically as simple as this
 //So as I decrypt this arcane coding technology, I'll add comments where I see it fit, so absolutely fucking everywhere
-//I'll take my Nobel Prize with fries thank you
+//I'll take your Nobel Prize with fries thank you
 //And yes indeed I know it's a lot of comments, but if you're not here to understand how recipes work, why are you here ?
 /datum/recipe
 
@@ -105,7 +105,7 @@
 		qdel(O) //Delete the object, he has outlived his usefulness
 	container.reagents.clear_reagents() //Clear all the reagents we haven't transfered, for instance if we need to cook in water
 	score["meals"]++ //Yes, it's a weird placement, but it's sure to work correctly as long as make_food() is used for food
-	return result_obj //Here we go, my result sire
+	return result_obj //Here we go, your result sire
 
 //Find what to do with all this shit in the microwave dynamically, without blowing up the station
 //We consider all recipes in the game, obj (typecast as obj and estimated as obj because fuck you) and wherever or not its ingredients are exact based on what we learned from the last two procs

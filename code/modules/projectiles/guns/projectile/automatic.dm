@@ -174,7 +174,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/attack_self(mob/user as mob)
 	cover_open = !cover_open
-	to_chat(user, "<span class='notice'>I [cover_open ? "open" : "close"] [src]'s cover.</span>")
+	to_chat(user, "<span class='notice'>You [cover_open ? "open" : "close"] [src]'s cover.</span>")
 	update_icon()
 
 
@@ -199,7 +199,7 @@
 	else if(cover_open && stored_magazine) //since attack_self toggles the cover and not the magazine, we use this instead
 		//drop the mag
 		RemoveMag(user)
-		to_chat(user, "<span class='notice'>I remove the magazine from [src].</span>")
+		to_chat(user, "<span class='notice'>You remove the magazine from [src].</span>")
 
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/attackby(obj/item/ammo_storage/magazine/a762/A as obj, mob/user as mob)

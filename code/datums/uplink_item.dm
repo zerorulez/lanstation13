@@ -192,7 +192,7 @@ var/list/uplink_items = list()
 
 /datum/uplink_item/jobspecific/conversionkit
 	name = "Conversion Kit Bundle"
-	desc = "A bundle that comes with a professional revolver conversion kit and 1 box of .357 ammo. The kit allows you to convert my revolver to fire lethal rounds or vice versa. The modification is perfect and will not result in catastrophic failure, but remember to empty my gun first!"
+	desc = "A bundle that comes with a professional revolver conversion kit and 1 box of .357 ammo. The kit allows you to convert your revolver to fire lethal rounds or vice versa. The modification is perfect and will not result in catastrophic failure, but remember to empty your gun first!"
 	item = /obj/item/weapon/storage/box/syndie_kit/conversion
 	cost = 12
 	job = list("Detective")
@@ -217,14 +217,14 @@ var/list/uplink_items = list()
 //Assistant
 /datum/uplink_item/jobspecific/pickpocketgloves
 	name = "Pickpocket's Gloves"
-	desc = "A pair of sleek gloves to aid in pickpocketing, while wearing these you can sneakily strip any item without the other person being alerted. Pickpocketed items will also be put into my hand rather than fall to the ground."
+	desc = "A pair of sleek gloves to aid in pickpocketing, while wearing these you can sneakily strip any item without the other person being alerted. Pickpocketed items will also be put into your hand rather than fall to the ground."
 	item = /obj/item/clothing/gloves/black/thief
 	cost = 6
 	job = list("Assistant")
 
 /datum/uplink_item/jobspecific/greytide
 	name = "Greytide Implant"
-	desc = "A box containing an implanter filled with a greytide implant when injected into another person makes them loyal to the greytide and my cause, unless they're already implanted by someone else. Loyalty ends if he or she no longer has the implant."
+	desc = "A box containing an implanter filled with a greytide implant when injected into another person makes them loyal to the greytide and your cause, unless they're already implanted by someone else. Loyalty ends if he or she no longer has the implant."
 	item = /obj/item/weapon/storage/box/syndie_kit/greytide
 	cost = 10
 	job = list("Assistant")
@@ -246,7 +246,7 @@ var/list/uplink_items = list()
 
 /datum/uplink_item/jobspecific/meatcleaver
 	name = "Meat Cleaver"
-	desc = "A mean looking meat cleaver that does damage comparable to an Energy Sword but with the added benefit of chopping my victim into hunks of meat after they've died and the chance to stun when thrown."
+	desc = "A mean looking meat cleaver that does damage comparable to an Energy Sword but with the added benefit of chopping your victim into hunks of meat after they've died and the chance to stun when thrown."
 	item = /obj/item/weapon/kitchen/utensil/knife/large/butch/meatcleaver
 	cost = 12
 	job = list("Bartender", "Chef")
@@ -334,7 +334,7 @@ var/list/uplink_items = list()
 
 /datum/uplink_item/nukeprice/voice_changer
 	name = "Voice Changer"
-	desc = "A conspicuous gas mask that mimics the voice named on my identification card. When no identification is worn, the mask will render my voice distinguishably unrecognizable."
+	desc = "A conspicuous gas mask that mimics the voice named on your identification card. When no identification is worn, the mask will render your voice distinguishably unrecognizable."
 	category = "Stealth and Camouflage Items"
 	item = /obj/item/clothing/mask/gas/voice
 	cost = 8
@@ -421,13 +421,13 @@ var/list/uplink_items = list()
 
 /datum/uplink_item/stealthy_weapons/detomatix
 	name = "Detomatix PDA Cartridge"
-	desc = "When inserted into a Personal Data Assistant, this cartridge gives you five opportunities to detonate PDAs of crewmembers who have their message feature enabled. The concussive effect from the explosion will knock the recipient out for a short period, and deafen them for longer. It has a chance to detonate my PDA."
+	desc = "When inserted into a Personal Data Assistant, this cartridge gives you five opportunities to detonate PDAs of crewmembers who have their message feature enabled. The concussive effect from the explosion will knock the recipient out for a short period, and deafen them for longer. It has a chance to detonate your PDA."
 	item = /obj/item/weapon/cartridge/syndicate
 	cost = 6
 
 /datum/uplink_item/stealthy_weapons/knuckles
 	name = "Brass Knuckles"
-	desc = "A pair of metal knuckles that can be worn on my hands, increasing damage done by my punches."
+	desc = "A pair of metal knuckles that can be worn on your hands, increasing damage done by your punches."
 	item = /obj/item/clothing/gloves/knuckles
 	cost = 2
 
@@ -458,14 +458,14 @@ var/list/uplink_items = list()
 
 /datum/uplink_item/stealthy_tools/voice_changer
 	name = "Voice Changer"
-	desc = "A conspicuous gas mask that mimics the voice named on my identification card. When no identification is worn, the mask will render my voice distinguishably unrecognizable."
+	desc = "A conspicuous gas mask that mimics the voice named on your identification card. When no identification is worn, the mask will render your voice distinguishably unrecognizable."
 	item = /obj/item/clothing/mask/gas/voice
 	cost = 5
 	excludefrom = list("nuclear emergency")
 
 /datum/uplink_item/stealthy_tools/dnascrambler
 	name = "DNA Scrambler"
-	desc = "A syringe with one injection that randomizes appearance and name upon use. A cheaper but less versatile alternative to an agent card and voice changer. A crewmember with a copy of the crew manifest and/or a security HUD could question my identity."
+	desc = "A syringe with one injection that randomizes appearance and name upon use. A cheaper but less versatile alternative to an agent card and voice changer. A crewmember with a copy of the crew manifest and/or a security HUD could question your identity."
 	item = /obj/item/weapon/dnascrambler
 	cost = 4
 
@@ -556,13 +556,13 @@ var/list/uplink_items = list()
 
 /datum/uplink_item/device_tools/powersink
 	name = "Power Sink"
-	desc = "When screwed to wiring attached to an electric grid, then activated, this large device places excessive load on the grid, causing a stationwide blackout. The sink cannot be carried because of its massive size. Ordering this sends you a small beacon that will teleport the power sink to my location on activation."
+	desc = "When screwed to wiring attached to an electric grid, then activated, this large device places excessive load on the grid, causing a stationwide blackout. The sink cannot be carried because of its massive size. Ordering this sends you a small beacon that will teleport the power sink to your location on activation."
 	item = /obj/item/device/powersink
 	cost = 10
 
 /datum/uplink_item/device_tools/singularity_beacon
 	name = "Singularity Beacon"
-	desc = "When screwed to wiring attached to an electric grid, then activated, this large device pulls the singularity towards it. Does not work when the singularity is still in containment. A singularity beacon can cause catastrophic damage to a space station, leading to an emergency evacuation. Because of its size, it cannot be carried. Ordering this sends you a small beacon that will teleport the larger beacon to my location on activation."
+	desc = "When screwed to wiring attached to an electric grid, then activated, this large device pulls the singularity towards it. Does not work when the singularity is still in containment. A singularity beacon can cause catastrophic damage to a space station, leading to an emergency evacuation. Because of its size, it cannot be carried. Ordering this sends you a small beacon that will teleport the larger beacon to your location on activation."
 	item = /obj/item/beacon/syndicate
 	cost = 14
 
@@ -647,7 +647,7 @@ var/list/uplink_items = list()
 
 /datum/uplink_item/badass/random
 	name = "Random Item"
-	desc = "Picking this choice will send you a random item from the list. Useful for when you cannot think of a strategy to finish my objectives with."
+	desc = "Picking this choice will send you a random item from the list. Useful for when you cannot think of a strategy to finish your objectives with."
 	item = /obj/item/weapon/storage/box/syndicate
 	cost = 0
 

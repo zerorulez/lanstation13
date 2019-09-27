@@ -71,7 +71,7 @@
 	if (src.destroyed)
 		return
 	else
-		to_chat(usr, text("<span class='notice'>I kick the lab cage.</span>"))
+		to_chat(usr, text("<span class='notice'>You kick the lab cage.</span>"))
 		for(var/mob/O in oviewers())
 			if ((O.client && !( O.blinded )))
 				to_chat(O, text("<span class='warning'>[] kicks the lab cage.</span>", usr))
@@ -91,7 +91,7 @@
 
 /obj/item/clothing/mask/facehugger/lamarr
 	name = "Lamarr"
-	desc = "The worst she might do is attempt to... couple with my head."//hope we don't get sued over a harmless reference, rite?
+	desc = "The worst she might do is attempt to... couple with your head."//hope we don't get sued over a harmless reference, rite?
 	sterile = 1
 	gender = FEMALE
 

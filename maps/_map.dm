@@ -10,7 +10,7 @@
 // hardcoded bullshit. Same for each Z-level.
 //
 // Should be mostly self-explanatory. Define /datum/map/active
-// in my map file. See current maps for examples.
+// in your map file. See current maps for examples.
 //
 // Base Turf
 // --------------

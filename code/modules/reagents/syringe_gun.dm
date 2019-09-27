@@ -28,7 +28,7 @@
 			if(syringes.len < max_syringes)
 				if(user.drop_item(I, src))
 					syringes += I
-					to_chat(user, "<span class='notice'>I put the syringe in [src].</span>")
+					to_chat(user, "<span class='notice'>You put the syringe in [src].</span>")
 					to_chat(user, "<span class='notice'>[syringes.len] / [max_syringes] syringes.</span>")
 					investigation_log(I_CHEMS, "was loaded with \a [I] by [key_name(user)], containing [I.reagents.get_reagent_ids(1)]")
 			else
@@ -52,16 +52,15 @@
 /obj/item/weapon/gun/syringe/Fire(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, params, reflex = 0, struggle = 0)
 	if(syringes.len)
 		if(clumsy_check(user))
-			if(prob(50))
-				to_chat(user, "<span class='warning'>I accidentally shoot yourself!</span>")
-				var/obj/item/weapon/reagent_containers/syringe/S = syringes[1]
-				if((!S) || (!S.reagents))
-					to_chat(user, "<span class='notice'>Thankfully, nothing happens.</span>")
-					return
-				syringes -= S
-				S.reagents.trans_to(user, S.reagents.total_volume)
-				qdel(S)
+			to_chat(user, "<span class='warning'>You accidentally shoot yourself!</span>")
+			var/obj/item/weapon/reagent_containers/syringe/S = syringes[1]
+			if((!S) || (!S.reagents))
+				to_chat(user, "<span class='notice'>Thankfully, nothing happens.</span>")
 				return
+			syringes -= S
+			S.reagents.trans_to(user, S.reagents.total_volume)
+			qdel(S)
+			return
 
 		spawn(0) fire_syringe(target,user)
 	else

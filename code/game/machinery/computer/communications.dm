@@ -69,7 +69,7 @@ var/shuttle_call/shuttle_calls[0]
 		return 1
 
 	if (!(src.z in list(STATION_Z,CENTCOMM_Z)))
-		to_chat(usr, "<span class='danger'>Unable to establish a connection: </span>I am too far away from the station!")
+		to_chat(usr, "<span class='danger'>Unable to establish a connection: </span>You are too far away from the station!")
 		return
 
 	usr.set_machine(src)
@@ -135,7 +135,7 @@ var/shuttle_call/shuttle_calls[0]
 					tmp_alertlevel = 0
 				setMenuState(usr,COMM_SCREEN_MAIN)
 			else
-				to_chat(usr, "I need to swipe my ID.")
+				to_chat(usr, "I need to swipe your ID.")
 
 		if("announce")
 			if(src.authenticated==2 && !issilicon(usr))
@@ -162,7 +162,7 @@ var/shuttle_call/shuttle_calls[0]
 				if(access_captain in I.access)
 					authenticated = 2
 			if(authenticated != 2)
-				to_chat(usr, "<span class='warning'>I do not have clearance to use this function.</span>")
+				to_chat(usr, "<span class='warning'>You do not have clearance to use this function.</span>")
 				return
 			setMenuState(usr,COMM_SCREEN_ERT)
 			return
@@ -205,7 +205,7 @@ var/shuttle_call/shuttle_calls[0]
 				return
 			var/ert_reason = stripped_input(usr, "Please input the reason for calling an Emergency Response Team. This may be all the information they get before arriving at the station.", "Response Team Justification")
 			if(!ert_reason)
-				to_chat(usr, "<span class='warning'>I am required to give a reason to call an ERT.</span>")
+				to_chat(usr, "<span class='warning'>You are required to give a reason to call an ERT.</span>")
 				return
 			if(!Adjacent(usr) || usr.incapacitated())
 				return
@@ -351,7 +351,7 @@ var/shuttle_call/shuttle_calls[0]
 		return
 
 	if (!(src.z in list(STATION_Z, CENTCOMM_Z)))
-		to_chat(user, "<span class='danger'>Unable to establish a connection: </span>I am too far away from the station!")
+		to_chat(user, "<span class='danger'>Unable to establish a connection: </span>You are too far away from the station!")
 		return
 
 	ui_interact(user)
@@ -536,7 +536,7 @@ var/shuttle_call/shuttle_calls[0]
 			return
 
 		if(emergency_shuttle.deny_shuttle)
-			to_chat(user, "Centcom does not currently have a shuttle available in my sector. Please try again later.")
+			to_chat(user, "Centcom does not currently have a shuttle available in your sector. Please try again later.")
 			return
 
 		if(sent_strike_team == 1)

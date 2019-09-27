@@ -161,7 +161,7 @@
 			if(istype(user, /mob/living/silicon/ai) || istype(user, /mob/living/silicon/robot))
 
 				dat += {"Brute-forcing for server key.<br> It will take 20 seconds for every character that the password has.
-					In the meantime, this console can reveal my true intentions if you let someone access it. Make sure no humans enter the room during that time."}
+					In the meantime, this console can reveal your true intentions if you let someone access it. Make sure no humans enter the room during that time."}
 			else
 				//It's the same message as the one above but in binary. Because robots understand binary and humans don't... well I thought it was clever.
 				dat += {"01000010011100100111010101110100011001010010110<br>
@@ -423,7 +423,7 @@
 
 					//Enter message
 					if("Message")
-						custommessage	= input(usr, "Please enter my message.") as text|null
+						custommessage	= input(usr, "Please enter your message.") as text|null
 						custommessage	= copytext(sanitize(custommessage), 1, MAX_MESSAGE_LEN)
 
 					//Send message

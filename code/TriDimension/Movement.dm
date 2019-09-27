@@ -21,12 +21,12 @@ var/minZ = 2
 						for(var/atom/A in T.contents)
 							if(T.density)
 								blocked = 1
-								to_chat(user, "<span class='warning'>I bump into [T.name].</span>")
+								to_chat(user, "<span class='warning'>You bump into [T.name].</span>")
 								break
 						if(!blocked)
 							user.Move(T)
 					else
-						to_chat(user, "<span class='warning'>I bump into the ship's plating.</span>")
+						to_chat(user, "<span class='warning'>You bump into the ship's plating.</span>")
 				else
 					to_chat(user, "<span class='warning'>The ship's gravity well keeps you in orbit!</span>")// Assuming the ship starts on z level 1, you don't want to go past it
 
@@ -40,11 +40,11 @@ var/minZ = 2
 						for(var/atom/A in T.contents)
 							if(T.density)
 								blocked = 1
-								to_chat(user, "<span class='warning'>I bump into [T.name].</span>")
+								to_chat(user, "<span class='warning'>You bump into [T.name].</span>")
 								break
 						if(!blocked)
 							user.Move(T)
 					else
-						to_chat(user, "<span class='warning'>I bump into the ship's plating.</span>")
+						to_chat(user, "<span class='warning'>You bump into the ship's plating.</span>")
 				else
 					to_chat(user, "<span class='warning'>The ship's gravity well keeps you in orbit!</span>")

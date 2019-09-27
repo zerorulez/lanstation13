@@ -41,7 +41,7 @@
 		var/mob/living/carbon/human/user = usr
 
 		if(user.stat)
-			return //if you're unconscious or dead, no dicking with my armor. --NEO
+			return //if you're unconscious or dead, no dicking with your armor. --NEO
 
 		if(!istype(user))
 			to_chat(user, "<span class='warning'>This suit was engineered for human use only.</span>")
@@ -118,7 +118,7 @@
 		var/mob/living/carbon/human/user = usr
 
 		if(user.stat && !sudden)
-			return //if you're unconscious or dead, no dicking with my armor. --NEO
+			return //if you're unconscious or dead, no dicking with your armor. --NEO
 
 		if(!active)
 			return
@@ -126,7 +126,7 @@
 		verbs -= /obj/item/clothing/suit/powered/proc/poweroff
 
 		if(sudden)
-			to_chat(user, "<span class='warning'>My armor loses power!</span>")
+			to_chat(user, "<span class='warning'>Your armor loses power!</span>")
 
 		if(servos)
 			servos.toggle(sudden)
@@ -171,7 +171,7 @@
 			switch(W.type)
 				if(/obj/item/stack/sheet/mineral/plasma)
 					if(fuel < 50)
-						to_chat(user, "<span class='notice'>I feed some refined plasma into the armor's generator.</span>")
+						to_chat(user, "<span class='notice'>You feed some refined plasma into the armor's generator.</span>")
 						power:fuel += 25
 						W:amount--
 						if (W:amount <= 0)
@@ -183,7 +183,7 @@
 
 				if(/obj/item/stack/ore/plasma) //raw plasma has impurities, so it doesn't provide as much fuel. --NEO
 					if(fuel < 50)
-						to_chat(user, "<span class='notice'>I feed some plasma into the armor's generator.</span>")
+						to_chat(user, "<span class='notice'>You feed some plasma into the armor's generator.</span>")
 						power:fuel += 15
 						del(W)
 						return

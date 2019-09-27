@@ -40,7 +40,7 @@
 				if(isscrewdriver(W))
 					to_chat(usr, "I begin removing screws from \the [src] backplate...")
 					if(do_after(user, src, 50))
-						to_chat(usr, "<span class='notice'>I unscrew \the [src] from the wall.</span>")
+						to_chat(usr, "<span class='notice'>You unscrew \the [src] from the wall.</span>")
 						playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 						new /obj/item/mounted/frame/airlock_controller(get_turf(src))
 						qdel(src)
@@ -48,12 +48,12 @@
 				if(istype(W, /obj/item/weapon/circuitboard))
 					var/obj/item/weapon/circuitboard/C=W
 					if(C.board_type!= EMBEDDED_CONTROLLER)
-						to_chat(user, "<span class='warning'>I cannot install this type of board into an embedded controller.</span>")
+						to_chat(user, "<span class='warning'>You cannot install this type of board into an embedded controller.</span>")
 						return
 					to_chat(usr, "I begin to insert \the [C] into \the [src].")
 					if(do_after(user, src, 10))
 						if(user.drop_item(C, src))
-							to_chat(usr, "<span class='notice'>I secure \the [C]!</span>")
+							to_chat(usr, "<span class='notice'>You secure \the [C]!</span>")
 							_circuitboard=C
 							playsound(get_turf(src), 'sound/effects/pop.ogg', 50, 0)
 							build++
@@ -244,7 +244,7 @@
 			if(!O)
 				return 1
 			if(!canLink(O))
-				to_chat(usr, "<span class='warning'>I can't link with that device.</span>")
+				to_chat(usr, "<span class='warning'>You can't link with that device.</span>")
 				return 1
 
 			if(unlinkFrom(usr, O))
@@ -258,7 +258,7 @@
 			if(!O)
 				return 1
 			if(!canLink(O,href_list))
-				to_chat(usr, "<span class='warning'>I can't link with that device.</span>")
+				to_chat(usr, "<span class='warning'>You can't link with that device.</span>")
 				return 1
 			if (isLinkedWith(O))
 				to_chat(usr, "<span class='attack'>A red light flashes on \the [P]. The two devices are already linked.</span>")

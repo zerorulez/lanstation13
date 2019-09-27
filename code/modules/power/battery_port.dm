@@ -37,7 +37,7 @@
 		var/obj/item/stack/cable_coil/CC = W
 
 		if (CC.amount < 10)
-			to_chat(user, "<span class=\"warning\">I need 10 length cable coil to make a terminal.</span>")
+			to_chat(user, "<span class=\"warning\">You need 10 length cable coil to make a terminal.</span>")
 			return
 
 		if(make_terminal(user))

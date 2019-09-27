@@ -108,7 +108,7 @@
 	stage = 1
 
 /datum/disease2/effect/gunck/activate(var/mob/living/carbon/mob)
-	to_chat(mob, "<span class = 'notice'> Mucous runs down the back of my throat.</span>")
+	to_chat(mob, "<span class = 'notice'> Mucous runs down the back of your throat.</span>")
 
 
 /datum/disease2/effect/drool
@@ -132,7 +132,7 @@
 	stage = 1
 
 /datum/disease2/effect/headache/activate(var/mob/living/carbon/mob)
-	to_chat(mob, "<span class = 'notice'>My head hurts a bit</span>")
+	to_chat(mob, "<span class = 'notice'>Your head hurts a bit</span>")
 
 
 /datum/disease2/effect/itching
@@ -142,9 +142,9 @@
 /datum/disease2/effect/itching/activate(var/mob/living/carbon/mob)
 	var/mob/living/carbon/human/H = mob
 	if (istype(H) && H.species && H.species.anatomy_flags & NO_SKIN)
-		to_chat(mob, "<span class='warning'>My bones itch!</span>")
+		to_chat(mob, "<span class='warning'>Your bones itch!</span>")
 	else
-		to_chat(mob, "<span class='warning'>My skin itches!</span>")
+		to_chat(mob, "<span class='warning'>Your skin itches!</span>")
 
 
 /datum/disease2/effect/drained
@@ -152,7 +152,7 @@
 	stage = 1
 
 /datum/disease2/effect/drained/activate(var/mob/living/carbon/mob)
-	to_chat(mob, "<span class='warning'>I feel drained.</span>")
+	to_chat(mob, "<span class='warning'>You feel drained.</span>")
 
 
 /datum/disease2/effect/eyewater
@@ -160,7 +160,7 @@
 	stage = 1
 
 /datum/disease2/effect/eyewater/activate(var/mob/living/carbon/mob)
-	to_chat(mob, "<SPAN CLASS='warning'>My eyes sting and water!</SPAN>")
+	to_chat(mob, "<SPAN CLASS='warning'>Your eyes sting and water!</SPAN>")
 
 
 /datum/disease2/effect/wheeze
@@ -176,7 +176,7 @@
 	stage = 1
 
 /datum/disease2/effect/optimistic/activate(var/mob/living/carbon/mob)
-	to_chat(mob, "<span class = 'notice'>I feel optimistic!</span>")
+	to_chat(mob, "<span class = 'notice'>You feel optimistic!</span>")
 	if (mob.reagents.get_reagent_amount(TRICORDRAZINE) < 1)
 		mob.reagents.add_reagent(TRICORDRAZINE, 1)
 
@@ -259,7 +259,7 @@
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		if(H.species.name == "Human" && !(H.h_style == "Bald") && !(H.h_style == "Balding Hair"))
-			to_chat(H, "<span class='danger'>My hair starts to fall out in clumps...</span>")
+			to_chat(H, "<span class='danger'>Your hair starts to fall out in clumps...</span>")
 			spawn(50)
 				H.h_style = "Balding Hair"
 				H.update_hair()
@@ -270,7 +270,7 @@
 	stage = 2
 
 /datum/disease2/effect/stimulant/activate(var/mob/living/carbon/mob)
-	to_chat(mob, "<span class='notice'>I feel a rush of energy inside you!</span>")
+	to_chat(mob, "<span class='notice'>You feel a rush of energy inside you!</span>")
 	if (mob.reagents.get_reagent_amount(HYPERZINE) < 10)
 		mob.reagents.add_reagent(HYPERZINE, 4)
 	if (prob(30))
@@ -282,7 +282,7 @@
 	stage = 2
 
 /datum/disease2/effect/drunk/activate(var/mob/living/carbon/mob)
-	to_chat(mob, "<span class='notice'>I feel like you had one hell of a party!</span>")
+	to_chat(mob, "<span class='notice'>You feel like you had one hell of a party!</span>")
 	if (mob.reagents.get_reagent_amount(ETHANOL) < 325)
 		mob.reagents.add_reagent(ETHANOL, 5*multiplier)
 
@@ -292,7 +292,7 @@
 	stage = 2
 
 /datum/disease2/effect/gaben/activate(var/mob/living/carbon/mob)
-	to_chat(mob, "<span class='notice'>My clothing fits a little tighter!!</span>")
+	to_chat(mob, "<span class='notice'>Your clothing fits a little tighter!!</span>")
 	if (prob(10))
 		mob.reagents.add_reagent(NUTRIMENT, 1000)
 		mob.overeatduration = 1000
@@ -306,7 +306,7 @@
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		if(H.species.name == "Human" && !(H.f_style == "Full Beard"))
-			to_chat(H, "<span class='warning'>My chin and neck itch!.</span>")
+			to_chat(H, "<span class='warning'>Your chin and neck itch!.</span>")
 			spawn(50)
 				H.f_style = "Full Beard"
 				H.update_hair()
@@ -348,7 +348,7 @@
 
 /datum/disease2/effect/lantern/activate(var/mob/living/carbon/mob)
 	mob.set_light(4)
-	to_chat(mob, "<span class = 'notice'>I am glowing!</span>")
+	to_chat(mob, "<span class = 'notice'>You are glowing!</span>")
 
 
 /datum/disease2/effect/hangman
@@ -393,17 +393,17 @@
 		var/obj/item/weapon/reagent_containers/glass_to_shatter = H.get_held_item_by_index(hand_to_use)
 		var/datum/organ/external/glass_hand = H.find_organ_by_grasp_index(hand_to_use)
 		if (istype(glass_to_shatter, /obj/item/weapon/reagent_containers/glass/) || istype(glass_to_shatter, /obj/item/weapon/reagent_containers/syringe))
-			to_chat(H, "<span class='warning'>My [glass_hand.display_name] resonates with the glass in \the [glass_to_shatter], shattering it to bits!</span>")
+			to_chat(H, "<span class='warning'>Your [glass_hand.display_name] resonates with the glass in \the [glass_to_shatter], shattering it to bits!</span>")
 			glass_to_shatter.reagents.reaction(H.loc, TOUCH)
 			new/obj/effect/decal/cleanable/generic(get_turf(H))
 			playsound(get_turf(H), 'sound/effects/Glassbr1.ogg', 25, 1)
 			spawn(1 SECONDS)
 				if (H && glass_hand)
 					if (prob(50 * multiplier))
-						to_chat(H, "<span class='notice'>My [glass_hand.display_name] deresonates, healing completely!</span>")
+						to_chat(H, "<span class='notice'>Your [glass_hand.display_name] deresonates, healing completely!</span>")
 						glass_hand.rejuvenate()
 					else
-						to_chat(H, "<span class='warning'>My [glass_hand.display_name] deresonates, sustaining burns!</span>")
+						to_chat(H, "<span class='warning'>Your [glass_hand.display_name] deresonates, sustaining burns!</span>")
 						glass_hand.take_damage(0, 30 * multiplier)
 			qdel(glass_to_shatter)
 		else if (prob(1))
@@ -419,7 +419,7 @@
 	var/list/virus_opposite_word_list
 
 /datum/disease2/effect/opposite/activate(var/mob/living/carbon/mob,var/multiplier)
-	to_chat(mob, "<span class='warning'>I feel completely fine.</span>")
+	to_chat(mob, "<span class='warning'>You feel completely fine.</span>")
 	affect_voice_active = 1
 	if(!virus_opposite_word_list)
 		initialize_word_list()
@@ -458,7 +458,7 @@
 	speech.message = message
 
 /datum/disease2/effect/opposite/deactivate(var/mob/living/carbon/mob)
-	to_chat(mob, "<span class='warning'>I feel terrible.</span>")
+	to_chat(mob, "<span class='warning'>You feel terrible.</span>")
 	affect_voice_active = 0
 	..()
 
@@ -474,11 +474,11 @@
 		if(H.species && (H.species.anatomy_flags & NO_SKIN))	//Can't have fragile skin if you don't have skin at all.
 			skip = TRUE
 			return
-	to_chat(mob, "<span class='warning'>My skin feels a little fragile.</span>")
+	to_chat(mob, "<span class='warning'>Your skin feels a little fragile.</span>")
 
 /datum/disease2/effect/butterfly_skin/deactivate(var/mob/living/carbon/mob)
 	if(!skip)
-		to_chat(mob, "<span class='notice'>My skin feels nice and durable again!.</span>")
+		to_chat(mob, "<span class='notice'>Your skin feels nice and durable again!.</span>")
 	..()
 
 /datum/disease2/effect/butterfly_skin/on_touch(var/mob/living/carbon/mob, var/toucher, var/touched, var/touch_type)
@@ -490,18 +490,18 @@
 				E = pick(H.organs)
 		if(toucher == mob)
 			if(E)
-				to_chat(mob, "<span class='warning'>As you bump into \the [touched], some of the skin on my [E.display_name] shears off!</span>")
+				to_chat(mob, "<span class='warning'>As you bump into \the [touched], some of the skin on your [E.display_name] shears off!</span>")
 				E.take_damage(10)
 			else
-				to_chat(mob, "<span class='warning'>As you bump into \the [touched], some of my skin shears off!</span>")
+				to_chat(mob, "<span class='warning'>As you bump into \the [touched], some of your skin shears off!</span>")
 				mob.apply_damage(10)
 		else
 			if(E)
-				to_chat(mob, "<span class='warning'>As \the [toucher] [touch_type == BUMP ? "bumps into" : "touches"] you, some of the skin on my [E.display_name] shears off!</span>")
+				to_chat(mob, "<span class='warning'>As \the [toucher] [touch_type == BUMP ? "bumps into" : "touches"] you, some of the skin on your [E.display_name] shears off!</span>")
 				to_chat(toucher, "<span class='danger'>As you [touch_type == BUMP ? "bump into" : "touch"] \the [mob], some of the skin on \his [E.display_name] shears off!</span>")
 				E.take_damage(10)
 			else
-				to_chat(mob, "<span class='warning'>As \the [toucher] [touch_type == BUMP ? "bumps into" : "touches"] you, some of my skin shears off!</span>")
+				to_chat(mob, "<span class='warning'>As \the [toucher] [touch_type == BUMP ? "bumps into" : "touches"] you, some of your skin shears off!</span>")
 				to_chat(toucher, "<span class='danger'>As you [touch_type == BUMP ? "bump into" : "touch"] \the [mob], some of \his skin shears off!</span>")
 				mob.apply_damage(10)
 
@@ -593,7 +593,7 @@
 	stage = 3
 
 /datum/disease2/effect/confusion/activate(var/mob/living/carbon/mob)
-	to_chat(mob, "<span class='notice'>I have trouble telling right and left apart all of a sudden.</span>")
+	to_chat(mob, "<span class='notice'>You have trouble telling right and left apart all of a sudden.</span>")
 	mob.confused += 10
 
 
@@ -702,7 +702,7 @@ var/list/compatible_mobs = list(/mob/living/carbon/human, /mob/living/carbon/mon
 		mob.equip_to_slot(magichead, slot_wear_mask)
 	if(!mob.wear_mask)
 		mob.equip_to_slot(magichead, slot_wear_mask)
-	to_chat(mob, "<span class='warning'>I feel a little horse!</span>")
+	to_chat(mob, "<span class='warning'>You feel a little horse!</span>")
 
 
 /datum/disease2/effect/anime_hair
@@ -795,7 +795,7 @@ var/list/compatible_mobs = list(/mob/living/carbon/human, /mob/living/carbon/mon
 				given_katana = 1
 
 datum/disease2/effect/anime_hair/deactivate(var/mob/living/carbon/mob)
-	to_chat(mob, "<span class = 'notice'>I no longer feel quite like the main character. </span>")
+	to_chat(mob, "<span class = 'notice'>You no longer feel quite like the main character. </span>")
 	var/mob/living/carbon/human/affected = mob
 	if(affected.shoes && istype(affected.shoes, /obj/item/clothing/shoes/kneesocks))
 		affected.shoes.canremove = 1
@@ -861,7 +861,7 @@ datum/disease2/effect/lubefoot/deactivate(var/mob/living/carbon/mob)
 
 /datum/disease2/effect/minttoxin/activate(var/mob/living/carbon/mob)
 	if(istype(mob) && mob.reagents.get_reagent_amount(MINTTOXIN) < 5)
-		to_chat(mob, "<span class='notice'>I feel a minty freshness</span>")
+		to_chat(mob, "<span class='notice'>You feel a minty freshness</span>")
 		mob.reagents.add_reagent(MINTTOXIN, 5)
 
 
@@ -972,7 +972,7 @@ datum/disease2/effect/lubefoot/deactivate(var/mob/living/carbon/mob)
 		var/datum/organ/external/E = H.organs_by_name[organ]
 		if (!(E.status & ORGAN_DEAD))
 			E.status |= ORGAN_DEAD
-			to_chat(H, "<span class='notice'>I can't feel my [E.display_name] anymore...</span>")
+			to_chat(H, "<span class='notice'>You can't feel your [E.display_name] anymore...</span>")
 			for (var/datum/organ/external/C in E.children)
 				C.status |= ORGAN_DEAD
 		H.update_body(1)
@@ -1009,7 +1009,7 @@ datum/disease2/effect/lubefoot/deactivate(var/mob/living/carbon/mob)
 /datum/disease2/effect/immortal/deactivate(var/mob/living/carbon/mob)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		to_chat(H, "<span class='notice'>I suddenly feel hurt and old...</span>")
+		to_chat(H, "<span class='notice'>You suddenly feel hurt and old...</span>")
 		H.age += 8
 	var/backlash_amt = 5*multiplier
 	mob.apply_damages(backlash_amt,backlash_amt,backlash_amt,backlash_amt)
@@ -1042,7 +1042,7 @@ datum/disease2/effect/lubefoot/deactivate(var/mob/living/carbon/mob)
 		return 0
 	var/mob/living/carbon/human/H = mob
 	mob.reagents.add_reagent(PACID, 10)
-	to_chat(mob, "<span class = 'warning'>My body burns as my cells break down.</span>")
+	to_chat(mob, "<span class = 'warning'>Your body burns as your cells break down.</span>")
 	shake_camera(mob,5*multiplier)
 
 	for (var/datum/organ/external/E in H.organs)
@@ -1098,7 +1098,7 @@ datum/disease2/effect/lubefoot/deactivate(var/mob/living/carbon/mob)
 
 			if(3)
 				if(H.species.name != "Skellington")
-					to_chat(H, "<span class='warning'>My necrotic skin ruptures!</span>")
+					to_chat(H, "<span class='warning'>Your necrotic skin ruptures!</span>")
 
 					for(var/datum/organ/external/E in H.organs)
 						if(pick(1,0))
@@ -1107,7 +1107,7 @@ datum/disease2/effect/lubefoot/deactivate(var/mob/living/carbon/mob)
 					if(prob(30))
 						if(H.species.name != "Skellington")
 							if(H.set_species("Skellington"))
-								to_chat(mob, "<span class='warning'>A massive amount of flesh sloughs off my bones!</span>")
+								to_chat(mob, "<span class='warning'>A massive amount of flesh sloughs off your bones!</span>")
 								H.regenerate_icons()
 				else
 					return
@@ -1126,7 +1126,7 @@ datum/disease2/effect/lubefoot/deactivate(var/mob/living/carbon/mob)
 	stage = 4
 
 /datum/disease2/effect/delightful/activate(var/mob/living/carbon/mob)
-	to_chat(mob, "<span class = 'notice'>I feel delightful!</span>")
+	to_chat(mob, "<span class = 'notice'>You feel delightful!</span>")
 	if (mob.reagents.get_reagent_amount(DOCTORSDELIGHT) < 1)
 		mob.reagents.add_reagent(DOCTORSDELIGHT, 1)
 
@@ -1172,11 +1172,11 @@ datum/disease2/effect/lubefoot/deactivate(var/mob/living/carbon/mob)
 	if(prob(10))
 		GM.toxins += 100
 		//GM.temperature = 1500+T0C //should be enough to start a fire
-		to_chat(mob, "<span class='warning'>I exhale a large plume of toxic gas!</span>")
+		to_chat(mob, "<span class='warning'>You exhale a large plume of toxic gas!</span>")
 	else
 		GM.toxins += 10
 		GM.temperature = istype(T) ? T.air.temperature : T20C
-		to_chat(mob, "<span class = 'warning'> A toxic gas emanates from my pores!</span>")
+		to_chat(mob, "<span class = 'warning'> A toxic gas emanates from your pores!</span>")
 	T.assume_air(GM)
 	return
 
@@ -1214,7 +1214,7 @@ datum/disease2/effect/lubefoot/deactivate(var/mob/living/carbon/mob)
 		for(var/forgotten in original_languages)
 			mob.add_language(forgotten)
 
-		to_chat(mob, "Suddenly, my knowledge of languages comes back to you.")
+		to_chat(mob, "Suddenly, your knowledge of languages comes back to you.")
 
 
 /datum/disease2/effect/gregarious
@@ -1235,10 +1235,10 @@ datum/disease2/effect/lubefoot/deactivate(var/mob/living/carbon/mob)
 		if (multiplier < max_multiplier)
 			multiplier += 0.15 // The virus gets greedier
 	else
-		to_chat(mob, "<span class='warning'>A hostile sensation in my brain stings you... it wants more of the living near you.</span>")
+		to_chat(mob, "<span class='warning'>A hostile sensation in your brain stings you... it wants more of the living near you.</span>")
 		mob.adjustBrainLoss(multiplier / 2)
 		mob.AdjustParalysis(multiplier) // This practically permaparalyzes you at higher multipliers but
-		mob.AdjustKnockdown(multiplier) // that's my fucking fault for not being near enough people
+		mob.AdjustKnockdown(multiplier) // that's your fucking fault for not being near enough people
 		mob.AdjustStunned(multiplier)   // You'll have to wait until the multiplier gets low enough
 		if (multiplier > 1)
 			multiplier -= 0.3 // The virus tempers expectations
@@ -1252,7 +1252,7 @@ datum/disease2/effect/lubefoot/deactivate(var/mob/living/carbon/mob)
 	name = "Unidentified Foreign Body"
 	stage = 4
 	activate(var/mob/living/carbon/mob)
-		to_chat(mob, "<span class='warning'>I feel something tearing its way out of my stomach...</span>")
+		to_chat(mob, "<span class='warning'>You feel something tearing its way out of your stomach...</span>")
 		mob.adjustToxLoss(10)
 		mob.updatehealth()
 		if(prob(40))

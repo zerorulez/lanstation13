@@ -10,7 +10,7 @@ Shivering
 	Low level.
 
 Bonus
-	Cools down my body.
+	Cools down your body.
 
 //////////////////////////////////////
 */

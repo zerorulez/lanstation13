@@ -156,7 +156,7 @@
 	if (istype(C, /obj/item/weapon/disk/data/cartridge) && isnull(src.cartridge))
 		user.drop_item()
 		C.forceMove(src)
-		to_chat(user, "<span class='notice'>I insert [C] into [src].</span>")
+		to_chat(user, "<span class='notice'>You insert [C] into [src].</span>")
 		src.cartridge = C
 		src.updateSelfDialog()
 

@@ -150,7 +150,7 @@
 					tobeopened.Topic(nhref, params2list(nhref), tobeopened, 1)
 					to_chat(src, "<span class='notice'>I've opened \the [tobeopened] for [target].</span>")
 				if("No")
-					to_chat(src, "<span class='warning'>I deny the request.</span>")
+					to_chat(src, "<span class='warning'>You deny the request.</span>")
 		else
 			to_chat(src, "<span class='warning'>I've failed to open an airlock for [target]</span>")
 		return

@@ -112,7 +112,7 @@
 				if(istype(A,/mob/living))
 					var/mob/living/M = A
 					M.take_overall_damage(5,0)
-					to_chat(M, "<span class='warning'>The [src]'s tidal force rips my skin!</span>")
+					to_chat(M, "<span class='warning'>The [src]'s tidal force rips your skin!</span>")
 
 	for(var/mob/living/L in loc)//standing right in the center of the gravity well means double damage
 		if((L.stat == DEAD) && prob(5))

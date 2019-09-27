@@ -43,7 +43,7 @@
 	if(..())
 		return
 	if (src.z > 6)
-		to_chat(user, "<span class='danger'>Unable to establish a connection: </span>I am too far away from the station!")
+		to_chat(user, "<span class='danger'>Unable to establish a connection: </span>You are too far away from the station!")
 		return
 	var/dat
 
@@ -464,7 +464,7 @@ What a mess.*/
 								</ul>"}
 					if("rank")
 						var/list/L = list( "Lieutenant", "Captain", "AI" )
-						//This was so silly before the change. Now it actually works without beating my head against the keyboard. /N
+						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
 						if ((istype(active1, /datum/data/record) && L.Find(rank)))
 
 							temp = {"<h5>Rank:</h5>

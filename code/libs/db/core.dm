@@ -1,6 +1,6 @@
 //var/const
-	//DB_SERVER = "localhost" // This is the location of my MySQL server (localhost is USUALLY fine)
-	//DB_PORT = 3306 			// This is the port my MySQL server is running on (3306 is the default)
+	//DB_SERVER = "localhost" // This is the location of your MySQL server (localhost is USUALLY fine)
+	//DB_PORT = 3306 			// This is the port your MySQL server is running on (3306 is the default)
 
 DBConnection
 	var

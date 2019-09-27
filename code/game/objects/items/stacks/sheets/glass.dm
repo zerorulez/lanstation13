@@ -29,7 +29,7 @@
 	if(issolder(W))
 		src.use(1)
 		new /obj/item/weapon/circuitboard/blank(user.loc)
-		to_chat(user, "<span class='notice'>I fashion a blank circuitboard out of the glass.</span>")
+		to_chat(user, "<span class='notice'>You fashion a blank circuitboard out of the glass.</span>")
 		playsound(src.loc, 'sound/items/Welder.ogg', 35, 1)
 	if(istype(W, /obj/item/stack/rods) && !reinforced)
 		var/obj/item/stack/rods/V  = W
@@ -55,7 +55,7 @@
 	if(!istype(user.loc,/turf))
 		return 0
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return 0
 	var/title = "[src.name] Sheets"
 	title += " ([src.amount] sheet\s left)"
@@ -99,7 +99,7 @@
 				if(src.loc != user)
 					return 1
 				if(src.amount < 2)
-					to_chat(user, "<span class='warning'>I need more glass to do that.</span>")
+					to_chat(user, "<span class='warning'>You need more glass to do that.</span>")
 					return 1
 				if(locate(/obj/structure/window/full) in user.loc)
 					to_chat(user, "<span class='warning'>There is a window in the way.</span>")
@@ -120,7 +120,7 @@
 					to_chat(user, "<span class='warning'>There is already a windoor in that location.</span>")
 					return 1
 				if(src.amount < 5)
-					to_chat(user, "<span class='warning'>I need more glass to do that.</span>")
+					to_chat(user, "<span class='warning'>You need more glass to do that.</span>")
 					return 1
 				var/obj/structure/windoor_assembly/WD = new windoor(user.loc, 0 )
 				WD.state = "01"
@@ -183,7 +183,7 @@
 				if(src.loc != user)
 					return 1
 				if(src.amount < 2)
-					to_chat(user, "<span class='warning'>I need more glass to do that.</span>")
+					to_chat(user, "<span class='warning'>You need more glass to do that.</span>")
 					return 1
 				if(locate(/obj/structure/window/full) in user.loc)
 					to_chat(user, "<span class='warning'>There is a window in the way.</span>")
@@ -222,7 +222,7 @@
 		CC.use(2)
 		src.use(1)
 
-		to_chat(user, "<span class='notice'>I attach some wires to the [name].</span>")//the dreaded dubblespan
+		to_chat(user, "<span class='notice'>You attach some wires to the [name].</span>")//the dreaded dubblespan
 
 		drop_stack(/obj/item/stack/light_w, get_turf(user), 1, user)
 	else

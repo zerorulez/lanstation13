@@ -224,7 +224,7 @@ Auto Patrol: []"},
 	..()
 	if(open && !locked)
 		if(user)
-			to_chat(user, "<span class='warning'>I short out [src]'s target assessment circuits.</span>")
+			to_chat(user, "<span class='warning'>You short out [src]'s target assessment circuits.</span>")
 		spawn(0)
 			for(var/mob/O in hearers(src, null))
 				O.show_message("<span class='danger'>[src] buzzes oddly!</span>", 1)
@@ -288,7 +288,7 @@ Auto Patrol: []"},
 						if(declare_arrests)
 							declare()
 						target.visible_message("<span class='danger'>[target] has been stunned by [src]!</span>",\
-						"<span class='userdanger'>I have been stunned by [src]!</span>")
+						"<span class='userdanger'>You have been stunned by [src]!</span>")
 						maxstuns--
 						if(maxstuns <= 0)
 							target = null
@@ -771,7 +771,7 @@ Auto Patrol: []"},
 
 /obj/machinery/bot/secbot/proc/speak(var/message)
 	visible_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"",\
-		drugged_message="<span class='game say'><span class='name'>[src]</span> beeps, \"[pick("Wait! Let's be friends!","Wait for me!","You are so cool!","Who's my favourite pony?","I-It's not like I like you or anything...","Wanna see a magic trick?","Let's go have fun, assistant-kun~")]\"")
+		drugged_message="<span class='game say'><span class='name'>[src]</span> beeps, \"[pick("Wait! Let's be friends!","Wait for me!","You are so cool!","Who's your favourite pony?","I-It's not like I like you or anything...","Wanna see a magic trick?","Let's go have fun, assistant-kun~")]\"")
 	return
 
 

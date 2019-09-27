@@ -42,7 +42,7 @@
 	// Variant 1 = Half Spell Cooldown, Variant 2 = No Spell Cooldown
 	// Only use variant 2 for debugging/horrible admin gimmicks ok
 	msgGain = "My hair stands on end."
-	msgLose = "The tingling in my skin fades."
+	msgLose = "The tingling in your skin fades."
 
 /datum/bioEffect/husk
 	name = "Husk"
@@ -144,7 +144,7 @@
 	OnAdd()
 		owner:mutantrace = new /datum/mutantrace/premature_clone(owner)
 		if (!istype(owner.loc, /obj/machinery/clonepod))
-			to_chat(owner, "<span class='warning'>My genes feel...disorderly.</span>")
+			to_chat(owner, "<span class='warning'>Your genes feel...disorderly.</span>")
 		return
 
 	OnRemove()

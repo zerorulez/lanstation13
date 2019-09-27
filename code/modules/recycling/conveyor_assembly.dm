@@ -5,7 +5,7 @@
 /obj/item/stack/conveyor_assembly
 	name = "conveyor belt assembly"
 	singular_name = "conveyor belt"
-	desc = "Stick them to the ground to make my very own baggage claim."
+	desc = "Stick them to the ground to make your very own baggage claim."
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "conveyor_folded"
 	max_amount = 20
@@ -79,8 +79,8 @@
 		if(WT.remove_fuel(0,user))
 			var/obj/item/stack/sheet/metal/M = getFromPool(/obj/item/stack/sheet/metal)
 			user.visible_message("<span class='warning'>[src] is shaped into metal by [user.name] with the welding tool.</span>", \
-			"<span class='warning'>I shape the [src] into metal with the welding tool.</span>", \
-			"<span class='warning'>I hear welding.</span>")
+			"<span class='warning'>You shape the [src] into metal with the welding tool.</span>", \
+			"<span class='warning'>You hear welding.</span>")
 			use(1)
 			user.put_in_hands(M)
 		return 1
@@ -89,7 +89,7 @@
 
 /obj/structure/conveyor_assembly
 	name = "conveyor belt assembly"
-	desc = "At last, my very own baggage claim."
+	desc = "At last, your very own baggage claim."
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "conveyor-assembly"
 	density = 0
@@ -108,7 +108,7 @@
 	if(iscrowbar(P))
 		playsound(get_turf(src), 'sound/items/Crowbar.ogg', 75, 1)
 		if(do_after(user, src, 10))
-			to_chat(user, "<span class='notice'>I unhinge the frame.</span>")
+			to_chat(user, "<span class='notice'>You unhinge the frame.</span>")
 			getFromPool(/obj/item/stack/conveyor_assembly, src.loc)
 			qdel(src)
 			return
@@ -118,6 +118,6 @@
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 75, 1)
 			if(do_after(user, src, 30) && S.amount > 4)
 				S.use(4)
-				to_chat(user, "<span class='notice'>I add the plates to \the [src].</span>")
+				to_chat(user, "<span class='notice'>You add the plates to \the [src].</span>")
 				new /obj/machinery/conveyor(src.loc, src.dir)
 				qdel(src)

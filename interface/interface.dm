@@ -1,13 +1,13 @@
 //Please use mob or src (not usr) in these procs. This way they can be called in the same fashion as procs.
 /client/verb/MapRender()
 	set name = "MapRender"
-	set desc = "Shows a high scale rendering of the current map in my browser."
+	set desc = "Shows a high scale rendering of the current map in your browser."
 	set hidden = 1
 
 	if(!config.renders_url || config.renders_url == "")
 		to_chat(src, "<span class='danger'>The Map Renders url has not been set in the server configuration.</span>")
 		return
-	if(alert("This will open the map render(s) in my browser. Are you sure?",,"Yes","No")=="No")
+	if(alert("This will open the map render(s) in your browser. Are you sure?",,"Yes","No")=="No")
 		return
 	var/mapname = replacetext(map.nameLong, " ", "")
 	src << link("[config.renders_url]/images/maps/[mapname]")
@@ -17,7 +17,7 @@
 	set desc = "Visit the wiki."
 	set hidden = 1
 	if( config.wikiurl )
-		if(alert("This will open the wiki in my browser. Are you sure?",,"Yes","No")=="No")
+		if(alert("This will open the wiki in your browser. Are you sure?",,"Yes","No")=="No")
 			return
 		src << link(config.wikiurl)
 	else
@@ -29,7 +29,7 @@
 	set desc = "Visit the forum."
 	set hidden = 1
 	if( config.forumurl )
-		if(alert("This will open the forum in my browser. Are you sure?",,"Yes","No")=="No")
+		if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")=="No")
 			return
 		src << link(config.forumurl)
 	else

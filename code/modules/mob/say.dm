@@ -48,7 +48,7 @@
 		return
 
 	if(client && !(client.prefs.toggles & CHAT_DEAD))
-		to_chat(usr, "<span class='danger'>I have deadchat muted.</span>")
+		to_chat(usr, "<span class='danger'>You have deadchat muted.</span>")
 		return
 
 	if(mind && mind.name)

@@ -229,7 +229,7 @@
 	I.forceMove(T)
 	I.inflate()
 	user.visible_message("<span class='danger'>[user] deploy an inflatable [mode ? "door" : "wall"].</span>", \
-	"<span class='notice'>I deploy an inflatable [mode ? "door" : "wall"].</span>")
+	"<span class='notice'>You deploy an inflatable [mode ? "door" : "wall"].</span>")
 
 /obj/item/weapon/inflatable_dispenser/proc/pick_up(var/obj/A, var/mob/living/user)
 	if(istype(A, /obj/structure/inflatable))
@@ -256,7 +256,7 @@
 		else if(istype(I.loc, /mob))
 			var/mob/M = I.loc
 			if(!M.drop_item(I,src))
-				to_chat(user, "<span class='notice'>I can't let go of \the [I]!</span>")
+				to_chat(user, "<span class='notice'>You can't let go of \the [I]!</span>")
 				stored_doors -= I
 				stored_walls -= I
 				return 0

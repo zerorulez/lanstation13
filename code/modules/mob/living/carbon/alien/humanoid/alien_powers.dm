@@ -7,7 +7,7 @@ Doesn't work on other aliens/AI.*/
 
 /mob/living/carbon/alien/proc/powerc(X, Y)//Y is optional, checks for weed planting. X can be null.
 	if(stat)
-		to_chat(src, "<span class='alien'>I must be conscious to do this.</span>")
+		to_chat(src, "<span class='alien'>You must be conscious to do this.</span>")
 		return 0
 	else if(X && getPlasma() < X)
 		to_chat(src, "<span class='alien'>Not enough plasma stored.</span>")
@@ -92,12 +92,12 @@ Doesn't work on other aliens/AI.*/
 	if(storedmessage)
 		var/turf/T = get_turf(user)
 		log_say("[key_name(user)] (@[T.x],[T.y],[T.z]) Alien Whisper: [storedmessage]")
-		to_chat(M, "<span class='alien'>I hear a strange, alien voice in my head... <em>[storedmessage]</span></em>")
-		to_chat(user, "<span class='alien'>I said: [storedmessage] to [M]</span>")
+		to_chat(M, "<span class='alien'>You hear a strange, alien voice in your head... <em>[storedmessage]</span></em>")
+		to_chat(user, "<span class='alien'>You said: [storedmessage] to [M]</span>")
 
 /spell/targeted/alientransferplasma
 	name = "Transfer Plasma"
-	desc = "Transfer my plasma to another alien"
+	desc = "Transfer your plasma to another alien"
 	panel = "Alien"
 	hud_state = "alien_transfer"
 	override_base = "alien"
@@ -119,9 +119,9 @@ Doesn't work on other aliens/AI.*/
 		if(check_charge(user = user) && get_dist(user, M) <= range) //Since input is a blocking operation
 			take_charge(user = user)
 			to_chat(M, "<span class='alien'>\The [user] has transfered [amount] plasma to you.</span>")
-			to_chat(user, "<span class='alien'>I have trasferred [amount] plasma to [M]</span>")
+			to_chat(user, "<span class='alien'>You have trasferred [amount] plasma to [M]</span>")
 		else
-			to_chat(user, "<span class='alien'>I need to be closer.</span>")
+			to_chat(user, "<span class='alien'>You need to be closer.</span>")
 	holder_var_amount = 0
 
 /spell/targeted/projectile/alienneurotoxin
@@ -135,7 +135,7 @@ Doesn't work on other aliens/AI.*/
 	holder_var_type = "plasma"
 	holder_var_amount = 25
 	insufficient_holder_msg = "<span class='alien'>Not enough plasma stored.</span>"
-	still_recharging_msg = "<span class='alien'>I must regenerate my neurotoxin stores first.</span>"
+	still_recharging_msg = "<span class='alien'>You must regenerate your neurotoxin stores first.</span>"
 	charge_max = 5 SECONDS
 
 	spell_flags = WAIT_FOR_CLICK
@@ -150,7 +150,7 @@ Doesn't work on other aliens/AI.*/
 	if(get_dist(usr, target) > range)
 		return 0
 	if(isalien(target))
-		to_chat(user, "<span class='alien'>My allies are not valid targets.</span>")
+		to_chat(user, "<span class='alien'>Your allies are not valid targets.</span>")
 		return 0
 	return !istype(target,/area)
 
@@ -170,9 +170,9 @@ Doesn't work on other aliens/AI.*/
 		visible_message_target = target
 
 	if(visible_message_target)
-		user.visible_message("<span class='alien'>\The [user] spits neurotoxin at [visible_message_target] !</span>", "<span class='alien'>I spit neurotoxin at [visible_message_target] !</span>")
+		user.visible_message("<span class='alien'>\The [user] spits neurotoxin at [visible_message_target] !</span>", "<span class='alien'>You spit neurotoxin at [visible_message_target] !</span>")
 	else
-		user.visible_message("<span class='alien'>\The [user] spits a salvo of neurotoxin !</span>", "<span class='alien'>I spit out neurotoxin !</span>")
+		user.visible_message("<span class='alien'>\The [user] spits a salvo of neurotoxin !</span>", "<span class='alien'>You spit out neurotoxin !</span>")
 
 	. = ..()
 
@@ -212,7 +212,7 @@ Doesn't work on other aliens/AI.*/
 		return 0
 	if(!ismob(target) && target.acidable())
 		return 1
-	to_chat(user, "<span class='alien'>I cannot dissolve this object.</span>")
+	to_chat(user, "<span class='alien'>You cannot dissolve this object.</span>")
 	return 0
 
 /spell/alienacid/cast(list/targets, mob/user)
@@ -237,11 +237,11 @@ Doesn't work on other aliens/AI.*/
 		new /obj/effect/alien/acid(get_turf(O), O)
 		user.visible_message("<span class='alien'>\The [usr] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!</span>")
 	else
-		to_chat(user, "<span class='alien'>I cannot dissolve this object.</span>")
+		to_chat(user, "<span class='alien'>You cannot dissolve this object.</span>")
 
 /spell/aoe_turf/alienregurgitate
 	name = "Regurgitate"
-	desc = "Empties the contents of my stomach."
+	desc = "Empties the contents of your stomach."
 	panel = "Alien"
 	hud_state = "alien_regurgitate"
 	override_base = "alien"
@@ -292,7 +292,7 @@ a
 	override_base = "alien"
 
 	charge_type = Sp_HOLDVAR
-	insufficient_holder_msg = "<span class='alien'>I am not ready for this kind of evolution.</span>"
+	insufficient_holder_msg = "<span class='alien'>You are not ready for this kind of evolution.</span>"
 
 	cast_sound = 'sound/effects/evolve.ogg'
 	cast_delay = 50
@@ -311,7 +311,7 @@ a
 	return ..()
 
 /spell/aoe_turf/evolve/drone/spell_do_after(var/mob/user as mob, delay as num, var/numticks = 5)
-	user.visible_message("<span class='alien'>[src] begins to violently twist and contort!</span>", "<span class='alien'>I begin to evolve, stand still for a few moments</span>")
+	user.visible_message("<span class='alien'>[src] begins to violently twist and contort!</span>", "<span class='alien'>You begin to evolve, stand still for a few moments</span>")
 	return ..()
 
 /spell/aoe_turf/evolve/drone/cast(list/targets, mob/living/carbon/user)
@@ -330,7 +330,7 @@ a
 
 /spell/aoe_turf/evolve/larva
 	desc = "Evolve into a fully grown Alien."
-	insufficient_holder_msg = "<span class='alien'>I am not fully grown yet.</span>"
+	insufficient_holder_msg = "<span class='alien'>You are not fully grown yet.</span>"
 
 	holder_var_type = "growth"
 	holder_var_amount = LARVA_GROW_TIME
@@ -338,7 +338,7 @@ a
 	var/spawning
 
 /spell/aoe_turf/evolve/larva/spell_do_after(mob/user)
-	var/explanation_message = {"<span class='notice'><B>I am growing into a beautiful alien! It is time to choose a caste.</B><br>
+	var/explanation_message = {"<span class='notice'><B>You are growing into a beautiful alien! It is time to choose a caste.</B><br>
 	There are three castes to choose from:<br>
 	<B>Hunters</B> are strong and agile, able to hunt away from the hive and rapidly move through ventilation shafts. Hunters generate plasma slowly and have low reserves.<br>
 	<B>Sentinels</B> are tasked with protecting the hive and are deadly up close and at a range. They are not as physically imposing nor fast as the hunters.<br>
@@ -381,10 +381,10 @@ a
 /spell/aoe_turf/alien_hide/cast(list/targets, mob/user)
 	if(user.plane != HIDING_MOB_PLANE)
 		user.plane = HIDING_MOB_PLANE
-		user.visible_message("<span class='danger'>[src] scurries to the ground !</span>", "<span class='alien'>I am now hiding.</span>")
+		user.visible_message("<span class='danger'>[src] scurries to the ground !</span>", "<span class='alien'>You are now hiding.</span>")
 	else
 		user.plane = MOB_PLANE
-		user.visible_message("<span class='warning'>[src] slowly peeks up from the ground...</span>", "<span class='alien'>I have stopped hiding.</span>")
+		user.visible_message("<span class='warning'>[src] slowly peeks up from the ground...</span>", "<span class='alien'>You have stopped hiding.</span>")
 
 /////////////////////////////////////////////
 

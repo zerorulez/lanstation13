@@ -63,21 +63,21 @@
 			bloodDNA = null
 
 
-	/*		// Floorlength braids?  Enjoy my tripping.
+	/*		// Floorlength braids?  Enjoy your tripping.
 			if(H.h_style && !H.check_hidden_head_flags(HIDEHEADHAIR))
 				var/datum/sprite_accessory/hair_style = hair_styles_list[H.h_style]
 				if(hair_style && (hair_style.flags & HAIRSTYLE_CANTRIP))
 					if(H.m_intent == "run" && prob(5))
 						if (H.Slip(4, 5))
 							step(H, H.dir)
-							to_chat(H, "<span class='notice'>I tripped over my hair!</span>")
+							to_chat(H, "<span class='notice'>You tripped over your hair!</span>")
 */
 		switch(src.wet)
 			if(1) //Water
 				if (M.Slip(5, 3))
 					step(M, M.dir)
 					M.visible_message("<span class='warning'>[M] slips on the wet floor!</span>", \
-					"<span class='warning'>I slip on the wet floor!</span>")
+					"<span class='warning'>You slip on the wet floor!</span>")
 
 			if(2) //Lube
 				M.stop_pulling()
@@ -92,7 +92,7 @@
 					step(M, M.dir)
 				M.take_organ_damage(2) // Was 5 -- TLE
 				M.visible_message("<span class='warning'>[M] slips on the floor!</span>", \
-				"<span class='warning'>I slip on the floor!</span>")
+				"<span class='warning'>You slip on the floor!</span>")
 				playsound(get_turf(src), 'sound/misc/slip.ogg', 50, 1, -3)
 				M.Knockdown(10)
 
@@ -100,7 +100,7 @@
 				if(prob(30) && M.Slip(4, 3))
 					step(M, M.dir)
 					M.visible_message("<span class='warning'>[M] slips on the icy floor!</span>", \
-					"<span class='warning'>I slip on the icy floor!</span>")
+					"<span class='warning'>You slip on the icy floor!</span>")
 	..()
 
 //returns 1 if made bloody, returns 0 otherwise

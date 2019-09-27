@@ -266,7 +266,7 @@
 			event_chance = 25 //Events will fire off more often.
 			if(chained)
 				overlays += image(icon = icon, icon_state = "chain_s9")
-			visible_message("<span class='sinister'><font size='3'>I witness the creation of a destructive force that cannot possibly be stopped by human hands.</font></span>")
+			visible_message("<span class='sinister'><font size='3'>You witness the creation of a destructive force that cannot possibly be stopped by human hands.</font></span>")
 
 	if(current_size == allowed_size)
 		investigation_log(I_SINGULO,"<font color='red'>grew to size [current_size].</font>")
@@ -541,12 +541,12 @@
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
 				if(istype(H.glasses,/obj/item/clothing/glasses/scanner/meson) && current_size != 11)
-					to_chat(H, "<span class='notice'>I stare directly into \the [src], good thing you had my protective eyewear on!</span>")
+					to_chat(H, "<span class='notice'>You stare directly into \the [src], good thing you had your protective eyewear on!</span>")
 					return
 				else
-					to_chat(H, "<span class='warning'>I stare directly into \the [src] but my eyewear does absolutely nothing to protect you from it!</span>")
+					to_chat(H, "<span class='warning'>You stare directly into \the [src] but your eyewear does absolutely nothing to protect you from it!</span>")
 				M.visible_message("<span class='danger'>[M] stares blankly at \the [src]!</span>", \
-				"<span class='danger'>I stare directly into \the [src] and feel [current_size == 11 ? "helpless" : "weak"].</span>")
+				"<span class='danger'>You stare directly into \the [src] and feel [current_size == 11 ? "helpless" : "weak"].</span>")
 				M.apply_effect(3, STUN)
 
 /obj/machinery/singularity/proc/emp_area()
@@ -559,11 +559,11 @@
 	for(var/mob/living/M in view(10, src.loc))
 		if(prob(67))
 			M.apply_effect(rand(energy), IRRADIATE)
-			to_chat(M, "<span class='warning'>I hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
+			to_chat(M, "<span class='warning'>You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
 			to_chat(M, "<span class='notice'>Miraculously, it fails to kill you.</span>")
 		else
-			to_chat(M, "<span class='danger'>I hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
-			to_chat(M, "<span class='danger'>I don't even have a moment to react as you are reduced to ashes by the intense radiation.</span>")
+			to_chat(M, "<span class='danger'>You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
+			to_chat(M, "<span class='danger'>You don't even have a moment to react as you are reduced to ashes by the intense radiation.</span>")
 			M.dust()
 	return
 

@@ -54,7 +54,7 @@
 /obj/item/weapon/storage/pneumatic/attackby(obj/item/W as obj, mob/user as mob)
 	if(!tank && istype(W,/obj/item/weapon/tank))
 		if(!user.drop_item(W, src.tank_container))
-			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 			return
 
 		tank = W
@@ -119,10 +119,10 @@
 		var/mob/living/M = user
 
 		if(M_HULK in M.mutations)
-			to_chat(M, "<span class='warning'>My meaty finger is much too large for the trigger guard!</span>")
+			to_chat(M, "<span class='warning'>Your meaty finger is much too large for the trigger guard!</span>")
 			return 0
 		else if(clumsy_check(M) && prob(50))
-			to_chat(M, "<span class='danger'>[src] blows up in my face!</span>")
+			to_chat(M, "<span class='danger'>[src] blows up in your face!</span>")
 			target = M
 
 	var/turf/curloc = get_turf(user)
@@ -140,7 +140,7 @@
 	var/speed = min(PNEUMATIC_SPEED_CAP,((fire_pressure*tank.volume)/object.w_class)/PNEUMATIC_SPEED_DIVISOR)
 	//For reference in pseudo-code, Damage on mobs = (projectile.throwforce * ( throwing_speed / 5))
 
-	user.visible_message("<span class='danger'>[user] fires [src] and launches [object] at [target]!</span>","<span class='danger'>I fire [src] and launch [object] at [target]!</span>")
+	user.visible_message("<span class='danger'>[user] fires [src] and launches [object] at [target]!</span>","<span class='danger'>You fire [src] and launch [object] at [target]!</span>")
 
 	src.remove_from_storage(object,user.loc)
 	object.throw_at(target,10,speed)

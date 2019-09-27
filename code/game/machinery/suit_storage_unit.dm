@@ -18,7 +18,7 @@
 	var/SUIT_TYPE = null
 	var/HELMET_TYPE = null
 	var/BOOT_TYPE = null
-	var/MASK_TYPE = null //Erro's idea on standarising SSUs whle keeping creation of other SSU types easy: Make a child SSU, name it something then set the TYPE vars to my desired suit output. New() should take it from there by itself.
+	var/MASK_TYPE = null //Erro's idea on standarising SSUs whle keeping creation of other SSU types easy: Make a child SSU, name it something then set the TYPE vars to your desired suit output. New() should take it from there by itself.
 	var/isopen = 0
 	var/islocked = 0
 	var/isUV = 0
@@ -179,7 +179,7 @@
 
 		dat += {"<HEAD><TITLE>Suit storage unit: Maintenance panel</TITLE></HEAD>
 			<Font color ='black'><B>Maintenance panel controls</B></font><HR>
-			<font color ='grey'>The panel is ridden with controls, button and meters, labeled in strange signs and symbols that <BR>you cannot understand. Probably the manufactoring world's language.<BR> Among other things, a few controls catch my eye.<BR><BR>"}
+			<font color ='grey'>The panel is ridden with controls, button and meters, labeled in strange signs and symbols that <BR>you cannot understand. Probably the manufactoring world's language.<BR> Among other things, a few controls catch your eye.<BR><BR>"}
 		dat+= text("<font color ='black'>A small dial with a \"ë\" symbol embroidded on it. It's pointing towards a gauge that reads []</font>.<BR> <font color='blue'><A href='?src=\ref[];toggleUV=1'> Turn towards []</A><BR>",(src.issuperUV ? "15nm" : "185nm"),src,(src.issuperUV ? "185nm" : "15nm") )
 		dat+= text("<font color ='black'>A thick old-style button, with 2 grimy LED lights next to it. The [] LED is on.</font><BR><font color ='blue'><A href='?src=\ref[];togglesafeties=1'>Press button</a></font>",(src.safetieson? "<font color='green'><B>GREEN</B></font>" : "<font color='red'><B>RED</B></font>"),src)
 		dat+= text("<HR><BR><A href='?src=\ref[];mach_close=suit_storage_unit'>Close panel</A>", user)
@@ -303,7 +303,7 @@
 
 	if(!protected)
 		playsound(get_turf(src), "sparks", 75, 1, -1)
-		to_chat(user, "<font color='red'>I try to touch the controls but you get zapped. There must be a short circuit somewhere.</font>")
+		to_chat(user, "<font color='red'>You try to touch the controls but you get zapped. There must be a short circuit somewhere.</font>")
 		return*/
 	else  //welp, the guy is protected, we can continue
 		if(src.issuperUV)
@@ -329,7 +329,7 @@
 
 	if(!protected)
 		playsound(get_turf(src), "sparks", 75, 1, -1)
-		to_chat(user, "<font color='red'>I try to touch the controls but you get zapped. There must be a short circuit somewhere.</font>")
+		to_chat(user, "<font color='red'>You try to touch the controls but you get zapped. There must be a short circuit somewhere.</font>")
 		return*/
 	else
 		to_chat(user, "I push the button. The coloured LED next to it changes.")
@@ -492,7 +492,7 @@
 		if(user != OCCUPANT)
 			to_chat(OCCUPANT, "<font color='blue'>The machine kicks you out!</font>")
 		if(user.loc != src.loc)
-			to_chat(OCCUPANT, "<font color='blue'>I leave the not-so-cozy confines of the SSU.</font>")
+			to_chat(OCCUPANT, "<font color='blue'>You leave the not-so-cozy confines of the SSU.</font>")
 
 		src.OCCUPANT.client.eye = src.OCCUPANT.client.mob
 		src.OCCUPANT.client.perspective = MOB_PERSPECTIVE
@@ -564,10 +564,10 @@
 		if(do_after(user, src,40))
 			playsound(loc, 'sound/items/Welder.ogg', 100, 1)
 			stat &= !BROKEN
-			to_chat(user, "<span class='notice'>I repair the blown out electronics in the suit storage unit.</span>")
+			to_chat(user, "<span class='notice'>You repair the blown out electronics in the suit storage unit.</span>")
 	if((stat & NOPOWER) && iscrowbar(I) && !islocked)
 		playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-		to_chat(user, "<span class='notice'>I begin prying the equipment out of the suit storage unit</span>")
+		to_chat(user, "<span class='notice'>You begin prying the equipment out of the suit storage unit</span>")
 		if(do_after(user, src,20))
 			dump_everything()
 			update_icon()
@@ -672,7 +672,7 @@
 
 
 /obj/machinery/suit_storage_unit/attack_paw(mob/user as mob)
-	to_chat(user, "<font color='blue'>The console controls are far too complicated for my tiny brain!</font>")
+	to_chat(user, "<font color='blue'>The console controls are far too complicated for your tiny brain!</font>")
 	return
 
 

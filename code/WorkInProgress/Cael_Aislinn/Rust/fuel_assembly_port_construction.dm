@@ -51,27 +51,27 @@
 				if(do_after(user, src, 50))
 					user.visible_message(\
 						"<span class='warning'>[user.name] has removed the circuitboard from [src.name]!</span>",\
-						"<span class='notice'>I remove the circuitboard.</span>")
+						"<span class='notice'>You remove the circuitboard.</span>")
 					has_electronics = 0
 					new /obj/item/weapon/module/rust_fuel_port(loc)
 					has_electronics &= ~1
 			else
 				opened = 0
 				icon_state = "port0"
-				to_chat(user, "<span class='notice'>I close the maintenance cover.</span>")
+				to_chat(user, "<span class='notice'>You close the maintenance cover.</span>")
 		else
 			if(cur_assembly)
-				to_chat(user, "<span class='warning'>I cannot open the cover while there is a fuel assembly inside.</span>")
+				to_chat(user, "<span class='warning'>You cannot open the cover while there is a fuel assembly inside.</span>")
 			else
 				opened = 1
-				to_chat(user, "<span class='notice'>I open the maintenance cover.</span>")
+				to_chat(user, "<span class='notice'>You open the maintenance cover.</span>")
 				icon_state = "port2"
 		return
 
 	else if (istype(W, /obj/item/stack/cable_coil) && opened && !(has_electronics & 2))
 		var/obj/item/stack/cable_coil/C = W
 		if(C.amount < 10)
-			to_chat(user, "<span class='warning'>I need more wires.</span>")
+			to_chat(user, "<span class='warning'>You need more wires.</span>")
 			return
 		to_chat(user, "I start adding cables to the frame...")
 		playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
@@ -106,7 +106,7 @@
 	else if (istype(W, /obj/item/weapon/weldingtool) && opened && !has_electronics)
 		var/obj/item/weapon/weldingtool/WT = W
 		if (WT.get_fuel() < 3)
-			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 			return
 		to_chat(user, "I start welding the port frame...")
 		playsound(get_turf(src), 'sound/items/Welder.ogg', 50, 1)
@@ -117,7 +117,7 @@
 			user.visible_message(\
 				"<span class='warning'>[src] has been cut away from the wall by [user.name].</span>",\
 				"I detached the port frame.",\
-				"<span class='warning'>I hear welding.</span>")
+				"<span class='warning'>You hear welding.</span>")
 			del(src)
 		return
 

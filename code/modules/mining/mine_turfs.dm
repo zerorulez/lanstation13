@@ -212,7 +212,7 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 		return
 
 	if (!usr.dexterity_check())
-		to_chat(usr, "<span class='warning>I don't have the dexterity to do this!</span>")
+		to_chat(usr, "<span class='warning>You don't have the dexterity to do this!</span>")
 		return
 
 	if (istype(W, /obj/item/device/core_sampler))
@@ -230,7 +230,7 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 
 	if (istype(W, /obj/item/device/measuring_tape))
 		var/obj/item/device/measuring_tape/P = W
-		user.visible_message("<span class='notice'>[user] extends [P] towards [src].</span>","<span class='notice'>I extend [P] towards [src].</span>")
+		user.visible_message("<span class='notice'>[user] extends [P] towards [src].</span>","<span class='notice'>You extend [P] towards [src].</span>")
 		to_chat(user, "<span class='notice'>\icon[P] [src] has been excavated to a depth of [2*excavation_level]cm.</span>")
 		return
 
@@ -365,7 +365,7 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 	if(artifact_find && artifact_fail)
 		investigation_log(I_ARTIFACT, "|| [artifact_find.artifact_find_type] || destroyed by [key_name(usr)].")
 		for(var/mob/living/M in range(src, 200))
-			to_chat(M, "<font color='red'><b>[pick("A high pitched [pick("keening","wailing","whistle")]","A rumbling noise like [pick("thunder","heavy machinery")]")] somehow penetrates my mind before fading away!</b></font>")
+			to_chat(M, "<font color='red'><b>[pick("A high pitched [pick("keening","wailing","whistle")]","A rumbling noise like [pick("thunder","heavy machinery")]")] somehow penetrates your mind before fading away!</b></font>")
 			if(prob(50)) //pain
 				flick("pain",M.pain)
 				if(prob(50))
@@ -516,19 +516,19 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 			return
 
 		if(!(used_digging.diggables & DIG_SOIL)) //if the pickaxe can't dig soil, we don't
-			to_chat(user, "<span class='rose'>I can't dig soft soil with \the [W].</span>")
+			to_chat(user, "<span class='rose'>You can't dig soft soil with \the [W].</span>")
 			return
 
 		if (dug)
 			to_chat(user, "<span class='rose'>This area has already been dug.</span>")
 			return
 
-		to_chat(user, "<span class='rose'>I start digging.<span>")
+		to_chat(user, "<span class='rose'>You start digging.<span>")
 		playsound(get_turf(src), 'sound/effects/rustle1.ogg', 50, 1) //russle sounds sounded better
 
 		if(do_after(user, src, used_digging.digspeed) && user) //the better the drill, the faster the digging
 			playsound(src, 'sound/items/shovel.ogg', 50, 1)
-			to_chat(user, "<span class='notice'>I dug a hole.</span>")
+			to_chat(user, "<span class='notice'>You dug a hole.</span>")
 			gets_dug()
 
 	else
@@ -836,13 +836,13 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 	if(istype(AM,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM
 		if((istype(H.get_active_hand(),/obj/item/weapon/pickaxe) || istype(H.get_inactive_hand(),/obj/item/weapon/pickaxe)) && src.stage == 1)
-			to_chat(H, "<span class='warning'>I don't think that's a good idea...</span>")
+			to_chat(H, "<span class='warning'>You don't think that's a good idea...</span>")
 			bump_reject = 1
 
 	else if(istype(AM,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = AM
 		if(istype(R.module_active, /obj/item/weapon/pickaxe))
-			to_chat(R, "<span class='warning'>I don't think that's a good idea...</span>")
+			to_chat(R, "<span class='warning'>You don't think that's a good idea...</span>")
 			bump_reject = 1
 		else if(istype(R.module_active, /obj/item/device/mining_scanner))
 			attackby(R.module_active, R) //let's bump to disable. This is kinder, because borgs need some love
@@ -858,7 +858,7 @@ turf/unsimulated/mineral/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_l
 
 /turf/unsimulated/mineral/gibtonite/attackby(obj/item/I, mob/user)
 	if(((istype(I, /obj/item/device/mining_scanner)) || (istype(I, /obj/item/device/depth_scanner))) && stage == 1)
-		user.visible_message("<span class='notice'>I use [I] to locate where to cut off the chain reaction and attempt to stop it...</span>")
+		user.visible_message("<span class='notice'>You use [I] to locate where to cut off the chain reaction and attempt to stop it...</span>")
 		defuse()
 	if(istype(I, /obj/item/weapon/pickaxe))
 		src.activated_ckey = "[user.ckey]"

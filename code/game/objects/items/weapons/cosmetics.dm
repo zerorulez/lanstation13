@@ -32,7 +32,7 @@
 
 
 /obj/item/weapon/lipstick/attack_self(mob/user as mob)
-	to_chat(user, "<span class='notice'>I twist \the [src] [open ? "closed" : "open"].</span>")
+	to_chat(user, "<span class='notice'>You twist \the [src] [open ? "closed" : "open"].</span>")
 	open = !open
 	if(open)
 		icon_state = "[initial(icon_state)]_[colour]"
@@ -49,19 +49,19 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.lip_style)	//if they already have lipstick on
-			to_chat(user, "<span class='notice'>I need to wipe off the old lipstick first!</span>")
+			to_chat(user, "<span class='notice'>You need to wipe off the old lipstick first!</span>")
 			return
 		if(H == user)
 			user.visible_message("<span class='notice'>[user] does their lips with \the [src].</span>", \
-								 "<span class='notice'>I take a moment to apply \the [src]. Perfect!</span>")
+								 "<span class='notice'>You take a moment to apply \the [src]. Perfect!</span>")
 			H.lip_style = colour
 			H.update_body()
 		else
 			user.visible_message("<span class='warning'>[user] begins to do [H]'s lips with \the [src].</span>", \
-								 "<span class='notice'>I begin to apply \the [src].</span>")
+								 "<span class='notice'>You begin to apply \the [src].</span>")
 			if(do_after(user,H, 20))	//user needs to keep their active hand, H does not.
 				user.visible_message("<span class='notice'>[user] does [H]'s lips with \the [src].</span>", \
-									 "<span class='notice'>I apply \the [src].</span>")
+									 "<span class='notice'>You apply \the [src].</span>")
 				H.lip_style = colour
 				H.update_body()
 	else
@@ -76,15 +76,15 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(H == user)
-				to_chat(user, "<span class='notice'>I wipe off the lipstick with [src].</span>")
+				to_chat(user, "<span class='notice'>You wipe off the lipstick with [src].</span>")
 				H.lip_style = null
 				H.update_body()
 			else
 				user.visible_message("<span class='warning'>[user] begins to wipe [H]'s lipstick off with \the [src].</span>", \
-								 	 "<span class='notice'>I begin to wipe off [H]'s lipstick.</span>")
+								 	 "<span class='notice'>You begin to wipe off [H]'s lipstick.</span>")
 				if(do_after(user, H, 10) && do_after(H, null, 10, 5, 0))	//user needs to keep their active hand, H does not.
 					user.visible_message("<span class='notice'>[user] wipes [H]'s lipstick off with \the [src].</span>", \
-										 "<span class='notice'>I wipe off [H]'s lipstick.</span>")
+										 "<span class='notice'>You wipe off [H]'s lipstick.</span>")
 					H.lip_style = null
 					H.update_body()
 	else
@@ -133,7 +133,7 @@
 		if(area == "mouth")
 			var/obj/item/clothing/cover = H.get_body_part_coverage(MOUTH)
 			if(cover)
-				to_chat(user, "<span class='notice'>I can't color [H == user ? "your" : "\the [H]'s"] facial hair through that [cover.name]!</span>")
+				to_chat(user, "<span class='notice'>You can't color [H == user ? "your" : "\the [H]'s"] facial hair through that [cover.name]!</span>")
 				return
 			if(!H.f_style || H.f_style == "Shaved")	//if they have no facial hair
 				to_chat(user, "<span class='notice'>[H == user ? "I don't" : "\The [H] doesn't"] seem to have any facial hair!</span>")
@@ -147,7 +147,7 @@
 		else
 			var/obj/item/clothing/cover = H.get_body_part_coverage(HEAD)
 			if(cover)
-				to_chat(user, "<span class='notice'>I can't color [H == user ? "your" : "\the [H]'s"] hair through that [cover.name]!</span>")
+				to_chat(user, "<span class='notice'>You can't color [H == user ? "your" : "\the [H]'s"] hair through that [cover.name]!</span>")
 				return
 			if(!H.h_style || H.h_style == "Bald")	//if they have no hair
 				to_chat(user, "<span class='notice'>[H == user ? "I don't" : "\The [H] doesn't"] seem to have any hair!</span>")
@@ -159,17 +159,17 @@
 					return
 		if(H == user)
 			user.visible_message("<span class='notice'>[user] colors their [area_string] with \the [src].</span>", \
-								 "<span class='notice'>I color my [area_string] with \the [src].</span>")
+								 "<span class='notice'>You color your [area_string] with \the [src].</span>")
 			if(area == "mouth")
 				color_hair(H,1)
 			else
 				color_hair(H)
 		else
 			user.visible_message("<span class='warning'>[user] begins to color \the [H]'s [area_string] with \the [src].</span>", \
-								 "<span class='notice'>I begin to color \the [H]'s [area_string] with \the [src].</span>")
+								 "<span class='notice'>You begin to color \the [H]'s [area_string] with \the [src].</span>")
 			if(do_after(user,H, 20))	//user needs to keep their active hand, H does not.
 				user.visible_message("<span class='notice'>[user] colors [H]'s [area_string] with \the [src].</span>", \
-									 "<span class='notice'>I color [H]'s [area_string] with \the [src].</span>")
+									 "<span class='notice'>You color [H]'s [area_string] with \the [src].</span>")
 				if(area == "mouth")
 					color_hair(H,1)
 				else
@@ -222,17 +222,17 @@
 
 			if(H == user) //shaving yourself
 				user.visible_message("[user] starts to shave their facial hair with [src].", \
-									 "<span class='notice'>I take a moment to shave my facial hair with [src]...</span>")
+									 "<span class='notice'>You take a moment to shave your facial hair with [src]...</span>")
 				if(do_after(user, H, 5))
 					user.visible_message("[user] shaves \his facial hair clean with [src].", \
-										 "<span class='notice'>I finish shaving with [src]. Fast and clean!</span>")
+										 "<span class='notice'>You finish shaving with [src]. Fast and clean!</span>")
 					shave(H, location)
 			else
 				user.visible_message("<span class='warning'>[user] tries to shave [H]'s facial hair with [src].</span>", \
-									 "<span class='notice'>I start shaving [H]'s facial hair...</span>")
+									 "<span class='notice'>You start shaving [H]'s facial hair...</span>")
 				if(do_after(user, H, 50))
 					user.visible_message("<span class='warning'>[user] shaves off [H]'s facial hair with [src].</span>", \
-										 "<span class='notice'>I shave [H]'s facial hair clean off.</span>")
+										 "<span class='notice'>You shave [H]'s facial hair clean off.</span>")
 					shave(H, location)
 
 		else if(location == LIMB_HEAD)
@@ -245,17 +245,17 @@
 
 			if(H == user) //shaving yourself
 				user.visible_message("[user] starts to shave their head with [src].", \
-									 "<span class='notice'>I start to shave my head with [src]...</span>")
+									 "<span class='notice'>You start to shave your head with [src]...</span>")
 				if(do_after(user, H, 5))
 					user.visible_message("[user] shaves \his head with [src].", \
-										 "<span class='notice'>I finish shaving with [src].</span>")
+										 "<span class='notice'>You finish shaving with [src].</span>")
 					shave(H, location)
 			else
 				user.visible_message("<span class='warning'>[user] tries to shave [H]'s head with [src]!</span>", \
-									 "<span class='notice'>I start shaving [H]'s head...</span>")
+									 "<span class='notice'>You start shaving [H]'s head...</span>")
 				if(do_after(user, H, 50))
 					user.visible_message("<span class='warning'>[user] shaves [H]'s head bald with [src]!</span>", \
-										 "<span class='notice'>I shave [H]'s head bald.</span>")
+										 "<span class='notice'>You shave [H]'s head bald.</span>")
 					shave(H, location)
 		else
 			..()

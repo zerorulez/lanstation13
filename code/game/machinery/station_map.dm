@@ -95,7 +95,7 @@ var/list/station_holomaps = list()
 		return
 
 	if(user.loc != loc)
-		to_chat(user, "<span class='warning'>I need to stand in front of \the [src].</span>")
+		to_chat(user, "<span class='warning'>You need to stand in front of \the [src].</span>")
 		return
 
 	if(isliving(user) && anchored && !(stat & (NOPOWER|BROKEN)))
@@ -110,7 +110,7 @@ var/list/station_holomaps = list()
 			if(bogus)
 				to_chat(user, "<span class='warning'>The holomap failed to initialize. This area of space cannot be mapped.</span>")
 			else
-				to_chat(user, "<span class='notice'>A hologram of the station appears before my eyes.</span>")
+				to_chat(user, "<span class='notice'>A hologram of the station appears before your eyes.</span>")
 
 /obj/machinery/station_map/attack_paw(var/mob/user)
 	src.attack_hand(user)
@@ -282,7 +282,7 @@ var/list/station_holomaps = list()
 		if(bogus)
 			to_chat(user, "<span class='warning'>The holomap failed to initialize. This area of space cannot be mapped.</span>")
 		else
-			to_chat(user, "<span class='notice'>A hologram of the station appears before my eyes.</span>")
+			to_chat(user, "<span class='notice'>A hologram of the station appears before your eyes.</span>")
 
 /obj/item/device/station_map/Destroy()
 	stopWatching()
@@ -374,7 +374,7 @@ var/list/station_holomaps = list()
 				watching_mobs |= user
 				user.client.images |= watcher_maps["\ref[user]"]
 				user.callOnFace["\ref[src]"] = "checkPosition"
-				to_chat(user, "<span class='notice'>An hologram of the station appears before my eyes.</span>")
+				to_chat(user, "<span class='notice'>An hologram of the station appears before your eyes.</span>")
 
 
 /obj/machinery/station_map/strategic/checkPosition()

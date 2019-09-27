@@ -39,12 +39,12 @@ obj/item/device/mmi/Destroy()
 			var/req=mommi_assembly_parts[t]
 			if(cc<req)
 				var/temppart = new t(src)
-				to_chat(user, "<span class='warning'>I am short [req-cc] [temppart]\s.</span>")
+				to_chat(user, "<span class='warning'>You are short [req-cc] [temppart]\s.</span>")
 				qdel(temppart)
 				temppart = null
 				return TRUE
 		if(!istype(loc,/turf))
-			to_chat(user, "<span class='warning'>I can't assemble the MoMMI, \the [src] has to be standing on the ground (or a table) to be perfectly precise.</span>")
+			to_chat(user, "<span class='warning'>You can't assemble the MoMMI, \the [src] has to be standing on the ground (or a table) to be perfectly precise.</span>")
 			return TRUE
 		if(!brainmob)
 			to_chat(user, "<span class='warning'>What are you doing oh god put the brain back in.</span>")
@@ -54,7 +54,7 @@ obj/item/device/mmi/Destroy()
 				to_chat(user, "<span class='notice'>\The [src] indicates that their mind is completely unresponsive; there's no point.</span>")
 				return TRUE
 		if(brainmob.stat == DEAD)
-			to_chat(user, "<span class='warning'>Yeah, good idea. Give something deader than the pizza in my fridge legs.  Mom would be so proud.</span>")
+			to_chat(user, "<span class='warning'>Yeah, good idea. Give something deader than the pizza in your fridge legs.  Mom would be so proud.</span>")
 			return TRUE
 		if(brainmob.mind in ticker.mode.head_revolutionaries)
 			to_chat(user, "<span class='warning'>The [src]'s firmware lets out a shrill sound, and flashes 'Abnormal Memory Engram'. It refuses to accept the brain.</span>")
@@ -92,14 +92,14 @@ obj/item/device/mmi/Destroy()
 					to_chat(user, "<span class='warning'>Why are you sticking robot legs on an empty [src], you idiot?</span>")
 					return TRUE
 				if(!user.drop_item(O, src))
-					to_chat(user, "<span class='warning'>I can't let go of \the [src]!</span>")
+					to_chat(user, "<span class='warning'>You can't let go of \the [src]!</span>")
 					return FALSE
 
 				contents += O
-				to_chat(user, "<span class='notice'>I successfully add \the [O] to the contraption,</span>")
+				to_chat(user, "<span class='notice'>You successfully add \the [O] to the contraption,</span>")
 				return TRUE
 			else if(cc==mommi_assembly_parts[t])
-				to_chat(user, "<span class='warning'>I have enough of these.</span>")
+				to_chat(user, "<span class='warning'>You have enough of these.</span>")
 				return TRUE
 	return FALSE
 
@@ -109,12 +109,12 @@ obj/item/device/mmi/Destroy()
 	if(istype(O,/obj/item/organ/internal/brain) && !brainmob) //Time to stick a brain in it --NEO
 		// MaMIs inherit from brain, but they shouldn't be insertable into a MMI
 		if (istype(O, /obj/item/organ/internal/brain/mami))
-			to_chat(user, "<span class='warning'>I am only able to fit organic brains on a MMI. [src] won't work.</span>")
+			to_chat(user, "<span class='warning'>You are only able to fit organic brains on a MMI. [src] won't work.</span>")
 			return TRUE
 
 		var/obj/item/organ/internal/brain/BO = O
 		if(!BO.brainmob)
-			to_chat(user, "<span class='warning'>I amn't sure where this brain came from, but you're pretty sure it's a useless brain.</span>")
+			to_chat(user, "<span class='warning'>You aren't sure where this brain came from, but you're pretty sure it's a useless brain.</span>")
 			return TRUE
 		// Checking to see if the ghost has been moused/borer'd/etc since death.
 		var/mob/living/carbon/brain/BM = BO.brainmob
@@ -125,13 +125,13 @@ obj/item/device/mmi/Destroy()
 				if(ghostmob)
 					to_chat(user, "<span class='warning'>\The [src] indicates that \the [O] seems slow to respond. Try again in a few seconds.</span>")
 					ghostmob << 'sound/effects/adminhelp.ogg'
-					to_chat(ghostmob, "<span class='interface big'><span class='bold'>Someone is trying to put my brain in a MMI. Return to my body if you want to be resurrected!</span> \
+					to_chat(ghostmob, "<span class='interface big'><span class='bold'>Someone is trying to put your brain in a MMI. Return to your body if you want to be resurrected!</span> \
 						(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)</span>")
 					return TRUE
 			to_chat(user, "<span class='warning'>\The [src] indicates that \the [O] is completely unresponsive; there's no point.</span>")
 			return TRUE
 		if(!user.drop_item(O))
-			to_chat(user, "<span class='warning'>I can't let go of \the [O]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [O]!</span>")
 			return TRUE
 
 		src.visible_message("<span class='notice'>[user] sticks \a [O] into \the [src].</span>")
@@ -158,7 +158,7 @@ obj/item/device/mmi/Destroy()
 	if((istype(O,/obj/item/weapon/card/id)||istype(O,/obj/item/device/pda)) && brainmob)
 		if(allowed(user))
 			locked = !locked
-			to_chat(user, "<span class='notice'>I [locked ? "lock" : "unlock"] \the [src].</span>")
+			to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] \the [src].</span>")
 		else
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 		return TRUE
@@ -171,11 +171,11 @@ obj/item/device/mmi/Destroy()
 	//TODO: ORGAN REMOVAL UPDATE. Make the brain remain in the MMI so it doesn't lose organ data.
 /obj/item/device/mmi/attack_self(mob/user as mob)
 	if(!brainmob)
-		to_chat(user, "<span class='warning'>I upend \the [src], but there's nothing in it.")
+		to_chat(user, "<span class='warning'>You upend \the [src], but there's nothing in it.")
 	else if(locked)
-		to_chat(user, "<span class='warning'>I upend \the [src], but the brain is clamped into place.")
+		to_chat(user, "<span class='warning'>You upend \the [src], but the brain is clamped into place.")
 	else
-		to_chat(user, "<span class='notice'>I upend \the [src], spilling the brain onto the floor.</span>")
+		to_chat(user, "<span class='notice'>You upend \the [src], spilling the brain onto the floor.</span>")
 		var/obj/item/organ/internal/brain/brain = new(user.loc)
 		brain.transfer_identity(brainmob)
 		qdel(brainmob)
@@ -282,4 +282,4 @@ obj/item/device/mmi/Destroy()
 /obj/item/device/mmi/OnMobDeath(var/mob/living/carbon/brain/B)
 	if(istype(B))
 		icon_state = "mmi_dead"
-		visible_message(message = "<span class='danger'>[B]'s MMI flatlines!</span>", blind_message = "<span class='warning'>I hear something flatline.</span>")
+		visible_message(message = "<span class='danger'>[B]'s MMI flatlines!</span>", blind_message = "<span class='warning'>You hear something flatline.</span>")

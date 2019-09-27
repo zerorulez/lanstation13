@@ -28,7 +28,7 @@
 				A.anchored = 1
 				del(src)
 			else
-				to_chat(user, "<span class='notice'>I disconnect the monitor.</span>")
+				to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 				var/obj/item/weapon/circuitboard/curer/M = new /obj/item/weapon/circuitboard/curer( A )
 				for (var/obj/C in src)

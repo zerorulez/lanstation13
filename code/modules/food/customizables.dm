@@ -79,7 +79,7 @@
 		var/obj/item/stack/sheet/metal/S = I
 		S.use(1)
 		var/obj/item/weapon/reagent_containers/glass/mortar/mortimer = new(get_turf(src))
-		to_chat(user, "<span class='notice'>I fashion a crude mortar out of the wooden bowl and a metal sheet.</span>")
+		to_chat(user, "<span class='notice'>You fashion a crude mortar out of the wooden bowl and a metal sheet.</span>")
 		qdel(src)
 		user.put_in_hands(mortimer)
 	if(istype(I,/obj/item/weapon/reagent_containers/food/snacks))
@@ -125,13 +125,13 @@
 		if(istype(S,/obj/item/weapon/reagent_containers/food/snacks/customizable))
 			var/obj/item/weapon/reagent_containers/food/snacks/customizable/SC = S
 			if(src.fullyCustom && SC.fullyCustom)
-				to_chat(user, "<span class='warning'>I slap yourself on the back of the head for thinking that stacking plates is an interesting dish.</span>")
+				to_chat(user, "<span class='warning'>You slap yourself on the back of the head for thinking that stacking plates is an interesting dish.</span>")
 				return
 		if(!recursiveFood && istype(I, /obj/item/weapon/reagent_containers/food/snacks/customizable))
-			to_chat(user, "<span class='warning'>[pick("As uniquely original as that idea is, you can't figure out how to perform it.","That would be a straining topological exercise.","This world just isn't ready for my cooking genius.","It's possible that you may have a problem.","It won't fit.","I don't think that would taste very good.","Quit goofin' around.")]</span>")
+			to_chat(user, "<span class='warning'>[pick("As uniquely original as that idea is, you can't figure out how to perform it.","That would be a straining topological exercise.","This world just isn't ready for your cooking genius.","It's possible that you may have a problem.","It won't fit.","I don't think that would taste very good.","Quit goofin' around.")]</span>")
 			return
 		if(!user.drop_item(I, src))
-			user << "<span class='warning'>\The [I] is stuck to my hands!</span>"
+			user << "<span class='warning'>\The [I] is stuck to your hands!</span>"
 			return
 
 		S.reagents.trans_to(src,S.reagents.total_volume)
@@ -150,7 +150,7 @@
 			src.drawTopping()
 
 		src.updateName()
-		to_chat(user, "<span class='notice'>I add the [I.name] to the [src.name].</span>")
+		to_chat(user, "<span class='notice'>You add the [I.name] to the [src.name].</span>")
 	else
 		. = ..()
 	return
@@ -407,10 +407,10 @@
 			var/obj/item/weapon/reagent_containers/food/snacks/S = I
 
 			if(!recursiveFood && istype(I, /obj/item/weapon/reagent_containers/food/snacks/customizable))
-				to_chat(user, "<span class='warning'>[pick("Sorry, no recursive food.","That would be a straining topological exercise.","This world just isn't ready for my cooking genius.","It's possible that you may have a problem.","It won't fit.","I don't think that would taste very good.","Quit goofin' around.")]</span>")
+				to_chat(user, "<span class='warning'>[pick("Sorry, no recursive food.","That would be a straining topological exercise.","This world just isn't ready for your cooking genius.","It's possible that you may have a problem.","It won't fit.","I don't think that would taste very good.","Quit goofin' around.")]</span>")
 				return
 			if(user.drop_item(I, src))
-				to_chat(user, "<span class='notice'>I add the [S.name] to the [src.name].</span>")
+				to_chat(user, "<span class='notice'>You add the [S.name] to the [src.name].</span>")
 				S.reagents.trans_to(src,S.reagents.total_volume)
 				src.ingredients += S
 				src.updateName()

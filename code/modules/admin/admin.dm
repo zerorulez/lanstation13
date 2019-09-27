@@ -772,7 +772,7 @@ var/global/floorIsLava = 0
 			<A href='?src=\ref[src];secretsfun=spiders'>Trigger a Spider infestation</A><BR>
 			<A href='?src=\ref[src];secretsfun=hostile_infestation'>Spawn a hostile creature infestation</A><BR>
 			<A href='?src=\ref[src];secretsfun=carp'>Trigger a Carp migration</A><BR>
-			<A href='?src=\ref[src];secretsfun=mobswarm'>Trigger mobs of my choice appearing out of thin air</A><BR>
+			<A href='?src=\ref[src];secretsfun=mobswarm'>Trigger mobs of your choice appearing out of thin air</A><BR>
 			<BR>
 			<A href='?src=\ref[src];secretsfun=spacevines'>Spawn Space-Vines</A><BR>
 			<A href='?src=\ref[src];secretsfun=radiation'>Irradiate the station</A><BR>
@@ -947,7 +947,7 @@ var/global/floorIsLava = 0
 /datum/admins/proc/announce()
 	set category = "Special Verbs"
 	set name = "Announce"
-	set desc="Announce my desires to the world"
+	set desc="Announce your desires to the world"
 
 	if(!check_rights(0))
 		return
@@ -1069,9 +1069,9 @@ var/global/floorIsLava = 0
 
 	abandon_allowed = !( abandon_allowed )
 	if (abandon_allowed)
-		to_chat(world, "<B>I may now respawn.</B>")
+		to_chat(world, "<B>You may now respawn.</B>")
 	else
-		to_chat(world, "<B>I may no longer respawn :(</B>")
+		to_chat(world, "<B>You may no longer respawn :(</B>")
 	message_admins("<span class='notice'>[key_name_admin(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"].</span>", 1)
 	log_admin("[key_name(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"].")
 	world.update_status()

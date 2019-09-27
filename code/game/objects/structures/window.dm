@@ -139,7 +139,7 @@
 	H.do_attack_animation(src, H)
 
 	H.visible_message("<span class='danger'>\The [H] kicks \the [src].</span>", \
-	"<span class='danger'>I kick \the [src].</span>")
+	"<span class='danger'>You kick \the [src].</span>")
 
 	var/damage = rand(1,7) * (H.get_strength() - reinforced) //By default, humanoids can't damage windows with kicks. Being strong or a hulk changes that
 	var/obj/item/clothing/shoes/S = H.shoes
@@ -179,7 +179,7 @@
 		health -= 10 //We estimate just above a slam but under a crush, since mobs can't carry a throwforce variable
 		healthcheck(M)
 		visible_message("<span class='danger'>\The [M] slams into \the [src].</span>", \
-		"<span class='danger'>I slam into \the [src].</span>")
+		"<span class='danger'>You slam into \the [src].</span>")
 	else if(isobj(AM))
 		var/obj/item/I = AM
 		health -= I.throwforce
@@ -202,7 +202,7 @@
 		user.delayNextAttack(10)
 		playsound(get_turf(src), 'sound/effects/glassknock.ogg', 100, 1)
 		user.visible_message("<span class='warning'>[user] bangs against \the [src]!</span>", \
-		"<span class='warning'>I bang against \the [src]!</span>", \
+		"<span class='warning'>You bang against \the [src]!</span>", \
 		"I hear banging.")
 
 	//Knock against it
@@ -210,7 +210,7 @@
 		user.delayNextAttack(10)
 		playsound(get_turf(src), 'sound/effects/glassknock.ogg', 50, 1)
 		user.visible_message("<span class='notice'>[user] knocks on \the [src].</span>", \
-		"<span class='notice'>I knock on \the [src].</span>", \
+		"<span class='notice'>You knock on \the [src].</span>", \
 		"I hear knocking.")
 	return
 
@@ -224,7 +224,7 @@
 	user.delayNextAttack(10)
 	health -= damage
 	user.visible_message("<span class='danger'>\The [user] smashes into \the [src]!</span>", \
-	"<span class='danger'>I smash into \the [src]!</span>")
+	"<span class='danger'>You smash into \the [src]!</span>")
 	healthcheck(user)
 
 /obj/structure/window/attack_alien(mob/user as mob)
@@ -259,18 +259,18 @@
 				if(GRAB_PASSIVE)
 					M.apply_damage(5) //Meh, bit of pain, window is fine, just a shove
 					visible_message("<span class='warning'>\The [user] shoves \the [M] into \the [src]!</span>", \
-					"<span class='warning'>I shove \the [M] into \the [src]!</span>")
+					"<span class='warning'>You shove \the [M] into \the [src]!</span>")
 				if(GRAB_AGGRESSIVE)
 					M.apply_damage(10) //Nasty, but dazed and concussed at worst
 					health -= 5
 					visible_message("<span class='danger'>\The [user] slams \the [M] into \the [src]!</span>", \
-					"<span class='danger'>I slam \the [M] into \the [src]!</span>")
+					"<span class='danger'>You slam \the [M] into \the [src]!</span>")
 				if(GRAB_NECK to GRAB_KILL)
 					M.Knockdown(3) //Almost certainly shoved head or face-first, you're going to need a bit for the lights to come back on
 					M.apply_damage(20) //That got to fucking hurt, you were basically flung into a window, most likely a shattered one at that
 					health -= 20 //Window won't like that
 					visible_message("<span class='danger'>\The [user] crushes \the [M] into \the [src]!</span>", \
-					"<span class='danger'>I crush \the [M] into \the [src]!</span>")
+					"<span class='danger'>You crush \the [M] into \the [src]!</span>")
 			healthcheck(user)
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been window slammed by [user.name] ([user.ckey]) ([gstate]).</font>")
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Window slammed [M.name] ([gstate]).</font>")
@@ -289,7 +289,7 @@
 				if(isscrewdriver(W))
 					playsound(loc, 'sound/items/Screwdriver.ogg', 75, 1)
 					user.visible_message("<span class='warning'>[user] unfastens \the [src] from its frame.</span>", \
-					"<span class='notice'>I unfasten \the [src] from its frame.</span>")
+					"<span class='notice'>You unfasten \the [src] from its frame.</span>")
 					d_state = WINDOWUNSECUREFRAME
 					return
 
@@ -298,14 +298,14 @@
 				if(isscrewdriver(W))
 					playsound(loc, 'sound/items/Screwdriver.ogg', 75, 1)
 					user.visible_message("<span class='notice'>[user] fastens \the [src] to its frame.</span>", \
-					"<span class='notice'>I fasten \the [src] to its frame.</span>")
+					"<span class='notice'>You fasten \the [src] to its frame.</span>")
 					d_state = WINDOWSECURE
 					return
 
 				if(iscrowbar(W))
 					playsound(loc, 'sound/items/Crowbar.ogg', 75, 1)
 					user.visible_message("<span class='warning'>[user] pries \the [src] from its frame.</span>", \
-					"<span class='notice'>I pry \the [src] from its frame.</span>")
+					"<span class='notice'>You pry \the [src] from its frame.</span>")
 					d_state = WINDOWLOOSEFRAME
 					return
 
@@ -314,14 +314,14 @@
 				if(iscrowbar(W))
 					playsound(loc, 'sound/items/Crowbar.ogg', 75, 1)
 					user.visible_message("<span class='notice'>[user] pries \the [src] into its frame.</span>", \
-					"<span class='notice'>I pry \the [src] into its frame.</span>")
+					"<span class='notice'>You pry \the [src] into its frame.</span>")
 					d_state = WINDOWUNSECUREFRAME
 					return
 
 				if(isscrewdriver(W))
 					playsound(loc, 'sound/items/Screwdriver.ogg', 75, 1)
 					user.visible_message("<span class='warning'>[user] unfastens \the [src]'s frame from the floor.</span>", \
-					"<span class='notice'>I unfasten \the [src]'s frame from the floor.</span>")
+					"<span class='notice'>You unfasten \the [src]'s frame from the floor.</span>")
 					d_state = WINDOWLOOSE
 					anchored = 0
 					update_nearby_tiles() //Needed if it's a full window, since unanchored windows don't link
@@ -339,7 +339,7 @@
 				if(isscrewdriver(W))
 					playsound(loc, 'sound/items/Screwdriver.ogg', 75, 1)
 					user.visible_message("<span class='notice'>[user] fastens \the [src]'s frame to the floor.</span>", \
-					"<span class='notice'>I fasten \the [src]'s frame to the floor.</span>")
+					"<span class='notice'>You fasten \the [src]'s frame to the floor.</span>")
 					d_state = WINDOWLOOSEFRAME
 					anchored = 1
 					update_nearby_tiles() //Ditto above, but in reverse
@@ -352,16 +352,16 @@
 					if(WT.remove_fuel(0))
 						playsound(src, 'sound/items/Welder.ogg', 100, 1)
 						user.visible_message("<span class='warning'>[user] starts disassembling \the [src].</span>", \
-						"<span class='notice'>I start disassembling \the [src].</span>")
+						"<span class='notice'>You start disassembling \the [src].</span>")
 						if(do_after(user, src, 40) && d_state == WINDOWLOOSE) //Extra condition needed to avoid cheesing
 							playsound(src, 'sound/items/Welder.ogg', 100, 1)
 							user.visible_message("<span class='warning'>[user] disassembles \the [src].</span>", \
-							"<span class='notice'>I disassemble \the [src].</span>")
+							"<span class='notice'>You disassemble \the [src].</span>")
 							getFromPool(sheettype, get_turf(src), sheetamount)
 							qdel(src)
 							return
 					else
-						to_chat(user, "<span class='warning'>I need more welding fuel to complete this task.</span>")
+						to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 						return
 
 	else if(!reinforced && can_construct) //Normal window steps
@@ -369,7 +369,7 @@
 		if(isscrewdriver(W))
 			playsound(loc, 'sound/items/Screwdriver.ogg', 75, 1)
 			user.visible_message("<span class='[d_state ? "warning":"notice"]'>[user] [d_state ? "un":""]fastens \the [src].</span>", \
-			"<span class='notice'>I [d_state ? "un":""]fasten \the [src].</span>")
+			"<span class='notice'>You [d_state ? "un":""]fasten \the [src].</span>")
 			d_state = !d_state
 			anchored = !anchored
 			update_nearby_tiles() //Ditto above
@@ -382,16 +382,16 @@
 			if(WT.remove_fuel(0))
 				playsound(src, 'sound/items/Welder.ogg', 100, 1)
 				user.visible_message("<span class='warning'>[user] starts disassembling \the [src].</span>", \
-				"<span class='notice'>I start disassembling \the [src].</span>")
+				"<span class='notice'>You start disassembling \the [src].</span>")
 				if(do_after(user, src, 40) && d_state == WINDOWLOOSE) //Ditto above
 					playsound(src, 'sound/items/Welder.ogg', 100, 1)
 					user.visible_message("<span class='warning'>[user] disassembles \the [src].</span>", \
-					"<span class='notice'>I disassemble \the [src].</span>")
+					"<span class='notice'>You disassemble \the [src].</span>")
 					getFromPool(sheettype, get_turf(src), sheetamount)
 					Destroy()
 					return
 			else
-				to_chat(user, "<span class='warning'>I need more welding fuel to complete this task.</span>")
+				to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 				return
 
 	user.do_attack_animation(src, W)
@@ -400,7 +400,7 @@
 		user.delayNextAttack(10)
 		health -= W.force
 		user.visible_message("<span class='warning'>\The [user] hits \the [src] with \the [W].</span>", \
-		"<span class='warning'>I hit \the [src] with \the [W].</span>")
+		"<span class='warning'>You hit \the [src] with \the [W].</span>")
 		healthcheck(user)
 		return
 	else

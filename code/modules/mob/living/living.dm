@@ -82,11 +82,11 @@
 	if(reagents && reagents.has_reagent(BUSTANUT))
 		if(!(M_HARDCORE in mutations))
 			mutations.Add(M_HARDCORE)
-			to_chat(src, "<span class='notice'>I feel like you're the best around.  Nothing's going to get you down.</span>")
+			to_chat(src, "<span class='notice'>You feel like you're the best around.  Nothing's going to get you down.</span>")
 	else
 		if(M_HARDCORE in mutations)
 			mutations.Remove(M_HARDCORE)
-			to_chat(src, "<span class='notice'>I feel like a pleb.</span>")
+			to_chat(src, "<span class='notice'>You feel like a pleb.</span>")
 	handle_beams()
 
 	//handles "call on life", allowing external life-related things to be processed
@@ -113,7 +113,7 @@
 				if(src.mind in ticker.mode.traitors)
 					ticker.mode.traitors -= src.mind
 					special_role = null
-					to_chat(current, "<span class='danger'><FONT size = 3>The fog clouding my mind clears. You remember nothing from the moment you were implanted until now..(You don't remember who enslaved you)</FONT></span>")
+					to_chat(current, "<span class='danger'><FONT size = 3>The fog clouding your mind clears. You remember nothing from the moment you were implanted until now..(You don't remember who enslaved you)</FONT></span>")
 				*/
 
 // Apply connect damage
@@ -137,7 +137,7 @@
 	if(iscultist(src) && client)
 		var/mob/living/simple_animal/construct/harvester/C = new /mob/living/simple_animal/construct/harvester(get_turf(src))
 		mind.transfer_to(C)
-		to_chat(C, "<span class='sinister'>The Geometer of Blood is overjoyed to be reunited with its followers, and accepts my body in sacrifice. As reward, you have been gifted with the shell of an Harvester.<br>My tendrils can use and draw runes without need for a tome, my eyes can see beings through walls, and my mind can open any door. Use these assets to serve Nar-Sie and bring him any remaining living human in the world.<br>I can teleport yourself back to Nar-Sie along with any being under yourself at any time using my \"Harvest\" spell.</span>")
+		to_chat(C, "<span class='sinister'>The Geometer of Blood is overjoyed to be reunited with its followers, and accepts your body in sacrifice. As reward, you have been gifted with the shell of an Harvester.<br>Your tendrils can use and draw runes without need for a tome, your eyes can see beings through walls, and your mind can open any door. Use these assets to serve Nar-Sie and bring him any remaining living human in the world.<br>You can teleport yourself back to Nar-Sie along with any being under yourself at any time using your \"Harvest\" spell.</span>")
 		dust()
 	else if(client)
 		var/mob/dead/G = (ghostize())
@@ -156,7 +156,7 @@
 			G.overlays += H.obj_overlays[HEAD_LAYER]
 			G.overlays += H.obj_overlays[HANDCUFF_LAYER]
 		G.invisibility = 0
-		to_chat(G, "<span class='sinister'>I feel relieved as what's left of my soul finally escapes its prison of flesh.</span>")
+		to_chat(G, "<span class='sinister'>You feel relieved as what's left of your soul finally escapes its prison of flesh.</span>")
 
 		if(ticker.mode.name == "cult")
 			var/datum/game_mode/cult/mode_ticker = ticker.mode
@@ -189,7 +189,7 @@
 		if (!from_deathgasp)
 			emote("deathgasp", ignore_status = TRUE)
 		death(gibbed)
-		to_chat(src, "<span class='info'>I have given up life and succumbed to death.</span>")
+		to_chat(src, "<span class='info'>You have given up life and succumbed to death.</span>")
 
 
 /mob/living/proc/updatehealth()
@@ -812,7 +812,7 @@ Thanks.
 	if(inside_tunneler)
 		var/breakout_time = 0.5 //30 seconds by default
 		L.delayNext(DELAY_ALL,100)
-		L.visible_message("<span class='danger'>\The [inside_tunneler]'s storage bin shudders.</span>","<span class='warning'>I wander through subspace, looking for a way out (this will take about [breakout_time * 60] seconds).</span>")
+		L.visible_message("<span class='danger'>\The [inside_tunneler]'s storage bin shudders.</span>","<span class='warning'>You wander through subspace, looking for a way out (this will take about [breakout_time * 60] seconds).</span>")
 		spawn(0)
 			if(do_after(usr,src,breakout_time * 60 * 10)) //minutes * 60seconds * 10deciseconds
 				var/obj/item/weapon/subspacetunneler/still_in = get_holder_of_type(L, /obj/item/weapon/subspacetunneler)
@@ -841,10 +841,10 @@ Thanks.
 		return
 	else if(istype(src.loc, /obj/item/delivery/large)) //Syndie item
 		var/obj/item/delivery/large/package = src.loc
-		to_chat(L, "<span class='warning'>I attempt to unwrap yourself, this package is tight and will take some time.</span>")
+		to_chat(L, "<span class='warning'>You attempt to unwrap yourself, this package is tight and will take some time.</span>")
 		if(do_after(src, src, 100))
 			L.visible_message("<span class='danger'>[L] successfully breaks out of [package]!</span>",\
-							  "<span class='notice'>I successfully break out!</span>")
+							  "<span class='notice'>You successfully break out!</span>")
 			forceMove(get_turf(src))
 			qdel(package)
 			playsound(src.loc, 'sound/items/poster_ripped.ogg', 100, 1)
@@ -857,7 +857,7 @@ Thanks.
 			var/datum/chain/tether_datum = L.tether.chain_datum
 			if(tether_datum.extremity_B == src)
 				L.visible_message("<span class='danger'>\the [L] quickly grabs and removes \the [L.tether] tethered to his body!</span>",
-							  "<span class='warning'>I quickly grab and remove \the [L.tether] tethered to my body.</span>")
+							  "<span class='warning'>You quickly grab and remove \the [L.tether] tethered to your body.</span>")
 				L.tether = null
 				tether_datum.extremity_B = null
 				tether_datum.rewind_chain()
@@ -866,14 +866,14 @@ Thanks.
 	for(var/obj/item/stickybomb/B in L)
 		if(B.stuck_to)
 			L.visible_message("<span class='danger'>\the [L] is trying to reach and pull off \the [B] stuck on his body!</span>",
-						  "<span class='warning'>I reach for \the [B] stuck on my body and start pulling.</span>")
+						  "<span class='warning'>You reach for \the [B] stuck on your body and start pulling.</span>")
 			if(do_after(L, src, 30, 10, FALSE))
 				L.visible_message("<span class='danger'>After struggling for an instant, \the [L] manages unstick \the [B] from his body!</span>",
 						  "<span class='warning'>It came off!</span>")
 				L.put_in_hands(B)
 				B.unstick(0)
 			else
-				to_chat(L, "<span class='warning'>I need to stop moving around while you try to get a hold of \the [B]!</span>")
+				to_chat(L, "<span class='warning'>You need to stop moving around while you try to get a hold of \the [B]!</span>")
 			return
 		else
 			continue
@@ -883,9 +883,9 @@ Thanks.
 		var/mob/living/simple_animal/borer/B = src.loc
 		var/mob/living/captive_brain/H = src
 
-		H.simple_message("<span class='danger'>I begin doggedly resisting the parasite's control (this will take approximately sixty seconds).</span>",\
-			"<span class='danger'>I attempt to remember who you are and how the heck did you get here (this will probably take a while).</span>")
-		to_chat(B.host, "<span class='danger'>I feel the captive mind of [src] begin to resist my control.</span>")
+		H.simple_message("<span class='danger'>You begin doggedly resisting the parasite's control (this will take approximately sixty seconds).</span>",\
+			"<span class='danger'>You attempt to remember who you are and how the heck did you get here (this will probably take a while).</span>")
+		to_chat(B.host, "<span class='danger'>You feel the captive mind of [src] begin to resist your control.</span>")
 
 		spawn(rand(350,450)+B.host.brainloss)
 
@@ -893,8 +893,8 @@ Thanks.
 				return
 
 			B.host.adjustBrainLoss(rand(5,10))
-			H.simple_message("<span class='danger'>With an immense exertion of will, you regain control of my body!</span>")
-			to_chat(B.host, "<span class='danger'>I feel control of the host brain ripped from my grasp, and retract my probosci before the wild neural impulses can damage you.</span>")
+			H.simple_message("<span class='danger'>With an immense exertion of will, you regain control of your body!</span>")
+			to_chat(B.host, "<span class='danger'>You feel control of the host brain ripped from your grasp, and retract your probosci before the wild neural impulses can damage you.</span>")
 
 			var/mob/living/carbon/C=B.host
 			C.do_release_control(0) // Was detach().
@@ -939,19 +939,19 @@ Thanks.
 					C.delayNextAttack(100)
 					C.delayNextSpecial(100)
 					C.visible_message("<span class='warning'>[C] attempts to unbuckle themself!</span>",
-									  "<span class='warning'>I attempt to unbuckle yourself (this will take around two minutes, and you need to stay still).</span>",
-									  self_drugged_message="<span class='warning'>I attempt to regain control of my legs (this will take a while).</span>")
+									  "<span class='warning'>You attempt to unbuckle yourself (this will take around two minutes, and you need to stay still).</span>",
+									  self_drugged_message="<span class='warning'>You attempt to regain control of your legs (this will take a while).</span>")
 					spawn(0)
 						if(do_after(usr, usr, 1200))
 							if(!C.locked_to)
 								return
 							C.visible_message("<span class='danger'>[C] manages to unbuckle themself!</span>",\
-								"<span class='notice'>I successfully unbuckle yourself.</span>",\
-								self_drugged_message="<span class='notice'>I successfully regain control of my legs and stand up.</span>")
+								"<span class='notice'>You successfully unbuckle yourself.</span>",\
+								self_drugged_message="<span class='notice'>You successfully regain control of your legs and stand up.</span>")
 							B.manual_unbuckle(C)
 						else
-							C.simple_message("<span class='warning'>My unbuckling attempt was interrupted.</span>", \
-								"<span class='warning'>My attempt to regain control of my legs was interrupted. Damn it!</span>")
+							C.simple_message("<span class='warning'>Your unbuckling attempt was interrupted.</span>", \
+								"<span class='warning'>Your attempt to regain control of your legs was interrupted. Damn it!</span>")
 				else
 					B.manual_unbuckle(C)
 			else
@@ -980,7 +980,7 @@ Thanks.
 		//okay, so the closet is either welded or locked... resist!!!
 		L.delayNext(DELAY_ALL,100)
 		L.visible_message("<span class='danger'>The [C] begins to shake violenty!</span>",
-						  "<span class='warning'>I lean on the back of [C] and start pushing the door open (this will take about [breakout_time] minutes).</span>")
+						  "<span class='warning'>You lean on the back of [C] and start pushing the door open (this will take about [breakout_time] minutes).</span>")
 		spawn(0)
 			if(do_after(usr,src,breakout_time * 60 * 10)) //minutes * 60seconds * 10deciseconds
 				if(!C || !L || L.stat != CONSCIOUS || L.loc != C || C.opened) //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
@@ -1009,7 +1009,7 @@ Thanks.
 					SC.locked = 0
 					SC.welded = 0
 					L.visible_message("<span class='danger'>[L] successfully breaks out of [SC]!</span>",
-									  "<span class='notice'>I successfully break out!</span>")
+									  "<span class='notice'>You successfully break out!</span>")
 					if(istype(SC.loc, /obj/item/delivery/large)) //Do this to prevent contents from being opened into nullspace (read: bluespace)
 						var/obj/item/delivery/large/BD = SC.loc
 						BD.attack_hand(usr)
@@ -1017,7 +1017,7 @@ Thanks.
 				else
 					C.welded = 0
 					L.visible_message("<span class='danger'>[L] successful breaks out of [C]!</span>",
-									  "<span class='notice'>I successfully break out!</span>")
+									  "<span class='notice'>You successfully break out!</span>")
 					if(istype(C.loc, /obj/item/delivery/large)) //nullspace ect.. read the comment above
 						var/obj/item/delivery/large/BD = C.loc
 						BD.attack_hand(usr)
@@ -1027,7 +1027,7 @@ Thanks.
 		var/breakout_time = 30 SECONDS
 		var/obj/item/mecha_parts/mecha_equipment/tool/jail/jailcell = src.loc
 		L.delayNext(DELAY_ALL,100)
-		L.visible_message("<span class='danger'>One of \the [src.loc]'s cells rattles.</span>","<span class='warning'>I press against the lid of \the [src.loc] and attempt to pop it open (this will take about [breakout_time/10] seconds).</span>")
+		L.visible_message("<span class='danger'>One of \the [src.loc]'s cells rattles.</span>","<span class='warning'>You press against the lid of \the [src.loc] and attempt to pop it open (this will take about [breakout_time/10] seconds).</span>")
 		spawn(0)
 			if(do_after(usr,src,breakout_time)) //minutes * 60seconds * 10deciseconds
 				if(src.loc != jailcell || !L || L.stat != CONSCIOUS) //if we're no longer in that mounted cell OR user dead/unconcious
@@ -1045,7 +1045,7 @@ Thanks.
 			CM.fire_stacks -= 5
 			CM.SetKnockdown(3)
 			CM.visible_message("<span class='danger'>[CM] rolls on the floor, trying to put themselves out!</span>",
-							   "<span class='warning'>I stop, drop, and roll!</span>")
+							   "<span class='warning'>You stop, drop, and roll!</span>")
 
 			for(var/i = 1 to rand(8,12))
 				CM.dir = turn(CM.dir, pick(-90, 90))
@@ -1053,7 +1053,7 @@ Thanks.
 
 			if(fire_stacks <= 0)
 				CM.visible_message("<span class='danger'>[CM] has successfully extinguished themselves!</span>",
-								   "<span class='notice'>I extinguish yourself.</span>")
+								   "<span class='notice'>You extinguish yourself.</span>")
 				ExtinguishMob()
 			return
 
@@ -1062,20 +1062,20 @@ Thanks.
 			CM.delayNext(DELAY_ALL,100)
 			if(isalienadult(CM) || (M_HULK in usr.mutations))//Don't want to do a lot of logic gating here.
 				CM.visible_message("<span class='danger'>[CM] is trying to break the handcuffs!</span>",
-								   "<span class='warning'>I attempt to break my handcuffs. (This will take around five seconds and you will need to stand still).</span>")
+								   "<span class='warning'>You attempt to break your handcuffs. (This will take around five seconds and you will need to stand still).</span>")
 				spawn(0)
 					if(do_after(CM, CM, 50))
 						if(!CM.handcuffed || CM.locked_to)
 							return
 						CM.visible_message("<span class='danger'>[CM] manages to break the handcuffs!</span>",
-										   "<span class='notice'>I successfuly break my handcuffs.</span>")
+										   "<span class='notice'>You successfuly break your handcuffs.</span>")
 						CM.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 						var/obj/item/weapon/handcuffs/cuffs = CM.handcuffed
 						CM.drop_from_inventory(cuffs)
 						if(!cuffs.gcDestroyed) //If these were not qdel'd already (exploding cuffs, anyone?)
 							qdel(cuffs)
 					else
-						to_chat(CM, "<span class='warning'>My cuff breaking attempt was interrupted.</span>")
+						to_chat(CM, "<span class='warning'>Your cuff breaking attempt was interrupted.</span>")
 
 
 			else
@@ -1084,55 +1084,55 @@ Thanks.
 				if(!(breakouttime))
 					breakouttime = 1200 //Default
 				CM.visible_message("<span class='danger'>[CM] attempts to remove [HC]!</span>",
-								   "<span class='warning'>I attempt to remove [HC] (this will take around [(breakouttime)/600] minutes and you need to stand still).</span>",
-								   self_drugged_message="<span class='warning'>I attempt to regain control of my hands (this will take a while).</span>")
+								   "<span class='warning'>You attempt to remove [HC] (this will take around [(breakouttime)/600] minutes and you need to stand still).</span>",
+								   self_drugged_message="<span class='warning'>You attempt to regain control of your hands (this will take a while).</span>")
 				spawn(0)
 					if(do_after(CM,CM, breakouttime))
 						if(!CM.handcuffed || CM.locked_to)
 							return // time leniency for lag which also might make this whole thing pointless but the server
 						CM.visible_message("<span class='danger'>[CM] manages to remove [HC]!</span>",
-										   "<span class='notice'>I successfuly remove [HC].</span>",
-										   self_drugged_message="<span class='notice'>I successfully regain control of my hands.</span>")
+										   "<span class='notice'>You successfuly remove [HC].</span>",
+										   self_drugged_message="<span class='notice'>You successfully regain control of your hands.</span>")
 						CM.drop_from_inventory(HC)
 					else
-						CM.simple_message("<span class='warning'>My uncuffing attempt was interrupted.</span>",
-							"<span class='warning'>My attempt to regain control of my hands was interrupted. Damn it!</span>")
+						CM.simple_message("<span class='warning'>Your uncuffing attempt was interrupted.</span>",
+							"<span class='warning'>Your attempt to regain control of your hands was interrupted. Damn it!</span>")
 
 		else if(CM.legcuffed && CM.canmove && CM.special_delayer.blocked())
 			CM.delayNext(DELAY_ALL,100)
 			if(isalienadult(CM) || (M_HULK in usr.mutations))//Don't want to do a lot of logic gating here.
 				CM.visible_message("<span class='danger'>[CM] is trying to break the legcuffs!</span>",
-								   "<span class='warning'>I attempt to break my legcuffs. (This will take around five seconds and you need to stand still).</span>")
+								   "<span class='warning'>You attempt to break your legcuffs. (This will take around five seconds and you need to stand still).</span>")
 				spawn(0)
 					if(do_after(CM, CM, 50))
 						if(!CM.legcuffed || CM.locked_to)
 							return
 						CM.visible_message("<span class='danger'>[CM] manages to break the legcuffs!</span>",
-										   "<span class='notice'>I successfully break my legcuffs.</span>")
+										   "<span class='notice'>You successfully break your legcuffs.</span>")
 						CM.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 						qdel(CM.legcuffed)
 						CM.legcuffed = null
 						CM.update_inv_legcuffed()
 					else
-						to_chat(CM, "<span class='warning'>My legcuffing breaking attempt was interrupted.</span>")
+						to_chat(CM, "<span class='warning'>Your legcuffing breaking attempt was interrupted.</span>")
 			else
 				var/obj/item/weapon/legcuffs/HC = CM.legcuffed
 				var/breakouttime = HC.breakouttime
 				if(!(breakouttime))
 					breakouttime = 1200 //Default
 				CM.visible_message("<span class='danger'>[CM] attempts to remove [HC]!</span>",
-								   "<span class='warning'>I attempt to remove [HC]. (This will take around [(breakouttime)/600] minutes and you need to stand still).</span>")
+								   "<span class='warning'>You attempt to remove [HC]. (This will take around [(breakouttime)/600] minutes and you need to stand still).</span>")
 				spawn(0)
 					if(do_after(CM, CM, breakouttime))
 						if(!CM.legcuffed || CM.locked_to)
 							return // time leniency for lag which also might make this whole thing pointless but the server
 						CM.visible_message("<span class='danger'>[CM] manages to remove [HC]!</span>",
-										   "<span class='notice'>I successfully remove [HC].</span>")
+										   "<span class='notice'>You successfully remove [HC].</span>")
 						CM.legcuffed.forceMove(usr.loc)
 						CM.legcuffed = null
 						CM.update_inv_legcuffed()
 					else
-						to_chat(CM, "<span class='warning'>My unlegcuffing attempt was interrupted.</span>")
+						to_chat(CM, "<span class='warning'>Your unlegcuffing attempt was interrupted.</span>")
 
 /mob/living/verb/lay_down()
 	set name = "Rest"
@@ -1143,7 +1143,7 @@ Thanks.
 	delayNextMove(10)
 	resting = !resting
 	update_canmove()
-	to_chat(src, "<span class='notice'>I am now [resting ? "resting" : "getting up"]</span>")
+	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
 
 /mob/living/proc/has_brain()
 	return 1
@@ -1268,7 +1268,7 @@ Thanks.
 				if(ishuman(src))
 					U = src
 				if(prob(40) && !(U && ((M_FAT in U.mutations) || (U && U.species && U.species.anatomy_flags & IS_BULKY))))
-					to_chat(src, "<span class='danger'>I fail to push [tmob]'s fat ass out of the way.</span>")
+					to_chat(src, "<span class='danger'>You fail to push [tmob]'s fat ass out of the way.</span>")
 					now_pushing = 0
 					return
 
@@ -1351,7 +1351,7 @@ Thanks.
 			to_chat(user, "<span class='notice'>[src] has already been butchered.</span>")
 			return
 		else
-			to_chat(user, "<span class='notice'>I can't butcher [src]!")
+			to_chat(user, "<span class='notice'>You can't butcher [src]!")
 			return
 		return
 
@@ -1369,7 +1369,7 @@ Thanks.
 		if(tool)
 			speed_mod = tool.is_sharp()
 			if(!speed_mod)
-				to_chat(user, "<span class='notice'>I can't butcher \the [src] with this!</span>")
+				to_chat(user, "<span class='notice'>You can't butcher \the [src] with this!</span>")
 				return
 		else
 			speed_mod = 0.0
@@ -1424,24 +1424,24 @@ Thanks.
 				return
 
 			user.visible_message("<span class='notice'>[user] starts [our_product.verb_gerund] \the [src][tool ? "with \the [tool]" : ""].</span>",\
-				"<span class='info'>I start [our_product.verb_gerund] \the [src].</span>")
+				"<span class='info'>You start [our_product.verb_gerund] \the [src].</span>")
 			src.being_butchered = 1
 			if(!do_after(user,src,(our_product.butcher_time * size) / speed_mod))
-				to_chat(user, "<span class='warning'>My attempt to [our_product.verb_name] \the [src] has been interrupted.</span>")
+				to_chat(user, "<span class='warning'>Your attempt to [our_product.verb_name] \the [src] has been interrupted.</span>")
 				src.being_butchered = 0
 			else
-				to_chat(user, "<span class='info'>I finish [our_product.verb_gerund] \the [src].</span>")
+				to_chat(user, "<span class='info'>You finish [our_product.verb_gerund] \the [src].</span>")
 				src.being_butchered = 0
 				our_product.spawn_result(get_turf(src), src)
 				src.update_icons()
 			return
 
 	user.visible_message("<span class='notice'>[user] starts butchering \the [src][tool ? " with \the [tool]" : ""].</span>",\
-		"<span class='info'>I start butchering \the [src].</span>")
+		"<span class='info'>You start butchering \the [src].</span>")
 	src.being_butchered = 1
 
 	if(!do_after(user,src,butchering_time / speed_mod))
-		to_chat(user, "<span class='warning'>My attempt to butcher \the [src] was interrupted.</span>")
+		to_chat(user, "<span class='warning'>Your attempt to butcher \the [src] was interrupted.</span>")
 		src.being_butchered = 0
 		return
 
@@ -1454,10 +1454,10 @@ Thanks.
 		advanced_butchery.Add(tool_name)
 
 	if(src.meat_taken < src.meat_amount)
-		to_chat(user, "<span class='info'>I cut a chunk of meat out of \the [src].</span>")
+		to_chat(user, "<span class='info'>You cut a chunk of meat out of \the [src].</span>")
 		return
 
-	to_chat(user, "<span class='info'>I butcher \the [src].</span>")
+	to_chat(user, "<span class='info'>You butcher \the [src].</span>")
 	can_butcher = 0
 
 	if(istype(src, /mob/living/simple_animal)) //Animals can be butchered completely, humans - not so

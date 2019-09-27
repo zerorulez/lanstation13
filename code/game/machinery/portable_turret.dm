@@ -205,11 +205,11 @@ Status: []<BR>"},
 
 /obj/machinery/porta_turret/emag(mob/user)
 	if(!emagged)
-		to_chat(user, "<span class='warning'>I short out [src]'s threat assessment circuits.</span>")
+		to_chat(user, "<span class='warning'>You short out [src]'s threat assessment circuits.</span>")
 		if(anchored) //this is like this because the turret itself is invisible when retracted, so the cover displays the message instead
-			cover.visible_message("<span class='warning'>[src] hums oddly...</span>", "<span class='warning'>I hear an odd humming.</span>")
+			cover.visible_message("<span class='warning'>[src] hums oddly...</span>", "<span class='warning'>You hear an odd humming.</span>")
 		else //But when unsecured the cover is gone, so it shows the message itself
-			visible_message("<span class='warning'>[src] hums oddly...</span>", "<span class='warning'>I hear an odd humming.</span>")
+			visible_message("<span class='warning'>[src] hums oddly...</span>", "<span class='warning'>You hear an odd humming.</span>")
 		if(istype(installed, /obj/item/weapon/gun/energy/tag/red) || istype(installed, /obj/item/weapon/gun/energy/tag/red))
 			installed.projectile_type = /obj/item/projectile/beam/lasertag/omni //if you manage to get this gun back out, good for you
 		emagged = 1
@@ -283,12 +283,12 @@ Status: []<BR>"},
 			playsound(loc, 'sound/effects/grillehit.ogg', 75, 1)
 			if(W.attack_verb && W.attack_verb.len)
 				user.visible_message("<span class='warning'><B>[user] [pick(W.attack_verb)] \the [src] with \the [W]!</span>", \
-						 "<span class='warning'>I attack \the [src] with \the [W]!</span>", \
-						 "<span class='warning'>I hear a clang!</span>")
+						 "<span class='warning'>You attack \the [src] with \the [W]!</span>", \
+						 "<span class='warning'>You hear a clang!</span>")
 			else
 				user.visible_message("<span class='warning'><B>[user] attacks \the [src] with \the [W]!</span>", \
-						 "<span class='warning'>I attack \the [src] with \the [W]!</span>", \
-						 "<span class='warning'>I hear a clang!</span>")
+						 "<span class='warning'>You attack \the [src] with \the [W]!</span>", \
+						 "<span class='warning'>You hear a clang!</span>")
 			if(on)
 				attacked += 5
 
@@ -675,12 +675,12 @@ Status: []<BR>"},
 			if(istype(W, /obj/item/stack/sheet/metal))
 				var/obj/item/stack/sheet/metal/stack = W
 				if(stack.use(2)) // requires 2 metal sheets
-					to_chat(user, "<span class='notice'>I add some metal armor to the interior frame.</span>")
+					to_chat(user, "<span class='notice'>You add some metal armor to the interior frame.</span>")
 					build_step = 2
 					icon_state = "turret_frame2"
 					return
 				else
-					to_chat(user, "<span class='warning'>I need at least 2 [stack] to add internal armor.</span>")
+					to_chat(user, "<span class='warning'>You need at least 2 [stack] to add internal armor.</span>")
 					return
 
 			else if(iswrench(W) && wrenchAnchor(user))
@@ -692,7 +692,7 @@ Status: []<BR>"},
 		if(2)
 			if(iswrench(W))
 				playsound(get_turf(src), 'sound/items/Ratchet.ogg', 100, 1)
-				to_chat(user, "<span class='notice'>I bolt the metal armor into place.</span>")
+				to_chat(user, "<span class='notice'>You bolt the metal armor into place.</span>")
 				build_step = 3
 				return
 
@@ -701,7 +701,7 @@ Status: []<BR>"},
 				if(!WT.isOn())
 					return
 				if (WT.get_fuel() < 5) // uses up 5 fuel.
-					to_chat(user, "<span class='warning'>I need more fuel to complete this task.</span>")
+					to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
 					return
 
 				playsound(get_turf(src), pick('sound/items/Welder.ogg', 'sound/items/Welder2.ogg'), 50, 1)
@@ -718,11 +718,11 @@ Status: []<BR>"},
 		if(3)
 			if(istype(W, /obj/item/weapon/gun/energy)) // the gun installation part
 				if(!user.drop_item(W, src))
-					to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+					to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 					return
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 100, 1)
 				installed = W
-				to_chat(user, "<span class='notice'>I add \the [W] to the turret.</span>")
+				to_chat(user, "<span class='notice'>You add \the [W] to the turret.</span>")
 				build_step = 4
 				return
 
@@ -735,11 +735,11 @@ Status: []<BR>"},
 		if(4)
 			if(isprox(W))
 				if(!user.drop_item(W, src))
-					to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+					to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 					return
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 100, 1)
 				build_step = 5
-				to_chat(user, "<span class='notice'>I add the prox sensor to the turret.</span>")
+				to_chat(user, "<span class='notice'>You add the prox sensor to the turret.</span>")
 				qdel(W)
 				return
 
@@ -749,7 +749,7 @@ Status: []<BR>"},
 			if(isscrewdriver(W))
 				playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 100, 1)
 				build_step = 6
-				to_chat(user, "<span class='notice'>I close the internal access hatch.</span>")
+				to_chat(user, "<span class='notice'>You close the internal access hatch.</span>")
 				return
 
 			// attack_hand() removes the prox sensor
@@ -758,11 +758,11 @@ Status: []<BR>"},
 			if(istype(W, /obj/item/stack/sheet/metal))
 				var/obj/item/stack/sheet/metal/stack = W
 				if(stack.use(2))
-					to_chat(user, "<span class='notice'>I add some metal armor to the exterior frame.</span>")
+					to_chat(user, "<span class='notice'>You add some metal armor to the exterior frame.</span>")
 					build_step = 7
 					return
 				else
-					to_chat(user, "<span class='warning'>I need at least 2 [stack] to add external armor.</span>")
+					to_chat(user, "<span class='warning'>You need at least 2 [stack] to add external armor.</span>")
 					return
 
 			else if(isscrewdriver(W))
@@ -777,14 +777,14 @@ Status: []<BR>"},
 				if(!WT.isOn())
 					return
 				if (WT.get_fuel() < 5)
-					to_chat(user, "<span class='warning'>I need more fuel to complete this task.</span>")
+					to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
 
 				playsound(get_turf(src), pick('sound/items/Welder.ogg', 'sound/items/Welder2.ogg'), 50, 1)
 				if(do_after(user, src, 30))
 					if(!src || !WT.remove_fuel(5, user))
 						return
 					build_step = 8
-					to_chat(user, "<span class='notice'>I weld the turret's armor down.</span>")
+					to_chat(user, "<span class='notice'>You weld the turret's armor down.</span>")
 
 					// The final step: create a full turret
 					var/obj/machinery/porta_turret/Turret = new/obj/machinery/porta_turret(locate(x,y,z))

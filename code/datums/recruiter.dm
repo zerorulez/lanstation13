@@ -83,7 +83,7 @@
 		return
 
 	if(!check_observer(O))
-		to_chat(O, "<span class='warning'>I cannot be [display_name].</span>")//Jobbanned or something.
+		to_chat(O, "<span class='warning'>You cannot be [display_name].</span>")//Jobbanned or something.
 
 		return
 

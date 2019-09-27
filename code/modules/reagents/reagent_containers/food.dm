@@ -109,7 +109,7 @@
 /obj/item/weapon/chipbasket/MouseDrop(over_object)
 	if(!usr.incapacitated() && (usr.contents.Find(src) || Adjacent(usr)) && usr.empty_hand_indexes_amount() && usr == over_object)
 		usr.put_in_hands(src)
-		usr.visible_message("<span class='notice'>[usr] picks up the [src].</span>", "<span class='notice'>I pick up \the [src].</span>")
+		usr.visible_message("<span class='notice'>[usr] picks up the [src].</span>", "<span class='notice'>You pick up \the [src].</span>")
 
 /obj/item/weapon/reagent_containers/food/snacks/tortillachip
 	name = "tortilla chip"

@@ -69,7 +69,7 @@
 				prime()
 				return
 		else if (!( src.state ))
-			to_chat(user, "<span class='warning'>I prime the [src]! [det_time/10] seconds!</span>")
+			to_chat(user, "<span class='warning'>You prime the [src]! [det_time/10] seconds!</span>")
 			src.state = 1
 			src.icon_state = "flashbang1"
 			playsound(src.loc, 'sound/weapons/armbomb.ogg', 75, 1, -3)
@@ -114,7 +114,7 @@
 				prime()
 				return
 		else
-			to_chat(user, "<span class='warning'>I prime the [src]! [det_time/10] seconds!</span>")
+			to_chat(user, "<span class='warning'>You prime the [src]! [det_time/10] seconds!</span>")
 			src.state = 1
 			src.icon_state = "flashbang1"
 			add_fingerprint(user)

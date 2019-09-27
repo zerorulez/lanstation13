@@ -73,12 +73,12 @@ var/global/list/datum/stack_recipe/cable_recipes = list ( \
 
 			if(user != H)
 				user.visible_message("<span class='warning'>\The [user] repairs some burn damage on their [S.display_name] with \the [src].</span>",\
-				"<span class='warning'>I repair some burn damage on my [S.display_name].</span>",\
-				"<span class='warning'>I hear wires being cut.</span>")
+				"<span class='warning'>You repair some burn damage on your [S.display_name].</span>",\
+				"<span class='warning'>You hear wires being cut.</span>")
 			else
 				user.visible_message("<span class='warning'>\The [user] repairs some burn damage on their [S.display_name] with \the [src].</span>",\
-				"<span class='warning'>I repair some burn damage on my [S.display_name].</span>",\
-				"<span class='warning'>I hear wires being cut.</span>")
+				"<span class='warning'>You repair some burn damage on your [S.display_name].</span>",\
+				"<span class='warning'>You hear wires being cut.</span>")
 		else
 			to_chat(user, "<span class='warning'>There's nothing to fix on this limb!</span>")
 	else
@@ -128,7 +128,7 @@ var/global/list/datum/stack_recipe/cable_recipes = list ( \
 	if((iswirecutter(W)) && (amount > 1))
 		use(1)
 		getFromPool(/obj/item/stack/cable_coil, user.loc, 1, _color)
-		to_chat(user, "<span class='notice'>I cut a piece off the cable coil.</span>")
+		to_chat(user, "<span class='notice'>You cut a piece off the cable coil.</span>")
 		update_icon()
 		return
 	return ..()
@@ -143,11 +143,11 @@ var/global/list/datum/stack_recipe/cable_recipes = list ( \
 		return
 
 	if(!user.Adjacent(F)) //Too far
-		to_chat(user, "<span class='warning'>I can't lay cable that far away.</span>")
+		to_chat(user, "<span class='warning'>You can't lay cable that far away.</span>")
 		return
 
 	if(F.intact) //If floor is intact, complain
-		to_chat(user, "<span class='warning'>I can't lay cable there until the floor is removed.</span>")
+		to_chat(user, "<span class='warning'>You can't lay cable there until the floor is removed.</span>")
 		return
 	var/dirn = null
 	if(!dirnew) //If we weren't given a direction, come up with one! (Called as null from catwalk.dm and floor.dm)
@@ -204,7 +204,7 @@ var/global/list/datum/stack_recipe/cable_recipes = list ( \
 		return
 
 	if(get_dist(C, user) > 1) //Make sure it's close enough
-		to_chat(user, "<span class='warning'>I can't lay cable that far away.</span>")
+		to_chat(user, "<span class='warning'>You can't lay cable that far away.</span>")
 		return
 
 	if(U == T) //If clicked on the turf we're standing on, try to put a cable in the direction we're facing
@@ -216,7 +216,7 @@ var/global/list/datum/stack_recipe/cable_recipes = list ( \
 	//One end of the clicked cable is pointing towards us
 	if(C.d1 == dirn || C.d2 == dirn)
 		if(U.intact) //Can't place a cable if the floor is complete
-			to_chat(user, "<span class='warning'>I can't lay cable there until the floor is removed.</span>")
+			to_chat(user, "<span class='warning'>You can't lay cable there until the floor is removed.</span>")
 			return
 		else
 			//Cable is pointing at us, we're standing on an open tile

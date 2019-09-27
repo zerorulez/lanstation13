@@ -117,7 +117,7 @@
 	if (rig)
 		usr.visible_message("[usr] begins to detach [rig] from \the [src].", "I begin to detach [rig] from \the [src]")
 		if(do_after(usr, src, 20))
-			usr.visible_message("<span class='notice'>[usr] detaches [rig] from \the [src].", "<span class='notice'>I detach [rig] from \the [src]</span>")
+			usr.visible_message("<span class='notice'>[usr] detaches [rig] from \the [src].", "<span class='notice'>You detach [rig] from \the [src]</span>")
 			if(rig)
 				rig.forceMove(get_turf(usr))
 				rig = null
@@ -138,7 +138,7 @@
 				user << "<span class='warning'>Oops! You can't let go of \the [W]!</span>"
 				return
 
-			user.visible_message("<span class='notice'>[user] rigs [W] to \the [src].", "<span class='notice'>I rig [W] to \the [src]</span>")
+			user.visible_message("<span class='notice'>[user] rigs [W] to \the [src].", "<span class='notice'>You rig [W] to \the [src]</span>")
 
 			var/obj/item/device/assembly_holder/H = W
 			if (istype(H.a_left,/obj/item/device/assembly/igniter) || istype(H.a_right,/obj/item/device/assembly/igniter))

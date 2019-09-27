@@ -106,7 +106,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/borer_egg/attack_ghost(var/mob/dead/observer/O)
 	if(last_ping_time + ping_cooldown <= world.time)
-		visible_message(message = "<span class='notice'>\The [src] wriggles vigorously.</span>", blind_message = "<span class='danger'>I hear what you think is someone jiggling a jelly.</span>")
+		visible_message(message = "<span class='notice'>\The [src] wriggles vigorously.</span>", blind_message = "<span class='danger'>You hear what you think is someone jiggling a jelly.</span>")
 		last_ping_time = world.time
 	else
 		to_chat(O, "The egg is recovering. Try again in a few moments.")

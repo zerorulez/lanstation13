@@ -4,9 +4,9 @@ Created on: 2014-09-24
 
 	** CAUTION - A WORD OF WARNING **
 
-If there is no getter or setter available and you aren't extending my code with a sub-type, DO NOT ACCESS VARIABLES DIRECTLY!
+If there is no getter or setter available and you aren't extending your code with a sub-type, DO NOT ACCESS VARIABLES DIRECTLY!
 
-Add a getter/setter instead, even if it does nothing but return or set the variable. Thank you for my patience with me. -NQ
+Add a getter/setter instead, even if it does nothing but return or set the variable. Thank you for your patience with me. -NQ
 
 	** Public API **
 

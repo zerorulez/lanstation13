@@ -173,5 +173,5 @@
 /obj/item/mecha_parts/mecha_equipment/tool/jail/proc/break_out(var/mob/M)
 	if(!istype(M))
 		return
-	M.visible_message("<span class='danger'>\The [M] pops the lid off of \the [src] and climbs out!.</span>","<span class='notice'>I pop the lid off of \the [src] and climb out!</span>")
+	M.visible_message("<span class='danger'>\The [M] pops the lid off of \the [src] and climbs out!.</span>","<span class='notice'>You pop the lid off of \the [src] and climb out!</span>")
 	M.forceMove(get_turf(src))

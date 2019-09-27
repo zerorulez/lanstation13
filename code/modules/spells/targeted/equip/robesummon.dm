@@ -12,7 +12,7 @@
 	charge_max = 300
 
 	level_max = list(Sp_TOTAL = 5, Sp_SPEED = 4, Sp_POWER = 1)
-	invocation = "I PUT ON MY ROBE AND WIZARD HAT!"
+	invocation = "I PUT ON your ROBE AND WIZARD HAT!"
 	invocation_type = SpI_SHOUT
 	range = SELFCAST
 	spell_flags = INCLUDEUSER | Z2NOCAST //z2nocast to prevent wizards from summoning the spacesuit and getting a refund
@@ -54,7 +54,7 @@
 									"[slot_s_store]" = /obj/item/weapon/tank/oxygen/yellow)
 
 	usr.visible_message("<span class='danger'>[user] puts on \his robe and wizard hat!</span>", \
-						"<span class='danger'>I put on my robe and wizard hat!</span>")
+						"<span class='danger'>You put on your robe and wizard hat!</span>")
 
 	..()
 

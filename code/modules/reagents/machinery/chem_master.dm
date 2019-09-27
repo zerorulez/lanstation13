@@ -126,7 +126,7 @@ var/global/list/pillIcon2Name = list("oblong purple-pink", "oblong green-white",
 			to_chat(user, "<span class='warning'>\The [B] is too big to fit.</span>")
 			return
 		if(!user.drop_item(B, src))
-			to_chat(user, "<span class='warning'>I can't let go of \the [B]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [B]!</span>")
 			return
 
 		src.beaker = B
@@ -135,7 +135,7 @@ var/global/list/pillIcon2Name = list("oblong purple-pink", "oblong green-white",
 			R.uneq_active()
 			targetMoveKey =  R.on_moved.Add(src, "user_moved")
 
-		to_chat(user, "<span class='notice'>I add the beaker into \the [src]!</span>")
+		to_chat(user, "<span class='notice'>You add the beaker into \the [src]!</span>")
 
 		src.updateUsrDialog()
 		update_icon()
@@ -149,12 +149,12 @@ var/global/list/pillIcon2Name = list("oblong purple-pink", "oblong green-white",
 			to_chat(user, "<span class='warning'>There already is a pill bottle loaded in the machine.</span>")
 			return
 		if(!user.drop_item(B, src))
-			to_chat(user, "<span class='warning'>I can't let go of \the [B]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [B]!</span>")
 			return
 
 		src.loaded_pill_bottle = B
 
-		to_chat(user, "<span class='notice'>I add the pill bottle into \the [src]'s dispenser slot!</span>")
+		to_chat(user, "<span class='notice'>You add the pill bottle into \the [src]'s dispenser slot!</span>")
 
 		src.updateUsrDialog()
 		return 1
@@ -279,7 +279,7 @@ var/global/list/pillIcon2Name = list("oblong purple-pink", "oblong green-white",
 			if(href_list["createempty"])
 				amount_per_pill = 0 //If "createempty" is 1, pills are empty and no reagents are used.
 
-			var/name = reject_bad_text(input(usr,"Name:","Name my pill!","[reagents.get_master_reagent_name()] ([amount_per_pill] units)") as null|text)
+			var/name = reject_bad_text(input(usr,"Name:","Name your pill!","[reagents.get_master_reagent_name()] ([amount_per_pill] units)") as null|text)
 			if(!name)
 				return
 
@@ -318,7 +318,7 @@ var/global/list/pillIcon2Name = list("oblong purple-pink", "oblong green-white",
 				var/amount_per_bottle = reagents.total_volume > 0 ? reagents.total_volume/count : 0
 				amount_per_bottle = min(amount_per_bottle,max_bottle_size)
 
-				var/name = reject_bad_text(input(usr,"Name:", "Name my bottle!","[reagents.get_master_reagent_name()] ([amount_per_bottle] units)") as null|text)
+				var/name = reject_bad_text(input(usr,"Name:", "Name your bottle!","[reagents.get_master_reagent_name()] ([amount_per_bottle] units)") as null|text)
 				if(!name)
 					return
 

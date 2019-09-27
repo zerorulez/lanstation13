@@ -38,7 +38,7 @@
 /datum/surgery_step/head/peel/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] peels back tattered flesh where [target]'s head used to be with \the [tool].</span>",	\
-	"<span class='notice'>I peel back tattered flesh where [target]'s head used to be with \the [tool].</span>")
+	"<span class='notice'>You peel back tattered flesh where [target]'s head used to be with \the [tool].</span>")
 	affected.status |= ORGAN_CUT_AWAY
 
 /datum/surgery_step/head/peel/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -46,7 +46,7 @@
 	if (affected.parent)
 		affected = affected.parent
 		user.visible_message("<span class='warning'>[user]'s hand slips, ripping [target]'s [affected.display_name] open!</span>", \
-		"<span class='warning'>My hand slips,  ripping [target]'s [affected.display_name] open!</span>")
+		"<span class='warning'>Your hand slips,  ripping [target]'s [affected.display_name] open!</span>")
 		affected.createwound(CUT, 10)
 
 
@@ -75,7 +75,7 @@
 /datum/surgery_step/head/shape/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has finished repositioning flesh and tissue to something anatomically recognizable where [target]'s head used to be with \the [tool].</span>",	\
-	"<span class='notice'>I have finished repositioning flesh and tissue to something anatomically recognizable where [target]'s head used to be with \the [tool].</span>")
+	"<span class='notice'>You have finished repositioning flesh and tissue to something anatomically recognizable where [target]'s head used to be with \the [tool].</span>")
 	affected.open = 3
 
 /datum/surgery_step/head/shape/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -83,7 +83,7 @@
 	if (affected.parent)
 		affected = affected.parent
 		user.visible_message("<span class='warning'>[user]'s hand slips, further rending flesh on [target]'s neck!</span>", \
-		"<span class='warning'>My hand slips, further rending flesh on [target]'s neck!</span>")
+		"<span class='warning'>Your hand slips, further rending flesh on [target]'s neck!</span>")
 		target.apply_damage(10, BRUTE, affected)
 
 
@@ -111,7 +111,7 @@
 /datum/surgery_step/head/suture/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has finished stapling [target]'s neck into place with \the [tool].</span>",	\
-	"<span class='notice'>I have finished stapling [target]'s neck into place with \the [tool].</span>")
+	"<span class='notice'>You have finished stapling [target]'s neck into place with \the [tool].</span>")
 	affected.open = 4
 
 /datum/surgery_step/head/suture/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -119,7 +119,7 @@
 	if (affected.parent)
 		affected = affected.parent
 		user.visible_message("<span class='warning'>[user]'s hand slips, ripping apart flesh on [target]'s neck!</span>", \
-		"<span class='warning'>My hand slips, ripping apart flesh on [target]'s neck!</span>")
+		"<span class='warning'>Your hand slips, ripping apart flesh on [target]'s neck!</span>")
 		target.apply_damage(10, BRUTE, affected)
 
 
@@ -155,7 +155,7 @@
 /datum/surgery_step/head/prepare/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has finished adjusting the area around [target]'s neck with \the [tool].</span>",	\
-	"<span class='notice'>I have finished adjusting the area around [target]'s neck with \the [tool].</span>")
+	"<span class='notice'>You have finished adjusting the area around [target]'s neck with \the [tool].</span>")
 	affected.status |= ORGAN_ATTACHABLE
 	affected.amputated = 1
 	affected.setAmputatedTree()
@@ -166,7 +166,7 @@
 	if (affected.parent)
 		affected = affected.parent
 		user.visible_message("<span class='warning'>[user]'s hand slips, searing [target]'s neck!</span>", \
-		"<span class='warning'>My hand slips, searing [target]'s [affected.display_name]!</span>")
+		"<span class='warning'>Your hand slips, searing [target]'s [affected.display_name]!</span>")
 		target.apply_damage(10, BURN, affected)
 
 
@@ -193,7 +193,7 @@
 /datum/surgery_step/head/attach/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has attached [target]'s head to the body.</span>",	\
-	"<span class='notice'>I have attached [target]'s head to the body.</span>")
+	"<span class='notice'>You have attached [target]'s head to the body.</span>")
 	affected.status = 0
 	affected.amputated = 0
 	affected.destspawn = 0
@@ -242,5 +242,5 @@
 /datum/surgery_step/head/attach/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, damaging connectors on [target]'s neck!</span>", \
-	"<span class='warning'>My hand slips, damaging connectors on [target]'s neck!</span>")
+	"<span class='warning'>Your hand slips, damaging connectors on [target]'s neck!</span>")
 	target.apply_damage(10, BRUTE, affected)

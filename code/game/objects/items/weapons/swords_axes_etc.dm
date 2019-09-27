@@ -13,8 +13,8 @@
  * Banhammer
  */
 /obj/item/weapon/banhammer/attack(mob/M as mob, mob/user as mob)
-	to_chat(M, "<font color='red'><b>I have been banned FOR NO REISIN by [user]<b></font>")
-	to_chat(user, "<font color='red'>I have <b>BANNED</b> [M]</font>")
+	to_chat(M, "<font color='red'><b>You have been banned FOR NO REISIN by [user]<b></font>")
+	to_chat(user, "<font color='red'>You have <b>BANNED</b> [M]</font>")
 
 /*
  * Classic Baton
@@ -33,8 +33,8 @@
 	force = 10
 
 /obj/item/weapon/melee/classic_baton/attack(mob/M as mob, mob/living/user as mob)
-	if (clumsy_check(user) && prob(50))
-		to_chat(user, "<span class='warning'>I club yourself over the head.</span>")
+	if (clumsy_check(user))
+		to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
 		user.Knockdown(3 * force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -59,7 +59,7 @@
 		M.Knockdown(8)
 		for(var/mob/O in viewers(M))
 			if (O.client)
-				O.show_message("<span class='danger'>[M] has been beaten with \the [src] by [user]!</span>", 1, "<span class='warning'>I hear someone fall</span>", 2)
+				O.show_message("<span class='danger'>[M] has been beaten with \the [src] by [user]!</span>", 1, "<span class='warning'>You hear someone fall</span>", 2)
 	else
 		playsound(get_turf(src), 'sound/weapons/Genhit.ogg', 50, 1, -1)
 		M.Stun(5)
@@ -75,7 +75,7 @@
 
 		for(var/mob/O in viewers(M))
 			if (O.client)
-				O.show_message("<span class='danger'>[M] has been stunned with \the [src] by [user]!</span>", 1, "<span class='warning'>I hear someone fall</span>", 2)
+				O.show_message("<span class='danger'>[M] has been stunned with \the [src] by [user]!</span>", 1, "<span class='warning'>You hear someone fall</span>", 2)
 
 //Telescopic baton
 /obj/item/weapon/melee/telebaton
@@ -96,10 +96,10 @@
 	on = !on
 	if(on)
 		user.visible_message("<span class='warning'>With a flick of their wrist, [user] extends their telescopic baton.</span>",\
-		"<span class='warning'>I extend the baton.</span>",\
+		"<span class='warning'>You extend the baton.</span>",\
 		"I hear an ominous click.",\
 		"<span class='notice'>[user] extends their fishing rod.</span>",\
-		"<span class='notice'>I extend the fishing rod.</span>",\
+		"<span class='notice'>You extend the fishing rod.</span>",\
 		"I hear a balloon exploding.")
 
 		icon_state = "telebaton_1"
@@ -109,10 +109,10 @@
 		attack_verb = list("smacks", "strikes", "slaps")
 	else
 		user.visible_message("<span class='notice'>[user] collapses their telescopic baton.</span>",\
-		"<span class='notice'>I collapse the baton.</span>",\
+		"<span class='notice'>You collapse the baton.</span>",\
 		"I hear a click.",\
 		"<span class='warning'>[user] collapses their fishing rod.</span>",\
-		"<span class='warning'>I collapse the fishing rod.</span>",\
+		"<span class='warning'>You collapse the fishing rod.</span>",\
 		"I hear a balloon exploding.")
 
 		icon_state = initial(icon_state)
@@ -142,7 +142,7 @@
 /obj/item/weapon/melee/telebaton/attack(mob/target as mob, mob/living/user as mob)
 	if(on)
 		if (clumsy_check(user) && prob(50))
-			user.simple_message("<span class='warning'>I club yourself over the head.</span>",
+			user.simple_message("<span class='warning'>You club yourself over the head.</span>",
 				"<span class='danger'>The fishing rod goes mad!</span>")
 
 			user.Knockdown(3 * force)

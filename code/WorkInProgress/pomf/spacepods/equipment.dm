@@ -2,7 +2,7 @@
 
 
 	if(my_atom.next_firetime > world.time)
-		to_chat(usr, "<span class='warning'>My weapons are recharging.</span>")
+		to_chat(usr, "<span class='warning'>Your weapons are recharging.</span>")
 		return
 	var/turf/firstloc
 	var/turf/secondloc

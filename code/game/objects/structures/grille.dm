@@ -70,8 +70,8 @@
 	var/humanverb = pick(list("kick", "slam", "elbow")) //Only verbs with a third person "s", thank you
 	user.delayNextAttack(8)
 	user.visible_message("<span class='warning'>[user] [humanverb]s \the [src].</span>", \
-	"<span class='warning'>I [humanverb] \the [src].</span>", \
-	"<span class='warning'>I hear twisting metal.</span>")
+	"<span class='warning'>You [humanverb] \the [src].</span>", \
+	"<span class='warning'>You hear twisting metal.</span>")
 	if(M_HULK in user.mutations)
 		health -= 5 //Fair hit
 	else
@@ -86,7 +86,7 @@
 	var/alienverb = pick(list("slam", "rip", "claw")) //See above
 	user.delayNextAttack(8)
 	user.visible_message("<span class='warning'>[user] [alienverb]s \the [src].</span>", \
-						 "<span class='warning'>I [alienverb] \the [src].</span>", \
+						 "<span class='warning'>You [alienverb] \the [src].</span>", \
 						 "I hear twisting metal.")
 	health -= 5
 	healthcheck(hitsound = 1)
@@ -98,7 +98,7 @@
 	user.do_attack_animation(src, user)
 	user.delayNextAttack(8)
 	user.visible_message("<span class='warning'>[user] smashes against \the [src].</span>", \
-						 "<span class='warning'>I smash against \the [src].</span>", \
+						 "<span class='warning'>You smash against \the [src].</span>", \
 						 "I hear twisting metal.")
 	health -= 3
 	healthcheck(hitsound = 1)
@@ -111,7 +111,7 @@
 		return
 	M.do_attack_animation(src, M)
 	M.visible_message("<span class='warning'>[M] smashes against \the [src].</span>", \
-					  "<span class='warning'>I smash against \the [src].</span>", \
+					  "<span class='warning'>You smash against \the [src].</span>", \
 					  "I hear twisting metal.")
 	health -= rand(M.melee_damage_lower, M.melee_damage_upper)
 	healthcheck(hitsound = 1)
@@ -156,7 +156,7 @@
 			playsound(loc, 'sound/items/Screwdriver.ogg', 100, 1)
 			anchored = !anchored
 			user.visible_message("<span class='notice'>[user] [anchored ? "fastens" : "unfastens"] the grille [anchored ? "to" : "from"] the floor.</span>", \
-			"<span class='notice'>I [anchored ? "fasten" : "unfasten"] the grille [anchored ? "to" : "from"] the floor.</span>")
+			"<span class='notice'>You [anchored ? "fasten" : "unfasten"] the grille [anchored ? "to" : "from"] the floor.</span>")
 			return
 
 //Window placement
@@ -177,7 +177,7 @@
 					else
 						dir_to_set = 4 //User is laying from the right
 			else
-				to_chat(user, "<span class='warning'>I can't reach far enough.</span>")
+				to_chat(user, "<span class='warning'>You can't reach far enough.</span>")
 				return
 		for(var/obj/structure/window/P in loc)
 			if(P.dir == dir_to_set)
@@ -185,7 +185,7 @@
 
 				return
 		user.visible_message("<span class='notice'>[user] starts placing a window on \the [src].</span>", \
-		"<span class='notice'>I start placing a window on \the [src].</span>")
+		"<span class='notice'>You start placing a window on \the [src].</span>")
 		if(do_after(user, src, 20))
 			for(var/obj/structure/window/P in loc)
 				if(P.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
@@ -200,7 +200,7 @@
 			var/obj/item/stack/ST = W //HOLY FUCKING SHIT !
 			ST.use(1)
 			user.visible_message("<span class='notice'>[user] places \a [WD] on \the [src].</span>", \
-			"<span class='notice'>I place \a [WD] on \the [src].</span>")
+			"<span class='notice'>You place \a [WD] on \the [src].</span>")
 		return
 
 	if(istype(W, /obj/item/weapon/fireaxe)) //Fireaxes instantly kill grilles

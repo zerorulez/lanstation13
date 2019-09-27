@@ -38,7 +38,7 @@
 
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
 	if(isscrewdriver(tool) && !istype(src, /obj/structure/sign/double))
-		to_chat(user, "I unfasten the sign with my [tool].")
+		to_chat(user, "I unfasten the sign with your [tool].")
 		var/obj/item/sign/S = new(src.loc)
 		S.name = name
 		S.desc = desc
@@ -78,14 +78,14 @@
 		S.name = name
 		S.desc = desc
 		S.icon_state = sign_state
-		to_chat(user, "I fasten \the [S] with my [tool].")
+		to_chat(user, "I fasten \the [S] with your [tool].")
 		qdel(src)
 		return
 	else
 		..()
 
 /obj/structure/sign/kick_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H] kicks \the [src]!</span>", "<span class='danger'>I kick \the [src]!</span>")
+	H.visible_message("<span class='danger'>[H] kicks \the [src]!</span>", "<span class='danger'>You kick \the [src]!</span>")
 
 	if(prob(70))
 		to_chat(H, "<span class='userdanger'>Ouch! That hurts!</span>")
@@ -180,7 +180,7 @@
 
 /obj/structure/sign/goldenplaque
 	name = "The Most Robust Men Award for Robustness"
-	desc = "\"To be robust is not an action or a way of life, but a mental state. Only those with the force of will strong enough to act during a crisis, saving friend from foe, acting when everyone else may think and act against you, are truly robust. Stay robust, my friends.\""
+	desc = "\"To be robust is not an action or a way of life, but a mental state. Only those with the force of will strong enough to act during a crisis, saving friend from foe, acting when everyone else may think and act against you, are truly robust. Stay robust, your friends.\""
 	icon_state = "goldenplaque"
 
 /obj/structure/sign/kiddieplaque
@@ -240,7 +240,7 @@
 
 /obj/structure/sign/crime
 	name = "CRIME DOES NOT PAY"
-	desc = "A warning sign which suggests that you reconsider my poor life choices."
+	desc = "A warning sign which suggests that you reconsider your poor life choices."
 	icon_state = "crime"
 
 /obj/structure/sign/chinese

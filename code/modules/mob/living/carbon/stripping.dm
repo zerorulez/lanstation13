@@ -33,7 +33,7 @@
 //This proc is unsafe, it assumes that the mob has the given slot free, that the item can be put there etc.
 /mob/living/carbon/proc/reversestrip_into_slot(var/mob/living/user, var/slot, var/pickpocket = FALSE)
 	if(slot in list(slot_handcuffed, slot_legcuffed))
-		to_chat(user, "<span class='warning'>I feel stupider, suddenly.</span>")
+		to_chat(user, "<span class='warning'>You feel stupider, suddenly.</span>")
 		return
 
 	var/obj/item/held = user.get_active_hand()
@@ -58,7 +58,7 @@
 
 /mob/living/carbon/proc/handle_strip_slot(var/mob/living/user, var/slot)
 	if(slot in src.check_obscured_slots()) //Ideally they wouldn't even get the button to do this, but they could have an outdated menu or something
-		to_chat(user, "<span class='warning'>I can't reach that, something is covering it.</span>")
+		to_chat(user, "<span class='warning'>You can't reach that, something is covering it.</span>")
 		return
 
 	var/obj/item/held = user.get_active_hand()
@@ -68,7 +68,7 @@
 
 	if(istype(target_item) && !target_item.abstract) //We want the player to be able to strip someone while holding an item in their hands, for convenience and because otherwise people will bitch about it.
 		if(!target_item.canremove || src.is_in_modules(target_item))
-			to_chat(user, "<span class='warning'>I can't seem to be able to take that off!</span>")
+			to_chat(user, "<span class='warning'>You can't seem to be able to take that off!</span>")
 			return
 
 		if(!pickpocket)
@@ -86,10 +86,10 @@
 
 	else if(istype(held) && !held.abstract)
 		if(held.cant_drop > 0 || user.is_in_modules(held))
-			to_chat(user, "<span class='warning'>I can't seem to be able to let go of \the [held].</span>")
+			to_chat(user, "<span class='warning'>You can't seem to be able to let go of \the [held].</span>")
 			return
 		if(!held.mob_can_equip(src, slot, disable_warning = 1)) //This also checks for the target being too fat for the clothing item and such
-			to_chat(user, "<span class='warning'>I can't put that there!</span>") //Ideally we could have a more descriptive message since this can fail for a variety of reasons, but whatever
+			to_chat(user, "<span class='warning'>You can't put that there!</span>") //Ideally we could have a more descriptive message since this can fail for a variety of reasons, but whatever
 			return
 		if(!src.has_organ_for_slot(slot))
 			to_chat(user, "<span class='warning'>\The [src] has no [src.slotID2slotname(slot)].</span>") //blunt
@@ -136,7 +136,7 @@
 
 	else if(istype(held) && !held.abstract)
 		if(held.cant_drop > 0 || user.is_in_modules(held))
-			to_chat(user, "<span class='warning'>I can't seem to be able to let go of \the [held].</span>")
+			to_chat(user, "<span class='warning'>You can't seem to be able to let go of \the [held].</span>")
 			return
 
 		if(!src.put_in_hand_check(held, index))
@@ -163,10 +163,10 @@
 
 	if(id_item && !id_item.abstract)
 		if(!id_item.canremove)
-			to_chat(user, "<span class='warning'>I can't seem to be able to take that off!</span>")
+			to_chat(user, "<span class='warning'>You can't seem to be able to take that off!</span>")
 			return
 
-		to_chat(user, "<span class='notice'>I try to take [src]'s ID.</span>")
+		to_chat(user, "<span class='notice'>You try to take [src]'s ID.</span>")
 
 		if(strip_item_from(user, id_item, slot_wear_id, pickpocket))
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has pickpocketed \a [id_item] from [src.name]'s ([src.ckey]) ID slot.</font>")
@@ -178,16 +178,16 @@
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>[user.name] ([user.ckey]) has failed to pickpocket \a [id_item] from this mob's ID slot.</font>")
 			log_attack("[user.name] ([user.ckey]) has failed to pickpocket \a [id_item] from [src.name]'s ([src.ckey]) ID slot.")
 			if(!pickpocket) // Display a warning if the user mocks up. Unless they're just that good of a pickpocket.
-				to_chat(src, "<span class='warning'>I feel my ID being fumbled with!</span>")
+				to_chat(src, "<span class='warning'>You feel your ID being fumbled with!</span>")
 	else if(place_item && !place_item.abstract)
 		if(place_item.cant_drop > 0 || user.is_in_modules(place_item))
-			to_chat(user, "<span class='warning'>I can't seem to be able to let go of \the [place_item].</span>")
+			to_chat(user, "<span class='warning'>You can't seem to be able to let go of \the [place_item].</span>")
 			return
 		if(!place_item.mob_can_equip(src, slot_wear_id, disable_warning = 1))
-			to_chat(user, "<span class='warning'>I can't put that there!</span>")
+			to_chat(user, "<span class='warning'>You can't put that there!</span>")
 			return
 
-		to_chat(user, "<span class='notice'>I try to place [place_item] on [src].</span>")
+		to_chat(user, "<span class='notice'>You try to place [place_item] on [src].</span>")
 
 		if(reversestrip_into_slot(user, slot_wear_id, pickpocket))
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has reverse-pickpocketed \a [place_item] into [src.name]'s ([src.ckey]) ID slot.</font>")
@@ -207,10 +207,10 @@
 
 	if(pocket_item && !pocket_item.abstract)
 		if(!pocket_item.canremove)
-			to_chat(user, "<span class='warning'>I can't seem to be able to take that off!</span>")
+			to_chat(user, "<span class='warning'>You can't seem to be able to take that off!</span>")
 			return
 
-		to_chat(user, "<span class='notice'>I try to empty [src]'s [pocket_side] pocket.</span>")
+		to_chat(user, "<span class='notice'>You try to empty [src]'s [pocket_side] pocket.</span>")
 
 		if(strip_item_from(user, pocket_item, pocket_id, pickpocket))
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has pickpocketed \the [pocket_item] from [src.name]'s ([src.ckey]) [pocket_side] pocket.</font>")
@@ -222,16 +222,16 @@
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>[user.name] ([user.ckey]) has failed to pickpocket \the [pocket_item] from this mob's [pocket_side] pocket.</font>")
 			log_attack("[user.name] ([user.ckey]) has failed to pickpocket \the [pocket_item] from [src.name]'s ([src.ckey]) [pocket_side] pocket.")
 			if(!pickpocket) // Display a warning if the user mocks up. Unless they're just that good of a pickpocket.
-				to_chat(src, "<span class='warning'>I feel my [pocket_side] pocket being fumbled with!</span>")
+				to_chat(src, "<span class='warning'>You feel your [pocket_side] pocket being fumbled with!</span>")
 	else if(place_item && !place_item.abstract)
 		if(place_item.cant_drop > 0 || user.is_in_modules(place_item))
-			to_chat(user, "<span class='warning'>I can't seem to be able to let go of \the [place_item].</span>")
+			to_chat(user, "<span class='warning'>You can't seem to be able to let go of \the [place_item].</span>")
 			return
 		if(!place_item.mob_can_equip(src, pocket_id, disable_warning = 1))
-			to_chat(user, "<span class='warning'>I can't put that there!</span>")
+			to_chat(user, "<span class='warning'>You can't put that there!</span>")
 			return
 
-		to_chat(user, "<span class='notice'>I try to place [place_item] on [src]'s [pocket_side] pocket.</span>")
+		to_chat(user, "<span class='notice'>You try to place [place_item] on [src]'s [pocket_side] pocket.</span>")
 
 		if(reversestrip_into_slot(user, pocket_id, pickpocket))
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has reverse-pickpocketed \a [place_item] into [src.name]'s ([src.ckey]) [pocket_side] pocket.</font>")
@@ -256,7 +256,7 @@
 		to_chat(user, "<span class='warning'>\The [src]'s suit sensor controls are locked.</span>")
 		return
 	if(!user.isGoodPickpocket())
-		visible_message("<span class='warning'>\The [user] is trying to set [src]'s suit sensors.</span>", "<span class='danger'>\The [user] is trying to set my suit sensors!</span>")
+		visible_message("<span class='warning'>\The [user] is trying to set [src]'s suit sensors.</span>", "<span class='danger'>\The [user] is trying to set your suit sensors!</span>")
 	if(do_mob(user, src, HUMAN_STRIP_DELAY))
 		var/newmode = suit.set_sensors(user)
 		if(newmode)
@@ -283,7 +283,7 @@
 		return
 
 	if(!user.isGoodPickpocket())
-		visible_message("<span class='warning'>\The [user] is trying to set [src]'s internals.</span>", "<span class='danger'>\The [user] is trying to set my internals!</span>")
+		visible_message("<span class='warning'>\The [user] is trying to set [src]'s internals.</span>", "<span class='danger'>\The [user] is trying to set your internals!</span>")
 
 	if(do_mob(user, src, HUMAN_STRIP_DELAY))
 		src.toggle_internals(user, T)

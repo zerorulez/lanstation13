@@ -32,6 +32,6 @@ Bonus
 			if(1, 2, 3, 4)
 				to_chat(M, "<span class='notice'>[pick("I feel dizzy.", "My head starts spinning.")]</span>")
 			else
-				to_chat(M, "<span class='notice'>I am unable to look straight!</span>")
+				to_chat(M, "<span class='notice'>You are unable to look straight!</span>")
 				M.Dizzy(5)
 	return

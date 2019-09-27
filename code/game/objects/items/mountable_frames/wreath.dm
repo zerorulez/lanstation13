@@ -23,7 +23,7 @@
 		to_chat(user, "I begin prying \the [src] off the wall.")
 		playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 		if(do_after(user, src,10))
-			to_chat(user, "<span class='notice'>I pry \the [src] off of the wall.</span>")
+			to_chat(user, "<span class='notice'>You pry \the [src] off of the wall.</span>")
 			new /obj/item/mounted/frame/wreath/wreath_bow(get_turf(user))
 			qdel(src)
 		return
@@ -54,7 +54,7 @@
 		to_chat(user, "I begin prying \the [src] off the wall.")
 		playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 		if(do_after(user, src,10))
-			to_chat(user, "<span class='notice'>I pry \the [src] off of the wall.</span>")
+			to_chat(user, "<span class='notice'>You pry \the [src] off of the wall.</span>")
 			new /obj/item/mounted/frame/wreath/wreath_nobow(get_turf(user))
 			qdel(src)
 		return

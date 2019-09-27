@@ -119,7 +119,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 
 
 // Please don't stuff random bullshit here,
-// 	Make a subsystem, give it the SS_NO_FIRE flag, and do my work in it's Initialize()
+// 	Make a subsystem, give it the SS_NO_FIRE flag, and do your work in it's Initialize()
 /datum/controller/master/proc/Setup()
 	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
 

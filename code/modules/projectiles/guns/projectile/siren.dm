@@ -33,7 +33,7 @@
 		return
 
 	reagents.clear_reagents()
-	to_chat(usr, "<span class='notice'>I flush out the contents of \the [src].</span>")
+	to_chat(usr, "<span class='notice'>You flush out the contents of \the [src].</span>")
 
 /obj/item/weapon/gun/siren/examine(mob/user)
 	..()
@@ -46,12 +46,12 @@
 /obj/item/weapon/gun/siren/attack_self(mob/user as mob)
 	hard = !hard
 	if(hard)
-		to_chat(user, "<span class='info'>I set \the [src] to fire hard liquid.</span>")
+		to_chat(user, "<span class='info'>You set \the [src] to fire hard liquid.</span>")
 		desc = initial(desc)
 		fire_sound = initial(fire_sound)
 		recoil = 1
 	else
-		to_chat(user, "<span class='info'>I set \the [src] to fire soft liquid.</span>")
+		to_chat(user, "<span class='info'>You set \the [src] to fire soft liquid.</span>")
 		desc = "The most efficient ranged mass reagent delivery system there is."
 		fire_sound = 'sound/items/egg_squash.ogg'
 		recoil = 0

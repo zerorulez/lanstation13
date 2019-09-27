@@ -87,7 +87,7 @@
 			if(ishuman(M))
 				var/mob/living/carbon/human/H = M
 				if(H.check_body_part_coverage(MOUTH))
-					to_chat(H, "<span class='notice'><B>Remove my [H.get_body_part_coverage(MOUTH)]!</B></span>")
+					to_chat(H, "<span class='notice'><B>Remove your [H.get_body_part_coverage(MOUTH)]!</B></span>")
 					return
 			user.visible_message("<span class='notice'>[user] eats a delicious forkful of [loaded_food_name]!</span>")
 			feed_to(user, user)
@@ -107,7 +107,7 @@
 				feed_to(user, M)
 				return
 	else
-		if(clumsy_check(user) && prob(50))
+		if(clumsy_check(user))
 			return eyestab(user,user)
 		else
 			return eyestab(M, user)
@@ -122,11 +122,11 @@
 		return
 
 	if(loaded_food)
-		to_chat(user, "<span class='notice'>I already have food on \the [src].</span>")
+		to_chat(user, "<span class='notice'>You already have food on \the [src].</span>")
 		return
 
 	if(snack.wrapped)
-		to_chat(user, "<span class='notice'>I can't eat packaging!</span>")
+		to_chat(user, "<span class='notice'>You can't eat packaging!</span>")
 		return
 
 	if(snack.reagents.total_volume)
@@ -181,7 +181,7 @@
 
 /obj/item/weapon/kitchen/utensil/knife/attack(target as mob, mob/living/user as mob)
 	if (clumsy_check(user) && prob(50))
-		to_chat(user, "<span class='warning'>I accidentally cut yourself with the [src].</span>")
+		to_chat(user, "<span class='warning'>You accidentally cut yourself with the [src].</span>")
 		user.take_organ_damage(20)
 		return
 	playsound(loc, 'sound/weapons/bladeslice.ogg', 50, 1, -1)
@@ -236,7 +236,7 @@
 				new /obj/item/weapon/metal_blade(get_turf(src.loc))
 			qdel(src)
 		else
-			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 
 /obj/item/weapon/kitchen/utensil/knife/large/suicide_act(mob/user)
 	to_chat(viewers(user), pick("<span class='danger'>[user] is slitting \his wrists with the [src.name]! It looks like \he's trying to commit suicide.</span>", \
@@ -307,7 +307,7 @@
 
 /obj/item/weapon/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)
 	if (clumsy_check(user) && prob(50))
-		to_chat(user, "<span class='warning'>The [src] slips out of my hand and hits my head.</span>")
+		to_chat(user, "<span class='warning'>The [src] slips out of your hand and hits your head.</span>")
 		user.take_organ_damage(10)
 		user.Paralyse(2)
 		return
@@ -336,7 +336,7 @@
 					H.Stun(time)
 				if(H.stat != 2)
 					H.stat = 1
-				user.visible_message("<span class='danger'><B>[H] has been knocked unconscious!</B>", "<span class='warning'>I knock [H] unconscious!</span></span>")
+				user.visible_message("<span class='danger'><B>[H] has been knocked unconscious!</B>", "<span class='warning'>You knock [H] unconscious!</span></span>")
 				return
 			else
 				H.visible_message("<span class='warning'>[user] tried to knock [H] unconscious!</span>", "<span class='warning'>[user] tried to knock you unconscious!</span>")
@@ -379,7 +379,7 @@
 	send_items_flying()
 
 	if(clumsy_check(user) && prob(50))              //What if he's a clown?
-		to_chat(M, "<span class='warning'>I accidentally slam yourself with the [src]!</span>")
+		to_chat(M, "<span class='warning'>You accidentally slam yourself with the [src]!</span>")
 		M.Knockdown(1)
 		user.take_organ_damage(2)
 		if(prob(50))
@@ -428,7 +428,7 @@
 
 
 	if(istype(M, /mob/living/carbon/human) && H.check_body_part_coverage(EYES))
-		to_chat(H, "<span class='warning'>I get slammed in the face with the tray, against my mask!</span>")
+		to_chat(H, "<span class='warning'>You get slammed in the face with the tray, against your mask!</span>")
 		if(prob(33))
 			src.add_blood(H)
 			if (H.wear_mask)
@@ -458,7 +458,7 @@
 			return
 
 	else //No eye or head protection, tough luck!
-		to_chat(M, "<span class='warning'>I get slammed in the face with the tray!</span>")
+		to_chat(M, "<span class='warning'>You get slammed in the face with the tray!</span>")
 		if(prob(33))
 			src.add_blood(M)
 			var/turf/location = H.loc
@@ -632,7 +632,7 @@
 /*/obj/item/weapon/tray/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/weapon/kitchen/utensil/fork))
 		if (W.icon_state == "forkloaded")
-			to_chat(user, "<span class='warning'>I already have omelette on my fork.</span>")
+			to_chat(user, "<span class='warning'>You already have omelette on your fork.</span>")
 			return
 		W.icon = 'icons/obj/kitchen.dmi'
 		W.icon_state = "forkloaded"

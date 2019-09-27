@@ -50,7 +50,7 @@
 		if(prob(40))
 			for(var/mob/M in hearers(4, src))
 				if(M.client)
-					M.show_message(text("<span class='warning'>I hear something rumbling inside [src]'s stomach...</span>"), 2)
+					M.show_message(text("<span class='warning'>You hear something rumbling inside [src]'s stomach...</span>"), 2)
 			var/obj/item/I = user.get_active_hand()
 			if(I && I.force)
 				var/d = rand(round(I.force / 4), I.force)
@@ -92,7 +92,7 @@
 		var/datum/organ/external/temp = find_organ_by_grasp_index(active_hand)
 
 		if(temp && !temp.is_usable())
-			to_chat(M, "<span class='warning'>I can't use my [temp.display_name]</span>")
+			to_chat(M, "<span class='warning'>You can't use your [temp.display_name]</span>")
 			return
 	share_contact_diseases(M)
 	handle_symptom_on_touch(M, src, HAND)
@@ -119,11 +119,11 @@
 
 	visible_message( \
 		"<span class='warning'>[src] was shocked by the [source]!</span>", \
-		"<span class='danger'>I feel a powerful shock course through my body!</span>", \
-		"<span class='warning'>I hear a heavy electrical crack.</span>", \
+		"<span class='danger'>You feel a powerful shock course through your body!</span>", \
+		"<span class='warning'>You hear a heavy electrical crack.</span>", \
 		"<span class='notice'>[src] starts raving!</span>", \
-		"<span class='notice'>I feel butterflies in my stomach!</span>", \
-		"<span class='warning'>I hear a policeman whistling!</span>"
+		"<span class='notice'>You feel butterflies in your stomach!</span>", \
+		"<span class='warning'>You hear a policeman whistling!</span>"
 	)
 
 	//if(src.stunned < shock_damage)	src.SetStunned(shock_damage)
@@ -160,10 +160,7 @@
 	if (src.health >= config.health_threshold_crit)
 		if(src == M && istype(src, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = src
-			src.visible_message( \
-				text("<span class='notice'>[src] examines [].</span>",src.gender==MALE?"himself":"herself"), \
-				"<span class='notice'>I check myself for injuries.</span>" \
-				)
+			to_chat(src, "<span class='notice'><b>You check yourself for injuries.</b></span>")
 
 			for(var/datum/organ/external/org in H.organs)
 				var/status = ""
@@ -189,13 +186,13 @@
 				else if(burndamage > 10)
 					status += "<span class='orange italics'>blistered</span>"
 				else if(burndamage > 0)
-					status += "numb"
+					status += "<b>numb</b>"
 				if(org.status & ORGAN_DESTROYED)
-					status = "MISSING!"
+					status = "<b>MISSING</b>"
 				if(org.status & ORGAN_MUTATED)
-					status = "weirdly shapen."
+					status = "<b>weirdly shapen</b>"
 				if(status == "")
-					status = "OK"
+					status = "<b>OK</b>"
 				src.show_message(text("\t []My [] is [].",status=="OK"?"<span class='notice'></span>":"<span class='danger'></span>",org.display_name,status),1)
 			if((SKELETON in H.mutations) && (!H.w_uniform) && (!H.wear_suit))
 				H.play_xylophone()
@@ -217,9 +214,9 @@
 			playsound(get_turf(src), 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			M.visible_message( \
 				"<span class='notice'>[M] shakes [src] trying to wake [t_him] up!</span>", \
-				"<span class='notice'>I shake [src] trying to wake [t_him] up!</span>", \
+				"<span class='notice'>You shake [src] trying to wake [t_him] up!</span>", \
 				drugged_message = "<span class='notice'>[M] starts massaging [src]'s back.</span>", \
-				self_drugged_message = "<span class='notice'>I start massaging [src]'s back.</span>"
+				self_drugged_message = "<span class='notice'>You start massaging [src]'s back.</span>"
 				)
 		// BEGIN HUGCODE - N3X
 		else
@@ -230,19 +227,19 @@
 			if(M.zone_sel.selecting == "head" && !(S.status & ORGAN_DESTROYED))
 				M.visible_message( \
 					"<span class='notice'>[M] pats [src]'s head.</span>", \
-					"<span class='notice'>I pat [src]'s head.</span>", \
+					"<span class='notice'>You pat [src]'s head.</span>", \
 					)
 			else if((M.zone_sel.selecting == "l_hand" && !(S.status & ORGAN_DESTROYED)) || (M.zone_sel.selecting == "r_hand" && !(S.status & ORGAN_DESTROYED)))
 				playsound(get_turf(src), 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				M.visible_message( \
 					"<span class='notice'>[M] shake hands with [src].</span>", \
-					"<span class='notice'>I shake [src]'s hand.</span>", \
+					"<span class='notice'>You shake [src]'s hand.</span>", \
 					)
 			else
 				playsound(get_turf(src), 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				M.visible_message( \
 					"<span class='notice'>[M] gives [src] a [pick("hug","warm embrace")].</span>", \
-					"<span class='notice'>I hug [src].</span>", \
+					"<span class='notice'>You hug [src].</span>", \
 					)
 			reagents.add_reagent(PARACETAMOL, 1)
 
@@ -308,7 +305,7 @@
 		return FAILED_THROW
 
 	if(!istype(loc,/turf))
-		to_chat(src, "<span class='warning'>I can't do that now!</span>")
+		to_chat(src, "<span class='warning'>You can't do that now!</span>")
 		return FAILED_THROW
 
 	if(target.type == /obj/screen)
@@ -352,7 +349,7 @@
 
 	var/obj/item/I = item
 	if(istype(I) && I.cant_drop > 0)
-		to_chat(usr, "<span class='warning'>It's stuck to my hand!</span>")
+		to_chat(usr, "<span class='warning'>It's stuck to your hand!</span>")
 		return FAILED_THROW
 
 	remove_from_mob(item)
@@ -481,7 +478,7 @@
 	set category = "IC"
 
 	if(usr.sleeping)
-		to_chat(usr, "<span class='warning'>I am already sleeping.</span>")
+		to_chat(usr, "<span class='warning'>You are already sleeping.</span>")
 		return
 	if(alert(src,"Are you sure you want to sleep for a while? You will not be able to wake up by yourself.","Sleep","Yes","No") == "Yes")
 		usr.sleeping = 100 //Long nap of 5 minutes. Those are MC TICKS. Don't get fooled
@@ -490,7 +487,7 @@
 /mob/living/carbon/proc/release_control()
 	set category = "Alien"
 	set name = "Release Control"
-	set desc = "Release control of my host's body."
+	set desc = "Release control of your host's body."
 
 	do_release_control(0)
 
@@ -502,8 +499,8 @@
 
 	if(B.controlling)
 		if(rptext)
-			to_chat(src, "<span class='danger'>I withdraw my probosci, releasing control of [B.host_brain]</span>")
-			to_chat(B.host_brain, "<span class='danger'>My vision swims as the alien parasite releases control of my body.</span>")
+			to_chat(src, "<span class='danger'>You withdraw your probosci, releasing control of [B.host_brain]</span>")
+			to_chat(B.host_brain, "<span class='danger'>Your vision swims as the alien parasite releases control of your body.</span>")
 		B.ckey = ckey
 		B.controlling = 0
 	if(B.host_brain.ckey)
@@ -519,7 +516,7 @@
 /mob/living/carbon/proc/punish_host()
 	set category = "Alien"
 	set name = "Torment host"
-	set desc = "Punish my host with agony."
+	set desc = "Punish your host with agony."
 
 	var/mob/living/simple_animal/borer/B = has_brain_worms()
 
@@ -527,8 +524,8 @@
 		return
 
 	if(B.host_brain.ckey)
-		to_chat(src, "<span class='danger'>I send a punishing spike of psychic agony lancing into my host's brain.</span>")
-		to_chat(B.host_brain, "<span class='danger'><FONT size=3>Horrific, burning agony lances through you, ripping a soundless scream from my trapped mind!</FONT></span>")
+		to_chat(src, "<span class='danger'>You send a punishing spike of psychic agony lancing into your host's brain.</span>")
+		to_chat(B.host_brain, "<span class='danger'><FONT size=3>Horrific, burning agony lances through you, ripping a soundless scream from your trapped mind!</FONT></span>")
 
 //Check for brain worms in given limb.
 /mob/proc/has_brain_worms(var/host_region = LIMB_HEAD)
@@ -608,11 +605,11 @@
 	for(var/mob/living/simple_animal/borer/B in borer_list)
 		B.detach()
 		if(gibbed)
-			to_chat(B, "<span class='danger'>As my host is violently destroyed, so are you!</span>")
+			to_chat(B, "<span class='danger'>As your host is violently destroyed, so are you!</span>")
 			B.ghostize(0)
 			qdel(B)
 		else
-			to_chat(B, "<span class='notice'>I am forcefully popped out of my host!</span>")
+			to_chat(B, "<span class='notice'>You are forcefully popped out of your host!</span>")
 
 /mob/living/carbon/proc/transferBorers(mob/living/target)
 	var/list/borer_list = get_brain_worms()
@@ -622,12 +619,12 @@
 		if(iscarbon(target))
 			if(!ishuman(target))
 				if(currenthostlimb != LIMB_HEAD)
-					to_chat(B, "<span class='notice'>I am forcefully popped out of my host!</span>")
+					to_chat(B, "<span class='notice'>You are forcefully popped out of your host!</span>")
 					return
 			var/mob/living/carbon/C = target
 			B.perform_infestation(C, currenthostlimb)
 		else
-			to_chat(B, "<span class='notice'>I am forcefully popped out of my host!</span>")
+			to_chat(B, "<span class='notice'>You are forcefully popped out of your host!</span>")
 
 /mob/living/carbon/proc/drop_stomach_contents(var/target)
 	if(!target)

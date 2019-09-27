@@ -45,7 +45,7 @@
 
 	user.visible_message("[user] begins to cut through [target]'s [affected.encased] with \the [tool].", \
 	"I begin to cut through [target]'s [affected.encased] with \the [tool].")
-	target.custom_pain("Something hurts horribly in my [affected.display_name]!",1)
+	target.custom_pain("Something hurts horribly in your [affected.display_name]!",1)
 	..()
 
 /datum/surgery_step/open_encased/saw/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -55,7 +55,7 @@
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 
 	user.visible_message("<span class='notice'>[user] has cut [target]'s [affected.encased] open with \the [tool].</span>",		\
-	"<span class='notice'>I have cut [target]'s [affected.encased] open with \the [tool].</span>")
+	"<span class='notice'>You have cut [target]'s [affected.encased] open with \the [tool].</span>")
 	affected.open = 2.5
 
 /datum/surgery_step/open_encased/saw/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -65,7 +65,7 @@
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 
 	user.visible_message("<span class='warning'>[user]'s hand slips, cracking [target]'s [affected.encased] with \the [tool]!</span>" , \
-	"<span class='warning'>My hand slips, cracking [target]'s [affected.encased] with \the [tool]!</span>" )
+	"<span class='warning'>Your hand slips, cracking [target]'s [affected.encased] with \the [tool]!</span>" )
 
 	affected.createwound(CUT, 20)
 	affected.fracture()
@@ -98,7 +98,7 @@
 	var/msg = "[user] starts to force open the [affected.encased] in [target]'s [affected.display_name] with \the [tool]."
 	var/self_msg = "I start to force open the [affected.encased] in [target]'s [affected.display_name] with \the [tool]."
 	user.visible_message(msg, self_msg)
-	target.custom_pain("Something hurts horribly in my [affected.display_name]!",1)
+	target.custom_pain("Something hurts horribly in your [affected.display_name]!",1)
 	..()
 
 /datum/surgery_step/open_encased/retract/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -108,7 +108,7 @@
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 
 	var/msg = "<span class='notice'>[user] forces open [target]'s [affected.encased] with \the [tool].</span>"
-	var/self_msg = "<span class='notice'>I force open [target]'s [affected.encased] with \the [tool].</span>"
+	var/self_msg = "<span class='notice'>You force open [target]'s [affected.encased] with \the [tool].</span>"
 	user.visible_message(msg, self_msg)
 
 	affected.open = 3
@@ -124,7 +124,7 @@
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 
 	var/msg = "<span class='warning'>[user]'s hand slips, cracking [target]'s [affected.encased]!</span>"
-	var/self_msg = "<span class='warning'>My hand slips, cracking [target]'s  [affected.encased]!</span>"
+	var/self_msg = "<span class='warning'>Your hand slips, cracking [target]'s  [affected.encased]!</span>"
 	user.visible_message(msg, self_msg)
 
 	affected.createwound(BRUISE, 20)
@@ -159,7 +159,7 @@
 	var/msg = "[user] starts bending [target]'s [affected.encased] back into place with \the [tool]."
 	var/self_msg = "I start bending [target]'s [affected.encased] back into place with \the [tool]."
 	user.visible_message(msg, self_msg)
-	target.custom_pain("Something hurts horribly in my [affected.display_name]!",1)
+	target.custom_pain("Something hurts horribly in your [affected.display_name]!",1)
 	..()
 
 /datum/surgery_step/open_encased/close/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -169,7 +169,7 @@
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 
 	var/msg = "<span class='notice'>[user] bends [target]'s [affected.encased] back into place with \the [tool].</span>"
-	var/self_msg = "<span class='notice'>I bend [target]'s [affected.encased] back into place with \the [tool].</span>"
+	var/self_msg = "<span class='notice'>You bend [target]'s [affected.encased] back into place with \the [tool].</span>"
 	user.visible_message(msg, self_msg)
 
 	affected.open = 2.5
@@ -181,7 +181,7 @@
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 
 	var/msg = "<span class='warning'>[user]'s hand slips, bending [target]'s [affected.encased] the wrong way!</span>"
-	var/self_msg = "<span class='warning'>My hand slips, bending [target]'s [affected.encased] the wrong way!</span>"
+	var/self_msg = "<span class='warning'>Your hand slips, bending [target]'s [affected.encased] the wrong way!</span>"
 	user.visible_message(msg, self_msg)
 
 	affected.createwound(BRUISE, 20)
@@ -219,7 +219,7 @@
 	var/msg = "[user] starts applying \the [tool] to [target]'s [affected.encased]."
 	var/self_msg = "I start applying \the [tool] to [target]'s [affected.encased]."
 	user.visible_message(msg, self_msg)
-	target.custom_pain("Something hurts horribly in my [affected.display_name]!",1)
+	target.custom_pain("Something hurts horribly in your [affected.display_name]!",1)
 	..()
 
 /datum/surgery_step/open_encased/mend/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -229,7 +229,7 @@
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 
 	var/msg = "<span class='notice'>[user] applied \the [tool] to [target]'s [affected.encased].</span>"
-	var/self_msg = "<span class='notice'>I applied \the [tool] to [target]'s [affected.encased].</span>"
+	var/self_msg = "<span class='notice'>You applied \the [tool] to [target]'s [affected.encased].</span>"
 	user.visible_message(msg, self_msg)
 
 	affected.open = 2

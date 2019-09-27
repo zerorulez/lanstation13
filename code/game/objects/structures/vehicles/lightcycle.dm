@@ -107,7 +107,7 @@
 	trigger_movement()
 
 /obj/structure/bed/chair/vehicle/lightcycle/unlock_atom(var/atom/movable/AM)
-	to_chat(occupant, "<span class='notice'>I begin dismounting \the [src]...")
+	to_chat(occupant, "<span class='notice'>You begin dismounting \the [src]...")
 	spawn(5)	//to prevent riders from just getting off the cycle to avoid hitting obstacles
 		if(!gcDestroyed)
 			..()
@@ -173,7 +173,7 @@
 
 /obj/structure/bed/chair/vehicle/lightcycle/relaymove(var/mob/living/user, direction)
 	if(!check_key(user))
-		to_chat(user, "<span class='notice'>I'll need the keys in one of my hands to drive \the [src].</span>")
+		to_chat(user, "<span class='notice'>I'll need the keys in one of your hands to drive \the [src].</span>")
 
 	if(direction != turn(dir, 180))
 		dir = direction
@@ -187,7 +187,7 @@
 		"<span class=\"warning\">As you collide with \the [A], you are blown to pieces.</span>")
 	else
 		visible_message("<span class=\"warning\">\The [src] smacks into \the [A] and dissolves into nothing.</span>",\
-		"<span class=\"warning\">I hear a loud crack as you dissolve into nothing.</span>")
+		"<span class=\"warning\">You hear a loud crack as you dissolve into nothing.</span>")
 
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 

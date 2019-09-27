@@ -210,7 +210,7 @@
 		)
 /obj/item/weapon/storage/belt/security/batmanbelt
 	name = "batbelt"
-	desc = "For all my crime-fighting bat needs."
+	desc = "For all your crime-fighting bat needs."
 	icon_state = "bmbelt"
 	item_state = "bmbelt"
 
@@ -251,7 +251,7 @@
 
 /obj/item/weapon/storage/belt/skull
 	name = "trophy-belt" //FATALITY
-	desc = "Excellent for holding the heads of my fallen foes."
+	desc = "Excellent for holding the heads of your fallen foes."
 	icon_state = "utilitybelt"
 	item_state = "utility"
 	fits_max_w_class = 4
@@ -297,7 +297,7 @@
 
 /obj/item/weapon/storage/belt/lazarus
 	name = "trainer's belt"
-	desc = "For the pokemo- mining master, holds my lazarus capsules."
+	desc = "For the pokemo- mining master, holds your lazarus capsules."
 	icon_state = "lazarusbelt_0"
 	item_state = "lazbelt"
 	w_class = W_CLASS_LARGE
@@ -349,7 +349,7 @@
 
 /obj/item/weapon/storage/belt/thunderdome
 	name = "Thunderdome Belt"
-	desc = "Can hold the thunderdome IDs of my fallen foes."
+	desc = "Can hold the thunderdome IDs of your fallen foes."
 	item_state = ""
 	storage_slots = 30
 	can_only_hold = list("/obj/item/weapon/card/id/thunderdome")

@@ -5,7 +5,7 @@
 
 /datum/game_mode/ctf/announce()
 	to_chat(world, "<B>The current game mode is - Capture the Flag!</B>")
-	to_chat(world, "<B>Capture the other teams flag and bring it back to my base!</B>")
+	to_chat(world, "<B>Capture the other teams flag and bring it back to your base!</B>")
 	to_chat(world, "Respawn is on")
 
 /datum/game_mode/ctf/pre_setup()

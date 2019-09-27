@@ -135,7 +135,7 @@
 
 
 	src.text += {"<BR><BR>The <B>[name_1] [name_2]</B> implied an undercover operative was acting on their behalf on the station currently.
-		It would be in my best interests to suspect everybody, as these undercover operatives could have implants which trigger them to have their memories removed until they are needed. He, or she, could even be a high ranking officer.
+		It would be in your best interests to suspect everybody, as these undercover operatives could have implants which trigger them to have their memories removed until they are needed. He, or she, could even be a high ranking officer.
 		After some investigation, we "}
 	if(prob(50))
 
@@ -158,7 +158,7 @@
 
 	src.text += {"<BR><BR>It has been brought to our attention that the [name_1] [name_2] have stumbled upon some dark secrets. They apparently want to spread the dangerous knowledge onto as many stations as they can.
 		Watch out for the following: praying to an unfamilar god, preaching the word of \[REDACTED\], sacrifices, magical dark power, living constructs of evil and a portal to the dimension of the underworld.
-		Based on our intelligence, we are [prob_right_dude]% sure that if true, someone doing the job of [traitor_job] on my station may have been converted
+		Based on our intelligence, we are [prob_right_dude]% sure that if true, someone doing the job of [traitor_job] on your station may have been converted
 		and instilled with the idea of the flimsiness of the real world, seeking to destroy it.
 		<BR>However, if this information is acted on without substantial evidence, those responsible will face severe repercussions."}
 /datum/intercept_text/proc/build_rev(datum/mind/correct_person)
@@ -172,9 +172,9 @@
 	var/traitor_job = H.mind.assigned_role
 
 
-	src.text += {"<BR><BR>It has been brought to our attention that the [name_1] [name_2] are attempting to stir unrest on one of our stations in my sector.
+	src.text += {"<BR><BR>It has been brought to our attention that the [name_1] [name_2] are attempting to stir unrest on one of our stations in your sector.
 		Watch out for suspicious activity among the crew and make sure that all heads of staff report in periodically.
-		Based on our intelligence, we are [prob_right_dude]% sure that if true, someone doing the job of [traitor_job] on my station may have been brainwashed
+		Based on our intelligence, we are [prob_right_dude]% sure that if true, someone doing the job of [traitor_job] on your station may have been brainwashed
 		at a recent conference, and their department should be closely monitored for signs of mutiny.
 		<BR>However, if this information is acted on without substantial evidence, those responsible will face severe repercussions."}
 /datum/intercept_text/proc/build_wizard(datum/mind/correct_person)
@@ -182,20 +182,20 @@
 
 
 	src.text += {"<BR><BR>The evil Space Wizards Federation have recently broke their most feared wizard, known only as \"[SWF_desc]\" out of space jail.
-		He is on the run, last spotted in a system near my present location. If anybody suspicious is located aboard, please
+		He is on the run, last spotted in a system near your present location. If anybody suspicious is located aboard, please
 		approach with EXTREME caution. Cent. Com also recommends that it would be wise to not inform the crew of this, due to their fearful nature.
 		Known attributes include: Brown sandals, a large blue hat, a voluptous white beard, and an inclination to cast spells."}
 /datum/intercept_text/proc/build_nuke(datum/mind/correct_person)
 
 
-	src.text += {"<BR><BR>Centcomm recently received a report of a plot to destroy one of our stations in my area. We believe the Nuclear Authentication Disc
-		that is standard issue aboard my vessel may be a target. We recommend removal of this object, and it's storage in a safe
+	src.text += {"<BR><BR>Centcomm recently received a report of a plot to destroy one of our stations in your area. We believe the Nuclear Authentication Disc
+		that is standard issue aboard your vessel may be a target. We recommend removal of this object, and it's storage in a safe
 		environment. As this may cause panic among the crew, all efforts should be made to keep this information a secret from all but
 		the most trusted crew-members."}
 /datum/intercept_text/proc/build_malf(datum/mind/correct_person)
 	var/a_name = pick(src.anomalies)
 
-	src.text += {"<BR><BR>A [a_name] was recently picked up by a nearby stations sensors in my sector. If it came into contact with my ship or
+	src.text += {"<BR><BR>A [a_name] was recently picked up by a nearby stations sensors in your sector. If it came into contact with your ship or
 		electrical equipment, it may have had hazardarous and unpredictable effect. Closely observe any non carbon based life forms
 		for signs of unusual behaviour, but keep this information discreet at all times due to this possibly dangerous scenario."}
 /datum/intercept_text/proc/build_changeling(datum/mind/correct_person)
@@ -224,10 +224,10 @@
 		changeling_name = src.pick_mob()
 	*/
 
-	src.text += "<BR><BR>We have received a report that a dangerous alien lifeform known only as \"[cname]\" may have infiltrated my crew.  "
+	src.text += "<BR><BR>We have received a report that a dangerous alien lifeform known only as \"[cname]\" may have infiltrated your crew.  "
 	/*
 
-	src.text += {"Our intelligence suggests a [prob_right_job]% chance that a [changeling_job] on board my station has been replaced by the alien.
+	src.text += {"Our intelligence suggests a [prob_right_job]% chance that a [changeling_job] on board your station has been replaced by the alien.
 		Additionally, the report indicates a [prob_right_dude]% chance that [changeling_name] may have been in contact with the lifeform at a recent social gathering.  "}
 	*/
 

@@ -315,7 +315,7 @@ Pressure: [env.return_pressure()]"}
 			return 0
 	var/obj/item/device/paicard/card = new(T)
 	var/mob/living/silicon/pai/pai = new(card)
-	pai.name = input(choice, "Enter my pAI name:", "pAI Name", "Personal AI") as text
+	pai.name = input(choice, "Enter your pAI name:", "pAI Name", "Personal AI") as text
 	pai.real_name = pai.name
 	pai.key = choice.key
 	card.setPersonality(pai)
@@ -421,33 +421,33 @@ Pressure: [env.return_pressure()]"}
 			return
 		else
 			if(alert("Spawn that person a tome?",,"Yes","No")=="Yes")
-				to_chat(M, "<span class='warning'>I catch a glimpse of the Realm of Nar-Sie, The Geometer of Blood. You now see how flimsy the world is, you see that it should be open to the knowledge of Nar-Sie. A tome, a message from my new master, appears on the ground.</span>")
+				to_chat(M, "<span class='warning'>You catch a glimpse of the Realm of Nar-Sie, The Geometer of Blood. You now see how flimsy the world is, you see that it should be open to the knowledge of Nar-Sie. A tome, a message from your new master, appears on the ground.</span>")
 				new /obj/item/weapon/tome(M.loc)
 			else
-				to_chat(M, "<span class='warning'>I catch a glimpse of the Realm of Nar-Sie, The Geometer of Blood. You now see how flimsy the world is, you see that it should be open to the knowledge of Nar-Sie.</span>")
+				to_chat(M, "<span class='warning'>You catch a glimpse of the Realm of Nar-Sie, The Geometer of Blood. You now see how flimsy the world is, you see that it should be open to the knowledge of Nar-Sie.</span>")
 			var/glimpse=pick("1","2","3","4","5","6","7","8")
 			switch(glimpse)
 				if("1")
-					to_chat(M, "<span class='warning'>I remembered one thing from the glimpse... [cultwords["travel"]] is travel...</span>")
+					to_chat(M, "<span class='warning'>You remembered one thing from the glimpse... [cultwords["travel"]] is travel...</span>")
 				if("2")
-					to_chat(M, "<span class='warning'>I remembered one thing from the glimpse... [cultwords["blood"]] is blood...</span>")
+					to_chat(M, "<span class='warning'>You remembered one thing from the glimpse... [cultwords["blood"]] is blood...</span>")
 				if("3")
-					to_chat(M, "<span class='warning'>I remembered one thing from the glimpse... [cultwords["join"]] is join...</span>")
+					to_chat(M, "<span class='warning'>You remembered one thing from the glimpse... [cultwords["join"]] is join...</span>")
 				if("4")
-					to_chat(M, "<span class='warning'>I remembered one thing from the glimpse... [cultwords["hell"]] is Hell...</span>")
+					to_chat(M, "<span class='warning'>You remembered one thing from the glimpse... [cultwords["hell"]] is Hell...</span>")
 				if("5")
-					to_chat(M, "<span class='warning'>I remembered one thing from the glimpse... [cultwords["destroy"]] is destroy...</span>")
+					to_chat(M, "<span class='warning'>You remembered one thing from the glimpse... [cultwords["destroy"]] is destroy...</span>")
 				if("6")
-					to_chat(M, "<span class='warning'>I remembered one thing from the glimpse... [cultwords["technology"]] is technology...</span>")
+					to_chat(M, "<span class='warning'>You remembered one thing from the glimpse... [cultwords["technology"]] is technology...</span>")
 				if("7")
-					to_chat(M, "<span class='warning'>I remembered one thing from the glimpse... [cultwords["self"]] is self...</span>")
+					to_chat(M, "<span class='warning'>You remembered one thing from the glimpse... [cultwords["self"]] is self...</span>")
 				if("8")
-					to_chat(M, "<span class='warning'>I remembered one thing from the glimpse... [cultwords["see"]] is see...</span>")
+					to_chat(M, "<span class='warning'>You remembered one thing from the glimpse... [cultwords["see"]] is see...</span>")
 
 			if(M.mind)
 				M.mind.special_role = "Cultist"
 				ticker.mode.cult += M.mind
-				to_chat(M, "<span class='sinister'>I can now speak and understand the forgotten tongue of the occult.</span>")
+				to_chat(M, "<span class='sinister'>You can now speak and understand the forgotten tongue of the occult.</span>")
 				M.add_language(LANGUAGE_CULT)
 			to_chat(src, "Made [M] a cultist.")
 */
@@ -1172,7 +1172,7 @@ Pressure: [env.return_pressure()]"}
 	set name = "Free Power"
 	set desc = "Replaces all SMES on the map with magical ones."
 
-	if(alert("Are you sure? This will completely fuck over my round!",,"Yes","No") != "Yes")
+	if(alert("Are you sure? This will completely fuck over your round!",,"Yes","No") != "Yes")
 		return
 
 	log_admin("[key_name(usr)] haxed the powergrid with magic SMES.")
@@ -1196,7 +1196,7 @@ Pressure: [env.return_pressure()]"}
 	set name = "Start Atmos"
 	set desc = "WOW ATMOS DID THEIR JOBS!!!1"
 
-	if(alert("Are you sure? This will completely fuck over my round!",,"Yes","No") != "Yes")
+	if(alert("Are you sure? This will completely fuck over your round!",,"Yes","No") != "Yes")
 		return
 
 	log_admin("[key_name(usr)] haxed atmos.")
@@ -1797,21 +1797,21 @@ client/proc/check_convertables()
 
 	holder.marked_datum = new chosen()
 
-	to_chat(usr, "<span class='notify'>A reference to the new [chosen] has been stored in my marked datum.</span>")
+	to_chat(usr, "<span class='notify'>A reference to the new [chosen] has been stored in your marked datum.</span>")
 
 	log_admin("[key_name(usr)] spawned the datum [chosen] to his marked datum.")
 	feedback_add_details("admin_verb","SD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/vv_marked_datum()
 	set category	= "Debug"
-	set desc		= "Opens a VV menu for my marked datum."
+	set desc		= "Opens a VV menu for your marked datum."
 	set name		= "View Marked Datum's Vars"
 
 	if(!check_rights(R_DEBUG))
 		return
 
 	if(!holder.marked_datum)
-		to_chat(usr, "<span class='warning'>I do not have a marked datum!</span>")
+		to_chat(usr, "<span class='warning'>You do not have a marked datum!</span>")
 		return
 
 	debug_variables(holder.marked_datum)

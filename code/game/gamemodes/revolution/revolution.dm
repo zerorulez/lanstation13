@@ -54,7 +54,7 @@
 ///////////////////////////
 /datum/game_mode/revolution/announce()
 	to_chat(world, "<B>The current game mode is - Revolution!</B>")
-	to_chat(world, "<B>Some crewmembers are attempting to start a revolution!<BR>\nRevolutionaries - Kill the Captain, HoP, HoS, CE, RD and CMO. Convert other crewmembers (excluding the heads of staff, and security officers) to my cause by flashing them. Protect my leaders.<BR>\nPersonnel - Protect the heads of staff. Kill the leaders of the revolution, and brainwash the other revolutionaries (by beating them in the head).</B>")
+	to_chat(world, "<B>Some crewmembers are attempting to start a revolution!<BR>\nRevolutionaries - Kill the Captain, HoP, HoS, CE, RD and CMO. Convert other crewmembers (excluding the heads of staff, and security officers) to your cause by flashing them. Protect your leaders.<BR>\nPersonnel - Protect the heads of staff. Kill the leaders of the revolution, and brainwash the other revolutionaries (by beating them in the head).</B>")
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -151,7 +151,7 @@
 /datum/game_mode/proc/greet_revolutionary(var/datum/mind/rev_mind, var/you_are=1)
 	var/obj_count = 1
 	if (you_are)
-		to_chat(rev_mind.current, "<span class='notice'>I am a member of the revolutionaries' leadership!</span>")
+		to_chat(rev_mind.current, "<span class='notice'>You are a member of the revolutionaries' leadership!</span>")
 	for(var/datum/objective/objective in rev_mind.objectives)
 		to_chat(rev_mind.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		rev_mind.special_role = "Head Revolutionary"
@@ -176,7 +176,7 @@
 	if (!where)
 		to_chat(mob, "The Syndicate were unfortunately unable to get you a flash.")
 	else
-		to_chat(mob, "The flash in my [where] will help you to persuade the crew to join my cause.")
+		to_chat(mob, "The flash in your [where] will help you to persuade the crew to join your cause.")
 		mob.update_icons()
 		return 1
 
@@ -224,7 +224,7 @@
 		return ADD_REVOLUTIONARY_FAIL_IS_REV
 
 	revolutionaries += rev_mind
-	to_chat(rev_mind.current, "<span class='warning'><FONT size = 3> I am now a revolutionary! I must help the cause. I will not harm my fellow freedom fighters. I can identify my comrades by the red \"R\" icons, and my leaders by the blue \"R\" icons. I shall help them kill the heads to win the revolution!</FONT></span>")
+	to_chat(rev_mind.current, "<span class='warning'><FONT size = 3> I am now a revolutionary! I must help the cause. I will not harm your fellow freedom fighters. I can identify your comrades by the red \"R\" icons, and your leaders by the blue \"R\" icons. I shall help them kill the heads to win the revolution!</FONT></span>")
 	rev_mind.special_role = "Revolutionary"
 	update_rev_icons_added(rev_mind)
 
@@ -238,10 +238,10 @@
 		rev_mind.special_role = null
 
 		if(beingborged)
-			to_chat(rev_mind.current, "<span class='danger'><FONT size = 3>The frame's firmware detects and deletes my neural reprogramming!  I remember nothing from the moment I was flashed until now.</FONT></span>")
+			to_chat(rev_mind.current, "<span class='danger'><FONT size = 3>The frame's firmware detects and deletes your neural reprogramming!  I remember nothing from the moment I was flashed until now.</FONT></span>")
 
 		else
-			to_chat(rev_mind.current, "<span class='danger'><FONT size = 3>I have been brainwashed! I am no longer a revolutionary. My memory is hazy from the time I was rebel...the only thing I remember is the name of the one who brainwashed me...</FONT></span>")
+			to_chat(rev_mind.current, "<span class='danger'><FONT size = 3>You have been brainwashed! I am no longer a revolutionary. your memory is hazy from the time I was rebel...the only thing I remember is the name of the one who brainwashed me...</FONT></span>")
 
 		update_rev_icons_removed(rev_mind)
 		for(var/mob/living/M in view(rev_mind.current))

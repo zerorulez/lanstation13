@@ -152,7 +152,7 @@
 	if (!istype(M, /mob))
 		return
 	if (!user.dexterity_check())
-		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [name] by [user.name] ([user.ckey])</font>")
@@ -264,7 +264,7 @@
 
 /obj/item/weapon/dnainjector/nofail/antitele
 	name = "DNA-Injector (Anti-Tele.)"
-	desc = "Will make you not able to control my mind."
+	desc = "Will make you not able to control your mind."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 12
@@ -275,7 +275,7 @@
 
 /obj/item/weapon/dnainjector/nofail/nobreath
 	name = "DNA-Injector (No Breath)"
-	desc = "Hold my breath and count to infinity."
+	desc = "Hold your breath and count to infinity."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2
@@ -286,7 +286,7 @@
 
 /obj/item/weapon/dnainjector/nofail/antinobreath
 	name = "DNA-Injector (Anti-No Breath)"
-	desc = "Hold my breath and count to 100."
+	desc = "Hold your breath and count to 100."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
@@ -638,7 +638,7 @@
 
 /obj/item/weapon/dnainjector/nofail/antipolymorph
 	name = "DNA-Injector (Anti-Polymorph)"
-	desc = "Damn, friendzoned by my own clone."
+	desc = "Damn, friendzoned by your own clone."
 	datatype = DNA2_BUF_SE
 	value = 0x001
 	//block = 2
@@ -749,7 +749,7 @@
 
 /obj/item/weapon/dnainjector/nofail/coughmut
 	name = "DNA-Injector (Cough)"
-	desc = "Will bring forth a sound of horror from my throat."
+	desc = "Will bring forth a sound of horror from your throat."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 5
@@ -1268,7 +1268,7 @@
 
 /obj/item/weapon/dnainjector/nofail/farsightmut
 	name = "DNA-Injector (Farsight)"
-	desc = "This will allow you to focus my eyes better."
+	desc = "This will allow you to focus your eyes better."
 	datatype = DNA2_BUF_SE
 	value = 0xFFF
 	//block = 2

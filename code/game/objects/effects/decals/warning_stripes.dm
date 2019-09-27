@@ -34,7 +34,7 @@
 //Making it a decal makes it fuse with the plating and disappear under the pipes, I need a better solution but this will do for now
 /obj/effect/nmpi
 	name = "NMPI"
-	desc = "White holographic lines hovering above the ground. If my sense of direction is under average, just follow the Nanotrasen-approved Maintenance Path Indicator to never get lost again. Nanotrasen declines all responsibility if you decide to stray off the path indicated by the Nanotrasen-approved Maintenance Path Indicator."
+	desc = "White holographic lines hovering above the ground. If your sense of direction is under average, just follow the Nanotrasen-approved Maintenance Path Indicator to never get lost again. Nanotrasen declines all responsibility if you decide to stray off the path indicated by the Nanotrasen-approved Maintenance Path Indicator."
 
 	icon = 'icons/effects/warning_stripes.dmi'
 	icon_state = "maintguide"
@@ -44,4 +44,4 @@
 /obj/effect/decal/warning_stripes/unshielded_area
 	icon_state = "radiation_huge"
 	name = "Unshielded Area"
-	desc = "Designates an area that is NOT shielded against radiation storms. Enter at my own risk."
+	desc = "Designates an area that is NOT shielded against radiation storms. Enter at your own risk."

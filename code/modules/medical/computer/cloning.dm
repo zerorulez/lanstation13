@@ -108,7 +108,7 @@
 /obj/machinery/computer/cloning/emag(mob/user)
 	if(!emagged)
 		emagged = 1
-		user.visible_message("<span class='warning'>[user] slides something into \the [src]'s card-reader.</span>","<span class='warning'>I disable \the [src]'s safety overrides.</span>")
+		user.visible_message("<span class='warning'>[user] slides something into \the [src]'s card-reader.</span>","<span class='warning'>You disable \the [src]'s safety overrides.</span>")
 
 /obj/machinery/computer/cloning/attack_paw(mob/user as mob)
 	return attack_hand(user)
@@ -417,21 +417,21 @@
 	if(subject.suiciding) //We cannot clone this guy because he suicided. Believe it or not, some people who suicide don't know about this. Let's tell them what's wrong.
 		scantemp = "Error: Mental interface failure."
 		if(subject.client)
-			to_chat(subject, "<span class='warning'>Someone is trying to clone my corpse, but you may not be revived as you committed suicide.</span>")
+			to_chat(subject, "<span class='warning'>Someone is trying to clone your corpse, but you may not be revived as you committed suicide.</span>")
 		else
 			var/mob/dead/observer/ghost = mind_can_reenter(subject.mind)
 			if(ghost)
 				var/mob/ghostmob = ghost.get_top_transmogrification()
 				if(ghostmob)
-					to_chat(ghostmob, "<span class='warning'>Someone is trying to clone my corpse, but you may not be revived as you committed suicide.</span>")
+					to_chat(ghostmob, "<span class='warning'>Someone is trying to clone your corpse, but you may not be revived as you committed suicide.</span>")
 		return
 
 
 	if(M_NOCLONE in subject.mutations) //We cannot clone this guy because he's a husk, but maybe we can give a more informative message.
 		if(subject.client)
 			scantemp = "Error: Unable to locate valid genetic data. However, mental interface initialized successfully."
-			to_chat(subject, "<span class='interface'><span class='big bold'>Someone is trying to clone my corpse.</span> \
-				You cannot be cloned as my body has been husked. However, my brain may still be used. Your ghost has been displayed as active and inside my body.</span>")
+			to_chat(subject, "<span class='interface'><span class='big bold'>Someone is trying to clone your corpse.</span> \
+				You cannot be cloned as your body has been husked. However, your brain may still be used. Your ghost has been displayed as active and inside your body.</span>")
 			return
 		else
 			var/mob/dead/observer/ghost = mind_can_reenter(subject.mind)
@@ -440,8 +440,8 @@
 				if(ghostmob)
 					scantemp = "Error: Unable to locate valid genetic data. Additionally, subject's brain is not responding to scanning stimuli."
 					ghostmob << 'sound/effects/adminhelp.ogg'
-					to_chat(ghostmob, "<span class='interface'><span class='big bold'>Someone is trying to clone my corpse.</span> \
-						You cannot be cloned as my body has been husked. However, my brain may still be used. To show you're still active, return to my body! (Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)</span>")
+					to_chat(ghostmob, "<span class='interface'><span class='big bold'>Someone is trying to clone your corpse.</span> \
+						You cannot be cloned as your body has been husked. However, your brain may still be used. To show you're still active, return to your body! (Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)</span>")
 					return
 			else
 				scantemp = "Error: Unable to locate valid genetic data. Additionally, mental interface failed to initialize."
@@ -455,7 +455,7 @@
 			if(ghostmob) //Found this guy's ghost, and it still belongs to this corpse. There's nothing preventing this guy from being cloned, except them being ghosted
 				scantemp = "Error: Subject's brain is not responding to scanning stimuli, subject may be brain dead. Please try again in five seconds."
 				ghostmob << 'sound/effects/adminhelp.ogg'
-				to_chat(ghostmob, "<span class='interface big'><span class='bold'>Someone is trying to clone my corpse. Return to my body if you want to be cloned!</span> \
+				to_chat(ghostmob, "<span class='interface big'><span class='bold'>Someone is trying to clone your corpse. Return to your body if you want to be cloned!</span> \
 					(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)</span>")
 				return
 		else //No ghost matching this corpse. Guy probably either logged out or was revived by out-of-body means.

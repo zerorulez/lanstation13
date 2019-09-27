@@ -11,7 +11,7 @@ Headache
 
 BONUS
 	Displays an annoying message!
-	Should be used for buffing my disease.
+	Should be used for buffing your disease.
 
 //////////////////////////////////////
 */

@@ -17,4 +17,4 @@ var/datum/subsystem/create_ticker/SScreate_ticker
 	// Fuck announcing this, no ..().
 
 // Yes that's it.
-// Just fuck my shit up.
+// Just fuck your shit up.

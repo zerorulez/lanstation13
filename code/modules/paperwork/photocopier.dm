@@ -149,7 +149,7 @@
 						break
 					var/icon/temp_img
 					if(ishuman(ass) && (ass.get_item_by_slot(slot_w_uniform) || ass.get_item_by_slot(slot_wear_suit)))
-						to_chat(usr, "<span class='notice'>I feel kind of silly copying [ass == usr ? "your" : ass][ass == usr ? "" : "\'s"] ass with [ass == usr ? "your" : "their"] clothes on.</span>")
+						to_chat(usr, "<span class='notice'>You feel kind of silly copying [ass == usr ? "your" : ass][ass == usr ? "" : "\'s"] ass with [ass == usr ? "your" : "their"] clothes on.</span>")
 					else if(toner >= 5 && check_ass()) //You have to be sitting on the copier and either be a xeno or a human without clothes on.
 						if(isalien(ass) || istype(ass,/mob/living/simple_animal/hostile/alien)) //Xenos have their own asses, thanks to Pybro.
 							temp_img = icon("icons/ass/assalien.png")
@@ -186,7 +186,7 @@
 				usr.put_in_hands(copy)
 			else
 				copy.forceMove(src.loc)
-			to_chat(usr, "<span class='notice'>I take [copy] out of [src].</span>")
+			to_chat(usr, "<span class='notice'>You take [copy] out of [src].</span>")
 			copy = null
 			updateUsrDialog()
 		else if(photocopy)
@@ -195,11 +195,11 @@
 				usr.put_in_hands(photocopy)
 			else
 				photocopy.forceMove(src.loc)
-			to_chat(usr, "<span class='notice'>I take [photocopy] out of [src].</span>")
+			to_chat(usr, "<span class='notice'>You take [photocopy] out of [src].</span>")
 			photocopy = null
 			updateUsrDialog()
 		else if(check_ass())
-			to_chat(ass, "<span class='notice'>I feel a slight pressure on my ass.</span>")
+			to_chat(ass, "<span class='notice'>You feel a slight pressure on your ass.</span>")
 	else if(href_list["min"])
 		if(copying)
 			if(!alert("Cancel current print job?","","Yes","No") == "Yes")
@@ -275,7 +275,7 @@
 		if(copier_empty())
 			if(user.drop_item(O, src))
 				copy = O
-				to_chat(user, "<span class='notice'>I insert [O] into [src].</span>")
+				to_chat(user, "<span class='notice'>You insert [O] into [src].</span>")
 				flick("bigscanner1", src)
 				updateUsrDialog()
 		else
@@ -284,7 +284,7 @@
 		if(copier_empty())
 			if(user.drop_item(O, src))
 				photocopy = O
-				to_chat(user, "<span class='notice'>I insert [O] into [src].</span>")
+				to_chat(user, "<span class='notice'>You insert [O] into [src].</span>")
 				flick("bigscanner1", src)
 				updateUsrDialog()
 		else
@@ -294,14 +294,14 @@
 			if(user.drop_item(O))
 				qdel(O)
 				toner = 40
-				to_chat(user, "<span class='notice'>I insert [O] into [src].</span>")
+				to_chat(user, "<span class='notice'>You insert [O] into [src].</span>")
 				updateUsrDialog()
 		else
 			to_chat(user, "<span class='notice'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
 	else if(iswrench(O))
 		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
 		anchored = !anchored
-		to_chat(user, "<span class='notice'>I [anchored ? "wrench" : "unwrench"] [src].</span>")
+		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] [src].</span>")
 	else if(istype(O, /obj/item/weapon/grab)) //For ass-copying.
 		var/obj/item/weapon/grab/G = O
 		if(ismob(G.affecting) && G.affecting != ass)

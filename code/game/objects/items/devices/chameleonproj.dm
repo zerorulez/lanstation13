@@ -62,7 +62,7 @@
 		//playsound(get_turf(src), 'sound/effects/pop.ogg', 100, 1, -6)
 		del(active_dummy)
 		active_dummy = null
-		to_chat(usr, "<span class='notice'>I deactivate [src].</span>")
+		to_chat(usr, "<span class='notice'>You deactivate [src].</span>")
 		var/obj/effect/overlay/T = new/obj/effect/overlay(get_turf(src))
 		T.icon = 'icons/effects/effects.dmi'
 		flick("emppulse",T)
@@ -80,7 +80,7 @@
 		C.activate(O, usr, saved_icon, saved_icon_state, saved_overlays, src)
 		qdel(O)
 		O = null
-		to_chat(usr, "<span class='notice'>I activate [src].</span>")
+		to_chat(usr, "<span class='notice'>You activate [src].</span>")
 		var/obj/effect/overlay/T = new/obj/effect/overlay(get_turf(src))
 		T.icon = 'icons/effects/effects.dmi'
 		flick("emppulse",T)
@@ -136,22 +136,22 @@
 
 /obj/effect/dummy/chameleon/attackby()
 	for(var/mob/M in src)
-		to_chat(M, "<span class='warning'>My chameleon-projector deactivates.</span>")
+		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()
 
 /obj/effect/dummy/chameleon/attack_hand()
 	for(var/mob/M in src)
-		to_chat(M, "<span class='warning'>My chameleon-projector deactivates.</span>")
+		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()
 
 /obj/effect/dummy/chameleon/ex_act()
 	for(var/mob/M in src)
-		to_chat(M, "<span class='warning'>My chameleon-projector deactivates.</span>")
+		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()
 
 /obj/effect/dummy/chameleon/bullet_act()
 	for(var/mob/M in src)
-		to_chat(M, "<span class='warning'>My chameleon-projector deactivates.</span>")
+		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	..()
 	master.disrupt()
 

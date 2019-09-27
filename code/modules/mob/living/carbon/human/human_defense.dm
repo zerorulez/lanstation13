@@ -40,7 +40,7 @@ emp_act
 		return checkarmor(affecting, type)
 		//If a specific bodypart is targetted, check how that bodypart is protected and return the value.
 
-	//If you don't specify a bodypart, it checks ALL my bodyparts for protection, and averages out the values
+	//If you don't specify a bodypart, it checks ALL your bodyparts for protection, and averages out the values
 	for(var/datum/organ/external/organ in organs)
 		armorval += checkarmor(organ, type)
 		organnum++
@@ -178,7 +178,7 @@ emp_act
 		src.reagents.trans_to (newmeat, round ((src.reagents.total_volume) / 3, 1))
 		src.loc.add_blood(src)
 		--src.meatleft
-		to_chat(user, "<span class='warning'>I hack off a chunk of meat from [src.name]</span>")
+		to_chat(user, "<span class='warning'>You hack off a chunk of meat from [src.name]</span>")
 		if(!src.meatleft)
 			src.attack_log += "\[[time_stamp()]\] Was chopped up into meat by <b>[user]/[user.ckey]</b>"
 			user.attack_log += "\[[time_stamp()]\] Chopped up <b>[src]/[src.ckey]</b> into meat</b>"
@@ -212,7 +212,7 @@ emp_act
 		if(affecting.sabotaged)
 			to_chat(user, "<span class='warning'>[src]'s [affecting.display_name] is already sabotaged!</span>")
 		else
-			to_chat(user, "<span class='warning'>I sneakily slide [I] into the dataport on [src]'s [affecting.display_name] and short out the safeties.</span>")
+			to_chat(user, "<span class='warning'>You sneakily slide [I] into the dataport on [src]'s [affecting.display_name] and short out the safeties.</span>")
 			affecting.sabotaged = 1
 		return 0
 
@@ -225,7 +225,7 @@ emp_act
 		visible_message("<span class='danger'>[user] attacks [src] in the [hit_area] with \the [I.name]!</span>", \
 			"<span class='userdanger'>[user] attacks me in the [hit_area] with \the [I.name]!</span>")
 
-	var/armor = run_armor_check(affecting, "melee", "My armor protects my [hit_area].", "My armor softens the hit to my [hit_area].")
+	var/armor = run_armor_check(affecting, "melee", "My armor protects your [hit_area].", "My armor softens the hit to your [hit_area].")
 	if(armor >= 2)
 		return 1 //We still connected
 	if(!I.force)
@@ -265,6 +265,7 @@ emp_act
 				if(prob(I.force))
 					apply_effect(10, PARALYZE, armor)
 					visible_message("<span class='danger'>[src] has been knocked unconscious!</span>")
+					src.client << 'sound/effects/knocked_out.ogg'
 //					if(src != user && I.damtype == BRUTE)
 //						ticker.mode.remove_revolutionary(mind)
 
@@ -275,7 +276,7 @@ emp_act
 					if(head)
 						head.add_blood(src)
 						update_inv_head(0)
-					if(glasses && prob(33))
+					if(glasses)
 						glasses.add_blood(src)
 						update_inv_glasses(0)
 
@@ -307,17 +308,17 @@ emp_act
 	if(user)
 		src.visible_message(\
 			"<span class='danger'>[user] knocks [(amount < 3) ? "some" : "a bunch"] of [src]'s teeth out!</span>",\
-			"<span class='danger'>[user] knocks [(amount < 3) ? "some" : "a bunch"] of my teeth out!</span>",\
+			"<span class='danger'>[user] knocks [(amount < 3) ? "some" : "a bunch"] of your teeth out!</span>",\
 
 			drugged_message = "<span class='info'>[user] starts brushing [src]'s teeth.</span>",\
-			self_drugged_message = "<span class='info'>[user] has removed some of my wisdom teeth.</span>")
+			self_drugged_message = "<span class='info'>[user] has removed some of your wisdom teeth.</span>")
 	else
 		src.visible_message(\
 			"<span class='danger'>[(amount < 3) ? "Some" : "A bunch"] of [src]'s teeth fall out!</span>",\
-			"<span class='danger'>[(amount < 3) ? "Some" : "A bunch"] of my teeth fall out!</span>",\
+			"<span class='danger'>[(amount < 3) ? "Some" : "A bunch"] of your teeth fall out!</span>",\
 
 			drugged_message = "<span class='info'>The tooth fairy takes some of [src]'s teeth out!</span>",\
-			self_drugged_message = "<span class='info'>The tooth fairy takes some of my teeth out, and gives me a dollar.</span>")
+			self_drugged_message = "<span class='info'>The tooth fairy takes some of your teeth out, and gives me a dollar.</span>")
 
 /mob/living/carbon/human/proc/bloody_hands(var/mob/living/source, var/amount = 2)
 	if (gloves)

@@ -48,7 +48,7 @@ client/verb/JoinResponseTeam()
 			to_chat(usr, "No emergency response team is currently being sent.")
 			return
 		if(jobban_isbanned(usr, "Syndicate") || jobban_isbanned(usr, "Emergency Response Team") || jobban_isbanned(usr, "Security Officer"))
-			to_chat(usr, "<font color=red><b>I am jobbanned from the emergency reponse team!")
+			to_chat(usr, "<font color=red><b>You are jobbanned from the emergency reponse team!")
 			return
 
 		if(response_team_members.len > 5)
@@ -69,12 +69,12 @@ client/verb/JoinResponseTeam()
 			new_commando.mind.key = usr.key
 			new_commando.key = usr.key
 
-			to_chat(new_commando, "<span class='notice'>I am [!leader_selected?"a member":"the <B>LEADER</B>"] of an Emergency Response Team, a type of military division, under CentComm's service. There is a code red alert on [station_name()], you are tasked to go and fix the problem.</span>")
-			to_chat(new_commando, "<b>I should first gear up and discuss a plan with my team. More members may be joining, don't move out before you're ready.")
+			to_chat(new_commando, "<span class='notice'>You are [!leader_selected?"a member":"the <B>LEADER</B>"] of an Emergency Response Team, a type of military division, under CentComm's service. There is a code red alert on [station_name()], you are tasked to go and fix the problem.</span>")
+			to_chat(new_commando, "<b>You should first gear up and discuss a plan with your team. More members may be joining, don't move out before you're ready.")
 			if(!leader_selected)
-				to_chat(new_commando, "<b>As member of the Emergency Response Team, you answer only to my leader and CentComm officials.</b>")
+				to_chat(new_commando, "<b>As member of the Emergency Response Team, you answer only to your leader and CentComm officials.</b>")
 			else
-				to_chat(new_commando, "<b>As leader of the Emergency Response Team, you answer only to CentComm, and have authority to override the Captain where it is necessary to achieve my mission goals. It is recommended that you attempt to cooperate with the captain where possible, however.")
+				to_chat(new_commando, "<b>As leader of the Emergency Response Team, you answer only to CentComm, and have authority to override the Captain where it is necessary to achieve your mission goals. It is recommended that you attempt to cooperate with the captain where possible, however.")
 			if(ticker.mode.ert_reason)
 				to_chat(new_commando, "<b>The communication from the station indicated that the reason you were called is '[ticker.mode.ert_reason]'.")
 

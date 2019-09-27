@@ -171,7 +171,7 @@
 
 /obj/item/weapon/legcuffs/bolas
 	name = "bolas"
-	desc = "An entangling bolas. Throw at my foes to trip them and prevent them from running."
+	desc = "An entangling bolas. Throw at your foes to trip them and prevent them from running."
 	gender = NEUTER
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "bolas"
@@ -202,8 +202,8 @@
 	if(usr && !istype(thrown_from, /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/bolas)) //if there is a user, but not a mech
 		if(istype(usr, /mob/living/carbon/human)) //if the user is human
 			var/mob/living/carbon/human/H = usr
-			if(clumsy_check(H) && prob(50))
-				to_chat(H, "<span class='warning'>I smack yourself in the face while swinging the [src]!</span>")
+			if(clumsy_check(H))
+				to_chat(H, "<span class='warning'>You smack yourself in the face while swinging the [src]!</span>")
 				H.Stun(2)
 				H.drop_item(src)
 				return
@@ -239,7 +239,7 @@
 			if(H.m_intent == "run") //if they're set to run (though not necessarily running at that moment)
 				if(prob(trip_prob)) //this probability is up for change and mostly a placeholder - Comic
 					step(H, H.dir)
-					H.visible_message("<span class='warning'>[H] was tripped by the bolas!</span>","<span class='warning'>My legs have been tangled!</span>");
+					H.visible_message("<span class='warning'>[H] was tripped by the bolas!</span>","<span class='warning'>Your legs have been tangled!</span>");
 					H.Stun(2) //used instead of setting damage in vars to avoid non-human targets being affected
 					H.Knockdown(4)
 					H.legcuffed = src //applies legcuff properties inherited through legcuffs
@@ -251,7 +251,7 @@
 				throw_failed()
 				return
 			else //walking, but uncuffed, or the running prob() failed
-				to_chat(H, "<span class='notice'>I stumble over the thrown bolas</span>")
+				to_chat(H, "<span class='notice'>You stumble over the thrown bolas</span>")
 				step(H, H.dir)
 				H.Stun(1)
 				throw_failed()
@@ -331,7 +331,7 @@
 			return
 		if(iswirecutter(I)) //allows you to convert the wire back to a cable coil
 			if(!weight1 && !weight2) //if there's nothing attached
-				user.show_message("<span class='notice'>I cut the knot in the [src].</span>")
+				user.show_message("<span class='notice'>You cut the knot in the [src].</span>")
 				playsound(usr, 'sound/items/Wirecutter.ogg', 50, 1)
 				var /obj/item/stack/cable_coil/C = new /obj/item/stack/cable_coil(user.loc) //we get back the wire lengths we put in
 				var /obj/item/stack/cable_coil/S = new /obj/item/weapon/screwdriver(user.loc)
@@ -346,7 +346,7 @@
 				qdel(src)
 				return
 			else
-				user.show_message("<span class='notice'>I cut off [weight1] [weight2 ? "and [weight2]" : ""].</span>") //you remove the items currently attached
+				user.show_message("<span class='notice'>You cut off [weight1] [weight2 ? "and [weight2]" : ""].</span>") //you remove the items currently attached
 				if(weight1)
 					weight1.forceMove(get_turf(usr))
 					weight1 = null
@@ -361,14 +361,14 @@
 				if(!weight1)
 					if(user.drop_item(I, src))
 						weight1 = I
-						user.show_message("<span class='notice'>I tie [weight1] to the [src].</span>")
+						user.show_message("<span class='notice'>You tie [weight1] to the [src].</span>")
 						update_icon()
 						//del(I)
 						return
 				if(!weight2) //just in case
 					if(user.drop_item(I, src))
 						weight2 = I
-						user.show_message("<span class='notice'>I tie [weight2] to the [src].</span>")
+						user.show_message("<span class='notice'>You tie [weight2] to the [src].</span>")
 						update_icon()
 						//del(I)
 						return
@@ -421,7 +421,7 @@
 		IED = I
 		switch(IED.assembled)
 			if(0,1) //if it's not fueled/hooked up
-				to_chat(user, "<span class='warning'>I haven't prepared this IED yet!</span>")
+				to_chat(user, "<span class='warning'>You haven't prepared this IED yet!</span>")
 				IED = null
 				return
 			if(2,3)
@@ -431,17 +431,17 @@
 					var/log_str = "[key_name(usr)]<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A> has rigged a beartrap with an IED at <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[bombturf.x];Y=[bombturf.y];Z=[bombturf.z]'>[A.name] (JMP)</a>."
 					message_admins(log_str)
 					log_game(log_str)
-					to_chat(user, "<span class='notice'>I sneak the [IED] underneath the pressure plate and connect the trigger wire.</span>")
+					to_chat(user, "<span class='notice'>You sneak the [IED] underneath the pressure plate and connect the trigger wire.</span>")
 					desc = "A trap used to catch bears and other legged creatures. <span class='warning'>There is an IED hooked up to it.</span>"
 			else
-				to_chat(user, "<span class='danger'>I shouldn't be reading this message! Contact a coder or someone, something broke!</span>")
+				to_chat(user, "<span class='danger'>You shouldn't be reading this message! Contact a coder or someone, something broke!</span>")
 				IED = null
 				return
 	if(isscrewdriver(I))
 		if(IED)
 			IED.forceMove(get_turf(src.loc))
 			IED = null
-			to_chat(user, "<span class='notice'>I remove the IED from the [src].</span>")
+			to_chat(user, "<span class='notice'>You remove the IED from the [src].</span>")
 			return
 	..()
 
@@ -476,11 +476,11 @@
 					feedback_add_details("handcuffs","B") //Yes, I know they're legcuffs. Don't change this, no need for an extra variable. The "B" is used to tell them apart.
 
 					H.visible_message("<span class='danger'>[H] steps on \the [src].</span>",\
-						"<span class='danger'>I step on \the [src]![(IED && IED.active) ? " The explosive device attached to it activates." : ""]</span>",\
-						"<span class='notice'>I hear a sudden snapping sound!",\
+						"<span class='danger'>You step on \the [src]![(IED && IED.active) ? " The explosive device attached to it activates." : ""]</span>",\
+						"<span class='notice'>You hear a sudden snapping sound!",\
 						//Hallucination messages
 						"<span class='danger'>A terrifying crocodile snaps at [H]!</span>",\
-						"<span class='danger'>A [(IED && IED.active) ? "crocodile" : "horrifying fiery dragon"] attempts to bite my leg off!</span>")
+						"<span class='danger'>A [(IED && IED.active) ? "crocodile" : "horrifying fiery dragon"] attempts to bite your leg off!</span>")
 			else if(isanimal(AM))
 				armed = 0
 				var/mob/living/simple_animal/SA = AM
@@ -533,7 +533,7 @@
 			return
 		if(armed)
 			armed = 0
-			to_chat(user, "<span class='notice'>I disarm \the [src].</span>")
+			to_chat(user, "<span class='notice'>You disarm \the [src].</span>")
 			return
 		timing = !timing
 		if(timing)
@@ -541,7 +541,7 @@
 		else
 			armed = 0
 			timepassed = 0
-		to_chat(H, "<span class='notice'>I [timing ? "activate \the [src]'s timer, you have 15 seconds." : "de-activate \the [src]'s timer."]</span>")
+		to_chat(H, "<span class='notice'>You [timing ? "activate \the [src]'s timer, you have 15 seconds." : "de-activate \the [src]'s timer."]</span>")
 
 /obj/item/weapon/caution/proximity_sign/process()
 	if(!timing)
@@ -556,7 +556,7 @@
 		if(istype(AM, /mob/living/carbon) && !istype(AM, /mob/living/carbon/brain))
 			var/mob/living/carbon/C = AM
 			if(C.m_intent != "walk")
-				src.visible_message("The [src.name] beeps, \"Running on wet floors is hazardous to my health.\"")
+				src.visible_message("The [src.name] beeps, \"Running on wet floors is hazardous to your health.\"")
 				explosion(src.loc,-1,2,0)
 				if(ishuman(C))
 					dead_legs(C)
@@ -601,7 +601,7 @@
 					new /obj/item/weapon/metal_gun_stock(get_turf(src.loc))
 					qdel(src)
 		else
-			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 
 /obj/item/weapon/SWF_uplink
 	name = "station-bounced radio"
@@ -657,7 +657,7 @@
 		if(iswizard(user) || isapprentice(user))
 			user.flying = wielded ? 1 : 0
 			if(wielded)
-				to_chat(user, "<span class='notice'>I hold \the [src] between my legs.</span>")
+				to_chat(user, "<span class='notice'>You hold \the [src] between your legs.</span>")
 				user.say("QUID 'ITCH")
 				animate(user, pixel_y = pixel_y + 10 * PIXEL_MULTIPLIER , time = 10, loop = 1, easing = SINE_EASING)
 			else
@@ -668,7 +668,7 @@
 					user.pixel_y -= 6 * PIXEL_MULTIPLIER
 		else
 			if(wielded)
-				to_chat(user, "<span class='notice'>I hold \the [src] between my legs.</span>")
+				to_chat(user, "<span class='notice'>You hold \the [src] between your legs.</span>")
 
 /obj/item/weapon/staff/broom/attackby(var/obj/O, mob/user)
 	if(istype(O, /obj/item/clothing/mask/horsehead))

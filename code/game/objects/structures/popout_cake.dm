@@ -67,7 +67,7 @@
 			to_chat(user, "<span class='info'>There appears to be something inside of \the [src]!</span>")
 			return
 		user.forceMove(src)
-		to_chat(user, "<span class='info'>I am now inside the cake! When you're ready to emerge from the cake in a blaze of confetti and party horns, pull on the string by clicking on \the [src] (<b>this can only be done once</b>). If you wish to leave without setting off the confetti, just attempt to move out of the cake!</span>")
+		to_chat(user, "<span class='info'>You are now inside the cake! When you're ready to emerge from the cake in a blaze of confetti and party horns, pull on the string by clicking on \the [src] (<b>this can only be done once</b>). If you wish to leave without setting off the confetti, just attempt to move out of the cake!</span>")
 
 /obj/structure/popout_cake/attack_slime(mob/user)
 	return attack_hand(user)
@@ -118,7 +118,7 @@
 		return
 
 	visible_message("<span class='notice'>All of a sudden, something emerges from \the [src]!</span>")
-	to_chat(L, "<span class='info'>I pull on the party string!</span>")
+	to_chat(L, "<span class='info'>You pull on the party string!</span>")
 
 	lock_atom(L, /datum/locking_category/popout_cake)
 

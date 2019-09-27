@@ -19,7 +19,7 @@
 	if(user.drop_item(src))
 		inflating = TRUE
 		anchored = 1
-		to_chat(user, "<span class='notice'>I pull the inflation cord on \the [src].</span>")
+		to_chat(user, "<span class='notice'>You pull the inflation cord on \the [src].</span>")
 		spawn(10)
 			if(can_inflate())
 				inflate()
@@ -61,7 +61,7 @@
 		return
 	if(!WE.remove_fuel(1, user))
 		return
-	to_chat(user, "<span class='notice'>I melt \the [src] into a plastic sheet.</span>")
+	to_chat(user, "<span class='notice'>You melt \the [src] into a plastic sheet.</span>")
 	getFromPool(/obj/item/stack/sheet/mineral/plastic, get_turf(src))
 	qdel(src)
 

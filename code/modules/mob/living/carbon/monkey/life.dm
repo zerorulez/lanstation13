@@ -100,7 +100,7 @@
 
 	if (disabilities & EPILEPSY)
 		if ((prob(1) && paralysis < 10))
-			to_chat(src, "<span class='warning'>I have a seizure!</span>")
+			to_chat(src, "<span class='warning'>You have a seizure!</span>")
 			Paralyse(10)
 	if (disabilities & COUGHING)
 		if ((prob(5) && paralysis <= 1))
@@ -132,7 +132,7 @@
 
 	if ((M_HULK in mutations) && health <= 25)
 		mutations.Remove(M_HULK)
-		to_chat(src, "<span class='warning'>I suddenly feel very weak.</span>")
+		to_chat(src, "<span class='warning'>You suddenly feel very weak.</span>")
 		Knockdown(3)
 		emote("collapse")
 		if(reagents.has_reagent(CREATINE))
@@ -154,7 +154,7 @@
 		if (radiation > 100)
 			radiation = 100
 			Knockdown(10)
-			to_chat(src, "<span class='warning'>I feel weak.</span>")
+			to_chat(src, "<span class='warning'>You feel weak.</span>")
 			emote("collapse")
 
 		switch(radiation)
@@ -170,7 +170,7 @@
 				if(prob(5))
 					radiation -= 5
 					Knockdown(3)
-					to_chat(src, "<span class='warning'>I feel weak.</span>")
+					to_chat(src, "<span class='warning'>You feel weak.</span>")
 					emote("collapse")
 				updatehealth()
 
@@ -178,7 +178,7 @@
 				radiation -= 3
 				adjustToxLoss(3)
 				if(prob(1))
-					to_chat(src, "<span class='warning'>I mutate!</span>")
+					to_chat(src, "<span class='warning'>You mutate!</span>")
 					randmutb(src)
 					domutcheck(src,null)
 					emote("gasp")
@@ -402,7 +402,7 @@
 
 	if(breath.temperature > (T0C+66)) // Hot air hurts :(
 		if(prob(20))
-			to_chat(src, "<span class='warning'>I feel a searing heat in my lungs!</span>")
+			to_chat(src, "<span class='warning'>You feel a searing heat in your lungs!</span>")
 		fire_alert = max(fire_alert, 2)
 	else
 		fire_alert = 0
@@ -573,7 +573,7 @@
 				adjustOxyLoss(1)
 			Paralyse(3)
 		if(halloss > 100)
-			to_chat(src, "<span class='notice'>I am in too much pain to keep going...</span>")
+			to_chat(src, "<span class='notice'>You are in too much pain to keep going...</span>")
 			for(var/mob/O in oviewers(src, null))
 				O.show_message("<B>[src]</B> slumps to the ground, too weak to continue fighting.", 1)
 			Paralyse(10)

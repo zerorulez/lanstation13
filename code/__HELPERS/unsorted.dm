@@ -241,7 +241,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 				if(themind.current && found)
 					var/obj_count = 1
 					to_chat(themind.current, "<span class='danger'>Objectives Updated</span>")
-					to_chat(themind.current, "<span class='notice'>My current objectives:</span>")
+					to_chat(themind.current, "<span class='notice'>Your current objectives:</span>")
 					for(var/datum/objective/objective in themind.objectives)
 						to_chat(themind.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 						obj_count++
@@ -257,7 +257,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		var/newname
 
 		for(var/i=1,i<=3,i++)	//we get 3 attempts to pick a suitable name.
-			newname = input(src,"You are a [role]. Would you like to change my name to something else?", "Name change",oldname) as text
+			newname = input(src,"You are a [role]. Would you like to change your name to something else?", "Name change",oldname) as text
 			if((world.time-time_passed)>300)
 				return	//took too long
 			newname = reject_bad_name(newname,allow_numbers)	//returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
@@ -1194,15 +1194,15 @@ var/global/list/common_tools = list(
 
 //check if mob is lying down on something we can operate him on.
 /proc/can_operate(mob/living/carbon/M, mob/U)
-	if(U == M)
-		return 0
+//	if(U == M)
+//		return 0
 	if((ishuman(M) || isslime(M)) && M.lying)
 		if(locate(/obj/machinery/optable,M.loc))
 			return 1
 		if(locate(/obj/structure/bed/roller, M.loc) && prob(75))
 			return 1
 		var/obj/structure/table/T = locate(/obj/structure/table/, M.loc)
-		if(T && !T.flipped && prob(66))
+		if(T && !T.flipped)
 			return 1
 	return 0
 

@@ -31,7 +31,7 @@
 	return 0
 
 /obj/item/clothing/shoes/syndigaloshes/verb/change()
-	set name = "Change Color" // This is a spelling mistake perpetrated by the american swine, the correct spelling is colour and GEORGE washington AKA george "terrorist" washington is not my presidnet.
+	set name = "Change Color" // This is a spelling mistake perpetrated by the american swine, the correct spelling is colour and GEORGE washington AKA george "terrorist" washington is not your presidnet.
 	set category = "Object"
 	set src in usr
 
@@ -202,11 +202,11 @@
 	if(Adjacent(user))
 		if(step_sound == CLOWNSHOES_RANDOM_SOUND)
 			step_sound = "clownstep"
-			to_chat(user, "<span class='sinister'>I set [src]'s step sound to always be random!</span>")
+			to_chat(user, "<span class='sinister'>You set [src]'s step sound to always be random!</span>")
 			random_sound = 1
 		else
 			step_sound = sound_list[new_sound]
-			to_chat(user, "<span class='sinister'>I set [src]'s step sound to \"[new_sound]\"!</span>")
+			to_chat(user, "<span class='sinister'>You set [src]'s step sound to \"[new_sound]\"!</span>")
 			random_sound = 0
 
 /obj/item/clothing/shoes/clown_shoes/advanced/verb/ChangeSound()
@@ -276,7 +276,7 @@
 
 /obj/item/clothing/shoes/jackboots/neorussian
 	name = "neo-Russian boots"
-	desc = "Tovarish, no one will realize you stepped on a pile of shit if my pair already looks like shit."
+	desc = "Tovarish, no one will realize you stepped on a pile of shit if your pair already looks like shit."
 	icon_state = "nr_boots"
 	item_state = "nr_boots"
 

@@ -42,9 +42,9 @@
 		muted = !muted
 
 		if(muted)
-			to_chat(user, "<span class='info'>I mute \the [src]'s speaker. This should keep it quiet.</span>")
+			to_chat(user, "<span class='info'>You mute \the [src]'s speaker. This should keep it quiet.</span>")
 		else
-			to_chat(user, "<span class='info'>I unmute \the [src]'s speaker. It will now talk again.</span>")
+			to_chat(user, "<span class='info'>You unmute \the [src]'s speaker. It will now talk again.</span>")
 
 	return ..()
 

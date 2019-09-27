@@ -528,7 +528,7 @@ var/list/heat_pipes = list(PIPE_HE_STRAIGHT, PIPE_HE_BENT, PIPE_JUNCTION, PIPE_H
 		playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 		user.visible_message( \
 			"[user] fastens \the [src].", \
-			"<span class='notice'>I have fastened \the [src].</span>", \
+			"<span class='notice'>You have fastened \the [src].</span>", \
 			"I hear a ratchet.")
 		returnToPool(src)	// remove the pipe item
 		return 0
@@ -563,11 +563,11 @@ var/list/heat_pipes = list(PIPE_HE_STRAIGHT, PIPE_HE_BENT, PIPE_JUNCTION, PIPE_H
 			pipe = P
 			break
 	if(!pipe)
-		to_chat(user, "<span class='warning'>I need to fasten it to a pipe.</span>")
+		to_chat(user, "<span class='warning'>You need to fasten it to a pipe.</span>")
 		return 1
 	new/obj/machinery/meter(src.loc, pipe)
 	playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
-	to_chat(user, "<span class='notice'>I have fastened the meter to the pipe.</span>")
+	to_chat(user, "<span class='notice'>You have fastened the meter to the pipe.</span>")
 	qdel(src)
 
 /obj/item/pipe_meter/dropped()
@@ -595,5 +595,5 @@ var/list/heat_pipes = list(PIPE_HE_STRAIGHT, PIPE_HE_BENT, PIPE_JUNCTION, PIPE_H
 		return ..()
 	new/obj/machinery/air_sensor( src.loc )
 	playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
-	to_chat(user, "<span class='notice'>I have fastened the gas sensor.</span>")
+	to_chat(user, "<span class='notice'>You have fastened the gas sensor.</span>")
 	qdel(src)

@@ -108,7 +108,7 @@ client/proc/antag_madness(var/mob/M in mob_list)
 	var/turf/T = get_turf(M)
 	T.turf_animation('icons/effects/96x96.dmi',"beamin",-WORLD_ICON_SIZE,0,MOB_LAYER+1,'sound/weapons/emitter2.ogg',anim_plane = MOB_PLANE)
 
-	to_chat(M, "<span class='danger'>I get the feeling that you're not the only one who remembered his true origin. Will they be my allies or my foes? That is for you to decide.</span>")
+	to_chat(M, "<span class='danger'>You get the feeling that you're not the only one who remembered his true origin. Will they be your allies or your foes? That is for you to decide.</span>")
 
 /proc/create_madness(var/mob/living/carbon/human/M, var/choice)
 	switch(choice)
@@ -149,7 +149,7 @@ client/proc/antag_madness(var/mob/M in mob_list)
 			M.regenerate_icons()
 
 			M.equip_to_slot_or_del(pack, slot_in_backpack)
-			to_chat(M, "My previous belongings have been stored in my backpack.")
+			to_chat(M, "My previous belongings have been stored in your backpack.")
 			return 1
 
 
@@ -163,7 +163,7 @@ client/proc/antag_madness(var/mob/M in mob_list)
 			ticker.mode.forge_changeling_objectives(M.mind)
 			ticker.mode.greet_changeling(M.mind)
 			M.mind.changeling.geneticpoints = 100
-			to_chat(M, "<span class='danger'>I have been gifted a total of 100 evolution points to spend!</span>")
+			to_chat(M, "<span class='danger'>You have been gifted a total of 100 evolution points to spend!</span>")
 			return 1
 
 
@@ -202,10 +202,10 @@ client/proc/antag_madness(var/mob/M in mob_list)
 			M.equip_to_slot_or_del(new/obj/item/weapon/tank/emergency_oxygen/double, slot_s_store)
 
 			M.equip_to_slot_or_del(pack, slot_in_backpack)
-			to_chat(M, "My previous belongings have been stored in my backpack.")
+			to_chat(M, "My previous belongings have been stored in your backpack.")
 			M.regenerate_icons()
 
-			to_chat(M, "<span class='danger'>I have been gifted a total of 666 usable units of blood!</span>")
+			to_chat(M, "<span class='danger'>You have been gifted a total of 666 usable units of blood!</span>")
 			return 1
 
 
@@ -216,16 +216,16 @@ client/proc/antag_madness(var/mob/M in mob_list)
 			ticker.mode.cult += M.mind
 			ticker.mode.update_cult_icons_added(M.mind)
 			M.mind.special_role = "Cultist"
-			to_chat(M, "<span class='sinister'>I remember the Realm of Nar-Sie, The Geometer of Blood. You now see how flimsy the world is, you see that it should be open to the knowledge of Nar-Sie.</span>")
-			to_chat(M, "<span class='sinister'>Assist my new compatriots in their dark dealings. Their goal is yours, and yours is theirs. You serve the Dark One above all else. Bring It back.</span>")
-			to_chat(M, "<span class='sinister'>I can now speak and understand the forgotten tongue of the occult.</span>")
+			to_chat(M, "<span class='sinister'>You remember the Realm of Nar-Sie, The Geometer of Blood. You now see how flimsy the world is, you see that it should be open to the knowledge of Nar-Sie.</span>")
+			to_chat(M, "<span class='sinister'>Assist your new compatriots in their dark dealings. Their goal is yours, and yours is theirs. You serve the Dark One above all else. Bring It back.</span>")
+			to_chat(M, "<span class='sinister'>You can now speak and understand the forgotten tongue of the occult.</span>")
 			M.add_language(LANGUAGE_CULT)
 			var/datum/game_mode/cult/cult = ticker.mode
 			if (istype(cult))
 				cult.memoize_cult_objectives(M.mind)
 			else
 				var/explanation1 = "Check for any fellow cultist, coordinate with them."
-				var/explanation2 = "Convert, soulstone, or sacrifice my foes."
+				var/explanation2 = "Convert, soulstone, or sacrifice your foes."
 				var/explanation3 = "Summon Nar-Sie."
 
 				to_chat(M, "<B>Objective #1</B>: [explanation1]")
@@ -297,18 +297,18 @@ client/proc/antag_madness(var/mob/M in mob_list)
 
 			M.regenerate_icons()
 
-			to_chat(M, "My previous belongings have been stored in my backpack.")
+			to_chat(M, "My previous belongings have been stored in your backpack.")
 
 			if(!cultwords["travel"])
 				runerandom()
 			for (var/word in engwords)
 				M.mind.store_memory("[cultwords[word]] is [word]<BR>")
 
-			to_chat(M, "<span class='danger'>I suddenly realize that you clearly remember every single rune word! Check my notes.</span>")
+			to_chat(M, "<span class='danger'>You suddenly realize that you clearly remember every single rune word! Check your notes.</span>")
 
-			to_chat(M, "<span class='sinister'>A tome, a message from my new master, appears in my backpack.</span>")
+			to_chat(M, "<span class='sinister'>A tome, a message from your new master, appears in your backpack.</span>")
 
-			to_chat(M, "<span class='sinister'>I have a talisman in my backpack, one that will help you start the cult on this station. Use it well and remember - there are others...or maybe not...</span>")//duh
+			to_chat(M, "<span class='sinister'>You have a talisman in your backpack, one that will help you start the cult on this station. Use it well and remember - there are others...or maybe not...</span>")//duh
 
 			return 1
 
@@ -352,9 +352,9 @@ client/proc/antag_madness(var/mob/M in mob_list)
 			M.equip_to_slot_or_del(new/obj/item/device/flash, slot_in_backpack)
 
 			M.equip_to_slot_or_del(pack, slot_in_backpack)
-			to_chat(M, "My previous belongings have been stored in my backpack.")
+			to_chat(M, "My previous belongings have been stored in your backpack.")
 
-			to_chat(M, "The flash in my pocket will help you to persuade the crew to join my cause.")
+			to_chat(M, "The flash in your pocket will help you to persuade the crew to join your cause.")
 			return 1
 
 
@@ -367,7 +367,7 @@ client/proc/antag_madness(var/mob/M in mob_list)
 			M.real_name = "[syndicate_name()] Operative"
 			M.mind.special_role = "Syndicate"
 			M.mind.assigned_role = "MODE"
-			to_chat(M, "<span class='notice'>I am a [syndicate_name()] agent!</span>")
+			to_chat(M, "<span class='notice'>You are a [syndicate_name()] agent!</span>")
 			ticker.mode.forge_syndicate_objectives(M.mind)
 			ticker.mode.greet_syndicate(M.mind)
 
@@ -385,7 +385,7 @@ client/proc/antag_madness(var/mob/M in mob_list)
 			ticker.mode.equip_syndicate(M)
 
 			M.equip_to_slot_or_del(pack, slot_in_backpack)
-			to_chat(M, "My previous belongings have been stored in my backpack.")
+			to_chat(M, "My previous belongings have been stored in your backpack.")
 
 			del(M.wear_suit)
 			del(M.head)
@@ -400,7 +400,7 @@ client/proc/antag_madness(var/mob/M in mob_list)
 			M.regenerate_icons()
 
 			M.equip_to_slot_or_del(new /obj/item/device/codebreaker, slot_in_backpack)
-			to_chat(M, "I have been provided with a code breaker to decipher the nuke's code, it has been placed in my backpack.")
+			to_chat(M, "I have been provided with a code breaker to decipher the nuke's code, it has been placed in your backpack.")
 			return 1
 
 
@@ -413,11 +413,11 @@ client/proc/antag_madness(var/mob/M in mob_list)
 			M.mind.special_role = "Death Commando"
 			ticker.mode.deathsquads += M.mind
 
-			to_chat(M, "<span class='rose'>I am a rogue Death Squad agent. Your envy for powerful and exotic weapons got you caught by Centcomm when you stole their prototype Colt M1911-Pulse, and you ended up on the station by hiding on the cargo shuttle.</span>")
-			to_chat(M, "<span class='rose'>Now that you're trapped here, free of any supervision, you might as well put the station's chaos to my advantage, and steal as many different types of weapons as you can.</span>")
+			to_chat(M, "<span class='rose'>You are a rogue Death Squad agent. Your envy for powerful and exotic weapons got you caught by Centcomm when you stole their prototype Colt M1911-Pulse, and you ended up on the station by hiding on the cargo shuttle.</span>")
+			to_chat(M, "<span class='rose'>Now that you're trapped here, free of any supervision, you might as well put the station's chaos to your advantage, and steal as many different types of weapons as you can.</span>")
 
 			var/explanation1 = "Disregard centcomm, aquire guns."
-			var/explanation2 = "Only kill if it helps you get rare guns, or if my life is in danger"
+			var/explanation2 = "Only kill if it helps you get rare guns, or if your life is in danger"
 			var/explanation3 = "You are really not eager to go back to centcomm. Do not let the shuttle get called."
 
 			to_chat(M, "<B>Objective #1</B>: [explanation1]")
@@ -465,7 +465,7 @@ client/proc/antag_madness(var/mob/M in mob_list)
 			M.regenerate_icons()
 
 			M.equip_to_slot_or_del(pack, slot_in_backpack)
-			to_chat(M, "My previous belongings have been stored in my backpack.")
+			to_chat(M, "My previous belongings have been stored in your backpack.")
 			return 1
 
 
@@ -546,15 +546,15 @@ client/proc/antag_madness(var/mob/M in mob_list)
 			T.uses = 10
 			M.equip_to_slot_or_del(T, slot_l_store)
 
-			to_chat(M, "I will find a list of available spells in my spell book. It has many more spells than normal spellbooks.")
-			to_chat(M, "In my pockets you will find a teleport scroll.It has twice as many uses as normal teleport scrolls.")
+			to_chat(M, "I will find a list of available spells in your spell book. It has many more spells than normal spellbooks.")
+			to_chat(M, "In your pockets you will find a teleport scroll.It has twice as many uses as normal teleport scrolls.")
 
 			M.regenerate_icons()
 
 			ticker.mode.update_all_wizard_icons()
 
 			M.equip_to_slot_or_del(pack, slot_in_backpack)
-			to_chat(M, "My previous belongings have been stored in my backpack.")
+			to_chat(M, "My previous belongings have been stored in your backpack.")
 			return 1
 
 

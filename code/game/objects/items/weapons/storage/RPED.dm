@@ -29,7 +29,7 @@
 			to_chat(user, "<span class='notify'>\the [src] is full!</span>")
 			return 1
 		A.mass_remove(src)
-		to_chat(user, "<span class='notify'>I fill up \the [src] with \the [A]")
+		to_chat(user, "<span class='notify'>You fill up \the [src] with \the [A]")
 		return 1
 
 	return ..()

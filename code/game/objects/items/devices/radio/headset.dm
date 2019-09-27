@@ -47,7 +47,7 @@
 
 /obj/item/device/radio/headset/headset_sec
 	name = "security radio headset"
-	desc = "This is used by my elite security force. To access the security channel, use :s."
+	desc = "This is used by your elite security force. To access the security channel, use :s."
 	icon_state = "sec_headset"
 	item_state = "headset"
 
@@ -137,7 +137,7 @@
 
 /obj/item/device/radio/headset/heads/hos
 	name = "head of security's headset"
-	desc = "The headset of the man who protects my worthless lifes. To access the security channel, use :s. For command, use :c."
+	desc = "The headset of the man who protects your worthless lifes. To access the security channel, use :s. For command, use :c."
 	icon_state = "com_headset"
 	item_state = "headset"
 

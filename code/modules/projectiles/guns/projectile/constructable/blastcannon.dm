@@ -76,7 +76,7 @@
 			return
 		bomb_appearance = W.appearance
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 			bomb_appearance = null
 			return 1
 		bomb = W
@@ -152,7 +152,7 @@
 			bomb_air_contents_1 = null
 			bomb_air_contents_2 = null
 
-			user.visible_message("<span class='danger'>[user] opens \the [bomb] on \his [src.name] and fires a blast wave at \the [A]!</span>","<span class='danger'>I open \the [bomb] on my [src.name] and fire a blast wave at \the [A]!</span>")
+			user.visible_message("<span class='danger'>[user] opens \the [bomb] on \his [src.name] and fires a blast wave at \the [A]!</span>","<span class='danger'>You open \the [bomb] on your [src.name] and fire a blast wave at \the [A]!</span>")
 
 			heavy_damage_range = round(range*0.25)
 			medium_damage_range = round(range*0.5)
@@ -176,8 +176,8 @@
 					bhangmeter.sense_explosion(epicenter.x,epicenter.y,epicenter.z,round(uncapped*0.25), round(uncapped*0.5), round(uncapped),"???", cap)
 
 		else
-			user.visible_message("<span class='danger'>[user] opens \the [bomb] on \his [src.name]!</span>","<span class='danger'>I open \the [bomb] on my [src.name]!</span>")
-			user.visible_message("\The [bomb] on [user]'s [src.name] hisses pitifully.","\The [bomb] on my [src.name] hisses pitifully.")
+			user.visible_message("<span class='danger'>[user] opens \the [bomb] on \his [src.name]!</span>","<span class='danger'>You open \the [bomb] on your [src.name]!</span>")
+			user.visible_message("\The [bomb] on [user]'s [src.name] hisses pitifully.","\The [bomb] on your [src.name] hisses pitifully.")
 			to_chat(user, "<span class='warning'>The bomb is a dud!</span>")
 			var/ratio1 = bomb_air_contents_1.volume/bomb_air_contents_2.volume
 			var/datum/gas_mixture/temp2
@@ -207,7 +207,7 @@
 					M.throw_at(target,100,4)
 					if(!(M.flags & INVULNERABLE))
 						M.apply_effects(0, 2)
-						to_chat(user, "<span class='warning'>I am thrown back by the force of the blast!</span>")
+						to_chat(user, "<span class='warning'>You are thrown back by the force of the blast!</span>")
 
 				bomb.damaged = 1
 			else

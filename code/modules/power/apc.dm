@@ -74,7 +74,7 @@
 	var/main_status = 0
 	var/wiresexposed = 0
 	powernet = 0		// set so that APCs aren't found as powernet nodes //Hackish, Horrible, was like this before I changed it :(
-	var/malfhack = 0 //New var for my changes to AI malf. --NeoFite
+	var/malfhack = 0 //New var for your changes to AI malf. --NeoFite
 	var/mob/living/silicon/ai/malfai = null //See above --NeoFite
 //	luminosity = 1
 	var/has_electronics = 0 // 0 - none, 1 - plugged in, 2 - secured by screwdriver
@@ -424,7 +424,7 @@
 		if(cell)
 
 			if(user.drop_item(W, src))
-				to_chat(user, "I swap the power cell within with the new cell in my hand.")
+				to_chat(user, "I swap the power cell within with the new cell in your hand.")
 				var/obj/item/weapon/oldpowercell = cell
 				cell = W
 				chargecount = 0
@@ -434,7 +434,7 @@
 
 		else
 			if (stat & MAINT)
-				to_chat(user, "<span class='warning'>There is no connector for my power cell.</span>")
+				to_chat(user, "<span class='warning'>There is no connector for your power cell.</span>")
 				return
 			if(user.drop_item(W, src))
 				cell = W
@@ -471,7 +471,7 @@
 			to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"].")
 			update_icon()
 		else
-			to_chat(user, "<span class='warning'>I open the panel and find nothing inside.</span>")
+			to_chat(user, "<span class='warning'>You open the panel and find nothing inside.</span>")
 			return
 
 	else if (istype(W, /obj/item/weapon/card/id)||istype(W, /obj/item/device/pda))			// trying to unlock the interface with an ID card
@@ -512,7 +512,7 @@
 	else if (istype(W, /obj/item/stack/cable_coil) && !terminal && opened && has_electronics != 2)
 		var/obj/item/stack/cable_coil/C = W
 		if(C.amount < 10)
-			to_chat(user, "<span class='warning'>I need more wires.</span>")
+			to_chat(user, "<span class='warning'>You need more wires.</span>")
 			return
 
 		if(make_terminal(user))
@@ -522,7 +522,7 @@
 	else if (iswirecutter(W) && opened && terminal && has_electronics!=2)
 		var/turf/T = get_turf(src)
 		if (T.intact)
-			to_chat(user, "<span class='warning'>I must remove the floor plating in front of the APC first.</span>")
+			to_chat(user, "<span class='warning'>You must remove the floor plating in front of the APC first.</span>")
 			return
 		to_chat(user, "I begin to cut the cables...")
 		playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
@@ -547,12 +547,12 @@
 			qdel(W)
 			W = null
 	else if (istype(W, /obj/item/weapon/circuitboard/power_control) && opened && has_electronics==0 && ((stat & BROKEN) || malfhack))
-		to_chat(user, "<span class='warning'>I cannot put the board inside, the frame is damaged.</span>")
+		to_chat(user, "<span class='warning'>You cannot put the board inside, the frame is damaged.</span>")
 		return
 	else if (istype(W, /obj/item/weapon/weldingtool) && opened && has_electronics==0 && !terminal)
 		var/obj/item/weapon/weldingtool/WT = W
 		if (WT.get_fuel() < 3)
-			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 			return
 		to_chat(user, "I start welding the APC frame...")
 		playsound(get_turf(src), 'sound/items/Welder.ogg', 50, 1)
@@ -564,13 +564,13 @@
 				user.visible_message(\
 					"<span class='warning'>[src] has been cut apart by [user.name] with the weldingtool.</span>",\
 					"I disassembled the broken APC frame.",\
-					"<span class='warning'>I hear welding.</span>")
+					"<span class='warning'>You hear welding.</span>")
 			else
 				new /obj/item/mounted/frame/apc_frame(loc)
 				user.visible_message(\
 					"<span class='warning'>[src] has been cut from the wall by [user.name] with the weldingtool.</span>",\
 					"I cut the APC frame from the wall.",\
-					"<span class='warning'>I hear welding.</span>")
+					"<span class='warning'>You hear welding.</span>")
 			qdel(src)
 			return
 	else if (istype(W, /obj/item/mounted/frame/apc_frame) && opened && emagged)
@@ -613,7 +613,7 @@
 			user.do_attack_animation(src, W)
 			opened = 2
 			user.visible_message("<span class='warning'>The APC cover was knocked down with the [W.name] by [user.name]!</span>", \
-				"<span class='warning'>I knock down the APC cover with my [W.name]!</span>", \
+				"<span class='warning'>You knock down the APC cover with your [W.name]!</span>", \
 				"I hear a loud bang.") //"you hear bang" is so bad I have to leave a comment to immortalize it
 			update_icon()
 		else
@@ -624,7 +624,7 @@
 				iswirecutter(W) || istype(W, /obj/item/device/assembly/signaler)))
 				return src.attack_hand(user)
 			/*user.visible_message("<span class='warning'>The [src.name] has been hit with the [W.name] by [user.name]!</span>", \
-				"<span class='warning'>I hit the [src.name] with my [W.name]!</span>", \
+				"<span class='warning'>You hit the [src.name] with your [W.name]!</span>", \
 				"I hear bang")*/
 			..() //Sanity
 
@@ -666,7 +666,7 @@
 		return
 	user.do_attack_animation(src, user)
 	user.delayNextAttack(8)
-	user.visible_message("<span class='warning'>[user.name] slashes at the [src.name]!</span>", "<span class='notice'>I slash at the [src.name]!</span>")
+	user.visible_message("<span class='warning'>[user.name] slashes at the [src.name]!</span>", "<span class='notice'>You slash at the [src.name]!</span>")
 	playsound(get_turf(src), 'sound/weapons/slash.ogg', 100, 1)
 
 	var/allcut = wires.IsAllCut()
@@ -800,20 +800,20 @@
 
 /obj/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
 	if (user.stat && !isobserver(user))
-		to_chat(user, "<span class='warning'>I must be conscious to use this [src]!</span>")
+		to_chat(user, "<span class='warning'>You must be conscious to use this [src]!</span>")
 		return 0
 	if(!user.client)
 		return 0
 	if (!user.dexterity_check())
-		to_chat(user, "<span class='warning'>I don't have the dexterity to use this [src]!</span>")
+		to_chat(user, "<span class='warning'>You don't have the dexterity to use this [src]!</span>")
 		nanomanager.close_user_uis(user, src)
 
 		return 0
 	if(user.restrained())
-		to_chat(user, "<span class='warning'>I must have free hands to use this [src]</span>")
+		to_chat(user, "<span class='warning'>You must have free hands to use this [src]</span>")
 		return 0
 	if(user.lying)
-		to_chat(user, "<span class='warning'>I must stand to use this [src]!</span>")
+		to_chat(user, "<span class='warning'>You must stand to use this [src]!</span>")
 		return 0
 	if (istype(user, /mob/living/silicon))
 		var/mob/living/silicon/ai/AI = user
@@ -850,7 +850,7 @@
 				to_chat(M, "<span class='warning'>[H] stares cluelessly at [src] and drools.</span>")
 			return 0
 		else if(prob(H.getBrainLoss()))
-			to_chat(user, "<span class='warning'>I momentarily forget how to use [src].</span>")
+			to_chat(user, "<span class='warning'>You momentarily forget how to use [src].</span>")
 			return 0
 	return 1
 
@@ -923,7 +923,7 @@
 						src.malfai = usr:parent
 					else
 						src.malfai = usr
-					to_chat(malfai, "Hack complete. The APC is now under my exclusive control.")
+					to_chat(malfai, "Hack complete. The APC is now under your exclusive control.")
 					update_icon()
 
 	else if (href_list["occupyapc"])
@@ -959,10 +959,10 @@
 	if(!istype(malf))
 		return
 	if(istype(malf.loc, /obj/machinery/power/apc)) // Already in an APC
-		to_chat(malf, "<span class='warning'>I must evacuate my current apc first.</span>")
+		to_chat(malf, "<span class='warning'>You must evacuate your current apc first.</span>")
 		return
 	if(!malf.can_shunt)
-		to_chat(malf, "<span class='warning'>I cannot shunt.</span>")
+		to_chat(malf, "<span class='warning'>You cannot shunt.</span>")
 		return
 	if(STATION_Z != z)
 		return
@@ -1032,7 +1032,7 @@
 				s.set_up(3, 1, src)
 				s.start()
 				for(var/mob/M in viewers(src))
-					M.show_message("<span class='warning'>The [src.name] suddenly lets out a blast of smoke and some sparks!</span>", 1, "<span class='warning'>I hear sizzling electronics.</span>", 2)
+					M.show_message("<span class='warning'>The [src.name] suddenly lets out a blast of smoke and some sparks!</span>", 1, "<span class='warning'>You hear sizzling electronics.</span>", 2)
 
 /obj/machinery/power/apc/can_attach_terminal(mob/user)
 	return user.loc == src.loc && has_electronics != 2 && !terminal

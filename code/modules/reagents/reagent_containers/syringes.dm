@@ -88,7 +88,7 @@
 			target = user
 
 		if (target != user && !can_stab) // You still can stab yourself if you're clumsy, honk
-			to_chat(user, "<span class='notice'>I can't grasp \the [src] properly for stabbing!</span>")
+			to_chat(user, "<span class='notice'>You can't grasp \the [src] properly for stabbing!</span>")
 			return
 
 		syringestab(target, user)
@@ -140,7 +140,7 @@
 			return
 
 		if (istype(target, /mob/living/carbon/slime))
-			to_chat(user, "<span class='warning'>I am unable to locate any blood.</span>")
+			to_chat(user, "<span class='warning'>You are unable to locate any blood.</span>")
 			return
 
 		if (reagents.has_reagent(BLOOD)) // TODO Current reagent system can't handle multiple blood sources properly
@@ -149,18 +149,18 @@
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
 			if(H.species && (H.species.chem_flags & NO_INJECT))
-				user.visible_message("<span class='warning'>[user] attempts to poke [H] with \the [src] but it won't go in!</span>", "<span class='notice'>I fail to pierce [H] with \the [src]</span>")
+				user.visible_message("<span class='warning'>[user] attempts to poke [H] with \the [src] but it won't go in!</span>", "<span class='notice'>You fail to pierce [H] with \the [src]</span>")
 				return
 
 		if (iscarbon(target))
 			var/mob/living/carbon/T = target
 			if (!T.dna)
-				to_chat(user, "<span class='warning'>I am unable to locate any blood.</span>")
+				to_chat(user, "<span class='warning'>You are unable to locate any blood.</span>")
 				warning("Tried to draw blood or equivalent from [target] (\ref[target]) but it's missing their DNA datum!")
 				return
 
 			if (M_NOCLONE in T.mutations) // Target has been husked
-				to_chat(user, "<span class='warning'>I am unable to locate any blood.</span>")
+				to_chat(user, "<span class='warning'>You are unable to locate any blood.</span>")
 				return
 
 			var/amount = src.reagents.maximum_volume - src.reagents.total_volume
@@ -169,14 +169,14 @@
 			if (B)
 				reagents.add_reagent(BLOOD, amount, B.data)
 				user.visible_message("<span class='notice'>[user] takes a blood sample from [target].</span>",
-									 "<span class='notice'>I take a blood sample from [target].</span>")
+									 "<span class='notice'>You take a blood sample from [target].</span>")
 			else
 				user.visible_message("<span class='warning'>[user] inserts the syringe into [target], draws back the plunger and gets... nothing?</span>",\
-					"<span class='warning'>I insert the syringe into [target], draw back the plunger and get... nothing?</span>")
+					"<span class='warning'>You insert the syringe into [target], draw back the plunger and get... nothing?</span>")
 	// Drawing from objects draws their contents
 	else if (isobj(target))
 		if (!target.is_open_container() && !istype(target, /obj/structure/reagent_dispensers) && !istype(target, /obj/item/slime_extract))
-			to_chat(user, "<span class='warning'>I cannot directly remove reagents from this object.")
+			to_chat(user, "<span class='warning'>You cannot directly remove reagents from this object.")
 			return
 
 		var/tx_amount = 0
@@ -186,7 +186,7 @@
 			tx_amount = target.reagents.trans_to(src, amount_per_transfer_from_this)
 
 		if (tx_amount > 0)
-			to_chat(user, "<span class='notice'>I fill \the [src] with [tx_amount] units of the solution.</span>")
+			to_chat(user, "<span class='notice'>You fill \the [src] with [tx_amount] units of the solution.</span>")
 		else if (tx_amount == 0)
 			to_chat(user, "<span class='warning'>\The [target] is empty.</span>")
 
@@ -208,7 +208,7 @@
 
 	// TODO Remove snowflake
 	if (!ismob(target) && !target.is_open_container() && !is_type_in_list(target, injectable_types))
-		to_chat(user, "<span class='warning'>I cannot directly fill this object.</span>")
+		to_chat(user, "<span class='warning'>You cannot directly fill this object.</span>")
 		return
 
 	if (target.reagents.total_volume >= target.reagents.maximum_volume)
@@ -219,16 +219,16 @@
 	if (ismob(target) && target != user)
 		if (get_injection_action(target) == INJECTION_SUIT_PORT)
 			user.visible_message("<span class='warning'>[user] begins hunting for an injection port \the [src] on [target]'s suit!</span>",
-								 "<span class='warning'>I begin hunting for an injection port for \the [src] on [target]'s suit!</span>")
+								 "<span class='warning'>You begin hunting for an injection port for \the [src] on [target]'s suit!</span>")
 		else
 			user.visible_message("<span class='warning'>[user] is trying to inject [target] with \the [src]!</span>",
-								 "<span class='warning'>I try to inject [target] with \the [src]!</span>")
+								 "<span class='warning'>You try to inject [target] with \the [src]!</span>")
 
 		if (!do_mob(user, target, get_injection_time(target)))
 			return
 
 		user.visible_message("<span class='warning'>[user] injects [target] with the \the [src]!</span>",
-							 "<span class='warning'>I inject [target] with \the [src]!</span>")
+							 "<span class='warning'>You inject [target] with \the [src]!</span>")
 
 		if (istype(target, /mob/living))
 			var/reagent_names = english_list(get_reagent_names())
@@ -242,7 +242,7 @@
 		reagents.reaction(target, INGEST)
 
 	tx_amount = reagents.trans_to(target, tx_amount, log_transfer = TRUE, whodunnit = user)
-	to_chat(user, "<span class='notice'>I inject [tx_amount] units of the solution. The syringe now contains [reagents.total_volume] units.</span>")
+	to_chat(user, "<span class='notice'>You inject [tx_amount] units of the solution. The syringe now contains [reagents.total_volume] units.</span>")
 
 	if (src.is_empty())
 		mode = SYRINGE_DRAW
@@ -285,15 +285,15 @@
 		add_attacklogs(user, target, (deflected ? "attempted to inject" : "injected"), object = src, addition = "Deflected: [deflected ? "YES" : "NO"]; Reagents: [english_list(get_reagent_names())]", admin_warn = !deflected)
 
 		if (deflected)
-			user.visible_message("<span class='danger'>[user] tries to stab [target] in \the [hit_area] with \the [src], but the attack is deflected by armor!</span>", "<span class='danger'>I try to stab [target] in \the [hit_area] with \the [src], but the attack is deflected by armor!</span>")
+			user.visible_message("<span class='danger'>[user] tries to stab [target] in \the [hit_area] with \the [src], but the attack is deflected by armor!</span>", "<span class='danger'>You try to stab [target] in \the [hit_area] with \the [src], but the attack is deflected by armor!</span>")
 			user.u_equip(src, 1)
 			qdel(src)
 			return // Avoid the transfer since we're using qdel
 		else
-			user.visible_message("<span class='danger'>[user] stabs [target] in \the [hit_area] with \the [src]!</span>", "<span class='danger'>I stab [target] in \the [hit_area] with \the [src]!</span>")
+			user.visible_message("<span class='danger'>[user] stabs [target] in \the [hit_area] with \the [src]!</span>", "<span class='danger'>You stab [target] in \the [hit_area] with \the [src]!</span>")
 			affecting.take_damage(3)
 	else
-		user.visible_message("<span class='danger'>[user] stabs [target] with \the [src]!</span>", "<span class='danger'>I stab [target] with \the [src]!</span>")
+		user.visible_message("<span class='danger'>[user] stabs [target] with \the [src]!</span>", "<span class='danger'>You stab [target] with \the [src]!</span>")
 		target.take_organ_damage(3)// 7 is the same as crowbar punch
 
 	// Break the syringe and transfer some of the reagents to the target

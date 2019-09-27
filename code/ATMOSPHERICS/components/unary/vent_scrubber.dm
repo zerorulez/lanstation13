@@ -329,12 +329,12 @@
 			else
 				to_chat(user, "<span class='notice'>The welding tool needs to be on to start this task.</span>")
 		else
-			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 			return 1
 	if (!iswrench(W))
 		return ..()
 	if (!(stat & NOPOWER) && on)
-		to_chat(user, "<span class='warning'>I cannot unwrench this [src], turn it off first.</span>")
+		to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
 		return 1
 	return ..()
 

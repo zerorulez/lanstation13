@@ -80,14 +80,14 @@
 		if(do_fruit_teleport(hit_atom, usr, potency))
 			visible_message("<span class='danger'>The [src] splatters, causing a distortion in space-time!</span>")
 		else if(splat_decal(get_turf(hit_atom)))
-			visible_message("<span class='notice'>The [src.name] has been squashed.</span>","<span class='moderate'>I hear a smack.</span>")
+			visible_message("<span class='notice'>The [src.name] has been squashed.</span>","<span class='moderate'>You hear a smack.</span>")
 		qdel(src)
 		return
 
 	if(seed.juicy)
 		splat_decal(get_turf(hit_atom))
 		splat_reagent_reaction(get_turf(hit_atom))
-		visible_message("<span class='notice'>The [src.name] has been squashed.</span>","<span class='moderate'>I hear a smack.</span>")
+		visible_message("<span class='notice'>The [src.name] has been squashed.</span>","<span class='moderate'>You hear a smack.</span>")
 		qdel(src)
 		return
 
@@ -98,7 +98,7 @@
 			if(M.getarmor(def_zone, "melee") < 5)
 				var/reagentlist = stinging_apply_reagents(M)
 				if(reagentlist)
-					to_chat(M, "<span class='danger'>I am stung by \the [src]!</span>")
+					to_chat(M, "<span class='danger'>You are stung by \the [src]!</span>")
 					add_attacklogs(user, M, "stung", object = src, addition = "Reagents: [english_list(seed.get_reagent_names())]", admin_warn = 1)
 			to_chat(user, "<span class='alert'>Some of \the [src]'s stingers break off in the hit!</span>")
 			potency -= rand(1,(potency/3)+1)
@@ -121,15 +121,15 @@
 				var/datum/organ/external/affecting = H.get_organ(pick(LIMB_LEFT_FOOT, LIMB_RIGHT_FOOT))
 				if(affecting && affecting.is_organic())
 					if(thorns_apply_damage(M, affecting))
-						to_chat(H, "<span class='danger'>I step on \the [src]'s sharp thorns!</span>")
+						to_chat(H, "<span class='danger'>You step on \the [src]'s sharp thorns!</span>")
 						if(H.feels_pain())
 							H.Knockdown(3)
 					if(stinging_apply_reagents(M))
-						to_chat(H, "<span class='danger'>I step on \the [src]'s stingers!</span>")
+						to_chat(H, "<span class='danger'>You step on \the [src]'s stingers!</span>")
 						potency -= rand(1,(potency/3)+1)
 	if(seed.juicy == 2)
 		if(M.Slip(3, 2))
-			to_chat(M, "<span class='notice'>I slipped on the [name]!</span>")
+			to_chat(M, "<span class='notice'>You slipped on the [name]!</span>")
 			do_splat_effects(M)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/pickup(mob/user)
@@ -146,10 +146,10 @@
 		if(!affecting || !affecting.is_organic())
 			return
 		if(stinging_apply_reagents(H))
-			to_chat(H, "<span class='danger'>I am stung by \the [src]!</span>")
+			to_chat(H, "<span class='danger'>You are stung by \the [src]!</span>")
 			potency -= rand(1,(potency/3)+1)
 		if(thorns_apply_damage(H, affecting))
-			to_chat(H, "<span class='danger'>I am prickled by the sharp thorns on \the [src]!</span>")
+			to_chat(H, "<span class='danger'>You are prickled by the sharp thorns on \the [src]!</span>")
 			spawn(3)
 				if(H.feels_pain())
 					H.drop_item(src)
@@ -159,7 +159,7 @@
 		var/datum/organ/external/affecting = H.get_organ(LIMB_HEAD)
 		if(affecting)
 			if(thorns_apply_damage(H, affecting))
-				to_chat(H, "<span class='danger'>My mouth is cut by \the [src]'s sharp thorns!</span>")
+				to_chat(H, "<span class='danger'>Your mouth is cut by \the [src]'s sharp thorns!</span>")
 				//H.stunned++ //just a 1 second pause to prevent people from spamming pagedown on this, since it's important
 	..()
 
@@ -211,7 +211,7 @@
 	var/list/thingsweinjected = list()
 	var/injecting = Clamp(1, 3, potency/10)
 
-	for(var/rid in seed.chems) //Only transfer reagents that the plant naturally produces, no injecting chloral into my nettles.
+	for(var/rid in seed.chems) //Only transfer reagents that the plant naturally produces, no injecting chloral into your nettles.
 		reagents.trans_id_to(H,rid,injecting)
 		thingsweinjected += "[injecting]u of [rid]"
 		. = 1
@@ -338,7 +338,7 @@
 			W:amount -= 5
 			if(!W:amount)
 				qdel(W)
-			to_chat(user, "<span class='notice'>I add some cable to \the [src] and slide it inside the battery encasing.</span>")
+			to_chat(user, "<span class='notice'>You add some cable to \the [src] and slide it inside the battery encasing.</span>")
 			var/obj/item/weapon/cell/potato/pocell = new /obj/item/weapon/cell/potato(user.loc)
 			pocell.maxcharge = src.potency * 10
 			pocell.charge = pocell.maxcharge
@@ -449,7 +449,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/grown/attackby(var/obj/item/weapon/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/weapon/paper))
 		qdel(O)
-		to_chat(user, "<span class='notice'>I roll a blunt out of \the [src].</span>")
+		to_chat(user, "<span class='notice'>You roll a blunt out of \the [src].</span>")
 		var/obj/item/clothing/mask/cigarette/blunt/rolled/B = new/obj/item/clothing/mask/cigarette/blunt/rolled(src.loc)
 		B.name = "[src.name] blunt"
 		B.filling = "[src.name]"
@@ -471,7 +471,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/grown/ambrosiavulgaris/deus/attackby(var/obj/item/weapon/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/weapon/paper))
 		qdel(O)
-		to_chat(user, "<span class='notice'>I roll a godly blunt.</span>")
+		to_chat(user, "<span class='notice'>You roll a godly blunt.</span>")
 		var/obj/item/clothing/mask/cigarette/blunt/deus/rolled/B = new/obj/item/clothing/mask/cigarette/blunt/deus/rolled(src.loc)
 		reagents.trans_to(B, (reagents.total_volume))
 		B.light_color = filling_color
@@ -522,14 +522,14 @@
 /obj/item/weapon/reagent_containers/food/snacks/grown/pumpkin/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 	if(W.sharpness_flags & SHARP_BLADE)
-		user.visible_message("<span class='notice'>[user] carves a face into \the [src] with \the [W]!</span>", "<span class='notice'>I carve a face into \the [src] with \the [W]!</span>")
+		user.visible_message("<span class='notice'>[user] carves a face into \the [src] with \the [W]!</span>", "<span class='notice'>You carve a face into \the [src] with \the [W]!</span>")
 		new /obj/item/clothing/head/pumpkinhead(get_turf(src)) //Don't move it
 		qdel(src)
 		return
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/lime
 	name = "lime"
-	desc = "It's so sour, my face will twist."
+	desc = "It's so sour, your face will twist."
 	icon_state = "lime"
 	potency = 20
 	filling_color = "#28FA59"
@@ -618,7 +618,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/killertomato
 	name = "killer-tomato"
-	desc = "I say to-mah-to, you say tom-mae-to... OH GOD IT'S EATING MY LEGS!!"
+	desc = "I say to-mah-to, you say tom-mae-to... OH GOD IT'S EATING your LEGS!!"
 	icon_state = "killertomato"
 	potency = 10
 	filling_color = "#FF0000"
@@ -630,7 +630,7 @@
 	new /mob/living/simple_animal/tomato(user.loc)
 	qdel(src)
 
-	to_chat(user, "<span class='notice'>I plant the killer-tomato.</span>")
+	to_chat(user, "<span class='notice'>You plant the killer-tomato.</span>")
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/bloodtomato
 	name = "blood-tomato"
@@ -756,7 +756,7 @@
 	new /mob/living/simple_animal/hostile/mushroom(user.loc)
 	qdel(src)
 
-	to_chat(user, "<span class='notice'>I plant the walking mushroom.</span>")
+	to_chat(user, "<span class='notice'>You plant the walking mushroom.</span>")
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/chanterelle
 	name = "chanterelle cluster"
@@ -783,7 +783,7 @@
 	planted.potency = potency
 	qdel(src)
 
-	to_chat(user, "<span class='notice'>I plant the glowshroom.</span>")
+	to_chat(user, "<span class='notice'>You plant the glowshroom.</span>")
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/chickenshroom
 	name = "chicken-of-the-stars"
@@ -854,7 +854,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/vaporsac/proc/pop(mob/popper)
 	if(popper)
-		popper.visible_message("<span class='warning'>[popper] pops the \the [src]!</span>","<span class='warning'>I pop \the [src]!</span>")
+		popper.visible_message("<span class='warning'>[popper] pops the \the [src]!</span>","<span class='warning'>You pop \the [src]!</span>")
 	for(var/mob/living/carbon/C in view(1))
 		if(C.CheckSlip() < 1)
 			continue
@@ -864,7 +864,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/nofruit
 	name = "no-fruit"
-	desc = "Any plant you want, at my fingertips."
+	desc = "Any plant you want, at your fingertips."
 	icon_state = "nofruit"
 	potency = 15
 	filling_color = "#FFFCCC"

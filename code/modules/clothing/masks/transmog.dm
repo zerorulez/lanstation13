@@ -29,7 +29,7 @@
 	if(target_type && istype(C))
 		if(C.get_item_by_slot(slot_wear_mask) == src)
 			if(target_type != C.type)
-				C.visible_message("<span class='danger'>As [C] puts on \the [src], \his body begins to shift and contort!</span>","<span class='danger'>As you put on \the [src], my body begins to shift and contort!</span>")
+				C.visible_message("<span class='danger'>As [C] puts on \the [src], \his body begins to shift and contort!</span>","<span class='danger'>As you put on \the [src], your body begins to shift and contort!</span>")
 				if(cursed)
 					C.transmogrify(target_type)
 				else
@@ -43,7 +43,7 @@
 				var/chosen_type = skin_to_mask[i]
 				T = new chosen_type(get_turf(src))
 		if(T)
-			to_chat(user, "<span class='notice'>I wrap \the [W] around \the [src].</span>")
+			to_chat(user, "<span class='notice'>You wrap \the [W] around \the [src].</span>")
 			if(istype(W, /obj/item/stack/sheet/animalhide))
 				var/obj/item/stack/sheet/animalhide/A = W
 				A.use(1)

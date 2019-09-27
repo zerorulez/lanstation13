@@ -347,11 +347,11 @@
 /client/proc/summon_cultist()
 	set category = "Behemoth"
 	set name = "Summon Cultist (300)"
-	set desc = "Teleport a cultist to my location"
+	set desc = "Teleport a cultist to your location"
 	if (istype(usr,/mob/living/simple_animal/constructbehemoth))
 
 		if(usr.energy<300)
-			to_chat(usr, "<span class='warning'>I do not have enough power stored!</span>")
+			to_chat(usr, "<span class='warning'>You do not have enough power stored!</span>")
 			return
 
 		if(usr.stat)

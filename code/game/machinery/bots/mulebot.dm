@@ -116,7 +116,7 @@ var/global/mulebot_count = 0
 /obj/machinery/bot/mulebot/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I,/obj/item/weapon/card/emag))
 		locked = !locked
-		to_chat(user, "<span class='notice'>I [locked ? "lock" : "unlock"] the mulebot's controls!</span>")
+		to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] the mulebot's controls!</span>")
 		flick("[icon_initial]-emagged", src)
 		playsound(get_turf(src), 'sound/effects/sparks1.ogg', 100, 0)
 	else if(istype(I, /obj/item/weapon/card/id))
@@ -137,11 +137,11 @@ var/global/mulebot_count = 0
 
 		open = !open
 		if(open)
-			src.visible_message("[user] opens the maintenance hatch of [src]", "<span class='notice'>I open [src]'s maintenance hatch.</span>")
+			src.visible_message("[user] opens the maintenance hatch of [src]", "<span class='notice'>You open [src]'s maintenance hatch.</span>")
 			on = 0
 			icon_state="[icon_initial]-hatch"
 		else
-			src.visible_message("[user] closes the maintenance hatch of [src]", "<span class='notice'>I close [src]'s maintenance hatch.</span>")
+			src.visible_message("[user] closes the maintenance hatch of [src]", "<span class='notice'>You close [src]'s maintenance hatch.</span>")
 			icon_state = "[icon_initial]0"
 
 		updateDialog()
@@ -150,14 +150,14 @@ var/global/mulebot_count = 0
 			src.health = min(maxhealth, src.health+25)
 			user.visible_message(
 				"<span class='warning'>[user] repairs [src]!</span>",
-				"<span class='notice'>I repair [src]!</span>"
+				"<span class='notice'>You repair [src]!</span>"
 			)
 		else
 			to_chat(user, "<span class='notice'>[src] does not need a repair!</span>")
 	else if(load && ismob(load))  // chance to knock off rider
 		if(prob(1+I.force * 2))
 			unload(0)
-			user.visible_message("<span class='warning'>[user] knocks [load] off [src] with \the [I]!</span>", "<span class='warning'>I knock [load] off [src] with \the [I]!</span>")
+			user.visible_message("<span class='warning'>[user] knocks [load] off [src] with \the [I]!</span>", "<span class='warning'>You knock [load] off [src] with \the [I]!</span>")
 		else
 			to_chat(user, "I hit [src] with \the [I] but to no effect.")
 	else
@@ -285,7 +285,7 @@ var/global/mulebot_count = 0
 					turn_off()
 				else if (cell && !open)
 					if (!turn_on())
-						to_chat(usr, "<span class='warning'>I can't switch on [src].</span>")
+						to_chat(usr, "<span class='warning'>You can't switch on [src].</span>")
 						return
 				else
 					return
@@ -300,7 +300,7 @@ var/global/mulebot_count = 0
 					cell.add_fingerprint(usr)
 					cell = null
 
-					usr.visible_message("<span class='notice'>[usr] removes the power cell from [src].</span>", "<span class='notice'>I remove the power cell from [src].</span>")
+					usr.visible_message("<span class='notice'>[usr] removes the power cell from [src].</span>", "<span class='notice'>You remove the power cell from [src].</span>")
 					updateDialog()
 
 			if("cellinsert")
@@ -311,7 +311,7 @@ var/global/mulebot_count = 0
 							cell = C
 							C.add_fingerprint(usr)
 
-							usr.visible_message("<span class='notice'>[usr] inserts a power cell into [src].</span>", "<span class='notice'>I insert the power cell into [src].</span>")
+							usr.visible_message("<span class='notice'>[usr] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
 							updateDialog()
 
 

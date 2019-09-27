@@ -44,7 +44,7 @@
 
 /datum/surgery_step/eye/cut_open/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='notice'>[user] has separated the corneas on [target]'s eyes with \the [tool].</span>" , \
-	"<span class='notice'>I have separated the corneas on [target]'s eyes with \the [tool].</span>",)
+	"<span class='notice'>You have separated the corneas on [target]'s eyes with \the [tool].</span>",)
 	target.op_stage.eyes = 1
 	target.blinded += 1.5
 
@@ -52,7 +52,7 @@
 	var/datum/organ/internal/eyes/eyes = target.internal_organs_by_name["eyes"]
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, slicing [target]'s eyes wth \the [tool]!</span>" , \
-	"<span class='warning'>My hand slips, slicing [target]'s eyes wth \the [tool]!</span>" )
+	"<span class='warning'>Your hand slips, slicing [target]'s eyes wth \the [tool]!</span>" )
 	affected.createwound(CUT, 10)
 	eyes.take_damage(5, 0)
 
@@ -78,14 +78,14 @@
 
 /datum/surgery_step/eye/lift_eyes/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='notice'>[user] has lifted the corneas from [target]'s eyes from with \the [tool].</span>" , \
-	"<span class='notice'>I has lifted the corneas from [target]'s eyes from with \the [tool].</span>" )
+	"<span class='notice'>You has lifted the corneas from [target]'s eyes from with \the [tool].</span>" )
 	target.op_stage.eyes = 2
 
 /datum/surgery_step/eye/lift_eyes/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/internal/eyes/eyes = target.internal_organs_by_name["eyes"]
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, damaging [target]'s eyes with \the [tool]!</span>", \
-	"<span class='warning'>My hand slips, damaging [target]'s eyes with \the [tool]!</span>")
+	"<span class='warning'>Your hand slips, damaging [target]'s eyes with \the [tool]!</span>")
 	target.apply_damage(10, BRUTE, affected)
 	eyes.take_damage(5, 0)
 
@@ -112,14 +112,14 @@
 
 /datum/surgery_step/eye/mend_eyes/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='notice'>[user] mends the nerves and lenses in [target]'s with \the [tool].</span>" ,	\
-	"<span class='notice'>I mend the nerves and lenses in [target]'s with \the [tool].</span>")
+	"<span class='notice'>You mend the nerves and lenses in [target]'s with \the [tool].</span>")
 	target.op_stage.eyes = 3
 
 /datum/surgery_step/eye/mend_eyes/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/internal/eyes/eyes = target.internal_organs_by_name["eyes"]
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, stabbing \the [tool] into [target]'s eye!</span>", \
-	"<span class='warning'>My hand slips, stabbing \the [tool] into [target]'s eye!</span>")
+	"<span class='warning'>Your hand slips, stabbing \the [tool] into [target]'s eye!</span>")
 	target.apply_damage(10, BRUTE, affected)
 	eyes.take_damage(5, 0)
 
@@ -152,7 +152,7 @@
 /datum/surgery_step/eye/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/internal/eyes/eyes = target.internal_organs_by_name["eyes"]
 	user.visible_message("<span class='notice'>[user] cauterizes the incision around [target]'s eyes with \the [tool].</span>", \
-	"<span class='notice'>I cauterize the incision around [target]'s eyes with \the [tool].</span>")
+	"<span class='notice'>You cauterize the incision around [target]'s eyes with \the [tool].</span>")
 	if (target.op_stage.eyes == 3)
 		target.disabilities &= ~NEARSIGHTED
 		target.sdisabilities &= ~BLIND
@@ -163,6 +163,6 @@
 	var/datum/organ/internal/eyes/eyes = target.internal_organs_by_name["eyes"]
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, searing [target]'s eyes with \the [tool]!</span>", \
-	"<span class='warning'>My hand slips, searing [target]'s eyes with \the [tool]!</span>")
+	"<span class='warning'>Your hand slips, searing [target]'s eyes with \the [tool]!</span>")
 	target.apply_damage(5, BURN, affected)
 	eyes.take_damage(5, 0)

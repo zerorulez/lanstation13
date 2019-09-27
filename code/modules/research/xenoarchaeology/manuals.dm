@@ -19,15 +19,15 @@
 				<h1><a name="Contents">Contents</a></h1>
 				<ol>
 					<li><a href="#Prep">Prepping the expedition</a></li>
-					<li><a href="#Tools">Knowing my tools</a></li>
+					<li><a href="#Tools">Knowing your tools</a></li>
 					<li><a href="#Find">Finding the dig</a></li>
 					<li><a href="#Analyse">Analysing deposits</a></li>
-					<li><a href="#Excavate">Extracting my first find</a></li>
+					<li><a href="#Excavate">Extracting your first find</a></li>
 				</ol>
 				<br>
 
 				<h1><a name="Prep">Prepping the expedition</a></h1>
-				Every digsite I've been to, someone has forgotten something and I've never yet been to a dig that hasn't had me hiking to get to it - so gather my gear
+				Every digsite I've been to, someone has forgotten something and I've never yet been to a dig that hasn't had me hiking to get to it - so gather your gear
 				and get it to the site the first time. You learn quick that time is money, when you've got a shipful of bandits searching for you the next valley over,
 				but don't be afraid to clear some space if there are any inconvenient boulders in the way.<br>
 				<list>
@@ -39,10 +39,10 @@
 				</list><br>
 				<a href="#Contents">Contents</a>
 
-				<h1><a name="Tools">Knowing my tools</a></h1>
+				<h1><a name="Tools">Knowing your tools</a></h1>
 				Every archaeologist has a plethora of tools at their disposal, but here's the important ones:<br>
 				<list>
-				<li><b>Picks, pickaxes and brushes</b> - don't underestimate the the smallest or largest in my arsenal, each one clears a different amount
+				<li><b>Picks, pickaxes and brushes</b> - don't underestimate the the smallest or largest in your arsenal, each one clears a different amount
 					of the rockface so each one has a use.</li>
 				<li><b>Measuring tape</b> - don't leave home without it, you can use it to measure the depth a rock face has been excavated to.</li>
 				<li><b>GPS locater</b> - knowing where you are is the first step to not be lost.</li>
@@ -55,7 +55,7 @@
 					devices though.</li>
 				<li><b>Flashlight or portable light source</b> - Self explanatory, I hope.</li>
 				<li><b>Environmental safety gear</b> - This one's dependant on the environment you're working in, but enclosed footwear and pack of internals
-					could save my life.</li>
+					could save your life.</li>
 				<li><b>Anomaly safety gear</b> - A biosealed and catalysis-resistant suit along with eye shielding, tinted hood and non-reactive disposable gloves are
 				the best kind of protection you can hope for from the errors our forbears may have unleashed.</li>
 				<li><b>Personal defence weapon</b> - Never know what you'll find on the dig: pirates, natives, ancient guardians, carnivorous wildlife...
@@ -69,11 +69,11 @@
 				<li><b>Get in touch with the locals</b> (in particular geologists, miners and farmers) - Never know what's been turned up by accident, then left to
 					gather dust on a shelf.</li>
 				<li><b>Check the obvious areas first</b> - even if you're pressed for time, these ones are the generally easiest to search, and the most likely targets
-					of my rivals.</li>
+					of your rivals.</li>
 				<li><b>Do some prospecting</b> - the earth mother isn't in the habit of displaying her secrets to the world (although sometimes you get lucky).
 					Drop a shaft and clear away a bit of surface rock here and there, you never know what might be lurking below the surface.</li>
 				<li><b>Tips on unearthing a deposit</b> - How do you know when you're golden? Look for telltale white strata that looks strange or out of place, or if
-					something has broken under my pick while you're digging. Your depth scanner is my best friend, but even it can't distinguish between
+					something has broken under your pick while you're digging. Your depth scanner is your best friend, but even it can't distinguish between
 					ordinary minerals and ancient leavings, if in doubt then err on the side of caution.</li>
 				</list><br>
 				<a href="#Contents">Contents</a>
@@ -83,15 +83,15 @@
 				chemical analysis on every two meters of rock face nearby.<br>
 				<list>
 				<li><b>Take core samples</b> - Grab a rock core for every 4m^2.</li>
-				<li><b>Clear around any potential finds</b> - Clear away ordinary rock, leaving my prizes reachable in a clearly marked area.</li>
+				<li><b>Clear around any potential finds</b> - Clear away ordinary rock, leaving your prizes reachable in a clearly marked area.</li>
 				<li><b>Haul off excess rock</b> - It's easy for a dig to get cluttered, and a neat archaeologist is a successful archaeologist.</li>
 				<li><b>Don't be afraid to be cautious</b> - It's slower sometimes, but the extra time will be worth the payoff when you find an Exolitic relic.</li>
-				<li><b>Chemical analysis</b> - I won't go into detail here, but the labwork is essential to any successful extraction. Marshal my core samples, and
+				<li><b>Chemical analysis</b> - I won't go into detail here, but the labwork is essential to any successful extraction. Marshal your core samples, and
 					send them off to the labcoated geniuses</li>
 				</list><br>
 				<a href="#Contents">Contents</a>
 
-				<h1><a name="Excavate">Extracting my first find</a></h1>
+				<h1><a name="Excavate">Extracting your first find</a></h1>
 				<list>
 				<li><b>Scan the rock</b> - Use a depth scanner to determine the find's depth and clearance. DON'T FORGET THESE.</li>
 				<li><b>Choose stasis field</b> - Chemical analysis on a core sample from the rock face will tell you which field is necessary to extract the find safely</li>
@@ -99,10 +99,10 @@
 					Uryom vase crumbles as it sees the light of day.</li>
 				<li><b>FUNCTIONAL AND SAFE digging</b> - Dig into the rock until you've cleared away a depth equal to (the anomaly depth MINUS the clearance range). The find
 					should come loose on it's own, but it will be in the midst of a chunk of rock. Use a welder or miniature excavation tool to clear away the excess.</li>
-				<li><b>FANCY AND SPEEDY digging</b> - Dig into the rock until you've cleared away a depth equal to the anomaly depth, but without any of my strokes
+				<li><b>FANCY AND SPEEDY digging</b> - Dig into the rock until you've cleared away a depth equal to the anomaly depth, but without any of your strokes
 					entering the clearance range.</li>
 				<li><b>The Big Find</b> - Sometimes, you'll chance upon something big, both literally and figuratively. Giant statues and functioning remnants of Precursor
-					technology are just as exciting, to the right buyers. If my digging leaves a large boulder behind, dig into it normally and see if anything's hidden
+					technology are just as exciting, to the right buyers. If your digging leaves a large boulder behind, dig into it normally and see if anything's hidden
 						inside.</li>
 				</list><br>
 				<a href="#Contents">Contents</a>
@@ -270,7 +270,7 @@
 				have left scattered remnants of their great past all over settled (and unexplored) space.<br>
 				<br>
 				It is from xenoarchaeologists, high energy materials researchers and technology reconstruction authorities that we are able to theorise on the gifts these
-				species have left behind, and in some cases even reverse engineer or rebuild the technology in question. My colleague Doctor Raymond Ward of the
+				species have left behind, and in some cases even reverse engineer or rebuild the technology in question. your colleague Doctor Raymond Ward of the
 				Tyrolian Institute on Titan has made great breakthroughs in a related field through his pioneering development of universally reflective materials capable
 				of harvesting and 'bottling' up virtually any energy emissions yet encountered by spacefaring civilisations.<br>
 				<br>
@@ -293,7 +293,7 @@
 				<a href="#Contents">Contents</a>
 
 				<h1><a name="Synthetic">Harvesting and utilising anomalous energy signatures</a></h1>
-				As mentioned in the forward, my colleague from the Tyrolian Institute on Saturn's moon of Titan, in the Sol System, Doctor Raymond Ward has made great strides
+				As mentioned in the forward, your colleague from the Tyrolian Institute on Saturn's moon of Titan, in the Sol System, Doctor Raymond Ward has made great strides
 				in the area of harvesting and application of the energy emitted by anomalous phenomena from around the galaxy (although I profess I have not yet seen him
 				venture further from his birthplace on Earth than the comfortable distance of the Sol Cis-Oort Satellite Sphere).<br>
 				<br>

@@ -47,7 +47,7 @@
 /obj/item/weapon/plastique/attackby(var/obj/item/I, var/mob/user)
 	if(isscrewdriver(I))
 		open_panel = !open_panel
-		to_chat(user, "<span class='notice'>I [open_panel ? "open" : "close"] the wire panel.</span>")
+		to_chat(user, "<span class='notice'>You [open_panel ? "open" : "close"] the wire panel.</span>")
 	else if(iswiretool(I))
 		wires.Interact(user)
 	else
@@ -78,7 +78,7 @@
 		if(user.drop_item(src))
 			src.target = target
 		else //User can't drop this normally -> stick it to him (but drop it anyways, to prevent unintended features)
-			to_chat(user, "<span class='danger'>\The [src] are glued to my hands!</span>") //Honk
+			to_chat(user, "<span class='danger'>\The [src] are glued to your hands!</span>") //Honk
 			src.target = user
 			target = user
 			glue_act = 1

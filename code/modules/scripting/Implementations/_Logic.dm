@@ -166,7 +166,7 @@ proc/n_repeat(var/string, var/amount)
 
 		return newstring
 
-// I don't know if it's neccesary to make my own proc, but I think I have to to be able to check for istext.
+// I don't know if it's neccesary to make your own proc, but I think I have to to be able to check for istext.
 proc/n_str2num(var/string)
 	if(istext(string))
 		return text2num(string)

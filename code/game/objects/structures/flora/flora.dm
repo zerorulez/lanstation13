@@ -323,7 +323,7 @@
 
 /obj/structure/flora/pottedplant/cyberplant
 	name = "holographic plant"
-	desc = "Add to my Space a bit of the comfort from old Earth, by buying this blue buddy. A nuclear battery and a rugged case guarantee that my flower will survive journey to another galaxy, and variety of plant types won't let you to get bored along the way!"
+	desc = "Add to your Space a bit of the comfort from old Earth, by buying this blue buddy. A nuclear battery and a rugged case guarantee that your flower will survive journey to another galaxy, and variety of plant types won't let you to get bored along the way!"
 	icon = 'icons/obj/cyberplants.dmi'
 	icon_state = "holopot"
 	light_color = "#3C94C5"
@@ -362,7 +362,7 @@
 	if(emaged)
 		return
 	name = "holographic skeleton"
-	desc = "A holographic skeleton and a malfunctioning holographic plant. It sends shivers down my spine."
+	desc = "A holographic skeleton and a malfunctioning holographic plant. It sends shivers down your spine."
 	emaged = TRUE
 	overlays -= plant
 	plant = prepare_icon("emaged")
@@ -398,7 +398,7 @@
 /obj/structure/flora/pottedplant/claypot/examine(mob/user)
 	..()
 	if(plant_name)
-		to_chat(user, "<span class='info'>I can see [plant_name] planted in it.</span>")
+		to_chat(user, "<span class='info'>You can see [plant_name] planted in it.</span>")
 
 /obj/structure/flora/pottedplant/claypot/attackby(var/obj/item/O,var/mob/user)
 	if(istype(O,/obj/item/weapon/wrench))
@@ -407,14 +407,14 @@
 			anchored = !anchored
 			user.visible_message(	"<span class='notice'>[user] [anchored ? "wrench" : "unwrench"]es \the [src] [anchored ? "in place" : "from its fixture"].</span>",
 									"<span class='notice'>\icon[src] You [anchored ? "wrench" : "unwrench"] \the [src] [anchored ? "in place" : "from its fixture"].</span>",
-									"<span class='notice'>I hear a ratchet.</span>")
+									"<span class='notice'>You hear a ratchet.</span>")
 	else if(plant_name && istype(O,/obj/item/weapon/pickaxe/shovel))
 		to_chat(user, "<span class='notice'>\icon[src] You start removing the [plant_name] from \the [src].</span>")
 		if(do_after(user, src, 30))
 			playsound(loc, 'sound/items/shovel.ogg', 50, 1)
 			user.visible_message(	"<span class='notice'>[user] removes the [plant_name] from \the [src].</span>",
 									"<span class='notice'>\icon[src] You remove the [plant_name] from \the [src].</span>",
-									"<span class='notice'>I hear some digging.</span>")
+									"<span class='notice'>You hear some digging.</span>")
 			for(var/atom/movable/I in contents)
 				I.forceMove(loc)
 			var/obj/item/claypot/C = new(loc)

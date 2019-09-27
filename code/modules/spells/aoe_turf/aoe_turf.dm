@@ -6,7 +6,7 @@ Aoe turf spells have two useful flags: IGNOREDENSE and IGNORESPACE. These are ex
 
 /spell/aoe_turf //affects all turfs in view or range (depends)
 	spell_flags = IGNOREDENSE
-	var/inner_radius = -1 //for all my ring spell needs
+	var/inner_radius = -1 //for all your ring spell needs
 
 /spell/aoe_turf/choose_targets(mob/user = usr)
 	var/list/targets = list()

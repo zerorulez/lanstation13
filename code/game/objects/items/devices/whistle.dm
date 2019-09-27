@@ -42,13 +42,13 @@
 
 	var/message = say_your_thing()
 	user.visible_message("<span class='warning'>[user]'s [name] [emagged ? "gurgles" : "rasps"], \"[message]\"</span>", \
-						"<span class='warning'>My [name] [emagged ? "gurgles" : "rasps"], \"[message]\"</span>", \
-						"<span class='warning'>I hear the computerized voice of a security hailer: \"[message]\"</span>")
+						"<span class='warning'>Your [name] [emagged ? "gurgles" : "rasps"], \"[message]\"</span>", \
+						"<span class='warning'>You hear the computerized voice of a security hailer: \"[message]\"</span>")
 	do_your_sound(user)
 
 /obj/item/device/hailer/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/weapon/card/emag) && !emagged)
-		to_chat(user, "<span class='warning'>I overload \the [src]'s voice synthesizer.</span>")
+		to_chat(user, "<span class='warning'>You overload \the [src]'s voice synthesizer.</span>")
 		emagged = 1
 		insults = rand(1, 3)//to prevent dickflooding
 		return
@@ -88,8 +88,8 @@
 		add_logs(user, M, "security-hailed", 1)
 	var/who = suspects.len <= 3 ? english_list(suspects) : "everyone"
 	user.visible_message("<span class='danger'>[user] hails for [who] to halt!</span>", \
-						"<span class='warning'>I hail for [who] to halt!</span>", \
-						"<span class='warning'>I hear the computerized voice of a security hailer: \"[say_your_thing()]\"</span>")
+						"<span class='warning'>You hail for [who] to halt!</span>", \
+						"<span class='warning'>You hear the computerized voice of a security hailer: \"[say_your_thing()]\"</span>")
 
 	// ~ sound and cooldown ~ //
 	do_your_sound(user)

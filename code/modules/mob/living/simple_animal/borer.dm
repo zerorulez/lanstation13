@@ -258,9 +258,9 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 
 	switch(href_list["act"])
 		if("detach")
-			to_chat(src, "<span class='danger'>I feel dazed, and then appear outside of my host!</span>")
+			to_chat(src, "<span class='danger'>You feel dazed, and then appear outside of your host!</span>")
 			if(host)
-				to_chat(host, "<span class='info'>I no longer feel the presence in my mind!</span>")
+				to_chat(host, "<span class='info'>You no longer feel the presence in your mind!</span>")
 			detach()
 		if("release")
 			if(host)
@@ -276,7 +276,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 			C.cost=0
 			avail_chems[C.name]=C
 			to_chat(usr, "ADDED!")
-			to_chat(src, "<span class='info'>I learned how to secrete [C.name]!</span>")
+			to_chat(src, "<span class='info'>You learned how to secrete [C.name]!</span>")
 
 
 /mob/living/simple_animal/borer/say(var/message)
@@ -294,7 +294,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "<span class='warning'>I cannot speak in IC (muted).</span>")
+			to_chat(src, "<span class='warning'>You cannot speak in IC (muted).</span>")
 			return
 		if (src.client.handle_spam_prevention(message,MUTE_IC))
 			return
@@ -313,14 +313,14 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 
 	to_chat(src, "I drop words into [host]'s body: <span class='borer2host'>\"[encoded_message]\"</span>")
 	if(hostlimb == LIMB_HEAD)
-		to_chat(host, "<b>My mind speaks to you:</b> <span class='borer2host'>\"[encoded_message]\"</span>")
+		to_chat(host, "<b>Your mind speaks to you:</b> <span class='borer2host'>\"[encoded_message]\"</span>")
 	else
-		to_chat(host, "<b>My [limb_to_name(hostlimb)] speaks to you:</b> <span class='borer2host'>\"[encoded_message]\"</span>")
+		to_chat(host, "<b>Your [limb_to_name(hostlimb)] speaks to you:</b> <span class='borer2host'>\"[encoded_message]\"</span>")
 	var/list/borers_in_host = host.get_brain_worms()
 	borers_in_host.Remove(src)
 	if(borers_in_host.len)
 		for(var/I in borers_in_host)
-			to_chat(I, "<b>[truename]</b> speaks from my host's [limb_to_name(hostlimb)]: <span class='borer2host'>\"[encoded_message]\"</span>")
+			to_chat(I, "<b>[truename]</b> speaks from your host's [limb_to_name(hostlimb)]: <span class='borer2host'>\"[encoded_message]\"</span>")
 
 	var/turf/T = get_turf(src)
 	log_say("[truename] [key_name(src)] (@[T.x],[T.y],[T.z]) -> [host]([key_name(host)]) Borer->Host Speech: [message]")
@@ -369,7 +369,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 /mob/living/simple_animal/borer/proc/borer_speak(var/message)
 	set category = "Alien"
 	set name = "Borer Speak"
-	set desc = "Communicate with my bretheren"
+	set desc = "Communicate with your bretheren"
 	if(!message)
 		return
 
@@ -393,16 +393,16 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 /mob/living/simple_animal/borer/proc/bond_brain()
 	set category = "Alien"
 	set name = "Assume Control"
-	set desc = "Fully connect to the brain of my host."
+	set desc = "Fully connect to the brain of your host."
 
 	if(!check_can_do())
 		return
 
 	if(hostlimb != LIMB_HEAD)
-		to_chat(src, "You are not attached to my host's brain.")
+		to_chat(src, "You are not attached to your host's brain.")
 		return
 
-	to_chat(src, "I begin delicately adjusting my connection to the host brain...")
+	to_chat(src, "I begin delicately adjusting your connection to the host brain...")
 
 	spawn(300+(host.brainloss*5))
 
@@ -415,8 +415,8 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 	if(!host || host.stat==DEAD || !src || controlling || research.unlocking)
 		return
 
-	to_chat(src, "<span class='danger'>I plunge my probosci deep into the cortex of the host brain, interfacing directly with their nervous system.</span>")
-	to_chat(host, "<span class='danger'>I feel a strange shifting sensation behind my eyes as an alien consciousness displaces yours.</span>")
+	to_chat(src, "<span class='danger'>You plunge your probosci deep into the cortex of the host brain, interfacing directly with their nervous system.</span>")
+	to_chat(host, "<span class='danger'>You feel a strange shifting sensation behind your eyes as an alien consciousness displaces yours.</span>")
 
 	host_brain.ckey = host.ckey
 	host_brain.name = host.real_name
@@ -444,8 +444,8 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 	if(isnull(reason) || reason=="")
 		return
 
-	to_chat(src, "<span class='danger'>I thrash my probosci around the host's brain, triggering massive brain damage and stopping my host's heart.</span>")
-	to_chat(host, "<span class='sinister'>I get a splitting headache, and then, as blackness descends upon you, you hear: [reason]</span>")
+	to_chat(src, "<span class='danger'>You thrash your probosci around the host's brain, triggering massive brain damage and stopping your host's heart.</span>")
+	to_chat(host, "<span class='sinister'>You get a splitting headache, and then, as blackness descends upon you, you hear: [reason]</span>")
 
 	spawn(10)
 		if(!host || !src || stat)
@@ -467,15 +467,15 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 	if(!check_can_do())
 		return
 
-	to_chat(src, "<span class='danger'>I twitch my probosci.</span>")
-	to_chat(host, "<span class='sinister'>I feel something twitch, and get a headache.</span>")
+	to_chat(src, "<span class='danger'>You twitch your probosci.</span>")
+	to_chat(host, "<span class='sinister'>You feel something twitch, and get a headache.</span>")
 
 	host.adjustBrainLoss(15)
 
 /mob/living/simple_animal/borer/proc/evolve()
 	set category = "Alien"
 	set name = "Evolve"
-	set desc = "Upgrade yourself or my host."
+	set desc = "Upgrade yourself or your host."
 
 	if(!check_can_do())
 		return
@@ -485,7 +485,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 /mob/living/simple_animal/borer/proc/secrete_chemicals()
 	set category = "Alien"
 	set name = "Secrete Chemicals"
-	set desc = "Push some chemicals into my host's bloodstream."
+	set desc = "Push some chemicals into your host's bloodstream."
 
 	if(!check_can_do())
 		return
@@ -501,7 +501,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 		max_amount = round(chemicals / chem.cost)
 
 	if(max_amount==0)
-		to_chat(src, "<span class='warning'>I don't have enough energy to even synthesize one unit!</span>")
+		to_chat(src, "<span class='warning'>You don't have enough energy to even synthesize one unit!</span>")
 		return
 
 	var/units = input("Enter dosage in units.\n\nMax: [max_amount]\nCost: [chem.cost]/unit","Chemicals") as num
@@ -509,16 +509,16 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 	units = round(units)
 
 	if(units < 1)
-		to_chat(src, "<span class='warning'>I cannot synthesize this little.</span>")
+		to_chat(src, "<span class='warning'>You cannot synthesize this little.</span>")
 		return
 
 	if(chemicals < chem.cost*units)
-		to_chat(src, "<span class='warning'>I don't have enough energy to synthesize this much!</span>")
+		to_chat(src, "<span class='warning'>You don't have enough energy to synthesize this much!</span>")
 		return
 
 	var/datum/reagent/C = chemical_reagents_list[chemID] //we need to get the datum for this reagent to read the overdose threshold
 	if(units >= C.overdose - host.reagents.get_reagent_amount(chemID) && C.overdose > 0)
-		if(alert("Secreting that much [chemID] would cause an overdose in my host. Are you sure?", "Secrete Chemicals", "Yes", "No") != "Yes")
+		if(alert("Secreting that much [chemID] would cause an overdose in your host. Are you sure?", "Secrete Chemicals", "Yes", "No") != "Yes")
 			return
 		add_gamelogs(src, "intentionally overdosed \the [host] with '[chemID]'", admin = TRUE, tp_link = TRUE, span_class = "danger")
 
@@ -529,12 +529,12 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 		if(istype(host, /mob/living/carbon/human) && !(host.species.anatomy_flags & NO_BLOOD))
 			host.vessel.add_reagent(chem.name, units)
 		else
-			to_chat(src, "<span class='notice'>My host seems to be a species that doesn't use blood.<span>")
+			to_chat(src, "<span class='notice'>Your host seems to be a species that doesn't use blood.<span>")
 			return
 	else
 		host.reagents.add_reagent(chem.name, units)
 
-	to_chat(src, "<span class='info'>I squirt a measure of [chem.name] from my reservoirs into [host]'s bloodstream.</span>")
+	to_chat(src, "<span class='info'>You squirt a measure of [chem.name] from your reservoirs into [host]'s bloodstream.</span>")
 	add_gamelogs(src, "secreted [units]U of '[chemID]' into \the [host]", admin = TRUE, tp_link = TRUE, span_class = "message")
 
 	chemicals -= chem.cost*units
@@ -550,30 +550,30 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 /mob/living/simple_animal/borer/proc/abandon_host()
 	set category = "Alien"
 	set name = "Abandon Host"
-	set desc = "Slither out of my host."
+	set desc = "Slither out of your host."
 
 	var/severed = istype(loc, /obj/item/organ/external)
 	if(!host && !severed)
-		to_chat(src, "<span class='warning'>I am not inside a host body.</span>")
+		to_chat(src, "<span class='warning'>You are not inside a host body.</span>")
 		return
 
 	if(stat == UNCONSCIOUS)
-		to_chat(src, "<span class='warning'>I cannot leave my host while unconscious.</span>")
+		to_chat(src, "<span class='warning'>You cannot leave your host while unconscious.</span>")
 		return
 
 	if(channeling)
-		to_chat(src, "<span class='warning'>I cannot do this while my focus is directed elsewhere.</span>")
+		to_chat(src, "<span class='warning'>You cannot do this while your focus is directed elsewhere.</span>")
 		return
 
 	if(stat)
-		to_chat(src, "<span class='warning'>I cannot leave my host in my current state.</span>")
+		to_chat(src, "<span class='warning'>You cannot leave your host in your current state.</span>")
 		return
 
 	if(research.unlocking && !severed)
-		to_chat(src, "<span class='warning'>I am busy evolving.</span>")
+		to_chat(src, "<span class='warning'>You are busy evolving.</span>")
 		return
 
-	var/response = alert(src, "Are you -sure- you want to abandon my current host?\n(This will take a few seconds and cannot be halted!)","Are you sure you want to abandon host?","Yes","No")
+	var/response = alert(src, "Are you -sure- you want to abandon your current host?\n(This will take a few seconds and cannot be halted!)","Are you sure you want to abandon host?","Yes","No")
 	if(response != "Yes")
 		return
 
@@ -582,14 +582,14 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 
 	if(severed)
 		if(istype(loc, /obj/item/organ/external/head))
-			to_chat(src, "<span class='info'>I begin disconnecting from \the [loc]'s synapses and prodding at its internal ear canal.</span>")
+			to_chat(src, "<span class='info'>You begin disconnecting from \the [loc]'s synapses and prodding at its internal ear canal.</span>")
 		else
-			to_chat(src, "<span class='info'>I begin disconnecting from \the [loc]'s nerve endings and prodding at the surface of its skin.</span>")
+			to_chat(src, "<span class='info'>You begin disconnecting from \the [loc]'s nerve endings and prodding at the surface of its skin.</span>")
 	else
 		if(hostlimb == LIMB_HEAD)
-			to_chat(src, "<span class='info'>I begin disconnecting from \the [host]'s synapses and prodding at their internal ear canal.</span>")
+			to_chat(src, "<span class='info'>You begin disconnecting from \the [host]'s synapses and prodding at their internal ear canal.</span>")
 		else
-			to_chat(src, "<span class='info'>I begin disconnecting from \the [host]'s nerve endings and prodding at the surface of their skin.</span>")
+			to_chat(src, "<span class='info'>You begin disconnecting from \the [host]'s nerve endings and prodding at the surface of their skin.</span>")
 
 	var/leave_time = 200
 	if(severed)
@@ -601,31 +601,31 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 			return
 
 		if(src.stat)
-			to_chat(src, "<span class='warning'>I cannot abandon [host ? host : "\the [loc]"] in my current state.</span>")
+			to_chat(src, "<span class='warning'>You cannot abandon [host ? host : "\the [loc]"] in your current state.</span>")
 			return
 
 		if(channeling)
-			to_chat(src, "<span class='warning'>I cannot abandon [host ? host : "\the [loc]"] while my focus is directed elsewhere.</span>")
+			to_chat(src, "<span class='warning'>You cannot abandon [host ? host : "\the [loc]"] while your focus is directed elsewhere.</span>")
 			return
 
 		if(controlling)
-			to_chat(src, "<span class='warning'>I am too busy controlling my host.</span>")
+			to_chat(src, "<span class='warning'>You are too busy controlling your host.</span>")
 			return
 
 		if(research.unlocking)
-			to_chat(src, "<span class='warning'>I am busy evolving.</span>")
+			to_chat(src, "<span class='warning'>You are busy evolving.</span>")
 			return
 
 		if(severed)
 			if(istype(loc, /obj/item/organ/external/head))
-				to_chat(src, "<span class='info'>I wiggle out of the ear of \the [loc] and plop to the ground.</span>")
+				to_chat(src, "<span class='info'>You wiggle out of the ear of \the [loc] and plop to the ground.</span>")
 			else
-				to_chat(src, "<span class='info'>I wiggle out of \the [loc] and plop to the ground.</span>")
+				to_chat(src, "<span class='info'>You wiggle out of \the [loc] and plop to the ground.</span>")
 		else
 			if(hostlimb == LIMB_HEAD)
-				to_chat(src, "<span class='info'>I wiggle out of \the [host]'s ear and plop to the ground.</span>")
+				to_chat(src, "<span class='info'>You wiggle out of \the [host]'s ear and plop to the ground.</span>")
 			else
-				to_chat(src, "<span class='info'>I wiggle out of \the [host]'s [limb_to_name(hostlimb)] and plop to the ground.</span>")
+				to_chat(src, "<span class='info'>You wiggle out of \the [host]'s [limb_to_name(hostlimb)] and plop to the ground.</span>")
 
 		detach()
 
@@ -770,18 +770,18 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 		return
 
 	if(stat == UNCONSCIOUS)
-		to_chat(src, "<span class='warning'>I cannot infest a target while unconscious.</span>")
+		to_chat(src, "<span class='warning'>You cannot infest a target while unconscious.</span>")
 		return
 
 	if(channeling)
-		to_chat(src, "<span class='warning'>I cannot do this while my focus is directed elsewhere.</span>")
+		to_chat(src, "<span class='warning'>You cannot do this while your focus is directed elsewhere.</span>")
 
 	if(stat)
-		to_chat(src, "I cannot infest a target in my current state.")
+		to_chat(src, "I cannot infest a target in your current state.")
 		return
 
 	if(research.unlocking)
-		to_chat(src, "<span class='warning'>I am busy evolving.</span>")
+		to_chat(src, "<span class='warning'>You are busy evolving.</span>")
 		return
 
 	var/list/choices = list()
@@ -850,22 +850,22 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 	switch(region)
 		if(LIMB_HEAD)
 			to_chat(src, "I slither up [M] and begin probing at their ear canal...")
-			to_chat(M, "<span class='sinister'>I feel something slithering up my leg and probing at my ear canal...</span>")
+			to_chat(M, "<span class='sinister'>You feel something slithering up your leg and probing at your ear canal...</span>")
 		if(LIMB_CHEST)
 			to_chat(src, "I slither up [M] and begin probing just below their sternum...")
-			to_chat(M, "<span class='sinister'>I feel something slithering up my leg and probing just below my sternum...</span>")
+			to_chat(M, "<span class='sinister'>You feel something slithering up your leg and probing just below your sternum...</span>")
 		if(LIMB_RIGHT_ARM)
 			to_chat(src, "I slither up [M] and begin probing at their right arm...")
-			to_chat(M, "<span class='sinister'>I feel something slithering up my leg and probing at my right arm...</span>")
+			to_chat(M, "<span class='sinister'>You feel something slithering up your leg and probing at your right arm...</span>")
 		if(LIMB_LEFT_ARM)
 			to_chat(src, "I slither up [M] and begin probing at their left arm...")
-			to_chat(M, "<span class='sinister'>I feel something slithering up my leg and probing at my left arm...</span>")
+			to_chat(M, "<span class='sinister'>You feel something slithering up your leg and probing at your left arm...</span>")
 		if(LIMB_RIGHT_LEG)
 			to_chat(src, "I slither up [M]'s right leg and begin probing at the back of their knee...")
-			to_chat(M, "<span class='sinister'>I feel something slithering up my right leg and probing just behind my knee...</span>")
+			to_chat(M, "<span class='sinister'>You feel something slithering up your right leg and probing just behind your knee...</span>")
 		if(LIMB_LEFT_LEG)
 			to_chat(src, "I slither up [M]'s left leg and begin probing at the back of their knee...")
-			to_chat(M, "<span class='sinister'>I feel something slithering up my left leg and probing just behind my knee...</span>")
+			to_chat(M, "<span class='sinister'>You feel something slithering up your left leg and probing just behind your knee...</span>")
 
 	if(!do_after(src,M,50))
 		to_chat(src, "As [M] moves away, you are dislodged and fall to the ground.")
@@ -875,7 +875,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 		return
 
 	if(src.stat)
-		to_chat(src, "I cannot infest a target in my current state.")
+		to_chat(src, "I cannot infest a target in your current state.")
 		return
 
 	if(M.stat == 2)
@@ -941,15 +941,15 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 	set category = "Alien"
 
 	if(stat == UNCONSCIOUS)
-		to_chat(src, "<span class='warning'>I cannot ventcrawl while unconscious.</span>")
+		to_chat(src, "<span class='warning'>You cannot ventcrawl while unconscious.</span>")
 		return
 
 	if(stat)
-		to_chat(src, "I cannot ventcrawl my current state.")
+		to_chat(src, "I cannot ventcrawl your current state.")
 		return
 
 	if(research.unlocking)
-		to_chat(src, "<span class='warning'>I am busy evolving.</span>")
+		to_chat(src, "<span class='warning'>You are busy evolving.</span>")
 		return
 
 	var/pipe = start_ventcrawl()
@@ -967,10 +967,10 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 
 	if (plane != HIDING_MOB_PLANE)
 		plane = HIDING_MOB_PLANE
-		to_chat(src, text("<span class='notice'>I am now hiding.</span>"))
+		to_chat(src, text("<span class='notice'>You are now hiding.</span>"))
 	else
 		plane = MOB_PLANE
-		to_chat(src, text("<span class='notice'>I have stopped hiding.</span>"))
+		to_chat(src, text("<span class='notice'>You have stopped hiding.</span>"))
 
 
 
@@ -980,29 +980,29 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 	set category = "Alien"
 
 	if(stat == UNCONSCIOUS)
-		to_chat(src, "<span class='warning'>I cannot reproduce while unconscious.</span>")
+		to_chat(src, "<span class='warning'>You cannot reproduce while unconscious.</span>")
 		return
 
 	if(stat)
-		to_chat(src, "I cannot reproduce in my current state.")
+		to_chat(src, "I cannot reproduce in your current state.")
 		return
 
 	if(research.unlocking)
-		to_chat(src, "<span class='warning'>I am busy evolving.</span>")
+		to_chat(src, "<span class='warning'>You are busy evolving.</span>")
 		return
 
 	if(busy)
-		to_chat(src, "<span class='warning'>I am already doing something.</span>")
+		to_chat(src, "<span class='warning'>You are already doing something.</span>")
 		return
 
 	if(chemicals >= 100)
 		busy=1
-		to_chat(src, "<span class='warning'>I strain, trying to push out my young...</span>")
+		to_chat(src, "<span class='warning'>You strain, trying to push out your young...</span>")
 		visible_message("<span class='warning'>\The [src] begins to struggle and strain!</span>", \
 			drugged_message = "<span class='notice'>\The [src] starts dancing.</span>")
 		var/turf/T = get_turf(src)
 		if(do_after(src, T, 5 SECONDS))
-			to_chat(src, "<span class='danger'>I twitch and quiver as you rapidly excrete an egg from my sluglike body.</span>")
+			to_chat(src, "<span class='danger'>You twitch and quiver as you rapidly excrete an egg from your sluglike body.</span>")
 			visible_message("<span class='danger'>\The [src] heaves violently, expelling a small, gelatinous egg!</span>", \
 				drugged_message = "<span class='notice'>\The [src] starts farting a rainbow! Suddenly, a pot of gold appears.</span>")
 			chemicals -= 100
@@ -1066,12 +1066,12 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 		//forge_objectives()
 
 		// tl;dr
-		to_chat(src, "<span class='danger'>I am a Borer!</span>")
-		to_chat(src, "<span class='info'>I am a small slug-like symbiote that attaches to my host's body.  Your only goals are to survive and procreate. However, there are those who would like to destroy you, and hosts don't take kindly to jerks.  Being as helpful to my host as possible is the best option for survival.</span>")
-		to_chat(src, "<span class='info'>Borers can speak with other borers over the Cortical Link.  To do so, release control and use <code>say \";message\"</code>.  To communicate with my host only, speak normally.</span>")
-		to_chat(src, "<span class='info'><b>New:</b> To get new abilities for you and my host, use <em>Evolve</em> to unlock things.  Borers are now symbiotic biological pAIs.</span>")
+		to_chat(src, "<span class='danger'>You are a Borer!</span>")
+		to_chat(src, "<span class='info'>You are a small slug-like symbiote that attaches to your host's body.  Your only goals are to survive and procreate. However, there are those who would like to destroy you, and hosts don't take kindly to jerks.  Being as helpful to your host as possible is the best option for survival.</span>")
+		to_chat(src, "<span class='info'>Borers can speak with other borers over the Cortical Link.  To do so, release control and use <code>say \";message\"</code>.  To communicate with your host only, speak normally.</span>")
+		to_chat(src, "<span class='info'><b>New:</b> To get new abilities for you and your host, use <em>Evolve</em> to unlock things.  Borers are now symbiotic biological pAIs.</span>")
 		if(config.borer_takeover_immediately)
-			to_chat(src, "<span class='info'><b>Important:</b> While you receive full control at the start, <em>it is asked that you release control at some point so my host has a chance to play.</em>  If they misbehave, you are permitted to kill them.</span>")
+			to_chat(src, "<span class='info'><b>Important:</b> While you receive full control at the start, <em>it is asked that you release control at some point so your host has a chance to play.</em>  If they misbehave, you are permitted to kill them.</span>")
 
 		//var/obj_count = 1
 		//for(var/datum/objective/objective in mind.objectives)
@@ -1093,22 +1093,22 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 
 /mob/living/simple_animal/borer/proc/analyze_host()
 	set name = "Analyze Health"
-	set desc = "Check the health of my host."
+	set desc = "Check the health of your host."
 	set category = "Alien"
 
-	to_chat(src, "<span class='info'>I listen to the song of my host's nervous system, hunting for dischordant notes...</span>")
+	to_chat(src, "<span class='info'>You listen to the song of your host's nervous system, hunting for dischordant notes...</span>")
 	spawn(5 SECONDS)
 		healthanalyze(host, src, mode=1, silent=1, skip_checks=1) // I am not rewriting this shit with more immersive strings.  Deal with it. - N3X
 
 /mob/living/simple_animal/borer/proc/taste_blood()
 	set name = "Taste Blood"
-	set desc = "See if there's anything within the blood of my host."
+	set desc = "See if there's anything within the blood of your host."
 	set category = "Alien"
 
 	if(!check_can_do())
 		return
 
-	to_chat(src, "<span class='info'>I taste the blood of my host, and process it for abnormalities.</span>")
+	to_chat(src, "<span class='info'>You taste the blood of your host, and process it for abnormalities.</span>")
 	if(!isnull(host.reagents))
 		var/dat = ""
 		if(host.reagents.reagent_list.len > 0)
@@ -1132,7 +1132,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 				if(!(src.key))
 					src.transfer_personality(O.client)
 				else if(src.key)
-					to_chat(src, "<span class='notice'>Somebody jumped my claim on this borer and is already controlling it. Try another </span>")
+					to_chat(src, "<span class='notice'>Somebody jumped your claim on this borer and is already controlling it. Try another </span>")
 		else if(!(O.can_reenter_corpse))
 			to_chat(O,"<span class='notice'>While the borer may be mindless, you have recently ghosted and thus are not allowed to take over for now.</span>")
 
@@ -1140,43 +1140,43 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 	if(!wait_time)
 		return
 	if(show_message)
-		to_chat(src, "<span class='warning'>I lose consciousness due to overexertion.</span>")
+		to_chat(src, "<span class='warning'>You lose consciousness due to overexertion.</span>")
 
 	wait_time = min(wait_time, 60)
 	stat = UNCONSCIOUS
 	spawn()
 		sleep(wait_time*10)
 		stat = CONSCIOUS
-		to_chat(src, "<span class='notice'>I have regained consciousness.</span>")
+		to_chat(src, "<span class='notice'>You have regained consciousness.</span>")
 
 /mob/living/simple_animal/borer/proc/check_can_do(var/check_channeling = 1)
 	if(!host)
-		to_chat(src, "<span class='warning'>I am not inside a host body.</span>")
+		to_chat(src, "<span class='warning'>You are not inside a host body.</span>")
 		return 0
 
 	if(stat == UNCONSCIOUS)
-		to_chat(src, "<span class='warning'>I cannot do this while unconscious.</span>")
+		to_chat(src, "<span class='warning'>You cannot do this while unconscious.</span>")
 		return 0
 
 	if(stat)
-		to_chat(src, "<span class='warning'>I cannot do this in my current state.</span>")
+		to_chat(src, "<span class='warning'>You cannot do this in your current state.</span>")
 		return 0
 
 	if(controlling)
-		to_chat(src, "<span class='warning'>I am too busy controlling my host.</span>")
+		to_chat(src, "<span class='warning'>You are too busy controlling your host.</span>")
 		return 0
 
 	if(host.stat==DEAD)
-		to_chat(src, "<span class='warning'>I cannot do that in my host's current state.</span>")
+		to_chat(src, "<span class='warning'>You cannot do that in your host's current state.</span>")
 		return 0
 
 	if(research.unlocking)
-		to_chat(src, "<span class='warning'>I am busy evolving.</span>")
+		to_chat(src, "<span class='warning'>You are busy evolving.</span>")
 		return 0
 
 	if(check_channeling)
 		if(channeling)
-			to_chat(src, "<span class='warning'>I can't do this while my focus is directed elsewhere.</span>")
+			to_chat(src, "<span class='warning'>You can't do this while your focus is directed elsewhere.</span>")
 			return 0
 
 	return 1
@@ -1192,15 +1192,15 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 				if(!check_can_do())
 					return
 				if(istype(host.get_held_item_by_index(GRASP_RIGHT_HAND), /obj/item/offhand) || istype(host.get_held_item_by_index(GRASP_LEFT_HAND), /obj/item/offhand)) //If the host is two-handing something.
-					to_chat(src, "<span class='warning'>I cannot swing this item while my host holds it with both hands!</span>")
+					to_chat(src, "<span class='warning'>You cannot swing this item while your host holds it with both hands!</span>")
 					return
 				if(host.stunned)
-					to_chat(src, "<span class='warning'>My host's muscles are tightened. You can't extend my arm!</span>")
+					to_chat(src, "<span class='warning'>Your host's muscles are tightened. You can't extend your arm!</span>")
 					return
 				var/datum/reagents/R = host.reagents
 				if(R)
 					if(R.has_reagent(SILICATE))
-						to_chat(src, "<span class='warning'>Something in my host's bloodstream is tightening their muscles. You can't extend my arm!</span>")
+						to_chat(src, "<span class='warning'>Something in your host's bloodstream is tightening their muscles. You can't extend your arm!</span>")
 						return
 				if(host.Adjacent(A))
 					if(hostlimb == LIMB_RIGHT_ARM)
@@ -1236,7 +1236,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 						if(istype(host.get_held_item_by_index(GRASP_RIGHT_HAND), /obj/item/weapon/gun/hookshot)) //I don't want to deal with the fleshshot interacting with hookshots
 							return
 						if(chemicals < 10)
-							to_chat(src, "<span class='warning'>I don't have enough chemicals stored to swing an item with this arm!</span>")
+							to_chat(src, "<span class='warning'>You don't have enough chemicals stored to swing an item with this arm!</span>")
 							return
 						else
 							if(!(extend_o_arm.hook || extend_o_arm.chain_datum || extend_o_arm.rewinding))	//If the arm is not currently extended.
@@ -1246,7 +1246,7 @@ var/global/borer_unlock_types_leg = typesof(/datum/unlockable/borer/leg) - /datu
 						if(istype(host.get_held_item_by_index(GRASP_LEFT_HAND), /obj/item/weapon/gun/hookshot))
 							return
 						if(chemicals < 10)
-							to_chat(src, "<span class='warning'>I don't have enough chemicals stored to swing an item with this arm!</span>")
+							to_chat(src, "<span class='warning'>You don't have enough chemicals stored to swing an item with this arm!</span>")
 							return
 						else
 							if(!(extend_o_arm.hook || extend_o_arm.chain_datum || extend_o_arm.rewinding))

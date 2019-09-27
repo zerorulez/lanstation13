@@ -163,19 +163,19 @@
 		//if we're strong enough, sting some people
 		var/mob/living/carbon/human/M = target
 		var/sting_prob = 100 // Bees will always try to sting.
-		if(M in view(src,1)) // Can I see my target?
+		if(M in view(src,1)) // Can I see your target?
 			if(prob(max(feral * 10, 0)))	// Am I mad enough to want to sting? And yes, when I initially appear, I AM mad enough
 				if(istype(M))
 					var/obj/item/clothing/worn_suit = M.wear_suit
 					var/obj/item/clothing/worn_helmet = M.head
 					if(worn_suit) // Are you wearing clothes?
-						sting_prob -= min(worn_suit.armor["bio"],70) // Is it sealed? I can't get to 70% of my body.
+						sting_prob -= min(worn_suit.armor["bio"],70) // Is it sealed? I can't get to 70% of your body.
 					if(worn_helmet)
-						sting_prob -= min(worn_helmet.armor["bio"],30) // Is my helmet sealed? I can't get to 30% of my body.
+						sting_prob -= min(worn_helmet.armor["bio"],30) // Is your helmet sealed? I can't get to 30% of your body.
 				if( prob(sting_prob) && (M.stat == CONSCIOUS || (M.stat == UNCONSCIOUS && prob(25))) ) // Try to sting! If you're not moving, think about stinging.
 					M.apply_damage(min(strength,2)+mut, BRUTE) // Stinging. The more mutated I am, the harder I sting.
 					M.apply_damage((round(feral/5,1)*(max((round(strength/10,1)),1)))+toxic, TOX) // Bee venom based on how angry I am and how many there are of me!
-					to_chat(M, "<span class='warning'>I have been stung!</span>")
+					to_chat(M, "<span class='warning'>You have been stung!</span>")
 					M.flash_pain()
 
 		//if we're chasing someone, get a little bit angry
@@ -245,7 +245,7 @@
 				target_turf = get_turf(target)
 				wander = 0
 
-			else // My target's gone! But I might still be pissed! You there. You look like a good stinging target!
+			else // your target's gone! But I might still be pissed! You there. You look like a good stinging target!
 				newTarget()
 
 		if(target_turf)

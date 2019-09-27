@@ -28,7 +28,7 @@
 
 /datum/game_mode/rp_revolution/send_intercept()
 	var/intercepttext = "<FONT size = 3><B>Cent. Com. Update</B> Requested staus information:</FONT><HR>"
-	intercepttext += "<B> Cent. Com has recently been contacted by the following syndicate affiliated organisations in my area, please investigate any information you may have:</B>"
+	intercepttext += "<B> Cent. Com has recently been contacted by the following syndicate affiliated organisations in your area, please investigate any information you may have:</B>"
 
 	var/list/possible_modes = list()
 	possible_modes.Add("revolution", "wizard", "traitor", "malf")
@@ -88,7 +88,7 @@
 
 	for(var/datum/mind/rev_mind in head_revolutionaries)
 		var/obj_count = 1
-		to_chat(rev_mind.current, "<span class='notice'>I am a member of the revolutionaries' leadership!</span>")
+		to_chat(rev_mind.current, "<span class='notice'>You are a member of the revolutionaries' leadership!</span>")
 		for(var/datum/objective/objective in rev_mind.objectives)
 			to_chat(rev_mind.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 			obj_count++
@@ -99,7 +99,7 @@
 
 /datum/game_mode/rp_revolution/send_intercept()
 	var/intercepttext = "<FONT size = 3><B>Cent. Com. Update</B> Requested staus information:</FONT><HR>"
-	intercepttext += "<B> Cent. Com has recently been contacted by the following syndicate affiliated organisations in my area, please investigate any information you may have:</B>"
+	intercepttext += "<B> Cent. Com has recently been contacted by the following syndicate affiliated organisations in your area, please investigate any information you may have:</B>"
 
 	var/list/possible_modes = list()
 	possible_modes.Add("revolution", "wizard", "nuke", "traitor", "malf")
@@ -301,9 +301,9 @@ mob/living/carbon/human/proc
 				var/choice = alert(M,"Asked by [src]: Do you want to join the revolution?","Align Thyself with the Revolution!","No!","Yes!")
 				if(choice == "Yes!")
 					ticker.mode:add_revolutionary(M.mind)
-					to_chat(M, "<span class='notice'>I join the revolution!</span>")
+					to_chat(M, "<span class='notice'>You join the revolution!</span>")
 					to_chat(src, "<span class='notice'><b>[M] joins the revolution!</b></span>")
 				else if(choice == "No!")
-					to_chat(M, "<span class='warning'>I reject this traitorous cause!</span>")
+					to_chat(M, "<span class='warning'>You reject this traitorous cause!</span>")
 					to_chat(src, "<span class='danger'>[M] does not support the revolution!</span>")
 				M.mind.rev_cooldown = world.time+50

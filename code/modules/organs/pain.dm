@@ -20,23 +20,23 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 	if(burning)
 		switch(amount)
 			if(1 to 10)
-				msg = "<span class='danger'>My [partname] burns</span>"
+				msg = "<span class='danger'>Your [partname] burns</span>"
 			if(11 to 90)
 				flash_weak_pain()
-				msg = "<span class='danger'><font size=2>My [partname] burns badly</font></span>"
+				msg = "<span class='danger'><font size=2>Your [partname] burns badly</font></span>"
 			if(91 to 10000)
 				flash_pain()
-				msg = "<span class='danger'><font size=3>My [partname] is on fire</font></span>"
+				msg = "<span class='danger'><font size=3>Your [partname] is on fire</font></span>"
 	else
 		switch(amount)
 			if(1 to 10)
-				msg = "<b>My [partname] hurts.</b>"
+				msg = "<b>Your [partname] hurts.</b>"
 			if(11 to 90)
 				flash_weak_pain()
-				msg = "<b><font size=2>My [partname] hurts badly</font></b>"
+				msg = "<b><font size=2>Your [partname] hurts badly</font></b>"
 			if(91 to 10000)
 				flash_pain()
-				msg = "<b><font size=3>My [partname] is hurting terribly</font></b>"
+				msg = "<b><font size=3>Your [partname] is hurting terribly</font></b>"
 	if(msg && (msg != last_pain_message || prob(10)))
 		last_pain_message = msg
 		to_chat(src, msg)
@@ -76,10 +76,10 @@ mob/living/carbon/human/proc/handle_pain()
 		// CLEANLY amputated limbs don't cause pain
 		else if(E.amputated)
 			continue
-		// my shredded nub of a fuckin' arm DOES, though
+		// your shredded nub of a fuckin' arm DOES, though
 		else if (!E.is_existing())
 			if(prob(2))
-				custom_pain("The mangled stump of my [E.display_name] hurts badly", 1)
+				custom_pain("The mangled stump of your [E.display_name] hurts badly", 1)
 			continue
 
 		var/dam = E.get_damage()
@@ -96,7 +96,7 @@ mob/living/carbon/human/proc/handle_pain()
 		if(I.damage > 2)
 			if(prob(2))
 				var/datum/organ/external/parent = get_organ(I.parent_organ)
-				custom_pain("I feel a sharp pain in my [parent.display_name]", 1)
+				custom_pain("I feel a sharp pain in your [parent.display_name]", 1)
 
 	var/toxDamageMessage = null
 	var/toxMessageProb = 1

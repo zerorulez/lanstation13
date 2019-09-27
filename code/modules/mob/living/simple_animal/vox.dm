@@ -27,7 +27,7 @@
 	living_mob_list -= src
 	dead_mob_list += src
 	stat = DEAD
-	visible_message("<span class='danger'><B>[src] shudders violently and explodes!</B>","<span class='warning'>I feel my body rupture!</span></span>")
+	visible_message("<span class='danger'><B>[src] shudders violently and explodes!</B>","<span class='warning'>You feel your body rupture!</span></span>")
 	explosion(get_turf(loc), -1, -1, 3, 5)
 	src.gib()
 	return
@@ -63,7 +63,7 @@
 	if(quills<=0)
 		return
 
-	to_chat(src, "<span class='warning'>I launch a razor-sharp quill at [target]!</span>")
+	to_chat(src, "<span class='warning'>You launch a razor-sharp quill at [target]!</span>")
 	for(var/mob/O in oviewers())
 		if ((O.client && !( O.blinded )))
 			to_chat(O, "<span class='warning'>[src] launches a razor-sharp quill at [target]!</span>")
@@ -74,7 +74,7 @@
 	quills--
 
 	spawn(100)
-		to_chat(src, "<span class='warning'>I feel a fresh quill slide into place.</span>")
+		to_chat(src, "<span class='warning'>You feel a fresh quill slide into place.</span>")
 		quills++
 
 /mob/living/simple_animal/vox/armalis/verb/message_mob()
@@ -99,12 +99,12 @@
 		to_chat(src, "Not even the armalis can speak to the dead.")
 		return
 
-	to_chat(M, "<span class='notice'>Like lead slabs crashing into the ocean, alien thoughts drop into my mind: [text]</span>")
+	to_chat(M, "<span class='notice'>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</span>")
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Vox")
 			return
-		to_chat(H, "<span class='warning'>My nose begins to bleed...</span>")
+		to_chat(H, "<span class='warning'>Your nose begins to bleed...</span>")
 		H.drip(1)
 
 /mob/living/simple_animal/vox/armalis/verb/shriek()
@@ -119,13 +119,13 @@
 		speed = 1
 		maxHealth += 200
 		health += 200
-		visible_message("<span class='notice'>[src] is quickly outfitted in [O] by [user].</span>","<span class='notice'>I quickly outfit [src] in [O].</span>")
+		visible_message("<span class='notice'>[src] is quickly outfitted in [O] by [user].</span>","<span class='notice'>You quickly outfit [src] in [O].</span>")
 		regenerate_icons()
 		return
 	if(istype(O,/obj/item/vox/armalis_amp))
 		user.drop_item(O, src, force_drop = 1)
 		amp = O
-		visible_message("<span class='notice'>[src] is quickly outfitted in [O] by [user].</span>","<span class='notice'>I quickly outfit [src] in [O].</span>")
+		visible_message("<span class='notice'>[src] is quickly outfitted in [O] by [user].</span>","<span class='notice'>You quickly outfit [src] in [O].</span>")
 		regenerate_icons()
 		return
 	return ..()

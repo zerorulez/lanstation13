@@ -36,7 +36,7 @@
 /obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
 	if(istype(P, /obj/item/weapon/paper) || istype(P, /obj/item/weapon/folder) || istype(P, /obj/item/weapon/photo))
 		if(user.drop_item(P, src))
-			to_chat(user, "<span class='notice'>I put [P] in [src].</span>")
+			to_chat(user, "<span class='notice'>You put [P] in [src].</span>")
 			icon_state = "[initial(icon_state)]-open"
 			sleep(5)
 			icon_state = initial(icon_state)
@@ -44,9 +44,9 @@
 	else if(iswrench(P))
 		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
 		anchored = !anchored
-		to_chat(user, "<span class='notice'>I [anchored ? "wrench" : "unwrench"] \the [src].</span>")
+		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 	else
-		to_chat(user, "<span class='notice'>I can't put [P] in [src]!</span>")
+		to_chat(user, "<span class='notice'>You can't put [P] in [src]!</span>")
 
 
 /obj/structure/filingcabinet/attack_hand(mob/user as mob)

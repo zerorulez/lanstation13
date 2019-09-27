@@ -20,7 +20,7 @@
 			if( !usr.get_active_hand() )		//if active hand is empty
 				src.forceMove(user)
 				user.put_in_hands(src)
-				user.visible_message("<span class='notice'>[user] picks up the [src].</span>", "<span class='notice'>I pick-up the [src]</span>")
+				user.visible_message("<span class='notice'>[user] picks up the [src].</span>", "<span class='notice'>You pick-up the [src]</span>")
 
 	return
 

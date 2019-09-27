@@ -70,11 +70,11 @@
 
 			var/obj/item/clothing/mask/necklace/xeno_claw/X = new(get_turf(src))
 			user.put_in_active_hand(X)
-			to_chat(user, "<span class='info'>I create a necklace out of \the [src] and \the [C].</span>")
+			to_chat(user, "<span class='info'>You create a necklace out of \the [src] and \the [C].</span>")
 
 			qdel(src)
 		else
-			to_chat(user, "<span class='info'>I need at least 5 lengths of cable to do this!</span>")
+			to_chat(user, "<span class='info'>You need at least 5 lengths of cable to do this!</span>")
 
 /obj/item/weed_extract
 	name = "weed extract"
@@ -121,11 +121,11 @@
 	if(W.is_sharp() >= 1.2 && W.sharpness_flags & SHARP_BLADE)
 
 		//visible message on mobs is defined as visible_message(var/message, var/self_message, var/blind_message)
-		user.visible_message("<span class='notice'>\the [usr] starts cutting hair off \the [src]</span>", "<span class='notice'>I start cutting the hair off \the [src]</span>", "I hear the sound of a knife rubbing against flesh")
+		user.visible_message("<span class='notice'>\the [usr] starts cutting hair off \the [src]</span>", "<span class='notice'>You start cutting the hair off \the [src]</span>", "I hear the sound of a knife rubbing against flesh")
 
 		spawn()
 			if(do_after(user, src, 50))
-				to_chat(user, "<span class='notice'>I cut the hair from this [src.singular_name]</span>")
+				to_chat(user, "<span class='notice'>You cut the hair from this [src.singular_name]</span>")
 
 				if(src.use(1))
 					drop_stack(/obj/item/stack/sheet/hairlesshide, user.loc, 1, user)

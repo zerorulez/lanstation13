@@ -16,11 +16,11 @@
 	MC=mc
 
 /datum/migration/proc/up()
-	// Make my changes here.
+	// Make your changes here.
 	return TRUE
 
 /datum/migration/proc/down()
-    // Undo my changes here (for rollbacks)
+    // Undo your changes here (for rollbacks)
     return TRUE
 
 // Helpers

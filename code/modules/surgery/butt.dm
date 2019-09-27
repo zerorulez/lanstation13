@@ -37,14 +37,14 @@
 
 /datum/surgery_step/butt/slice_cheek/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='notice'>[user] has sliced through [target]'s ass cheek with \the [tool].</span>",		\
-	"<span class='notice'>I have sliced through [target]'s ass cheek with \the [tool].</span>")
+	"<span class='notice'>You have sliced through [target]'s ass cheek with \the [tool].</span>")
 	target.op_stage.butt = 1
 
 
 
 /datum/surgery_step/butt/slice_cheek/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='warning'>[user]'s hand slips, cutting [target]'s ass with \the [tool]!</span>" , \
-	"<span class='warning'>My hand slips, cutting [target]'s ass with \the [tool]!</span>" )
+	"<span class='warning'>Your hand slips, cutting [target]'s ass with \the [tool]!</span>" )
 	target.apply_damage(max(10, tool.force), BRUTE, LIMB_GROIN)
 
 
@@ -78,13 +78,13 @@
 
 /datum/surgery_step/butt/seperate_anus/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='notice'>[user] shortens the end of [target]'s anus with \the [tool].</span>",	\
-	"<span class='notice'>I shorten [target]'s anus with \the [tool].</span>")
+	"<span class='notice'>You shorten [target]'s anus with \the [tool].</span>")
 	target.op_stage.butt = 2
 
 
 /datum/surgery_step/butt/seperate_anus/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='warning'>[user]'s hand slips, cutting a vein in [target]'s anus with \the [tool]!</span>", \
-	"<span class='warning'>My hand slips, cutting a vein in [target]'s anus with \the [tool]!</span>")
+	"<span class='warning'>Your hand slips, cutting a vein in [target]'s anus with \the [tool]!</span>")
 	target.apply_damage(50, BRUTE, LIMB_GROIN, 1)
 
 
@@ -111,12 +111,12 @@
 
 /datum/surgery_step/butt/saw_hip/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='notice'>[user] finishes cutting [target]'s hip with \the [tool].</span>",		\
-	"<span class='notice'>I have cut [target]'s hip with \the [tool].</span>")
+	"<span class='notice'>You have cut [target]'s hip with \the [tool].</span>")
 	target.op_stage.butt = 3
 
 /datum/surgery_step/butt/saw_hip/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='warning'>[user]'s hand slips, cracking [target]'s hip with \the [tool]!</span>" , \
-	"<span class='warning'>My hand slips, cracking [target]'s hip with \the [tool]!</span>" )
+	"<span class='warning'>Your hand slips, cracking [target]'s hip with \the [tool]!</span>" )
 	target.apply_damage(max(10, tool.force), BRUTE, LIMB_GROIN)
 
 
@@ -151,7 +151,7 @@
 
 /datum/surgery_step/butt/cauterize_butt/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='notice'>[user] finishes cauterizing [target]'s ass with \the [tool].</span>",		\
-	"<span class='notice'>I have cauterized [target]'s ass with \the [tool].</span>")
+	"<span class='notice'>You have cauterized [target]'s ass with \the [tool].</span>")
 	var/obj/item/clothing/head/butt/B = new(target.loc)
 	B.transfer_buttdentity(target)
 	target.op_stage.butt = 4

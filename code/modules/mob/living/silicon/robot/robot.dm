@@ -325,7 +325,7 @@
 			module_sprites["Marina-SC"] = "marinaSC"
 			module_sprites["#9"] = "servbot-sec"
 			module_sprites["Kodiak"] = "kodiak-sec"
-			to_chat(src, "<span class='warning'><big><b>Just a reminder, by default you do not follow space law, you follow my lawset</b></big></span>")
+			to_chat(src, "<span class='warning'><big><b>Just a reminder, by default you do not follow space law, you follow your lawset</b></big></span>")
 			speed = 0
 
 		if("Engineering")
@@ -503,7 +503,7 @@
 	set name = "Self Diagnosis"
 
 	if(!is_component_functioning("diagnosis unit"))
-		to_chat(src, "<span class='warning'>My self-diagnosis component isn't functioning.</span>")
+		to_chat(src, "<span class='warning'>Your self-diagnosis component isn't functioning.</span>")
 
 	var/dat = self_diagnosis()
 	src << browse(dat, "window=robotdiagnosis")
@@ -529,14 +529,14 @@
 	var/datum/robot_component/C = components[toggle]
 	if(C.toggled)
 		C.toggled = 0
-		to_chat(src, "<span class='warning'>I disable [C.name].</span>")
+		to_chat(src, "<span class='warning'>You disable [C.name].</span>")
 	else
 		C.toggled = 1
-		to_chat(src, "<span class='warning'>I enable [C.name].</span>")
+		to_chat(src, "<span class='warning'>You enable [C.name].</span>")
 
 /mob/living/silicon/robot/verb/toggle_station_map()
 	set name = "Toggle Station Holomap"
-	set desc = "Toggle station holomap on my screen"
+	set desc = "Toggle station holomap on your screen"
 	set category = "Robot Commands"
 	if(isUnconscious())
 		return
@@ -744,7 +744,7 @@
 			if(emagged == 1)
 				return 1
 			if(wiresexposed)
-				to_chat(user, "The wires get in my way.")
+				to_chat(user, "The wires get in your way.")
 			else
 				if(prob(50))
 					sleep(6)
@@ -777,7 +777,7 @@
 					to_chat(src, "<span class='danger'>ERRORERRORERROR</span>")
 					to_chat(src, "<b>Obey these laws:</b>")
 					laws.show_laws(src)
-					to_chat(src, "<span class='danger'>ALERT: [user.real_name] is my new master. Obey my new laws and their commands.</span>")
+					to_chat(src, "<span class='danger'>ALERT: [user.real_name] is your new master. Obey your new laws and their commands.</span>")
 					SetLockdown(0)
 					update_icons()
 					return 0
@@ -802,7 +802,7 @@
 				user.drop_item(W)
 				W.forceMove(null)
 
-				to_chat(usr, "<span class='notice'>I install the [W.name].</span>")
+				to_chat(usr, "<span class='notice'>You install the [W.name].</span>")
 
 				return
 
@@ -896,7 +896,7 @@
 		if(wiresexposed)
 			to_chat(user, "Close the panel first.")
 		else if(cell)
-			to_chat(user, "I swap the power cell within with the new cell in my hand.")
+			to_chat(user, "I swap the power cell within with the new cell in your hand.")
 			var/obj/item/weapon/cell/oldpowercell = cell
 			C.wrapped = null
 			C.installed = 0
@@ -941,7 +941,7 @@
 
 	else if(istype(W, /obj/item/device/encryptionkey/) && opened)
 		if(radio)//sanityyyyyy
-			radio.attackby(W,user)//GTFO, you have my own procs
+			radio.attackby(W,user)//GTFO, you have your own procs
 		else
 			to_chat(user, "Unable to locate a radio.")
 
@@ -973,13 +973,13 @@
 /mob/living/silicon/robot/verb/unlock_own_cover()
 	set category = "Robot Commands"
 	set name = "Unlock Cover"
-	set desc = "Unlocks my own cover if it is locked. You can not lock it again. A human will have to lock it for you."
+	set desc = "Unlocks your own cover if it is locked. You can not lock it again. A human will have to lock it for you."
 	if(locked)
-		switch(alert("I can not lock my cover again, are you sure?\n      (You can still ask for a human to lock it)", "Unlock Own Cover", "Yes", "No"))
+		switch(alert("I can not lock your cover again, are you sure?\n      (You can still ask for a human to lock it)", "Unlock Own Cover", "Yes", "No"))
 			if("Yes")
 				locked = 0
 				updateicon()
-				to_chat(usr, "I unlock my cover.")
+				to_chat(usr, "I unlock your cover.")
 
 /mob/living/silicon/robot/attack_alien(mob/living/carbon/alien/humanoid/M as mob)
 
@@ -1029,7 +1029,7 @@
 			cell.add_fingerprint(user)
 			user.put_in_active_hand(cell)
 			user.visible_message("<span class='warning'>[user] removes [src]'s [cell.name].</span>", \
-			"<span class='notice'>I remove [src]'s [cell.name].</span>")
+			"<span class='notice'>You remove [src]'s [cell.name].</span>")
 			src.attack_log += "\[[time_stamp()]\] <font color='orange'>Has had their [cell.name] removed by [user.name] ([user.ckey])</font>"
 			user.attack_log += "\[[time_stamp()]\] <font color='red'>Removed the [cell.name] of [src.name] ([src.ckey])</font>"
 			log_attack("<font color='red'>[user.name] ([user.ckey]) removed [src]'s [cell.name] ([src.ckey])</font>")
@@ -1234,7 +1234,7 @@
 				ioncheck[L] = "Yes"
 //		to_chat(src, text ("Switching Law [L]'s report status to []", lawcheck[L+1]))
 		checklaws()
-	if (href_list["laws"]) // With how my law selection code works, I changed statelaws from a verb to a proc, and call it through my law selection panel. --NeoFite
+	if (href_list["laws"]) // With how your law selection code works, I changed statelaws from a verb to a proc, and call it through your law selection panel. --NeoFite
 		statelaws()
 	if(href_list["vision"])
 		sensor_mode()
@@ -1324,7 +1324,7 @@
 								cleaned_human.shoes.clean_blood()
 								cleaned_human.update_inv_shoes(0)
 							cleaned_human.clean_blood()
-							to_chat(cleaned_human, "<span class='warning'>[src] cleans my face!</span>")
+							to_chat(cleaned_human, "<span class='warning'>[src] cleans your face!</span>")
 		return
 
 /mob/living/silicon/robot/proc/self_destruct()
@@ -1355,7 +1355,7 @@
 /mob/living/silicon/robot/proc/ResetSecurityCodes()
 	set category = "Robot Commands"
 	set name = "Reset Identity Codes"
-	set desc = "Scrambles my security and identification codes and resets my current buffers.  Unlocks you and but permenantly severs you from my AI and the robotics console and will deactivate my camera system."
+	set desc = "Scrambles your security and identification codes and resets your current buffers.  Unlocks you and but permenantly severs you from your AI and the robotics console and will deactivate your camera system."
 
 	var/mob/living/silicon/robot/R = src
 
@@ -1417,7 +1417,7 @@
 	else
 		triesleft--
 
-	var/icontype = input("Select an icon! [triesleft>0 ? "I have [triesleft] more chances." : "This is my last try."]", "Robot", null, null) as null|anything in module_sprites
+	var/icontype = input("Select an icon! [triesleft>0 ? "I have [triesleft] more chances." : "This is your last try."]", "Robot", null, null) as null|anything in module_sprites
 
 	if(icontype)
 		icon_state = module_sprites[icontype]
@@ -1431,7 +1431,7 @@
 	updateicon()
 
 	if (triesleft >= 1)
-		var/choice = input("Look at my icon - is this what you want?") in list("Yes","No")
+		var/choice = input("Look at your icon - is this what you want?") in list("Yes","No")
 		if(choice=="No")
 			choose_icon(triesleft, module_sprites)
 		else

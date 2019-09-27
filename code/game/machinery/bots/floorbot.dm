@@ -133,12 +133,12 @@ var/global/list/floorbot_targets=list()
 		var/loaded = min(50-src.amount, T.amount)
 		T.use(loaded)
 		src.amount += loaded
-		to_chat(user, "<span class='notice'>I load [loaded] tiles into the floorbot. He now contains [src.amount] tiles.</span>")
+		to_chat(user, "<span class='notice'>You load [loaded] tiles into the floorbot. He now contains [src.amount] tiles.</span>")
 		src.updateicon()
 	else if(istype(W, /obj/item/weapon/card/id)||istype(W, /obj/item/device/pda))
 		if(src.allowed(usr) && !open && !emagged)
 			src.locked = !src.locked
-			to_chat(user, "<span class='notice'>I [src.locked ? "lock" : "unlock"] the [src] behaviour controls.</span>")
+			to_chat(user, "<span class='notice'>You [src.locked ? "lock" : "unlock"] the [src] behaviour controls.</span>")
 		else
 			if(emagged)
 				to_chat(user, "<span class='warning'>ERROR</span>")
@@ -717,7 +717,7 @@ var/global/list/floorbot_targets=list()
 	T = null
 	var/obj/item/weapon/toolbox_tiles/B = new /obj/item/weapon/toolbox_tiles
 	user.put_in_hands(B)
-	to_chat(user, "<span class='notice'>I add the tiles into the empty toolbox. They protrude from the top.</span>")
+	to_chat(user, "<span class='notice'>You add the tiles into the empty toolbox. They protrude from the top.</span>")
 	user.drop_from_inventory(src)
 	qdel(src)
 
@@ -729,7 +729,7 @@ var/global/list/floorbot_targets=list()
 		var/obj/item/weapon/toolbox_tiles_sensor/B = new /obj/item/weapon/toolbox_tiles_sensor()
 		B.created_name = src.created_name
 		user.put_in_hands(B)
-		to_chat(user, "<span class='notice'>I add the sensor to the toolbox and tiles!</span>")
+		to_chat(user, "<span class='notice'>You add the sensor to the toolbox and tiles!</span>")
 		user.drop_from_inventory(src)
 		qdel(src)
 
@@ -749,7 +749,7 @@ var/global/list/floorbot_targets=list()
 		var/turf/T = get_turf(user.loc)
 		var/obj/machinery/bot/floorbot/A = new /obj/machinery/bot/floorbot(T)
 		A.name = src.created_name
-		to_chat(user, "<span class='notice'>I add the robot arm to the odd looking toolbox assembly! Boop beep!</span>")
+		to_chat(user, "<span class='notice'>You add the robot arm to the odd looking toolbox assembly! Boop beep!</span>")
 		user.drop_from_inventory(src)
 		qdel(src)
 	else if (istype(W, /obj/item/weapon/pen))

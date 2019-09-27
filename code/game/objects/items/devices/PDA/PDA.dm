@@ -46,7 +46,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	var/lock_code = "" // Lockcode to unlock uplink
 	var/honkamt = 0 //How many honks left when infected with honk.exe
 	var/mimeamt = 0 //How many silence left when infected with mime.exe
-	var/note = "Congratulations, my station has chosen the Thinktronic 5230 Personal Data Assistant!" //Current note in the notepad function
+	var/note = "Congratulations, your station has chosen the Thinktronic 5230 Personal Data Assistant!" //Current note in the notepad function
 	var/notehtml = ""
 	var/cart = "" //A place to stick cartridge menu information
 	var/detonate = 1 // Can the PDA be blown up?
@@ -76,7 +76,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		"The President of Space America has come under fire recently for stating that god was a chicken.",
 		"The Intergalactic Empire is in hot water this week after proposing to rename Space-Milk to Milk. The newsroom would like to apologize to any readers offended by this news.",
 		"The Prime Minister of Space Scotland has announced that 'Freedom Day' did not go as planned. Our sources report that over 2000 human heads are now being returned to their loved ones.",
-		"The Prime Minister of Space Australia has come under fire for stating 'Women are in the kitchen, men are on the sofa, jews are in the oven. My country is doing well.",
+		"The Prime Minister of Space Australia has come under fire for stating 'Women are in the kitchen, men are on the sofa, jews are in the oven. your country is doing well.",
 		"Dirty Space Palestine just declared Jihad on Mighty Space Israel. For shame, Space Palestine.",
 		"The President of Space America was questioned today about his reaction to the Space Superstorm Baldman disaster, he replied 'I didn't send anybody since I figured it would quit about three quarters through.",
 		"The President of Space America was photographed today kicking a dog to death while muttering about how he liked cats better.",
@@ -99,12 +99,12 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		"Discount Dan's 'Discounto Danito' line of product has come out with a new 'fiesta size' burrito. CEO Discount Dan has been quoted as saying, 'A big 'ol clot for a big 'ol family!'",
 		"The Syndicate has issued a press release stating that 'Nanotrasen sucks dicks.'",
 		"Nanotrasen CEO Johnson Lovelocker has been photographed kicking a Tajaran to death. This shameful publicity stunt is part of the new 'NT Hates Catbeasts, do you?' campaign.",
-		"Nanotrasen CEO Johnson Lovelocker has been photographed kicking a Vox in the cloaca. He commented that, 'BIRDS BELONG IN MY FUCKING MEALS DAMN IT'.",
+		"Nanotrasen CEO Johnson Lovelocker has been photographed kicking a Vox in the cloaca. He commented that, 'BIRDS BELONG IN your FUCKING MEALS DAMN IT'.",
 		"Nanotrasen CEO Johnson Lovelocker is in hot water for an alleged sex scandal with a confused syndicate woman that took the motto 'Fuck NT' too seriously.",
 		"Nanotrasen CEO Johnson Lovelocker issued a press release stating, 'Anybody who's fucking impersonating me is going to get fucking bluespaced unto a spike.'. We do not condone Lovelocker's use of foul language in the newsroom.",
 		"Nanotrasen CEO Johnson Lovelocker and Discount Dan's CEO Discount Dan have been photographed buying a new friend necklace. The Syndicate issued a statement that 'That's totally gay.'",
 		"Discount Dan has been photographed this evening hunting the endangered albino space panda. When questioned, he replied that the endangered animal was 'Good eats'.",
-		"Nanotrasen's head programmer quit this evening when people did not respond well to his new features on NTOS. Said features included the ability to instantly transmit pictures of my butt to people by blinking.",
+		"Nanotrasen's head programmer quit this evening when people did not respond well to his new features on NTOS. Said features included the ability to instantly transmit pictures of your butt to people by blinking.",
 		"Nanotrasen CEO Johnson Lovelocker was photographed this morning celebrating his birthday will well deserved hookers and blow.",
 		"Discount Dan's stock has risen 20 points today after CEO Discount Dan promised to include a free toy in every 'Happy Dan' meal. In other news, we have over 300 confirmed reports of broken teeth and lead poisoning in children 6 and under.",
 		"Discount Dan has come under fire today after trying to hug a plasmaman whilst smoking a cigar. He is being treated for 3rd degree burns at the moment, and we at the newsroom wish him luck.",
@@ -153,7 +153,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		"The Neanderthal's brain was bigger than yours is.",
 		"The pancreas produces Insulin.",
 		"The word 'lethologica' describes the state of not being able to remember the word you want.",
-		"Every year about 98% of the atoms in my body are replaced.",
+		"Every year about 98% of the atoms in your body are replaced.",
 		"The international telephone dialing code for Antarctica is 672.",
 		"Women are 37% more likely to go to a psychiatrist than men are.",
 		"The human heart creates enough pressure to squirt blood 30 feet (9 m).",
@@ -406,7 +406,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	name = "Librarian PDA"
 	icon_state = "pda-libb"
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. This is model is a WGW-11 series e-reader."
-	note = "Congratulations, my station has chosen the Thinktronic 5290 WGW-11 Series E-reader and Personal Data Assistant!"
+	note = "Congratulations, your station has chosen the Thinktronic 5290 WGW-11 Series E-reader and Personal Data Assistant!"
 	silent = 1 //Quiet in the library!
 
 /obj/item/device/pda/clear
@@ -473,7 +473,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		return
 
 	if(src.aiPDA.toff)
-		to_chat(usr, "Turn on my receiver in order to send messages.")
+		to_chat(usr, "Turn on your receiver in order to send messages.")
 		return
 
 	for (var/obj/item/device/pda/P in get_viewable_pdas())
@@ -954,7 +954,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 							else
 								dat += {"
 									<h5>Bank Account</h5>
-									<i>Unfortunately my station's Accounts Database doesn't allow remote access. Negociate with my HoP or Captain to solve this issue.</i>
+									<i>Unfortunately your station's Accounts Database doesn't allow remote access. Negociate with your HoP or Captain to solve this issue.</i>
 									"}
 						else
 							dat += {"
@@ -1473,7 +1473,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 						else
 							app.marky = new_y
 					if("add")
-						var/marker_name = copytext(sanitize(input("Give a name to my marker", "Station Map App", "default marker") as null|text),1,MAX_NAME_LEN)
+						var/marker_name = copytext(sanitize(input("Give a name to your marker", "Station Map App", "default marker") as null|text),1,MAX_NAME_LEN)
 						var/datum/minimap_marker/mkr = new/datum/minimap_marker()
 						mkr.x = app.markx
 						mkr.y = app.marky
@@ -1613,8 +1613,8 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 			if("eggChose")
 				var/datum/pda_app/spesspets/app = locate(/datum/pda_app/spesspets) in applications
-				app.petname = copytext(sanitize(input(usr, "What do you want to name my new pet?", "Name my new pet", "[app.petname]") as null|text),1,MAX_NAME_LEN)
-				if(app.petname && (alert(usr, "[app.petname] will be my pet's new name - are you sure?", "Confirm Pet's name: ", "Yes", "No") == "Yes"))
+				app.petname = copytext(sanitize(input(usr, "What do you want to name your new pet?", "Name your new pet", "[app.petname]") as null|text),1,MAX_NAME_LEN)
+				if(app.petname && (alert(usr, "[app.petname] will be your pet's new name - are you sure?", "Confirm Pet's name: ", "Yes", "No") == "Yes"))
 					app.game_state = 1
 					app.game_tick(usr)
 					app.last_spoken = ""
@@ -1853,9 +1853,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 									difficulty += 2
 
 								if(prob(difficulty * 12) || (P.hidden_uplink))
-									U.show_message("<span class='warning'>An error flashes on my [src].</span>", 1)
+									U.show_message("<span class='warning'>An error flashes on your [src].</span>", 1)
 								else if (prob(difficulty * 3))
-									U.show_message("<span class='warning'>Energy feeds back into my [src]!</span>", 1)
+									U.show_message("<span class='warning'>Energy feeds back into your [src]!</span>", 1)
 									U << browse(null, "window=pda")
 									explode()
 									log_admin("[key_name(U)] just attempted to blow up [P] with the Detomatix cartridge but failed, blowing themselves up")
@@ -1914,7 +1914,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		var/mob/living/carbon/human/H = user
 		if(istype(H.wear_id,/obj/item/weapon/storage/wallet))
 			dispense_cash(arbitrary_sum,H.wear_id)
-			to_chat(usr, "\icon[src]<span class='notice'>Funds were transferred into my physical wallet!</span>")
+			to_chat(usr, "\icon[src]<span class='notice'>Funds were transferred into your physical wallet!</span>")
 			return
 	dispense_cash(arbitrary_sum,get_turf(src))
 
@@ -1935,7 +1935,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		L = get_holder_of_type(src, /mob/living/silicon)
 
 	if(L)
-		to_chat(L, "\icon[src] <b>Money transfer from [creditor_name] ([arbitrary_sum]$) </b>[id ? "" : "Insert my ID in the PDA to receive the funds."]")
+		to_chat(L, "\icon[src] <b>Money transfer from [creditor_name] ([arbitrary_sum]$) </b>[id ? "" : "Insert your ID in the PDA to receive the funds."]")
 
 	tnote += "<i><b>&larr; Money transfer from [creditor_name] ([arbitrary_sum]$)<br>"
 
@@ -1984,7 +1984,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		if (ismob(loc))
 			var/mob/M = loc
 			M.put_in_hands(id)
-			to_chat(usr, "<span class='notice'>I remove the ID from the [name].</span>")
+			to_chat(usr, "<span class='notice'>You remove the ID from the [name].</span>")
 		else
 			id.forceMove(get_turf(src))
 		id = null
@@ -2091,7 +2091,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		else
 			to_chat(usr, "<span class='notice'>This PDA does not have an ID in it.</span>")
 	else
-		to_chat(usr, "<span class='notice'>I cannot do this while restrained.</span>")
+		to_chat(usr, "<span class='notice'>You cannot do this while restrained.</span>")
 
 obj/item/device/pda/CtrlClick()
 	if ( can_use(usr) ) // Checks that the PDA is in our inventory. This will be checked by the proc anyways, but we don't want to generate an error message if not.
@@ -2114,13 +2114,13 @@ obj/item/device/pda/CtrlClick()
 				var/mob/M = loc
 				if(M.get_active_hand() == null)
 					M.put_in_hands(O)
-					to_chat(usr, "<span class='notice'>I remove \the [O] from \the [src].</span>")
+					to_chat(usr, "<span class='notice'>You remove \the [O] from \the [src].</span>")
 					return
 			O.forceMove(get_turf(src))
 		else
 			to_chat(usr, "<span class='notice'>This PDA does not have a pen in it.</span>")
 	else
-		to_chat(usr, "<span class='notice'>I cannot do this while restrained.</span>")
+		to_chat(usr, "<span class='notice'>You cannot do this while restrained.</span>")
 
 obj/item/device/pda/AltClick()
 	if ( can_use(usr) ) // Checks that the PDA is in our inventory. This will be checked by the proc anyways, but we don't want to generate an error message if not.
@@ -2154,7 +2154,7 @@ obj/item/device/pda/AltClick()
 	if(istype(C, /obj/item/weapon/cartridge) && !cartridge)
 		if(user.drop_item(C, src))
 			cartridge = C
-			to_chat(user, "<span class='notice'>I insert [cartridge] into [src].</span>")
+			to_chat(user, "<span class='notice'>You insert [cartridge] into [src].</span>")
 			if(cartridge.radio)
 				cartridge.radio.hostpda = src
 
@@ -2173,7 +2173,7 @@ obj/item/device/pda/AltClick()
 			if(((src in user.contents) && (C in user.contents)) || (istype(loc, /turf) && in_range(src, user) && (C in user.contents)) )
 				if( can_use(user) )//If they can still act.
 					id_check(user, 2)
-					to_chat(user, "<span class='notice'>I put the ID into \the [src]'s slot.</span>")
+					to_chat(user, "<span class='notice'>You put the ID into \the [src]'s slot.</span>")
 					if(incoming_transactions.len)
 						receive_incoming_transactions(id)
 					updateSelfDialog()//Update self dialog on success.
@@ -2182,7 +2182,7 @@ obj/item/device/pda/AltClick()
 	else if(istype(C, /obj/item/device/paicard) && !src.pai)
 		if(user.drop_item(C, src))
 			pai = C
-			to_chat(user, "<span class='notice'>I slot \the [C] into [src].</span>")
+			to_chat(user, "<span class='notice'>You slot \the [C] into [src].</span>")
 			updateUsrDialog()
 	else if(istype(C, /obj/item/weapon/pen))
 		var/obj/item/weapon/pen/O = locate() in src
@@ -2190,7 +2190,7 @@ obj/item/device/pda/AltClick()
 			to_chat(user, "<span class='notice'>There is already a pen in \the [src].</span>")
 		else
 			if(user.drop_item(C, src))
-				to_chat(user, "<span class='notice'>I slide \the [C] into \the [src].</span>")
+				to_chat(user, "<span class='notice'>You slide \the [C] into \the [src].</span>")
 	else if(istype(C,/obj/item/weapon/spacecash))
 		if(!id)
 			to_chat(user, "\icon[src]<span class='warning'>There is no ID in the PDA!</span>")
@@ -2211,7 +2211,7 @@ obj/item/device/pda/AltClick()
 		T.time = worldtime2text()
 		id.virtual_wallet.transaction_log.Add(T)
 
-		to_chat(user, "<span class='info'>I insert [dosh] into the PDA.</span>")
+		to_chat(user, "<span class='info'>You insert [dosh] into the PDA.</span>")
 		qdel(dosh)
 		updateUsrDialog()
 
@@ -2295,7 +2295,7 @@ obj/item/device/pda/AltClick()
 
 	if (ismob(loc))
 		var/mob/M = loc
-		M.show_message("<span class='warning'>My [src] explodes!</span>", 1)
+		M.show_message("<span class='warning'>Your [src] explodes!</span>", 1)
 
 	if(T)
 		T.hotspot_expose(700,125,surfaces=istype(loc,/turf))
@@ -2349,7 +2349,7 @@ obj/item/device/pda/AltClick()
 	if (istype(AM, /mob/living/carbon))
 		var/mob/living/carbon/M = AM
 		if (M.Slip(8, 5))
-			to_chat(M, "<span class='notice'>I slipped on the PDA!</span>")
+			to_chat(M, "<span class='notice'>You slipped on the PDA!</span>")
 
 			if ((istype(M, /mob/living/carbon/human) && (M.real_name != src.owner) && (istype(src.cartridge, /obj/item/weapon/cartridge/clown))))
 				var/obj/item/weapon/cartridge/clown/honkcartridge = src.cartridge
@@ -2362,7 +2362,7 @@ obj/item/device/pda/AltClick()
 	var/list/namecounts = list()
 
 	if (toff)
-		to_chat(usr, "Turn on my receiver in order to send messages.")
+		to_chat(usr, "Turn on your receiver in order to send messages.")
 		return
 
 	for (var/obj/item/device/pda/P in PDAs)

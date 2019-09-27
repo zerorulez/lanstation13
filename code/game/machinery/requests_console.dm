@@ -160,7 +160,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				if(announceAuth)
 					dat += text("<b>Authentication accepted</b><BR><BR>")
 				else
-					dat += text("Swipe my card to authenticate yourself.<BR><BR>")
+					dat += text("Swipe your card to authenticate yourself.<BR><BR>")
 				if (announceAuth)
 					dat += text("Configure department. Set to 0 to release internal locks for deconstruction.<BR><BR>")
 					dat += text("<A href='?src=\ref[src];setDepartment=0'>No Contact</A><BR>")
@@ -195,7 +195,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			if(9)	//authentication before sending
 				dat += text("<B>Message Authentication</B><BR><BR>")
 				dat += text("<b>Message for [dpt]: </b>[message]<BR><BR>")
-				dat += text("I may authenticate my message now by scanning my ID or my stamp<BR><BR>")
+				dat += text("I may authenticate your message now by scanning your ID or your stamp<BR><BR>")
 				dat += text("Validated by: [msgVerified]<br>");
 				dat += text("Stamped by: [msgStamped]<br>");
 				dat += text("<A href='?src=\ref[src];department=[dpt]'>Send</A><BR>");
@@ -206,7 +206,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				if(announceAuth)
 					dat += text("<b>Authentication accepted</b><BR><BR>")
 				else
-					dat += text("Swipe my card to authenticate yourself.<BR><BR>")
+					dat += text("Swipe your card to authenticate yourself.<BR><BR>")
 				dat += text("<b>Message: </b>[message] <A href='?src=\ref[src];writeAnnouncement=1'>Write</A><BR><BR>")
 				if (announceAuth && message)
 					dat += text("<A href='?src=\ref[src];sendAnnouncement=1'>Announce</A><BR>");
@@ -245,7 +245,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	if(reject_bad_text(href_list["write"]))
 		dpt = ckey(href_list["write"]) //write contains the string of the receiving department's name
 
-		var/new_message = copytext(reject_bad_text(input(usr, "Write my message:", "Awaiting Input", "")),1,MAX_MESSAGE_LEN)
+		var/new_message = copytext(reject_bad_text(input(usr, "Write your message:", "Awaiting Input", "")),1,MAX_MESSAGE_LEN)
 		if(new_message)
 			message = new_message
 			screen = 9
@@ -262,7 +262,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			priority = -1
 
 	if(href_list["writeAnnouncement"])
-		var/new_message = copytext(reject_bad_text(input(usr, "Write my message:", "Awaiting Input", "")),1,MAX_MESSAGE_LEN)
+		var/new_message = copytext(reject_bad_text(input(usr, "Write your message:", "Awaiting Input", "")),1,MAX_MESSAGE_LEN)
 		if(new_message)
 			message = new_message
 			switch(href_list["priority"])
@@ -428,7 +428,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		else
 			to_chat(user, "I can't do much with that.")
 	if(iswrench(O) && open && !departmentType)
-		user.visible_message("<span class='notice'>[user] disassembles the [src]!</span>", "<span class='notice'>I disassemble the [src]</span>")
+		user.visible_message("<span class='notice'>[user] disassembles the [src]!</span>", "<span class='notice'>You disassemble the [src]</span>")
 		playsound(get_turf(src), 'sound/items/Ratchet.ogg', 100, 1)
 		new /obj/item/stack/sheet/metal (src.loc,2)
 		qdel(src)
@@ -440,7 +440,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				announceAuth = 1
 			else
 				announceAuth = 0
-				to_chat(user, "<span class='warning'>I am not authorized to configure this panel.</span>")
+				to_chat(user, "<span class='warning'>You are not authorized to configure this panel.</span>")
 			updateUsrDialog()
 		if(screen == 9)
 			var/obj/item/weapon/card/id/ID = O.GetID()
@@ -453,7 +453,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				announceAuth = TRUE
 			else
 				announceAuth = FALSE
-				to_chat(user, "<span class='warning'>I am not authorized to send announcements.</span>")
+				to_chat(user, "<span class='warning'>You are not authorized to send announcements.</span>")
 
 			updateUsrDialog()
 	if (istype(O, /obj/item/weapon/stamp))

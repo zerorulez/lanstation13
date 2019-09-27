@@ -99,7 +99,7 @@
 /mob/living/silicon/ai/verb/checklaws() //Gives you a link-driven interface for deciding what laws the statelaws() proc will share with the crew. --NeoFite
 	set name = "State Laws"
 	set category = "AI Commands"
-	set desc = "State my law(s) to the crew"
+	set desc = "State your law(s) to the crew"
 
 	var/list = "<b>Which laws do you want to include when stating them for the crew?</b><br><br>"
 

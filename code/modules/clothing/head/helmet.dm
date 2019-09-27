@@ -26,8 +26,8 @@
 		return
 	playsound(get_turf(src), 'sound/voice/woopwoop.ogg', 100, 1, vary = 0)
 	user.visible_message("<span class='warning'>[user]'s [name] rasps, \"WOOP WOOP!\"</span>", \
-						"<span class='warning'>My [name] rasps, \"WOOP WOOP!\"</span>", \
-						"<span class='warning'>I hear a siren: \"WOOP WOOP!\"</span>")
+						"<span class='warning'>Your [name] rasps, \"WOOP WOOP!\"</span>", \
+						"<span class='warning'>You hear a siren: \"WOOP WOOP!\"</span>")
 
 	var/list/bystanders = get_hearers_in_view(world.view, src)
 	flick_overlay(image('icons/mob/talk.dmi', user, "hail", MOB_LAYER+1), clients_in_moblist(bystanders), 15)
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/head/helmet/piratelord
 	name = "pirate lord's helmet"
-	desc = "The headwear of an all powerful and bloodthirsty pirate lord. Simply looking at it sends chills down my spine."
+	desc = "The headwear of an all powerful and bloodthirsty pirate lord. Simply looking at it sends chills down your spine."
 	armor = list(melee = 75, bullet = 75, laser = 75,energy = 75, bomb = 75, bio = 100, rad = 90)
 	icon_state = "piratelord"
 

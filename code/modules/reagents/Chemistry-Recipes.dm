@@ -1117,9 +1117,9 @@
 				H.flash_eyes(visual = 1)
 				to_chat(O, "<span class='danger'>A flash blinds you while you start hearing terrifying noises!</span>")
 			else
-				to_chat(O, "<span class='danger'>I hear a rumbling as a troup of monsters phases into existence!</span>")
+				to_chat(O, "<span class='danger'>You hear a rumbling as a troup of monsters phases into existence!</span>")
 		else
-			to_chat(O, "<span class='danger'>I hear a rumbling as a troup of monsters phases into existence!</span>")
+			to_chat(O, "<span class='danger'>You hear a rumbling as a troup of monsters phases into existence!</span>")
 
 	for(var/i = 1, i <= 5, i++)
 		var/chosen = pick(critters)
@@ -1168,9 +1168,9 @@
 				H.flash_eyes(visual = 1)
 				to_chat(O, "<span class='rose'>A flash blinds and you can feel a new presence!</span>")
 			else
-				to_chat(O, "<span class='rose'>I hear a crackling as a creature manifests before you!</span>")
+				to_chat(O, "<span class='rose'>You hear a crackling as a creature manifests before you!</span>")
 		else
-			to_chat(O, "<span class='rose'>I hear a crackling as a creature manifests before you!</span>")
+			to_chat(O, "<span class='rose'>You hear a crackling as a creature manifests before you!</span>")
 
 	var/chosen = pick(critters)
 	var/mob/living/simple_animal/hostile/C = new chosen
@@ -1225,7 +1225,7 @@
 
 			var/mob/mimic = new /mob/living/simple_animal/hostile/mimic/crate(get_turf(location), location)
 			mimic.appearance = M.appearance //Because mimics copy appearances from paths, not actual existing objects.
-			to_chat(M, "<span class='sinister'>I feel something thoroughly analyzing you from inside...</span>")
+			to_chat(M, "<span class='sinister'>You feel something thoroughly analyzing you from inside...</span>")
 
 		else
 			new /mob/living/simple_animal/hostile/mimic/crate
@@ -1260,9 +1260,9 @@
 				H.flash_eyes(visual = 1)
 				to_chat(O, "<span class='caution'>A white light blinds you and you think you can smell some food nearby!</span>")
 			else
-				to_chat(O, "<span class='notice'>A bunch of snacks appears before my very eyes!</span>")
+				to_chat(O, "<span class='notice'>A bunch of snacks appears before your very eyes!</span>")
 		else
-			to_chat(O, "<span class='notice'>A bunch of snacks appears before my very eyes!</span>")
+			to_chat(O, "<span class='notice'>A bunch of snacks appears before your very eyes!</span>")
 
 	for(var/i = 1, i <= 4 + rand(1,2), i++)
 		var/chosen = pick(borks)
@@ -1392,7 +1392,7 @@
 
 	for(var/mob/living/M in range (get_turf(holder.my_atom), 7))
 		M.bodytemperature -= 6
-		to_chat(M, "<span class='notice'>I feel a chill!</span>")
+		to_chat(M, "<span class='notice'>You feel a chill!</span>")
 
 /datum/chemical_reaction/slimenutrient
 	name = "Slime Nutrient"

@@ -53,7 +53,7 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 					if(!WT.isOn())
 						return
 					if (WT.get_fuel() < 5) // uses up 5 fuel.
-						to_chat(user, "<span class='warning'>I need more fuel to complete this task.</span>")
+						to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
 						return
 
 					user.visible_message("[user] starts cutting loose the anchoring bolt covers on [src].", "I start cutting loose the anchoring bolt covers with [O]...")
@@ -83,7 +83,7 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 					if(!WT.isOn())
 						return
 					if (WT.get_fuel() < 5) // uses up 5 fuel.
-						to_chat(user, "<span class='notice'>I need more fuel to complete this task.</span>")
+						to_chat(user, "<span class='notice'>You need more fuel to complete this task.</span>")
 						return
 
 					user.visible_message("[user] starts cutting apart the anchoring system sealant on [src].", "I start cutting apart the anchoring system's sealant with [O]...")
@@ -170,14 +170,14 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 	if (!usr || usr.lying || usr.isUnconscious())
 		return
 	if (!usr.dexterity_check())
-		to_chat(usr, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 
 	if (src.deployable)
-		to_chat(usr, "<span class='notice'>I close several panels to make [src] undeployable.</span>")
+		to_chat(usr, "<span class='notice'>You close several panels to make [src] undeployable.</span>")
 		src.deployable = 0
 	else
-		to_chat(usr, "<span class='notice'>I adjust some panels to make [src] deployable.</span>")
+		to_chat(usr, "<span class='notice'>You adjust some panels to make [src] deployable.</span>")
 		src.deployable = 1
 
 /obj/machinery/nuclearbomb/Topic(href, href_list)
@@ -186,7 +186,7 @@ var/obj/item/weapon/disk/nuclear/nukedisk
 	if (!usr.canmove || usr.stat || usr.restrained())
 		return
 	if (!usr.dexterity_check())
-		to_chat(usr, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return 1
 	if (istype(src.loc, /turf))
 		usr.set_machine(src)

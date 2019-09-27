@@ -1,8 +1,8 @@
 /**
 *  Basically, a backplane for AI modules.
 *
-* Lets you insert modules of my liking as a sort of "dry run"
-* Good if you're making my own "base laws" with freeforms and
+* Lets you insert modules of your liking as a sort of "dry run"
+* Good if you're making your own "base laws" with freeforms and
 * purge modules.
 *
 * Runs all laws after a delay when inserted into upload.
@@ -49,7 +49,7 @@
 		//user.drop_item(null, )
 		//module.loc=src
 		modules += module.copy() // Instead of a reference
-		to_chat(user, "<span class='notice'>I insert \the [module] into \the [src], and the device reads the module's contents.</span>")
+		to_chat(user, "<span class='notice'>You insert \the [module] into \the [src], and the device reads the module's contents.</span>")
 	else
 		return ..()
 
@@ -57,7 +57,7 @@
 	for(var/obj/item/weapon/aiModule/mod in modules)
 		qdel(mod)
 	modules.len = 0
-	to_chat(user, "<span class='notice'>I clear \the [src]'s memory buffers!</span>")
+	to_chat(user, "<span class='notice'>You clear \the [src]'s memory buffers!</span>")
 	laws = new base_law_type
 	return
 
@@ -86,7 +86,7 @@
 		if(!module.validate(src.laws,src,usr))
 			notes="<span class='danger'>A red light is blinking!</span>"
 		if(module.modflags & DANGEROUS_MODULE)
-			notes="<span class='danger'>My heart skips a beat!</span>"
+			notes="<span class='danger'>Your heart skips a beat!</span>"
 		to_chat(usr, " [i-1]. [module.name] - [notes]")
 
 /obj/item/weapon/planning_frame/proc/laws_sanity_check()

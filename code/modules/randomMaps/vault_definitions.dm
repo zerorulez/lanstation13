@@ -29,7 +29,7 @@ var/list/existing_vaults = list()
 
 //How to create a new vault:
 //1) create a map in maps/randomVaults/
-//2) create a new subtype of /datum/map_element/vault/ (look below for an example) and set its file_path to my map's file path (including the file extension, which is most likely ".dmm")
+//2) create a new subtype of /datum/map_element/vault/ (look below for an example) and set its file_path to your map's file path (including the file extension, which is most likely ".dmm")
 //3) if you're an advanced user, feel free to play around with other variables
 
 /datum/map_element/vault/icetruck_crash

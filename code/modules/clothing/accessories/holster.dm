@@ -25,11 +25,11 @@
 	if(user.drop_item(I, src))
 		holstered = I
 		holstered.add_fingerprint(user)
-		user.visible_message("<span class='notice'>[user] holsters \the [holstered].</span>", "<span class='notice'>I holster \the [holstered].</span>")
+		user.visible_message("<span class='notice'>[user] holsters \the [holstered].</span>", "<span class='notice'>You holster \the [holstered].</span>")
 		update_icon()
 		return 1
 	else
-		to_chat(user, "<span class='warning'>I can't let go of \the [I]!</span>")
+		to_chat(user, "<span class='warning'>You can't let go of \the [I]!</span>")
 
 /obj/item/clothing/accessory/holster/proc/unholster(mob/user as mob)
 	if(!holstered)
@@ -41,7 +41,7 @@
 		holstered = null
 		update_icon()
 	else
-		to_chat(user, "<span class='warning'>I need an empty hand to draw \the [holstered]!</span>")
+		to_chat(user, "<span class='warning'>You need an empty hand to draw \the [holstered]!</span>")
 
 /obj/item/clothing/accessory/holster/proc/unholster_message(user)
 	return
@@ -127,10 +127,10 @@
 /obj/item/clothing/accessory/holster/handgun/unholster_message(mob/user)
 	if(user.a_intent == I_HURT)
 		user.visible_message("<span class='warning'>[user] draws \the [holstered], ready to shoot!</span></span>", \
-		"<span class='warning'>I draw \the [holstered], ready to shoot!</span>")
+		"<span class='warning'>You draw \the [holstered], ready to shoot!</span>")
 	else
 		user.visible_message("<span class='notice'>[user] draws \the [holstered], pointing it at the ground.</span>", \
-		"<span class='notice'>I draw \the [holstered], pointing it at the ground.</span>")
+		"<span class='notice'>You draw \the [holstered], pointing it at the ground.</span>")
 
 /obj/item/clothing/accessory/holster/handgun/wornout
 	desc = "A worn-out handgun holster. Perfect for concealed carry."
@@ -164,7 +164,7 @@
 
 /obj/item/clothing/accessory/holster/knife/unholster_message(mob/user)
 	user.visible_message("<span class='warning'>[user] pulls \a [holstered] from its holster!</span>", \
-	"<span class='warning'>I draw my [holstered.name]!</span>")
+	"<span class='warning'>You draw your [holstered.name]!</span>")
 
 /obj/item/clothing/accessory/holster/knife/boot
 	desc = "A knife holster that can be attached to any pair of boots."

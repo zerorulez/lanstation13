@@ -118,7 +118,7 @@ var/list/mass_drivers = list()
 				playsound(get_turf(src), 'sound/items/Welder.ogg', 50, 1)
 				to_chat(user, "I begin to cut the frame apart...")
 				if(do_after(user, src, 30) && (build == 0))
-					to_chat(user, "<span class='notice'>I detach the plasteel sheets from each others.</span>")
+					to_chat(user, "<span class='notice'>You detach the plasteel sheets from each others.</span>")
 					new /obj/item/stack/sheet/plasteel(get_turf(src),3)
 					qdel(src)
 				return 1
@@ -126,7 +126,7 @@ var/list/mass_drivers = list()
 				to_chat(user, "I begin to anchor \the [src] on the floor.")
 				playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 				if(do_after(user, src, 10) && (build == 0))
-					to_chat(user, "<span class='notice'>I anchor \the [src]!</span>")
+					to_chat(user, "<span class='notice'>You anchor \the [src]!</span>")
 					anchored = 1
 					build++
 					update_icon()
@@ -139,7 +139,7 @@ var/list/mass_drivers = list()
 					build--
 					update_icon()
 					anchored = 0
-					to_chat(user, "<span class='notice'>I de-anchored \the [src]!</span>")
+					to_chat(user, "<span class='notice'>You de-anchored \the [src]!</span>")
 				return 1
 			if(istype(W, /obj/item/weapon/weldingtool))
 				var/obj/item/weapon/weldingtool/WT = W
@@ -149,7 +149,7 @@ var/list/mass_drivers = list()
 				playsound(get_turf(src), 'sound/items/Welder.ogg', 50, 1)
 				to_chat(user, "I begin to weld \the [src] to the floor...")
 				if(do_after(user, src, 40) && (build == 1))
-					to_chat(user, "<span class='notice'>I welded \the [src] to the floor.</span>")
+					to_chat(user, "<span class='notice'>You welded \the [src] to the floor.</span>")
 					build++
 					update_icon()
 				return 1
@@ -162,7 +162,7 @@ var/list/mass_drivers = list()
 				playsound(get_turf(src), 'sound/items/Welder.ogg', 50, 1)
 				to_chat(user, "I begin to unweld \the [src] to the floor...")
 				if(do_after(user, src, 40) && (build == 2))
-					to_chat(user, "<span class='notice'>I unwelded \the [src] to the floor.</span>")
+					to_chat(user, "<span class='notice'>You unwelded \the [src] to the floor.</span>")
 					build--
 					update_icon()
 			if(istype(W, /obj/item/stack/cable_coil))

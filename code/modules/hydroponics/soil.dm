@@ -6,7 +6,7 @@
 	use_power = 0
 	draw_warnings = 0
 
-	machine_flags = 0 // THIS SHOULD NOT EVER BE UNWRENCHED AND IT SHOULD NOT EVER SPAWN MACHINE FRAMES, MY GOD
+	machine_flags = 0 // THIS SHOULD NOT EVER BE UNWRENCHED AND IT SHOULD NOT EVER SPAWN MACHINE FRAMES, your GOD
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/weapon/pickaxe/shovel))

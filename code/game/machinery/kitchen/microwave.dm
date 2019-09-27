@@ -89,23 +89,23 @@
 		if(src.broken == 2 && isscrewdriver(O)) // If it's broken and they're using a screwdriver
 			user.visible_message( \
 				"<span class='notice'>[user] starts to fix part of the microwave.</span>", \
-				"<span class='notice'>I start to fix part of the microwave.</span>" \
+				"<span class='notice'>You start to fix part of the microwave.</span>" \
 			)
 			if (do_after(user, src,20))
 				user.visible_message( \
 					"<span class='notice'>[user] fixes part of the microwave.</span>", \
-					"<span class='notice'>I have fixed part of the microwave.</span>" \
+					"<span class='notice'>You have fixed part of the microwave.</span>" \
 				)
 				src.broken = 1 // Fix it a bit
 		else if(src.broken == 1 && iswrench(O)) // If it's broken and they're doing the wrench
 			user.visible_message( \
 				"<span class='notice'>[user] starts to fix part of the microwave.</span>", \
-				"<span class='notice'>I start to fix part of the microwave.</span>" \
+				"<span class='notice'>You start to fix part of the microwave.</span>" \
 			)
 			if (do_after(user, src,20))
 				user.visible_message( \
 					"<span class='notice'>[user] fixes the microwave.</span>", \
-					"<span class='notice'>I have fixed the microwave.</span>" \
+					"<span class='notice'>You have fixed the microwave.</span>" \
 				)
 				src.icon_state = "mw"
 				src.broken = 0 // Fix it!
@@ -120,13 +120,13 @@
 			if(R.reagents.amount_cache.len == 1 && R.reagents.has_reagent(CLEANER, 5))
 				user.visible_message( \
 					"<span class='notice'>[user] starts to clean the microwave.</span>", \
-					"<span class='notice'>I start to clean the microwave.</span>" \
+					"<span class='notice'>You start to clean the microwave.</span>" \
 				)
 				if (do_after(user, src,20))
 					R.reagents.remove_reagent(CLEANER,5)
 					user.visible_message( \
 						"<span class='notice'>[user]  has cleaned  the microwave.</span>", \
-						"<span class='notice'>I have cleaned the microwave.</span>" \
+						"<span class='notice'>You have cleaned the microwave.</span>" \
 					)
 					src.dirty = 0 // It's clean!
 					src.broken = 0 // just to be sure
@@ -156,7 +156,7 @@
 			src.updateUsrDialog()
 			return 0
 			if (!is_type_in_list(O.contents))
-				to_chat(user, "<span class='warning'>My [O] contains components unsuitable for cookery.</span>")
+				to_chat(user, "<span class='warning'>Your [O] contains components unsuitable for cookery.</span>")
 				return 1
 
 		if(user.drop_item(O, src))
@@ -169,19 +169,19 @@
 			O:use(1)
 			user.visible_message( \
 				"<span class='notice'>[user] has added one of [O] to \the [src].</span>", \
-				"<span class='notice'>I add one of [O] to \the [src].</span>")
+				"<span class='notice'>You add one of [O] to \the [src].</span>")
 		else
 		//	user.before_take_item(O)	//This just causes problems so far as I can tell. -Pete
 			if(user.drop_item(O, src))
 				user.visible_message( \
 					"<span class='notice'>[user] has added \the [O] to \the [src].</span>", \
-					"<span class='notice'>I add \the [O] to \the [src].</span>")
+					"<span class='notice'>You add \the [O] to \the [src].</span>")
 	else if(is_type_in_list(O,accepts_reagents_from))
 		if (!O.reagents)
 			return 1
 		for (var/datum/reagent/R in O.reagents.reagent_list)
 			if (!(R.id in acceptable_reagents))
-				to_chat(user, "<span class='warning'>My [O] contains components unsuitable for cookery.</span>")
+				to_chat(user, "<span class='warning'>Your [O] contains components unsuitable for cookery.</span>")
 				return 1
 		//G.reagents.trans_to(src,G.amount_per_transfer_from_this)
 	else if(istype(O,/obj/item/weapon/grab))
@@ -189,7 +189,7 @@
 		to_chat(user, "<span class='warning'>This is ridiculous. You can not fit \the [G.affecting] in this [src].</span>")
 		return 1
 	else
-		to_chat(user, "<span class='warning'>I have no idea what you can cook with this [O].</span>")
+		to_chat(user, "<span class='warning'>You have no idea what you can cook with this [O].</span>")
 		return 1
 	src.updateUsrDialog()
 
@@ -203,7 +203,7 @@
 			user.set_machine(src)
 			interact(user)
 			return 1
-		to_chat(user, "<span class='warning'>I amn't equipped to interface with technology this old!</span>")
+		to_chat(user, "<span class='warning'>You aren't equipped to interface with technology this old!</span>")
 		return 0
 
 /obj/machinery/microwave/attack_hand(mob/user as mob)
@@ -368,7 +368,7 @@
 	return 0
 
 /obj/machinery/microwave/proc/start()
-	src.visible_message("<span class='notice'>The microwave turns on.</span>", "<span class='notice'>I hear a microwave.</span>")
+	src.visible_message("<span class='notice'>The microwave turns on.</span>", "<span class='notice'>You hear a microwave.</span>")
 	src.operating = 1
 	src.icon_state = "mw1"
 	src.updateUsrDialog()
@@ -391,7 +391,7 @@
 		src.dirty++
 	if(reagent_disposal)
 		reagents.clear_reagents()
-	to_chat(usr, "<span class='notice'>I dispose of the microwave contents.</span>")
+	to_chat(usr, "<span class='notice'>You dispose of the microwave contents.</span>")
 	src.updateUsrDialog()
 
 /obj/machinery/microwave/proc/muck_start()

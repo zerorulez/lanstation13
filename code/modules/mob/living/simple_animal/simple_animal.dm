@@ -358,7 +358,7 @@ var/global/list/animal_count = list() //Stores types, and amount of animals of t
 	// FUCK mice. - N3X
 	if(ismouse(src) && (Proj.stun+Proj.weaken+Proj.paralyze+Proj.agony)>5)
 		var/mob/living/simple_animal/mouse/M=src
-		to_chat(M, "<span class='warning'>What would probably not kill a human completely overwhelms my tiny body.</span>")
+		to_chat(M, "<span class='warning'>What would probably not kill a human completely overwhelms your tiny body.</span>")
 		M.splat()
 		return
 	adjustBruteLoss(Proj.damage)
@@ -423,7 +423,7 @@ var/global/list/animal_count = list() //Stores types, and amount of animals of t
 			visible_message("<span class='danger'>[L] bites [src]!</span>")
 
 			if(stat != DEAD)
-				visible_message("<span class='danger'>[L] feeds on [src]!</span>", "<span class='notice'>I feed on [src]!</span>")
+				visible_message("<span class='danger'>[L] feeds on [src]!</span>", "<span class='notice'>You feed on [src]!</span>")
 				adjustBruteLoss(damage)
 				L.growth = min(L.growth + damage, LARVA_GROW_TIME)
 
@@ -466,7 +466,7 @@ var/global/list/animal_count = list() //Stores types, and amount of animals of t
 	else if((meat_type || butchering_drops) && (stat == DEAD))	//if the animal has a meat, and if it is dead.
 		if(O.sharpness_flags & SHARP_BLADE)
 			if(user.a_intent != I_HELP)
-				to_chat(user, "<span class='info'>I must be on <b>help</b> intent to do this!</span>")
+				to_chat(user, "<span class='info'>You must be on <b>help</b> intent to do this!</span>")
 			else
 				butcher()
 				return 1

@@ -225,7 +225,7 @@ var/const/MAX_SAVE_SLOTS = 8
 		log_debug("Player [theckey] FAILED to load save 5 times and has been randomized.")
 		log_admin("Player [theckey] FAILED to load save 5 times and has been randomized.")
 		if(theclient)
-			alert(theclient, "For some reason you've failed to load my save slot 5 times now, so you've been generated a random character. Don't worry, it didn't overwrite my old one.","Randomized Character", "OK")
+			alert(theclient, "For some reason you've failed to load your save slot 5 times now, so you've been generated a random character. Don't worry, it didn't overwrite your old one.","Randomized Character", "OK")
 	saveloaded = 1
 
 /datum/preferences/proc/setup_character_options(var/dat, var/user)
@@ -581,7 +581,7 @@ var/const/MAX_SAVE_SLOTS = 8
 			<a href=\"byond://?src=\ref[user];preference=reload\">Reload slot</a>
 			</center><hr>"}
 	else
-		dat += "Please create an account to save my preferences."
+		dat += "Please create an account to save your preferences."
 
 	dat += "<center><a href='?_src_=prefs;preference=tab;tab=0' [current_tab == CHARACTER_SETUP ? "class='linkOn'" : ""]>Character Settings</a> | "
 	dat += "<a href='?_src_=prefs;preference=tab;tab=1' [current_tab == UI_SETUP ? "class='linkOn'" : ""]>UI Settings</a> | "
@@ -589,7 +589,7 @@ var/const/MAX_SAVE_SLOTS = 8
 	dat += "<a href='?_src_=prefs;preference=tab;tab=3' [current_tab == SPECIAL_ROLES_SETUP ? "class='linkOn'" : ""]>Special Roles</a></center><br>"
 
 	if(appearance_isbanned(user))
-		dat += "<b>I am banned from using custom names and appearances. You can continue to adjust my characters, but you will be randomised once you join the game.</b><br>"
+		dat += "<b>You are banned from using custom names and appearances. You can continue to adjust your characters, but you will be randomised once you join the game.</b><br>"
 
 	switch(current_tab)
 		if(CHARACTER_SETUP)
@@ -705,7 +705,7 @@ var/const/MAX_SAVE_SLOTS = 8
 		return 1
 
 	if(job.species_blacklist.Find(src.species)) //Check if our species is in the blacklist
-		to_chat(user, "<span class='notice'>My species ("+src.species+") can't have this job!</span>")
+		to_chat(user, "<span class='notice'>Your species ("+src.species+") can't have this job!</span>")
 		return
 
 	if(job.species_whitelist.len) //Whitelist isn't empty - check if our species is in the whitelist
@@ -990,7 +990,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 		else
 			user << browse(null, "window=records")
 		if(href_list["task"] == "med_record")
-			var/medmsg = input(usr,"Set my medical notes here.","Medical Records",html_decode(med_record)) as message
+			var/medmsg = input(usr,"Set your medical notes here.","Medical Records",html_decode(med_record)) as message
 
 			if(medmsg != null)
 				medmsg = copytext(medmsg, 1, MAX_PAPER_MESSAGE_LEN)
@@ -1000,7 +1000,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 				SetRecords(user)
 
 		if(href_list["task"] == "sec_record")
-			var/secmsg = input(usr,"Set my security notes here.","Security Records",html_decode(sec_record)) as message
+			var/secmsg = input(usr,"Set your security notes here.","Security Records",html_decode(sec_record)) as message
 
 			if(secmsg != null)
 				secmsg = copytext(secmsg, 1, MAX_PAPER_MESSAGE_LEN)
@@ -1009,7 +1009,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 				sec_record = secmsg
 				SetRecords(user)
 		if(href_list["task"] == "gen_record")
-			var/genmsg = input(usr,"Set my employment notes here.","Employment Records",html_decode(gen_record)) as message
+			var/genmsg = input(usr,"Set your employment notes here.","Employment Records",html_decode(gen_record)) as message
 
 			if(genmsg != null)
 				genmsg = copytext(genmsg, 1, MAX_PAPER_MESSAGE_LEN)
@@ -1058,7 +1058,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 		if("input")
 			switch(href_list["preference"])
 				if("name")
-					var/new_name = reject_bad_name( input(user, "Choose my character's name:", "Character Preference")  as text|null )
+					var/new_name = reject_bad_name( input(user, "Choose your character's name:", "Character Preference")  as text|null )
 					if(new_name)
 						real_name = new_name
 					else
@@ -1072,7 +1072,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 				if("previous_facehair_style")
 					f_style = previous_list_item(f_style, valid_sprite_accessories(gender, species, facial_hair_styles_list))
 				if("age")
-					var/new_age = input(user, "Choose my character's age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference") as num|null
+					var/new_age = input(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference") as num|null
 					if(new_age)
 						age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
 				if("species")
@@ -1087,7 +1087,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 								new_species += S
 								whitelisted = 1
 						if(!whitelisted)
-							alert(user, "I cannot change my species as you need to be whitelisted. If you wish to be whitelisted contact an admin in-game, on the forums, or on IRC.")
+							alert(user, "I cannot change your species as you need to be whitelisted. If you wish to be whitelisted contact an admin in-game, on the forums, or on IRC.")
 					else //Not using the whitelist? Aliens for everyone!
 						new_species = whitelisted_species
 
@@ -1125,7 +1125,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 								F &= ~job.flag //Disable that job in our preferences
 								SetDepartmentFlags(job, i, F)
 
-							to_chat(usr, "<span class='info'>My new species ([species]) is blacklisted from [job.title].</span>")
+							to_chat(usr, "<span class='info'>Your new species ([species]) is blacklisted from [job.title].</span>")
 
 						if(job.species_whitelist.len) //If the job has a species whitelist
 							if(!job.species_whitelist.Find(species)) //And it doesn't include our new species
@@ -1133,7 +1133,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 									var/F = GetJobDepartment(job, i)
 
 									if(F & job.flag)
-										to_chat(usr, "<span class='info'>My new species ([species]) can't be [job.title]. Your preferences have been adjusted.</span>")
+										to_chat(usr, "<span class='info'>Your new species ([species]) can't be [job.title]. Your preferences have been adjusted.</span>")
 
 									F &= ~job.flag //Disable that job in our preferences
 									SetDepartmentFlags(job, i, F)
@@ -1167,27 +1167,27 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 
 				if("hair")
 					if(species == "Human" || species == "Unathi")
-						var/new_hair = input(user, "Choose my character's hair colour:", "Character Preference") as color|null
+						var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference") as color|null
 						if(new_hair)
 							r_hair = hex2num(copytext(new_hair, 2, 4))
 							g_hair = hex2num(copytext(new_hair, 4, 6))
 							b_hair = hex2num(copytext(new_hair, 6, 8))
 
 				if("h_style")
-					var/new_h_style = input(user, "Choose my character's hair style:", "Character Preference")  as null|anything in valid_sprite_accessories(null, species, hair_styles_list) //gender intentionally left null so speshul snowflakes can cross-hairdress
+					var/new_h_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in valid_sprite_accessories(null, species, hair_styles_list) //gender intentionally left null so speshul snowflakes can cross-hairdress
 					if(new_h_style)
 						h_style = new_h_style
 
 				if("facial")
 					if(species == "Human" || species == "Unathi")
-						var/new_facial = input(user, "Choose my character's facial-hair colour:", "Character Preference") as color|null
+						var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference") as color|null
 						if(new_facial)
 							r_facial = hex2num(copytext(new_facial, 2, 4))
 							g_facial = hex2num(copytext(new_facial, 4, 6))
 							b_facial = hex2num(copytext(new_facial, 6, 8))
 
 				if("f_style")
-					var/new_f_style = input(user, "Choose my character's facial-hair style:", "Character Preference")  as null|anything in valid_sprite_accessories(gender, species, facial_hair_styles_list)
+					var/new_f_style = input(user, "Choose your character's facial-hair style:", "Character Preference")  as null|anything in valid_sprite_accessories(gender, species, facial_hair_styles_list)
 					if(new_f_style)
 						f_style = new_f_style
 
@@ -1198,13 +1198,13 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 					else
 						underwear_options = underwear_f
 
-					var/new_underwear = input(user, "Choose my character's underwear:", "Character Preference")  as null|anything in underwear_options
+					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in underwear_options
 					if(new_underwear)
 						underwear = underwear_options.Find(new_underwear)
 					ShowChoices(user)
 
 				if("eyes")
-					var/new_eyes = input(user, "Choose my character's eye colour:", "Character Preference") as color|null
+					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference") as color|null
 					if(new_eyes)
 						r_eyes = hex2num(copytext(new_eyes, 2, 4))
 						g_eyes = hex2num(copytext(new_eyes, 4, 6))
@@ -1212,11 +1212,11 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 
 				if("s_tone")
 					if(species == "Human")
-						var/new_s_tone = input(user, "Choose my character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference")  as num|null
+						var/new_s_tone = input(user, "Choose your character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference")  as num|null
 						if(new_s_tone)
 							s_tone = 35 - max(min(round(new_s_tone),220),1)
 					else if(species == "Vox")//Can't reference species flags here, sorry.
-						var/skin_c = input(user, "Choose my Vox's skin color:\n(1 = Green, 2 = Brown, 3 = Gray, 4 = Light Green, 5 = Azure, 6 = Emerald)", "Character Preference") as num|null
+						var/skin_c = input(user, "Choose your Vox's skin color:\n(1 = Green, 2 = Brown, 3 = Gray, 4 = Light Green, 5 = Azure, 6 = Emerald)", "Character Preference") as num|null
 						if(skin_c)
 							s_tone = max(min(round(skin_c),6),1)
 							switch(s_tone)
@@ -1237,17 +1237,17 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 						return
 
 				if("ooccolor")
-					var/new_ooccolor = input(user, "Choose my OOC colour:", "Game Preference") as color|null
+					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference") as color|null
 					if(new_ooccolor)
 						ooccolor = new_ooccolor
 
 				if("bag")
-					var/new_backbag = input(user, "Choose my character's style of bag:", "Character Preference")  as null|anything in backbaglist
+					var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in backbaglist
 					if(new_backbag)
 						backbag = backbaglist.Find(new_backbag)
 
 				if("nt_relation")
-					var/new_relation = input(user, "Choose my relation to NT. Note that this represents what others can find out about my character by researching my background, not what my character actually thinks.", "Character Preference")  as null|anything in list("Loyal", "Supportive", "Neutral", "Skeptical", "Opposed")
+					var/new_relation = input(user, "Choose your relation to NT. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.", "Character Preference")  as null|anything in list("Loyal", "Supportive", "Neutral", "Skeptical", "Opposed")
 					if(new_relation)
 						nanotrasen_relation = new_relation
 
@@ -1396,7 +1396,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 							UI_style = "Midnight"
 
 				if("UIcolor")
-					var/UI_style_color_new = input(user, "Choose my UI colour, dark colours are not recommended!") as color|null
+					var/UI_style_color_new = input(user, "Choose your UI colour, dark colours are not recommended!") as color|null
 					if(!UI_style_color_new)
 						return
 					UI_style_color = UI_style_color_new
@@ -1731,7 +1731,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 			</tr>"}
 
 	if(jobban_isbanned(user, "Syndicate"))
-		dat += "<th colspan='6' text-align = 'center' height = '40px'><h1>I am banned from antagonist roles</h1></th>"
+		dat += "<th colspan='6' text-align = 'center' height = '40px'><h1>You are banned from antagonist roles</h1></th>"
 	else
 		for(var/role_id in antag_roles)
 			dat += "<tr>"
@@ -1828,7 +1828,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 	set name = "Modify Preferences"
 	set category = "OOC"
 	if(!prefs.saveloaded)
-		to_chat(src, "<span class='warning'>My character preferences have not yet loaded.</span>")
+		to_chat(src, "<span class='warning'>Your character preferences have not yet loaded.</span>")
 		return
 
 	prefs.current_tab = GENERAL_SETUP

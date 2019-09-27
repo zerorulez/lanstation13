@@ -151,13 +151,13 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 
 /datum/game_mode/proc/greet_changeling(var/datum/mind/changeling, var/you_are=1)
 	if (you_are)
-		to_chat(changeling.current, "<span class='danger'>I am a changeling!</span>")
-	to_chat(changeling.current, "<span class='danger'>Use say \":g message\" to communicate with my fellow changelings. Remember: you get all of their absorbed DNA if you absorb them.</span>")
-	to_chat(changeling.current, "<B>I must complete the following tasks:</B>")
+		to_chat(changeling.current, "<span class='danger'>You are a changeling!</span>")
+	to_chat(changeling.current, "<span class='danger'>Use say \":g message\" to communicate with your fellow changelings. Remember: you get all of their absorbed DNA if you absorb them.</span>")
+	to_chat(changeling.current, "<B>You must complete the following tasks:</B>")
 
 	if (changeling.current.mind)
 		if (changeling.current.mind.assigned_role == "Clown")
-			to_chat(changeling.current, "I have evolved beyond my clownish nature, allowing you to wield weapons without harming yourself.")
+			to_chat(changeling.current, "I have evolved beyond your clownish nature, allowing you to wield weapons without harming yourself.")
 			changeling.current.mutations.Remove(M_CLUMSY)
 
 	var/obj_count = 1
@@ -309,7 +309,7 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 		ticker.mode.grant_changeling_powers(current)
 		special_role = "Changeling"
 		if(show_message)
-			to_chat(current, "<B><font color='red'>My powers are awoken. A flash of memory returns to us...we are a changeling!</font></B>")
+			to_chat(current, "<B><font color='red'>Your powers are awoken. A flash of memory returns to us...we are a changeling!</font></B>")
 			var/wikiroute = role_wiki[ROLE_CHANGELING]
 			to_chat(current, "<span class='info'><a HREF='?src=\ref[current];getwiki=[wikiroute]'>(Wiki Guide)</a></span>")
 		if(generate_objectives)
@@ -327,6 +327,6 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 			qdel(changeling)
 			changeling = null
 		if(show_message)
-			to_chat(current, "<FONT color='red' size = 3><B>I grow weak and lose my powers! You are no longer a changeling and are stuck in my current form!</B></FONT>")
+			to_chat(current, "<FONT color='red' size = 3><B>You grow weak and lose your powers! You are no longer a changeling and are stuck in your current form!</B></FONT>")
 		return 1
 	return 0

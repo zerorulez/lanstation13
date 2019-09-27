@@ -38,9 +38,9 @@
 
 	clone = !clone
 	if(clone)
-		to_chat(user, "<span class='notice'>I enable cloning on \the [src].</span>")
+		to_chat(user, "<span class='notice'>You enable cloning on \the [src].</span>")
 	else
-		to_chat(user, "<span class='notice'>I disable cloning on \the [src].</span>")
+		to_chat(user, "<span class='notice'>You disable cloning on \the [src].</span>")
 
 /obj/item/device/multitool/examine(var/mob/user)
 	. = ..()

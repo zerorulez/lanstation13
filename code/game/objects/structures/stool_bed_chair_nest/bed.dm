@@ -1,4 +1,4 @@
-/* Beds... get my mind out of the gutter, they're for sleeping!
+/* Beds... get your mind out of the gutter, they're for sleeping!
  * Contains:
  * 		Beds
  *		Roller beds
@@ -56,7 +56,7 @@
 		return
 
 	if(user.size <= SIZE_TINY)
-		to_chat(user, "<span class='warning'>I am too small to do that.</span>")
+		to_chat(user, "<span class='warning'>You are too small to do that.</span>")
 		return
 
 	var/mob/M = get_locked(lock_type)[1]
@@ -87,7 +87,7 @@
 		return
 
 	if(user.size <= SIZE_TINY) //Fuck off mice
-		to_chat(user, "<span class='warning'>I am too small to do that.</span>")
+		to_chat(user, "<span class='warning'>You are too small to do that.</span>")
 		return
 
 	if(isanimal(M))

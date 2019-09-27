@@ -254,7 +254,7 @@
 /obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
 	if(iswelder(W) && src.destroyed)
 		if(weld(W, user))
-			to_chat(user, "<span class='notice'>I salvage what's left of \the [src].</span>")
+			to_chat(user, "<span class='notice'>You salvage what's left of \the [src].</span>")
 			var/obj/item/stack/sheet/metal/M = getFromPool(/obj/item/stack/sheet/metal, get_turf(src))//new /obj/item/stack/sheet/metal(src.loc)
 			M.amount = 3
 			qdel (src)
@@ -277,7 +277,7 @@
 			transfer_moles = pressure_delta*thejetpack.volume/(air_contents.temperature * R_IDEAL_GAS_EQUATION)//Actually transfer the gas
 			var/datum/gas_mixture/removed = air_contents.remove(transfer_moles)
 			thejetpack.merge(removed)
-			to_chat(user, "I pulse-pressurize my jetpack from the tank.")
+			to_chat(user, "I pulse-pressurize your jetpack from the tank.")
 		return
 
 	..()
@@ -300,7 +300,7 @@
 	src.add_hiddenprint(user)
 	health -= rand(15, 30)
 	user.visible_message("<span class='danger'>\The [user] slashes away at \the [src]!</span>", \
-						 "<span class='danger'>I slash away at \the [src]!</span>")
+						 "<span class='danger'>You slash away at \the [src]!</span>")
 	user.delayNextAttack(10) //Hold on there amigo
 	investigation_log(I_ATMOS, "<span style='danger'>was slashed at by alien [key_name(user)]</span>")
 	playsound(get_turf(src), 'sound/weapons/slice.ogg', 25, 1, -1)
@@ -470,7 +470,7 @@
 		return 0
 
 	// Do after stuff here
-	to_chat(user, "<span class='notice'>I start to slice away at \the [src]...</span>")
+	to_chat(user, "<span class='notice'>You start to slice away at \the [src]...</span>")
 	playsound(get_turf(src), 'sound/items/Welder.ogg', 50, 1)
 	WT.eyecheck(user)
 	busy = 1

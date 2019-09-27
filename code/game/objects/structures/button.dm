@@ -18,7 +18,7 @@
 /obj/structure/button/New()
 	..()
 
-	//So that you can label my buttons in the map editor
+	//So that you can label your buttons in the map editor
 	if(reset_name)
 		name = initial(name)
 

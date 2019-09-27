@@ -2,7 +2,7 @@
 /obj/item/verbs/borer/attached_head/verb/borer_speak(var/message as text)
 	set category = "Alien"
 	set name = "Borer Speak"
-	set desc = "Communicate with my bretheren"
+	set desc = "Communicate with your bretheren"
 
 	if(!message)
 		return
@@ -19,7 +19,7 @@
 /obj/item/verbs/borer/attached_head/verb/bond_brain()
 	set category = "Alien"
 	set name = "Assume Control"
-	set desc = "Fully connect to the brain of my host."
+	set desc = "Fully connect to the brain of your host."
 
 	var/mob/living/simple_animal/borer/B=loc
 	if(!istype(B))
@@ -50,7 +50,7 @@
 /obj/item/verbs/borer/attached_head/verb/evolve()
 	set category = "Alien"
 	set name = "Evolve"
-	set desc = "Upgrade yourself or my host."
+	set desc = "Upgrade yourself or your host."
 
 	var/mob/living/simple_animal/borer/B=loc
 	if(!istype(B))
@@ -60,7 +60,7 @@
 /obj/item/verbs/borer/attached_head/verb/secrete_chemicals()
 	set category = "Alien"
 	set name = "Secrete Chemicals"
-	set desc = "Push some chemicals into my host's bloodstream."
+	set desc = "Push some chemicals into your host's bloodstream."
 
 	var/mob/living/simple_animal/borer/B=loc
 	if(!istype(B))
@@ -70,7 +70,7 @@
 /obj/item/verbs/borer/attached_head/verb/abandon_host()
 	set category = "Alien"
 	set name = "Abandon Host"
-	set desc = "Slither out of my host."
+	set desc = "Slither out of your host."
 
 	var/mob/living/simple_animal/borer/B=loc
 	if(!istype(B))
@@ -80,7 +80,7 @@
 /obj/item/verbs/borer/attached_head/verb/analyze_host()
 	set category = "Alien"
 	set name = "Analyze Health"
-	set desc = "Check my host for damage."
+	set desc = "Check your host for damage."
 
 	var/mob/living/simple_animal/borer/B=loc
 	if(!istype(B))
@@ -91,7 +91,7 @@
 /obj/item/verbs/borer/attached_head/night_vision/verb/night_vision()
 	set category = "Alien"
 	set name = "Night Vision"
-	set desc = "Expend chemicals constantly in order to convert visual data from my host's eyes into the infrared spectrum."
+	set desc = "Expend chemicals constantly in order to convert visual data from your host's eyes into the infrared spectrum."
 
 	var/mob/living/simple_animal/borer/B=loc
 	if(!istype(B))
@@ -101,23 +101,23 @@
 /mob/living/simple_animal/borer/proc/night_vision()
 	set category = "Alien"
 	set name = "Night Vision"
-	set desc = "Expend chemicals constantly in order to convert visual data from my host's eyes into the infrared spectrum."
+	set desc = "Expend chemicals constantly in order to convert visual data from your host's eyes into the infrared spectrum."
 
 	if(!check_can_do(0))
 		return
 
 	if(channeling && !channeling_night_vision)
-		to_chat(src, "<span class='warning'>I can't do this while my focus is directed elsewhere.</span>")
+		to_chat(src, "<span class='warning'>You can't do this while your focus is directed elsewhere.</span>")
 		return
 	else if(channeling)
-		to_chat(src, "I cease my efforts to convert the visual data from my host's eyes.")
+		to_chat(src, "I cease your efforts to convert the visual data from your host's eyes.")
 		channeling = 0
 		channeling_night_vision = 0
 	else if(chemicals < 5)
-		to_chat(src, "<span class='warning'>I don't have enough chemicals stored to do this.</span>")
+		to_chat(src, "<span class='warning'>You don't have enough chemicals stored to do this.</span>")
 		return
 	else
-		to_chat(src, "I begin to focus my efforts on converting the visual data from my host's eyes into the infrared spectrum.")
+		to_chat(src, "I begin to focus your efforts on converting the visual data from your host's eyes into the infrared spectrum.")
 		channeling = 1
 		channeling_night_vision = 1
 		see_in_dark = 8
@@ -139,7 +139,7 @@
 			channeling_night_vision = 0
 			var/showmessage = 0
 			if(chemicals < 5)
-				to_chat(src, "<span class='warning'>I lose consciousness as the last of my chemicals are expended.</span>")
+				to_chat(src, "<span class='warning'>You lose consciousness as the last of your chemicals are expended.</span>")
 			else
 				showmessage = 1
 			passout(time_spent_channeling, showmessage)

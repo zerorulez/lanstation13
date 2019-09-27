@@ -129,11 +129,11 @@ var/list/ai_list = list()
 			if (B.brainmob.mind)
 				B.brainmob.mind.transfer_to(src)
 
-			to_chat(src, "<B>I am playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
+			to_chat(src, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
 			to_chat(src, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")
 			to_chat(src, "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>")
 			to_chat(src, "To use something, simply click on it.")
-			to_chat(src, "Use say :b to speak to my cyborgs through binary.")
+			to_chat(src, "Use say :b to speak to your cyborgs through binary.")
 			if (!(ticker && ticker.mode && (mind in ticker.mode.malf_ai)))
 				show_laws()
 				to_chat(src, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
@@ -210,7 +210,7 @@ var/list/ai_list = list()
 				icon = 'icons/mob/custom-synthetic.dmi'
 	*/
 		//if(icon_state == initial(icon_state))
-	/* Nuked my hidden shit.*/
+	/* Nuked your hidden shit.*/
 	var/icontype = input("Select an icon!", "AI", null, null) as null|anything in list("Monochrome", "Blue", "Inverted", "Text", "Smiley", "Angry", "Dorf", "Matrix", "Bliss", "Firewall", "Green", "Red", "Broken Output", "Triumvirate", "Triumvirate Static", "Searif", "Ravensdale", "Serithi", "Static", "Wasp", "Robert House", "Red October", "Fabulous", "Girl", "Girl Malf", "Boy", "Boy Malf", "Four-Leaf", "Yes Man", "Hourglass", "Patriot", "Pirate", "Royal", "Heartline", "Hades", "Helios", "Syndicat", "Alien", "Too Deep", "Goon", "Database", "Glitchman", "Nanotrasen", "Angel", "Gentoo", "Murica", "President")
 	switch(icontype)
 		if("Clown")
@@ -309,7 +309,7 @@ var/list/ai_list = list()
 			icon_state = "ai-pres"
 		else icon_state = "ai"
 	//else
-//			to_chat(usr, "I can only change my display once!")
+//			to_chat(usr, "I can only change your display once!")
 			//return
 
 
@@ -512,7 +512,7 @@ var/list/ai_list = list()
 //		to_chat(src, text ("Switching Law [L]'s report status to []", lawcheck[L+1]))
 		checklaws()
 
-	if (href_list["laws"]) // With how my law selection code works, I changed statelaws from a verb to a proc, and call it through my law selection panel. --NeoFite
+	if (href_list["laws"]) // With how your law selection code works, I changed statelaws from a verb to a proc, and call it through your law selection panel. --NeoFite
 		statelaws()
 
 	if (href_list["track"])
@@ -662,7 +662,7 @@ var/list/ai_list = list()
 	var/cameralist[0]
 
 	if(usr.isDead())
-		to_chat(usr, "I can't change my camera network because you are dead!")
+		to_chat(usr, "I can't change your camera network because you are dead!")
 		return
 
 	var/mob/living/silicon/ai/U = usr
@@ -699,7 +699,7 @@ var/list/ai_list = list()
 	set name = "AI Status"
 
 	if(usr.isDead())
-		to_chat(usr, "I cannot change my emotional status because you are dead!")
+		to_chat(usr, "I cannot change your emotional status because you are dead!")
 		return
 
 	var/emote = input("Please, select a status!", "AI Status", null, null) in ai_emotions //ai_emotions can be found in code/game/machinery/status_display.dm @ 213 (above the AI status display)
@@ -797,7 +797,7 @@ var/list/ai_list = list()
 	if(istype(user.loc, /obj/machinery/power/apc))
 		return 0
 	else
-		to_chat(user, "<span class='notice'>I am already in my Main Core.</span>")
+		to_chat(user, "<span class='notice'>You are already in your Main Core.</span>")
 		return 1
 
 /spell/aoe_turf/corereturn/choose_targets(mob/user = usr)
@@ -833,7 +833,7 @@ var/list/ai_list = list()
 
 /mob/living/silicon/ai/verb/toggle_station_map()
 	set name = "Toggle Station Holomap"
-	set desc = "Toggle station holomap on my screen"
+	set desc = "Toggle station holomap on your screen"
 	set category = "AI Commands"
 	if(isUnconscious())
 		return

@@ -223,7 +223,7 @@ var/global/list/battery_online =	list(
 		return
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		if(!istype(usr, /mob/living/silicon/ai))
-			to_chat(usr, "<span class='warning'>I don't have the dexterity to do this!</span>")
+			to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
 			return
 
 //to_chat(world, "[href] ; [href_list[href]]")
@@ -269,7 +269,7 @@ var/global/list/battery_online =	list(
 		if(prob(1)) //explosion
 			message_admins("<span class='warning'>SMES explosion in [get_area(src)]</span>")
 			src.visible_message("<span class='warning'>\The [src] is making strange noises!</span>",
-								"<span class='warning'>I hear sizzling electronics.</span>")
+								"<span class='warning'>You hear sizzling electronics.</span>")
 
 			sleep(10*pick(4,5,6,7,10,14))
 

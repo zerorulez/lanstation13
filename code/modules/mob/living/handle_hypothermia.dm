@@ -1,5 +1,5 @@
 var/global/list/coldwarning_light = list("I feel cold.","My nose feels numb.","It's pretty cold!","I should probably wrap up some more.","I feel pretty cold.","I feel like taking a nap.")
-var/global/list/coldwarning_hard = list("Holy shit, it's freezing cold!","I should probably get warmed up quickly!","I can't feel my hands!","I can't feel anything!","You are absolutely exhausted!")
+var/global/list/coldwarning_hard = list("Holy shit, it's freezing cold!","I should probably get warmed up quickly!","I can't feel your hands!","I can't feel anything!","You are absolutely exhausted!")
 
 /mob/living/proc/undergoing_hypothermia()
 	if((status_flags & GODMODE) || (flags & INVULNERABLE) || istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
@@ -82,10 +82,10 @@ var/global/list/coldwarning_hard = list("Holy shit, it's freezing cold!","I shou
 					to_chat(src,"<span class='danger'>[pick(coldwarning_hard)]</span>")
 			burn_calories(0.2)
 			if(prob(2) && get_active_hand())
-				to_chat(src, "<span class='warning'>I lose my grip of \the [get_active_hand()], and it slides out of my hand!</span>")
+				to_chat(src, "<span class='warning'>You lose your grip of \the [get_active_hand()], and it slides out of your hand!</span>")
 				drop_item()
 			if(prob(1))
-				to_chat(src, "<span class='warning'>My legs buckle underneath you, and you collapse!</span>")
+				to_chat(src, "<span class='warning'>Your legs buckle underneath you, and you collapse!</span>")
 				emote("collapse")
 		if(SEVERE_HYPOTHERMIA) // unconcious, not shivering - we're going to burn up all you've eaten now.
 			// at this point, the pulse will go to rougly 30bpm, see handle_pulse for details.

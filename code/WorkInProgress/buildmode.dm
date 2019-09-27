@@ -249,7 +249,7 @@ obj/effect/bmode/buildholder/New()
 					if(fillturfs.len > 150)
 						if(alert("Are you completely sure about filling [fillturfs.len] tiles?","Panic!!!!","Yes","No") != "Yes")
 							return
-					var/areaAction = alert("FILL tiles or DELETE them? areaAction will destroy EVERYTHING IN THE SELECTED AREA", "Create or destroy, my chance to be a GOD","FILL","DELETE") == "DELETE"
+					var/areaAction = alert("FILL tiles or DELETE them? areaAction will destroy EVERYTHING IN THE SELECTED AREA", "Create or destroy, your chance to be a GOD","FILL","DELETE") == "DELETE"
 					if(areaAction)
 						areaAction = (alert("Selective(TYPE) Delete or MASS Delete?", "Scorched Earth or selective destruction?", "Selective", "MASS") == "Selective" ? 2 : 1)
 					else
@@ -459,7 +459,7 @@ obj/effect/bmode/buildholder/New()
 					var/turf/start = holder.fill_left
 					var/turf/end = holder.fill_right
 					if(start.z != end.z)
-						to_chat(usr, "<span class='warning'>I can't do a fill across zlevels you silly person.</span>")
+						to_chat(usr, "<span class='warning'>You can't do a fill across zlevels you silly person.</span>")
 						holder.fill_left = null
 						holder.fill_right = null
 						return
@@ -472,7 +472,7 @@ obj/effect/bmode/buildholder/New()
 									holder.fill_right = null
 									to_chat(usr, "<span class='notice'>Cleared filling corners.</span>")
 									return
-							var/areaAction = alert("FILL tiles or DELETE them? areaAction will destroy EVERYTHING IN THE SELECTED AREA", "Create or destroy, my chance to be a GOD","FILL","DELETE") == "DELETE"
+							var/areaAction = alert("FILL tiles or DELETE them? areaAction will destroy EVERYTHING IN THE SELECTED AREA", "Create or destroy, your chance to be a GOD","FILL","DELETE") == "DELETE"
 							if(areaAction)
 								areaAction = (alert("Selective(TYPE) Delete or MASS Delete?", "Scorched Earth or selective destruction?", "Selective", "MASS") == "Selective" ? 2 : 1)
 							else
@@ -615,14 +615,14 @@ obj/effect/bmode/buildholder/New()
 					del(object)
 			else if(pa.Find("middle"))
 				if(istype(object,/mob) && !check_rights(R_DEBUG,0))
-					to_chat(usr, "<span class='notice'>I don't have sufficient rights to clone [object.type]</span>")
+					to_chat(usr, "<span class='notice'>You don't have sufficient rights to clone [object.type]</span>")
 				else
 					if(ismob(object))
 						holder.buildmode.copycat = object
-						to_chat(usr, "<span class='info'>I will now build a lookalike of [object] when clicking.</span>")
+						to_chat(usr, "<span class='info'>You will now build a lookalike of [object] when clicking.</span>")
 					else
 						holder.buildmode.objholder = object.type
-						to_chat(usr, "<span class='info'>I will now build [object.type] when clicking.</span>")
+						to_chat(usr, "<span class='info'>You will now build [object.type] when clicking.</span>")
 
 		if(3)
 			if(pa.Find("left")) //I cant believe this shit actually compiles.

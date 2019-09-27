@@ -22,17 +22,17 @@
 		T.dir = src.dir
 		T.update_icon()
 		new /obj/item/stack/rods(get_turf(src), 2)
-		to_chat(user, "<span class='notice'>I pry out the rods, destroying the filter.</span>")
+		to_chat(user, "<span class='notice'>You pry out the rods, destroying the filter.</span>")
 		qdel(src)
 	if(W.is_open_container())
 		if(!W.reagents.total_volume)
 			if(user.drop_item(W, src))
 				cans += W
-				to_chat(user, "<span class='notice'>I add a passive container. It now contains [cans.len].</span>")
+				to_chat(user, "<span class='notice'>You add a passive container. It now contains [cans.len].</span>")
 		else
 			if(!beaker)
 				if(user.drop_item(W, src))
-					to_chat(user, "<span class='notice'>I insert an active container.</span>")
+					to_chat(user, "<span class='notice'>You insert an active container.</span>")
 					src.beaker =  W
 					if(user.type == /mob/living/silicon/robot)
 						var/mob/living/silicon/robot/R = user
@@ -65,7 +65,7 @@
 			cans -= O
 		if(beaker)
 			detach()
-		to_chat(user, "<span class='notice'>I remove everything from the centrifuge.</span>")
+		to_chat(user, "<span class='notice'>You remove everything from the centrifuge.</span>")
 	else
 		to_chat(user, "<span class='warning'>There is nothing to eject!</span>")
 

@@ -1,7 +1,7 @@
 
 
 /mob/proc/rightandwrong(var/summon_type) //0 = Summon Guns, 1 = Summon Magic
-	to_chat(usr, "<B>I summoned [summon_type ? "magic" : "guns"]!</B>")
+	to_chat(usr, "<B>You summoned [summon_type ? "magic" : "guns"]!</B>")
 	message_admins("[key_name_admin(usr, 1)] summoned [summon_type ? "magic" : "guns"]!")
 	log_game("[key_name(usr)] summoned [summon_type ? "magic" : "guns"]!")
 	for(var/mob/living/carbon/human/H in player_list)
@@ -16,7 +16,7 @@
 			survive.owner = H.mind
 			H.mind.objectives += survive
 			H.attack_log += "\[[time_stamp()]\] <font color='red'>Was made into a survivor, and trusts no one!</font>"
-			to_chat(H, "<B>I am the survivor! Your own safety matters above all else, trust no one and kill anyone who gets in my way. However, armed as you are, now would be the perfect time to settle that score or grab that pair of yellow gloves you've been eyeing...</B>")
+			to_chat(H, "<B>You are the survivor! Your own safety matters above all else, trust no one and kill anyone who gets in your way. However, armed as you are, now would be the perfect time to settle that score or grab that pair of yellow gloves you've been eyeing...</B>")
 			var/obj_count = 1
 			for(var/datum/objective/OBJ in H.mind.objectives)
 				to_chat(H, "<B>Objective #[obj_count]</B>: [OBJ.explanation_text]")

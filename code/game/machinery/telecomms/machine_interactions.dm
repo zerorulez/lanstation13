@@ -201,7 +201,7 @@
 	var/dat = "<br>Processing Mode: <A href='?src=\ref[src];process=1'>[process_mode ? "UNCOMPRESS" : "COMPRESS"]</a>"
 	return dat
 */
-// The topic for Additional Options. Use this for checking href links for my specific option.
+// The topic for Additional Options. Use this for checking href links for your specific option.
 // Example of how to use below.
 /obj/machinery/telecomms/proc/Options_Topic(href, href_list)
 	return

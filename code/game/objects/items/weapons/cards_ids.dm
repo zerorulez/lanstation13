@@ -217,7 +217,7 @@
 
 /obj/item/weapon/card/id/attack_self(mob/user as mob)
 	user.visible_message("[user] shows you: \icon[src] [src.name]: assignment: [src.assignment]",\
-		"I flash my ID card: \icon[src] [src.name]: assignment: [src.assignment]")
+		"I flash your ID card: \icon[src] [src.name]: assignment: [src.assignment]")
 	src.add_fingerprint(user)
 	return
 
@@ -343,7 +343,7 @@
 			return
 		src.assignment = u
 		src.name = "[src.registered_name]'s ID Card ([src.assignment])"
-		to_chat(user, "<span class='notice'>I successfully forge the ID card.</span>")
+		to_chat(user, "<span class='notice'>You successfully forge the ID card.</span>")
 		registered_user = user
 	else if(!registered_user || registered_user == user)
 
@@ -577,7 +577,7 @@
 	name = "Research Director ID"
 	registered_name = "RD"
 	icon_state = "RD"
-	desc = "If you put my ear to the card, you can faintly hear screaming, glomping, and mechs. What the fuck?"
+	desc = "If you put your ear to the card, you can faintly hear screaming, glomping, and mechs. What the fuck?"
 	access = list(access_rd, access_heads, access_rnd, access_genetics, access_morgue, access_tox_storage, access_teleporter, access_sec_doors, access_science, access_robotics, access_xenobiology, access_ai_upload, access_RC_announce, access_keycard_auth, access_tcomsat, access_gateway)
 
 /obj/item/weapon/card/id/ce

@@ -55,33 +55,29 @@
 /obj/item/device/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
 	add_fingerprint(user)
 	if(on && user.zone_sel.selecting == "eyes")
-
-		if((clumsy_check(user) || user.getBrainLoss() >= 60) && prob(50))	//too dumb to use flashlight properly
-			return ..()	//just hit them in the head
-
 		if (!user.dexterity_check())
-			to_chat(user, "<span class='notice'>I don't have the dexterity to do this!</span>")
+			to_chat(user, "<span class='notice'>You don't have the dexterity to do this!</span>")
 			return
 
 		var/mob/living/carbon/human/H = M	//mob has protective eyewear
 		if(istype(M, /mob/living/carbon/human))
 			var/obj/item/eye_protection = H.get_body_part_coverage(EYES)
 			if(eye_protection)
-				to_chat(user, "<span class='notice'>I am going to need to remove their [eye_protection] first.</span>")
+				to_chat(user, "<span class='notice'>You are going to need to remove their [eye_protection] first.</span>")
 				return
 
 		if(M == user)	//they're using it on themselves
 			if(!M.blinded)
 				M.flash_eyes(visual = 1)
 				M.visible_message("<span class='notice'>[M] directs [src] to \his eyes.</span>", \
-									 "<span class='notice'>I wave the light in front of my eyes! Trippy!</span>")
+									 "<span class='notice'>You wave the light in front of your eyes! Trippy!</span>")
 			else
 				M.visible_message("<span class='notice'>[M] directs [src] to \his eyes.</span>", \
-									 "<span class='notice'>I wave the light in front of my eyes.</span>")
+									 "<span class='notice'>You wave the light in front of your eyes.</span>")
 			return
 
 		user.visible_message("<span class='notice'>[user] directs [src] to [M]'s eyes.</span>", \
-							 "<span class='notice'>I direct [src] to [M]'s eyes.</span>")
+							 "<span class='notice'>You direct [src] to [M]'s eyes.</span>")
 
 		if(istype(M, /mob/living/carbon/human) || istype(M, /mob/living/carbon/monkey))	//robots and aliens are unaffected
 			if(M.stat == DEAD || M.sdisabilities & BLIND)	//mob is dead or fully blind
@@ -203,7 +199,7 @@
 	if(on)
 		return
 	// All good, turn it on.
-	user.visible_message("<span class='notice'>[user] activates the flare.</span>", "<span class='notice'>I pull the cord on the flare, activating it!</span>")
+	user.visible_message("<span class='notice'>[user] activates the flare.</span>", "<span class='notice'>You pull the cord on the flare, activating it!</span>")
 	Light(user)
 
 /obj/item/device/flashlight/flare/proc/Light(var/mob/user as mob)
@@ -259,7 +255,7 @@
 /obj/item/device/flashlight/flare/torch/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 	if(W.is_hot())
-		user.visible_message("<span class='notice'>[user] lights [src] with [W].</span>", "<span class='notice'>I light [src] with [W].</span>")
+		user.visible_message("<span class='notice'>[user] lights [src] with [W].</span>", "<span class='notice'>You light [src] with [W].</span>")
 		Light()
 
 // SLIME LAMP

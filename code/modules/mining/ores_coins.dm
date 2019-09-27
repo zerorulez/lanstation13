@@ -46,10 +46,10 @@
 	else if(ishuman(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
 		if (H.check_body_part_coverage(EYES))
-			to_chat(H, "<span class='warning'>My eyewear protects you from \the [src]!</span>")
+			to_chat(H, "<span class='warning'>Your eyewear protects you from \the [src]!</span>")
 		else
 			H.visible_message("<span class='warning'>[H] is blinded by the [src]!</span>", \
-				"<span class='warning'>\The [src] flies into my eyes!</span>")
+				"<span class='warning'>\The [src] flies into your eyes!</span>")
 			H.eye_blurry = max(H.eye_blurry, rand(3,8))
 			H.eye_blind = max(H.eye_blind, rand(1,3))
 			H.drop_hands(get_turf(H))
@@ -413,7 +413,7 @@
 
 		overlays += image('icons/obj/items.dmi',"coin_string_overlay")
 		string_attached = 1
-		to_chat(user, "<span class='notice'>I attach a string to the coin.</span>")
+		to_chat(user, "<span class='notice'>You attach a string to the coin.</span>")
 		CC.use(1)
 	else if(istype(W,/obj/item/weapon/wirecutters) )
 		if(!string_attached)
@@ -425,6 +425,6 @@
 		CC.update_icon()
 		overlays = list()
 		string_attached = null
-		to_chat(user, "<span class='notice'>I detach the string from the coin.</span>")
+		to_chat(user, "<span class='notice'>You detach the string from the coin.</span>")
 	else
 		..()

@@ -1,5 +1,5 @@
 //This is an UNSAFE proc. Use mob_can_equip() before calling this one! Or rather use equip_to_slot_if_possible() or advanced_equip_to_slot_if_possible()
-//set redraw_mob to 0 if you don't wish the hud to be updated - if you're doing it manually in my own proc.
+//set redraw_mob to 0 if you don't wish the hud to be updated - if you're doing it manually in your own proc.
 /mob/living/carbon/monkey/equip_to_slot(obj/item/W as obj, slot, redraw_mob = 1)
 	if(!slot)
 		return
@@ -34,7 +34,7 @@
 		if(slot_in_backpack)
 			W.forceMove(src.back)
 		else
-			to_chat(usr, "<span class='warning'>I am trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</span>")
+			to_chat(usr, "<span class='warning'>You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</span>")
 			return
 
 	W.hud_layerise()

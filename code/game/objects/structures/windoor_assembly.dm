@@ -82,7 +82,7 @@ obj/structure/windoor_assembly/Destroy()
 					if(do_after(user, src, 40))
 						if(!src || !WT.isOn())
 							return
-						to_chat(user, "<span class='notice'>I dissasembled the windoor assembly!</span>")
+						to_chat(user, "<span class='notice'>You dissasembled the windoor assembly!</span>")
 						if(plasma)
 							getFromPool(/obj/item/stack/sheet/glass/plasmarglass, get_turf(src), 5)
 						else
@@ -91,7 +91,7 @@ obj/structure/windoor_assembly/Destroy()
 							getFromPool(/obj/item/stack/sheet/plasteel, get_turf(src), 2)
 						qdel(src)
 				else
-					to_chat(user, "<span class='rose'>I need more welding fuel to dissassemble the windoor assembly.</span>")
+					to_chat(user, "<span class='rose'>You need more welding fuel to dissassemble the windoor assembly.</span>")
 					return
 
 			//Wrenching an unsecure assembly anchors it in place. Step 4 complete
@@ -128,16 +128,16 @@ obj/structure/windoor_assembly/Destroy()
 			else if(istype(W, /obj/item/stack/sheet/plasteel) && !secure)
 				var/obj/item/stack/sheet/plasteel/P = W
 				if(P.amount < 2)
-					to_chat(user, "<span class='rose'>I need more plasteel to do this.</span>")
+					to_chat(user, "<span class='rose'>You need more plasteel to do this.</span>")
 					return
-				to_chat(user, "<span class='notice'>I start to reinforce the windoor with plasteel.</span>")
+				to_chat(user, "<span class='notice'>You start to reinforce the windoor with plasteel.</span>")
 
 				if(do_after(user, src,40))
 					if(!src)
 						return
 
 					P.use(2)
-					to_chat(user, "<span class='notice'>I reinforce the windoor.</span>")
+					to_chat(user, "<span class='notice'>You reinforce the windoor.</span>")
 					src.secure = "secure_"
 					if(src.anchored)
 						src.name = "Secure Anchored Windoor Assembly"
@@ -153,7 +153,7 @@ obj/structure/windoor_assembly/Destroy()
 						return
 					var/obj/item/stack/cable_coil/CC = W
 					CC.use(1)
-					to_chat(user, "<span class='notice'>I wire the windoor!</span>")
+					to_chat(user, "<span class='notice'>You wire the windoor!</span>")
 					src.state = "02"
 					if(src.secure)
 						src.name = "Secure Wired Windoor Assembly"
@@ -172,7 +172,7 @@ obj/structure/windoor_assembly/Destroy()
 				if(do_after(user, src, 40))
 					if(!src || state != "02")
 						return
-					to_chat(user, "<span class='notice'>I cut the windoor wires!</span>")
+					to_chat(user, "<span class='notice'>You cut the windoor wires!</span>")
 					new/obj/item/stack/cable_coil(get_turf(user), 1)
 					src.state = "01"
 					if(src.secure)
@@ -229,7 +229,7 @@ obj/structure/windoor_assembly/Destroy()
 						return
 					var/obj/machinery/door/window/windoor = Create()
 					density = 1 //Shouldn't matter but just incase
-					to_chat(user, "<span class='notice'>I finish the windoor!</span>")
+					to_chat(user, "<span class='notice'>You finish the windoor!</span>")
 					if(secure == "secure_")
 						secure = "secure"
 					if(src.facing == "l")

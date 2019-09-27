@@ -137,7 +137,7 @@
 			apply_image_decorations = 1
 			anomaly_factor = 0
 			if(prob(20))
-				additional_desc = "It [pick("whispers faintly","makes a quiet roaring sound","whistles softly","thrums quietly","throbs")] if you put it to my ear."
+				additional_desc = "It [pick("whispers faintly","makes a quiet roaring sound","whistles softly","thrums quietly","throbs")] if you put it to your ear."
 				anomaly_factor = 1
 		if(ARCHAEO_CUTLERY)
 			item_type = "[pick("fork","spoon","knife")]"

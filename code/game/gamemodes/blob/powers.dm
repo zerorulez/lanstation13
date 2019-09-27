@@ -2,7 +2,7 @@
 
 /mob/camera/blob/proc/can_buy(var/cost = 15)
 	if(blob_points < cost)
-		to_chat(src, "<span class='warning'>I cannot afford this.</span>")
+		to_chat(src, "<span class='warning'>You cannot afford this.</span>")
 		return 0
 	add_points(-cost)
 	return 1
@@ -12,7 +12,7 @@
 /mob/camera/blob/verb/transport_core()
 	set category = "Blob"
 	set name = "Jump to Core"
-	set desc = "Transport back to my core."
+	set desc = "Transport back to your core."
 
 	if(blob_core)
 		src.forceMove(blob_core.loc)
@@ -234,22 +234,22 @@
 /mob/camera/blob/verb/callblobs()
 	set category = "Blob"
 	set name = "Call Overminds"
-	set desc = "Prompts my fellow overminds to come at my location."
+	set desc = "Prompts your fellow overminds to come at your location."
 
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
 
-	to_chat(src,"<span class='notice'>I sent a call to the other overminds...</span>")
+	to_chat(src,"<span class='notice'>You sent a call to the other overminds...</span>")
 
 	var/they_exist = 0
 	for(var/mob/camera/blob/O in blob_overminds)
 		if(O != src)
 			they_exist++
-			to_chat(O,"<span class='notice'>[src] is calling for my attention!</span> <b><a href='?src=\ref[O];blobjump=\ref[loc]'>(JUMP)</a></b>")
+			to_chat(O,"<span class='notice'>[src] is calling for your attention!</span> <b><a href='?src=\ref[O];blobjump=\ref[loc]'>(JUMP)</a></b>")
 
 	if(they_exist)
-		to_chat(src,"<span class='notice'>...[they_exist] overmind\s heard my call!</span>")
+		to_chat(src,"<span class='notice'>...[they_exist] overmind\s heard your call!</span>")
 	else
 		to_chat(src,"<span class='notice'>...but no one heard you!</span>")
 
@@ -287,7 +287,7 @@
 /mob/camera/blob/verb/rally_spores_power()
 	set category = "Blob"
 	set name = "Rally Spores"
-	set desc = "Rally the spores to move to my location."
+	set desc = "Rally the spores to move to your location."
 
 	var/turf/T = get_turf(src)
 	rally_spores(T)
@@ -298,7 +298,7 @@
 	if(!can_buy(BLOBRALCOST))
 		return
 
-	to_chat(src, "I rally my spores.")
+	to_chat(src, "I rally your spores.")
 
 	var/list/surrounding_turfs = block(locate(T.x - 1, T.y - 1, T.z), locate(T.x + 1, T.y + 1, T.z))
 	if(!surrounding_turfs.len)
@@ -322,7 +322,7 @@
 		return
 
 
-	to_chat(world, "<span class='warning'>My vision becomes cloudy, and my mind becomes clear.</span>")
+	to_chat(world, "<span class='warning'>Your vision becomes cloudy, and your mind becomes clear.</span>")
 	spawn(5)
 	to_chat(world, "<span class='blob'>[message]</span>")
 	add_gamelogs(src, "used blob telepathy to convey \"[message]\"", tp_link = TRUE)

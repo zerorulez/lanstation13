@@ -347,7 +347,7 @@
 //ADMINBUS RIGS. SOVIET + NAZI
 /obj/item/clothing/head/helmet/space/rig/nazi
 	name = "nazi hardhelmet"
-	desc = "This is the face of das vaterland's top elite. Gas or energy are my only escapes."
+	desc = "This is the face of das vaterland's top elite. Gas or energy are your only escapes."
 	item_state = "rig0-nazi"
 	icon_state = "rig0-nazi"
 	species_fit = list(GREY_SHAPED)

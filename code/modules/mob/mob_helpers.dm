@@ -176,7 +176,7 @@ proc/hasorgans(A)
 /proc/get_zone_with_miss_chance(zone, var/mob/target, var/miss_chance_mod = 0)
 	zone = check_zone(zone)
 
-	// you can only miss if my target is standing and not restrained
+	// you can only miss if your target is standing and not restrained
 	if(!target.locked_to && !target.lying)
 		var/miss_chance = 10
 		switch(zone)

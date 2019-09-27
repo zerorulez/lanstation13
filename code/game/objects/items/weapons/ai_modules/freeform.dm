@@ -33,7 +33,7 @@ By N3X15
 	if(priority>0)
 		var/lawpos = allowed_priority_min
 		while(1)
-			lawpos = input("Please enter the priority for my new law. Can only write to law sectors [allowed_priority_min] - [allowed_priority_max].", "Law Priority (15+)", lawpos) as num
+			lawpos = input("Please enter the priority for your new law. Can only write to law sectors [allowed_priority_min] - [allowed_priority_max].", "Law Priority (15+)", lawpos) as num
 			if(allowed_priority_min > 0 && lawpos < allowed_priority_min)
 				to_chat(user, "<span class='warning'>Desired law sector is too low.</span>")
 				continue

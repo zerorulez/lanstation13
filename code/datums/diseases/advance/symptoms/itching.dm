@@ -11,7 +11,7 @@ Itching
 
 BONUS
 	Displays an annoying message!
-	Should be used for buffing my disease.
+	Should be used for buffing your disease.
 
 //////////////////////////////////////
 */
@@ -29,5 +29,5 @@ BONUS
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/M = A.affected_mob
-		to_chat(M, "<span class='notice'>My [pick("back", "arm", "leg", "elbow", "head")] itches.</span>")
+		to_chat(M, "<span class='notice'>Your [pick("back", "arm", "leg", "elbow", "head")] itches.</span>")
 	return

@@ -45,7 +45,7 @@
 		return
 
 	if(Victim)
-		to_chat(src, "<span class='notice'>I can't attack while eating.</span>")
+		to_chat(src, "<span class='notice'>You can't attack while eating.</span>")
 		return
 
 	.=..()

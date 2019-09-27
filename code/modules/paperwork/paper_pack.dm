@@ -1,4 +1,4 @@
-//like a stack, but for paper, and less useful except for my code - Comic
+//like a stack, but for paper, and less useful except for your code - Comic
 //functions pretty much the same as a regular stack, but it can't be added to (to avoid having to store paper details)
 //mainly used for the blueprinter, but planning to nanopaper and paper bin functionality
 //TODO - Sprite this and add to paper bins
@@ -76,9 +76,9 @@
 		for(var/i = 1; i <= amount; i++)
 			new papertype(usr.loc)
 		usepaper(amount)
-		to_chat(usr, "<span class='notice'>I pick the ribbon knot and drop all the papers.</span>")
+		to_chat(usr, "<span class='notice'>You pick the ribbon knot and drop all the papers.</span>")
 	else
-		to_chat(usr, "<span class='warning'>I don't think it would be wise to drop this much paper.</span>")
+		to_chat(usr, "<span class='warning'>You don't think it would be wise to drop this much paper.</span>")
 
 /obj/item/weapon/paper_pack/nano //now in flavours!
 	papertype = /obj/item/weapon/paper/nano

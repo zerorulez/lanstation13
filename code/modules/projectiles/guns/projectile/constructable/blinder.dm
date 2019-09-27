@@ -58,7 +58,7 @@
 			flash(get_turf(M), M)
 
 
-		user.visible_message("<span class='danger'>[user] overloads \the [src]'s flash bulb!</span>","<span class='danger'>I overload \the [src]'s flash bulb!</span>")
+		user.visible_message("<span class='danger'>[user] overloads \the [src]'s flash bulb!</span>","<span class='danger'>You overload \the [src]'s flash bulb!</span>")
 		to_chat(user, "<span class='warning'>\The [src]'s flash bulb shatters!</span>")
 
 		C.charge -= powercost
@@ -73,13 +73,13 @@
 
 	if(issilicon(M))
 		M.Knockdown(rand(5, 10))
-		M.visible_message("<span class='warning'>[M]'s sensors are overloaded by the flash of light!</span>","<span class='warning'>My sensors are overloaded by the flash of light!</span>")
+		M.visible_message("<span class='warning'>[M]'s sensors are overloaded by the flash of light!</span>","<span class='warning'>Your sensors are overloaded by the flash of light!</span>")
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/datum/organ/internal/eyes/E = H.internal_organs_by_name["eyes"]
 		if (E && E.damage >= E.min_bruised_damage)
-			to_chat(M, "<span class='warning'>My eyes start to burn badly!</span>")
+			to_chat(M, "<span class='warning'>Your eyes start to burn badly!</span>")
 	M.update_icons()
 
 /obj/item/device/blinder/proc/update_verbs()
@@ -139,7 +139,7 @@
 			to_chat(user, "<span class='warning'>There is already a power cell inside \the [src].</span>")
 			return
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 			return 1
 		cell = W
 		user.visible_message("[user] inserts \the [W] into \the [src].","I insert \the [W] into \the [src].")
@@ -149,7 +149,7 @@
 	if(istype(W, /obj/item/weapon/light/bulb))
 		if(bulb)
 			if(burnedout)
-				to_chat(user, "<span class='warning'>I need to remove the damaged bulb first.</span>")
+				to_chat(user, "<span class='warning'>You need to remove the damaged bulb first.</span>")
 				return
 			else
 				to_chat(user, "There is already a perfectly good bulb inside \the [src].")
@@ -172,7 +172,7 @@
 
 	if(iswirecutter(W))
 		if(cell)
-			to_chat(user, "<span class='warning'>I can't reach the wires with the power cell in the way.</span>")
+			to_chat(user, "<span class='warning'>You can't reach the wires with the power cell in the way.</span>")
 			return
 		to_chat(user, "I cut the wires out of the film chamber.")
 		playsound(user, 'sound/items/Wirecutter.ogg', 50, 1)

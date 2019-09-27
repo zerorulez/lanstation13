@@ -1,5 +1,5 @@
 /mob/living/silicon/hivebot/New(loc,mainframe)
-	to_chat(src, "<span class='notice'>My icons have been generated!</span>")
+	to_chat(src, "<span class='notice'>Your icons have been generated!</span>")
 	updateicon()
 
 	if(mainframe)
@@ -497,5 +497,5 @@ Frequency:
 	if(mainframe)
 		mainframe.return_to(src)
 	else
-		to_chat(src, "<span class='warning'>I lack a dedicated mainframe!</span>")
+		to_chat(src, "<span class='warning'>You lack a dedicated mainframe!</span>")
 		return

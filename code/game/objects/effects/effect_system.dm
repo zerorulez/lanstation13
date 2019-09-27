@@ -823,7 +823,7 @@ steam.start() -- spawns the effect
 	if (istype(AM, /mob/living/carbon))
 		var/mob/living/carbon/M = AM
 		if (M.Slip(5, 2, 1))
-			to_chat(M, "<span class='notice'>I slipped on the foam!</span>")
+			to_chat(M, "<span class='notice'>You slipped on the foam!</span>")
 
 
 /datum/effect/effect/system/foam_spread
@@ -911,10 +911,10 @@ steam.start() -- spawns the effect
 	user.delayNextAttack(10)
 	user.do_attack_animation(src, user)
 	if ((M_HULK in user.mutations) || (prob(75 - metal*25)))
-		user.visible_message("<span class='warning'>[user] smashes through \the [src].</span>","<span class='notice'>I smash through \the [src].</span>")
+		user.visible_message("<span class='warning'>[user] smashes through \the [src].</span>","<span class='notice'>You smash through \the [src].</span>")
 		qdel(src)
 	else
-		to_chat(user, "<span class='notice'>I hit \the [src] but bounce off it.</span>")
+		to_chat(user, "<span class='notice'>You hit \the [src] but bounce off it.</span>")
 	return
 
 /obj/structure/foamedmetal/kick_act()
@@ -935,10 +935,10 @@ steam.start() -- spawns the effect
 		return
 
 	if(prob(I.force*20 - metal*25))
-		user.visible_message("<span class='warning'>[user] smashes through \the [src].</span>","<span class='notice'>I smash through \the [src] with \the [I].</span>")
+		user.visible_message("<span class='warning'>[user] smashes through \the [src].</span>","<span class='notice'>You smash through \the [src] with \the [I].</span>")
 		qdel(src)
 	else
-		to_chat(user, "<span class='notice'>I hit \the [src] to no effect.</span>")
+		to_chat(user, "<span class='notice'>You hit \the [src] to no effect.</span>")
 
 /obj/structure/foamedmetal/Cross(atom/movable/mover, turf/target, height=1.5, air_group = 0)
 	if(air_group)
@@ -977,10 +977,10 @@ steam.start() -- spawns the effect
 /turf/simulated/floor/foamedmetal/attack_hand(mob/user as mob)
 	user.delayNextAttack(10)
 	if ((M_HULK in user.mutations) || (prob(50)))
-		user.visible_message("<span class='warning'>[user] smashes through \the [src].</span>","<span class='notice'>I smash through \the [src].</span>")
+		user.visible_message("<span class='warning'>[user] smashes through \the [src].</span>","<span class='notice'>You smash through \the [src].</span>")
 		src.ChangeTurf(get_base_turf(src.z))
 	else
-		to_chat(user, "<span class='notice'>I hit \the [src] but bounce off it.</span>")
+		to_chat(user, "<span class='notice'>You hit \the [src] but bounce off it.</span>")
 
 /turf/simulated/floor/foamedmetal/attackby(obj/item/C as obj, mob/user as mob)
 	if(!(locate(/obj/structure/lattice) in contents))
@@ -998,10 +998,10 @@ steam.start() -- spawns the effect
 		return
 
 	if(prob(C.force*20 - 25))
-		user.visible_message("<span class='warning'>[user] smashes through \the [src].</span>","<span class='notice'>I smash through \the [src] with \the [C].</span>")
+		user.visible_message("<span class='warning'>[user] smashes through \the [src].</span>","<span class='notice'>You smash through \the [src] with \the [C].</span>")
 		src.ChangeTurf(get_base_turf(src.z))
 	else
-		to_chat(user, "<span class='notice'>I hit \the [src] to no effect.</span>")
+		to_chat(user, "<span class='notice'>You hit \the [src] to no effect.</span>")
 
 /turf/simulated/floor/foamedmetal/canBuildCatwalk()
 	if(locate(/obj/structure/catwalk) in contents)

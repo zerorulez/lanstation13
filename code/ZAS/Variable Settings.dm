@@ -5,7 +5,7 @@ vs_control/var
 	// N3X15 - Added back in so we can tweak performance.
 	airflow_push = 0
 	airflow_push_NAME="Airflow - Push shit around"
-	airflow_push_DESC="1=yes please rape my server, 0=no"
+	airflow_push_DESC="1=yes please rape your server, 0=no"
 	airflow_push_METHOD="Toggle" // See ChangeSettings().  I'd rather not let people break this.
 
 	fire_consuption_rate = 0.75

@@ -73,7 +73,7 @@ Bonus
 			if(1, 2, 3, 4)
 				to_chat(M, "<span class='notice'>[pick("I feel hungry.", "I crave for food.")]</span>")
 			else
-				to_chat(M, "<span class='notice'>My stomach rumbles.</span>")
+				to_chat(M, "<span class='notice'>Your stomach rumbles.</span>")
 				M.overeatduration = max(M.overeatduration - 100, 0)
 				M.nutrition = max(M.nutrition - 100, 0)
 

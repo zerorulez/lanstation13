@@ -66,7 +66,7 @@
 	if(species.anatomy_flags & CAN_BE_FAT)
 		if(M_FAT in mutations)
 			if(overeatduration < 100)
-				to_chat(src, "<span class='notice'>I feel fit again!</span>")
+				to_chat(src, "<span class='notice'>You feel fit again!</span>")
 				mutations.Remove(M_FAT)
 				update_mutantrace(0)
 				update_mutations(0)
@@ -74,7 +74,7 @@
 				update_inv_wear_suit()
 		else
 			if(overeatduration > 500)
-				to_chat(src, "<span class='warning'>I suddenly feel blubbery!</span>")
+				to_chat(src, "<span class='warning'>You suddenly feel blubbery!</span>")
 				mutations.Add(M_FAT)
 				update_mutantrace(0)
 				update_mutations(0)

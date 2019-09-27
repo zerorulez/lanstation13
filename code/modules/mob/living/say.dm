@@ -127,7 +127,7 @@ var/list/department_radio_keys = list(
 
 	var/message_mode = get_message_mode(message)
 	if(silent)
-		to_chat(src, "<span class='warning'>I can't speak while silenced.</span>")
+		to_chat(src, "<span class='warning'>You can't speak while silenced.</span>")
 		return
 	if((status_flags & FAKEDEATH) && !stat && message_mode != MODE_CHANGELING)
 		to_chat(src, "<span class='danger'>Talking right now would give us away!</span>")
@@ -232,7 +232,7 @@ var/list/department_radio_keys = list(
 			if(hear_radio_only())
 				type = null //This kills the deaf check for radio only.
 	else
-		deaf_message = "<span class='notice'>I can't hear yourself!</span>"
+		deaf_message = "<span class='notice'>You can't hear yourself!</span>"
 		deaf_type = 2 // Since you should be able to hear yourself without looking
 	var/atom/movable/AM = speech.speaker.GetSource()
 	if(!say_understands((istype(AM) ? AM : speech.speaker),speech.language)|| force_compose) //force_compose is so AIs don't end up without their hrefs.
@@ -279,7 +279,7 @@ var/list/department_radio_keys = list(
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "<span class='danger'>I cannot speak in IC (muted).</span>")
+			to_chat(src, "<span class='danger'>You cannot speak in IC (muted).</span>")
 			return
 		if(client.handle_spam_prevention(message,MUTE_IC))
 			return

@@ -30,13 +30,13 @@
 		if(world.time > last_used + use_cooldown)
 			lower_lance(user)
 		else
-			to_chat(user, "<span class='warning'>I am not ready to couch \the [src] yet!</span>")
+			to_chat(user, "<span class='warning'>You are not ready to couch \the [src] yet!</span>")
 
 /obj/item/weapon/melee/lance/proc/lower_lance(mob/user)
 	if(!trigger)
 		trigger = new(get_step(usr, usr.dir), usr, src)
 		if(user)
-			user.visible_message("<span class='danger'>[user] couches \the [src]!</span>", "<span class='notice'>I couch \the [src] and prepare to charge.</span>")
+			user.visible_message("<span class='danger'>[user] couches \the [src]!</span>", "<span class='notice'>You couch \the [src] and prepare to charge.</span>")
 		item_state = "lance_lowered"
 		force = initial(force)
 		attack_verb = couch_attack_verbs
@@ -53,7 +53,7 @@
 	trigger = null
 
 	if(user)
-		user.visible_message("<span class='danger'>[user] raises \the [src].</span>", "<span class='notice'>I raise \the [src].</span>")
+		user.visible_message("<span class='danger'>[user] raises \the [src].</span>", "<span class='notice'>You raise \the [src].</span>")
 	item_state = "lance"
 	force = initial(force)
 	attack_verb = default_attack_verbs
@@ -113,7 +113,7 @@
 		return L.raise_lance()
 
 	if(amount_of_turfs_charged > 0 && (world.time - last_moved) >= 3)
-		to_chat(owner, "<span class='notice'>I momentarily lose control of \the [L].</span>")
+		to_chat(owner, "<span class='notice'>You momentarily lose control of \the [L].</span>")
 		L.raise_lance()
 		return
 
@@ -121,14 +121,14 @@
 	var/old_last_move = last_move //Old direction
 
 	if(amount_of_turfs_charged > 0 && (world.time - last_moved) >= 3) //More than 2/10 of a second since last moved
-		to_chat(owner, "<span class='notice'>I momentarily lose control of \the [L].</span>")
+		to_chat(owner, "<span class='notice'>You momentarily lose control of \the [L].</span>")
 		L.raise_lance()
 		return
 
 	.=..()
 
 	if(amount_of_turfs_charged > 0 && last_move != old_last_move) //Changed direction of the charge
-		to_chat(owner, "<span class='notice'>I momentarily lose control of \the [L].</span>")
+		to_chat(owner, "<span class='notice'>You momentarily lose control of \the [L].</span>")
 		L.raise_lance()
 		return
 
@@ -166,7 +166,7 @@
 				var/datum/organ/external/affecting = H.get_organ(ran_zone(owner.zone_sel.selecting))
 
 				if(H.check_shields(base_damage, "the couched lance"))
-					H.visible_message("<span class='danger'>[H] blocks \the [owner]'s [src.L.name] hit.</span>", "<span class='notice'>I block \the [owner]'s couched [src.L.name].</span>")
+					H.visible_message("<span class='danger'>[H] blocks \the [owner]'s [src.L.name] hit.</span>", "<span class='notice'>You block \the [owner]'s couched [src.L.name].</span>")
 					return
 
 				victim.apply_damage(base_damage, BRUTE, affecting)
@@ -174,7 +174,7 @@
 				victim.apply_damage(base_damage, BRUTE)
 
 			to_chat(owner, "<span class='danger'><i>DELIVERED COUCHED LANCE DAMAGE!</i></span>")
-			victim.visible_message("<span class='danger'>[victim] has been impaled by [owner]'s [src.L.name]!</span>", "<span class='userdanger'>I was impaled by [owner]'s [src.L.name]!</span>")
+			victim.visible_message("<span class='danger'>[victim] has been impaled by [owner]'s [src.L.name]!</span>", "<span class='userdanger'>You were impaled by [owner]'s [src.L.name]!</span>")
 
 
 			if(amount_of_turfs_charged >= 5)

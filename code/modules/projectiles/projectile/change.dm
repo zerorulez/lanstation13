@@ -202,7 +202,7 @@
 			var/mob/living/carbon/I = M
 			I.transferBorers(new_mob)
 
-		to_chat(new_mob, "<B>My form morphs into that of a [randomize].</B>")
+		to_chat(new_mob, "<B>Your form morphs into that of a [randomize].</B>")
 
 		qdel(M)
 		return new_mob

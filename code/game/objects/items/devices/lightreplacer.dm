@@ -23,11 +23,11 @@
 //
 // NOTICE: The Cyborg cannot use the emagged Light Replacer and the light's explosion was nerfed. It cannot create holes in the station anymore.
 //
-// I'm not sure everyone will react the emag's features so please say what my opinions are of it.
+// I'm not sure everyone will react the emag's features so please say what your opinions are of it.
 //
 // When emagged it will rig every light it replaces, which will explode when the light is on.
 // This is VERY noticable, even the device's name changes when you emag it so if anyone
-// examines you when you're holding it in my hand, you will be discovered.
+// examines you when you're holding it in your hand, you will be discovered.
 // It will also be very obvious who is setting all these lights off, since only Janitor Borgs and Janitors have easy
 // access to them, and only one of them can emag their device.
 //
@@ -125,7 +125,7 @@
 			return
 		var/obj/item/stack/sheet/glass/glass/G = W
 		G.use(1)
-		to_chat(user, "<span class='notice'>I insert \the [G] into \the [src].</span>")
+		to_chat(user, "<span class='notice'>You insert \the [G] into \the [src].</span>")
 		return
 
 	if(istype(W, /obj/item/weapon/light))
@@ -175,7 +175,7 @@
 		var/obj/item/stack/sheet/cardboard/C = W
 		cardboard_stor++
 		C.use(1)
-		to_chat(user, "<span class='notice'>I insert a cardboard sheet into \the [src].</span>")
+		to_chat(user, "<span class='notice'>You insert a cardboard sheet into \the [src].</span>")
 		return
 
 /obj/item/device/lightreplacer/attack_self(mob/user)
@@ -322,7 +322,7 @@
 		return
 
 
-	to_chat(user, "<span class='notice'>I replace the [target.fitting] with \the [src].</span>")
+	to_chat(user, "<span class='notice'>You replace the [target.fitting] with \the [src].</span>")
 	playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 
 	supply.remove_from_storage(best_light)

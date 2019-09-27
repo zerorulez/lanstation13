@@ -14,11 +14,11 @@
 /obj/machinery/bunsen_burner/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/reagent_containers))
 		if(held_container)
-			to_chat(user, "<span class='warning'>I must remove the [held_container] first.</span>")
+			to_chat(user, "<span class='warning'>You must remove the [held_container] first.</span>")
 		else
 			if(user.drop_item(W, src))
 				held_container = W
-				to_chat(user, "<span class='notice'>I put the [held_container] onto the [src].</span>")
+				to_chat(user, "<span class='notice'>You put the [held_container] onto the [src].</span>")
 				var/image/I = image("icon"=W, "layer"=FLOAT_LAYER)
 				underlays += I
 				if(heating)
@@ -27,12 +27,12 @@
 
 				return 1 // avoid afterattack() being called
 	else
-		to_chat(user, "<span class='warning'>I can't put the [W] onto the [src].</span>")
+		to_chat(user, "<span class='warning'>You can't put the [W] onto the [src].</span>")
 
 /obj/machinery/bunsen_burner/attack_hand(mob/user as mob)
 	if(held_container)
 		underlays = null
-		to_chat(user, "<span class='notice'>I remove the [held_container] from the [src].</span>")
+		to_chat(user, "<span class='notice'>You remove the [held_container] from the [src].</span>")
 		held_container.forceMove(src.loc)
 		held_container.attack_hand(user)
 		held_container = null

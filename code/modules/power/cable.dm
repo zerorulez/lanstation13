@@ -200,7 +200,7 @@ By design, d1 is the smallest direction and d2 is the highest
 		else
 			getFromPool(/obj/item/stack/cable_coil, T, 1, light_color)
 
-		user.visible_message("<span class='warning'>[user] cuts the cable.</span>", "<span class='info'>I cut the cable.</span>")
+		user.visible_message("<span class='warning'>[user] cuts the cable.</span>", "<span class='info'>You cut the cable.</span>")
 
 		//investigate_log("was cut by [key_name(usr, usr.client)] in [user.loc.loc]","wires")
 
@@ -245,7 +245,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	src.add_fingerprint(user)
 
 /obj/structure/cable/bite_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H] bites \the [src]!</span>", "<span class='userdanger'>I bite \the [src]!</span></span>")
+	H.visible_message("<span class='danger'>[H] bites \the [src]!</span>", "<span class='userdanger'>You bite \the [src]!</span></span>")
 
 	shock(H, 100, 2.0)
 

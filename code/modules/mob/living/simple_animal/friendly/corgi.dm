@@ -180,7 +180,7 @@
 
 		var/add_to = href_list["add_inv"]
 		if(!usr.get_active_hand())
-			to_chat(usr, "<span class='warning'>I have nothing in my hand to put on its [add_to].</span>")
+			to_chat(usr, "<span class='warning'>You have nothing in your hand to put on its [add_to].</span>")
 			return
 		switch(add_to)
 			if("head")
@@ -194,7 +194,7 @@
 					var/obj/item/item_to_add = usr.get_active_hand()
 
 					if(!item_to_add)
-						usr.visible_message("<span class='notice'>[usr] pets [src]</span>","<span class='notice'>I rest my hand on [src]'s back for a moment.</span>")
+						usr.visible_message("<span class='notice'>[usr] pets [src]</span>","<span class='notice'>You rest your hand on [src]'s back for a moment.</span>")
 						return
 					if(istype(item_to_add,/obj/item/weapon/plastique)) // last thing he ever wears, I guess
 						item_to_add.afterattack(src,usr,1)
@@ -245,10 +245,10 @@
 
 	if(inventory_head)
 		if(usr)
-			to_chat(usr, "<span class='warning'>I can't put more than one hat on [src]!</span>")
+			to_chat(usr, "<span class='warning'>You can't put more than one hat on [src]!</span>")
 		return
 	if(!item_to_add)
-		usr.visible_message("<span class='notice'>[usr] pets [src]</span>","<span class='notice'>I rest my hand on [src]'s head for a moment.</span>")
+		usr.visible_message("<span class='notice'>[usr] pets [src]</span>","<span class='notice'>You rest your hand on [src]'s head for a moment.</span>")
 		return
 
 
@@ -303,7 +303,7 @@
 
 		if(/obj/item/clothing/head/det_hat)
 			name = "Detective [real_name]"
-			desc = "[name] sees through my lies..."
+			desc = "[name] sees through your lies..."
 			emote_see = list("investigates the area","sniffs around for clues","searches for scooby snacks")
 			valid = 1
 
@@ -361,7 +361,7 @@
 
 		if(/obj/item/clothing/head/soft)
 			name = "Corgi Tech [real_name]"
-			desc = "The reason my yellow gloves have chew-marks."
+			desc = "The reason your yellow gloves have chew-marks."
 			emote_see = list("Orders emitter crates and goes full blown cargonia.")
 			valid = 1
 
@@ -548,7 +548,7 @@
 //puppies cannot wear anything.
 /mob/living/simple_animal/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		to_chat(usr, "<span class='warning'>I can't fit this on [src]</span>")
+		to_chat(usr, "<span class='warning'>You can't fit this on [src]</span>")
 		return
 	..()
 

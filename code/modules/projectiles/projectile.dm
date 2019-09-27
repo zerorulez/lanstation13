@@ -129,7 +129,7 @@ var/list/impact_master = list()
 	// FUCK mice. - N3X
 	if(ismouse(atarget) && (stun+weaken+paralyze+agony)>5)
 		var/mob/living/simple_animal/mouse/M=atarget
-		to_chat(M, "<span class='warning'>What would probably not kill a human completely overwhelms my tiny body.</span>")
+		to_chat(M, "<span class='warning'>What would probably not kill a human completely overwhelms your tiny body.</span>")
 		M.splat()
 		return 1
 	if(isanimal(atarget))

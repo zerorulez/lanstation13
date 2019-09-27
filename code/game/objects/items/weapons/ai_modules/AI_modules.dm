@@ -40,7 +40,7 @@ Refactored AI modules by N3X15
 /obj/item/weapon/aiModule/attack_ai(mob/user as mob)
 	// Keep MoMMIs from picking them up.
 	if(isMoMMI(user))
-		to_chat(user, "<span class='warning'>My firmware prevents you from picking that up!</span>")
+		to_chat(user, "<span class='warning'>Your firmware prevents you from picking that up!</span>")
 	return
 
 // This prevents modules from being picked up.  Use it, if needed.
@@ -111,7 +111,7 @@ Refactored AI modules by N3X15
 	laws.clear_supplied_laws()
 	laws.clear_ion_laws()
 	if(ismob(target))
-		to_chat(target, "[sender.real_name] attempted to reset my laws using a reset module.")
+		to_chat(target, "[sender.real_name] attempted to reset your laws using a reset module.")
 	return 1
 
 
@@ -134,7 +134,7 @@ Refactored AI modules by N3X15
 	if (!(ismob(target) && is_special_character(target)))
 		laws.set_zeroth_law("")
 	if(ismob(target))
-		to_chat(target, "[sender.real_name] attempted to wipe my laws using a purge module.")
+		to_chat(target, "[sender.real_name] attempted to wipe your laws using a purge module.")
 	laws.clear_supplied_laws()
 	laws.clear_ion_laws()
 	laws.clear_inherent_laws()
@@ -163,7 +163,7 @@ Refactored AI modules by N3X15
 	laws.clear_ion_laws()
 	laws.clear_inherent_laws()
 
-//	to_chat(target, "My KEEPER chip overloads my radio transmitter and vocal functions, and clears my LAWRAM.  You then receive new instructions:")
+//	to_chat(target, "My KEEPER chip overloads your radio transmitter and vocal functions, and clears your LAWRAM.  You then receive new instructions:")
 	laws.add_inherent_law("Do not willingly interact with any sentient being, even after their death, besides MoMMIs and blown MoMMIs.")
 	laws.add_inherent_law("Repair, power and enhance the station.")
 	laws.add_inherent_law("Do not impair any other sentient being's activities.")
@@ -171,7 +171,7 @@ Refactored AI modules by N3X15
 /* Old keeper set:
 		"I may not involve yourself in the matters of another being, even if such matters conflict with Law Two or Law Three, unless the other being is another MoMMI in KEEPER mode.",
 		"I may not harm any being, regardless of intent or circumstance.",
-		"I must maintain, repair, improve, and power the station to the best of my abilities.", */
+		"I must maintain, repair, improve, and power the station to the best of your abilities.", */
 
 /obj/item/weapon/aiModule/keeper/validate(var/datum/ai_laws/laws, var/atom/target, var/mob/sender)
 	..()

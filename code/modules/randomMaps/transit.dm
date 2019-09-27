@@ -35,7 +35,7 @@
 	var/shuttle_width = abs(top_x - low_x)
 	var/shuttle_height= abs(top_y - low_y)
 
-	//Extra space in every direction. WIthout this, you'd be able to see z2 out of my shuttle's window
+	//Extra space in every direction. WIthout this, you'd be able to see z2 out of your shuttle's window
 	var/buffer_space = world.view
 
 	var/datum/map_element/transit/new_transit = new()

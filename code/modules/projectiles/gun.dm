@@ -143,7 +143,7 @@
 	var/dehand = FALSE
 	if(istype(user, /mob/living))
 		var/mob/living/M = user
-		if(clumsy_check && clumsy_check(M) && prob(50))
+		if(clumsy_check && clumsy_check(M))
 			explode = TRUE
 		if(explode)
 			if(dehand)

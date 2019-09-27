@@ -50,7 +50,7 @@
 				if(6 to 10)
 					talk_line = pick("I wuf U","[isdirty ? "I made that for you":"Arf Arf Arf"]","I wanna walk","Awooo")
 				if(11 to 15)
-					talk_line = pick("Who you woofing to?","[ishurt ? "Tis but a scratch":"Grrrr"]","[ishappy ? "I feel like a million bones":"Gimme something to rip apart"]","Ian is my idol")
+					talk_line = pick("Who you woofing to?","[ishurt ? "Tis but a scratch":"Grrrr"]","[ishappy ? "I feel like a million bones":"Gimme something to rip apart"]","Ian is your idol")
 				if(16 to 48)
 					talk_line = "[issleeping ? "Zzzzz" : "[pick("Woof sweet Woof","The days come and go, and I'm just here, woofing","I should buy a house","Ouaf! Wan! I can woof in 36 different languages!")]"]"
 				if(49 to 50)
@@ -88,7 +88,7 @@
 				if(6 to 10)
 					talk_line = pick("Are u valeed","[isdirty ? "Nuclear Poop Emergency":"Im a big guy!"]","Look at dis")
 				if(11 to 15)
-					talk_line = pick("I'm gonna become a cop, the newer kind of cops.","[ishurt ? "Fetch some gauze":"Pow Pow"]","[ishappy ? "I like my stations in pieces":"Gotta get da deesk!"]","Red suits me so well")
+					talk_line = pick("I'm gonna become a cop, the newer kind of cops.","[ishurt ? "Fetch some gauze":"Pow Pow"]","[ishappy ? "I like your stations in pieces":"Gotta get da deesk!"]","Red suits me so well")
 				if(16 to 48)
 					talk_line = "[issleeping ? "Zzzzz(muffled banter about nukes)zzzzzzz" : "[pick("Alright! Let's get started","I'm saving cash for a Mauler","See the galaxy, Take down Megacorps!")]"]"
 				if(49 to 50)
@@ -325,7 +325,7 @@
 				else
 					last_spoken = {"<i>Unable to access account. Either its security settings don't allow remote checking or the account is nonexistent.</i>"}
 			else
-				last_spoken = {"<i>Unfortunately my station's Accounts Database doesn't allow remote access. Negociate with my HoP or Captain to solve this issue.</i>"}
+				last_spoken = {"<i>Unfortunately your station's Accounts Database doesn't allow remote access. Negociate with your HoP or Captain to solve this issue.</i>"}
 		else
 			last_spoken = {"<i>Unable to connect to accounts database. The database is either nonexistent, inoperative, or too far away.</i>"}
 

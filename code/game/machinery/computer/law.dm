@@ -55,17 +55,17 @@
 			return 1
 
 	proc/announce_law_changes(var/mob/user)
-		to_chat(current, "These are my laws now:")
+		to_chat(current, "These are your laws now:")
 		current.show_laws()
 		for(var/mob/living/silicon/robot/R in mob_list)
 			if(R.lawupdate && (R.connected_ai == current))
-				to_chat(R, "These are my laws now:")
+				to_chat(R, "These are your laws now:")
 				R.show_laws()
 		to_chat(user, "<span class='notice'>Upload complete. The AI's laws have been modified.</span>")
 
 	attackby(obj/item/weapon/O as obj, mob/user as mob)
 		if (user.z > 6)
-			to_chat(user, "<span class='danger'>Unable to establish a connection: </span>I am too far away from the station!")
+			to_chat(user, "<span class='danger'>Unable to establish a connection: </span>You are too far away from the station!")
 			return
 		if(istype(O, /obj/item/weapon/aiModule))
 			if(install_module(O,user))
@@ -92,7 +92,7 @@
 			else
 				var/obj/item/weapon/planning_frame/frame=O
 				if(frame.modules.len>0)
-					to_chat(user, "<span class='notice'>I begin to load \the [frame] into \the [src]...</span>")
+					to_chat(user, "<span class='notice'>You begin to load \the [frame] into \the [src]...</span>")
 					if(do_after(user, src,50))
 						var/failed=0
 						for(var/i=1;i<=frame.modules.len;i++)
@@ -111,7 +111,7 @@
 
 	attack_hand(var/mob/user as mob)
 		if(istype(user,/mob/dead))
-			to_chat(usr, "<span class='rose'>My ghostly hand goes right through!</span>")
+			to_chat(usr, "<span class='rose'>Your ghostly hand goes right through!</span>")
 			return
 		if(src.stat & NOPOWER)
 			to_chat(usr, "The upload computer has no power!")
@@ -140,7 +140,7 @@
 	light_color = "#555555"
 
 	proc/announce_law_changes()
-		to_chat(current, "These are my laws now:")
+		to_chat(current, "These are your laws now:")
 		current.show_laws()
 		to_chat(usr, "<span class='notice'>Upload complete. The robot's laws have been modified.</span>")
 
@@ -208,7 +208,7 @@
 			else
 				var/obj/item/weapon/planning_frame/frame=W
 				if(frame.modules.len>0)
-					to_chat(user, "<span class='notice'>I begin to load \the [frame] into \the [src]...</span>")
+					to_chat(user, "<span class='notice'>You begin to load \the [frame] into \the [src]...</span>")
 					if(do_after(user, src,50))
 						var/failed=0
 						for(var/i=1;i<=frame.modules.len;i++)
@@ -227,7 +227,7 @@
 
 	attack_hand(var/mob/user as mob)
 		if(istype(user,/mob/dead))
-			to_chat(usr, "<span class='rose'>My ghostly hand goes right through!</span>")
+			to_chat(usr, "<span class='rose'>Your ghostly hand goes right through!</span>")
 			return
 		if(src.stat & NOPOWER)
 			to_chat(usr, "The upload computer has no power!")

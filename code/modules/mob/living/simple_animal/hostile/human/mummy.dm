@@ -105,7 +105,7 @@
 	switch(rand(0,3))
 		if(0) //damage
 			var/dmg = rand(10,20)
-			to_chat(L, "<span class='userdanger'>Pain surges through my body!</span>")
+			to_chat(L, "<span class='userdanger'>Pain surges through your body!</span>")
 			L.audible_scream()
 			L.adjustBruteLoss(dmg)
 		if(1) //deaf
@@ -134,7 +134,7 @@
 			if(!istype(H))
 				return
 
-			to_chat(L, "<span class='userdanger'>My mind feels weak.</span>")
+			to_chat(L, "<span class='userdanger'>Your mind feels weak.</span>")
 			H.adjustBrainLoss(rand(1,12))
 			H.hallucination += 20
 
@@ -200,7 +200,7 @@
 	switch(rand(0,3))
 		if(0) //damage
 			var/dmg = rand(10,20)
-			to_chat(L, "<span class='userdanger'>I writhe in agony!</span>")
+			to_chat(L, "<span class='userdanger'>You writhe in agony!</span>")
 			L.audible_scream()
 			L.adjustBruteLoss(dmg)
 		if(1) //deaf
@@ -229,7 +229,7 @@
 			if(!istype(H))
 				return
 
-			to_chat(L, "<span class='userdanger'>My mind is crumbling.</span>")
+			to_chat(L, "<span class='userdanger'>Your mind is crumbling.</span>")
 			H.adjustBrainLoss(rand(6,24))
 			H.hallucination += 40
 

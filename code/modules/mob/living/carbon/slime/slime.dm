@@ -86,7 +86,7 @@
 	real_name = name
 	spawn (1)
 		regenerate_icons()
-		to_chat(src, "<span class='notice'>My icons have been generated!</span>")
+		to_chat(src, "<span class='notice'>Your icons have been generated!</span>")
 	..()
 
 /mob/living/carbon/slime/adult/New()
@@ -593,7 +593,7 @@ mob/living/carbon/slime/var/temperature_resistance = T0C+75
 			to_chat(user, "<span class='warning'>This extract has already been enhanced!</span>")
 			return ..()
 		if(Uses == 0)
-			to_chat(user, "<span class='warning'>I can't enhance a used extract!</span>")
+			to_chat(user, "<span class='warning'>You can't enhance a used extract!</span>")
 			return ..()
 		to_chat(user, "I apply the enhancer. It now has triple the amount of uses.")
 		Uses = 3
@@ -755,7 +755,7 @@ mob/living/carbon/slime/var/temperature_resistance = T0C+75
 		if(pet.client)//leaving the player-controlled slimes the ability to choose their new name
 			newname = copytext(sanitize(input(pet, "I have been fed a docility potion, what shall we call you?", "Give yourself a new name", "pet slime") as null|text),1,MAX_NAME_LEN)
 		else
-			newname = copytext(sanitize(input(user, "Would you like to give the slime a name?", "Name my new pet", "pet slime") as null|text),1,MAX_NAME_LEN)
+			newname = copytext(sanitize(input(user, "Would you like to give the slime a name?", "Name your new pet", "pet slime") as null|text),1,MAX_NAME_LEN)
 
 		if (!newname)
 			newname = "pet slime"
@@ -791,7 +791,7 @@ mob/living/carbon/slime/var/temperature_resistance = T0C+75
 		if(pet.client)//leaving the player-controlled slimes the ability to choose their new name
 			newname = copytext(sanitize(input(pet, "I have been fed an advanced docility potion, what shall we call you?", "Give yourself a new name", "pet slime") as null|text),1,MAX_NAME_LEN)
 		else
-			newname = copytext(sanitize(input(user, "Would you like to give the slime a name?", "Name my new pet", "pet slime") as null|text),1,MAX_NAME_LEN)
+			newname = copytext(sanitize(input(user, "Would you like to give the slime a name?", "Name your new pet", "pet slime") as null|text),1,MAX_NAME_LEN)
 
 		if (!newname)
 			newname = "pet slime"
@@ -865,7 +865,7 @@ mob/living/carbon/slime/var/temperature_resistance = T0C+75
 				to_chat(user, "<span class='warning'>This extract has already been enhanced!</span>")
 				return ..()
 			if(target.Uses == 0)
-				to_chat(user, "<span class='warning'>I can't enhance a used extract!</span>")
+				to_chat(user, "<span class='warning'>You can't enhance a used extract!</span>")
 				return ..()
 			to_chat(user, "I apply the enhancer. It now has triple the amount of uses.")
 			target.Uses = 3
@@ -1048,13 +1048,13 @@ mob/living/carbon/slime/var/temperature_resistance = T0C+75
 /obj/effect/golem_rune/proc/volunteer(var/mob/dead/observer/O)
 	if(O in ghosts)
 		ghosts.Remove(O)
-		to_chat(O, "<span class='warning'>I am no longer signed up to be a golem.</span>")
+		to_chat(O, "<span class='warning'>You are no longer signed up to be a golem.</span>")
 	else
 		if(!check_observer(O))
-			to_chat(O, "<span class='warning'>I am not eligable.</span>")
+			to_chat(O, "<span class='warning'>You are not eligable.</span>")
 			return
 		ghosts.Add(O)
-		to_chat(O, "<span class='notice'>I am signed up to be a golem.</span>")
+		to_chat(O, "<span class='notice'>You are signed up to be a golem.</span>")
 
 
 /mob/living/carbon/slime/has_eyes()

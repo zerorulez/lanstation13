@@ -70,7 +70,7 @@
 
 /obj/structure/cult/tome
 	name = "Desk"
-	desc = "A desk covered in arcane manuscripts and tomes in unknown languages. Looking at the text makes my skin crawl."
+	desc = "A desk covered in arcane manuscripts and tomes in unknown languages. Looking at the text makes your skin crawl."
 	icon_state = "tomealtar"
 	light_range = 2
 	light_color = LIGHT_COLOR_RED
@@ -190,4 +190,4 @@
 		else
 			new_mob.key = M.key
 
-		to_chat(new_mob, "<B>My form morphs into that of a cluwne.</B>")
+		to_chat(new_mob, "<B>Your form morphs into that of a cluwne.</B>")

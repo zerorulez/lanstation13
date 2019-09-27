@@ -196,12 +196,12 @@
 	log_client_to_db()
 
 	send_resources()
-
+/*
 	if(prefs.lastchangelog != changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
 		prefs.SetChangelog(ckey,changelog_hash)
-		to_chat(src, "<span class='info'>Changelog has changed since my last visit.</span>")
-
+		to_chat(src, "<span class='info'>Changelog has changed since your last visit.</span>")
+*/
 	//Set map label to correct map name
 	winset(src, "rpane.map", "text=\"[map.nameLong]\"")
 
@@ -400,7 +400,7 @@
 Yes/No: Only affects this round
 Never/Always: Affects future rounds, you will not be polled again.
 
-NOTE:  You will only be polled about this role once per round. To change my choice, use Preferences > Setup Special Roles.  The change will take place AFTER this recruiting period."}
+NOTE:  You will only be polled about this role once per round. To change your choice, use Preferences > Setup Special Roles.  The change will take place AFTER this recruiting period."}
 				var/answer = alert(src,question,"Role Recruitment", "Yes","No","Never")
 				switch(answer)
 					if("Never")

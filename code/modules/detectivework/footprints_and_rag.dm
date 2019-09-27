@@ -38,7 +38,7 @@
 				if(H.check_body_part_coverage(MOUTH))
 					to_chat(user, "<span class='warning'>It won't work. Their mouth needs to be uncovered..</span>")
 					return FALSE
-			user.visible_message("<span class='warning'>\The [M] has been smothered with \the [src] by \the [user]!</span>", "<span class='warning'>I smother \the [M] with \the [src]!</span>", "I hear some struggling and muffled cries of surprise")
+			user.visible_message("<span class='warning'>\The [M] has been smothered with \the [src] by \the [user]!</span>", "<span class='warning'>You smother \the [M] with \the [src]!</span>", "I hear some struggling and muffled cries of surprise")
 			src.reagents.reaction(M, TOUCH)
 			spawn(5) src.reagents.clear_reagents()
 			return TRUE
@@ -53,7 +53,7 @@
 		return
 
 	if(reagents.total_volume < 1)
-		to_chat(user, "<span class='notice'>My rag is dry!</span>")
+		to_chat(user, "<span class='notice'>Your rag is dry!</span>")
 		return
 
 	if(target)
@@ -63,5 +63,5 @@
 				if(istype(O,/obj/effect/rune) || istype(O,/obj/effect/decal/cleanable) || istype(O,/obj/effect/overlay))
 					qdel(O)
 		reagents.remove_any(1)
-		user.visible_message("<span class='notice'>[user] wipes down \the [target].</span>", "<span class='notice'>I wipe down \the [target]!</span>")
+		user.visible_message("<span class='notice'>[user] wipes down \the [target].</span>", "<span class='notice'>You wipe down \the [target]!</span>")
 	return

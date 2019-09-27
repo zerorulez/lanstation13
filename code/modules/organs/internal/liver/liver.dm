@@ -20,7 +20,7 @@
 	..()
 	if (germ_level > INFECTION_LEVEL_ONE)
 		if(prob(1))
-			owner << "<span class='warning'>My skin itches.</span>"
+			owner << "<span class='warning'>Your skin itches.</span>"
 	if (germ_level > INFECTION_LEVEL_TWO)
 		if(prob(1))
 			spawn owner.vomit()

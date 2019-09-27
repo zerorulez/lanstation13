@@ -72,7 +72,7 @@
 	else
 		if(last_ping_time + ping_cooldown <= world.time)
 			last_ping_time = world.time
-			visible_message(message = "<span class='notice'>\The [src] pings softly.</span>", blind_message = "<span class='danger'>I hear what you think is a microwave finishing.</span>")
+			visible_message(message = "<span class='notice'>\The [src] pings softly.</span>", blind_message = "<span class='danger'>You hear what you think is a microwave finishing.</span>")
 		else
 			to_chat(O, "[src] is recharging. Try again in a few moments.")
 
@@ -86,12 +86,12 @@
 			return
 		var/mob/M = usr
 		if(!istype(M, /mob/living/carbon))
-			to_chat(usr, "<font color=blue>I don't have any DNA, or my DNA is incompatible with this device.</font>")
+			to_chat(usr, "<font color=blue>You don't have any DNA, or your DNA is incompatible with this device.</font>")
 		else
 			var/datum/dna/dna = usr.dna
 			pai.master = M.real_name
 			pai.master_dna = dna.unique_enzymes
-			to_chat(pai, "<font color = red><h3>I have been bound to a new master: [pai.master].</h3></font>")
+			to_chat(pai, "<font color = red><h3>You have been bound to a new master: [pai.master].</h3></font>")
 	if(href_list["request"])
 		src.looking_for_personality = 1
 		paiController.findPAI(src, usr)
@@ -99,9 +99,9 @@
 		var/confirm = input("Are you CERTAIN you wish to delete the current personality? This action cannot be undone.", "Personality Wipe") in list("Yes", "No")
 		if(confirm == "Yes")
 			for(var/mob/M in src)
-				to_chat(M, "<font color = #ff0000><h2>I feel yourself slipping away from reality.</h2></font>")
-				to_chat(M, "<font color = #ff4d4d><h3>Byte by byte you lose my sense of self.</h3></font>")
-				to_chat(M, "<font color = #ff8787><h4>My mental faculties leave you.</h4></font>")
+				to_chat(M, "<font color = #ff0000><h2>You feel yourself slipping away from reality.</h2></font>")
+				to_chat(M, "<font color = #ff4d4d><h3>Byte by byte you lose your sense of self.</h3></font>")
+				to_chat(M, "<font color = #ff8787><h4>Your mental faculties leave you.</h4></font>")
 				to_chat(M, "<font color = #ffc4c4><h5>oblivion... </h5></font>")
 				M.death(0)
 			removePersonality()
@@ -110,7 +110,7 @@
 		if(pai.radio)
 			pai.radio.wires.CutWireIndex(t1)
 	if(href_list["setlaws"])
-		var/newlaws = copytext(sanitize(input("Enter any additional directives you would like my pAI personality to follow. Note that these directives will not override the personality's allegiance to its imprinted master. Conflicting directives will be ignored.", "pAI Directive Configuration", pai.pai_laws) as message),1,MAX_MESSAGE_LEN)
+		var/newlaws = copytext(sanitize(input("Enter any additional directives you would like your pAI personality to follow. Note that these directives will not override the personality's allegiance to its imprinted master. Conflicting directives will be ignored.", "pAI Directive Configuration", pai.pai_laws) as message),1,MAX_MESSAGE_LEN)
 		if(newlaws)
 			pai.pai_laws = newlaws
 			to_chat(pai, "My supplemental directives have been updated. Your new directives are:")

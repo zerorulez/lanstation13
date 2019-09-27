@@ -61,7 +61,7 @@
 	if(!arrow)
 		if (istype(W,/obj/item/weapon/arrow))
 			if(!user.drop_item(W, src))
-				user << "<span class='warning'>I can't let go of \the [W]!</span>"
+				user << "<span class='warning'>You can't let go of \the [W]!</span>"
 				return
 
 			arrow = W
@@ -87,11 +87,11 @@
 	if(istype(W, /obj/item/weapon/cell))
 		if(!cell)
 			if(!user.drop_item(W, src))
-				user << "<span class='warning'>I can't let go of \the [W]!</span>"
+				user << "<span class='warning'>You can't let go of \the [W]!</span>"
 				return
 
 			cell = W
-			to_chat(user, "<span class='notice'>I jam [cell] into [src] and wire it to the firing coil.</span>")
+			to_chat(user, "<span class='notice'>You jam [cell] into [src] and wire it to the firing coil.</span>")
 			if(arrow)
 				if(istype(arrow,/obj/item/weapon/arrow/rod) && arrow.throwforce < 15 && cell.charge >= 500)
 					to_chat(user, "<span class='notice'>[arrow] plinks and crackles as it begins to glow red-hot.</span>")
@@ -106,7 +106,7 @@
 			var/obj/item/C = cell
 			C.forceMove(get_turf(user))
 			cell = null
-			to_chat(user, "<span class='notice'>I jimmy [cell] out of [src] with [W].</span>")
+			to_chat(user, "<span class='notice'>You jimmy [cell] out of [src] with [W].</span>")
 		else
 			to_chat(user, "<span class='notice'>[src] doesn't have a cell installed.</span>")
 
@@ -195,7 +195,7 @@
 	if (!istype(targloc) || !istype(curloc))
 		return
 
-	user.visible_message("<span class='danger'>[user] releases [src] and sends [arrow] streaking toward [target]!</span>","<span class='danger'>I release [src] and send [arrow] streaking toward [target]!</span>")
+	user.visible_message("<span class='danger'>[user] releases [src] and sends [arrow] streaking toward [target]!</span>","<span class='danger'>You release [src] and send [arrow] streaking toward [target]!</span>")
 
 	var/obj/item/weapon/arrow/A = arrow
 	A.forceMove(get_turf(user))

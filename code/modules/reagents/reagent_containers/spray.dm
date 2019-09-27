@@ -76,12 +76,12 @@
 	reagents.log_bad_reagents(user, src)
 	user.investigation_log(I_CHEMS, "sprayed [amount_per_transfer_from_this]u from \a [src] ([type]) containing [reagents.get_reagent_ids(1)] towards [A] ([A.x], [A.y], [A.z]).")
 
-	// Override for my custom puff behaviour
+	// Override for your custom puff behaviour
 	make_puff(A, user)
 
 /obj/item/weapon/reagent_containers/spray/attack_self(var/mob/user)
 	amount_per_transfer_from_this = (amount_per_transfer_from_this == 10 ? 5 : 10)
-	to_chat(user, "<span class='notice'>I switched [amount_per_transfer_from_this == 10 ? "on" : "off"] the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
+	to_chat(user, "<span class='notice'>You switched [amount_per_transfer_from_this == 10 ? "on" : "off"] the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
 
 /obj/item/weapon/reagent_containers/spray/restock()
 	if(name == "Polyacid spray")

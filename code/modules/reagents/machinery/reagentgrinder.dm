@@ -150,7 +150,7 @@
 			return 0
 		else
 			if(!user.drop_item(O, src))
-				to_chat(user, "<span class='warning'>I can't let go of \the [O]!</span>")
+				to_chat(user, "<span class='warning'>You can't let go of \the [O]!</span>")
 				return
 
 			src.beaker =  O
@@ -188,7 +188,7 @@
 		return 1
 
 	if(!user.drop_item(O, src))
-		user << "<span class='notice'>\The [O] is stuck to my hands!</span>"
+		user << "<span class='notice'>\The [O] is stuck to your hands!</span>"
 		return 1
 
 	holdingitems += O

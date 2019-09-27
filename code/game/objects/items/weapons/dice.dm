@@ -80,14 +80,14 @@
 		result = (result - 1) * multiplier
 	if(!thrown) //Dice was rolled in someone's hand
 		user.visible_message("<span class='notice'>[user] has thrown [src]. It lands on [result]. [comment]</span>", \
-							 "<span class='notice'>I throw [src]. It lands on [result]. [comment]</span>", \
-							 "<span class='notice'>I hear [src] landing on [result]. [comment]</span>")
+							 "<span class='notice'>You throw [src]. It lands on [result]. [comment]</span>", \
+							 "<span class='notice'>You hear [src] landing on [result]. [comment]</span>")
 	else if(src.throwing == 0) //Dice was thrown and is coming to rest
 		visible_message("<span class='notice'>[src] rolls to a stop, landing on [result]. [comment]</span>")
 
 /obj/item/weapon/dice/d4/Crossed(var/mob/living/carbon/human/H)
 	if(istype(H) && !H.shoes)
-		to_chat(H, "<span class='danger'>I step on the D4!</span>")
+		to_chat(H, "<span class='danger'>You step on the D4!</span>")
 		H.apply_damage(4,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
 		H.Knockdown(3)
 
@@ -109,7 +109,7 @@
 		user.drop_item(src, force_drop = 1)
 	else
 		triggered = 1
-		visible_message("<span class='notice'>I hear a quiet click.</span>")
+		visible_message("<span class='notice'>You hear a quiet click.</span>")
 		spawn(40)
 			var/cap = 0
 			var/uncapped = result
@@ -148,18 +148,18 @@
 			var/mob/living/carbon/human/h = user
 			switch(result)
 				if(1)
-					to_chat(user, "<span class=sinister><B>A natural failure, my poor roll has cursed you. Better luck next time! </span></B>")
+					to_chat(user, "<span class=sinister><B>A natural failure, your poor roll has cursed you. Better luck next time! </span></B>")
 					h.flash_eyes(visual = 1)
 					h.Cluwneize()
 				if(2 to 5)
-					to_chat(user, "<span class=sinister><B>It could be worse, but not much worse! Enjoy my curse! </span></B>")
+					to_chat(user, "<span class=sinister><B>It could be worse, but not much worse! Enjoy your curse! </span></B>")
 					h.flash_eyes(visual = 1)
 					switch(pick(1,2,3))
 						if(1)
 							if(h.species.name != "Tajaran")
 								if(h.set_species("Tajaran"))
 									h.regenerate_icons()
-								to_chat(user, "<span class=danger><B>I have been turned into a disgusting catbeast! </span></B>")
+								to_chat(user, "<span class=danger><B>You have been turned into a disgusting catbeast! </span></B>")
 							else
 								for(var/datum/organ/external/E in h.organs) //Being a catbeast doesn't exempt you from getting a curse just because you cannot turn into a catbeast again.
 									E.droplimb(1)
@@ -170,7 +170,7 @@
 							user.reagents.add_reagent(AMUTATIONTOXIN, 1)
 							to_chat(user, "<span class=danger><B>I've been turned into a slime! </span></B>")
 				if(6 to 9)
-					to_chat(user, "<span class=sinister></B>I have rolled low and shall recieve a curse! It could be a lot worse however! </span></B>")
+					to_chat(user, "<span class=sinister></B>You have rolled low and shall recieve a curse! It could be a lot worse however! </span></B>")
 					h.flash_eyes(visual = 1)
 					switch(pick(1,2,3,4))
 						if(1)
@@ -192,7 +192,7 @@
 										if(h.species.name != "Unathi")
 											if(h.set_species("Unathi"))
 												h.regenerate_icons()
-											to_chat(user, "<span class=danger><B>I have been turned into a disgusting lizard! </span></B>")
+											to_chat(user, "<span class=danger><B>You have been turned into a disgusting lizard! </span></B>")
 										else
 											for(var/datum/organ/external/l_arm/E in h.organs) //Someone who has already become a lizard can't get out of recieving a curse and so they lose their arms instead
 												E.droplimb(1)
@@ -202,7 +202,7 @@
 										if(h.species.name != "Skrell")
 											if(h.set_species("Skrell"))
 												h.regenerate_icons()
-											to_chat(user, "<span class=danger><B>I have been turned into a disgusting squidman! </span></B>")
+											to_chat(user, "<span class=danger><B>You have been turned into a disgusting squidman! </span></B>")
 										else
 											for(var/datum/organ/external/E in h.get_organs(LIMB_LEFT_ARM, LIMB_RIGHT_ARM)) //Someone who has already become a squid can't get out of recieving a curse and so they lose their arms instead
 												E.droplimb(1)
@@ -210,7 +210,7 @@
 										if(h.species.name != "Vox")
 											if(h.set_species("Vox"))
 												h.regenerate_icons()
-											to_chat(user, "<span class=danger><B>I have been turned into a dumb, diseased bird! </span></B>")
+											to_chat(user, "<span class=danger><B>You have been turned into a dumb, diseased bird! </span></B>")
 										else
 											for(var/datum/organ/external/E in h.get_organs(LIMB_LEFT_ARM, LIMB_RIGHT_ARM)) //Someone who is a vox can't get out of recieving a curse and so they lose their arms instead
 												E.droplimb(1)
@@ -221,7 +221,7 @@
 
 							to_chat(user, "<span class=danger><B>In this moment you feel euphoric! </span></B>")
 				if(10 to 12)
-					to_chat(user, "<span class=sinister><B>I get nothing. No curse or reward! </span></B>")
+					to_chat(user, "<span class=sinister><B>You get nothing. No curse or reward! </span></B>")
 				if(13)
 					to_chat(user, "<span class=sinister><B>I've rolled 13! The cursed dice is broken! </span></B>")
 					explosion(get_turf(src), 0, 0, 4, 7)
@@ -237,14 +237,14 @@
 							genemutcheck(user,INCREASERUNBLOCK,null,MUTCHK_FORCED)
 							genemutcheck(user,SMALLSIZEBLOCK,null,MUTCHK_FORCED)
 							user.update_mutations()
-							to_chat(user, "<span class=danger><B>I have been made faster! </span></B>")
+							to_chat(user, "<span class=danger><B>You have been made faster! </span></B>")
 						if(2)
 							user.dna.SetSEState(XRAYBLOCK,1)
 							user.dna.SetSEState(TELEBLOCK,1)
 							genemutcheck(user, XRAYBLOCK,null,MUTCHK_FORCED)
 							genemutcheck(user,TELEBLOCK,null,MUTCHK_FORCED)
 							user.update_mutations()
-							to_chat(user, "<span class=danger><B>I have been granted vision! </span></B>")
+							to_chat(user, "<span class=danger><B>You have been granted vision! </span></B>")
 						if(3)
 							user.dna.SetSEState(COLDBLOCK,1)
 							user.dna.SetSEState(FIREBLOCK,1)
@@ -253,15 +253,15 @@
 							genemutcheck(user,FIREBLOCK,null,MUTCHK_FORCED)
 							genemutcheck(user,NOBREATHBLOCK,null,MUTCHK_FORCED)
 							user.update_mutations()
-							to_chat(user, "<span class=danger><B>I have been granted protection! </span></B>")
+							to_chat(user, "<span class=danger><B>You have been granted protection! </span></B>")
 						if(4)
 							getFromPool(/obj/item/stack/sheet/mineral/gold,user.loc,50)
-							to_chat(user, "<span class=danger)(B>I have been reward in gold! </span></B>")
+							to_chat(user, "<span class=danger)(B>You have been reward in gold! </span></B>")
 						if(5)
 							getFromPool(/obj/item/stack/sheet/mineral/silver,user.loc,50)
-							to_chat(user, "<span class=danger><B>I have been rewarded in silver! </span></B>")
+							to_chat(user, "<span class=danger><B>You have been rewarded in silver! </span></B>")
 				if(20)
-					to_chat(user, "<span class=sinister><B>A perfect roll! enjoy my reward! </span></B>")
+					to_chat(user, "<span class=sinister><B>A perfect roll! enjoy your reward! </span></B>")
 					getFromPool(/obj/item/stack/sheet/mineral/phazon,user.loc,50)
 					getFromPool(/obj/item/stack/sheet/mineral/diamond,user.loc,50)
 					getFromPool(/obj/item/stack/sheet/mineral/clown,user.loc,50)
@@ -280,7 +280,7 @@
 					genemutcheck(user,NOBREATHBLOCK,null,MUTCHK_FORCED)
 					genemutcheck(user,FIREBLOCK,null,MUTCHK_FORCED)
 					user.update_mutations()
-					to_chat(user, "<span class=danger><B>I have been rewarded handsomely with rare minerals and powers! </span></B>")
+					to_chat(user, "<span class=danger><B>You have been rewarded handsomely with rare minerals and powers! </span></B>")
 
 			if(prob(15))
 				deactivated = 1

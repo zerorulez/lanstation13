@@ -74,7 +74,7 @@
 /mob/living/carbon/human/slime/New(var/new_loc, delay_ready_dna = 0)
 	..(new_loc, "Slime")
 
-/mob/living/carbon/human/frankenstein/New(var/new_loc, delay_ready_dna = 0) //Just fuck my shit up: the mob
+/mob/living/carbon/human/frankenstein/New(var/new_loc, delay_ready_dna = 0) //Just fuck your shit up: the mob
 	f_style = pick(facial_hair_styles_list)
 	h_style = pick(hair_styles_list)
 
@@ -191,8 +191,8 @@
 			//Warn the player that not eating will lead to his death
 			if(eligible_for_hardcore_mode(src))
 				to_chat(src, "<h5><span class='notice'>Hardcore mode is enabled!</span></h5>")
-				to_chat(src, "<b>I must eat to survive. Starvation for extended periods of time will kill you!</b>")
-				to_chat(src, "<b>Keep an eye out on the hunger indicator on the right of my screen; it will start flashing red and black when you're close to starvation.</b>")
+				to_chat(src, "<b>You must eat to survive. Starvation for extended periods of time will kill you!</b>")
+				to_chat(src, "<b>Keep an eye out on the hunger indicator on the right of your screen; it will start flashing red and black when you're close to starvation.</b>")
 
 	update_colour(0,1)
 
@@ -738,7 +738,7 @@
 
 /mob/living/carbon/human/proc/play_xylophone()
 	if(!src.xylophone)
-		visible_message("<span class='warning'>[src] begins playing \his ribcage like a xylophone. It's quite spooky.</span>","<span class='notice'>I begin to play a spooky refrain on my ribcage.</span>","<span class='notice'>I hear a spooky xylophone melody.</span>")
+		visible_message("<span class='warning'>[src] begins playing \his ribcage like a xylophone. It's quite spooky.</span>","<span class='notice'>You begin to play a spooky refrain on your ribcage.</span>","<span class='notice'>You hear a spooky xylophone melody.</span>")
 		var/song = pick('sound/effects/xylophone1.ogg','sound/effects/xylophone2.ogg','sound/effects/xylophone3.ogg')
 		playsound(loc, song, 50, 1, -1)
 		xylophone = 1
@@ -749,10 +749,10 @@
 /mob/living/carbon/human/proc/vomit(hairball = 0, instant = 0)
 	if(!lastpuke)
 		lastpuke = 1
-		to_chat(src, "<spawn class='warning'>I feel nauseous...</span>")
+		to_chat(src, "<spawn class='warning'>You feel nauseous...</span>")
 
 		spawn((instant ? 0 : 150))	//15 seconds until second warning
-			to_chat(src, "<spawn class='danger'>I feel like I'm about to throw up</span>")
+			to_chat(src, "<spawn class='danger'>You feel like I'm about to throw up</span>")
 
 			sleep((instant ? 0 : 100))	//And you have 10 more seconds to move it to the bathrooms
 
@@ -762,14 +762,14 @@
 			var/spawn_vomit_on_floor = 0
 
 			if(hairball)
-				src.visible_message("<span class='warning'>[src] hacks up a hairball!</span>","<span class='danger'>I hack up a hairball!</span>")
+				src.visible_message("<span class='warning'>[src] hacks up a hairball!</span>","<span class='danger'>You hack up a hairball!</span>")
 
 			else
 				var/skip_message = 0
 
 				var/obj/structure/toilet/T = locate(/obj/structure/toilet) in location //Look for a toilet
 				if(T && T.open)
-					src.visible_message("<span class='warning'>[src] throws up into \the [T]!</span>", "<span class='danger'>I throw up into \the [T]</span>")
+					src.visible_message("<span class='warning'>[src] throws up into \the [T]!</span>", "<span class='danger'>You throw up into \the [T]</span>")
 					skip_message = 1
 				else //Look for a bucket
 
@@ -779,7 +779,7 @@
 						if(!G.is_open_container())
 							continue
 
-						src.visible_message("<span class='warning'>[src] throws up into \the [G]!</span>", "<span class='danger'>I throw up into \the [G].</span>")
+						src.visible_message("<span class='warning'>[src] throws up into \the [G]!</span>", "<span class='danger'>You throw up into \the [G].</span>")
 
 						if(G.reagents.total_volume <= G.reagents.maximum_volume-7) //Container can fit 7 more units of chemicals - vomit into it
 							G.reagents.add_reagent(VOMIT, rand(3,10))
@@ -795,7 +795,7 @@
 						break
 
 				if(!skip_message)
-					src.visible_message("<span class='warning'>[src] throws up!</span>","<span class='danger'>I throw up.</span>")
+					src.visible_message("<span class='warning'>[src] throws up!</span>","<span class='danger'>You throw up.</span>")
 					spawn_vomit_on_floor = 1
 
 			playsound(get_turf(loc), 'sound/effects/splat.ogg', 50, 1)
@@ -891,11 +891,11 @@
 	regenerate_icons()
 	check_dna()
 
-	visible_message("<span class='notice'>\The [src] morphs and changes [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] appearance!</span>", "<span class='notice'>I change my appearance!</span>", "<span class='warning'>Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!</span>")
+	visible_message("<span class='notice'>\The [src] morphs and changes [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] appearance!</span>", "<span class='notice'>You change your appearance!</span>", "<span class='warning'>Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!</span>")
 /mob/living/carbon/human/proc/can_mind_interact(var/mob/M)
 //	to_chat(world, "Starting can interact on [M]")
 	if(!ishuman(M))
-		return 0 //Can't see non humans with my fancy human mind.
+		return 0 //Can't see non humans with your fancy human mind.
 //	to_chat(world, "[M] is a human")
 	var/turf/temp_turf = get_turf(M)
 	var/turf/our_turf = get_turf(src)
@@ -1006,7 +1006,7 @@
 	var/datum/organ/internal/lungs/L = internal_organs_by_name["lungs"]
 
 	if(L && !L.is_bruised())
-		src.custom_pain("I feel a stabbing pain in my chest!", 1)
+		src.custom_pain("I feel a stabbing pain in your chest!", 1)
 		L.damage = L.min_bruised_damage
 
 /*
@@ -1092,7 +1092,7 @@
 
 	if(!valid_objects.len)
 		if(self)
-			to_chat(src, "I have nothing stuck in my wounds that is large enough to remove without surgery.")
+			to_chat(src, "I have nothing stuck in your wounds that is large enough to remove without surgery.")
 		else
 			to_chat(U, "[src] has nothing stuck in their wounds that is large enough to remove without surgery.")
 		return
@@ -1104,9 +1104,9 @@
 			if(O == selection)
 				affected = organ
 	if(self)
-		to_chat(src, "<span class='warning'>I attempt to get a good grip on the [selection] in my [affected.display_name] with bloody fingers.</span>")
+		to_chat(src, "<span class='warning'>You attempt to get a good grip on the [selection] in your [affected.display_name] with bloody fingers.</span>")
 	else
-		to_chat(U, "<span class='warning'>I attempt to get a good grip on the [selection] in [S]'s [affected.display_name] with bloody fingers.</span>")
+		to_chat(U, "<span class='warning'>You attempt to get a good grip on the [selection] in [S]'s [affected.display_name] with bloody fingers.</span>")
 
 	if(istype(U,/mob/living/carbon/human/))
 		U.bloody_hands(S)
@@ -1118,9 +1118,9 @@
 		return
 
 	if(self)
-		visible_message("<span class='danger'><b>[src] rips [selection] out of their [affected.display_name] in a welter of blood.</b></span>","<span class='warning'>I rip [selection] out of my [affected] in a welter of blood.</span>")
+		visible_message("<span class='danger'><b>[src] rips [selection] out of their [affected.display_name] in a welter of blood.</b></span>","<span class='warning'>You rip [selection] out of your [affected] in a welter of blood.</span>")
 	else
-		visible_message("<span class='danger'><b>[usr] rips [selection] out of [src]'s [affected.display_name] in a welter of blood.</b></span>","<span class='warning'>[usr] rips [selection] out of my [affected] in a welter of blood.</span>")
+		visible_message("<span class='danger'><b>[usr] rips [selection] out of [src]'s [affected.display_name] in a welter of blood.</b></span>","<span class='warning'>[usr] rips [selection] out of your [affected] in a welter of blood.</span>")
 
 	selection.forceMove(get_turf(src))
 	affected.implants -= selection
@@ -1135,7 +1135,7 @@
 	if(prob(10)) //I'M SO ANEMIC I COULD JUST -DIE-.
 		var/datum/wound/internal_bleeding/I = new (15)
 		affected.wounds += I
-		custom_pain("Something tears wetly in my [affected] as [selection] is pulled free!", 1)
+		custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 1)
 	return 1
 
 /mob/living/carbon/human/proc/get_visible_implants(var/class = 0)
@@ -1164,11 +1164,11 @@
 				var/msg = null
 				switch(rand(1,3))
 					if(1)
-						msg ="<span class='warning'>A spike of pain jolts my [organ.display_name] as I bump [O] inside.</span>"
+						msg ="<span class='warning'>A spike of pain jolts your [organ.display_name] as I bump [O] inside.</span>"
 					if(2)
-						msg ="<span class='warning'>My movement jostles [O] in my [organ.display_name] painfully.</span>"
+						msg ="<span class='warning'>Your movement jostles [O] in your [organ.display_name] painfully.</span>"
 					if(3)
-						msg ="<span class='warning'>[O] in my [organ.display_name] twists painfully as I move.</span>"
+						msg ="<span class='warning'>[O] in your [organ.display_name] twists painfully as I move.</span>"
 				to_chat(src, msg)
 
 				organ.take_damage(rand(1,3), 0, 0)
@@ -1191,10 +1191,10 @@
 
 	if(!self)
 		usr.visible_message("<span class='notice'>[usr] kneels down, puts \his hand on [src]'s wrist and begins counting their pulse.</span>",\
-		"<span class='info'>I begin counting [src]'s pulse.</span>")
+		"<span class='info'>You begin counting [src]'s pulse.</span>")
 	else
 		usr.visible_message("<span class='notice'>[usr] begins counting their pulse.</span>",\
-		"<span class='info'>I begin counting my pulse.</span>")
+		"<span class='info'>You begin counting your pulse.</span>")
 
 	if(src.pulse)
 		to_chat(usr, "<span class='notice'>[self ? "I have a" : "[src] has a"] pulse! Counting...</span>")
@@ -1207,7 +1207,7 @@
 	if (do_mob(usr, src, 60))
 		to_chat(usr, "<span class='notice'>[self ? "Ir" : "[src]'s"] pulse is [src.get_pulse(GETPULSE_HAND)].</span>")
 	else
-		to_chat(usr, "<span class='info'>I moved while counting. Try again.</span>")
+		to_chat(usr, "<span class='info'>You moved while counting. Try again.</span>")
 
 /mob/living/carbon/human/proc/set_species(var/new_species_name, var/force_organs, var/default_colour)
 
@@ -1269,7 +1269,7 @@
 /mob/living/carbon/human/proc/bloody_doodle()
 	set category = "IC"
 	set name = "Write in blood"
-	set desc = "Use blood on my hands to write a short message on the floor or a wall, murder mystery style."
+	set desc = "Use blood on your hands to write a short message on the floor or a wall, murder mystery style."
 
 	if (src.stat)
 		return
@@ -1281,19 +1281,19 @@
 		verbs -= /mob/living/carbon/human/proc/bloody_doodle
 
 	if (src.gloves)
-		to_chat(src, "<span class='warning'>My [src.gloves] are getting in the way.</span>")
+		to_chat(src, "<span class='warning'>Your [src.gloves] are getting in the way.</span>")
 		return
 
 	var/turf/simulated/T = src.loc
 	if (!istype(T)) //to prevent doodling out of mechs and lockers
-		to_chat(src, "<span class='warning'>I cannot reach the floor.</span>")
+		to_chat(src, "<span class='warning'>You cannot reach the floor.</span>")
 		return
 
 	var/direction = input(src,"Which way?","Tile selection") as anything in list("Here","North","South","East","West")
 	if (direction != "Here")
 		T = get_step(T,text2dir(direction))
 	if (!istype(T))
-		to_chat(src, "<span class='warning'>I cannot doodle there.</span>")
+		to_chat(src, "<span class='warning'>You cannot doodle there.</span>")
 		return
 
 	var/num_doodles = 0
@@ -1313,7 +1313,7 @@
 
 		if (length(message) > max_length)
 			message += "-"
-			to_chat(src, "<span class='warning'>I ran out of blood to write with!</span>")
+			to_chat(src, "<span class='warning'>You ran out of blood to write with!</span>")
 
 		var/obj/effect/decal/cleanable/blood/writing/W = getFromPool(/obj/effect/decal/cleanable/blood/writing, T)
 		W.New(T)
@@ -1456,7 +1456,7 @@
 		for(var/obj/item/I in held_items)
 			if(prob(current_size*5) && I.w_class >= ((11-current_size)/2) && u_equip(I,1))
 				step_towards(I, src)
-				to_chat(src, "<span class = 'warning'>\The [S] pulls \the [I] from my grip!</span>")
+				to_chat(src, "<span class = 'warning'>\The [S] pulls \the [I] from your grip!</span>")
 	if(radiations)
 		apply_effect(current_size * radiations, IRRADIATE)
 	if(shoes)
@@ -1595,18 +1595,18 @@
 			return
 		switch(damage)
 			if(0)
-				to_chat(src, "<span class='notice'>Something bright flashes in the corner of my vision!</span>")
+				to_chat(src, "<span class='notice'>Something bright flashes in the corner of your vision!</span>")
 			if(1)
-				to_chat(src, "<span class='warning'>My eyes sting a little.</span>")
+				to_chat(src, "<span class='warning'>Your eyes sting a little.</span>")
 				if(prob(40))
 					eyes.damage += 1
 
 			if(2)
-				src << "<span class='warning'>My eyes burn.</span>"
+				src << "<span class='warning'>Your eyes burn.</span>"
 				eyes.damage += rand(2, 4)
 
 			else
-				to_chat(src,"<span class='warning'>My eyes itch and burn severely!</span>")
+				to_chat(src,"<span class='warning'>Your eyes itch and burn severely!</span>")
 				eyes.damage += rand(12, 16)
 
 		if(eyes.damage > 10)
@@ -1615,16 +1615,16 @@
 
 			if(eyes.damage > 20)
 				if (prob(eyes.damage - 20))
-					to_chat(src, "<span class='warning'>My eyes start to burn badly!</span>")
+					to_chat(src, "<span class='warning'>Your eyes start to burn badly!</span>")
 					disabilities |= NEARSIGHTED
 				else if(prob(eyes.damage - 25))
-					to_chat(src, "<span class='warning'>I can't see anything!</span>")
+					to_chat(src, "<span class='warning'>You can't see anything!</span>")
 					disabilities |= BLIND
 			else
-				to_chat(src, "<span class='warning'>My eyes are really starting to hurt. This can't be good for you!</span>")
+				to_chat(src, "<span class='warning'>Your eyes are really starting to hurt. This can't be good for you!</span>")
 		return 1
 	else
-		to_chat(src, "<span class='notice'>Something bright flashes in the corner of my vision!</span>")
+		to_chat(src, "<span class='notice'>Something bright flashes in the corner of your vision!</span>")
 
 /mob/living/carbon/human/reset_layer()
 	if(lying)

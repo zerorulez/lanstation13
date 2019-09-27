@@ -56,7 +56,7 @@
 					to_chat(user, "<span class='notice'>The seed bag is full.</span>")
 					S.updateUsrDialog()
 					return
-			to_chat(user, "<span class='notice'>I pick up all the seeds.</span>")
+			to_chat(user, "<span class='notice'>You pick up all the seeds.</span>")
 		else
 			if (S.contents.len < S.capacity)
 				S.contents += src;
@@ -129,7 +129,7 @@
 
 /*/obj/item/weapon/grown/sunflower/attack(mob/M as mob, mob/user as mob)
 	to_chat(M, "<font color='green'><b> [user] smacks you with a sunflower!</font><font color='yellow'><b>FLOWER POWER<b></font>")
-	to_chat(user, "<font color='green'>My sunflower's </font><font color='yellow'><b>FLOWER POWER</b></font><font color='green'> strikes [M]</font>")*/
+	to_chat(user, "<font color='green'>Your sunflower's </font><font color='yellow'><b>FLOWER POWER</b></font><font color='green'> strikes [M]</font>")*/
 
 /*/obj/item/weapon/grown/novaflower
 	name = "novaflower"
@@ -150,13 +150,13 @@
 	if(!..())
 		return
 	if(istype(M, /mob/living))
-		to_chat(M, "<span class='warning'>I am heated by the warmth of the of the [name]!</span>")
+		to_chat(M, "<span class='warning'>You are heated by the warmth of the of the [name]!</span>")
 		M.bodytemperature += potency/2 * TEMPERATURE_DAMAGE_COEFFICIENT*/
 
 /*
 /obj/item/weapon/grown/novaflower/pickup(mob/living/carbon/human/user as mob)
 	if(!user.gloves)
-		to_chat(user, "<span class='warning'>The [name] burns my bare hand!</span>")
+		to_chat(user, "<span class='warning'>The [name] burns your bare hand!</span>")
 		user.adjustFireLoss(rand(1,5))*/
 
 /*
@@ -164,7 +164,7 @@
  */
 /*/obj/item/weapon/grown/nettle/pickup(mob/living/carbon/human/user as mob)
 	if(!user.gloves)
-		to_chat(user, "<span class='warning'>The nettle burns my bare hand!</span>")
+		to_chat(user, "<span class='warning'>The nettle burns your bare hand!</span>")
 		if(istype(user, /mob/living/carbon/human))
 			var/organ = ((user.hand ? "l_":"r_") + "arm")
 			var/datum/organ/external/affecting = user.get_organ(organ)
@@ -192,13 +192,13 @@
 			user.take_organ_damage(0,force)
 		if(prob(50))
 			user.Paralyse(5)
-			to_chat(user, "<span class='warning'>I am stunned by the Deathnettle when you try picking it up!</span>")
+			to_chat(user, "<span class='warning'>You are stunned by the Deathnettle when you try picking it up!</span>")
 
 /obj/item/weapon/grown/deathnettle/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(!..())
 		return
 	if(istype(M, /mob/living))
-		to_chat(M, "<span class='warning'>I am stunned by the powerful acid of the Deathnettle!</span>")
+		to_chat(M, "<span class='warning'>You are stunned by the powerful acid of the Deathnettle!</span>")
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Had the [src.name] used on them by [user.name] ([user.ckey])</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] on [M.name] ([M.ckey])</font>")
 
@@ -228,7 +228,7 @@
 /*/obj/item/weapon/corncob/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/weapon/circular_saw) || istype(W, /obj/item/weapon/hatchet) || istype(W, /obj/item/weapon/kitchen/utensil/knife) || istype(W, /obj/item/weapon/kitchen/utensil/knife/large) || istype(W, /obj/item/weapon/kitchen/utensil/knife/large/ritual))
-		to_chat(user, "<span class='notice'>I use [W] to fashion a pipe out of the corn cob!</span>")
+		to_chat(user, "<span class='notice'>You use [W] to fashion a pipe out of the corn cob!</span>")
 		new /obj/item/clothing/mask/cigarette/pipe/cobpipe (user.loc)
 		qdel(src)
 		return*/

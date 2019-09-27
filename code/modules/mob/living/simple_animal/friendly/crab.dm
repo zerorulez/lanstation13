@@ -54,7 +54,7 @@
 			health -= 20
 			Die()
 		else
-			to_chat(user, "<span class='danger'>I can't help but feel you've just done something terribly wrong.</span>")
+			to_chat(user, "<span class='danger'>You can't help but feel you've just done something terribly wrong.</span>")
 			add_gamelogs(user, "attacked a crab with wirecutters, and made it angry", admin = TRUE, tp_link = TRUE, span_class = "danger")
 			GetMad()
 	else

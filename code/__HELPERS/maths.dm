@@ -103,7 +103,7 @@ proc/arctan(x)
 
 /**
  * Lerps x to a value between [a, b]. x must be in the range [0, 1].
- * My undying gratitude goes out to wwjnc.
+ * your undying gratitude goes out to wwjnc.
  *
  * Basically this returns the number corresponding to a certain
  * percentage in a range. 0% would be a, 100% would be b, 50% would

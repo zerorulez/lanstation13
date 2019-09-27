@@ -104,7 +104,7 @@
 	if(istype(L))
 		zapzap--
 		if(zapzap)
-			to_chat(holder, "<span class='info'>I can throw lightning [zapzap] more time\s</span>")
+			to_chat(holder, "<span class='info'>You can throw lightning [zapzap] more time\s</span>")
 			. = 1
 
 		invocation(holder)

@@ -43,7 +43,7 @@
 					new /obj/item/weapon/gun_barrel(get_turf(src.loc))
 				qdel(src)
 		else
-			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 			return
 
 /obj/item/weapon/cylinder_assembly/attack_self(mob/user as mob)
@@ -172,7 +172,7 @@
 				w_class = W_CLASS_MEDIUM
 				complete = 1
 		else
-			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 			return
 
 /obj/item/weapon/rail_assembly
@@ -263,7 +263,7 @@
 					to_chat(user, "<span class='warning'>The contents of \the [V] will spill out if there's not a lid on it.</span>")
 					return
 			if(!user.drop_item(V, src))
-				to_chat(user, "<span class='warning'>I can't let go of \the [V]!</span>")
+				to_chat(user, "<span class='warning'>You can't let go of \the [V]!</span>")
 				return 1
 			cycle_back() //vials are loaded in "first in, last out" configuration, so that there's no gap between consecutive shots
 			chambers[current_chamber] = V
@@ -445,7 +445,7 @@
 						state = "stock_reservoir_barrel"
 						update_assembly()
 				else
-					to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+					to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 					return
 		if("stock_reservoir_barrel")
 			if(istype(W, /obj/item/device/assembly/igniter))
@@ -502,7 +502,7 @@
 						state = "stock_capacitorbank_barrel"
 						update_assembly()
 				else
-					to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+					to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 					return
 		if("stock_capacitorbank_barrel")
 			if(istype(W, /obj/item/mounted/frame/light_switch) || istype(W, /obj/item/mounted/frame/access_button) || istype(W, /obj/item/mounted/frame/driver_button))
@@ -566,7 +566,7 @@
 							new /obj/item/weapon/gun/projectile/blastcannon(get_turf(src.loc))
 						qdel(src)
 				else
-					to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+					to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 					return
 //BLAST CANNON END/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -582,7 +582,7 @@
 						state = "stock_ansible"
 						update_assembly()
 				else
-					to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+					to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 					return
 		if("stock_ansible")
 			if(istype(W, /obj/item/weapon/stock_parts/subspace/amplifier))
@@ -690,7 +690,7 @@
 						new /obj/item/weapon/hatchet/tomahawk/metal(get_turf(src.loc))
 					qdel(src)
 			else
-				to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+				to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 				return
 	else if(istype(W, /obj/item/weapon/shard))
 		to_chat(user, "I fasten \the [W] to \the [src].")
@@ -758,7 +758,7 @@
 				cannon_assembly = 1
 				update_wheelchair_assembly()
 		else
-			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 			return
 //CANNON END///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -794,7 +794,7 @@
 		attempt_connect(user)
 	else
 		disconnect_capacitor()
-		to_chat(user, "<span class='notice'>I halt \the [src.name]'s charging process.</span>")
+		to_chat(user, "<span class='notice'>You halt \the [src.name]'s charging process.</span>")
 
 /obj/machinery/power/secured_capacitor/examine(mob/user)
 	..()
@@ -841,7 +841,7 @@
 
 	charge = 0
 	power_states.len = 0
-	to_chat(usr, "<span class='notice'>I discharge \the [src.name]'s stored energy.</span>")
+	to_chat(usr, "<span class='notice'>You discharge \the [src.name]'s stored energy.</span>")
 
 /obj/machinery/power/secured_capacitor/proc/attempt_connect(mob/user)
 	if(connect_to_network())
@@ -855,11 +855,11 @@
 			src.visible_message("<span class='notice'>\The [src.name] hums quietly.</span>")
 			return 1
 		else
-			src.visible_message("<span class='warning'>\The [src.name] buzzes. There doesn't seem to be any power in the wire.</span>","<span class='warning'>I hear a buzz.</span>")
+			src.visible_message("<span class='warning'>\The [src.name] buzzes. There doesn't seem to be any power in the wire.</span>","<span class='warning'>You hear a buzz.</span>")
 			disconnect_capacitor()
 			return 0
 	else
-		src.visible_message("<span class='warning'>\The [src.name] buzzes. It won't charge if it's not secured to a wire knot.</span>","<span class='warning'>I hear a buzz.</span>")
+		src.visible_message("<span class='warning'>\The [src.name] buzzes. It won't charge if it's not secured to a wire knot.</span>","<span class='warning'>You hear a buzz.</span>")
 		disconnect_capacitor()
 		return 0
 

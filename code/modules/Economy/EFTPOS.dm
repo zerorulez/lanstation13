@@ -1,6 +1,6 @@
 /obj/item/device/eftpos
 	name = "EFTPOS scanner"
-	desc = "Swipe my ID card to make purchases electronically."
+	desc = "Swipe your ID card to make purchases electronically."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "eftpos"
 	var/machine_id = ""
@@ -71,7 +71,7 @@
 				dat += "<i>This transaction has been processed successfully.</i><hr>"
 			else
 
-				dat += {"<i>Swipe my card below the line to finish this transaction.</i><hr>
+				dat += {"<i>Swipe your card below the line to finish this transaction.</i><hr>
 					<a href='?src=\ref[src];choice=scan_card'>\[------\]</a>"}
 		else
 
@@ -214,7 +214,7 @@
 						T.time = worldtime2text()
 						linked_account.transaction_log.Add(T)
 					else
-						to_chat(usr, "\icon[src]<span class='warning'>I don't have that much money!</span>")
+						to_chat(usr, "\icon[src]<span class='warning'>You don't have that much money!</span>")
 				else
 					to_chat(usr, "\icon[src]<span class='warning'>Unable to access account. Check security settings and try again.</span>")
 			else

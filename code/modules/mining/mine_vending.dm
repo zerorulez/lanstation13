@@ -1,8 +1,8 @@
 /obj/machinery/vending/mining
 	name = "Dwarven Mining Equipment"
-	desc = "Get my mining equipment here, and above all keep digging!"
+	desc = "Get your mining equipment here, and above all keep digging!"
 	product_slogans = "This asteroid isn't going to dig itself!;Stay safe in the tunnels, bring two Kinetic Accelerators!;Jetpacks, anyone?"
-	product_ads = "Hungry, thirsty or unequipped? We have my fix!"
+	product_ads = "Hungry, thirsty or unequipped? We have your fix!"
 	vend_reply = "What a glorious time to mine!"
 	icon_state = "mining"
 	products = list(

@@ -184,6 +184,10 @@
 	origin_tech = Tc_MATERIALS + "=1;" + Tc_BIOTECH + "=1"
 	attack_verb = list("attacks", "slashes", "saws", "cuts")
 
+/obj/item/weapon/circular_saw/small
+	name = "small circular saw"
+	force = 10.0
+
 
 /obj/item/weapon/circular_saw/suicide_act(mob/user)
 	to_chat(viewers(user), "<span class='danger'>[user] is sawing \his head in two with the [src.name]! It looks like \he's  trying to commit suicide!</span>")
@@ -248,7 +252,7 @@
 		playsound(get_turf(target), 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 		target.visible_message(
 			"<span class='notice'>[user] prods [target] trying to wake \him up!</span>",
-			"<span class='notice'>I prod [target] trying to wake \him up!</span>",
+			"<span class='notice'>You prod [target] trying to wake \him up!</span>",
 			)
 	else
 		return ..()

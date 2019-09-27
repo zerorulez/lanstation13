@@ -36,7 +36,7 @@
 //Barricades and physical fortifications
 /obj/structure/closet/crate/engi/meteor_materials
 	name = "\improper Space Weather Inc. materials crate"
-	desc = "For all my building and rebuilding needs."
+	desc = "For all your building and rebuilding needs."
 
 /obj/structure/closet/crate/engi/meteor_materials/New()
 
@@ -68,7 +68,7 @@
 //Building gear
 /obj/structure/closet/crate/engi/meteor_buildgear
 	name = "\improper Space Weather Inc. build gear"
-	desc = "Building gear, for all my building needs."
+	desc = "Building gear, for all your building needs."
 
 /obj/structure/closet/crate/engi/meteor_buildgear/New()
 

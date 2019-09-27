@@ -357,7 +357,7 @@ its easier to just keep the beam vertical.
 				qdel(X)
 				break
 		sleep(3)	//Changing this to a lower value will cause the beam to follow more smoothly with movement, but it will also be more laggy.
-					//I've found that 3 ticks provided a nice balance for my use.
+					//I've found that 3 ticks provided a nice balance for your use.
 	for(var/obj/effect/overlay/beam/O in orange(10,src)) if(O.BeamSource==src) returnToPool(O)
 
 //Woo hoo. Overtime
@@ -381,7 +381,7 @@ its easier to just keep the beam vertical.
 
 	if(reagents && is_open_container() && !ismob(src)) //is_open_container() isn't really the right proc for this, but w/e
 		if(get_dist(user,src) > 3)
-			to_chat(user, "<span class='info'>I can't make out the contents.</span>")
+			to_chat(user, "<span class='info'>You can't make out the contents.</span>")
 		else
 			to_chat(user, "It contains:")
 			if(!user.hallucinating())

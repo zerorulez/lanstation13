@@ -87,15 +87,15 @@
 		return
 	if (iswrench(W))
 		if(!is_open_container())
-			user.visible_message("[user] begins to unwrench the fill cap on \the [src].","<span class='notice'>I begin to unwrench the fill cap on \the [src].</span>")
+			user.visible_message("[user] begins to unwrench the fill cap on \the [src].","<span class='notice'>You begin to unwrench the fill cap on \the [src].</span>")
 			if(do_after(user, src, 25))
-				user.visible_message("[user] removes the fill cap on \the [src].","<span class='notice'>I remove the fill cap on \the [src].</span>")
+				user.visible_message("[user] removes the fill cap on \the [src].","<span class='notice'>You remove the fill cap on \the [src].</span>")
 				playsound(get_turf(src),'sound/items/Ratchet.ogg', 100, 1)
 				flags |= OPENCONTAINER
 		else
-			user.visible_message("[user] begins to seal the fill cap on \the [src].","<span class='notice'>I begin to seal the fill cap on \the [src].</span>")
+			user.visible_message("[user] begins to seal the fill cap on \the [src].","<span class='notice'>You begin to seal the fill cap on \the [src].</span>")
 			if(do_after(user, src, 25))
-				user.visible_message("[user] fastens the fill cap on \the [src].","<span class='notice'>I fasten the fill cap on \the [src].</span>")
+				user.visible_message("[user] fastens the fill cap on \the [src].","<span class='notice'>You fasten the fill cap on \the [src].</span>")
 				playsound(get_turf(src),'sound/items/Ratchet.ogg', 100, 1)
 				flags &= ~OPENCONTAINER
 		return
@@ -125,7 +125,7 @@
 			return
 
 		if(is_open_container() && reagents.total_volume)
-			to_chat(user, "<span class='notice'>I empty \the [src] onto [target].</span>")
+			to_chat(user, "<span class='notice'>You empty \the [src] onto [target].</span>")
 			user.investigation_log(I_CHEMS, "has splashed [reagents.get_reagent_ids(1)] from \a [src] ([type]) onto \the [target].")
 			if(reagents.has_reagent(FUEL))
 				message_admins("[user.name] ([user.ckey]) poured welding fuel onto [target]. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
@@ -172,7 +172,7 @@
 			thing.throw_at(target,10,thing.throw_speed*3)
 			user.visible_message(
 				"<span class='danger'>[user] fires [src] and launches [thing] at [target]!</span>",
-				"<span class='danger'>I fire [src] and launch [thing] at [target]!</span>")
+				"<span class='danger'>You fire [src] and launch [thing] at [target]!</span>")
 			break
 
 		var/turf/T = get_turf(target)

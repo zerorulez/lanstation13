@@ -10,7 +10,7 @@ Configuration:
 	/client/New()
 		src.tooltips = new /datum/tooltip(src)
 Usage:
-- Define mouse event procs on my (probably HUD) object and simply call the show and hide procs respectively:
+- Define mouse event procs on your (probably HUD) object and simply call the show and hide procs respectively:
 	/obj/screen/hud
 		MouseEntered(location, control, params)
 			usr.client.tooltip.show(params, title = src.name, content = src.desc)
@@ -18,7 +18,7 @@ Usage:
 			usr.client.tooltip.hide()
 Customization:
 - Theming can be done by passing the theme var to show() and using css in the html file to change the look
-- For my convenience some pre-made themes are included
+- For your convenience some pre-made themes are included
 Notes:
 - You may have noticed 90% of the work is done via javascript on the client. Gotta save those cycles man.
 - This is entirely untested in any other codebase besides goonstation so I have no idea if it will port nicely. Good luck!

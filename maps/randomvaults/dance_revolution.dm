@@ -51,7 +51,7 @@
 		process()
 
 /obj/structure/dance_dance_revolution/proc/win()
-	to_chat(dancer, "<span class='info'>I win!</span>")
+	to_chat(dancer, "<span class='info'>You win!</span>")
 
 	stop_game()
 	playsound(get_turf(src), 'sound/machines/ding2.ogg', 50)
@@ -65,7 +65,7 @@
 			sleep(10)
 
 /obj/structure/dance_dance_revolution/proc/lose()
-	to_chat(dancer, "<span class='userdanger'>I lose! My muscles hurt from all the dancing.</span>")
+	to_chat(dancer, "<span class='userdanger'>You lose! your muscles hurt from all the dancing.</span>")
 	visible_message("<span class='notice'>A red screen briefly flashes on \the [src].</span>")
 	dancer.Knockdown(5)
 
@@ -144,7 +144,7 @@
 		return
 
 	dancer = user
-	user.visible_message("<span class='notice'>[user] activates \the [src]!</span>", "<span class='info'>I activate \the [src].</span>")
+	user.visible_message("<span class='notice'>[user] activates \the [src]!</span>", "<span class='info'>You activate \the [src].</span>")
 
 	spawn(10)
 		visible_message("<span class='danger'>3...</span>")

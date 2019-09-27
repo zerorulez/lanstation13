@@ -142,10 +142,10 @@ obj/machinery/anomaly/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
 	if(istype(W, /obj/item/weapon/reagent_containers/glass))
 		//var/obj/item/weapon/reagent_containers/glass/G = W
 		if(held_container)
-			to_chat(user, "<span class='warning'>I must remove the [held_container] first.</span>")
+			to_chat(user, "<span class='warning'>You must remove the [held_container] first.</span>")
 		else
 			if(user.drop_item(W, src))
-				to_chat(user, "<span class='notice'>I put the [W] into the [src].</span>")
+				to_chat(user, "<span class='notice'>You put the [W] into the [src].</span>")
 
 				held_container = W
 				updateDialog()
@@ -154,9 +154,9 @@ obj/machinery/anomaly/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
 	/*else if(istype(W, /obj/item/weapon/tank))
 		//var/obj/item/weapon/reagent_containers/glass/G = W
 		if(fuel_container)
-			to_chat(user, "<span class='warning'>I must remove the [fuel_container] first.</span>")
+			to_chat(user, "<span class='warning'>You must remove the [fuel_container] first.</span>")
 		else
-			to_chat(user, "<span class='notice'>I put the [fuel_container] into the [src].</span>")
+			to_chat(user, "<span class='notice'>You put the [fuel_container] into the [src].</span>")
 			user.drop_item(W, src)
 			fuel_container.forceMove(src)
 			fuel_container = W

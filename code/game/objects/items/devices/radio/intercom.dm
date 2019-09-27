@@ -75,7 +75,7 @@
 	switch(buildstage)
 		if(3)
 			if(iswirecutter(W) && b_stat && wires.IsAllCut())
-				to_chat(user, "<span class='notice'>I cut out the intercoms wiring and disconnect its electronics.</span>")
+				to_chat(user, "<span class='notice'>You cut out the intercoms wiring and disconnect its electronics.</span>")
 				playsound(get_turf(src), 'sound/items/Wirecutter.ogg', 50, 1)
 				if(do_after(user, src, 10))
 					new /obj/item/stack/cable_coil(get_turf(src),5)
@@ -95,7 +95,7 @@
 					on = 1
 					b_stat = 0
 					buildstage = 3
-					to_chat(user, "<span class='notice'>I secure the electronics!</span>")
+					to_chat(user, "<span class='notice'>You secure the electronics!</span>")
 					update_icon()
 					processing_objects.Add(src)
 					for(var/i, i<= 5, i++)
@@ -105,15 +105,15 @@
 			if(iscoil(W))
 				var/obj/item/stack/cable_coil/coil = W
 				if(coil.amount < 5)
-					to_chat(user, "<span class='warning'>I need more cable for this!</span>")
+					to_chat(user, "<span class='warning'>You need more cable for this!</span>")
 					return
 				if(do_after(user, src, 10))
 					coil.use(5)
-					to_chat(user, "<span class='notice'>I wire \the [src]!</span>")
+					to_chat(user, "<span class='notice'>You wire \the [src]!</span>")
 					buildstage = 2
 				return 1
 			if(iscrowbar(W))
-				to_chat(user, "<span class='notice'>I begin removing the electronics...</span>")
+				to_chat(user, "<span class='notice'>You begin removing the electronics...</span>")
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 				if(do_after(user, src, 10))
 					new /obj/item/weapon/intercom_electronics(get_turf(src))
@@ -125,17 +125,17 @@
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 				if(do_after(user, src, 10))
 					qdel(W)
-					to_chat(user, "<span class='notice'>I insert \the [W] into \the [src]!</span>")
+					to_chat(user, "<span class='notice'>You insert \the [W] into \the [src]!</span>")
 					buildstage = 1
 				return 1
 			if(iswelder(W))
 				var/obj/item/weapon/weldingtool/WT=W
 				playsound(get_turf(src), 'sound/items/Welder.ogg', 50, 1)
 				if(!WT.remove_fuel(3, user))
-					to_chat(user, "<span class='warning'>I am out of welding fuel.</span>")
+					to_chat(user, "<span class='warning'>You are out of welding fuel.</span>")
 					return 1
 				if(do_after(user, src, 10))
-					to_chat(user, "<span class='notice'>I cut the intercom frame from the wall!</span>")
+					to_chat(user, "<span class='notice'>You cut the intercom frame from the wall!</span>")
 					new /obj/item/mounted/frame/intercom(get_turf(src))
 					qdel(src)
 					return 1

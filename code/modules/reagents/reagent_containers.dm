@@ -28,10 +28,10 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
 	set src in usr
 
 	if(usr.incapacitated())
-		to_chat(usr, "<span class='warning'>I can't do that while incapacitated.</span>")
+		to_chat(usr, "<span class='warning'>You can't do that while incapacitated.</span>")
 		return
 	if(!is_open_container(src))
-		to_chat(usr, "<span class='warning'>I can't, \the [src] is closed.</span>")
+		to_chat(usr, "<span class='warning'>You can't, \the [src] is closed.</span>")
 		return
 	if(src.is_empty())
 		to_chat(usr, "<span class='warning'>\The [src] is empty.</span>")
@@ -44,14 +44,14 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
 		spawn()
 			src.reagents.clear_reagents()
 		usr.visible_message("<span class='warning'>[usr] splashes something onto the floor!</span>",
-						 "<span class='notice'>I empty \the [src] onto the floor.</span>")
+						 "<span class='notice'>You empty \the [src] onto the floor.</span>")
 
 /obj/item/weapon/reagent_containers/proc/drain_into(mob/user, var/atom/where) //We're flushing our contents down the drain!
 	if(usr.incapacitated())
-		to_chat(usr, "<span class='warning'>I can't do that while incapacitated.</span>")
+		to_chat(usr, "<span class='warning'>You can't do that while incapacitated.</span>")
 		return
 	if(!is_open_container(src))
-		to_chat(usr, "<span class='warning'>I can't, \the [src] is closed.</span>")
+		to_chat(usr, "<span class='warning'>You can't, \the [src] is closed.</span>")
 		return
 	if(src.is_empty())
 		to_chat(usr, "<span class='warning'>\The [src] is empty.</span>")
@@ -59,7 +59,7 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
 	playsound(get_turf(src), 'sound/effects/slosh.ogg', 25, 1)
 	spawn()
 		src.reagents.clear_reagents()
-	to_chat(user, "<span class='notice'>I flush \the [src] down \the [where].</span>")
+	to_chat(user, "<span class='notice'>You flush \the [src] down \the [where].</span>")
 
 
 /obj/item/weapon/reagent_containers/AltClick()
@@ -87,7 +87,7 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
 		return
 
 	if(!is_open_container())
-		to_chat(user, "<span class='warning'>I can't, \the [src] is closed.</span>")//Added this here and elsewhere to prevent drinking, etc. from closed drink containers. - Hinaichigo
+		to_chat(user, "<span class='warning'>You can't, \the [src] is closed.</span>")//Added this here and elsewhere to prevent drinking, etc. from closed drink containers. - Hinaichigo
 		return
 
 	if(!src.reagents.total_volume)
@@ -111,12 +111,12 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
 			to_chat(user, "<span class='notice'><B>Remove their [H.get_body_part_coverage(MOUTH)]!</B></span>")
 			return
 
-		user.visible_message("<span class='danger'>[user] attempts to feed [H] \the [src].</span>", "<span class='danger'>I attempt to feed [H] \the [src].</span>")
+		user.visible_message("<span class='danger'>[user] attempts to feed [H] \the [src].</span>", "<span class='danger'>You attempt to feed [H] \the [src].</span>")
 
 		if(!do_mob(user, H, 30))
 			return 1
 
-		user.visible_message("<span class='danger'>[user] feeds [H] \the [src].</span>", "<span class='danger'>I feed [H] \the [src].</span>")
+		user.visible_message("<span class='danger'>[user] feeds [H] \the [src].</span>", "<span class='danger'>You feed [H] \the [src].</span>")
 
 		add_attacklogs(user, H, "force-fed", src, "amount:[amount_per_imbibe], container containing [reagentlist(src)]", adminwarn = FALSE)
 		/*M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [reagentlist(src)]</font>")
@@ -145,7 +145,7 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
  * inserting them, it's because the machine is returning `FALSE` on `attackby()`,
  * which causes `afterattack()` to be called. Return 1 instead on those cases.
  *
- * If my container is splashing/transferring things at a distance, my `afterattack()`
+ * If your container is splashing/transferring things at a distance, your `afterattack()`
  * isn't checking for adjacency. For that, check that `adjacency_flag` is `TRUE`.
  */
 /obj/item/weapon/reagent_containers/afterattack(var/obj/target, var/mob/user, var/adjacency_flag, var/click_params)
@@ -218,7 +218,7 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
 		if(user)
 			if(user.Adjacent(target))
 				user.visible_message("<span class='warning'>\The [target] has been splashed with something by [user]!</span>",
-			                     "<span class='notice'>I splash some of the solution onto \the [target].</span>")
+			                     "<span class='notice'>You splash some of the solution onto \the [target].</span>")
 	else
 		if(user)
 			user.investigation_log(I_CHEMS, "has splashed [reagents.get_reagent_ids(1)] from \a [reagents.my_atom] \ref[reagents.my_atom] onto \the [target].")
@@ -226,7 +226,7 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
 		if(user)
 			if(user.Adjacent(target))
 				user.visible_message("<span class='warning'>\The [target] has been splashed with something by [user]!</span>",
-			                     "<span class='notice'>I splash the solution onto \the [target].</span>")
+			                     "<span class='notice'>You splash the solution onto \the [target].</span>")
 
 /**
  * Transfers reagents to other containers/from dispensers. Handles splashing as well.
@@ -251,7 +251,7 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
 	if (can_receive && istype(target, /obj/structure/reagent_dispensers))
 		var/tx_amount = transfer_sub(target, src, target:amount_per_transfer_from_this, user)
 		if (tx_amount > 0)
-			to_chat(user, "<span class='notice'>I fill \the [src][src.is_full() ? " to the brim" : ""] with [tx_amount] units of the contents of \the [target].</span>")
+			to_chat(user, "<span class='notice'>You fill \the [src][src.is_full() ? " to the brim" : ""] with [tx_amount] units of the contents of \the [target].</span>")
 
 		return tx_amount
 	// Transfer to container
@@ -265,7 +265,7 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
 
 		if(success)
 			if (success > 0)
-				to_chat(user, "<span class='notice'>I transfer [success] units of the solution to \the [target].</span>")
+				to_chat(user, "<span class='notice'>You transfer [success] units of the solution to \the [target].</span>")
 
 			return (success)
 
@@ -346,9 +346,9 @@ var/list/LOGGED_SPLASH_REAGENTS = list(FUEL, THERMITE)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.check_body_part_coverage(MOUTH))
-			to_chat(H, "<span class='notice'><B>Remove my [H.get_body_part_coverage(MOUTH)]!</B></span>")
+			to_chat(H, "<span class='notice'><B>Remove your [H.get_body_part_coverage(MOUTH)]!</B></span>")
 			return
-	to_chat(user, "<span  class='notice'>I swallow a gulp of \the [src].</span>")
+	to_chat(user, "<span  class='notice'>You swallow a gulp of \the [src].</span>")
 	playsound(user.loc,'sound/items/drink.ogg', rand(10,50), 1)
 
 	if(isrobot(user))

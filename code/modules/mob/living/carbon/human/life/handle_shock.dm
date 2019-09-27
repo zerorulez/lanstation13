@@ -22,7 +22,7 @@
 	if(pain_shock_stage >= 30)
 		if(pain_shock_stage == 30)
 			if(!isUnconscious())
-				visible_message("<B>[src]</B> is having trouble keeping their eyes open.")
+				visible_message("<B>[src]</B> tem dificuldades para manter seus olhos abertos.")
 		eye_blurry = max(2, eye_blurry)
 		stuttering = max(stuttering, 5)
 

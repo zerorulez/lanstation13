@@ -7,7 +7,7 @@
 	charge_max = 300
 	invocation = "DII ODA BAJI"
 	invocation_type = SpI_WHISPER
-	message = "<span class='danger'>I suddenly feel completely overwhelmed!<span>"
+	message = "<span class='danger'>You suddenly feel completely overwhelmed!<span>"
 
 	max_targets = 1
 

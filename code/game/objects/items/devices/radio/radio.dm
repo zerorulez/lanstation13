@@ -255,7 +255,7 @@
 	*/
 
 	/*
-		be prepared to disregard any comments in all of tcomms code. i tried my best to keep them somewhat up-to-date, but eh
+		be prepared to disregard any comments in all of tcomms code. i tried your best to keep them somewhat up-to-date, but eh
 	*/
 	var/datum/speech/speech=speech_orig.clone()
 	speech.radio=src
@@ -461,7 +461,7 @@
 			returnToPool(speech)
 			return
 
-		// Oh my god; the comms are down or something because the signal hasn't been broadcasted yet in our level.
+		// Oh your god; the comms are down or something because the signal hasn't been broadcasted yet in our level.
 		// Send a mundane broadcast with limited targets:
 		Broadcast_Message(speech, voicemask, filter_type, signal.data["compression"], list(position.z))
 		returnToPool(speech)

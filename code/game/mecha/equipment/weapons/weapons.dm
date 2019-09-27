@@ -537,7 +537,7 @@
 
 		playsound(get_turf(src), 'sound/weapons/handcuffs.ogg', 30, 1, -2)
 		user.visible_message("<span class='danger'>\The [M] is trying to handcuff \the [C]!</span>",
-							 "<span class='danger'>I try to handcuff \the [C]!</span>")
+							 "<span class='danger'>You try to handcuff \the [C]!</span>")
 
 		if(do_after(user, C, 3 SECONDS, 10, FALSE, TRUE))
 			var/obj/item/weapon/handcuffs/cuffs = new(src)

@@ -49,7 +49,7 @@
 	if(processed_sheet)
 		var/datum/material/mat = materials.getMaterial(O.material)
 		materials.addAmount(O.material, processed_sheet.amount) //Stack the sheets
-		credits += mat.value * processed_sheet.amount //Gimme my fucking credits
+		credits += mat.value * processed_sheet.amount //Gimme your fucking credits
 	returnToPool(O)
 
 /obj/machinery/mineral/ore_redemption/process()
@@ -73,7 +73,7 @@
 					var/datum/material/mat = B.materials.getMaterial(mat_id)
 					materials.addAmount(mat_id, B.materials.storage[mat_id])
 					score["oremined"] += B.materials.storage[mat_id]
-					credits += mat.value * B.materials.storage[mat_id] //Gimme my fucking credits
+					credits += mat.value * B.materials.storage[mat_id] //Gimme your fucking credits
 					B.materials.removeAmount(mat_id, B.materials.storage[mat_id])
 
 /obj/machinery/mineral/ore_redemption/proc/SmeltMineral(var/obj/item/stack/ore/O)
@@ -98,7 +98,7 @@
 	dat += text("Current unclaimed credits: $[num2septext(credits)]<br>")
 
 	if(istype(inserted_id))
-		dat += "I have [inserted_id.GetBalance(format=1)] credits in my bank account. <A href='?src=\ref[src];choice=eject'>Eject ID.</A><br>"
+		dat += "I have [inserted_id.GetBalance(format=1)] credits in your bank account. <A href='?src=\ref[src];choice=eject'>Eject ID.</A><br>"
 		dat += "<A href='?src=\ref[src];choice=claim'>Claim points.</A><br>"
 	else
 		dat += text("No ID inserted.  <A href='?src=\ref[src];choice=insert'>Insert ID.</A><br>")

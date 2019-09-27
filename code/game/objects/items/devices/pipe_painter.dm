@@ -19,7 +19,7 @@
 		return
 	var/obj/machinery/atmospherics/pipe/P = A
 	P.color = mode
-	user.visible_message("<span class='notice'>[user] paints \the [P] [mode].</span>","<span class='notice'>I paint \the [P] [mode].</span>")
+	user.visible_message("<span class='notice'>[user] paints \the [P] [mode].</span>","<span class='notice'>You paint \the [P] [mode].</span>")
 	P.update_icon()
 
 /obj/item/device/pipe_painter/attack_self(mob/user as mob)

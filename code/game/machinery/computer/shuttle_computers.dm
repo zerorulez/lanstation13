@@ -433,7 +433,7 @@
 		else
 			disk.forceMove(get_turf(src))
 			usr.put_in_hands(disk)
-			to_chat(usr, "<span class='info'>I eject \the [disk] from \the [src].</span>")
+			to_chat(usr, "<span class='info'>You eject \the [disk] from \the [src].</span>")
 			if(disk.destination == selected_port)
 				selected_port = null
 			disk = null
@@ -452,7 +452,7 @@
 
 	if(user.drop_item(SC, src))
 		disk = SC
-		to_chat(usr, "<span class='info'>I insert \the [SC] into \the [src].</span>")
+		to_chat(usr, "<span class='info'>You insert \the [SC] into \the [src].</span>")
 		src.updateUsrDialog()
 
 /obj/machinery/computer/shuttle_control/proc/use_pass(obj/item/weapon/card/shuttle_pass/P, mob/user)
@@ -462,10 +462,10 @@
 	if(user.drop_item(P, src))
 		if(shuttle && shuttle.type == P.allowed_shuttle)
 			if(shuttle.travel_to(P.destination, src, user))
-				to_chat(user, "<span class='info'>I insert \the [P] into \the [src].</span>")
+				to_chat(user, "<span class='info'>You insert \the [P] into \the [src].</span>")
 				qdel(P)
 				return
-		to_chat(user, "<span class='info'>I insert \the [P] into \the [src], but it is rejected.</span>")
+		to_chat(user, "<span class='info'>You insert \the [P] into \the [src], but it is rejected.</span>")
 		user.put_in_hands(P)
 
 /obj/machinery/computer/shuttle_control/bullet_act(var/obj/item/projectile/Proj)

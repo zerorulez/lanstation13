@@ -245,7 +245,7 @@
 		else if(href_list["add_inv"])
 			var/add_to = href_list["add_inv"]
 			if(!usr.get_active_hand())
-				to_chat(usr, "<span class='warning'>I have nothing in my hand to put on its [add_to].</span>")
+				to_chat(usr, "<span class='warning'>You have nothing in your hand to put on its [add_to].</span>")
 				return
 			switch(add_to)
 				if("ears")
@@ -523,7 +523,7 @@
 				if(!parrot_perch || parrot_interest.loc != parrot_perch.loc)
 					held_item = parrot_interest
 					parrot_interest.forceMove(src)
-					visible_message("[src] grabs [held_item]!", "<span class='notice'>I grab [held_item]!</span>", "I hear the sounds of wings flapping furiously.")
+					visible_message("[src] grabs [held_item]!", "<span class='notice'>You grab [held_item]!</span>", "I hear the sounds of wings flapping furiously.")
 
 			parrot_interest = null
 			parrot_state = PARROT_SWOOP | PARROT_RETURN
@@ -705,7 +705,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, "<span class='warning'>I am already holding [held_item]</span>")
+		to_chat(src, "<span class='warning'>You are already holding [held_item]</span>")
 		return 1
 
 	for(var/obj/item/I in view(1,src))
@@ -720,7 +720,7 @@
 
 			held_item = I
 			I.forceMove(src)
-			visible_message("[src] grabs [held_item]!", "<span class='notice'>I grab [held_item]!</span>", "I hear the sounds of wings flapping furiously.")
+			visible_message("[src] grabs [held_item]!", "<span class='notice'>You grab [held_item]!</span>", "I hear the sounds of wings flapping furiously.")
 			return held_item
 
 	to_chat(src, "<span class='warning'>There is nothing of interest to take.</span>")
@@ -735,7 +735,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, "<span class='warning'>I am already holding [held_item]</span>")
+		to_chat(src, "<span class='warning'>You are already holding [held_item]</span>")
 		return 1
 
 	var/obj/item/stolen_item = null
@@ -754,7 +754,7 @@
 			C.u_equip(stolen_item)
 			held_item = stolen_item
 			stolen_item.forceMove(src)
-			visible_message("[src] grabs [held_item] out of [C]'s hand!", "<span class='notice'>I snag [held_item] out of [C]'s hand!</span>", "I hear the sounds of wings flapping furiously.")
+			visible_message("[src] grabs [held_item] out of [C]'s hand!", "<span class='notice'>You snag [held_item] out of [C]'s hand!</span>", "I hear the sounds of wings flapping furiously.")
 			return held_item
 
 	to_chat(src, "<span class='warning'>There is nothing of interest to take.</span>")
@@ -782,7 +782,7 @@
 
 	if(!held_item)
 		if(src == usr) //So that other mobs wont make this message appear when they're bludgeoning you.
-			to_chat(src, "<span class='warning'>I have nothing to drop!</span>")
+			to_chat(src, "<span class='warning'>You have nothing to drop!</span>")
 		return 0
 
 

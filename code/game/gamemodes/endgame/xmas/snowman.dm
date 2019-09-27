@@ -5,7 +5,7 @@
 	icon_living = "snowman"
 	icon_dead = ""
 	icon='icons/mob/snowman.dmi'
-	speak = list("Good day sir.","Would you happen to have a carrot for my nose?","Cold day, isn't it?","What a pleasant weather.")
+	speak = list("Good day sir.","Would you happen to have a carrot for your nose?","Cold day, isn't it?","What a pleasant weather.")
 	speak_emote = list("says")
 	emote_hear = list("says")
 	emote_see = list("hums")
@@ -52,7 +52,7 @@
 		src.say("Whatever.")
 
 	if(stat)
-		visible_message("<span class='game say'><span class='name'>[src.name]</span> murmurs, [pick("Oh my snowballs...","I will...be back...")]</span>")
+		visible_message("<span class='game say'><span class='name'>[src.name]</span> murmurs, [pick("Oh your snowballs...","I will...be back...")]</span>")
 		visible_message("\the [src] collapses in a pile of snow.")
 		var/turf/T = get_turf(src)
 		new /obj/item/stack/sheet/snow(T, 1)
@@ -80,7 +80,7 @@
 			visible_message("<span class='notice'>[user] puts \a [W] on \the [src]'s nose.</span>")
 			carrot = W
 			overlays += image(icon = icon, icon_state = "snowman_carrot")
-			speak -= "Would you happen to have a carrot for my nose?"
+			speak -= "Would you happen to have a carrot for your nose?"
 			src.say("Ah, most excellent!")
 			if(prob(30))
 				call(/obj/item/weapon/winter_gift/proc/pick_a_gift)(src.loc)

@@ -58,7 +58,7 @@
 
 /obj/item/weapon/storage/firstaid/toxin
 	name = "toxin first-aid kit"
-	desc = "Used to treat when you have a high amount of toxins in my body."
+	desc = "Used to treat when you have a high amount of toxins in your body."
 	icon_state = "antitoxin"
 	item_state = "firstaid-toxin"
 
@@ -187,7 +187,7 @@
 			melted = 1
 	if(istype(I, /obj/item/weapon/storage/bag/chem))
 		var/obj/item/weapon/storage/bag/chem/C = I
-		to_chat(user, "<span class='notice'>I transfer the contents of [C].<span>")
+		to_chat(user, "<span class='notice'>You transfer the contents of [C].<span>")
 		for(var/obj/item/O in C.contents)
 			if(can_be_inserted(O))
 				handle_item_insertion(O, 1)

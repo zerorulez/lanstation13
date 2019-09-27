@@ -48,7 +48,7 @@
 	//I don't want this to be an open container.
 	..()
 	if(get_dist(user,src) > 3)
-		to_chat(user, "<span class='info'>I can't make out the contents.</span>")
+		to_chat(user, "<span class='info'>You can't make out the contents.</span>")
 		return
 	if(reagents)
 		to_chat(user, "It contains:")

@@ -25,11 +25,11 @@ LINEN BINS
 	if(I.is_sharp())
 		cut_time = 60 / I.sharpness
 	if(cut_time)
-		to_chat(user, "<span  class='notice'>I begin cutting the [src].</span>")
+		to_chat(user, "<span  class='notice'>You begin cutting the [src].</span>")
 		if(do_after(user, src, cut_time))
 			if(!src)
 				return
-			to_chat(user, "<span  class='notice'>I have cut the [src] into rags.</span>")
+			to_chat(user, "<span  class='notice'>You have cut the [src] into rags.</span>")
 			var/turf/location = get_turf(src)
 			for(var/x=0; x<=8; x++)
 				var/obj/item/weapon/reagent_containers/glass/rag/S = new/obj/item/weapon/reagent_containers/glass/rag/(location)
@@ -150,11 +150,11 @@ LINEN BINS
 		if(user.drop_item(I, src))
 			sheets.Add(I)
 			amount++
-			to_chat(user, "<span class='notice'>I put \the [I] in \the [src].</span>")
+			to_chat(user, "<span class='notice'>You put \the [I] in \the [src].</span>")
 	else if(amount && !hidden && I.w_class < W_CLASS_LARGE)	//make sure there's sheets to hide it among, make sure nothing else is hidden in there.
 		if(user.drop_item(I, src))
 			hidden = I
-			to_chat(user, "<span class='notice'>I hide [I] among the sheets.</span>")
+			to_chat(user, "<span class='notice'>You hide [I] among the sheets.</span>")
 
 
 /obj/structure/bedsheetbin/attack_paw(mob/user as mob)
@@ -175,7 +175,7 @@ LINEN BINS
 
 		B.forceMove(user.loc)
 		user.put_in_hands(B)
-		to_chat(user, "<span class='notice'>I take [B] out of [src].</span>")
+		to_chat(user, "<span class='notice'>You take [B] out of [src].</span>")
 
 		if(hidden)
 			hidden.forceMove(user.loc)
@@ -198,7 +198,7 @@ LINEN BINS
 			B = new /obj/item/weapon/bedsheet(loc)
 
 		B.forceMove(loc)
-		to_chat(user, "<span class='notice'>I telekinetically remove [B] from [src].</span>")
+		to_chat(user, "<span class='notice'>You telekinetically remove [B] from [src].</span>")
 		update_icon()
 
 		if(hidden)

@@ -1,5 +1,5 @@
 /datum/ui_icons
-//this is where you can put screen objects for all my custom HUD needs.
+//this is where you can put screen objects for all your custom HUD needs.
 
 	//Adminbus HUD stuff
 	var/list/rearviews[16]

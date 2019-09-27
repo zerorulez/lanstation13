@@ -75,10 +75,10 @@
 	if(snow_amount != SNOWCOVERING_FULL)
 		return
 	playsound(get_turf(src), "rustle", 50, 1)
-	to_chat(user, "<span class='notice'>I start digging the snow with my hands.</span>")
+	to_chat(user, "<span class='notice'>You start digging the snow with your hands.</span>")
 	if(do_after(user, src, 30))
 		snow_amount = SNOWCOVERING_MEDIUM
-		to_chat(user, "<span class='notice'>I form a snowball in my hands.</span>")
+		to_chat(user, "<span class='notice'>You form a snowball in your hands.</span>")
 		user.put_in_hands(new /obj/item/stack/sheet/snow())
 		icon_state = "snow_grabbed"
 
@@ -493,7 +493,7 @@ var/global/list/datum/stack_recipe/snow_recipes = list (
 
 /obj/structure/snow_flora/tree
 	name = "tree"
-	desc = "Where's my axe when I need it?"
+	desc = "Where's your axe when I need it?"
 	density = 0
 	anchored = 1
 	layer = FLY_LAYER

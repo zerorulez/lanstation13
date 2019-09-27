@@ -39,13 +39,13 @@
 	if(istype(I, /obj/item/clothing/accessory))
 		var/obj/item/clothing/accessory/A = I
 		if(check_accessory_overlap(A))
-			to_chat(user, "<span class='notice'>I cannot attach more accessories of this type to [src].</span>")
+			to_chat(user, "<span class='notice'>You cannot attach more accessories of this type to [src].</span>")
 			return
 		if(!A.can_attach_to(src))
 			to_chat(user, "<span class='notice'>\The [A] cannot be attached to [src].</span>")
 			return
 		if(user.drop_item(I, src))
-			to_chat(user, "<span class='notice'>I attach [A] to [src].</span>")
+			to_chat(user, "<span class='notice'>You attach [A] to [src].</span>")
 			attach_accessory(A)
 			A.add_fingerprint(user)
 		if(ishuman(loc))
@@ -186,17 +186,17 @@
 				if(!species_restricted.Find(OE.species.name))
 					wearable = 1
 				else
-					to_chat(M, "<span class='warning'>My misshapen [OE.display_name] prevents you from wearing \the [src].</span>")
+					to_chat(M, "<span class='warning'>Your misshapen [OE.display_name] prevents you from wearing \the [src].</span>")
 					return CANNOT_EQUIP
 			else
 				if(species_restricted.Find(OE.species.name))
 					wearable = 1
 				else
-					to_chat(M, "<span class='warning'>My misshapen [OE.display_name] prevents you from wearing \the [src].</span>")
+					to_chat(M, "<span class='warning'>Your misshapen [OE.display_name] prevents you from wearing \the [src].</span>")
 					return CANNOT_EQUIP
 
 		if(!wearable) //But we are a species that CAN'T wear it (sidenote: slots 15 and 16 are pockets)
-			to_chat(M, "<span class='warning'>My species cannot wear [src].</span>")//Let us know
+			to_chat(M, "<span class='warning'>Your species cannot wear [src].</span>")//Let us know
 			return CANNOT_EQUIP
 
 	//return ..()
@@ -273,7 +273,7 @@
 
 /obj/item/clothing/ears/earmuffs
 	name = "earmuffs"
-	desc = "Protects my hearing from both loud and quiet noises."
+	desc = "Protects your hearing from both loud and quiet noises."
 	icon_state = "earmuffs"
 	item_state = "earmuffs"
 	slot_flags = SLOT_EARS
@@ -576,24 +576,24 @@ BLIND     // can't see anything
 	var/list/modes = list("Off", "Binary sensors", "Vitals tracker", "Tracking beacon")
 	var/switchMode = input("Select a sensor mode:", "Suit Sensor Mode", modes[sensor_mode + 1]) in modes
 	if(get_dist(user, src) > 1)
-		to_chat(user, "<span class='warning'>I have moved too far away.</span>")
+		to_chat(user, "<span class='warning'>You have moved too far away.</span>")
 		return
 	sensor_mode = modes.Find(switchMode) - 1
 
 	if(is_holder_of(user, src))
 		switch(sensor_mode) //i'm sure there's a more compact way to write this but c'mon
 			if(0)
-				to_chat(user, "<span class='notice'>I disable my suit's remote sensing equipment.</span>")
+				to_chat(user, "<span class='notice'>You disable your suit's remote sensing equipment.</span>")
 			if(1)
-				to_chat(user, "<span class='notice'>My suit will now report whether you are live or dead.</span>")
+				to_chat(user, "<span class='notice'>Your suit will now report whether you are live or dead.</span>")
 			if(2)
-				to_chat(user, "<span class='notice'>My suit will now report my vital lifesigns.</span>")
+				to_chat(user, "<span class='notice'>Your suit will now report your vital lifesigns.</span>")
 			if(3)
-				to_chat(user, "<span class='notice'>My suit will now report my vital lifesigns as well as my coordinate position.</span>")
+				to_chat(user, "<span class='notice'>Your suit will now report your vital lifesigns as well as your coordinate position.</span>")
 	else
 		switch(sensor_mode)
 			if(0)
-				to_chat(user, "<span class='notice'>I disable the suit's remote sensing equipment.</span>")
+				to_chat(user, "<span class='notice'>You disable the suit's remote sensing equipment.</span>")
 			if(1)
 				to_chat(user, "<span class='notice'>The suit sensors will now report whether the wearer is live or dead.</span>")
 			if(2)

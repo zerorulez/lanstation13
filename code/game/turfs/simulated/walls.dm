@@ -92,13 +92,13 @@
 			if(M.environment_smash == 3)
 				dismantle_wall(1)
 				M.visible_message("<span class='danger'>[M] smashes through \the [src].</span>", \
-				"<span class='attack'>I smash through \the [src].</span>")
+				"<span class='attack'>You smash through \the [src].</span>")
 			else
 				to_chat(M, "<span class='info'>This [src] is far too strong for you to destroy.</span>")
 		else
 			dismantle_wall(1)
 			M.visible_message("<span class='danger'>[M] smashes through \the [src].</span>", \
-			"<span class='attack'>I smash through \the [src].</span>")
+			"<span class='attack'>You smash through \the [src].</span>")
 			return
 
 /turf/simulated/wall/attack_paw(mob/user as mob)
@@ -112,19 +112,19 @@
 		if(prob(100 - hardness) || rotting)
 			dismantle_wall(1)
 			user.visible_message("<span class='danger'>[user] smashes through \the [src].</span>", \
-			"<span class='notice'>I smash through \the [src].</span>")
+			"<span class='notice'>You smash through \the [src].</span>")
 			usr.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 			return
 		else
 			user.visible_message("<span class='warning'>[user] punches \the [src].</span>", \
-			"<span class='notice'>I punch \the [src].</span>")
+			"<span class='notice'>You punch \the [src].</span>")
 			return
 
 	if(rotting)
 		return src.attack_rotting(user) //Stop there, we aren't slamming our hands on a dirty rotten wall
 
 	user.visible_message("<span class='notice'>[user] pushes \the [src].</span>", \
-	"<span class='notice'>I push \the [src] but nothing happens!</span>")
+	"<span class='notice'>You push \the [src] but nothing happens!</span>")
 	playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 	src.add_fingerprint(user)
 	return ..()
@@ -136,14 +136,14 @@
 	else
 		//Should be a normal wall or a mineral wall, SHOULD
 		user.visible_message("<span class='warning'>\The [src] crumbles under [user]'s touch.</span>", \
-		"<span class='notice'>\The [src] crumbles under my touch.</span>")
+		"<span class='notice'>\The [src] crumbles under your touch.</span>")
 		dismantle_wall()
 		return
 
 /turf/simulated/wall/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	user.delayNextAttack(8)
 	if (!user.dexterity_check())
-		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 
 	if(istype(W,/obj/item/weapon/solder) && bullet_marks)
@@ -151,7 +151,7 @@
 		if(!S.remove_fuel(bullet_marks*2,user))
 			return
 		playsound(loc, 'sound/items/Welder.ogg', 100, 1)
-		to_chat(user, "<span class='notice'>I remove the bullet marks with \the [W].</span>")
+		to_chat(user, "<span class='notice'>You remove the bullet marks with \the [W].</span>")
 		bullet_marks = 0
 		icon = initial(icon)
 		return
@@ -163,7 +163,7 @@
 	if(rotting)
 		if(W.is_hot())
 			user.visible_message("<span class='notice'>[user] burns the fungi away with \the [W].</span>", \
-			"<span class='notice'>I burn the fungi away with \the [W].</span>")
+			"<span class='notice'>You burn the fungi away with \the [W].</span>")
 			for(var/obj/effect/E in src)
 				if(E.name == "Wallrot")
 					qdel(E)
@@ -171,7 +171,7 @@
 			return
 		if(istype(W,/obj/item/weapon/soap))
 			user.visible_message("<span class='notice'>[user] forcefully scrubs the fungi away with \the [W].</span>", \
-			"<span class='notice'>I forcefully scrub the fungi away with \the [W].</span>")
+			"<span class='notice'>You forcefully scrub the fungi away with \the [W].</span>")
 			for(var/obj/effect/E in src)
 				if(E.name == "Wallrot")
 					qdel(E)
@@ -192,11 +192,11 @@
 	if(thermite && can_thermite)
 		if(W.is_hot()) //HEY CAN THIS SET THE THERMITE ON FIRE ?
 			user.visible_message("<span class='warning'>[user] applies \the [W] to the thermite coating \the [src] and waits</span>", \
-			"<span class='warning'>I apply \the [W] to the thermite coating \the [src] and wait</span>")
+			"<span class='warning'>You apply \the [W] to the thermite coating \the [src] and wait</span>")
 			if(do_after(user, src, 100) && W.is_hot()) //Thermite is hard to light up
 				thermitemelt(user) //There, I just saved you fifty lines of redundant typechecks and awful snowflake coding
 				user.visible_message("<span class='warning'>[user] sets \the [src] ablaze with \the [W]</span>", \
-				"<span class='warning'>I set \the [src] ablaze with \the [W]</span>")
+				"<span class='warning'>You set \the [src] ablaze with \the [W]</span>")
 				return
 
 	//Deconstruction
@@ -204,15 +204,15 @@
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
 			if(engraving)
-				to_chat(user, "<span class='notice'>I deform the wall back into its original shape")
+				to_chat(user, "<span class='notice'>You deform the wall back into its original shape")
 				engraving = null
 				engraving_quality = null
 				playsound(src, 'sound/items/Welder.ogg', 100, 1)
 				overlays.Cut()
 				return
 			user.visible_message("<span class='warning'>[user] begins slicing through \the [src]'s outer plating.</span>", \
-			"<span class='notice'>I begin slicing through \the [src]'s outer plating.</span>", \
-			"<span class='warning'>I hear welding noises.</span>")
+			"<span class='notice'>You begin slicing through \the [src]'s outer plating.</span>", \
+			"<span class='warning'>You hear welding noises.</span>")
 			playsound(src, 'sound/items/Welder.ogg', 100, 1)
 
 			if(do_after(user, src, 100))
@@ -220,15 +220,15 @@
 					return
 				playsound(src, 'sound/items/Welder.ogg', 100, 1)
 				user.visible_message("<span class='warning'>[user] slices through \the [src]'s outer plating.</span>", \
-				"<span class='notice'>I slice through \the [src]'s outer plating.</span>", \
-				"<span class='warning'>I hear welding noises.</span>")
+				"<span class='notice'>You slice through \the [src]'s outer plating.</span>", \
+				"<span class='warning'>You hear welding noises.</span>")
 				var/pdiff = performWallPressureCheck(src.loc)
 				if(pdiff)
 					investigation_log(I_ATMOS, "with a pdiff of [pdiff] dismantled by [user.real_name] ([formatPlayerPanel(user, user.ckey)]) at [formatJumpTo(get_turf(src))]!")
 					message_admins("\The [src] with a pdiff of [pdiff] has been dismantled by [user.real_name] ([formatPlayerPanel(user, user.ckey)]) at [formatJumpTo(get_turf(src))]!")
 				dismantle_wall()
 		else
-			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 			return
 
 	else if(istype(W, /obj/item/weapon/pickaxe))
@@ -239,11 +239,11 @@
 			return
 
 		user.visible_message("<span class='warning'>[user] begins [PK.drill_verb] straight into \the [src].</span>", \
-		"<span class='notice'>I begin [PK.drill_verb] straight into \the [src].</span>")
+		"<span class='notice'>You begin [PK.drill_verb] straight into \the [src].</span>")
 		playsound(src, pick(PK.drill_sound), 100, 1)
 		if(do_after(user, src, PK.digspeed * 10))
 			user.visible_message("<span class='notice'>[user]'s [PK] tears though the last of \the [src], leaving nothing but a girder.</span>", \
-			"<span class='notice'>My [PK] tears though the last of \the [src], leaving nothing but a girder.</span>")
+			"<span class='notice'>Your [PK] tears though the last of \the [src], leaving nothing but a girder.</span>")
 			dismantle_wall()
 
 			var/pdiff = performWallPressureCheck(src.loc)
@@ -372,7 +372,7 @@
 			dismantle_wall()
 
 /turf/simulated/wall/kick_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H] kicks \the [src]!</span>", "<span class='danger'>I kick \the [src]!</span>")
+	H.visible_message("<span class='danger'>[H] kicks \the [src]!</span>", "<span class='danger'>You kick \the [src]!</span>")
 
 	if(prob(70))
 		to_chat(H, "<span class='userdanger'>Ouch! That hurts!</span>")

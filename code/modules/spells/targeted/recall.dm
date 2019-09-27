@@ -68,11 +68,11 @@
 	if(has_object)
 		if(cast_check(0, user))
 			if(!bound || bound.loc == null) //if it's deleted or something
-				to_chat(user, "<span class='danger'>The link to my bound object has been severed!</span>")
+				to_chat(user, "<span class='danger'>The link to your bound object has been severed!</span>")
 				clear_bound()
 				return 1
 			if(bound.anchored && !allow_anchored)
-				to_chat(user, "<span class='danger'>I can't seem to summon my bound object!</span>")
+				to_chat(user, "<span class='danger'>You can't seem to summon your bound object!</span>")
 				clear_bound()
 				return 1
 			var/turf/oldloc = get_turf(bound)
@@ -109,13 +109,13 @@
 	spell_levels[Sp_POWER]++
 	allow_anchored = 1
 
-	var/upgrade_desc = "I have reduced the restrictions on my binding."
+	var/upgrade_desc = "I have reduced the restrictions on your binding."
 
 	return upgrade_desc
 
 /spell/targeted/bound_object/get_upgrade_info(upgrade_type, level)
 	if(upgrade_type == Sp_POWER)
-		return "Increases my binding skill, allowing otherwise immobile structures and machines to be moved."
+		return "Increases your binding skill, allowing otherwise immobile structures and machines to be moved."
 	return ..()
 
 /spell/targeted/bound_object/on_right_click(mob/user)

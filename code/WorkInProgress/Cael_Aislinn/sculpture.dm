@@ -15,7 +15,7 @@
 	meat_type = null
 	see_in_dark = 8 //Needs to see in darkness to snap in darkness
 	var/response_snap = "snapped the neck of" //Past tense because it "happened before you could see it"
-	var/response_snap_target = "In the blink of an eye, something grabs you and snaps my neck!"
+	var/response_snap_target = "In the blink of an eye, something grabs you and snaps your neck!"
 	var/snap_sound = list('sound/scp/firstpersonsnap.ogg','sound/scp/firstpersonsnap2.ogg','sound/scp/firstpersonsnap3.ogg')
 	var/scare_sound = list('sound/scp/scare1.ogg','sound/scp/scare2.ogg','sound/scp/scare3.ogg','sound/scp/scare4.ogg')	//Boo
 	var/hibernate = 0 //Disables SCP until toggled back to 0

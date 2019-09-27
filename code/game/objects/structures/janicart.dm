@@ -46,7 +46,7 @@
 	if(istype(W, /obj/item/mecha_parts/janicart_upgrade) && !upgraded && !destroyed)
 		if(user.drop_item(W))
 			qdel(W)
-			to_chat(user, "<span class='notice'>I upgrade \the [nick].</span>")
+			to_chat(user, "<span class='notice'>You upgrade \the [nick].</span>")
 			upgraded = 1
 			name = "upgraded [name]"
 			icon_state = "pussywagon_upgraded"
@@ -55,14 +55,14 @@
 			to_chat(user, "<span class='warning'>There's already a [W.name] on \the [nick]!</span>")
 			return
 		if(user.drop_item(W, src))
-			to_chat(user, "<span class='notice'>I hook \the [W] onto \the [nick].</span>")
+			to_chat(user, "<span class='notice'>You hook \the [W] onto \the [nick].</span>")
 			mybag = W
 
 /obj/structure/bed/chair/vehicle/janicart/mop_act(obj/item/weapon/mop/M, mob/user)
 	if(istype(M))
 		if(reagents.total_volume >= 2)
 			reagents.trans_to(M, 3)
-			to_chat(user, "<span class='notice'>I wet the mop in \the [nick].</span>")
+			to_chat(user, "<span class='notice'>You wet the mop in \the [nick].</span>")
 			playsound(get_turf(src), 'sound/effects/slosh.ogg', 25, 1)
 		if(reagents.total_volume < 1)
 			to_chat(user, "<span class='notice'>\The [nick] is out of water!</span>")
@@ -121,5 +121,5 @@
 							cleaned_human.shoes.clean_blood()
 							cleaned_human.update_inv_shoes(0)
 						cleaned_human.clean_blood()
-						to_chat(cleaned_human, "<span class='warning'>[src] cleans my face!</span>")
+						to_chat(cleaned_human, "<span class='warning'>[src] cleans your face!</span>")
 	return

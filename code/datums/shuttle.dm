@@ -265,7 +265,7 @@
 		if(81 to INFINITY)
 			time = "in [max(round((pre_flight_delay) / 10, 1), 0)] seconds"
 	if(broadcast)
-		broadcast.announce("The shuttle has received my message and will be sent [time].")
+		broadcast.announce("The shuttle has received your message and will be sent [time].")
 
 	destination_port = D
 	last_moved = world.time

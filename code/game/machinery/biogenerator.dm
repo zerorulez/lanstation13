@@ -369,13 +369,13 @@
 				B.remove_from_storage(G,src)
 				i++
 				if(i >= 20)
-					to_chat(user, "<span class='notice'>I fill the biogenerator to its capacity.</span>")
+					to_chat(user, "<span class='notice'>You fill the biogenerator to its capacity.</span>")
 					break
 			if(i<20)
-				to_chat(user, "<span class='notice'>I empty the plant bag into the biogenerator.</span>")
+				to_chat(user, "<span class='notice'>You empty the plant bag into the biogenerator.</span>")
 
 	else if(!istype(O, /obj/item/weapon/reagent_containers/food/snacks/grown))
-		to_chat(user, "<span class='warning'>I cannot put this in [src.name]</span>")
+		to_chat(user, "<span class='warning'>You cannot put this in [src.name]</span>")
 	else
 		var/i = 0
 		for(var/obj/item/weapon/reagent_containers/food/snacks/grown/G in contents)
@@ -384,7 +384,7 @@
 			to_chat(user, "<span class='warning'>The biogenerator is full! Activate it.</span>")
 		else
 			if(user.drop_item(O, src))
-				to_chat(user, "<span class='notice'>I put [O.name] in [src.name]</span>")
+				to_chat(user, "<span class='notice'>You put [O.name] in [src.name]</span>")
 	update_icon()
 	return
 
@@ -396,7 +396,7 @@
 
 /obj/machinery/biogenerator/togglePanelOpen(var/obj/toggleitem, mob/user)
 	if(beaker)
-		to_chat(user, "<span class='rose'>I can't open \the [src]'s maintenance panel while a beaker is loaded.</span>")
+		to_chat(user, "<span class='rose'>You can't open \the [src]'s maintenance panel while a beaker is loaded.</span>")
 		return
 	if(..())
 		if(panel_open)

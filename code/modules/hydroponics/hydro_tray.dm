@@ -236,19 +236,19 @@
 		user.delayNextAttack(5)
 
 	else if(istype(O, /obj/item/claypot))
-		to_chat(user, "<span class='warning'>I must place the pot on the ground and use a spade on \the [src] to make a transplant.</span>")
+		to_chat(user, "<span class='warning'>You must place the pot on the ground and use a spade on \the [src] to make a transplant.</span>")
 		return
 
 	else if(seed && istype(O, /obj/item/weapon/pickaxe/shovel))
 		var/obj/item/claypot/C = locate() in range(user,1)
 		if(!C)
-			to_chat(user, "<span class='warning'>I need an empty clay pot next to you.</span>")
+			to_chat(user, "<span class='warning'>You need an empty clay pot next to you.</span>")
 			return
 		playsound(loc, 'sound/items/shovel.ogg', 50, 1)
 		if(do_after(user, src, 50))
 			user.visible_message(	"<span class='notice'>[user] transplants \the [seed.display_name] into \the [C].</span>",
 									"<span class='notice'>\icon[src] You transplant \the [seed.display_name] into \the [C].</span>",
-									"<span class='notice'>I hear a ratchet.</span>")
+									"<span class='notice'>You hear a ratchet.</span>")
 
 			var/obj/structure/flora/pottedplant/claypot/S = new(get_turf(C))
 			transfer_fingerprints(C, S)
@@ -314,7 +314,7 @@
 	else if (istype(O, /obj/item/weapon/minihoe))
 
 		if(weedlevel > 0)
-			user.visible_message("<span class='alert'>[user] starts uprooting the weeds.</span>", "<span class='alert'>I remove the weeds from the [src].</span>")
+			user.visible_message("<span class='alert'>[user] starts uprooting the weeds.</span>", "<span class='alert'>You remove the weeds from the [src].</span>")
 			weedlevel = 0
 			update_icon()
 		else

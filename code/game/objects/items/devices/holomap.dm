@@ -82,13 +82,13 @@
 /obj/item/device/holomap/attackby(obj/item/W, mob/user)
 	if (isscrewdriver(W))
 		panel = !panel
-		to_chat(user, "<span class='notify'>I [panel ? "open" : "close"] the panel on \the [src].</span>")
+		to_chat(user, "<span class='notify'>You [panel ? "open" : "close"] the panel on \the [src].</span>")
 		playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 		return 1
 
 	if (ismultitool(W) && panel)
 		hacked = !hacked
-		to_chat(user, "<span class='notify'>I [hacked ? "disable" : "enable"] the lock on \the [src].</span>")
+		to_chat(user, "<span class='notify'>You [hacked ? "disable" : "enable"] the lock on \the [src].</span>")
 		return 1
 
 	. = ..()

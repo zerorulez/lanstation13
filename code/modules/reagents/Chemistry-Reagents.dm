@@ -38,7 +38,7 @@
 	if(!istype(M))
 		return 1
 
-	var/datum/reagent/self = src //Note : You need to declare self again (before the parent call) to use it in my chemical, see blood
+	var/datum/reagent/self = src //Note : You need to declare self again (before the parent call) to use it in your chemical, see blood
 	src = null
 
 	//If the chemicals are in a smoke cloud, do not let the chemicals "penetrate" into the mob's system (balance station 13) -- Doohl
@@ -167,14 +167,14 @@
 
 	if(prob(1))
 		if(prob(90))
-			to_chat(M, "<span class='notice'>[pick("I feel quite hardcore", "Coderbased is my god", "Fucking kickscammers Bustration will be the best")].")
+			to_chat(M, "<span class='notice'>[pick("I feel quite hardcore", "Coderbased is your god", "Fucking kickscammers Bustration will be the best")].")
 		else
 			M.say(pick("Muh hardcores.", "Falling down is a feature.", "Gorrillionaires and Booty Borgs when?"))
 
 /datum/reagent/rogan
 	name = "Rogan"
 	id = ROGAN
-	description = "Smells older than my grandpa."
+	description = "Smells older than your grandpa."
 	reagent_state = LIQUID
 	color = "#0000FF"
 	custom_metabolism = 0.01
@@ -185,7 +185,7 @@
 
 	if(prob(1))
 		if(prob(42))
-			to_chat(M, "<span class='notice'>[pick("Rogan?", "ROGAN.", "Food please.", "Wood please.", "Gold please.", "All hail, king of the losers!", "I'll beat you back to Age of Empires.", "Sure, blame it on my ISP.", "Start the game already!", "It is good to be the king.", "Long time, no siege.", "Nice town, I'll take it.", "Raiding party!", "Dadgum.", "Wololo.", "Attack an enemy now.", "Cease creating extra villagers.", "Create extra villagers.", "Build a navy.", "	Stop building a navy.", "Wait for my signal to attack.", "Build a wonder.", "Give me my extra resources.", "What age are you in?")]")
+			to_chat(M, "<span class='notice'>[pick("Rogan?", "ROGAN.", "Food please.", "Wood please.", "Gold please.", "All hail, king of the losers!", "I'll beat you back to Age of Empires.", "Sure, blame it on your ISP.", "Start the game already!", "It is good to be the king.", "Long time, no siege.", "Nice town, I'll take it.", "Raiding party!", "Dadgum.", "Wololo.", "Attack an enemy now.", "Cease creating extra villagers.", "Create extra villagers.", "Build a navy.", "	Stop building a navy.", "Wait for your signal to attack.", "Build a wonder.", "Give me your extra resources.", "What age are you in?")]")
 		else
 			M.say("Rogan?")
 
@@ -202,7 +202,7 @@
 
 	if(M.dna.mutantrace != "slime" && !isslime(M))
 		if(prob(10))
-			to_chat(M, "<span class='warning'>My insides are burning!</span>")
+			to_chat(M, "<span class='warning'>Your insides are burning!</span>")
 			M.adjustToxLoss(rand(20, 60) * REM)
 	if(prob(40))
 		M.heal_organ_damage(5 * REM, 0)
@@ -381,7 +381,7 @@
 			if(method == TOUCH)
 
 				if(H.check_body_part_coverage(EYES|MOUTH))
-					to_chat(H, "<span class='warning'>My face is protected from a splash of water!</span>")
+					to_chat(H, "<span class='warning'>Your face is protected from a splash of water!</span>")
 					return
 
 				if(M.acidable())
@@ -613,13 +613,13 @@
 		return 1
 
 	if(istype(M, /mob/living/carbon/human/manifested))
-		to_chat(M, "<span class='warning'>I can feel intriguing reagents seeping into my body, but they don't seem to react at all.</span>")
+		to_chat(M, "<span class='warning'>You can feel intriguing reagents seeping into your body, but they don't seem to react at all.</span>")
 		M.reagents.del_reagent("mutationtoxin")
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/human = M
 		if(!isslimeperson(human))
-			to_chat(M, "<span class='warning'>My flesh rapidly mutates!</span>")
+			to_chat(M, "<span class='warning'>Your flesh rapidly mutates!</span>")
 			human.set_species("Evolved Slime")
 			human.regenerate_icons()
 
@@ -641,13 +641,13 @@
 		var/mob/living/carbon/C = M
 
 		if(istype(C, /mob/living/carbon/human/manifested))
-			to_chat(C, "<span class='warning'>I can feel intriguing reagents seeping into my body, but they don't seem to react at all.</span>")
+			to_chat(C, "<span class='warning'>You can feel intriguing reagents seeping into your body, but they don't seem to react at all.</span>")
 			C.reagents.del_reagent("amutationtoxin")
 
 		else
 			if(C.monkeyizing)
 				return
-			to_chat(M, "<span class='warning'>My flesh rapidly mutates!</span>")
+			to_chat(M, "<span class='warning'>Your flesh rapidly mutates!</span>")
 			C.monkeyizing = 1
 			C.canmove = 0
 			C.icon = null
@@ -798,22 +798,22 @@
 			if(prob(10)) //1/10 chance of removing cultist status, so 50 units on average to uncult (half a holy water bottle)
 				ticker.mode.remove_cultist(H.mind)
 				H.visible_message("<span class='notice'>[H] suddenly becomes calm and collected again, his eyes clear up.</span>",
-				"<span class='notice'>My blood cools down and you are inhabited by a sensation of untold calmness.</span>")
+				"<span class='notice'>Your blood cools down and you are inhabited by a sensation of untold calmness.</span>")
 			else //Warn the Cultist that it is fucking him up
-				to_chat(H, "<span class='danger'>A freezing liquid permeates my bloodstream. Your arcane knowledge is becoming obscure again.</span>")
+				to_chat(H, "<span class='danger'>A freezing liquid permeates your bloodstream. Your arcane knowledge is becoming obscure again.</span>")
 		//Vampires react to this like acid, and it massively spikes their smitecounter. And they are guaranteed to have adverse effects.
 		if(isvampire(H))
 			if(!(VAMP_MATURE in H.mind.vampire.powers))
-				to_chat(H, "<span class='danger'>A freezing liquid permeates my bloodstream. Your vampiric powers fade and my insides burn.</span>")
+				to_chat(H, "<span class='danger'>A freezing liquid permeates your bloodstream. Your vampiric powers fade and your insides burn.</span>")
 				H.take_organ_damage(0, 5) //FIRE
 				H.mind.vampire.smitecounter += 10 //50 units to catch on fire. Generally you'll get fucked up quickly
 			else
-				to_chat(H, "<span class='warning'>A freezing liquid permeates my bloodstream. Your vampiric powers counter most of the damage.</span>")
+				to_chat(H, "<span class='warning'>A freezing liquid permeates your bloodstream. Your vampiric powers counter most of the damage.</span>")
 				H.mind.vampire.smitecounter += 2 //Basically nothing, unless you drank multiple bottles of holy water (250 units to catch on fire !)
 		if(H.mind && H.mind.special_role == "VampThrall")
 			ticker.mode.remove_thrall(H.mind)
 			H.visible_message("<span class='notice'>[H] suddenly becomes calm and collected again, \his eyes clear up.</span>",
-			"<span class='notice'>My blood cools down and you are inhabited by a sensation of untold calmness.</span>")
+			"<span class='notice'>Your blood cools down and you are inhabited by a sensation of untold calmness.</span>")
 
 /datum/reagent/holywater/reaction_mob(var/mob/living/M, var/method = TOUCH, var/volume)//Splashing people with water can help put them out!
 
@@ -828,11 +828,11 @@
 				if(method == TOUCH)
 
 					if(H.wear_mask)
-						to_chat(H, "<span class='warning'>My mask protects you from the holy water!</span>")
+						to_chat(H, "<span class='warning'>Your mask protects you from the holy water!</span>")
 						return
 
 					if(H.head)
-						to_chat(H, "<span class='warning'>My helmet protects you from the holy water!</span>")
+						to_chat(H, "<span class='warning'>Your helmet protects you from the holy water!</span>")
 						return
 
 					if(H.acidable())
@@ -840,23 +840,23 @@
 							var/datum/organ/external/affecting = H.get_organ(LIMB_HEAD)
 							if(affecting)
 								if(!(VAMP_MATURE in H.mind.vampire.powers))
-									to_chat(H, "<span class='danger'>A freezing liquid covers my face. Its melting!</span>")
+									to_chat(H, "<span class='danger'>A freezing liquid covers your face. Its melting!</span>")
 									H.mind.vampire.smitecounter += 60 //Equivalent from metabolizing all this holy water normally
 									if(affecting.take_damage(30, 0))
 										H.UpdateDamageIcon(1)
 									H.status_flags |= DISFIGURED
 									H.audible_scream()
 								else
-									to_chat(H, "<span class='warning'>A freezing liquid covers my face. Your vampiric powers protect you!</span>")
+									to_chat(H, "<span class='warning'>A freezing liquid covers your face. Your vampiric powers protect you!</span>")
 									H.mind.vampire.smitecounter += 12 //Ditto above
 
 						else
 							if(!(VAMP_MATURE in H.mind.vampire.powers))
-								to_chat(H, "<span class='danger'>I am doused with a freezing liquid. You're melting!</span>")
+								to_chat(H, "<span class='danger'>You are doused with a freezing liquid. You're melting!</span>")
 								H.take_organ_damage(min(15, volume * 2)) //Uses min() and volume to make sure they aren't being sprayed in trace amounts (1 unit != insta rape) -- Doohl
 								H.mind.vampire.smitecounter += volume * 2
 							else
-								to_chat(H, "<span class='warning'>I am doused with a freezing liquid. Your vampiric powers protect you!</span>")
+								to_chat(H, "<span class='warning'>You are doused with a freezing liquid. Your vampiric powers protect you!</span>")
 								H.mind.vampire.smitecounter += volume * 0.4
 				else
 					if(H.acidable())
@@ -1112,9 +1112,9 @@
 					qdel(H.wear_mask)
 					H.wear_mask = null
 					H.update_inv_wear_mask()
-					to_chat(H, "<span class='warning'>My mask melts away but protects you from the acid!</span>")
+					to_chat(H, "<span class='warning'>Your mask melts away but protects you from the acid!</span>")
 				else
-					to_chat(H, "<span class='warning'>My mask protects you from the acid!</span>")
+					to_chat(H, "<span class='warning'>Your mask protects you from the acid!</span>")
 				return
 
 			if(H.head && !istype(H.head, /obj/item/weapon/reagent_containers/glass/bucket))
@@ -1122,9 +1122,9 @@
 					qdel(H.head)
 					H.head = null
 					H.update_inv_head()
-					to_chat(H, "<span class='warning'>My helmet melts away but protects you from the acid</span>")
+					to_chat(H, "<span class='warning'>Your helmet melts away but protects you from the acid</span>")
 				else
-					to_chat(H, "<span class='warning'>My helmet protects you from the acid!</span>")
+					to_chat(H, "<span class='warning'>Your helmet protects you from the acid!</span>")
 				return
 
 		else if(ismonkey(M))
@@ -1134,9 +1134,9 @@
 					qdel(MK.wear_mask)
 					MK.wear_mask = null
 					MK.update_inv_wear_mask()
-					to_chat(MK, "<span class='warning'>My mask melts away but protects you from the acid!</span>")
+					to_chat(MK, "<span class='warning'>Your mask melts away but protects you from the acid!</span>")
 				else
-					to_chat(MK, "<span class='warning'>My mask protects you from the acid!</span>")
+					to_chat(MK, "<span class='warning'>Your mask protects you from the acid!</span>")
 				return
 
 		if(M.acidable())
@@ -1202,9 +1202,9 @@
 					qdel(H.wear_mask)
 					H.wear_mask = null
 					H.update_inv_wear_mask()
-					to_chat(H, "<span class='warning'>My mask melts away but protects you from the acid!</span>")
+					to_chat(H, "<span class='warning'>Your mask melts away but protects you from the acid!</span>")
 				else
-					to_chat(H, "<span class='warning'>My mask protects you from the acid!</span>")
+					to_chat(H, "<span class='warning'>Your mask protects you from the acid!</span>")
 				return
 
 			if(H.head && !istype(H.head, /obj/item/weapon/reagent_containers/glass/bucket))
@@ -1212,9 +1212,9 @@
 					qdel(H.head)
 					H.head = null
 					H.update_inv_head()
-					to_chat(H, "<span class='warning'>My helmet melts away but protects you from the acid</span>")
+					to_chat(H, "<span class='warning'>Your helmet melts away but protects you from the acid</span>")
 				else
-					to_chat(H, "<span class='warning'>My helmet protects you from the acid!</span>")
+					to_chat(H, "<span class='warning'>Your helmet protects you from the acid!</span>")
 				return
 
 			if(H.acidable())
@@ -1230,9 +1230,9 @@
 					qdel(MK.wear_mask)
 					MK.wear_mask = null
 					MK.update_inv_wear_mask()
-					to_chat(MK, "<span class='warning'>My mask melts away but protects you from the acid!</span>")
+					to_chat(MK, "<span class='warning'>Your mask melts away but protects you from the acid!</span>")
 				else
-					to_chat(MK, "<span class='warning'>My mask protects you from the acid!</span>")
+					to_chat(MK, "<span class='warning'>Your mask protects you from the acid!</span>")
 				return
 
 			if(MK.acidable())
@@ -1297,7 +1297,7 @@
 		return 1
 
 	M.apply_effect(2 * REM, IRRADIATE,0)
-	//Radium may increase my chances to cure a disease
+	//Radium may increase your chances to cure a disease
 	if(iscarbon(M)) //Make sure to only use it on carbon mobs
 		var/mob/living/carbon/C = M
 		if(C.virus2.len)
@@ -1481,14 +1481,14 @@
 		C.pain_numb = max(5, C.pain_numb)
 		C.pain_shock_stage -= 3 //We don't FEEL the shock now, but make it go away quick in case we run out of oxycodone.
 		if(!M.sleeping && prob(2))
-			to_chat(M, pick("<span class='numb'>I feel like you're floating...</span>", \
-							"<span class='numb'>I feel a little lightheaded... but it's okay.</span>", \
-							"<span class='numb'>My face itches a little bit... and it feels so good to scratch it...</span>", \
-							"<span class='numb'>My whole body buzzes slightly, but it doesn't seem to bother you...</span>", \
-							"<span class='numb'>I feel a little high of energy, and it makes you smile...</span>", \
-							"<span class='numb'>I nod to yourself... it's nothing, it just feels good to nod a little...</span>", \
+			to_chat(M, pick("<span class='numb'>You feel like you're floating...</span>", \
+							"<span class='numb'>You feel a little lightheaded... but it's okay.</span>", \
+							"<span class='numb'>Your face itches a little bit... and it feels so good to scratch it...</span>", \
+							"<span class='numb'>Your whole body buzzes slightly, but it doesn't seem to bother you...</span>", \
+							"<span class='numb'>You feel a little high of energy, and it makes you smile...</span>", \
+							"<span class='numb'>You nod to yourself... it's nothing, it just feels good to nod a little...</span>", \
 							"<span class='numb'>Hello?... Is there anybody in there?...</span>", \
-							"<span class='numb'>I feel... comfortably numb.</span>"))
+							"<span class='numb'>You feel... comfortably numb.</span>"))
 
 /datum/reagent/virus_food
 	name = "Virus Food"
@@ -2578,7 +2578,7 @@
 							holder.remove_reagent("mednanobots", 4/40)  //The number/40 means that every time it heals, it uses up number/40ths of a unit, meaning each unit heals 40 damage
 							percent_machine +=1/2
 							if(prob(20))
-								to_chat(H, pick("<span class='warning'>Something shifts inside you...</span>", "<span class='warning'>I feel different, somehow...</span>"))
+								to_chat(H, pick("<span class='warning'>Something shifts inside you...</span>", "<span class='warning'>You feel different, somehow...</span>"))
 							else
 						else
 					if(H.getBruteLoss()>0 && prob(90))
@@ -2587,7 +2587,7 @@
 							holder.remove_reagent("mednanobots", 5/40)
 							percent_machine +=1/2
 							if(prob(20))
-								to_chat(H, pick("<span class='warning'>Something shifts inside you...</span>", "<span class='warning'>I feel different, somehow...</span>"))
+								to_chat(H, pick("<span class='warning'>Something shifts inside you...</span>", "<span class='warning'>You feel different, somehow...</span>"))
 							else
 						else
 					if(H.getFireLoss()>0 && prob(90))
@@ -2596,7 +2596,7 @@
 							holder.remove_reagent("mednanobots", 5/40)
 							percent_machine +=1/2
 							if(prob(20))
-								to_chat(H, pick("<span class='warning'>Something shifts inside you...</span>", "<span class='warning'>I feel different, somehow...</span>"))
+								to_chat(H, pick("<span class='warning'>Something shifts inside you...</span>", "<span class='warning'>You feel different, somehow...</span>"))
 							else
 						else
 					if(H.getToxLoss()>0 && prob(50))
@@ -2605,7 +2605,7 @@
 							holder.remove_reagent("mednanobots", 2/40)
 							percent_machine +=1/2
 							if(prob(20))
-								to_chat(H, pick("<span class='warning'>Something shifts inside you...</span>", "<span class='warning'>I feel different, somehow...</span>"))
+								to_chat(H, pick("<span class='warning'>Something shifts inside you...</span>", "<span class='warning'>You feel different, somehow...</span>"))
 							else
 						else
 					if(H.getCloneLoss()>0 && prob(60))
@@ -2614,7 +2614,7 @@
 							holder.remove_reagent("mednanobots", 2/40)
 							percent_machine +=1/2
 							if(prob(20))
-								to_chat(H, pick("<span class='warning'>Something shifts inside you...</span>", "<span class='warning'>I feel different, somehow...</span>"))
+								to_chat(H, pick("<span class='warning'>Something shifts inside you...</span>", "<span class='warning'>You feel different, somehow...</span>"))
 							else
 						else
 					if(H.dizziness != 0)
@@ -2628,12 +2628,12 @@
 							D.cure()
 					if(prob(percent_machine))
 						holder.add_reagent("mednanobots", 20)
-						to_chat(H, pick("<b><span class='warning'>My body lurches!</b></span>"))
+						to_chat(H, pick("<b><span class='warning'>Your body lurches!</b></span>"))
 		if(20 to INFINITY)
 			if(ishuman(M))
 				spawning_horror = 1
 				var/mob/living/carbon/human/H = M
-				to_chat(H, pick("<b><span class='warning'>Something doesn't feel right...</span></b>", "<b><span class='warning'>Something is growing inside you!</span></b>", "<b><span class='warning'>I feel my insides rearrange!</span></b>"))
+				to_chat(H, pick("<b><span class='warning'>Something doesn't feel right...</span></b>", "<b><span class='warning'>Something is growing inside you!</span></b>", "<b><span class='warning'>You feel your insides rearrange!</span></b>"))
 				spawn(60)
 					if(spawning_horror == 1)
 						to_chat(H, "<b><span class='warning'>Something bursts out from inside you!</span></b>")
@@ -2699,11 +2699,11 @@
 							H.update_mutations() //Update our mutation overlays
 							H.update_body()
 							message_admins("[key_name(M)] is hopped up on combat nanobots! ([formatJumpTo(M)])")
-							to_chat(H, "The nanobots supercharge my body!")
+							to_chat(H, "The nanobots supercharge your body!")
 					else if(H.hulk_time<world.time && has_been_armstrong) //TIME'S UP
 						dehulk(H)
 		if(15 to INFINITY)
-			to_chat(M, "<b><big>The nanobots tear my body apart!</b></big>")
+			to_chat(M, "<b><big>The nanobots tear your body apart!</b></big>")
 			M.gib()
 			message_admins("[key_name(M)] took too many nanobots and gibbed!([formatJumpTo(M)])")
 
@@ -2719,7 +2719,7 @@
 		//M.dna.SetSEState(HULKBLOCK,0)
 		H.update_mutations()		//update our mutation overlays
 		H.update_body()
-		to_chat(H, "The nanobots burn themselves out in my body.")
+		to_chat(H, "The nanobots burn themselves out in your body.")
 
 //Foam precursor
 /datum/reagent/fluorosurfactant
@@ -2939,23 +2939,23 @@
 			var/obj/item/mouth_covered = H.get_body_part_coverage(MOUTH)
 			var/obj/item/eyes_covered = H.get_body_part_coverage(EYES)
 			if(eyes_covered && mouth_covered)
-				H << "<span class='warning'>My [mouth_covered == eyes_covered ? "[mouth_covered] protects" : "[mouth_covered] and [eyes_covered] protect"] you from the pepperspray!</span>"
+				H << "<span class='warning'>Your [mouth_covered == eyes_covered ? "[mouth_covered] protects" : "[mouth_covered] and [eyes_covered] protect"] you from the pepperspray!</span>"
 				return
 			else if(mouth_covered)	//Reduced effects if partially protected
-				H << "<span class='warning'>My [mouth_covered] protects my mouth from the pepperspray!</span>"
+				H << "<span class='warning'>Your [mouth_covered] protects your mouth from the pepperspray!</span>"
 				H.eye_blurry = max(M.eye_blurry, 15)
 				H.eye_blind = max(M.eye_blind, 5)
 				H.Paralyse(1)
 				H.drop_item()
 				return
 			else if(eyes_covered) //Eye cover is better than mouth cover
-				H << "<span class='warning'>My [eyes_covered] protects my eyes from the pepperspray!</span>"
+				H << "<span class='warning'>Your [eyes_covered] protects your eyes from the pepperspray!</span>"
 				H.audible_scream()
 				H.eye_blurry = max(M.eye_blurry, 5)
 				return
 			else //Oh dear
 				H.audible_scream()
-				H << "<span class='danger'>I am sprayed directly in the eyes with pepperspray!</span>"
+				H << "<span class='danger'>You are sprayed directly in the eyes with pepperspray!</span>"
 				H.eye_blurry = max(M.eye_blurry, 25)
 				H.eye_blind = max(M.eye_blind, 10)
 				H.Paralyse(1)
@@ -3048,7 +3048,7 @@
 	if(borers)
 		for(var/mob/living/simple_animal/borer/B in borers)
 			B.health -= 1
-			to_chat(B, "<span class='warning'>Something in my host's bloodstream burns you!</span>")
+			to_chat(B, "<span class='warning'>Something in your host's bloodstream burns you!</span>")
 
 /datum/reagent/creatine
 	name = "Creatine"
@@ -3114,7 +3114,7 @@
 /datum/reagent/creatine/proc/dehulk(var/mob/living/carbon/human/H, damage = 200, override_remove = 0, gib = 1)
 
 	if(has_been_hulk && !has_ripped_and_torn)
-		to_chat(H, "<span class='warning'>I feel like my muscles are ripping apart!</span>")
+		to_chat(H, "<span class='warning'>You feel like your muscles are ripping apart!</span>")
 		has_ripped_and_torn = 1
 		if(!override_remove)
 			holder.remove_reagent(src.id) //Clean them out
@@ -3164,7 +3164,7 @@
 				if(c_mask.body_parts_covered & MOUTH)
 					continue //If the carbon's mouth is covered, let's assume they don't smell it
 
-			to_chat(C, "<span class='warning'>I am engulfed by a [pick("tremendous", "foul", "disgusting", "horrible")] stench emanating from [M]!</span>")
+			to_chat(C, "<span class='warning'>You are engulfed by a [pick("tremendous", "foul", "disgusting", "horrible")] stench emanating from [M]!</span>")
 
 /datum/reagent/blackpepper
 	name = "Black Pepper"
@@ -3247,7 +3247,7 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(prob(8))
-				H << "<span class='warning'>I feel violently ill.</span>"
+				H << "<span class='warning'>You feel violently ill.</span>"
 			if(prob(min(data / 10, 100)))
 				H.vomit()
 			var/datum/organ/internal/liver/L = H.internal_organs_by_name["liver"]
@@ -3264,7 +3264,7 @@
 			if(ishuman(M))
 				var/mob/living/carbon/human/H = M
 				if(prob(12))
-					H << "<span class='warning'>I feel violently ill.</span>"
+					H << "<span class='warning'>You feel violently ill.</span>"
 				H.adjustToxLoss(0.1)
 				if(prob(8))
 					H.vomit()
@@ -3272,7 +3272,7 @@
 			if(ishuman(M))
 				var/mob/living/carbon/human/H = M
 				if(prob(20))
-					H << "<span class='sinister'>I feel deathly ill.</span>"
+					H << "<span class='sinister'>You feel deathly ill.</span>"
 				var/datum/organ/internal/liver/L = H.internal_organs_by_name["liver"]
 				if(istype(L) && !L.is_broken())
 					L.take_damage(10, 0)
@@ -3498,7 +3498,7 @@
 /datum/reagent/discount
 	name = "Discount Dan's Special Sauce"
 	id = DISCOUNT
-	description = "I can almost feel my liver failing, just by looking at it."
+	description = "I can almost feel your liver failing, just by looking at it."
 	reagent_state = LIQUID
 	color = "#6F884F" //rgb: 255, 255, 255
 	data = 1 //Used as a tally
@@ -3513,20 +3513,20 @@
 		switch(volume)
 			if(1 to 20)
 				if(prob(5))
-					H << "<span class='warning'>I don't feel very good.</span>"
+					H << "<span class='warning'>You don't feel very good.</span>"
 					holder.remove_reagent(src.id, 0.1 * FOOD_METABOLISM)
 			if(20 to 35)
 				if(prob(10))
-					H << "<span class='warning'>I really don't feel very good.</span>"
+					H << "<span class='warning'>You really don't feel very good.</span>"
 				if(prob(5))
 					H.adjustToxLoss(0.1)
 					H.visible_message("[H] groans.")
 					holder.remove_reagent(src.id, 0.3 * FOOD_METABOLISM)
 			if(35 to INFINITY)
 				if(prob(10))
-					H << "<span class='warning'>My stomach grumbles unsettlingly.</span>"
+					H << "<span class='warning'>Your stomach grumbles unsettlingly.</span>"
 				if(prob(5))
-					H << "<span class='warning'>Something feels wrong with my body.</span>"
+					H << "<span class='warning'>Something feels wrong with your body.</span>"
 					var/datum/organ/internal/liver/L = H.internal_organs_by_name["liver"]
 					if(istype(L))
 						L.take_damage(0.1, 1)
@@ -3890,7 +3890,7 @@
 /datum/reagent/drink/coffee/soy_latte
 	name = "Soy Latte"
 	id = SOY_LATTE
-	description = "A nice and tasty beverage while you are reading my hippie books."
+	description = "A nice and tasty beverage while you are reading your hippie books."
 	color = "#664300" //rgb: 102, 67, 0
 	adj_sleepy = 0
 	adj_temp = 5
@@ -3998,7 +3998,7 @@
 /datum/reagent/drink/cold/ice
 	name = "Ice"
 	id = ICE
-	description = "Frozen water, my dentist wouldn't like you chewing this."
+	description = "Frozen water, your dentist wouldn't like you chewing this."
 	reagent_state = SOLID
 	color = "#619494" //rgb: 97, 148, 148
 
@@ -4045,7 +4045,7 @@
 /datum/reagent/drink/cold/space_up
 	name = "Space-Up"
 	id = SPACE_UP
-	description = "Tastes like a hull breach in my mouth."
+	description = "Tastes like a hull breach in your mouth."
 	color = "#202800" //rgb: 32, 40, 0
 	adj_temp = -8
 
@@ -4366,7 +4366,7 @@
 /datum/reagent/ethanol/pwine
 	name = "Poison Wine"
 	id = PWINE
-	description = "Is this even wine? Toxic! Hallucinogenic! Probably consumed in boatloads by my superiors!"
+	description = "Is this even wine? Toxic! Hallucinogenic! Probably consumed in boatloads by your superiors!"
 	color = "#000000" //rgb: 0, 0, 0
 	dizzy_adj = 1
 	slur_start = 1
@@ -4592,7 +4592,7 @@
 /datum/reagent/ethanol/deadrum/white_russian
 	name = "White Russian"
 	id = WHITERUSSIAN
-	description = "That's just, like, my opinion, man..."
+	description = "That's just, like, your opinion, man..."
 	reagent_state = LIQUID
 	color = "#A68340" //rgb: 166, 131, 64
 
@@ -4710,7 +4710,7 @@
 /datum/reagent/ethanol/deadrum/moonshine
 	name = "Moonshine"
 	id = MOONSHINE
-	description = "I've really hit rock bottom now... my liver packed its bags and left last night."
+	description = "I've really hit rock bottom now... your liver packed its bags and left last night."
 	reagent_state = LIQUID
 	color = "#664300" //rgb: 102, 67, 0
 
@@ -4919,7 +4919,7 @@
 /datum/reagent/ethanol/deadrum/alliescocktail
 	name = "Allies Cocktail"
 	id = ALLIESCOCKTAIL
-	description = "A drink made from my allies."
+	description = "A drink made from your allies."
 	reagent_state = LIQUID
 	color = "#664300" //rgb: 102, 67, 0
 
@@ -5124,7 +5124,7 @@ var/global/list/chifir_doesnt_remove = list("chifir", "blood")
 /datum/reagent/drink/tea/acidtea
 	name = "Earl's Grey Tea"
 	id = ACIDTEA
-	description = "Get in touch with my Roswellian side!"
+	description = "Get in touch with your Roswellian side!"
 
 /datum/reagent/drink/tea/yinyang
 	name = "Zen Tea"
@@ -5245,7 +5245,7 @@ var/global/list/tonio_doesnt_remove=list("tonio", "blood")
 /datum/reagent/drink/coffee/detcoffee
 	name = "Joe"
 	id = DETCOFFEE
-	description = "Bitter, black, and tasteless. It's the way I've always had my joe, and the way I was having it when one of the officers came running toward me. The chief medical officer got axed, and no one knew who did it. I reluctantly took one last drink before putting on my coat and heading out. I knew that by the time I was finished, my joe would have fallen to a dreadfully low temperature, but I had work to do."
+	description = "Bitter, black, and tasteless. It's the way I've always had your joe, and the way I was having it when one of the officers came running toward me. The chief medical officer got axed, and no one knew who did it. I reluctantly took one last drink before putting on your coat and heading out. I knew that by the time I was finished, your joe would have fallen to a dreadfully low temperature, but I had work to do."
 	causes_jitteriness = 0
 	var/activated = 0
 
@@ -5310,11 +5310,11 @@ var/global/list/tonio_doesnt_remove=list("tonio", "blood")
 	if(volume <= 0.1)
 		if(data != -1)
 			data = -1
-			to_chat(M, "<span class='warning'>My mind feels a little less stable..</span>")
+			to_chat(M, "<span class='warning'>Your mind feels a little less stable..</span>")
 	else
 		if(world.time > data + 3000)
 			data = world.time
-			to_chat(M, "<span class='notice'>My mind feels stable.. a little stable.</span>")
+			to_chat(M, "<span class='notice'>Your mind feels stable.. a little stable.</span>")
 
 /datum/reagent/antidepressant/paroxetine
 	name = "Paroxetine"
@@ -5331,14 +5331,14 @@ var/global/list/tonio_doesnt_remove=list("tonio", "blood")
 	if(volume <= 0.1)
 		if(data != -1)
 			data = -1
-			to_chat(M, "<span class='warning'>My mind feels much less stable.</span>")
+			to_chat(M, "<span class='warning'>Your mind feels much less stable.</span>")
 	else
 		if(world.time > data + 3000)
 			data = world.time
 			if(prob(90))
-				to_chat(M, "<span class='notice'>My mind feels much more stable.</span>")
+				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
 			else
-				to_chat(M, "<span class='warning'>My mind breaks apart.</span>")
+				to_chat(M, "<span class='warning'>Your mind breaks apart.</span>")
 				M.hallucination += 200
 
 /datum/reagent/gravy

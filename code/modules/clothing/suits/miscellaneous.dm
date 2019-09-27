@@ -153,7 +153,7 @@
 
 /obj/item/clothing/suit/holidaypriest
 	name = "Holiday Priest"
-	desc = "This is a nice holiday my son."
+	desc = "This is a nice holiday your son."
 	icon_state = "holidaypriest"
 	item_state = "holidaypriest"
 
@@ -202,7 +202,7 @@
 		src.item_state = "suitjacket_blue_open"
 		to_chat(usr, "I unbutton the suit jacket.")
 	else
-		to_chat(usr, "I button-up some imaginary buttons on my [src].")
+		to_chat(usr, "I button-up some imaginary buttons on your [src].")
 		return
 	usr.update_inv_wear_suit()
 
@@ -480,7 +480,7 @@
 /obj/item/clothing/suit/spaceblanket/attackby(obj/item/W,mob/user)
 	..()
 	if(istype(W,/obj/item/clothing/head/bearpelt) && !bearpelt)
-		to_chat(user,"<span class='notice'>I add \the [W] to \the [src].</span>")
+		to_chat(user,"<span class='notice'>You add \the [W] to \the [src].</span>")
 		qdel(W)
 		qdel(src)
 		var/obj/advanced = new /obj/item/clothing/suit/spaceblanket/advanced (src.loc)

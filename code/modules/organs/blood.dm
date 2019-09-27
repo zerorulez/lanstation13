@@ -93,15 +93,15 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 					pale = 1
 					//update_body()
 					var/word = pick("dizzy","woosey","faint", "disoriented", "lightheaded")
-					to_chat(src, "<span class='danger'>I feel [word]</span>")
+					to_chat(src, "<span class='danger'>You feel [word]</span>")
 				if(blood_volume > BLOOD_VOLUME_WARN)
 					if(prob(1))
 						var/word = pick("dizzy","woosey","faint", "disoriented", "lightheaded")
-						to_chat(src, "<span class='danger'>I feel [word]</span>")
+						to_chat(src, "<span class='danger'>You feel [word]</span>")
 				else
 					if(prob(3))
 						var/word = pick("dizzy","woosey","faint", "disoriented", "lightheaded")
-						to_chat(src, "<span class='danger'>I feel very [word]</span>")
+						to_chat(src, "<span class='danger'>You feel very [word]</span>")
 				if(oxyloss < 20)
 					oxyloss += 2
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
@@ -115,7 +115,7 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 				if(prob(15))
 					Paralyse(1)
 					var/word = pick("dizzy","woosey","faint", "disoriented")
-					to_chat(src, "<span class='danger'>I feel extremely [word]</span>")
+					to_chat(src, "<span class='danger'>You feel extremely [word]</span>")
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 				if(!pale)
 					pale = 1
@@ -128,7 +128,7 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 				if(prob(15))
 					Paralyse(rand(1,3))
 					var/word = pick("dizzy","woosey","faint", "disoriented")
-					to_chat(src, "<span class='danger'>I feel deathly [word]</span>")
+					to_chat(src, "<span class='danger'>You feel deathly [word]</span>")
 			if(0 to BLOOD_VOLUME_SURVIVE)
 				// Kill then pretty fast, but don't overdo it
 				// I SAID DON'T OVERDO IT

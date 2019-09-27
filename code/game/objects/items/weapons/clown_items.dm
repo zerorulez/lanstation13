@@ -12,8 +12,8 @@
 	if (istype(AM, /mob/living/carbon))
 		var/mob/living/carbon/M = AM
 		if (M.Slip(2, 2, 1))
-			M.simple_message("<span class='notice'>I slipped on the [name]!</span>",
-				"<span class='userdanger'>Something is scratching at my feet! Oh god!</span>")
+			M.simple_message("<span class='notice'>You slipped on the [name]!</span>",
+				"<span class='userdanger'>Something is scratching at your feet! Oh god!</span>")
 
 /*
  * Soap
@@ -22,8 +22,8 @@
 	if (istype(AM, /mob/living/carbon))
 		var/mob/living/carbon/M = AM
 		if (M.Slip(3, 2, 1))
-			M.simple_message("<span class='notice'>I slipped on the [name]!</span>",
-				"<span class='userdanger'>Something is scratching at my feet! Oh god!</span>")
+			M.simple_message("<span class='notice'>You slipped on the [name]!</span>",
+				"<span class='userdanger'>Something is scratching at your feet! Oh god!</span>")
 
 /obj/item/weapon/soap/afterattack(atom/target, mob/user as mob)
 	//I couldn't feasibly fix the overlay bugs caused by cleaning items we are wearing.
@@ -33,12 +33,12 @@
 		return
 
 	if(user.client && (target in user.client.screen) && !(user.is_holding_item(target)))
-		user.simple_message("<span class='notice'>I need to take that [target.name] off before cleaning it.</span>",
-			"<span class='notice'>I need to take that [target.name] off before destroying it.</span>")
+		user.simple_message("<span class='notice'>You need to take that [target.name] off before cleaning it.</span>",
+			"<span class='notice'>You need to take that [target.name] off before destroying it.</span>")
 
 	else if(istype(target,/obj/effect/decal/cleanable))
-		user.simple_message("<span class='notice'>I scrub \the [target.name] out.</span>",
-			"<span class='warning'>I destroy [pick("an artwork","a valuable artwork","a rare piece of art","a rare piece of modern art")].</span>")
+		user.simple_message("<span class='notice'>You scrub \the [target.name] out.</span>",
+			"<span class='warning'>You destroy [pick("an artwork","a valuable artwork","a rare piece of art","a rare piece of modern art")].</span>")
 		returnToPool(target)
 
 	else if(istype(target,/turf/simulated))
@@ -55,7 +55,7 @@
 				cleanables += CC
 
 		if(!cleanables.len)
-			user.simple_message("<span class='notice'>I fail to clean anything.</span>",
+			user.simple_message("<span class='notice'>You fail to clean anything.</span>",
 				"<span class='notice'>There is nothing for you to vandalize.</span>")
 			return
 		cleanables = shuffle(cleanables)
@@ -64,12 +64,12 @@
 			if(d && istype(d))
 				C = d
 				break
-		user.simple_message("<span class='notice'>I scrub \the [C.name] out.</span>",
-			"<span class='warning'>I destroy [pick("an artwork","a valuable artwork","a rare piece of art","a rare piece of modern art")].</span>")
+		user.simple_message("<span class='notice'>You scrub \the [C.name] out.</span>",
+			"<span class='warning'>You destroy [pick("an artwork","a valuable artwork","a rare piece of art","a rare piece of modern art")].</span>")
 		returnToPool(C)
 	else
-		user.simple_message("<span class='notice'>I clean \the [target.name].</span>",
-			"<span class='warning'>I [pick("deface","ruin","stain")] \the [target.name].</span>")
+		user.simple_message("<span class='notice'>You clean \the [target.name].</span>",
+			"<span class='warning'>You [pick("deface","ruin","stain")] \the [target.name].</span>")
 		target.clean_blood()
 	return
 
@@ -125,7 +125,7 @@
 	honk()
 
 /obj/item/weapon/bikehorn/bite_act(mob/living/H)
-	H.visible_message("<span class='danger'>[H] bites \the [src]!</span>", "<span class='danger'>I bite \the [src].</span>")
+	H.visible_message("<span class='danger'>[H] bites \the [src]!</span>", "<span class='danger'>You bite \the [src].</span>")
 
 	honk()
 
@@ -187,7 +187,7 @@
 		if(target.abstract) //Can't glue TK grabs, grabs, offhands!
 			return
 
-	to_chat(user,"<span class='info'>I gently apply the whole [src] to \the [target].</span>")
+	to_chat(user,"<span class='info'>You gently apply the whole [src] to \the [target].</span>")
 	spent = 1
 	update_icon()
 	apply_glue(target)

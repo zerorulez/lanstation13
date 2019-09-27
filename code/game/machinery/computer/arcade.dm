@@ -234,7 +234,7 @@
 
 	else if ((src.enemy_mp <= 5) && (prob(70)))
 		var/stealamt = rand(2,3)
-		src.temp = "[src.enemy_name] steals [stealamt] of my power!"
+		src.temp = "[src.enemy_name] steals [stealamt] of your power!"
 		src.player_mp -= stealamt
 		src.updateUsrDialog()
 

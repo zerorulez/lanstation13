@@ -30,7 +30,7 @@
 
 	// Didn't feel like this was appropriate for a paper that is made of plastic
 	//if(clumsy_check(usr) && prob(50))
-//		to_chat(usr, "<span class='warning'>I cut yourself on the paper.</span>")
+//		to_chat(usr, "<span class='warning'>You cut yourself on the paper.</span>")
 	//	return
 
 	var/n_name = copytext(sanitize(input(usr, "What would you like to label the [src]?", "[src] Labelling", null)  as text), 1, MAX_NAME_LEN)
@@ -50,7 +50,7 @@
 		\[i\] - \[/i\] : Makes the text <i>italic</i>.<br>
 		\[u\] - \[/u\] : Makes the text <u>underlined</u>.<br>
 		\[large\] - \[/large\] : Increases the <span style=\"font-size:25px\">size</span> of the text.<br>
-		\[sign\] : Inserts a signature of my name in a foolproof way.<br>
+		\[sign\] : Inserts a signature of your name in a foolproof way.<br>
 		\[field\] : Inserts an invisible field which lets you start type from there. Useful for forms.<br>
 		\[small\] - \[/small\] : Decreases the <span style=\"font-size:15px\">size</span> of the text.<br>
 		\[tiny\] - \[/tiny\] : Sharply decreases the <span style=\"font-size:10px\">size</span> of the text.<br>

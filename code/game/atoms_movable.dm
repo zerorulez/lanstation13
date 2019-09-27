@@ -241,6 +241,10 @@
 
 	if(new_dir != dir)
 		dir = new_dir
+		if(ismob(src))
+			var/mob/M = src
+			if(M.lying)
+				dir = SOUTH
 		update_dir()
 
 // Atom locking, lock an atom to another atom, and the locked atom will move when the other atom moves.
@@ -359,7 +363,7 @@
 	return 0
 
 // Previously known as HasEntered()
-// This is automatically called when something enters my square
+// This is automatically called when something enters your square
 /atom/movable/Crossed(atom/movable/AM)
 	return
 

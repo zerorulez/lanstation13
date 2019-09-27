@@ -109,7 +109,7 @@
 		if(!(locate(W.type) in upgrade_holder))
 			if(user.drop_item(W, src))
 				upgrade_holder.Add(W)
-				to_chat(user, "<span class='notice'>I add \the [W] to \the [src].</span>")
+				to_chat(user, "<span class='notice'>You add \the [W] to \the [src].</span>")
 				return
 		else
 			to_chat(user, "<span class='notice'>\The [src] already contains something resembling a [W.name].</span>")
@@ -145,10 +145,10 @@
 
 	var/mob/user = usr
 	if(user != occupant)
-		to_chat(user, "<span class='warning'>I must be inside \the [src] to do this.</span>")
+		to_chat(user, "<span class='warning'>You must be inside \the [src] to do this.</span>")
 		return
 	if(upgrading)
-		to_chat(user, "<span class='notice'>I interrupt the upgrade process.</span>")
+		to_chat(user, "<span class='notice'>You interrupt the upgrade process.</span>")
 		upgrading = 0
 		upgrade_finished = -1
 		return
@@ -312,13 +312,13 @@
 
 /obj/machinery/recharge_station/togglePanelOpen(var/obj/toggleitem, mob/user)
 	if(occupant)
-		to_chat(user, "<span class='notice'>I can't do that while this charger is occupied.</span>")
+		to_chat(user, "<span class='notice'>You can't do that while this charger is occupied.</span>")
 		return -1
 	return ..()
 
 /obj/machinery/recharge_station/crowbarDestroy(mob/user)
 	if(occupant)
-		to_chat(user, "<span class='notice'>I can't do that while this charger is occupied.</span>")
+		to_chat(user, "<span class='notice'>You can't do that while this charger is occupied.</span>")
 		return -1
 	return ..()
 

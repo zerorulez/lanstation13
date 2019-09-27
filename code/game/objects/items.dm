@@ -108,7 +108,7 @@
 	if(usr.incapacitated())
 		return 1
 	if (!usr.dexterity_check())
-		to_chat(usr, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return 1
 	if (!in_range(src, usr))
 		return 1
@@ -168,7 +168,7 @@
 		pronoun = "It is"
 	..(user, " [pronoun] a [size] item.")
 	if((cant_drop > 0) && user.is_holding_item(src)) //Item can't be dropped, and is either in left or right hand!
-		user << "<span class='danger'>It's stuck to my hands!</span>"
+		user << "<span class='danger'>It's stuck to your hands!</span>"
 
 
 /obj/item/attack_ai(mob/user as mob)
@@ -307,7 +307,7 @@
 /obj/item/proc/equipped(var/mob/user, var/slot, hand_index = 0)
 	if(cant_drop) //Item can't be dropped
 		if(hand_index) //Item was equipped in a hand slot
-			to_chat(user, "<span class='notice'>\The [src] sticks to my hand!</span>")
+			to_chat(user, "<span class='notice'>\The [src] sticks to your hand!</span>")
 
 	return
 
@@ -327,14 +327,14 @@
 	if(wielded)
 		if(!disable_warning)
 			if(flags & MUSTTWOHAND)
-				M.show_message("\The [src] is too cumbersome to carry in anything other than my hands.")
+				M.show_message("\The [src] is too cumbersome to carry in anything other than your hands.")
 			else
 				M.show_message("I have to unwield \the [wielded.wielding] first.")
 		return CANNOT_EQUIP
 
 	if(cant_drop > 0)
 		if(!disable_warning)
-			to_chat(M, "<span class='danger'>It's stuck to my hands!</span>")
+			to_chat(M, "<span class='danger'>It's stuck to your hands!</span>")
 		return CANNOT_EQUIP
 
 	if(ishuman(M)) //Crimes Against OOP: This is first on the list if anybody ever feels like unfucking inventorycode
@@ -346,19 +346,19 @@
 				//testing("[M] TOO FAT TO WEAR [src]!")
 				if(!(clothing_flags & ONESIZEFITSALL))
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>I am too fat to wear the [name].</span>")
+						to_chat(H, "<span class='warning'>You are too fat to wear the [name].</span>")
 					return CANNOT_EQUIP
 
 			for(var/datum/organ/external/OE in get_organs_by_slot(slot, H))
 				if(!OE.species) //Organ has same species as body
 					if(H.species.anatomy_flags & IS_BULKY && !(clothing_flags & ONESIZEFITSALL)) //Use the body's base species
 						if(!disable_warning)
-							to_chat(H, "<span class='warning'>I can't get \the [src] to fit over my bulky exterior!</span>")
+							to_chat(H, "<span class='warning'>You can't get \the [src] to fit over your bulky exterior!</span>")
 						return CANNOT_EQUIP
 				else //Organ's species is different from body
 					if(OE.species.anatomy_flags & IS_BULKY && !(clothing_flags & ONESIZEFITSALL))
 						if(!disable_warning)
-							to_chat(H, "<span class='warning'>I can't get \the [src] to fit over my bulky exterior!</span>")
+							to_chat(H, "<span class='warning'>You can't get \the [src] to fit over your bulky exterior!</span>")
 						return CANNOT_EQUIP
 
 		switch(slot)
@@ -370,12 +370,12 @@
 					if(!OE.species) //Organ has same species as body
 						if(H.species.anatomy_flags & IS_BULKY && !(clothing_flags & ONESIZEFITSALL)) //Use the body's base species
 							if(!disable_warning)
-								to_chat(H, "<span class='warning'>I can't get \the [src] to fasten around my thick head!</span>")
+								to_chat(H, "<span class='warning'>You can't get \the [src] to fasten around your thick head!</span>")
 							return CANNOT_EQUIP
 					else //Organ's species is different from body
 						if(OE.species.anatomy_flags & IS_BULKY && !(clothing_flags & ONESIZEFITSALL))
 							if(!disable_warning)
-								to_chat(H, "<span class='warning'>I can't get \the [src] to fasten around my thick head!</span>")
+								to_chat(H, "<span class='warning'>You can't get \the [src] to fasten around your thick head!</span>")
 							return CANNOT_EQUIP
 
 				if(H.wear_mask)
@@ -407,12 +407,12 @@
 					if(!OE.species) //Organ has same species as body
 						if(H.species.anatomy_flags & IS_BULKY && !(clothing_flags & ONESIZEFITSALL)) //Use the body's base species
 							if(!disable_warning)
-								to_chat(H, "<span class='warning'>I can't get \the [src] to fasten around my bulky exterior!</span>")
+								to_chat(H, "<span class='warning'>You can't get \the [src] to fasten around your bulky exterior!</span>")
 							return CANNOT_EQUIP
 					else //Organ's species is different from body
 						if(OE.species.anatomy_flags & IS_BULKY && !(clothing_flags & ONESIZEFITSALL))
 							if(!disable_warning)
-								to_chat(H, "<span class='warning'>I can't get \the [src] to fasten around my bulky exterior!</span>")
+								to_chat(H, "<span class='warning'>You can't get \the [src] to fasten around your bulky exterior!</span>")
 							return CANNOT_EQUIP
 
 				if(H.wear_suit)
@@ -432,12 +432,12 @@
 					if(!OE.species) //Organ has same species as body
 						if(H.species.anatomy_flags & IS_BULKY && !(clothing_flags & ONESIZEFITSALL)) //Use the body's base species
 							if(!disable_warning)
-								to_chat(H, "<span class='warning'>I can't get \the [src] to fasten around my bulky fingers!</span>")
+								to_chat(H, "<span class='warning'>You can't get \the [src] to fasten around your bulky fingers!</span>")
 							return CANNOT_EQUIP
 					else //Organ's species is different from body
 						if(OE.species.anatomy_flags & IS_BULKY && !(clothing_flags & ONESIZEFITSALL))
 							if(!disable_warning)
-								to_chat(H, "<span class='warning'>I can't get \the [src] to fasten around my bulky fingers!</span>")
+								to_chat(H, "<span class='warning'>You can't get \the [src] to fasten around your bulky fingers!</span>")
 							return CANNOT_EQUIP
 
 				if(H.gloves)
@@ -457,12 +457,12 @@
 					if(!OE.species) //Organ has same species as body
 						if(H.species.anatomy_flags & IS_BULKY && !(clothing_flags & ONESIZEFITSALL)) //Use the body's base species
 							if(!disable_warning)
-								to_chat(H, "<span class='warning'>I can't get \the [src] to fasten around my bulky feet!</span>")
+								to_chat(H, "<span class='warning'>You can't get \the [src] to fasten around your bulky feet!</span>")
 							return CANNOT_EQUIP
 					else //Organ's species is different from body
 						if(OE.species.anatomy_flags & IS_BULKY && !(clothing_flags & ONESIZEFITSALL))
 							if(!disable_warning)
-								to_chat(H, "<span class='warning'>I can't get \the [src] to fasten around my bulky feet!</span>")
+								to_chat(H, "<span class='warning'>You can't get \the [src] to fasten around your bulky feet!</span>")
 							return CANNOT_EQUIP
 
 				if(H.shoes)
@@ -477,7 +477,7 @@
 			if(slot_belt)
 				if(!H.w_uniform)
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>I need a jumpsuit before you can attach this [name].</span>")
+						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
 					return CANNOT_EQUIP
 				if( !(slot_flags & SLOT_BELT) )
 					return CANNOT_EQUIP
@@ -576,7 +576,7 @@
 			if(slot_wear_id)
 				if(!H.w_uniform)
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>I need a jumpsuit before you can attach this [name].</span>")
+						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
 					return CANNOT_EQUIP
 				if( !(slot_flags & SLOT_ID) )
 					return CANNOT_EQUIP
@@ -592,7 +592,7 @@
 			if(slot_l_store)
 				if(!H.w_uniform)
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>I need a jumpsuit before you can attach this [name].</span>")
+						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
 					return CANNOT_EQUIP
 				if(slot_flags & SLOT_DENYPOCKET)
 					return
@@ -609,7 +609,7 @@
 			if(slot_r_store)
 				if(!H.w_uniform)
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>I need a jumpsuit before you can attach this [name].</span>")
+						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
 					return CANNOT_EQUIP
 				if(slot_flags & SLOT_DENYPOCKET)
 					return
@@ -626,7 +626,7 @@
 			if(slot_s_store)
 				if(!H.wear_suit)
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>I need a suit before you can attach this [name].</span>")
+						to_chat(H, "<span class='warning'>You need a suit before you can attach this [name].</span>")
 					return CANNOT_EQUIP
 				if(!H.wear_suit.allowed)
 					if(!disable_warning)
@@ -767,10 +767,10 @@
 	if((!istype(user, /mob/living/carbon) && !isMoMMI(user)) || istype(user, /mob/living/carbon/brain)) //Is not a carbon being, MoMMI, or is a brain
 		to_chat(user, "I can't pick things up!")
 	if(src.anchored) //Object isn't anchored
-		to_chat(user, "<span class='warning'>I can't pick that up!</span>")
+		to_chat(user, "<span class='warning'>You can't pick that up!</span>")
 		return 0
 	if(!istype(src.loc, /turf)) //Object is not on a turf
-		to_chat(user, "<span class='warning'>I can't pick that up!</span>")
+		to_chat(user, "<span class='warning'>You can't pick that up!</span>")
 		return 0
 	return 1
 
@@ -783,14 +783,14 @@
 		return 0
 
 	if(user.get_active_hand())
-		to_chat(user, "<span class='warning'>My [user.get_index_limb_name(user.active_hand)] is full.</span>")
+		to_chat(user, "<span class='warning'>Your [user.get_index_limb_name(user.active_hand)] is full.</span>")
 		return
 
 	//All checks are done, time to pick it up!
 	if(isMoMMI(user))
 		// Otherwise, we get MoMMIs changing their own laws.
 		if(istype(src,/obj/item/weapon/aiModule))
-			to_chat(src, "<span class='warning'>My firmware prevents you from picking up [src]!</span>")
+			to_chat(src, "<span class='warning'>Your firmware prevents you from picking up [src]!</span>")
 			return
 		if(user.get_active_hand() == null)
 			user.put_in_hands(src)
@@ -877,7 +877,7 @@
 	if(istype(H))
 		var/obj/item/eye_protection = H.get_body_part_coverage(EYES)
 		if(eye_protection)
-			to_chat(user, "<span class='warning'>I am going to need to remove that [eye_protection] first.</span>")
+			to_chat(user, "<span class='warning'>You are going to need to remove that [eye_protection] first.</span>")
 			return
 
 	var/mob/living/carbon/monkey/Mo = M
@@ -885,11 +885,11 @@
 			(Mo.wear_mask && Mo.wear_mask.body_parts_covered & EYES) \
 		))
 		// you can't stab someone in the eyes wearing a mask!
-		to_chat(user, "<span class='warning'>I am going to need to remove that mask first.</span>")
+		to_chat(user, "<span class='warning'>You are going to need to remove that mask first.</span>")
 		return
 
 	if(!M.has_eyes())
-		to_chat(user, "<span class='warning'>I cannot locate any eyes on [M]!</span>")
+		to_chat(user, "<span class='warning'>You cannot locate any eyes on [M]!</span>")
 		return
 
 	user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>"
@@ -905,7 +905,7 @@
 	//if(clumsy_check(user) && prob(50))
 	//	M = user
 		/*
-		to_chat(M, "<span class='warning'>I stab yourself in the eye.</span>")
+		to_chat(M, "<span class='warning'>You stab yourself in the eye.</span>")
 		M.sdisabilities |= BLIND
 		M.AdjustKnockdown(4)
 		M.adjustBruteLoss(10)
@@ -920,28 +920,28 @@
 			for(var/mob/O in (viewers(M) - user - M))
 				O.show_message("<span class='danger'>[user] stabs [M] in the eye with \the [src].</span>", 1)
 			to_chat(M, "<span class='userdanger'>[user] stabs you in the eye with \the [src]!</span>")
-			to_chat(user, "<span class='attack'>I stab [M] in the eye with \the [src]!</span>")
+			to_chat(user, "<span class='attack'>You stab [M] in the eye with \the [src]!</span>")
 		else
 			user.visible_message( \
 				"<span class='attack'>[user] stabs themself with \the [src]!</span>", \
-				"<span class='userdanger'>I stab yourself in the eyes with \the [src]!</span>" \
+				"<span class='userdanger'>You stab yourself in the eyes with \the [src]!</span>" \
 			)
 
 		eyes.damage += rand(3,4)
 		if(eyes.damage >= eyes.min_bruised_damage)
 			if(M.stat != 2)
 				if(eyes.robotic <= 1) //robot eyes bleeding might be a bit silly
-					to_chat(M, "<span class='warning'>My eyes start to bleed profusely!</span>")
+					to_chat(M, "<span class='warning'>Your eyes start to bleed profusely!</span>")
 			if(prob(50))
 				if(M.stat != 2)
-					to_chat(M, "<span class='warning'>I drop what you're holding and clutch at my eyes!</span>")
+					to_chat(M, "<span class='warning'>You drop what you're holding and clutch at your eyes!</span>")
 					M.drop_item()
 				M.eye_blurry += 10
 				M.Paralyse(1)
 				M.Knockdown(4)
 			if (eyes.damage >= eyes.min_broken_damage)
 				if(M.stat != 2)
-					to_chat(M, "<span class='warning'>I go blind!</span>")
+					to_chat(M, "<span class='warning'>You go blind!</span>")
 		var/datum/organ/external/affecting = M:get_organ(LIMB_HEAD)
 		if(affecting.take_damage(7))
 			M:UpdateDamageIcon(1)
@@ -1044,7 +1044,7 @@ var/global/list/image/blood_overlays = list()
 
 /obj/item/kick_act(mob/living/carbon/human/H) //Kick items around!
 	if(anchored || w_class > W_CLASS_MEDIUM + H.get_strength())
-		H.visible_message("<span class='danger'>[H] attempts to kick \the [src]!</span>", "<span class='danger'>I attempt to kick \the [src]!</span>")
+		H.visible_message("<span class='danger'>[H] attempts to kick \the [src]!</span>", "<span class='danger'>You attempt to kick \the [src]!</span>")
 		if(prob(70))
 			to_chat(H, "<span class='danger'>Dumb move! You strain a muscle.</span>")
 
@@ -1059,7 +1059,7 @@ var/global/list/image/blood_overlays = list()
 
 	var/kick_power = max((H.get_strength() * 10 - (w_class ** 2)), 1) //The range of the kick is (strength)*10. Strength ranges from 1 to 3, depending on the kicker's genes. Range is reduced by w_class^2, and can't be reduced below 1.
 
-	H.visible_message("<span class='danger'>[H] kicks \the [src]!</span>", "<span class='danger'>I kick \the [src]!</span>")
+	H.visible_message("<span class='danger'>[H] kicks \the [src]!</span>", "<span class='danger'>You kick \the [src]!</span>")
 
 	if(kick_power > 6) //Fly in an arc!
 		spawn()

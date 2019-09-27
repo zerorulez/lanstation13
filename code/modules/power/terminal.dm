@@ -62,7 +62,7 @@
 
 /obj/machinery/power/proc/make_terminal(mob/user)
 	if(!can_attach_terminal(user))
-		to_chat(user, "<span class='warning'>I can't wire \the [src] like that!</span>")
+		to_chat(user, "<span class='warning'>You can't wire \the [src] like that!</span>")
 		return 0
 
 	var/turf/T = get_turf(user)
@@ -70,7 +70,7 @@
 		to_chat(user, "<span class='warning'>The floor plating must be removed first.</span>")
 		return 0
 
-	to_chat(user, "<span class='notice'>I start adding cable to \the [src].</span>")
+	to_chat(user, "<span class='notice'>You start adding cable to \the [src].</span>")
 	playsound(get_turf(src), 'sound/items/zip.ogg', 100, 1)
 	if (do_after(user, src, 100) && !T.intact && can_attach_terminal(user))
 

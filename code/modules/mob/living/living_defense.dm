@@ -23,13 +23,13 @@
 		if(absorb_text)
 			show_message("[absorb_text]")
 		else
-			show_message("<span class='warning'>My armor absorbs the blow!</span>")
+			show_message("<span class='warning'>Your armor absorbs the blow!</span>")
 		return 2
 	if(absorb == 1)
 		if(absorb_text)
 			show_message("[soften_text]",4)
 		else
-			show_message("<span class='warning'>My armor softens the blow!</span>")
+			show_message("<span class='warning'>Your armor softens the blow!</span>")
 		return 1
 	return 0
 
@@ -43,7 +43,7 @@
 	if(C && C.active)
 		C.attack_self(src)//Should shut it off
 		update_icons()
-		to_chat(src, "<span class='notice'>My [C.name] was disrupted!</span>")
+		to_chat(src, "<span class='notice'>Your [C.name] was disrupted!</span>")
 		Stun(2)
 
 	flash_weak_pain()
@@ -90,7 +90,7 @@
 				zone_normal_name = "right leg"
 			else
 				zone_normal_name = zone
-		var/armor = run_armor_check(zone, "melee", "My armor has protected my [zone_normal_name].", "My armor has softened hit to my [zone_normal_name].")
+		var/armor = run_armor_check(zone, "melee", "My armor has protected your [zone_normal_name].", "My armor has softened hit to your [zone_normal_name].")
 		if(armor < 2)
 			apply_damage(O.throwforce*(speed/5), dtype, zone, armor, O.is_sharp(), O)
 
@@ -106,7 +106,7 @@
 			var/obj/item/weapon/W = O
 			var/momentum = speed/2
 
-			visible_message("<span class='warning'>[src] staggers under the impact!</span>","<span class='warning'>I stagger under the impact!</span>")
+			visible_message("<span class='warning'>[src] staggers under the impact!</span>","<span class='warning'>You stagger under the impact!</span>")
 			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
 
 			if(istype(W.loc,/mob/living) && W.sharpness_flags & SHARP_TIP) //Projectile is embedded and suitable for pinning.
@@ -119,7 +119,7 @@
 
 				if(T)
 					src.forceMove(T)
-					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>I am pinned to the wall by [O]!</span>")
+					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
 					src.anchored = 1
 					src.pinned += O
 
@@ -169,7 +169,7 @@
 		return 0
 
 	playsound(loc, 'sound/weapons/bite.ogg', 50, 1, -1)
-	src.visible_message("<span class='danger'>\The [M] has bitten \the [src]!</span>", "<span class='userdanger'>I was bitten by \the [M]!</span>")
+	src.visible_message("<span class='danger'>\The [M] has bitten \the [src]!</span>", "<span class='userdanger'>You were bitten by \the [M]!</span>")
 
 	adjustBruteLoss(damage)
 	return
@@ -181,7 +181,7 @@
 
 	M.delayNextAttack(20) //Kicks are slow
 
-	if((M_CLUMSY in M.mutations) && prob(20)) //Kicking yourself (or being clumsy) = stun
+	if((M_CLUMSY in M.mutations)) //Kicking yourself (or being clumsy) = stun
 		M.visible_message("<span class='notice'>\The [M] trips while attempting to kick \the [src]!</span>", "<span class='userdanger'>While attempting to kick \the [src], you trip and fall!</span>")
 		M.Knockdown(rand(1,10))
 		return

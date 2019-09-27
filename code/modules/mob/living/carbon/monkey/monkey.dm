@@ -253,7 +253,7 @@
 
 
 /mob/living/carbon/monkey/proc/defense(var/power, var/def_zone)
-	var/armor = run_armor_check(def_zone, "melee", "My armor has protected my [def_zone].", "My armor has softened hit to my [def_zone].")
+	var/armor = run_armor_check(def_zone, "melee", "My armor has protected your [def_zone].", "My armor has softened hit to your [def_zone].")
 	if(armor >= 2)
 		return 0
 	if(!power)

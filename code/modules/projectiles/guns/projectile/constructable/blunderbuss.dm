@@ -86,7 +86,7 @@
 		return
 
 	if(loaded_item)
-		to_chat(usr, "<span class = 'warning'>I can't empty the fuel when there's an item in the muzzle.</span>")
+		to_chat(usr, "<span class = 'warning'>You can't empty the fuel when there's an item in the muzzle.</span>")
 	else
 		fuel_level = 0
 		to_chat(usr, "I pour the fuel out of \the [src].")
@@ -105,7 +105,7 @@
 			loaded_item = Y
 		else
 			if(!user.drop_item(W, src))
-				to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+				to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 				return 1
 			loaded_item = W
 		user.visible_message("[user] jams \the [W] into the muzzle of the [src].","I jam \the [W] into the muzzle of \the [src].")
@@ -115,7 +115,7 @@
 		to_chat(user, "<span class='warning'>That won't fit into the muzzle!</span>")
 		return 1
 	else if(loaded_item && W.is_open_container())
-		to_chat(user, "<span class='warning'>I can't reach the fuel chamber when there's something stuck in the barrel!</span>")
+		to_chat(user, "<span class='warning'>You can't reach the fuel chamber when there's something stuck in the barrel!</span>")
 		return 1
 	else if(!loaded_item && W.is_open_container())
 		transfer_fuel(W, user)
@@ -152,9 +152,9 @@
 	S.reagents.remove_reagent(FUEL, transfer_amount)
 	fuel_level += transfer_amount
 	if(full)
-		to_chat(user, "<span class='notice'>I fill \the [src] to the brim with fuel from \the [S].</span>")
+		to_chat(user, "<span class='notice'>You fill \the [src] to the brim with fuel from \the [S].</span>")
 	else
-		to_chat(user, "<span class='notice'>I pour [transfer_amount] units of fuel into \the [src].</span>")
+		to_chat(user, "<span class='notice'>You pour [transfer_amount] units of fuel into \the [src].</span>")
 	update_verbs()
 
 /obj/item/weapon/blunderbuss/examine(mob/user)
@@ -191,7 +191,7 @@
 	else if(fuel_level && !loaded_item)
 		playsound(user, 'sound/weapons/shotgun.ogg', 50, 1)
 		fuel_level = 0
-		user.visible_message("<span class='danger'>[user] fires \the [src]!</span>","<span class='danger'>I fire \the [src]!</span>")
+		user.visible_message("<span class='danger'>[user] fires \the [src]!</span>","<span class='danger'>You fire \the [src]!</span>")
 		return 0
 	else
 		Fire(target,user,params)
@@ -246,7 +246,7 @@
 
 	var/distance = round((20/loaded_item.w_class)*(fuel_level/10))
 
-	user.visible_message("<span class='danger'>[user] fires \the [src] and launches \the [loaded_item] at [target]!</span>","<span class='danger'>I fire \the [src] and launch \the [loaded_item] at [target]!</span>")
+	user.visible_message("<span class='danger'>[user] fires \the [src] and launches \the [loaded_item] at [target]!</span>","<span class='danger'>You fire \the [src] and launch \the [loaded_item] at [target]!</span>")
 	log_attack("[user.name] ([user.ckey]) fired \the [src] (proj:[loaded_item.name]) at [target] [ismob(target) ? "([target:ckey])" : ""] ([target.x],[target.y],[target.z])" )
 
 	loaded_item.forceMove(user.loc)

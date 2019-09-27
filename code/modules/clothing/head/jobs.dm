@@ -2,7 +2,7 @@
 //Bartender
 /obj/item/clothing/head/chefhat
 	name = "chef's hat"
-	desc = "It's a hat used by chefs to keep hair out of my food. Judging by the food in the mess, they don't work."
+	desc = "It's a hat used by chefs to keep hair out of your food. Judging by the food in the mess, they don't work."
 	icon_state = "chef"
 	item_state = "chef"
 	desc = "The commander in chef's head wear."
@@ -65,19 +65,19 @@
 //Medical
 /obj/item/clothing/head/surgery
 	name = "surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling my internal organs."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs."
 	icon_state = "surgcap_blue"
 	flags = FPRINT
 	body_parts_covered = EARS|HEAD
 
 /obj/item/clothing/head/surgery/purple
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling my internal organs. This one is deep purple."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is deep purple."
 	icon_state = "surgcap_purple"
 
 /obj/item/clothing/head/surgery/blue
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling my internal organs. This one is baby blue."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is baby blue."
 	icon_state = "surgcap_blue"
 
 /obj/item/clothing/head/surgery/green
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling my internal organs. This one is dark green."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is dark green."
 	icon_state = "surgcap_green"

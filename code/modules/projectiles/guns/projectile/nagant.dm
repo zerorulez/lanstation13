@@ -65,16 +65,16 @@
 	if(istype(src, /obj/item/weapon/gun/projectile/nagant/obrez))
 		return
 	if(istype(A, /obj/item/weapon/circular_saw) || istype(A, /obj/item/weapon/melee/energy) || istype(A, /obj/item/weapon/pickaxe/plasmacutter))
-		to_chat(user, "<span class='notice'>I begin to shorten the barrel of \the [src].</span>")
+		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
 		if(getAmmo())
-			user.visible_message("<span class='danger'>Take the ammo out first.</span>", "<span class='danger'>I need to take the ammo out first.</span>")
+			user.visible_message("<span class='danger'>Take the ammo out first.</span>", "<span class='danger'>You need to take the ammo out first.</span>")
 			return
 		if(do_after(user, src, 30))
 			var/obj/item/weapon/gun/projectile/nagant/obrez/newObrez = new /obj/item/weapon/gun/projectile/nagant/obrez(get_turf(src))
 			for(var/obj/item/ammo_casing/AC in newObrez.loaded)
 				newObrez.loaded -= AC
 			qdel(src)
-			to_chat(user, "<span class='warning'>I shorten the barrel of \the [src]!</span>")
+			to_chat(user, "<span class='warning'>You shorten the barrel of \the [src]!</span>")
 	return
 
 /obj/item/weapon/gun/projectile/nagant/obrez
@@ -104,10 +104,10 @@
 
 		if(prob(15))
 			if(user.drop_item(src))
-				to_chat(user, "<span class='danger'>\The [src] flies out of my hands.</span>")
+				to_chat(user, "<span class='danger'>\The [src] flies out of your hands.</span>")
 				user.take_organ_damage(0,10)
 			else
-				to_chat(user, "<span class='notice'>\The [src] almost flies out of my hands!</span>")
+				to_chat(user, "<span class='notice'>\The [src] almost flies out of your hands!</span>")
 	..()
 
 /obj/item/weapon/gun/projectile/nagant/obrez/proc/flame_turf(turflist)

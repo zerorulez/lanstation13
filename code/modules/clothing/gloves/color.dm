@@ -23,7 +23,7 @@
 			to_chat(user, "<span class='warning'>[src] aren't ready to shock again!</span>")
 			return
 		user.visible_message("<span class='warning'>[user.name] fires an arc of electricity!</span>", \
-			"<span class='warning'>I fire an arc of electricity!</span>", \
+			"<span class='warning'>You fire an arc of electricity!</span>", \
 			"I hear the loud crackle of electricity!")
 		var/datum/powernet/PN = cable.get_powernet()
 		var/obj/item/projectile/beam/lightning/L = getFromPool(/obj/item/projectile/beam/lightning, T)
@@ -176,7 +176,7 @@
 	if(!istype(M))
 		return
 	if(current_gun)
-		to_chat(M, "<span class ='notice'>My gun evaporates into thin air!</span>")
+		to_chat(M, "<span class ='notice'>Your gun evaporates into thin air!</span>")
 		qdel(current_gun)
 		current_gun = null
 		charging = TRUE
@@ -191,11 +191,11 @@
 				G.silenced = FALSE
 				G.fire_sound = 'sound/weapons/Gunshot.ogg'
 			M.put_in_active_hand(G)
-			to_chat(M, "<span class ='notice'>I begin to channel an invisible gun through my fingers!</span>")
+			to_chat(M, "<span class ='notice'>You begin to channel an invisible gun through your fingers!</span>")
 		else
 			to_chat(M, "<span class = 'warning'> Your hand is full! </span>")
 	else
-		to_chat(M, "<span class ='warning'>I need to regain my focus before channeling another gun!</span>")
+		to_chat(M, "<span class ='warning'>You need to regain your focus before channeling another gun!</span>")
 
 /obj/item/clothing/gloves/white/stunglove // For Clown Planet's mimes. - N3X
 	New()

@@ -118,9 +118,9 @@
 		add_fingerprint(user)
 		src.disable = !src.disable
 		if (src.disable)
-			user.visible_message("<span class='warning'>[user] has disconnected the detector array!</span>", "<span class='warning'>I disconnect the detector array!</span>")
+			user.visible_message("<span class='warning'>[user] has disconnected the detector array!</span>", "<span class='warning'>You disconnect the detector array!</span>")
 		if (!src.disable)
-			user.visible_message("<span class='warning'>[user] has connected the detector array!</span>", "<span class='warning'>I connect the detector array!</span>")
+			user.visible_message("<span class='warning'>[user] has connected the detector array!</span>", "<span class='warning'>You connect the detector array!</span>")
 	*/
 
 /obj/machinery/detector/Topic(href, href_list)

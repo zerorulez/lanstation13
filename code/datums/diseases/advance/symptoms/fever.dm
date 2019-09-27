@@ -10,7 +10,7 @@ Fever
 	Low level.
 
 Bonus
-	Heats up my body.
+	Heats up your body.
 
 //////////////////////////////////////
 */

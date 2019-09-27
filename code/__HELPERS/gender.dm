@@ -3,7 +3,7 @@
 // The grammatical gender of the object may be set using this variable. The possible values are "neuter", "male", "female", and "plural". The default is "neuter".
 
                           //     LABEL        SUBJ    OBJ     REF           POS     PP
-                          //                  I       me      myself        my      mine
+                          //                  I       me      yourself        your      mine
 var/global/list/genders=list(
 	"male"   = new /datum/gender("male",      "he",   "him",  "himself",    "his",  "his"),
 	"female" = new /datum/gender("female",    "she",  "her",  "herself",    "her",  "hers"),

@@ -64,7 +64,7 @@
 		return
 
 	if(loaded_item)
-		to_chat(usr, "<span class = 'warning'>I can't empty the fuel when there's an item in the barrel.</span>")
+		to_chat(usr, "<span class = 'warning'>You can't empty the fuel when there's an item in the barrel.</span>")
 	else
 		fuel_level = 0
 		to_chat(usr, "I clean the fuel out of \the [src].")
@@ -93,7 +93,7 @@
 			item_prohibited = 1
 	if(!loaded_item && istype(W,/obj/item) && !W.is_open_container() && !item_prohibited)
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 			return 1
 		loaded_item = W
 		user.visible_message("[user] inserts \the [W] into the barrel of the [src].","I insert \the [W] into the barrel of \the [src].")
@@ -139,9 +139,9 @@
 	S.reagents.remove_reagent(FUEL, transfer_amount)
 	fuel_level += transfer_amount
 	if(full)
-		to_chat(user, "<span class='notice'>I fill \the [src] to the brim with fuel from \the [S].</span>")
+		to_chat(user, "<span class='notice'>You fill \the [src] to the brim with fuel from \the [S].</span>")
 	else
-		to_chat(user, "<span class='notice'>I pour [transfer_amount] units of fuel into \the [src].</span>")
+		to_chat(user, "<span class='notice'>You pour [transfer_amount] units of fuel into \the [src].</span>")
 	update_verbs()
 
 /obj/structure/bed/chair/vehicle/wheelchair/wheelchair_assembly/cannon/examine(mob/user)
@@ -167,7 +167,7 @@
 				if(3)
 					playsound(usr, 'sound/effects/Explosion_Small3.ogg', 100, 1)
 			fuel_level = 0
-			usr.visible_message("<span class='danger'>[usr] fires \the [src]!</span>","<span class='danger'>I fire \the [src]!</span>")
+			usr.visible_message("<span class='danger'>[usr] fires \the [src]!</span>","<span class='danger'>You fire \the [src]!</span>")
 			return 0
 		else
 			Fire(usr)
@@ -203,7 +203,7 @@
 
 	var/distance = round(((20/object.w_class)*(fuel_level/10))*1.5)
 
-	user.visible_message("<span class='danger'>[user] fires \the [object] from \the [src]!</span>","<span class='danger'>I fire \the [object] from \the [src]!</span>")
+	user.visible_message("<span class='danger'>[user] fires \the [object] from \the [src]!</span>","<span class='danger'>You fire \the [object] from \the [src]!</span>")
 	log_attack("[user.name] ([user.ckey]) fired \the [src] (proj:[object.name]) at coordinates ([x],[y],[z])" )
 
 	object.forceMove(src.loc)

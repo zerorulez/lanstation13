@@ -24,7 +24,7 @@
 		return
 	if(istype(W,/obj/item/clothing/suit/spaceblanket) && !stage)
 		stage = 1
-		to_chat(user,"<span class='notice'>I add \the [W] to \the [src].</span>")
+		to_chat(user,"<span class='notice'>You add \the [W] to \the [src].</span>")
 		qdel(W)
 		icon_state = "gas_mask1"
 	if(istype(W,/obj/item/stack/cable_coil) && stage == 1)
@@ -32,10 +32,10 @@
 		if(C.amount <= 4)
 			return
 		icon_state = "gas_mask2"
-		to_chat(user,"<span class='notice'>I tie up \the [src] with \the [W].</span>")
+		to_chat(user,"<span class='notice'>You tie up \the [src] with \the [W].</span>")
 		stage = 2
 	if(istype(W,/obj/item/clothing/head/hardhat/red) && stage == 2)
-		to_chat(user,"<span class='notice'>I finish the ghetto helmet.</span>")
+		to_chat(user,"<span class='notice'>You finish the ghetto helmet.</span>")
 		var/obj/ghetto = new /obj/item/clothing/head/helmet/space/rig/ghettorig (src.loc)
 		qdel(src)
 		qdel(W)

@@ -5,7 +5,7 @@ Light up oxygen/plasma indicators (done)
 Cause health to look critical/dead, even when standing (done)
 Characters silently watching you
 Brief flashes of fire/space/bombs/c4/dangerous shit (done)
-Items that are rare/traitorous/don't exist appearing in my inventory slots (done)
+Items that are rare/traitorous/don't exist appearing in your inventory slots (done)
 Strange audio (should be rare) (done)
 Gunshots/explosions/opening doors/less rare audio (done)
 
@@ -177,7 +177,7 @@ mob/living/carbon/proc/handle_hallucinations()
 						if(16) //rip pomf
 							src << 'sound/machines/ya_dun_clucked.ogg'
 							spawn(rand(1,15))
-								to_chat(src, "<i>I am filled with a great sadness.</i>")
+								to_chat(src, "<i>You are filled with a great sadness.</i>")
 
 			if(66 to 70)
 				//Flashes of danger
@@ -219,9 +219,9 @@ mob/living/carbon/proc/handle_hallucinations()
 			if(73 to 75)
 				//Fake changeling/parapen
 				if(prob(0.01))
-					to_chat(src, "<span class='warning'>I feel a <b>HUGE</b> prick!</span>")
+					to_chat(src, "<span class='warning'>You feel a <b>HUGE</b> prick!</span>")
 				else
-					to_chat(src, "<span class='warning'>I feel a tiny prick!</span>")
+					to_chat(src, "<span class='warning'>You feel a tiny prick!</span>")
 			if(76)
 				if(prob(5))
 					to_chat(src, "<h1 class='alert'>Priority Announcement</h1>")
@@ -230,7 +230,7 @@ mob/living/carbon/proc/handle_hallucinations()
 				else
 					var/txt_verb = pick("go to","die in","stay in","avoid")
 					var/location = pick("security","arrivals","bridge","your old house","the escape shuttle hallway","deep space","the DJ satelite","science")
-					to_chat(src, "<i>I feel a sudden urge to [txt_verb] [location][pick("...","!",".")]</i>")
+					to_chat(src, "<i>You feel a sudden urge to [txt_verb] [location][pick("...","!",".")]</i>")
 			if(77) //Sillycone
 				if(prob(5))
 					to_chat(src, "<font size=4 color='red'>Attention! Delta security level reached!</font>")
@@ -248,19 +248,19 @@ mob/living/carbon/proc/handle_hallucinations()
 						if(3)
 							to_chat(src, "<span class='warning'>Bop...beeep...</span>")
 						if(4)
-							to_chat(src, "<span class='warning'>My joints feel very stiff.</span>")
+							to_chat(src, "<span class='warning'>Your joints feel very stiff.</span>")
 						if(5)
 							src.say(pick("Beep, boop", "beep, beep!", "Boop...bop"))
 						if(6)
 							to_chat(src, "My skin feels loose.")
 						if(7)
-							to_chat(src, "<span class='warning'>I feel a stabbing pain in my head.</span>")
+							to_chat(src, "<span class='warning'>You feel a stabbing pain in your head.</span>")
 						if(8)
-							to_chat(src, "<span class='warning'>I can feel something move...inside.</span>")
+							to_chat(src, "<span class='warning'>You can feel something move...inside.</span>")
 						if(9)
-							to_chat(src, "<span class='warning'>My skin feels very loose.</span>")
+							to_chat(src, "<span class='warning'>Your skin feels very loose.</span>")
 						if(10)
-							to_chat(src, "<span class='warning'>My skin feels as if it's about to burst off...</span>")
+							to_chat(src, "<span class='warning'>Your skin feels as if it's about to burst off...</span>")
 
 			if(78 to 80) //Fake ghosts
 				to_chat(src, "<i>[pick(boo_phrases)]</i>")
@@ -295,16 +295,16 @@ mob/living/carbon/proc/handle_hallucinations()
 						C.images += foodie //Give it the image!
 
 						if(L == src)
-							to_chat(src, "<span class='info'>I feel like a [initial(random_food.name)]. Oh wow!</span>")
+							to_chat(src, "<span class='info'>You feel like a [initial(random_food.name)]. Oh wow!</span>")
 						else
-							to_chat(src, "<span class='info'>I smell [initial(random_food.name)]...</span>")
+							to_chat(src, "<span class='info'>You smell [initial(random_food.name)]...</span>")
 
 						var/duration = rand(60 SECONDS, 120 SECONDS)
 
 						spawn(duration)
 							if(C)
 								C.images.Remove(foodie) //Remove the image from hallucinating mob
-			if(87 to 88) //Turns my screen
+			if(87 to 88) //Turns your screen
 				var/angle = rand(1,3)*90
 				var/duration = rand(10 SECONDS, 40 SECONDS)
 

@@ -77,7 +77,7 @@
 		if(!bcell)
 			if(user.drop_item(W, src))
 				bcell = W
-				to_chat(user, "<span class='notice'>I install a cell in [src].</span>")
+				to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
 				update_icon()
 		else
 			to_chat(user, "<span class='notice'>[src] already has a cell.</span>")
@@ -87,15 +87,15 @@
 			bcell.updateicon()
 			bcell.forceMove(get_turf(src.loc))
 			bcell = null
-			to_chat(user, "<span class='notice'>I remove the cell from the [src].</span>")
+			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
 			status = 0
 			update_icon()
 			return
 		..()
 
 /obj/item/weapon/melee/baton/attack_self(mob/user)
-	if(status && clumsy_check(user) && prob(50))
-		user.simple_message("<span class='warning'>I grab the [src] on the wrong side.</span>",
+	if(status && clumsy_check(user))
+		user.simple_message("<span class='warning'>You grab the [src] on the wrong side.</span>",
 			"<span class='danger'>The [name] blasts you with its power!</span>")
 		user.Knockdown(stunforce*3)
 		playsound(loc, "sparks", 75, 1, -1)
@@ -119,8 +119,8 @@
 	add_fingerprint(user)
 
 /obj/item/weapon/melee/baton/attack(mob/M, mob/user)
-	if(status && clumsy_check(user) && prob(50))
-		user.simple_message("<span class='danger'>I accidentally hit yourself with [src]!</span>",
+	if(status && clumsy_check(user))
+		user.simple_message("<span class='danger'>You accidentally hit yourself with [src]!</span>",
 			"<span class='danger'>The [name] goes mad!</span>")
 		user.Knockdown(stunforce*3)
 		deductcharge(hitcost)
@@ -134,7 +134,7 @@
 
 	var/mob/living/L = M
 
-	var/hit = 1
+	var/hit = TRUE
 
 	user.do_attack_animation(M, src)
 
@@ -167,7 +167,7 @@
 		L.apply_effect(STUTTER, stunforce)
 
 		L.visible_message("<span class='danger'>[L] has been stunned with [src] by [user]!</span>",\
-			"<span class='userdanger'>I have been stunned with [src] by [user]!</span>",\
+			"<span class='userdanger'>You have been stunned with [src] by [user]!</span>",\
 			self_drugged_message="<span class='userdanger'>[user]'s [src.name] sucks the life right out of you!</span>")
 		playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
 

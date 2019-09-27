@@ -4,12 +4,12 @@
 	effect_type = 2
 	var/list/messages = list("I feel worried.",\
 		"Something doesn't feel right.",\
-		"I get a strange feeling in my gut.",\
+		"I get a strange feeling in your gut.",\
 		"My instincts are trying to warn me about something.",\
-		"Someone just walked over my grave.",\
+		"Someone just walked over your grave.",\
 		"There's a strange feeling in the air.",\
 		"There's a strange smell in the air.",\
-		"The tips of my fingers feel tingly.",\
+		"The tips of your fingers feel tingly.",\
 		"I feel twitchy.",\
 		"I have a terrible sense of foreboding.",\
 		"I've got a bad feeling about this.",\

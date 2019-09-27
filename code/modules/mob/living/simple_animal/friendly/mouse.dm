@@ -105,7 +105,7 @@
 
 	if (plane != HIDING_MOB_PLANE)
 		plane = HIDING_MOB_PLANE
-		to_chat(src, text("<span class='notice'>I am now hiding.</span>"))
+		to_chat(src, text("<span class='notice'>You are now hiding.</span>"))
 		/*
 		for(var/mob/O in oviewers(src, null))
 			if ((O.client && !( O.blinded )))
@@ -113,7 +113,7 @@
 		*/
 	else
 		plane = MOB_PLANE
-		to_chat(src, text("<span class='notice'>I have stopped hiding.</span>"))
+		to_chat(src, text("<span class='notice'>You have stopped hiding.</span>"))
 		/*
 		for(var/mob/O in oviewers(src, null))
 			if ((O.client && !( O.blinded )))

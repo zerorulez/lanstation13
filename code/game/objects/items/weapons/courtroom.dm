@@ -4,7 +4,7 @@
 
 /obj/item/weapon/gavelhammer
 	name = "gavel hammer"
-	desc = "Order, order! No bombs in my courthouse."
+	desc = "Order, order! No bombs in your courthouse."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "gavelhammer"
 	force = 5

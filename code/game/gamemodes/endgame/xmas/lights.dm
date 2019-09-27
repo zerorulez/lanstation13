@@ -1,5 +1,5 @@
 // "How the hell do these lights WORK?"
-// Well my man, it's simple.
+// Well your man, it's simple.
 // If you enable RGB+Mask in DM when viewing the lights state
 // You will see that there's 4 lights, corresponding to the 4 channels of an RGBA image:
 // R, G, B, A

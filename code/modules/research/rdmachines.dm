@@ -153,7 +153,7 @@ var/global/list/rnd_machines = list()
 		return 1
 	if (istype(O, /obj/item/device/multitool))
 		if(!panel_open && research_flags &HASOUTPUT)
-			var/result = input("Set my location as output?") in list("Yes","No","Machine Location")
+			var/result = input("Set your location as output?") in list("Yes","No","Machine Location")
 			switch(result)
 				if("Yes")
 					if(!Adjacent(user))
@@ -224,7 +224,7 @@ var/global/list/rnd_machines = list()
 		icon_state = "[base_state]"
 		use_power(max(1000, (3750*amount/10)))
 		stack.use(amount)
-		to_chat(user, "<span class='notice'>I add [amount] sheet[amount > 1 ? "s":""] to the [src.].</span>")
+		to_chat(user, "<span class='notice'>You add [amount] sheet[amount > 1 ? "s":""] to the [src.].</span>")
 		icon_state = "[base_state]"
 
 		var/datum/material/material = materials.getMaterial(found)

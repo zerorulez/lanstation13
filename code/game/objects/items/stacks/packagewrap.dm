@@ -63,7 +63,7 @@
 			P.add_fingerprint(user)
 			use(1)
 		else
-			to_chat(user, "<span class='warning'>I need more paper!</span>")
+			to_chat(user, "<span class='warning'>You need more paper!</span>")
 	else if(is_type_in_list(target,wrappable_big_stuff) && bigpath)
 		if(istype(target,/obj/structure/closet))
 			var/obj/structure/closet/C = target
@@ -75,7 +75,7 @@
 			P.add_fingerprint(user)
 			use(3)
 		else
-			to_chat(user, "<span class='warning'>I need more paper!</span>")
+			to_chat(user, "<span class='warning'>You need more paper!</span>")
 	else
 		to_chat(user, "<span class='warning'>[src] isn't useful for wrapping [target].</span>")
 	return 1
@@ -103,7 +103,7 @@
 			use(2)
 			return 1
 	else
-		to_chat(user, "<span class='warning'>I need more paper!</span>")
+		to_chat(user, "<span class='warning'>You need more paper!</span>")
 		return 0
 
 /obj/item/stack/package_wrap/gift //For more details, see gift_wrappaper.dm

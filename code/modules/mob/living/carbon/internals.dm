@@ -42,7 +42,7 @@
 			if(user != src)
 				to_chat(user, "<span class='warning'>\The [src] is not wearing a breathing mask.</span>")
 			else
-				to_chat(user, "<span class='warning'>I am not wearing a breathing mask.</span>")
+				to_chat(user, "<span class='warning'>You are not wearing a breathing mask.</span>")
 			return
 		if(!T || !T.Adjacent()) //We can be given a specific tank to connect to
 			T = get_internals_tank()
@@ -54,7 +54,7 @@
 				if(user != src)
 					to_chat(user, "<span class='warning'>\The [src] does not have \an [breathes] tank.</span>")
 				else
-					to_chat(user, "<span class='warning'>I don't have \an [breathes] tank.</span>")
+					to_chat(user, "<span class='warning'>You don't have \an [breathes] tank.</span>")
 				return
 		internal = T
 		T.add_fingerprint(user)
@@ -68,5 +68,5 @@
 			src.attack_log += text("\[[time_stamp()]\] <font color='red'>Internals enabled by [user.name] ([user.ckey]) (Gas contents: [gas_contents]).</font>")
 			log_attack("[user.name] ([user.ckey]) has enabled [src.name]'s ([src.ckey]) internals (Gas contents: [gas_contents]).")
 		else
-			to_chat(src, "<span class='notice'>I am now running on internals from \the [T].</span>")
+			to_chat(src, "<span class='notice'>You are now running on internals from \the [T].</span>")
 		return 1

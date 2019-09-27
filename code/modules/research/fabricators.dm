@@ -94,7 +94,7 @@
 			sleep(15)
 			src.visible_message("\icon[src] <b>[src]</b> beeps: \"User DB corrupted \[Code 0x00FA\]. Truncating data structure...\"")
 			sleep(30)
-			src.visible_message("\icon[src] <b>[src]</b> beeps: \"User DB truncated. Please contact my Nanotrasen system operator for future assistance.\"")
+			src.visible_message("\icon[src] <b>[src]</b> beeps: \"User DB truncated. Please contact your Nanotrasen system operator for future assistance.\"")
 			req_access = null
 			emagged = 1
 		if(0.5)
@@ -449,7 +449,7 @@
 	if(new_data)
 		src.visible_message("\icon[src] <b>[src]</b> beeps, \"Successfully synchronized with R&D server. New data processed.\"")
 	if(!silent && !found)
-		temp = "Unable to connect to local R&D Database.<br>Please check my connections and try again.<br><a href='?src=\ref[src];clear_temp=1'>Return</a>"
+		temp = "Unable to connect to local R&D Database.<br>Please check your connections and try again.<br><a href='?src=\ref[src];clear_temp=1'>Return</a>"
 	src.updateUsrDialog()
 
 // Tell the machine to start processing the queue on the next process().

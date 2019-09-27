@@ -46,7 +46,7 @@
 			to_chat(user, "There is already a cylinder loaded into \the [src].")
 			return
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 			return 1
 		to_chat(user, "I load \the [W] into \the [src].")
 		cylinder = W

@@ -179,10 +179,10 @@
 			if(isMoMMI(user))
 				var/mob/living/silicon/robot/mommi/M = user
 				if(M.is_in_modules(I))
-					to_chat(user, "I cannot recycle my built in tools.")
+					to_chat(user, "I cannot recycle your built in tools.")
 					return 1
 			else
-				to_chat(user, "I cannot recycle my built in tools.")
+				to_chat(user, "I cannot recycle your built in tools.")
 				return 1
 
 		if(user.drop_item(I, src))

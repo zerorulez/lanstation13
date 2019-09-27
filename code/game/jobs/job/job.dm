@@ -94,8 +94,8 @@
 	if(!job_title)
 		job_title = title
 	log_admin("([M.ckey]/[M]) started the game as a [job_title].")
-	to_chat(M, "<B>I am the [job_title].</B>")
+	to_chat(M, "<B>You are the [job_title].</B>")
 	to_chat(M, "<b>As the [job_title] you answer directly to [src.supervisors]. Special circumstances may change this.</b>")
 
 	if(src.req_admin_notify)
-		to_chat(M, "<b>I am playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
+		to_chat(M, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")

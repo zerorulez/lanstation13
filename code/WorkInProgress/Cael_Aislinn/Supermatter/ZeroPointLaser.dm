@@ -119,7 +119,7 @@
 	if(!emagged)
 		locked = 0
 		emagged = 1
-		user.visible_message("[user.name] emags the [src.name].","<span class='warning'>I short out the lock.</span>")
+		user.visible_message("[user.name] emags the [src.name].","<span class='warning'>You short out the lock.</span>")
 		return 1
 	return -1
 

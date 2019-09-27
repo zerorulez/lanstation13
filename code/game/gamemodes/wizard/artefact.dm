@@ -92,7 +92,7 @@
 	hitsound = 'sound/items/welder2.ogg'
 
 /obj/item/weapon/scrying/attack_self(mob/user as mob)
-	to_chat(user, "<span class='notice'>I can see...everything!</span>")
+	to_chat(user, "<span class='notice'>You can see...everything!</span>")
 	visible_message("<span class='danger'>[usr] stares into [src], their eyes glazing over.</span>")
 	user.ghostize(1)
 	user.mind.isScrying = 1
@@ -116,19 +116,19 @@
 		if(C.m_intent == "run" && prob(10))
 			if(C.Slip(4, 5))
 				step(C, C.dir)
-				C.visible_message("<span class='warning'>\The [C] trips over \his [name] and appears out of thin air!</span>","<span class='warning'>I trip over my [name] and become visible again!</span>")
+				C.visible_message("<span class='warning'>\The [C] trips over \his [name] and appears out of thin air!</span>","<span class='warning'>You trip over your [name] and become visible again!</span>")
 
 /obj/item/weapon/cloakingcloak/update_wield(mob/user)
 	..()
 	if(user)
 		user.update_inv_hands()
 		if(wielded)
-			user.visible_message("<span class='danger'>\The [user] throws \the [src] over \himself and disappears!</span>","<span class='notice'>I throw \the [src] over yourself and disappear.</span>")
+			user.visible_message("<span class='danger'>\The [user] throws \the [src] over \himself and disappears!</span>","<span class='notice'>You throw \the [src] over yourself and disappear.</span>")
 			event_key = user.on_moved.Add(src, "mob_moved")
 			user.alpha = 1	//to cloak immediately instead of on the next Life() tick
 			user.alphas[CLOAKINGCLOAK] = 1
 		else
-			user.visible_message("<span class='warning'>\The [user] appears out of thin air!</span>","<span class='notice'>I take \the [src] off and become visible again.</span>")
+			user.visible_message("<span class='warning'>\The [user] appears out of thin air!</span>","<span class='notice'>You take \the [src] off and become visible again.</span>")
 			user.on_moved.Remove(event_key)
 			event_key = null
 			user.alpha = initial(user.alpha)

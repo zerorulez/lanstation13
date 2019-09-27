@@ -150,7 +150,7 @@ About Reagents:
 			drowsyness for sleep toxins etc etc.
 			You'll want to call the parents proc by using ..() .
 			If you dont, the chemical will stay in the mob forever -
-			unless you write my own piece of code to slowly remove it.
+			unless you write your own piece of code to slowly remove it.
 			(Should be pretty easy, 1 line of code)
 
 	Important variables:
@@ -248,7 +248,7 @@ About the Tools:
 			Checks atom/var/flags & OPENCONTAINER.
 			If this returns 1 , you can use syringes, beakers etc
 			to manipulate the contents of this object.
-			If it's 0, you'll need to write my own custom reagent
+			If it's 0, you'll need to write your own custom reagent
 			transfer code since you will not be able to use the standard
 			tools to manipulate it.
 

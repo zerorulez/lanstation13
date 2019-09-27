@@ -139,25 +139,25 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 			src.updateUsrDialog()
 		if("screw")
 			src.screwloose = !src.screwloose
-			to_chat(usr, "<span class='notice>I twiddle the screw.</span>")
+			to_chat(usr, "<span class='notice>You twiddle the screw.</span>")
 			src.updateUsrDialog()
 		if("oddbutton")
 			src.oddbutton = !src.oddbutton
-			to_chat(usr, "<span class='notice'>I press the weird button.</span>")
+			to_chat(usr, "<span class='notice'>You press the weird button.</span>")
 			src.updateUsrDialog()
 
 /obj/machinery/bot/cleanbot/attackby(obj/item/weapon/W, mob/user as mob)
 	if (istype(W, /obj/item/weapon/card/id)||istype(W, /obj/item/device/pda))
 		if(src.allowed(usr) && !open && !emagged)
 			src.locked = !src.locked
-			to_chat(user, "<span class='notice'>I [ src.locked ? "lock" : "unlock"] the [src] behaviour controls.</span>")
+			to_chat(user, "<span class='notice'>You [ src.locked ? "lock" : "unlock"] the [src] behaviour controls.</span>")
 		else
 			if(emagged)
 				to_chat(user, "<span class='warning'>ERROR</span>")
 			if(open)
 				to_chat(user, "<span class='warning'>Please close the access panel before locking it.</span>")
 			else
-				to_chat(user, "<span class='notice'>This [src] doesn't seem to respect my authority.</span>")
+				to_chat(user, "<span class='notice'>This [src] doesn't seem to respect your authority.</span>")
 	else
 		return ..()
 
@@ -350,7 +350,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 			var/turf/T = get_turf(src.loc)
 			var/obj/machinery/bot/cleanbot/A = new /obj/machinery/bot/cleanbot(T)
 			A.name = src.created_name
-			to_chat(user, "<span class='notice'>I add the robot arm to the bucket and sensor assembly. Beep boop!</span>")
+			to_chat(user, "<span class='notice'>You add the robot arm to the bucket and sensor assembly. Beep boop!</span>")
 			user.drop_from_inventory(src)
 			qdel(src)
 

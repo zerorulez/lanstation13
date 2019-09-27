@@ -128,13 +128,13 @@
 	if (islarva(user))//Safety check for larva. /N
 		return
 	user.do_attack_animation(src, user)
-	to_chat(user, "<span class='good'>I claw at the [name].</span>")
+	to_chat(user, "<span class='good'>You claw at the [name].</span>")
 	for(var/mob/O in oviewers(src))
 		O.show_message("<span class='warning'>[usr] claws at the resin!</span>", 1)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	health -= rand(40, 60)
 	if(health <= 0)
-		to_chat(usr, "<span class='good'>I slice the [name] to pieces.</span>")
+		to_chat(usr, "<span class='good'>You slice the [name] to pieces.</span>")
 		for(var/mob/O in oviewers(src))
 			O.show_message("<span class='warning'>[user] slices the [name] apart!</span>", 1)
 	healthcheck()
@@ -148,7 +148,7 @@
 		//Only aliens can stick humans and monkeys into resin walls. Also, the wall must not have a person inside already.
 			if(!affecting)
 				if(G.state<2)
-					to_chat(user, "<span class='warning'>I need a better grip to do that!</span>")
+					to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
 					return
 				G.affecting.forceMove(src)
 				G.affecting.paralysis = 10

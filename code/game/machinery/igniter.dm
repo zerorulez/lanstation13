@@ -67,18 +67,18 @@ var/global/list/igniters = list()
 		var/obj/item/weapon/weldingtool/WT = W
 		if (WT.remove_fuel(0,user))
 			playsound(get_turf(src), 'sound/items/Welder2.ogg', 50, 1)
-			to_chat(user, "<span class='notice'>I begin to cut \the [src] off the floor...</span>")
+			to_chat(user, "<span class='notice'>You begin to cut \the [src] off the floor...</span>")
 			if (do_after(user, src, 40))
 				user.visible_message( \
 					"[user] disassembles \the [src].", \
-					"<span class='notice'>I have disassembled \the [src].</span>", \
+					"<span class='notice'>You have disassembled \the [src].</span>", \
 					"I hear welding.")
 				src.assembly.forceMove(src.loc)
 				qdel(src)
 				return
 		else
 			:
-			to_chat(user, "<span class='warning'>I need more welding fuel to do that.</span>")
+			to_chat(user, "<span class='warning'>You need more welding fuel to do that.</span>")
 			return 1
 
 
@@ -123,10 +123,10 @@ var/global/list/igniters = list()
 		add_fingerprint(user)
 		src.disable = !src.disable
 		if (src.disable)
-			user.visible_message("<span class='warning'>[user] has disabled the [src]!</span>", "<span class='warning'>I disable the connection to the [src].</span>")
+			user.visible_message("<span class='warning'>[user] has disabled the [src]!</span>", "<span class='warning'>You disable the connection to the [src].</span>")
 			icon_state = "[base_state]-d"
 		if (!src.disable)
-			user.visible_message("<span class='warning'>[user] has reconnected the [src]!</span>", "<span class='warning'>I fix the connection to the [src].</span>")
+			user.visible_message("<span class='warning'>[user] has reconnected the [src]!</span>", "<span class='warning'>You fix the connection to the [src].</span>")
 			if(src.powered())
 				icon_state = "[base_state]"
 			else

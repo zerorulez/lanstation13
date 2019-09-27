@@ -26,7 +26,7 @@
 	if(istype(I,/obj/item/weapon/anobattery))
 		if(!inserted_battery)
 			if(user.drop_item(I, src))
-				to_chat(user, "<span class='notice'>I insert [I] into [src].</span>")
+				to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
 				src.inserted_battery = I
 				updateDialog()
 		else

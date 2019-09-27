@@ -1,6 +1,6 @@
 /obj/item/device/radio/electropack
 	name = "electropack"
-	desc = "Dance my monkeys! DANCE!!!"
+	desc = "Dance your monkeys! DANCE!!!"
 	icon_state = "electropack0"
 	item_state = "electropack"
 	origin_tech = Tc_MATERIALS + "=1;" + Tc_POWERSTORAGE + "=2"
@@ -36,7 +36,7 @@
 
 /obj/item/device/radio/electropack/attack_hand(mob/user as mob)
 	if(src == user.back)
-		to_chat(user, "<span class='notice'>I need help taking this off!</span>")
+		to_chat(user, "<span class='notice'>You need help taking this off!</span>")
 		return
 	..()
 
@@ -134,7 +134,7 @@
 				spawn(50)
 					if(M)
 						M.moved_recently = 0
-		to_chat(M, "<span class='danger'>I feel a sharp shock!</span>")
+		to_chat(M, "<span class='danger'>You feel a sharp shock!</span>")
 		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 		s.set_up(3, 1, M)
 		s.start()

@@ -315,7 +315,7 @@
 				if(user.drop_item(W, src))
 					wash_state = 3
 			else
-				to_chat(user, "<span class='notice'>I can't put the item in right now.</span>")
+				to_chat(user, "<span class='notice'>You can't put the item in right now.</span>")
 		else
 			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
 	update_icon()

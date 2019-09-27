@@ -22,7 +22,7 @@
 	var/damage_type = CUT
 
 	// whether this wound needs a bandage/salve to heal at all
-	var/needs_treatment = 0
+	var/needs_treatment = FALSE
 
 	// is the wound bandaged?
 	var/tmp/bandaged = 0
@@ -200,20 +200,20 @@
 	max_bleeding_stage = 2
 	stages = list("big gaping wound" = 60, "healing gaping wound" = 40, "large angry scar" = 10, "large straight scar" = 0)
 
-	needs_treatment = 1 // this only heals when bandaged
+	needs_treatment = TRUE // this only heals when bandaged
 
 datum/wound/cut/massive
 	max_bleeding_stage = 2
 	stages = list("massive wound" = 70, "massive healing wound" = 50, "massive angry scar" = 10,  "massive jagged scar" = 0)
 
-	needs_treatment = 1 // this only heals when bandaged
+	needs_treatment = TRUE // this only heals when bandaged
 
 /** BRUISES **/
 /datum/wound/bruise
 	stages = list("monumental bruise" = 80, "huge bruise" = 50, "large bruise" = 30,\
 				  "moderate bruise" = 20, "small bruise" = 10, "tiny bruise" = 5)
 
-	needs_treatment = 1 // this only heals when bandaged
+	needs_treatment = TRUE // this only heals when bandaged
 	damage_type = BRUISE
 
 /datum/wound/bruise/monumental
@@ -222,15 +222,15 @@ datum/wound/cut/massive
 
 /datum/wound/bruise/tiny
 	current_stage = 5
-	needs_treatment = 0
+	needs_treatment = FALSE
 
 /datum/wound/bruise/small
 	current_stage = 4
-	needs_treatment = 0
+	needs_treatment = FALSE
 
 /datum/wound/bruise/moderate
 	current_stage = 3
-	needs_treatment = 0
+	needs_treatment = FALSE
 
 /datum/wound/bruise/large
 	current_stage = 2
@@ -242,28 +242,28 @@ datum/wound/cut/massive
 /datum/wound/burn/moderate
 	stages = list("ripped burn" = 10, "moderate burn" = 5, "moderate salved burn" = 2, "fresh skin" = 0)
 
-	needs_treatment = 1 // this only heals when bandaged
+	needs_treatment = FALSE // this only heals when bandaged
 
 	damage_type = BURN
 
 /datum/wound/burn/large
 	stages = list("ripped large burn" = 20, "large burn" = 15, "large salved burn" = 5, "fresh skin" = 0)
 
-	needs_treatment = 1 // this only heals when bandaged
+	needs_treatment = TRUE // this only heals when bandaged
 
 	damage_type = BURN
 
 /datum/wound/burn/severe
 	stages = list("ripped severe burn" = 35, "severe burn" = 30, "severe salved burn" = 10, "burn scar" = 0)
 
-	needs_treatment = 1 // this only heals when bandaged
+	needs_treatment = TRUE // this only heals when bandaged
 
 	damage_type = BURN
 
 /datum/wound/burn/deep
 	stages = list("ripped deep burn" = 45, "deep burn" = 40, "deep salved burn" = 15,  "large burn scar" = 0)
 
-	needs_treatment = 1 // this only heals when bandaged
+	needs_treatment = TRUE // this only heals when bandaged
 
 	damage_type = BURN
 
@@ -271,7 +271,7 @@ datum/wound/cut/massive
 /datum/wound/burn/carbonised
 	stages = list("carbonised area" = 50, "treated carbonised area" = 20, "massive burn scar" = 0)
 
-	needs_treatment = 1 // this only heals when bandaged
+	needs_treatment = TRUE // this only heals when bandaged
 
 	damage_type = BURN
 
@@ -281,6 +281,6 @@ datum/wound/cut/massive
 	stages = list("severed vein" = 30, "cut vein" = 20, "damaged vein" = 10, "bruised vein" = 5)
 	max_bleeding_stage = 0
 
-	needs_treatment = 1
+	needs_treatment = TRUE
 
 #undef BLOODLOSS_SPEED_MULTIPLIER

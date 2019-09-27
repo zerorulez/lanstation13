@@ -1,6 +1,6 @@
 /spell/targeted/equip_item/frenchcurse
 	name = "French Curse"
-	desc = "This curse will silence my target for a very long time."
+	desc = "This curse will silence your target for a very long time."
 	abbreviation = "FC"
 
 	school = "evocation"
@@ -8,7 +8,7 @@
 	invocation = "FU'K Y'U D'NY"
 	invocation_type = SpI_SHOUT
 	range = 1
-	spell_flags = WAIT_FOR_CLICK //SELECTABLE hinders you here, since the spell has a range of 1 and only works on adjacent guys. Having the TARGETTED flag here makes it easy for my target to run away from you!
+	spell_flags = WAIT_FOR_CLICK //SELECTABLE hinders you here, since the spell has a range of 1 and only works on adjacent guys. Having the TARGETTED flag here makes it easy for your target to run away from you!
 	cooldown_min = 50
 
 	sparks_spread = 1

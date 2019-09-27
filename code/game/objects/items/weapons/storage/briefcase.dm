@@ -30,8 +30,8 @@
 /obj/item/weapon/storage/briefcase/attack(mob/living/M as mob, mob/living/user as mob)
 	//..()
 
-	if (clumsy_check(user) && prob(50))
-		to_chat(user, "<span class='warning'>The [src] slips out of my hand and hits my head.</span>")
+	if (clumsy_check(user))
+		to_chat(user, "<span class='warning'>The [src] slips out of your hand and hits your head.</span>")
 		user.take_organ_damage(10)
 		user.Paralyse(2)
 		return
@@ -59,7 +59,7 @@
 		if(M.stat != 2)
 			M.stat = 1
 		for(var/mob/O in viewers(M, null))
-			O.show_message(text("<span class='danger'>[] has been knocked unconscious!</span>", M), 1, "<span class='warning'>I hear someone fall.</span>", 2)
+			O.show_message(text("<span class='danger'>[] has been knocked unconscious!</span>", M), 1, "<span class='warning'>You hear someone fall.</span>", 2)
 	else
 		to_chat(M, text("<span class='warning'>[] tried to knock you unconcious!</span>",user))
 		M.eye_blurry += 3
@@ -115,7 +115,7 @@
 			to_chat(user, "<span class='warning'>\The [item] is too big to fit in the false bottom!</span>")
 			return
 		if(!user.drop_item(item))
-			user << "<span class='warning'>\The [item] is stuck to my hands!</span>"
+			user << "<span class='warning'>\The [item] is stuck to your hands!</span>"
 			return
 
 		stored_item = item

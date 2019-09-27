@@ -32,7 +32,7 @@
 		if (AREA_STATION)
 			text += {"
 <p>According the blueprints, you are now in <b>\"[A.name]\"</b>.</p>
-<p>I may not change the existing rooms, only create new ones and rename them.</p>
+<p>You may not change the existing rooms, only create new ones and rename them.</p>
 "}
 		if (AREA_SPECIAL)
 			text += {"
@@ -41,7 +41,7 @@
 		if (AREA_BLUEPRINTS)
 			text += {"
 <p>According to the blueprints, you are now in <b>\"[A.name]\"</b> This place seems to be relatively new on the blueprints.</p>"}
-			text += "<p>I may <a href='?src=\ref[src];action=edit_area'>move an amendment</a> to the drawing.</p>"
+			text += "<p>You may <a href='?src=\ref[src];action=edit_area'>move an amendment</a> to the drawing.</p>"
 
 		else
 			return

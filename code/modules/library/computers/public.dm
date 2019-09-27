@@ -22,7 +22,7 @@
 		if(1)
 			establish_old_db_connection()
 			if(!dbcon_old.IsConnected())
-				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact my system administrator for assistance.</font><br />"
+				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact your system administrator for assistance.</font><br />"
 			else if(num_results == 0)
 				dat += "<em>No results found.</em>"
 			else

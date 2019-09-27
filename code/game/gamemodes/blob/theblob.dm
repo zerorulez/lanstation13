@@ -1,4 +1,4 @@
-//I will need to recode parts of this but I am way too tired atm <- whoever said this, I've got my back -Deity Link
+//I will need to recode parts of this but I am way too tired atm <- whoever said this, I've got your back -Deity Link
 
 /* Contents
 /obj/effect/blob
@@ -125,7 +125,7 @@ var/list/blob_looks
 		for(var/obj/effect/blob/core/C in range(loc,4))
 			if((C != src) && C.overmind && (C.overmind.blob_warning <= world.time))
 				C.overmind.blob_warning = world.time + (10 SECONDS)
-				to_chat(C.overmind,"<span class='danger'>A blob died near my core!</span> <b><a href='?src=\ref[C.overmind];blobjump=\ref[loc]'>(JUMP)</a></b>")
+				to_chat(C.overmind,"<span class='danger'>A blob died near your core!</span> <b><a href='?src=\ref[C.overmind];blobjump=\ref[loc]'>(JUMP)</a></b>")
 
 	overmind = null
 	..()

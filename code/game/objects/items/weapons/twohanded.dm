@@ -133,8 +133,8 @@
 
 /obj/item/weapon/dualsaber/attack(target as mob, mob/living/user as mob)
 	..()
-	if(clumsy_check(user) && (wielded) && prob(40))
-		to_chat(user, "<span class='warning'>I twirl around a bit before losing my balance and impaling yourself on the [src].</span>")
+	if(clumsy_check(user) && (wielded))
+		to_chat(user, "<span class='warning'>You twirl around a bit before losing your balance and impaling yourself on the [src].</span>")
 		spawn for(var/i=1, i<=8, i++)
 			user.dir = turn(user.dir, 45)
 			sleep(1)
@@ -168,7 +168,7 @@
 
 /obj/item/weapon/dualsaber/bananabunch/attack(target as mob, mob/living/user as mob)
 	if(user.mind && !(user.mind.assigned_role == "Clown"))
-		to_chat(user, "<span class='warning'>My clumsy hands fumble and you slice yourself open with [src].</span>")
+		to_chat(user, "<span class='warning'>Your clumsy hands fumble and you slice yourself open with [src].</span>")
 		user.take_organ_damage(40,50)
 		return
 	if((wielded) && (user.mind.assigned_role == "Clown"))
@@ -181,8 +181,8 @@
 	if (istype(AM, /mob/living/carbon))
 		var/mob/living/carbon/M = AM
 		if (M.Slip(2, 2, 1))
-			M.simple_message("<span class='notice'>I slipped on [src]!</span>",
-				"<span class='userdanger'>Something is scratching at my feet! Oh god!</span>")
+			M.simple_message("<span class='notice'>You slipped on [src]!</span>",
+				"<span class='userdanger'>Something is scratching at your feet! Oh god!</span>")
 
 /obj/item/weapon/dualsaber/bananabunch/clumsy_check(mob/living/user)
 	return 0

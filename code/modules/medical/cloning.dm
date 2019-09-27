@@ -244,7 +244,7 @@
 	H.adjustCloneLoss(150) //new damage var so you can't eject a clone early then stab them to abuse the current damage system --NeoFite
 	H.adjustBrainLoss(src.heal_level + 50) // The rand(10, 30) will come out as extra brain damage
 	H.Paralyse(4)
-	H.stat = UNCONSCIOUS //There was a bug which allowed you to talk for a few seconds after being cloned, because my stat wasn't updated until next Life() tick. This is a fix for this!
+	H.stat = UNCONSCIOUS //There was a bug which allowed you to talk for a few seconds after being cloned, because your stat wasn't updated until next Life() tick. This is a fix for this!
 
 	//Here let's calculate their health so the pod doesn't immediately eject them!!!
 	H.updatehealth()
@@ -252,7 +252,7 @@
 	clonemind.transfer_to(H)
 
 	H.ckey = R.ckey
-	to_chat(H, "<span class='notice'><b>Consciousness slowly creeps over you as my body regenerates.</b><br><i>So this is what cloning feels like?</i></span>")
+	to_chat(H, "<span class='notice'><b>Consciousness slowly creeps over you as your body regenerates.</b><br><i>So this is what cloning feels like?</i></span>")
 
 	// -- Mode/mind specific stuff goes here
 
@@ -357,7 +357,7 @@
 
 /obj/machinery/cloning/clonepod/crowbarDestroy(mob/user)
 	if(occupant)
-		to_chat(user, "<span class='warning'>I cannot disassemble \the [src], it's occupado.</span>")
+		to_chat(user, "<span class='warning'>You cannot disassemble \the [src], it's occupado.</span>")
 		return
 	for(biomass; biomass > 0;biomass -= 50)
 		new /obj/item/weapon/reagent_containers/food/snacks/meat/syntiflesh(loc)
@@ -473,7 +473,7 @@
 	if(isrobot(usr))
 		var/mob/living/silicon/robot/robit = usr
 		if(istype(robit) && !istype(robit.module, /obj/item/weapon/robot_module/medical))
-			to_chat(usr, "<span class='warning'>I do not have the means to do this!</span>")
+			to_chat(usr, "<span class='warning'>You do not have the means to do this!</span>")
 			return
 
 	if(go_out(over_location))
@@ -551,7 +551,7 @@
 /obj/item/weapon/paper/Cloning
 	name = "paper - 'H-87 Cloning Apparatus Manual"
 	info = {"<h4>Getting Started</h4>
-	Congratulations, my station has purchased the H-87 industrial cloning device!<br>
+	Congratulations, your station has purchased the H-87 industrial cloning device!<br>
 	Using the H-87 is almost as simple as brain surgery! Simply insert the target humanoid into the scanning chamber and select the scan option to create a new profile!<br>
 	<b>That's all there is to it!</b><br>
 	<i>Notice, cloning system cannot scan inorganic life or small primates.  Scan may fail if subject has suffered extreme brain damage.</i><br>
@@ -559,13 +559,13 @@
 	Profile Deletion has been restricted to \[Station Head\] level access.</p>
 	<h4>Cloning from a profile</h4>
 	Cloning is as simple as pressing the CLONE option at the bottom of the desired profile.<br>
-	Per my company's EMPLOYEE PRIVACY RIGHTS agreement, the H-87 has been blocked from cloning crewmembers while they are still alive.<br>
+	Per your company's EMPLOYEE PRIVACY RIGHTS agreement, the H-87 has been blocked from cloning crewmembers while they are still alive.<br>
 	<br>
 	<p>The provided CLONEPOD SYSTEM will produce the desired clone.  Standard clone maturation times (With SPEEDCLONE technology) are roughly 90 seconds.
 	The cloning pod may be unlocked early with any \[Medical Researcher\] ID after initial maturation is complete.</p><br>
 	<i>Please note that resulting clones may have a small DEVELOPMENTAL DEFECT as a result of genetic drift.</i><br>
 	<h4>Profile Management</h4>
-	<p>The H-87 (as well as my station's standard genetics machine) can accept STANDARD DATA DISKETTES.
+	<p>The H-87 (as well as your station's standard genetics machine) can accept STANDARD DATA DISKETTES.
 	These diskettes are used to transfer genetic information between machines and profiles.
 	A load/save dialog will become available in each profile if a disk is inserted.</p><br>
 	<i>A good diskette is a great way to counter aforementioned genetic drift!</i><br>

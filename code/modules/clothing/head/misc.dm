@@ -79,7 +79,7 @@
 
 /obj/item/clothing/head/cueball
 	name = "cueball helmet"
-	desc = "A large, featureless white orb mean to be worn on my head. How do you even see out of this thing?"
+	desc = "A large, featureless white orb mean to be worn on your head. How do you even see out of this thing?"
 	icon_state = "cueball"
 	flags = FPRINT
 	body_parts_covered = FULL_HEAD|BEARD
@@ -128,7 +128,7 @@
 
 /obj/item/clothing/head/rabbitears
 	name = "rabbit ears"
-	desc = "Wearing these makes you looks useless, and only good for my sex appeal."
+	desc = "Wearing these makes you looks useless, and only good for your sex appeal."
 	icon_state = "bunny"
 	flags = FPRINT
 
@@ -199,7 +199,7 @@
 		return
 	if(wearer.head == src)
 		if(prob(1))
-			to_chat(wearer, "<span class=\"warning\">I feel positively euphoric!</span>")
+			to_chat(wearer, "<span class=\"warning\">You feel positively euphoric!</span>")
 
 //TIPS FEDORA
 /obj/item/clothing/head/fedora/verb/tip_fedora()
@@ -207,7 +207,7 @@
 	set category = "Object"
 	set desc = "Show that CIS SCUM who's boss." //I'm pretty sure you're mincing memes here, but whatever
 
-	usr.visible_message("[usr] tips \his fedora.", "I tip my fedora.")
+	usr.visible_message("[usr] tips \his fedora.", "I tip your fedora.")
 
 /obj/item/clothing/head/fedora/white
 	name = "white fedora"
@@ -223,7 +223,7 @@
 	name = "\improper fez"
 	icon_state = "fez"
 	item_state = "fez"
-	desc = "Put it on my monkey, make lots of cash money."
+	desc = "Put it on your monkey, make lots of cash money."
 	flags = FPRINT
 
 //end bs12 hats
@@ -306,7 +306,7 @@
 
 /obj/item/clothing/head/russofurhat
 	name = "russian fur hat"
-	desc = "Russian winter got you down? Maybe my enemy, but not you!"
+	desc = "Russian winter got you down? Maybe your enemy, but not you!"
 	icon_state = "russofurhat"
 	item_state = "russofurhat"
 	flags = FPRINT
@@ -360,7 +360,7 @@
 
 /obj/item/clothing/head/headband
 	name = "head band"
-	desc = "I wear this around my head."
+	desc = "I wear this around your head."
 	icon_state = "headband"
 	item_state = "headband"
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/metalgear.dmi', "right_hand" = 'icons/mob/in-hand/right/metalgear.dmi')
@@ -374,13 +374,13 @@
 
 /obj/item/clothing/head/christmas/santahat/red
 	name = "red santa hat"
-	desc = "Not quite as magical as the real thing, but it flops over one ear and itches my head just the same."
+	desc = "Not quite as magical as the real thing, but it flops over one ear and itches your head just the same."
 	icon_state = "santahatred"
 	item_state = "santahatred"
 
 /obj/item/clothing/head/christmas/santahat/green
 	name = "green santa hat"
-	desc = "Not quite as magical as the real thing, but it flops over one ear and itches my head just the same."
+	desc = "Not quite as magical as the real thing, but it flops over one ear and itches your head just the same."
 	icon_state = "santahatgreen"
 	item_state = "santahatgreen"
 

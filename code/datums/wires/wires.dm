@@ -115,7 +115,7 @@ var/list/wireColours = list("red", "blue", "green", "black", "orange", "brown", 
 
 		var/mob/living/L = usr
 		if(!CanUse(L))
-			to_chat(usr, "<span class='notice'>I am incapable of this right now.</span>")
+			to_chat(usr, "<span class='notice'>You are incapable of this right now.</span>")
 			return
 		if(href_list["action"])
 			var/obj/item/I = L.get_active_hand()
@@ -126,7 +126,7 @@ var/list/wireColours = list("red", "blue", "green", "black", "orange", "brown", 
 					CutWireColour(colour)
 					holder.investigation_log(I_WIRES, "|| [GetWireName(wires[colour]) || colour] wire [IsColourCut(colour) ? "cut" : "mended"] by [key_name(usr)] ([src.type])")
 				else
-					to_chat(L, "<span class='error'>I need wirecutters!</span>")
+					to_chat(L, "<span class='error'>You need wirecutters!</span>")
 
 			else if(href_list["pulse"])
 				if(istype(I, /obj/item/device/multitool))
@@ -134,7 +134,7 @@ var/list/wireColours = list("red", "blue", "green", "black", "orange", "brown", 
 					PulseColour(colour)
 					holder.investigation_log(I_WIRES, "|| [GetWireName(wires[colour]) || colour] wire pulsed by [key_name(usr)] ([src.type])")
 				else
-					to_chat(L, "<span class='error'>I need a multitool!</span>")
+					to_chat(L, "<span class='error'>You need a multitool!</span>")
 
 			else if(href_list["attach"])
 				var/colour = href_list["attach"]
@@ -152,7 +152,7 @@ var/list/wireColours = list("red", "blue", "green", "black", "orange", "brown", 
 							Attach(colour, I)
 							holder.investigation_log(I_WIRES, "|| [I] \ref[I] attached to [GetWireName(wires[colour]) || colour] wire by [key_name(usr)] ([src.type])")
 					else
-						to_chat(L, "<span class='error'>I need a remote signaller!</span>")
+						to_chat(L, "<span class='error'>You need a remote signaller!</span>")
 
 
 

@@ -64,7 +64,7 @@
 			if("healing")
 				//caeltodo
 				if (istype(user, /mob/living/carbon/human/))
-					to_chat(user, "<span class='notice'>I feel a soothing energy invigorate you.</span>")
+					to_chat(user, "<span class='notice'>You feel a soothing energy invigorate you.</span>")
 
 					var/mob/living/carbon/human/H = user
 					for(var/datum/organ/external/affecting in H.organs)
@@ -91,7 +91,7 @@
 					return 1
 					//
 				if (istype(user, /mob/living/carbon/monkey/))
-					to_chat(user, "<span class='notice'>I feel a soothing energy invigorate you.</span>")
+					to_chat(user, "<span class='notice'>You feel a soothing energy invigorate you.</span>")
 					user.adjustOxyLoss(-25)
 					user.adjustToxLoss(-25)
 					user.adjustBruteLoss(-25)
@@ -115,7 +115,7 @@
 				to_chat(else user, "Nothing happens.")
 			if("stun")
 				if (istype(user, /mob/living/carbon/))
-					to_chat(user, "<span class='warning'>A powerful force overwhelms my consciousness.</span>")
+					to_chat(user, "<span class='warning'>A powerful force overwhelms your consciousness.</span>")
 					user.AdjustKnockdown(45)
 					user.stuttering += 45
 					if(prob(50))
@@ -124,14 +124,14 @@
 				to_chat(else user, "Nothing happens.")
 			if("roboheal")
 				if (istype(user, /mob/living/silicon/robot))
-					to_chat(user, "<span class='notice'>My systems report damaged components mending by themselves!</span>")
+					to_chat(user, "<span class='notice'>Your systems report damaged components mending by themselves!</span>")
 					user.adjustBruteLoss(rand(-10,-30))
 					user.adjustFireLoss(rand(-10,-30))
 					return 1
 				to_chat(else user, "Nothing happens.")
 			if("robohurt")
 				if (istype(user, /mob/living/silicon/robot))
-					to_chat(user, "<span class='warning'>My systems report severe damage has been inflicted!</span>")
+					to_chat(user, "<span class='warning'>Your systems report severe damage has been inflicted!</span>")
 					user.adjustBruteLoss(rand(10,50))
 					user.adjustFireLoss(rand(10,50))
 					return 1
@@ -152,7 +152,7 @@
 						continue
 					randomturfs.Add(T)
 				if(randomturfs.len > 0)
-					to_chat(user, "<span class='warning'>I am suddenly zapped away elsewhere!</span>")
+					to_chat(user, "<span class='warning'>You are suddenly zapped away elsewhere!</span>")
 					if (user.buckled)
 						user.buckled.unbuckle()
 					user.forceMove(pick(randomturfs))
@@ -161,7 +161,7 @@
 					sparks.start()
 				return 1
 			if("sleepy")
-				to_chat(user, pick("<span class='notice'>I feel like taking a nap.</span>","<span class='notice'>I feel a yawn coming on.</span>","<span class='notice'>I feel a little tired.</span>"))
+				to_chat(user, pick("<span class='notice'>You feel like taking a nap.</span>","<span class='notice'>You feel a yawn coming on.</span>","<span class='notice'>You feel a little tired.</span>"))
 				user.drowsyness = min(user.drowsyness + rand(5,25), 50)
 				user.eye_blurry = min(user.eye_blurry + rand(1,3), 50)
 				return 1
@@ -172,7 +172,7 @@
 				for (var/mob/living/carbon/M in range(src.aurarange,originator))
 					if(ishuman(M) && istype(M:wear_suit,/obj/item/clothing/suit/bio_suit/anomaly) && istype(M:head,/obj/item/clothing/head/bio_hood/anomaly))
 						continue
-					to_chat(if(prob(10)) M, "<span class='notice'>I feel a soothing energy radiating from something nearby.</span>")
+					to_chat(if(prob(10)) M, "<span class='notice'>You feel a soothing energy radiating from something nearby.</span>")
 					M.adjustBruteLoss(-1)
 					M.adjustFireLoss(-1)
 					M.adjustToxLoss(-1)
@@ -184,7 +184,7 @@
 				for (var/mob/living/carbon/M in range(src.aurarange,originator))
 					if(ishuman(M) && istype(M:wear_suit,/obj/item/clothing/suit/bio_suit/anomaly) && istype(M:head,/obj/item/clothing/head/bio_hood/anomaly))
 						continue
-					to_chat(if(prob(10)) M, "<span class='warning'>I feel a painful force radiating from something nearby.</span>")
+					to_chat(if(prob(10)) M, "<span class='warning'>You feel a painful force radiating from something nearby.</span>")
 					M.adjustBruteLoss(1)
 					M.adjustFireLoss(1)
 					M.adjustToxLoss(1)
@@ -198,7 +198,7 @@
 						continue
 					to_chat(if(prob(10)) M, "<span class='warning'>Energy radiating from the [originator] is making you feel numb.</span>")
 					if(prob(20))
-						to_chat(M, "<span class='warning'>My body goes numb for a moment.</span>")
+						to_chat(M, "<span class='warning'>Your body goes numb for a moment.</span>")
 						M.AdjustStunned(2)
 						M.AdjustKnockdown(2)
 						M.stuttering += 2
@@ -256,7 +256,7 @@
 			if("sleepy")
 				for (var/mob/living/carbon/M in range(src.aurarange,originator))
 					if(prob(10))
-						to_chat(M, pick("<span class='notice'>I feel like taking a nap.</span>","<span class='notice'>I feel a yawn coming on.</span>","<span class='notice'>I feel a little tired.</span>"))
+						to_chat(M, pick("<span class='notice'>You feel like taking a nap.</span>","<span class='notice'>You feel a yawn coming on.</span>","<span class='notice'>You feel a little tired.</span>"))
 					M.drowsyness = min(M.drowsyness + 1, 25)
 					M.eye_blurry = min(M.eye_blurry + 1, 25)
 				return 1
@@ -295,7 +295,7 @@
 				for (var/mob/living/carbon/M in range(src.aurarange,originator))
 					if(ishuman(M) && istype(M:wear_suit,/obj/item/clothing/suit/bio_suit/anomaly) && istype(M:head,/obj/item/clothing/head/bio_hood/anomaly))
 						continue
-					to_chat(M, "<span class='warning'>A wave of energy overwhelms my senses!</span>")
+					to_chat(M, "<span class='warning'>A wave of energy overwhelms your senses!</span>")
 					M.AdjustParalysis(3)
 					M.AdjustKnockdown(4)
 					M.stuttering += 4
@@ -358,7 +358,7 @@
 							continue
 						randomturfs.Add(T)
 					if(randomturfs.len > 0)
-						to_chat(M, "<span class='warning'>I am displaced by a strange force!</span>")
+						to_chat(M, "<span class='warning'>You are displaced by a strange force!</span>")
 						if(M.buckled)
 							M.buckled.unbuckle()
 						M.forceMove(pick(randomturfs))
@@ -372,7 +372,7 @@
 						continue
 
 					if(prob(30))
-						to_chat(H, pick("<span class='good'>I feel a little different.</span>","<span class='good'>I feel strange.</span>","<span class='good'>I feel different.</span>"))
+						to_chat(H, pick("<span class='good'>You feel a little different.</span>","<span class='good'>You feel strange.</span>","<span class='good'>You feel different.</span>"))
 					//todo
 					if (H.gender == FEMALE)
 						H.setGender(MALE)
@@ -388,7 +388,7 @@
 			if("sleepy")
 				for (var/mob/living/carbon/M in range(src.aurarange,originator))
 					if(prob(30))
-						to_chat(M, pick("<span class='notice'>I feel like taking a nap.</span>","<span class='notice'>I feel a yawn coming on.</span>","<span class='notice'>I feel a little tired.</span>"))
+						to_chat(M, pick("<span class='notice'>You feel like taking a nap.</span>","<span class='notice'>You feel a yawn coming on.</span>","<span class='notice'>You feel a little tired.</span>"))
 					if(prob(50))
 						M.drowsyness = min(M.drowsyness + rand(1,5), 25)
 					if(prob(50))
@@ -474,7 +474,7 @@
 							continue
 						randomturfs.Add(T)
 					if(randomturfs.len > 0)
-						to_chat(M, "<span class='warning'>I am displaced by a strange force!</span>")
+						to_chat(M, "<span class='warning'>You are displaced by a strange force!</span>")
 						if(M.buckled)
 							M.buckled.unbuckle()
 						M.forceMove(pick(randomturfs))
@@ -488,7 +488,7 @@
 						continue
 
 					if(prob(30))
-						to_chat(H, pick("<span class='good'>I feel a little different.</span>","<span class='good'>I feel strange.</span>","<span class='good'>I feel different.</span>"))
+						to_chat(H, pick("<span class='good'>You feel a little different.</span>","<span class='good'>You feel strange.</span>","<span class='good'>You feel different.</span>"))
 					//todo
 					if (H.gender == FEMALE)
 						H.setGender(MALE)

@@ -8,7 +8,7 @@
 
 /datum/game_mode/sandbox/announce()
 	to_chat(world, "<B>The current game mode is - Sandbox!</B>")
-	to_chat(world, "<B>Build my own station with the sandbox-panel command!</B>")
+	to_chat(world, "<B>Build your own station with the sandbox-panel command!</B>")
 
 /datum/game_mode/sandbox/pre_setup()
 	log_admin("Starting a round of sandbox.")
@@ -24,4 +24,4 @@
 
 /datum/game_mode/sandbox/latespawn(var/mob/mob)
 	mob.CanBuild()
-	to_chat(mob, "<B>Build my own station with the sandbox-panel command!</B>")
+	to_chat(mob, "<B>Build your own station with the sandbox-panel command!</B>")

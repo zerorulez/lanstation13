@@ -173,7 +173,7 @@
 
 /obj/structure/falsewall/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(opening)
-		to_chat(user, "<span class='warning'>I must wait until the door has stopped moving.</span>")
+		to_chat(user, "<span class='warning'>You must wait until the door has stopped moving.</span>")
 		return
 
 	if(density)
@@ -201,7 +201,7 @@
 					T.attackby(W,user)
 				qdel(src)
 	else
-		to_chat(user, "<span class='notice'>I can't reach, close it first!</span>")
+		to_chat(user, "<span class='notice'>You can't reach, close it first!</span>")
 
 	if( istype(W, /obj/item/weapon/pickaxe) )
 		var/obj/item/weapon/pickaxe/used_pick = W
@@ -287,7 +287,7 @@
 
 /obj/structure/falserwall/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(opening)
-		to_chat(user, "<span class='warning'>I must wait until the door has stopped moving.</span>")
+		to_chat(user, "<span class='warning'>You must wait until the door has stopped moving.</span>")
 		return
 
 	if(isscrewdriver(W))

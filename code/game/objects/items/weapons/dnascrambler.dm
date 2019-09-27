@@ -18,7 +18,7 @@
 			user.visible_message("<span class='danger'>\The [user] injects \the [M] with [src].</span>")
 			src.injected(M, user)
 		else
-			to_chat(user, "<span class='warning'>I fail to inject \the [M].</span>")
+			to_chat(user, "<span class='warning'>You fail to inject \the [M].</span>")
 
 /obj/item/weapon/dnascrambler/proc/injected(var/mob/living/carbon/target, var/mob/living/carbon/user)
 	target.generate_name()

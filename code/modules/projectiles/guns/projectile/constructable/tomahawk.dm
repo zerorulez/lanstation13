@@ -180,7 +180,7 @@
 		if(current_blunt)
 			to_chat(user, "<span class='notice'>There is already crushed [blunt_name] in the bowl.</span>")
 			return
-		to_chat(user, "<span class='notice'>I crush \the [W] into \the [src].</span>")
+		to_chat(user, "<span class='notice'>You crush \the [W] into \the [src].</span>")
 		var/obj/item/clothing/mask/cigarette/blunt/rolled/B = new/obj/item/clothing/mask/cigarette/blunt/rolled(src)
 		blunt_hook = B.on_destroyed.Add(src, "burnout")
 		B.inside_item = 1
@@ -224,7 +224,7 @@
 		C.lit = 0
 		C.update_brightness()
 		set_light(0)
-		user.visible_message("<span class='notice'>[user] snuffs out \his [src].</span>","<span class='notice'>I snuff out \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] snuffs out \his [src].</span>","<span class='notice'>You snuff out \the [src].</span>")
 		is_lit = 0
 		if(ismetal)
 			icon_state = "pipe_tomahawk_metal"
@@ -243,7 +243,7 @@
 		return
 
 	if(current_blunt)
-		to_chat(usr, "<span class='notice'>I empty the crushed [blunt_name] out of \the [src].</span>")
+		to_chat(usr, "<span class='notice'>You empty the crushed [blunt_name] out of \the [src].</span>")
 		not_burned_out = 1
 		qdel(current_blunt)
 		current_blunt = null
@@ -255,7 +255,7 @@
 	is_lit = 0
 	if(ismob(loc) && !not_burned_out)
 		var/mob/living/M = loc
-		to_chat(M, "<span class='notice'>My [name] goes out.</span>")
+		to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
 	not_burned_out = 0
 	if(ismetal)
 		icon_state = "pipe_tomahawk_metal"
@@ -323,7 +323,7 @@
 		if(current_blunt)
 			to_chat(user, "<span class='notice'>There is already crushed [blunt_name] in the bowl.</span>")
 			return
-		to_chat(user, "<span class='notice'>I crush \the [W] into \the [src].</span>")
+		to_chat(user, "<span class='notice'>You crush \the [W] into \the [src].</span>")
 		var/obj/item/clothing/mask/cigarette/blunt/rolled/B = new/obj/item/clothing/mask/cigarette/blunt/rolled(src)
 		blunt_hook = B.on_destroyed.Add(src, "burnout")
 		B.inside_item = 1
@@ -363,7 +363,7 @@
 		C.lit = 0
 		C.update_brightness()
 		set_light(0)
-		user.visible_message("<span class='notice'>[user] snuffs out \his [src].</span>","<span class='notice'>I snuff out \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] snuffs out \his [src].</span>","<span class='notice'>You snuff out \the [src].</span>")
 		is_lit = 0
 		icon_state = "pipe_tomahawk_broken"
 		item_state = "pipe_tomahawk_broken"
@@ -378,7 +378,7 @@
 		return
 
 	if(current_blunt)
-		to_chat(usr, "<span class='notice'>I empty the crushed [blunt_name] out of \the [src].</span>")
+		to_chat(usr, "<span class='notice'>You empty the crushed [blunt_name] out of \the [src].</span>")
 		not_burned_out = 1
 		qdel(current_blunt)
 		current_blunt = null
@@ -390,7 +390,7 @@
 	is_lit = 0
 	if(ismob(loc) && !not_burned_out)
 		var/mob/living/M = loc
-		to_chat(M, "<span class='notice'>My [name] goes out.</span>")
+		to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
 	not_burned_out = 0
 	icon_state = "pipe_tomahawk_broken"
 	item_state = "pipe_tomahawk_broken"

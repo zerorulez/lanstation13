@@ -48,10 +48,10 @@
 					"Once you are a player with MaxBet, you will also receive lucrative weekly and monthly promotions.", \
 					"I will be able to enjoy over 450 top-flight casino games at MaxBet.")
 				if(2)
-					sender = pick(300;"QuickDatingSystem", 200;"Find my russian bride", 50;"Tajaran beauties are waiting", 50;"Find my secret skrell crush", 50;"Beautiful unathi brides")
-					message = pick("My profile caught my attention and I wanted to write and say hello (QuickDating).", \
-					"If you will write to me on my email [pick(first_names_female)]@[pick(last_names)].[pick("ru","ck","tj","ur","nt")] I shall necessarily send you a photo (QuickDating).", \
-					"I want that we write each other and I hope, that you will like my profile and you will answer me (QuickDating).", \
+					sender = pick(300;"QuickDatingSystem", 200;"Find your russian bride", 50;"Tajaran beauties are waiting", 50;"Find your secret skrell crush", 50;"Beautiful unathi brides")
+					message = pick("My profile caught your attention and I wanted to write and say hello (QuickDating).", \
+					"If you will write to me on your email [pick(first_names_female)]@[pick(last_names)].[pick("ru","ck","tj","ur","nt")] I shall necessarily send you a photo (QuickDating).", \
+					"I want that we write each other and I hope, that you will like your profile and you will answer me (QuickDating).", \
 					"I have (1) new message!", \
 					"I have (2) new profile views!")
 				if(3)
@@ -60,7 +60,7 @@
 					"Watches, Jewelry & Accessories, Bags & Wallets !", \
 					"Deposit 100$ and get 300$ totally free!", \
 					" 100K NT.|WOWGOLD �nly $89            <HOT>", \
-					"We have been filed with a complaint from one of my customers in respect of their business relations with you.", \
+					"We have been filed with a complaint from one of your customers in respect of their business relations with you.", \
 					"We kindly ask you to open the COMPLAINT REPORT (attached) to reply on this complaint..")
 				if(4)
 					sender = pick("Buy Dr. Maxman", "Having dysfuctional troubles?")
@@ -72,18 +72,18 @@
 					sender = pick("Dr", "Crown prince", "King Regent", "Professor", "Captain")
 					sender += " [pick("Robert", "Alfred", "Josephat", "Kingsley", "Sehi", "Zbahi")] [pick("Mugawe", "Nkem", "Gbatokwia", "Nchekwube", "Ndim", "Ndubisi")]"
 					message = pick("YOUR FUND HAS BEEN MOVED TO [pick("Salusa", "Segunda", "Cepheus", "Andromeda", "Gruis", "Corona", "Aquila", "Asellus")] DEVELOPMENTARY BANK FOR ONWARD REMITTANCE.", \
-					"We are happy to inform you that due to the delay, we have been instructed to IMMEDIATELY deposit all funds into my account", \
+					"We are happy to inform you that due to the delay, we have been instructed to IMMEDIATELY deposit all funds into your account", \
 					"Dear fund beneficiary, We have please to inform you that overdue funds payment has finally been approved and released for payment", \
-					"Due to my lack of agents I require an off-world financial account to immediately deposit the sum of 1 POINT FIVE MILLION credits.", \
-					"Greetings sir, I regretfully to inform you that as I lay dying here due to my lack ofheirs I have chosen you to recieve the full sum of my lifetime savings of 1.5 billion credits")
+					"Due to your lack of agents I require an off-world financial account to immediately deposit the sum of 1 POINT FIVE MILLION credits.", \
+					"Greetings sir, I regretfully to inform you that as I lay dying here due to your lack ofheirs I have chosen you to recieve the full sum of your lifetime savings of 1.5 billion credits")
 				if(6)
 					sender = pick("Nanotrasen Morale Divison", "Feeling Lonely?", "Bored?", "www.wetskrell.nt")
 					message = pick("The Nanotrasen Morale Division wishes to provide you with quality entertainment sites.", \
 					"WetSkrell.nt is a xenophillic website endorsed by NT for the use of male crewmembers among it's many stations and outposts.", \
 					"Wetskrell.nt only provides the higest quality of male entertaiment to Nanotrasen Employees.", \
-					"Simply enter my Nanotrasen Bank account system number and pin. With three easy steps this service could be yours!")
+					"Simply enter your Nanotrasen Bank account system number and pin. With three easy steps this service could be yours!")
 				if(7)
-					sender = pick("I have won free tickets!","Click here to claim my prize!","You are the 1000th vistor!","You are our lucky grand prize winner!")
+					sender = pick("I have won free tickets!","Click here to claim your prize!","You are the 1000th vistor!","You are our lucky grand prize winner!")
 					message = pick("I have won tickets to the newest ACTION JAXSON MOVIE!", \
 					"I have won tickets to the newest crime drama DETECTIVE MYSTERY IN THE CLAMITY CAPER!", \
 					"I have won tickets to the newest romantic comedy 16 RULES OF LOVE!", \

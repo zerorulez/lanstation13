@@ -39,7 +39,7 @@
 
 		if(istype(L, /obj/effect/landmark/) && istype(L.loc, /turf))
 			if(!user.drop_item(I))
-				user << "<span class='warning'>I can't let go of \the [I]!</span>"
+				user << "<span class='warning'>You can't let go of \the [I]!</span>"
 				return
 
 			to_chat(usr, "I insert the coordinates into the machine.")

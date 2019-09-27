@@ -7,7 +7,7 @@
 	blockCount = 3
 	blockGaps = 2
 	cooldown = 600
-	msgGain = "I notice a strange cold tingle in my fingertips."
+	msgGain = "I notice a strange cold tingle in your fingertips."
 	msgLose = "My fingers feel warmer."
 
 	OnAdd()
@@ -27,7 +27,7 @@
 	set desc = "Drops the bodytemperature of another person. Currently on cooldown, ironically enough."
 	set category = "Mutant Abilities"
 
-	to_chat(usr, "<span class='warning'>My cryokinetic ability is recharging.</span>")
+	to_chat(usr, "<span class='warning'>Your cryokinetic ability is recharging.</span>")
 
 /proc/bioproc_cryokinesis(var/mob/living/carbon/C in view())
 	set name = "Cryokinesis"
@@ -105,7 +105,7 @@
 	set desc = "Eat just about anything! Currently on cooldown."
 	set category = "Mutant Abilities"
 
-	to_chat(usr, "<span class='warning'>My Matter Eating ability is recharging.</span>")
+	to_chat(usr, "<span class='warning'>Your Matter Eating ability is recharging.</span>")
 
 /proc/bioproc_mattereater()
 	set name = "Eat"
@@ -190,7 +190,7 @@
 	set desc = "Leap great distances! Currently on cooldown."
 	set category = "Mutant Abilities"
 
-	to_chat(usr, "<span class='warning'>My Jumping ability is recharging.</span>")
+	to_chat(usr, "<span class='warning'>Your Jumping ability is recharging.</span>")
 
 /proc/bioproc_jumpy()
 	set name = "Jump"
@@ -200,7 +200,7 @@
 	if(!can_act(usr))
 		return
 	if (istype(usr.loc,/mob/))
-		to_chat(usr, "<span class='warning'>I can't jump right now!</span>")
+		to_chat(usr, "<span class='warning'>You can't jump right now!</span>")
 		return
 
 	usr.verbs -= /proc/bioproc_jumpy
@@ -234,7 +234,7 @@
 
 	if (istype(usr.loc,/obj/))
 		var/obj/container = usr.loc
-		to_chat(usr, "<span class='warning'>I leap and slam my head against the inside of [container]! Ouch!</span>")
+		to_chat(usr, "<span class='warning'>You leap and slam your head against the inside of [container]! Ouch!</span>")
 		usr.AdjustParalysis(3)
 		usr.AdjustKnockdown(5)
 		container.visible_message("<span class='warning'><b>[usr.loc]</b> emits a loud thump and rattles a bit.</span>")
@@ -263,7 +263,7 @@
 	blockGaps = 4
 	cooldown = 1800
 	msgGain = "I don't feel entirely like yourself somehow."
-	msgLose = "I feel secure in my identity."
+	msgLose = "I feel secure in your identity."
 
 	OnAdd()
 		owner:verbs += /proc/bioproc_polymorphism
@@ -282,7 +282,7 @@
 	set desc = "Mimic the appearance of others! Currently on cooldown."
 	set category = "Mutant Abilities"
 
-	to_chat(usr, "<span class='warning'>My Polymorphing ability is recharging.</span>")
+	to_chat(usr, "<span class='warning'>Your Polymorphing ability is recharging.</span>")
 
 /proc/bioproc_polymorphism(var/mob/M in view())
 	set name = "Polymorph"
@@ -290,7 +290,7 @@
 	set category = "Mutant Abilities"
 
 	if(!ishuman(M))
-		to_chat(usr, "<span class='warning'>I can only change my appearance to that of another human.</span>")
+		to_chat(usr, "<span class='warning'>You can only change your appearance to that of another human.</span>")
 		return
 
 	if(!ishuman(usr))
@@ -329,7 +329,7 @@
 	probability = 90
 	blockCount = 4
 	blockGaps = 2
-	msgGain = "I can hear my own voice echoing in my mind."
+	msgGain = "I can hear your own voice echoing in your mind."
 	msgLose = "My mental voice fades away."
 
 	OnAdd()
@@ -345,22 +345,22 @@
 
 /proc/bioproc_telepathy(var/mob/living/carbon/M in range(7,usr))
 	set name = "Telepathy"
-	set desc = "Project my thoughts into the minds of other organics!"
+	set desc = "Project your thoughts into the minds of other organics!"
 	set category = "Mutant Abilities"
 
 	if(!iscarbon(M))
-		to_chat(usr, "<span class='warning'>I may only use this on other organic beings.</span>")
+		to_chat(usr, "<span class='warning'>You may only use this on other organic beings.</span>")
 		return
 
 	if(!can_act(usr))
 		return
 
 	if (M:bioHolder.HasEffect("psy_resist"))
-		to_chat(usr, "<span class='warning'>I can't contact [M.name]'s mind at all!</span>")
+		to_chat(usr, "<span class='warning'>You can't contact [M.name]'s mind at all!</span>")
 		return
 
 	if(!M.client || M.stat)
-		to_chat(M, "<span class='warning'>I can't seem to get through to [M.name] mentally.</span>")
+		to_chat(M, "<span class='warning'>You can't seem to get through to [M.name] mentally.</span>")
 		return
 
 	var/msg = copytext(sanitize(input(usr, "Message to [M.name]:","Telepathy") as text|null), 1, MAX_MESSAGE_LEN)
@@ -372,7 +372,7 @@
 		psyname = "[usr.name]"
 
 	to_chat(M, {"<span style='color: #BD33D9'><b>[psyname]</b> echoes, \"<i>[msg]</i>\"</span>"})
-	to_chat(usr, {"<span style='color: #BD33D9'>I echo \"<i>[msg]</i>\" to <b>[M.name]</b>.</span>"})
+	to_chat(usr, {"<span style='color: #BD33D9'>You echo \"<i>[msg]</i>\" to <b>[M.name]</b>.</span>"})
 
 	telepathy_log.Add("<b>[round(((world.time / 10) / 60))]M: [usr.real_name] ([usr.key])</b> to [M.name]: [msg]")
 
@@ -407,14 +407,14 @@
 	set category = "Mutant Abilities"
 
 	if(!iscarbon(M))
-		to_chat(usr, "<span class='warning'>I may only use this on other organic beings.</span>")
+		to_chat(usr, "<span class='warning'>You may only use this on other organic beings.</span>")
 		return
 
 	if(!can_act(usr))
 		return
 
 	if (M:bioHolder.HasEffect("psy_resist"))
-		to_chat(usr, "<span class='warning'>I can't see into [M.name]'s mind at all!</span>")
+		to_chat(usr, "<span class='warning'>You can't see into [M.name]'s mind at all!</span>")
 		return
 
 	if (M.stat == 2)
@@ -473,9 +473,9 @@
 	to_chat(usr, "<span class='notice'><b>Thoughts</b>: [M.name] is currently [thoughts].</span>")
 
 	if (M:bioHolder.HasEffect("empath"))
-		to_chat(M, "<span class='warning'>I sense [usr.name] reading my mind.</span>")
+		to_chat(M, "<span class='warning'>You sense [usr.name] reading your mind.</span>")
 	else if (prob(5) || M:bioHolder.HasEffect("training_chaplain"))
-		to_chat(M, "<span class='warning'>I sense someone intruding upon my thoughts...</span>")
+		to_chat(M, "<span class='warning'>You sense someone intruding upon your thoughts...</span>")
 	return
 
 ////////////////////////////////////////////////////////////////////////
@@ -508,7 +508,7 @@
 	set desc = "Wreath yourself in burning flames. Currently on cooldown."
 	set category = "Mutant Abilities"
 
-	to_chat(usr, "<span class='warning'>My Immolation ability is recharging.</span>")
+	to_chat(usr, "<span class='warning'>Your Immolation ability is recharging.</span>")
 
 /proc/bioproc_immolate()
 	set name = "Immolate"
@@ -617,7 +617,7 @@
 	set desc = "Unleash a gigantic fart! Currently on cooldown."
 	set category = "Mutant Abilities"
 
-	to_chat(usr, "<span class='warning'>My Super Fart ability is recharging.</span>")
+	to_chat(usr, "<span class='warning'>Your Super Fart ability is recharging.</span>")
 
 /proc/bioproc_superfart()
 	set name = "Super Fart"
@@ -631,7 +631,7 @@
 		var/mob/living/L = usr
 
 		if (L.stat || !can_act(L))
-			to_chat(L, "<span class='warning'>I can't do that while incapacitated.</span>")
+			to_chat(L, "<span class='warning'>You can't do that while incapacitated.</span>")
 			return
 
 		L.visible_message("<span class='warning'><b>[L.name]</b> hunches down and grits their teeth!</span>")
@@ -645,7 +645,7 @@
 				shake_camera(V,10,5)
 				if (V == L)
 					continue
-				to_chat(V, "<span class='warning'>I am sent flying!</span>")
+				to_chat(V, "<span class='warning'>You are sent flying!</span>")
 				V.AdjustKnockdown(5) // why the hell was this set to 12 christ
 				step_away(V,get_turf(L),15)
 				step_away(V,get_turf(L),15)
@@ -654,7 +654,7 @@
 			 	for(var/turf/T in view(get_turf(L),2))
 			 		new /obj/effects/fart_cloud(T,L)
 		else
-			to_chat(L, "<span class='warning'>I was interrupted and couldn't fart! Rude!</span>")
+			to_chat(L, "<span class='warning'>You were interrupted and couldn't fart! Rude!</span>")
 			usr.verbs += /proc/bioproc_superfart
 			usr.verbs -= /proc/bioproc_superfart_cd
 			return
@@ -694,14 +694,14 @@
 
 /proc/bioproc_eyebeams_cd()
 	set name = "Eye Beams (c)"
-	set desc = "Shoot lasers from my eyes. Currently on cooldown."
+	set desc = "Shoot lasers from your eyes. Currently on cooldown."
 	set category = "Mutant Abilities"
 
-	to_chat(usr, "<span class='warning'>My Eye Beams ability is recharging.</span>")
+	to_chat(usr, "<span class='warning'>Your Eye Beams ability is recharging.</span>")
 
 /proc/bioproc_eyebeams()
 	set name = "Eye Beams"
-	set desc = "Shoot lasers from my eyes."
+	set desc = "Shoot lasers from your eyes."
 	set category = "Mutant Abilities"
 
 	if(!can_act(usr))

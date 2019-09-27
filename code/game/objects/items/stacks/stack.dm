@@ -135,9 +135,9 @@
 			multiplier = 1
 		if (src.amount < R.req_amount*multiplier)
 			if (R.req_amount*multiplier>1)
-				to_chat(usr, "<span class='warning'>I haven't got enough [src] to build \the [R.req_amount*multiplier] [R.title]\s!</span>")
+				to_chat(usr, "<span class='warning'>You haven't got enough [src] to build \the [R.req_amount*multiplier] [R.title]\s!</span>")
 			else
-				to_chat(usr, "<span class='warning'>I haven't got enough [src] to build \the [R.title]!</span>")
+				to_chat(usr, "<span class='warning'>You haven't got enough [src] to build \the [R.title]!</span>")
 			return
 		if (!R.can_build_here(usr, usr.loc))
 			return
@@ -332,7 +332,7 @@
 			if(S.max_amount >= S.amount + add_amount)
 				S.add(add_amount)
 
-				to_chat(user, "<span class='info'>I add [add_amount] item\s to the stack. It now contains [S.amount] [CORRECT_STACK_NAME(S)].</span>")
+				to_chat(user, "<span class='info'>You add [add_amount] item\s to the stack. It now contains [S.amount] [CORRECT_STACK_NAME(S)].</span>")
 				return S
 
 	var/obj/item/stack/S = new_stack_type

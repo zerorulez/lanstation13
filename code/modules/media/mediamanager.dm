@@ -222,7 +222,7 @@ to_chat(#define MP_DEBUG(x) owner, x)
 		to_chat(usr, "I have no media datum to change, if you're not in the lobby tell an admin.")
 		return
 	var/oldvolume = prefs.volume
-	var/value = input("Choose my Jukebox volume.", "Jukebox volume", media.volume)
+	var/value = input("Choose your Jukebox volume.", "Jukebox volume", media.volume)
 	value = round(max(0, min(100, value)))
 	media.update_volume(value)
 	if(prefs && (oldvolume != value))

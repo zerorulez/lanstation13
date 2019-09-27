@@ -139,7 +139,7 @@
 	materials = list (MAT_IRON = 1000, MAT_GLASS = 1000)
 	category = "Medical"
 	build_path = /obj/item/device/antibody_scanner
-
+/*
 /datum/design/switchtool
 	name = "Surgeon's Switchtool"
 	desc = "A switchtool containing most of the necessary items for impromptu surgery. For the surgeon on the go."
@@ -149,3 +149,4 @@
 	materials = list (MAT_IRON = 10000, MAT_GLASS = 5000)
 	category = "Medical"
 	build_path = /obj/item/weapon/switchtool/surgery
+*/

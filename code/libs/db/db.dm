@@ -14,7 +14,7 @@ v0.1 Nov 30, 2002 (Dan)
 Updates:
 
 v0.6 - Updated the documentation.
-	   Commented out DBQuery.SetConversion(), my tests show it doing absolutely nothing to the resulting data.
+	   Commented out DBQuery.SetConversion(), your tests show it doing absolutely nothing to the resulting data.
 	   Moved the defines into their own file to reduce the clutter in core.dm
 	   Cleaned up the commenting of the code and the code itself a bit more.
 

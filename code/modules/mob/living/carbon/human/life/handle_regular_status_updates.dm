@@ -54,7 +54,7 @@
 				qdel(a)
 
 			if(halloss > 100)
-				to_chat(src, "<span class='notice'>I am in too much pain to keep going...</span>")
+				to_chat(src, "<span class='notice'>You are in too much pain to keep going...</span>")
 				for(var/mob/O in oviewers(src, null))
 					O.show_message("<B>[src]</B> slumps to the ground, too weak to continue fighting.", 1)
 				Paralyse(10)
@@ -102,7 +102,7 @@
 		else if(eye_blind)		       //Blindness, heals slowly over time
 			eye_blind =  max(eye_blind - 1, 0)
 			blinded =    1
-		else if(istype(glasses, /obj/item/clothing/glasses/sunglasses/blindfold)) //Resting my eyes with a blindfold heals blurry eyes faster
+		else if(istype(glasses, /obj/item/clothing/glasses/sunglasses/blindfold)) //Resting your eyes with a blindfold heals blurry eyes faster
 			eye_blurry = max(eye_blurry - 3, 0)
 			blinded =    1
 		else if(eye_blurry)	           //Blurry eyes heal slowly
@@ -111,7 +111,7 @@
 		//Ears
 		if(sdisabilities & DEAF) //Disabled-deaf, doesn't get better on its own
 			ear_deaf = max(ear_deaf, 1)
-		else if(earprot()) //Resting my ears with earmuffs heals ear damage faster
+		else if(earprot()) //Resting your ears with earmuffs heals ear damage faster
 			ear_damage = max(ear_damage - 0.15, 0)
 			ear_deaf = max(ear_deaf, 1) //This MUST be above the following else if or deafness cures itself while wearing earmuffs
 		else if(ear_deaf) //Deafness, heals slowly over time
@@ -207,7 +207,7 @@
 		// Increase germ_level regularly
 		if(prob(40))
 			germ_level += 1
-		// If you're dirty, my gloves will become dirty, too.
+		// If you're dirty, your gloves will become dirty, too.
 		if(gloves && germ_level > gloves.germ_level && prob(10))
 			gloves.germ_level += 1
 */

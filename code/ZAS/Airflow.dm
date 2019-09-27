@@ -55,7 +55,7 @@ mob/proc/airflow_stun()
 	if(last_airflow_stun > world.time - zas_settings.Get(/datum/ZAS_Setting/airflow_stun_cooldown))
 		return 0
 	if(!(status_flags & CANSTUN) && !(status_flags & CANKNOCKDOWN))
-		to_chat(src, "<span class='notice'>I stay upright as the air rushes past me.</span>")
+		to_chat(src, "<span class='notice'>You stay upright as the air rushes past me.</span>")
 		return 0
 
 //	if(knockdown <= 0)
@@ -290,7 +290,7 @@ proc/AirflowSpace(zone/A)
 			if(H.shoes)
 				if(H.CheckSlip() < 0)
 					return
-		to_chat(src, "<SPAN CLASS='warning'>I am sucked away by airflow!</SPAN>")
+		to_chat(src, "<SPAN CLASS='warning'>You are sucked away by airflow!</SPAN>")
 	var/airflow_falloff = 9 - ul_FalloffAmount(airflow_dest) //It's a fast falloff calc.  Very useful.
 	if(airflow_falloff < 1)
 		airflow_dest = null
@@ -357,7 +357,7 @@ proc/AirflowSpace(zone/A)
 			if(H.shoes)
 				if(H.CheckSlip() < 0)
 					return
-		to_chat(src, "<SPAN CLASS='warning'>I am pushed away by airflow!</SPAN>")
+		to_chat(src, "<SPAN CLASS='warning'>You are pushed away by airflow!</SPAN>")
 		last_airflow = world.time
 	var/airflow_falloff = 9 - ul_FalloffAmount(airflow_dest) //It's a fast falloff calc.  Very useful.
 	if(airflow_falloff < 1)
@@ -416,7 +416,7 @@ mob/airflow_hit(atom/A)
 
 	if(!sound_override)
 		for(var/mob/M in hearers(src))
-			M.show_message("<span class='danger'>\The [src] slams into \a [A]!</span>",1,"<span class='warning'>I hear a loud slam!</span>",2)
+			M.show_message("<span class='danger'>\The [src] slams into \a [A]!</span>",1,"<span class='warning'>You hear a loud slam!</span>",2)
 	//playsound(get_turf(src), "smash.ogg", 25, 1, -1)
 /*	if(istype(A,/obj/item))
 		var/obj/item/item = A
@@ -428,7 +428,7 @@ mob/airflow_hit(atom/A)
 obj/airflow_hit(atom/A)
 	if(!sound_override)
 		for(var/mob/M in hearers(src))
-			M.show_message("<span class='danger'>\The [src] slams into \a [A]!</span>",1,"<span class='warning'>I hear a loud slam!</span>",2)
+			M.show_message("<span class='danger'>\The [src] slams into \a [A]!</span>",1,"<span class='warning'>You hear a loud slam!</span>",2)
 	//playsound(get_turf(src), "smash.ogg", 25, 1, -1)
 	. = ..()
 
@@ -438,7 +438,7 @@ obj/item/airflow_hit(atom/A)
 
 mob/living/carbon/human/airflow_hit(atom/A)
 //	for(var/mob/M in hearers(src))
-//		M.show_message("<span class='danger'>[src] slams into [A]!</span>",1,"<span class='warning'>I hear a loud slam!</span>",2)
+//		M.show_message("<span class='danger'>[src] slams into [A]!</span>",1,"<span class='warning'>You hear a loud slam!</span>",2)
 	//playsound(get_turf(src), "punch", 25, 1, -1)
 
 

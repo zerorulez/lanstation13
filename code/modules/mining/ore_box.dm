@@ -25,7 +25,7 @@
 				S.remove_from_storage(O,T) //This will remove the item.
 				materials.addAmount(O.material, O.amount)
 				returnToPool(O)
-		to_chat(user, "<span class='notice'>I empty \the [W] into the box.</span>")
+		to_chat(user, "<span class='notice'>You empty \the [W] into the box.</span>")
 	return
 
 /obj/structure/ore_box/attack_hand(mob/user as mob)
@@ -46,7 +46,7 @@
 	src.add_fingerprint(usr)
 	if(href_list["removeall"])
 		dump_everything()
-		to_chat(usr, "<span class='notice'>I empty the box.</span>")
+		to_chat(usr, "<span class='notice'>You empty the box.</span>")
 	src.updateUsrDialog()
 	return
 

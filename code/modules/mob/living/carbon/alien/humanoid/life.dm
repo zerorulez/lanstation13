@@ -72,7 +72,7 @@
 	proc/handle_disabilities()
 		if(disabilities & EPILEPSY)
 			if((prob(1) && paralysis < 10))
-				to_chat(src, "<span class='warning'>I have a seizure !</span>")
+				to_chat(src, "<span class='warning'>You have a seizure !</span>")
 				Paralyse(10)
 		if(disabilities & COUGHING)
 			if((prob(5) && paralysis <= 1))
@@ -198,7 +198,7 @@
 
 		if(breath.temperature > (T0C+66) && !(M_RESIST_HEAT in mutations)) // Hot air hurts :(
 			if(prob(20))
-				to_chat(src, "<span class='warning'>I feel a searing heat in my lungs !</span>")
+				to_chat(src, "<span class='warning'>You feel a searing heat in your lungs !</span>")
 			fire_alert = max(fire_alert, 1)
 		else
 			fire_alert = 0
@@ -270,12 +270,12 @@
 		if(M_FAT in mutations)
 			if(nutrition < 100)
 				if(prob(round((50 - nutrition) / 100)))
-					to_chat(src, "<span class='notice'>I feel fit again!</span>")
+					to_chat(src, "<span class='notice'>You feel fit again!</span>")
 					mutations.Remove(M_FAT)
 		else
 			if(nutrition > 500)
 				if(prob(5 + round((nutrition - 200) / 2)))
-					to_chat(src, "<span class='warning'>I suddenly feel blubbery!</span>")
+					to_chat(src, "<span class='warning'>You suddenly feel blubbery!</span>")
 					mutations.Add(M_FAT)
 
 		if (nutrition > 0)
@@ -445,11 +445,11 @@
 						if(prob(5))
 							switch(digest)
 								if(0)
-									to_chat(src, "<span class='warning'>\The [M] shifts around in my stomach cavity as digestion begins.</span>")
+									to_chat(src, "<span class='warning'>\The [M] shifts around in your stomach cavity as digestion begins.</span>")
 								if(1)
-									to_chat(src, "<span class='warning'>\The [M] feels a little bit lighter in my stomach cavity.</span>")
+									to_chat(src, "<span class='warning'>\The [M] feels a little bit lighter in your stomach cavity.</span>")
 								if(2)
-									to_chat(src, "<span class='danger'>I barely feel the weight of [M] in my stomach cavity anymore.</span>")
+									to_chat(src, "<span class='danger'>You barely feel the weight of [M] in your stomach cavity anymore.</span>")
 								if(3 to INFINITY)
 									to_chat(src, "<span class='warning'>The weight of [M] is no longer there. Digestion has completed.</span>")
 									M.ghostize(1)

@@ -105,7 +105,7 @@ Feel free to do whatever with this if you think it lacks.
 	src.add_fingerprint(user)
 	if(storedpda)
 		var/chosenPDA
-		chosenPDA = input(user, "Select my color.", "PDA Painting") as null|anything in colorlist
+		chosenPDA = input(user, "Select your color.", "PDA Painting") as null|anything in colorlist
 		if(!chosenPDA)
 			return
 		if(!in_range(src, user))

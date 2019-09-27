@@ -94,7 +94,7 @@ var/list/alldepartments = list("Central Command")
 				dat += "<a href='byond://?src=\ref[src];send=1'>Send</a><br>"
 				dat += "<b>Currently sending:</b> [tofax.name]<br>"
 				if(dpt == null)
-					//Old bug fix. Not selecting a dpt and/or my new lawyer access feature broke the dpt select.
+					//Old bug fix. Not selecting a dpt and/or your new lawyer access feature broke the dpt select.
 					dpt = "Central Command"
 				dat += "<b>Sending to:</b> <a href='byond://?src=\ref[src];dept=1'>[dpt]</a><br>"
 
@@ -144,7 +144,7 @@ var/list/alldepartments = list("Central Command")
 			tofax.forceMove(loc)
 			if(Adjacent(usr))
 				usr.put_in_hands(tofax)
-			to_chat(usr, "<span class='notice'>I take the paper out of \the [src].</span>")
+			to_chat(usr, "<span class='notice'>You take the paper out of \the [src].</span>")
 			tofax = null
 
 	if(href_list["scan"])
@@ -187,7 +187,7 @@ var/list/alldepartments = list("Central Command")
 		if(!tofax)
 			if(user.drop_item(O, src))
 				tofax = O
-				to_chat(user, "<span class='notice'>I insert the paper into \the [src].</span>")
+				to_chat(user, "<span class='notice'>You insert the paper into \the [src].</span>")
 				flick("faxsend", src)
 				updateUsrDialog()
 		else
@@ -203,7 +203,7 @@ var/list/alldepartments = list("Central Command")
 	else if(iswrench(O))
 		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
 		anchored = !anchored
-		to_chat(user, "<span class='notice'>I [anchored ? "wrench" : "unwrench"] \the [src].</span>")
+		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 	return
 
 /proc/Centcomm_fax(var/obj/item/weapon/paper/sent, var/sentname, var/mob/Sender)

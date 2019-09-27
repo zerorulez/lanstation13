@@ -53,10 +53,10 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 			++loaded
 			moveToStorage(G)
 			if(contents.len >= MAX_N_OF_ITEMS)
-				to_chat(user, "<span class='notice'>I fill \the [src] to the brim.</span>")
+				to_chat(user, "<span class='notice'>You fill \the [src] to the brim.</span>")
 				return
 		if (loaded)
-			to_chat(user, "<span class='notice'>I put the seeds from \the [O.name] into [src].</span>")
+			to_chat(user, "<span class='notice'>You put the seeds from \the [O.name] into [src].</span>")
 		else
 			to_chat(user, "<span class='notice'>There are no seeds in \the [O.name].</span>")
 		return
@@ -67,7 +67,7 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 			return
 		user.drop_item(force_drop = 1)
 		moveToStorage(O)
-		to_chat(user, "<span class='notice'>I add [O] to [src.name].</span>")
+		to_chat(user, "<span class='notice'>You add [O] to [src.name].</span>")
 		updateUsrDialog()
 		return
 
@@ -85,7 +85,7 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 			new_seed_type = plant_controller.seeds[F.plantname]
 
 		if(new_seed_type)
-			to_chat(user, "<span class='notice'>I extract some seeds from [O].</span>")
+			to_chat(user, "<span class='notice'>You extract some seeds from [O].</span>")
 			var/produce = rand(min_seeds,max_seeds)
 			for(var/i = 0;i<=produce;i++)
 				var/obj/item/seeds/seeds = new(get_turf(src))
@@ -99,14 +99,14 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 	//Grass. //Why isn't this using the nonplant_seed_type functionality below?
 	else if(istype(O, /obj/item/stack/tile/grass))
 		var/obj/item/stack/tile/grass/S = O
-		to_chat(user, "<span class='notice'>I extract some seeds from the [S.name].</span>")
+		to_chat(user, "<span class='notice'>You extract some seeds from the [S.name].</span>")
 		S.use(1)
 		new /obj/item/seeds/grassseed(loc)
 
 	if(O)
 		var/obj/item/F = O
 		if(F.nonplant_seed_type)
-			to_chat(user, "<span class='notice'>I extract some seeds from the [F.name].</span>")
+			to_chat(user, "<span class='notice'>You extract some seeds from the [F.name].</span>")
 			user.drop_item(O, force_drop = 1)
 			var/t_amount = 0
 			var/t_max = rand(1,4)
@@ -214,7 +214,7 @@ obj/machinery/seed_extractor/Topic(var/href, var/list/href_list)
 			break
 
 	for (var/obj/item/seeds/O in contents) //Now we find the seed we need to vend
-		//if (O.seed.display_name == href_list["name"] && O.seed.lifespan == href_list["li"] && O.seed.endurance == href_list["en"] && O.seed.maturation == href_list["ma"] && O.seed.production == href_list["pr"] && O.seed.yield == href_list["yi"] && O.seed.potency == href_list["pot"] && href_list["biolum_colour"] == O.seed.biolum_colour && href_list["gasexude"] == O.seed.exude_gasses.len && O.seed.spread == href_list["spread"] && O.seed.alter_temp == href_list["alter_temp"] && O.seed.carnivorous == href_list["carnivorous"] && O.seed.parasite == href_list["parasite"] && O.seed.hematophage == href_list["hematophage"] && O.seed.thorny == href_list["thorny"] && O.seed.stinging == href_list["stinging"] && O.seed.ligneous == href_list["ligneous"] && O.seed.teleporting == href_list["teleporting"] && O.seed.juicy == href_list["juicy"]) //If the spaghetti above wasn't proof enough, the length of of this line alone should tell you that something is probably very very wrong here and this whole fucking file probably shouldn't work the way it does. What it SHOULD do is just store the seed datum itself and check the stored seed's seed datum, which would be infinitely simpler. However, since no other machines use or are dependent on this shitcode, and due to the fact that seed datums will likely not be re-structured much if at all in the future, to that I say fuck it, it just werks. Sincerely, please don't git blame me I only intended well, oh god don't take my pomfcoins way no i didn't even come up with this system originally i just ported it and lazily expanded it please okay there I made it not shit chickenman no
+		//if (O.seed.display_name == href_list["name"] && O.seed.lifespan == href_list["li"] && O.seed.endurance == href_list["en"] && O.seed.maturation == href_list["ma"] && O.seed.production == href_list["pr"] && O.seed.yield == href_list["yi"] && O.seed.potency == href_list["pot"] && href_list["biolum_colour"] == O.seed.biolum_colour && href_list["gasexude"] == O.seed.exude_gasses.len && O.seed.spread == href_list["spread"] && O.seed.alter_temp == href_list["alter_temp"] && O.seed.carnivorous == href_list["carnivorous"] && O.seed.parasite == href_list["parasite"] && O.seed.hematophage == href_list["hematophage"] && O.seed.thorny == href_list["thorny"] && O.seed.stinging == href_list["stinging"] && O.seed.ligneous == href_list["ligneous"] && O.seed.teleporting == href_list["teleporting"] && O.seed.juicy == href_list["juicy"]) //If the spaghetti above wasn't proof enough, the length of of this line alone should tell you that something is probably very very wrong here and this whole fucking file probably shouldn't work the way it does. What it SHOULD do is just store the seed datum itself and check the stored seed's seed datum, which would be infinitely simpler. However, since no other machines use or are dependent on this shitcode, and due to the fact that seed datums will likely not be re-structured much if at all in the future, to that I say fuck it, it just werks. Sincerely, please don't git blame me I only intended well, oh god don't take your pomfcoins way no i didn't even come up with this system originally i just ported it and lazily expanded it please okay there I made it not shit chickenman no
 		if(O.seed == S)
 			O.forceMove(src.loc)
 			amt--

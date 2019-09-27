@@ -90,7 +90,7 @@
 
 		if(user.drop_item(D, src))
 			cartridge = D
-			to_chat(user, "<span class='notice'>I slot [D] into [src].</span>")
+			to_chat(user, "<span class='notice'>You slot [D] into [src].</span>")
 			update_icon()
 			return
 
@@ -106,7 +106,7 @@
 		if(user.drop_item(B, src))
 			beakers += B
 			mixing += B
-			to_chat(user, "<span class='notice'>I slot [B] into [src].</span>")
+			to_chat(user, "<span class='notice'>You slot [B] into [src].</span>")
 			src.updateUsrDialog()
 
 /obj/item/weapon/gun/dartgun/can_fire()
@@ -120,7 +120,7 @@
 
 /obj/item/weapon/gun/dartgun/proc/remove_cartridge()
 	if(cartridge)
-		to_chat(usr, "<span class='notice'>I pop the cartridge out of [src].</span>")
+		to_chat(usr, "<span class='notice'>You pop the cartridge out of [src].</span>")
 		var/obj/item/weapon/dart_cartridge/C = cartridge
 		C.forceMove(get_turf(src))
 		C.update_icon()
@@ -205,7 +205,7 @@
 
 					if(D.reagents)
 						D.reagents.trans_to(M, 15)
-					to_chat(M, "<span class='danger'>I feel a slight prick.</span>")
+					to_chat(M, "<span class='danger'>You feel a slight prick.</span>")
 
 					qdel(D)
 					D = null

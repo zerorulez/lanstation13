@@ -13,7 +13,7 @@
 
 /datum/game_mode/monkey/announce()
 	to_chat(world, "<B>The current game mode is - Monkey!</B>")
-	to_chat(world, "<B>Some of my crew members have been infected by a mutageous virus!</B>")
+	to_chat(world, "<B>Some of your crew members have been infected by a mutageous virus!</B>")
 	to_chat(world, "<B>Escape on the shuttle but the humans have precedence!</B>")
 
 /datum/game_mode/monkey/can_start()
@@ -54,7 +54,7 @@
 		for (var/datum/mind/monkey in initial_monkeys)
 			var/mob/living/carbon/human/H = monkey.current
 			var/mob/living/carbon/monkey/new_monkey = H.monkeyize()
-			to_chat(new_monkey, "<B>My goal is to capture the entire human civilization and my first target is Centcom. Hijack the shuttle without humans aboard!</B>")
+			to_chat(new_monkey, "<B>Your goal is to capture the entire human civilization and your first target is Centcom. Hijack the shuttle without humans aboard!</B>")
 
 		for (var/mob/living/carbon/monkey/rabid_monkey in mob_list)
 			if (!(rabid_monkey.mind in initial_monkeys) && (!isturf(rabid_monkey.loc) || rabid_monkey.z!=1))

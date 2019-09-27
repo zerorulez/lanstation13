@@ -25,7 +25,7 @@ obj/structure/ex_act(severity)
 /obj/structure/kick_act(mob/living/carbon/human/H)
 	playsound(get_turf(src), 'sound/effects/grillehit.ogg', 50, 1) //Zth: I couldn't find a proper sound, please replace it
 
-	H.visible_message("<span class='danger'>[H] kicks \the [src].</span>", "<span class='danger'>I kick \the [src].</span>")
+	H.visible_message("<span class='danger'>[H] kicks \the [src].</span>", "<span class='danger'>You kick \the [src].</span>")
 	if(prob(70))
 		H.apply_damage(rand(2,4), BRUTE, pick(LIMB_RIGHT_LEG, LIMB_LEFT_LEG, LIMB_RIGHT_FOOT, LIMB_LEFT_FOOT))
 

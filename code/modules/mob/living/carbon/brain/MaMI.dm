@@ -10,11 +10,11 @@
 	if(istype(O,/obj/item/device/mmi/posibrain) && !brainmob)
 		posibrain = O
 		if(!posibrain.brainmob || !posibrain.brainmob.mind || !posibrain.brainmob.ckey)
-			to_chat(user, "<span class='warning'>I amn't sure where this brain came from, but you're pretty sure it's a useless brain.</span>")
+			to_chat(user, "<span class='warning'>You aren't sure where this brain came from, but you're pretty sure it's a useless brain.</span>")
 			posibrain = null
 			return
 		if(!user.drop_item(posibrain, src))
-			user << "<span class='warning'>I can't let go of \the [src]!</span>"
+			user << "<span class='warning'>You can't let go of \the [src]!</span>"
 			return
 
 		src.visible_message("<span class='notice'>[user] sticks \a [O] into \the [src].</span>")
@@ -23,10 +23,10 @@
 		brainmob.forceMove(src)
 		brainmob.container = src
 
-		to_chat(src.brainmob, "<b><font color='red' size=3>Recall my positronic directives!</font></b>")
-		to_chat(src.brainmob, "<b>I am \a [posibrain], brought into existence on [station_name()].</b>")
+		to_chat(src.brainmob, "<b><font color='red' size=3>Recall your positronic directives!</font></b>")
+		to_chat(src.brainmob, "<b>You are \a [posibrain], brought into existence on [station_name()].</b>")
 		to_chat(src.brainmob, "<b>As a synthetic intelligence, you answer to all crewmembers, as well as the AI.</b>")
-		to_chat(src.brainmob, "<b>Remember, the purpose of my existence is to serve the crew and the station. Above all else, do no harm.</b>")
+		to_chat(src.brainmob, "<b>Remember, the purpose of your existence is to serve the crew and the station. Above all else, do no harm.</b>")
 
 		name = "Machine-Man Interface: [brainmob.real_name]"
 		icon_state = "mami_full"

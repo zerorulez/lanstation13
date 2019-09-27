@@ -42,7 +42,7 @@
 				if(Ex.parent)
 					Ex.parent.add_autopsy_data("[plant_damage_noun]", damage)
 				if(victim.stat != DEAD)
-					to_chat(victim, "<span class='danger'>My [Ex.display_name] is pierced by the thorns on \the [src]!</span>")
+					to_chat(victim, "<span class='danger'>Your [Ex.display_name] is pierced by the thorns on \the [src]!</span>")
 				cuts++
 				if(cuts >= 3)
 					break
@@ -57,7 +57,7 @@
 		if(seed.chems && seed.chems.len)
 			for(var/rid in seed.chems)
 				victim.reagents.add_reagent(rid, Clamp(1, 5, seed.potency/10))
-			to_chat(victim, "<span class='danger'>I am stung by \the [src]!</span>")
+			to_chat(victim, "<span class='danger'>You are stung by \the [src]!</span>")
 	last_special = world.time
 
 /obj/effect/plantsegment/proc/do_carnivorous_bite(var/mob/living/carbon/human/victim, var/chance)
@@ -65,7 +65,7 @@
 	if(!seed || !seed.carnivorous || !prob(chance))
 		return
 	if(victim.stat != DEAD)
-		to_chat(victim, "<span class='danger'>\The [src] horribly twist and mangle my body!</span>")
+		to_chat(victim, "<span class='danger'>\The [src] horribly twist and mangle your body!</span>")
 	var/damage = round(triangular_seq(rand(seed.potency*0.2, seed.potency*0.6), 15))
 	if(!istype(victim))
 		victim.adjustBruteLoss(damage)
@@ -85,7 +85,7 @@
 
 /obj/effect/plantsegment/proc/do_chem_inject(var/mob/living/carbon/human/victim, var/chance)
 	if(seed.chems && seed.chems.len && istype(victim) && victim.stat != DEAD)
-		to_chat(victim, "<span class='danger'>I feel something seeping into my skin!</span>")
+		to_chat(victim, "<span class='danger'>You feel something seeping into your skin!</span>")
 		for(var/rid in seed.chems)
 			var/injecting = min(5,max(1,seed.potency/5))
 			victim.reagents.add_reagent(rid,injecting)
@@ -107,19 +107,19 @@
 				M.visible_message(\
 					"<span class='notice'>[user.name] frees [M.name] from \the [src].</span>",\
 					"<span class='notice'>[user.name] frees you from [src].</span>",\
-					"<span class='warning'>I hear shredding and ripping.</span>")
+					"<span class='warning'>You hear shredding and ripping.</span>")
 			else
 				M.visible_message(\
 					"<span class='notice'>[M.name] struggles free of [src].</span>",\
-					"<span class='notice'>I untangle [src] from around yourself.</span>",\
-					"<span class='warning'>I hear shredding and ripping.</span>")
+					"<span class='notice'>You untangle [src] from around yourself.</span>",\
+					"<span class='warning'>You hear shredding and ripping.</span>")
 			unlock_atom(M)
 		else
 			var/text = pick("rip","tear","pull")
 			user.visible_message(\
 				"<span class='notice'>[user.name] [text]s at \the [src].</span>",\
-				"<span class='notice'>I [text] at \the [src].</span>",\
-				"<span class='warning'>I hear shredding and ripping.</span>")
+				"<span class='notice'>You [text] at \the [src].</span>",\
+				"<span class='warning'>You hear shredding and ripping.</span>")
 		user.delayNextAttack(5)
 
 /obj/effect/plantsegment/lock_atom(var/mob/living/M)

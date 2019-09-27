@@ -52,7 +52,7 @@
 		else
 			return
 	var/sql_ckey = sanitizeSQL(ckey)
-	var/question = input("Write my question","Question") as message
+	var/question = input("Write your question","Question") as message
 	if(!question)
 		return
 	question = sanitizeSQL(question)
@@ -73,7 +73,7 @@
 		return
 	var/add_option = 1
 	while(add_option)
-		var/option = input("Write my option","Option") as message
+		var/option = input("Write your option","Option") as message
 		if(!option)
 			return
 		option = sanitizeSQL(option)

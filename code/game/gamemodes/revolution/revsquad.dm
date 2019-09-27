@@ -113,15 +113,15 @@
 /datum/game_mode/revsquad/proc/greet_revsquad(var/datum/mind/rev_mind, var/you_are=1)
 	var/obj_count = 1
 	if (you_are)
-		to_chat(rev_mind.current, "<span class='big bold center red'>I am a member of the organized revolutionary organization that has infiltrated this station!</span>")
+		to_chat(rev_mind.current, "<span class='big bold center red'>You are a member of the organized revolutionary organization that has infiltrated this station!</span>")
 		to_chat(rev_mind.current, "<span class='info'><a HREF='?src=\ref[rev_mind.current];getwiki=["Revolutionary Squad"]'>(Wiki Guide)</a></span>") // Hacky but revsquad doesn't have a pref define or anything
 	for(var/datum/objective/objective in rev_mind.objectives)
 		to_chat(rev_mind.current, "<b>Objective #[obj_count]</B>: [objective.explanation_text]")
 		rev_mind.special_role = "Revolutionary Squad Member"
 		obj_count++
 
-	to_chat(rev_mind.current, "<br/><b>My fellow revolutionaries are:</b>")
-	rev_mind.store_memory("<br/><b>My fellow revolutionaries are:</b>")
+	to_chat(rev_mind.current, "<br/><b>Your fellow revolutionaries are:</b>")
+	rev_mind.store_memory("<br/><b>Your fellow revolutionaries are:</b>")
 	for(var/datum/mind/M in head_revolutionaries)
 		if(M.assigned_role)
 			rev_mind.store_memory("[M.name] the [M.assigned_role]")
@@ -158,10 +158,10 @@
 	if (!where)
 		to_chat(mob, "The Syndicate were unfortunately unable to get you any special equipment.")
 	else
-		to_chat(mob, "The [T] in my [where] will help you to persuade the crew to join my cause.")
+		to_chat(mob, "The [T] in your [where] will help you to persuade the crew to join your cause.")
 		if(istype(T, /obj/item/device/flash/revsquad))
 			var/obj/item/device/flash/revsquad/FR = T
-			to_chat(mob, "<span class = 'warning'>My [FR] has [FR.limited_conversions] uses for conversions, and not all of my comrades have one like it. Use it wisely.</span>")
+			to_chat(mob, "<span class = 'warning'>Your [FR] has [FR.limited_conversions] uses for conversions, and not all of your comrades have one like it. Use it wisely.</span>")
 		mob.update_icons()
 		stat_collection.revsquad.revsquad_items += T.name
 		return 1

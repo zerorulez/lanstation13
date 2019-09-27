@@ -117,7 +117,7 @@
 		i++
 
 	playsound(user, 'sound/weapons/shotgun_break.wav', 50, 1)
-	user.visible_message("<span class='warning'>[user] breaks the [src].</span>", "<span class='notice'>I break \the [src].</span>")
+	user.visible_message("<span class='warning'>[user] breaks the [src].</span>", "<span class='notice'>You break \the [src].</span>")
 	update_icon()
 
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel/attackby(var/obj/item/A as obj, mob/user as mob)
@@ -125,22 +125,22 @@
 	A.update_icon()
 	update_icon()
 	if(istype(A, /obj/item/weapon/circular_saw) || istype(A, /obj/item/weapon/melee/energy) || istype(A, /obj/item/weapon/pickaxe/plasmacutter))
-		user.visible_message("<span class='notice'>[user] begins to shorten the barrel of \the [src].</span>", "<span class='notice'>I begin to shorten the barrel of \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] begins to shorten the barrel of \the [src].</span>", "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
 		if(getAmmo())
 			afterattack(user, user)	//will this work?
 			afterattack(user, user)	//it will. we call it twice, for twice the FUN
 			playsound(user, fire_sound, 50, 1)
-			user.visible_message("<span class='danger'>The shotgun goes off!</span>", "<span class='danger'>The shotgun goes off in my face!</span>")
+			user.visible_message("<span class='danger'>The shotgun goes off!</span>", "<span class='danger'>The shotgun goes off in your face!</span>")
 			return
 		if(do_after(user, src, 30))	//SHIT IS STEALTHY EYYYYY
 			icon_state = "sawnshotgun"
 			w_class = W_CLASS_MEDIUM
 			item_state = "sawnshotgun"
-			slot_flags &= ~SLOT_BACK	//you can't sling it on my back
-			slot_flags |= SLOT_BELT		//but you can wear it on my belt (poorly concealed under a trenchcoat, ideally)
+			slot_flags &= ~SLOT_BACK	//you can't sling it on your back
+			slot_flags |= SLOT_BELT		//but you can wear it on your belt (poorly concealed under a trenchcoat, ideally)
 			name = "sawn-off shotgun"
 			desc = "Omar's coming!"
-			user.visible_message("<span class='notice'>[user] shortens the barrel of \the [src]!</span>", "<span class='warning'>I shorten the barrel of \the [src]!</span>")
+			user.visible_message("<span class='notice'>[user] shortens the barrel of \the [src]!</span>", "<span class='warning'>You shorten the barrel of \the [src]!</span>")
 			if(istype(user, /mob/living/carbon/human) && src.loc == user)
 				var/mob/living/carbon/human/H = user
 				H.update_inv_hands()

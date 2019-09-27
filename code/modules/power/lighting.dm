@@ -75,7 +75,7 @@
 	..()
 
 /obj/machinery/light_construct/kick_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H] attempts to kick \the [src].</span>", "<span class='danger'>I attempt to kick \the [src].</span>")
+	H.visible_message("<span class='danger'>[H] attempts to kick \the [src].</span>", "<span class='danger'>You attempt to kick \the [src].</span>")
 	to_chat(H, "<span class='danger'>Dumb move! You strain a muscle.</span>")
 
 	H.apply_damage(rand(1,2), BRUTE, pick(LIMB_RIGHT_LEG, LIMB_LEFT_LEG, LIMB_RIGHT_FOOT, LIMB_LEFT_FOOT))
@@ -151,7 +151,7 @@ var/global/list/obj/machinery/light/alllights = list()
 			broken()
 
 /obj/machinery/light/kick_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H] attempts to kick \the [src].</span>", "<span class='danger'>I attempt to kick \the [src].</span>")
+	H.visible_message("<span class='danger'>[H] attempts to kick \the [src].</span>", "<span class='danger'>You attempt to kick \the [src].</span>")
 	to_chat(H, "<span class='danger'>Dumb move! You strain a muscle.</span>")
 
 	H.apply_damage(rand(1,2), BRUTE, pick(LIMB_RIGHT_LEG, LIMB_LEFT_LEG, LIMB_RIGHT_FOOT, LIMB_LEFT_FOOT))
@@ -310,7 +310,7 @@ var/global/list/obj/machinery/light/alllights = list()
 			var/obj/item/weapon/light/L = W
 			if(L.fitting == fitting)
 				if(!user.drop_item(L))
-					user << "<span class='warning'>I can't let go of \the [L]!</span>"
+					user << "<span class='warning'>You can't let go of \the [L]!</span>"
 					return
 
 				status = L.status
@@ -499,7 +499,7 @@ var/global/list/obj/machinery/light/alllights = list()
 		if(prot > 0 || (M_RESIST_HEAT in user.mutations))
 			to_chat(user, "I remove the light [fitting]")
 		else
-			to_chat(user, "I try to remove the light [fitting], but it's too hot and you don't want to burn my hand.")
+			to_chat(user, "I try to remove the light [fitting], but it's too hot and you don't want to burn your hand.")
 			return				// if burned, don't remove the light
 
 	// create a light tube/bulb item and put it in the user's hand
@@ -734,7 +734,7 @@ var/global/list/obj/machinery/light/alllights = list()
 
 /obj/item/weapon/light/proc/shatter()
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		src.visible_message("<span class='warning'>[name] shatters.</span>","<span class='warning'>I hear a small glass object shatter.</span>")
+		src.visible_message("<span class='warning'>[name] shatters.</span>","<span class='warning'>You hear a small glass object shatter.</span>")
 		status = LIGHT_BROKEN
 		force = 5
 		playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)

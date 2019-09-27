@@ -74,8 +74,8 @@
 	if(!ismob(M))
 		return
 
-	to_chat(user, "<span class='info'>I inject [M] with the injector.<span>")
-	to_chat(M, "<span class='warning'>I feel a tiny prick!</span>")
+	to_chat(user, "<span class='info'>You inject [M] with the injector.<span>")
+	to_chat(M, "<span class='warning'>You feel a tiny prick!</span>")
 	reagents.reaction(M, INGEST)
 
 	if(M.reagents)

@@ -67,7 +67,7 @@
 	blockCount = 3
 	blockGaps = 3
 	isBad = 1
-	msgGain = "I feel a strange sickness permeate my whole body."
+	msgGain = "I feel a strange sickness permeate your whole body."
 	msgLose = "I no longer feel awful and sick all over."
 	reclaim_fail = 15
 
@@ -76,7 +76,7 @@
 		for(var/mob/living/L in range(1, owner))
 			if(L == owner)
 				continue
-			to_chat(L, "<span class='warning'>I am enveloped by a soft green glow emanating from [owner].</span>")
+			to_chat(L, "<span class='warning'>You are enveloped by a soft green glow emanating from [owner].</span>")
 			L.radiation += 5
 		return
 
@@ -171,7 +171,7 @@
 
 	OnLife()
 		if (prob(1) && owner:paralysis < 1)
-			owner:visible_message("<span class='warning'><B>[owner] starts having a seizure!</span>", "<span class='warning'>I have a seizure!</span>")
+			owner:visible_message("<span class='warning'><B>[owner] starts having a seizure!</span>", "<span class='warning'>You have a seizure!</span>")
 			owner:paralysis = max(2, owner:paralysis)
 			owner:Jitter(100)
 		return
@@ -183,7 +183,7 @@
 	effectType = effectTypeDisability
 	isBad = 1
 	probability = 50
-	msgGain = "I feel like you can't control my actions fully."
+	msgGain = "I feel like you can't control your actions fully."
 	msgLose = "I feel in full control of yourself once again."
 	reclaim_fail = 15
 
@@ -211,7 +211,7 @@
 	id = "cough"
 	effectType = effectTypeDisability
 	isBad = 1
-	msgGain = "I feel an irritating itch in my throat."
+	msgGain = "I feel an irritating itch in your throat."
 	msgLose = "My throat clears up."
 	reclaim_fail = 15
 
@@ -294,7 +294,7 @@
 	effectType = effectTypePower
 	probability = 40
 	msgGain = "YOU SUDDENLY FEEL LIKE SHOUTING A WHOLE LOT!!!"
-	msgLose = "I no longer feel the need to raise my voice."
+	msgLose = "I no longer feel the need to raise your voice."
 	reclaim_fail = 10
 	lockedGaps = 1
 
@@ -305,7 +305,7 @@
 	effectType = effectTypePower
 	probability = 40
 	msgGain = "...you feel like being quiet..."
-	msgLose = "I no longer feel the need to keep my voice down."
+	msgLose = "I no longer feel the need to keep your voice down."
 	reclaim_fail = 10
 	lockedGaps = 1
 
@@ -344,9 +344,9 @@
 			owner.bioHolder.AddEffect("thermal_resist",2)
 			owner.bioHolder.RemoveEffect("fire_resist")
 			owner.bioHolder.RemoveEffect("cold_resist")
-			to_chat(owner, "<span class='notice'>My thermal resistances merge into one!</span>")
+			to_chat(owner, "<span class='notice'>Your thermal resistances merge into one!</span>")
 		else
-			to_chat(owner, "<span class='notice'>I feel cold.</span>")
+			to_chat(owner, "<span class='notice'>You feel cold.</span>")
 		return
 
 	OnMobDraw()
@@ -369,9 +369,9 @@
 			owner.bioHolder.AddEffect("thermal_resist",1)
 			owner.bioHolder.RemoveEffect("fire_resist")
 			owner.bioHolder.RemoveEffect("cold_resist")
-			to_chat(owner, "<span class='notice'>My thermal resistances merge into one!</span>")
+			to_chat(owner, "<span class='notice'>Your thermal resistances merge into one!</span>")
 		else
-			to_chat(owner, "<span class='notice'>I feel warm.</span>")
+			to_chat(owner, "<span class='notice'>You feel warm.</span>")
 		return
 
 	OnMobDraw()
@@ -391,10 +391,10 @@
 	OnRemove()
 		if (src.variant == 1)
 			owner.bioHolder.AddEffect("cold_resist")
-			to_chat(owner, "<span class='warning'>I feel warm.</span>")
+			to_chat(owner, "<span class='warning'>You feel warm.</span>")
 		else if (src.variant == 2)
 			owner.bioHolder.AddEffect("fire_resist")
-			to_chat(owner, "<span class='warning'>I feel cold.</span>")
+			to_chat(owner, "<span class='warning'>You feel cold.</span>")
 		return
 
 	OnMobDraw()
@@ -411,7 +411,7 @@
 	blockCount = 3
 	blockGaps = 3
 	msgGain = "My hair stands on end."
-	msgLose = "The tingling in my skin fades."
+	msgLose = "The tingling in your skin fades."
 
 	OnMobDraw()
 		owner.overlays += image("icon" = 'genetics.dmi', "icon_state" = "elec[owner:bioHolder.HasEffect("fat") ? "fat" :""][!owner:lying ? "_s" : "_l"]")
@@ -455,7 +455,7 @@
 	probability = 25
 	blockCount = 3
 	blockGaps = 3
-	msgGain = "I feel one with my surroundings."
+	msgGain = "I feel one with your surroundings."
 	msgLose = "I feel oddly exposed."
 	var/image/over = null
 
@@ -513,7 +513,7 @@
 	blockCount = 4
 	blockGaps = 5
 	reclaim_mats = 20
-	msgGain = "I feel my muscles swell to an immense size."
+	msgGain = "I feel your muscles swell to an immense size."
 	msgLose = "My muscles shrink back down."
 
 	OnAdd()
@@ -528,7 +528,7 @@
 	OnLife()
 		if (owner:health <= 25)
 			timeLeft = 1
-			to_chat(owner, "<span class='warning'>I suddenly feel very weak.</span>")
+			to_chat(owner, "<span class='warning'>You suddenly feel very weak.</span>")
 			owner:SetKnockdown(3)
 			owner:emote("collapse")
 
@@ -542,7 +542,7 @@
 	blockCount = 5
 	blockGaps = 5
 	reclaim_mats = 20
-	msgGain = "I feel my consciousness expand outwards."
+	msgGain = "I feel your consciousness expand outwards."
 	msgLose = "My conciousness closes inwards."
 
 	OnMobDraw()
@@ -605,7 +605,7 @@
 	id = "horns"
 	effectType = effectTypePower
 	probability = 60
-	msgGain = "A pair of horns erupt from my head."
+	msgGain = "A pair of horns erupt from your head."
 	msgLose = "My horns crumble away into nothing."
 
 	OnMobDraw()

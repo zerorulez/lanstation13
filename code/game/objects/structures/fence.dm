@@ -81,7 +81,7 @@
 			return
 
 		user.visible_message("<span class='danger'>\The [user] starts cutting through \the [src] with \the [W].</span>",\
-		"<span class='danger'>I start cutting through \the [src] with \the [W].</span>")
+		"<span class='danger'>You start cutting through \the [src] with \the [W].</span>")
 
 		if(do_after(user, src, CUT_TIME))
 			if(current_stage == hole_size)
@@ -95,7 +95,7 @@
 						if(user.is_fat())
 							to_chat(user, "<span class='info'>While a thinner person could climb through this hole, it's still too small for you.</span>")
 						else
-							to_chat(user, "<span class='info'>I could probably fit yourself through that hole now. Although climbing through would be much faster if you made it even bigger.</span>")
+							to_chat(user, "<span class='info'>You could probably fit yourself through that hole now. Although climbing through would be much faster if you made it even bigger.</span>")
 					if(LARGE_HOLE)
 						visible_message("<span class='notice'>\The [user] completely cuts through \the [src].</span>")
 						to_chat(user, "<span class='info'>The hole in \the [src] is now big enough to walk through.</span>")
@@ -120,11 +120,11 @@
 
 	if(hole_size == MEDIUM_HOLE)
 		if(user.is_fat())
-			to_chat(user, "<span class='info'>I am too fat to fit through that hole.</span>")
+			to_chat(user, "<span class='info'>You are too fat to fit through that hole.</span>")
 			return
 
 		user.visible_message("<span class='danger'>\The [user] starts climbing through \the [src]!</span>",\
-		"<span class='info'>I start climbing through \the [src]. This will take about [CLIMB_TIME / 10] seconds.</span>")
+		"<span class='info'>You start climbing through \the [src]. This will take about [CLIMB_TIME / 10] seconds.</span>")
 
 		if(do_after(user, src, CLIMB_TIME) && !shock(user, 70)) //70% chance to get shocked
 			user.forceMove(get_turf(src)) //Could be exploitable as it doesn't check for any other dense objects on the turf. Fix when fences are buildable!
@@ -258,7 +258,7 @@
 	if((M_TK in usr.mutations) || (get_dir(src, user) == permitted_direction))
 		return TRUE
 	else
-		to_chat(user, "<span class='warning'>I can't reach the door latch from here!</span>")
+		to_chat(user, "<span class='warning'>You can't reach the door latch from here!</span>")
 		return FALSE
 
 #undef CUT_TIME

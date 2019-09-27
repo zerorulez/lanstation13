@@ -104,7 +104,7 @@ var/global/list/wizard_cards_normal = list(
 
 /obj/item/toy/singlecard/wizard/legendary/honkmother/pickup(mob/living/user as mob)
 	if(user.mind && user.mind.assigned_role == "Clown")
-		to_chat(user, "<span class ='notice'>I feel Honkmother's presence as you pick up the card.</span>")
+		to_chat(user, "<span class ='notice'>You feel Honkmother's presence as you pick up the card.</span>")
 
 /obj/item/toy/singlecard/wizard/legendary/singularity
 	name = "rare singularity wizard card"

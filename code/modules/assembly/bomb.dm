@@ -30,7 +30,7 @@
 		return
 	if(iswrench(W) && !status)	//This is basically bomb assembly code inverted. apparently it works.
 
-		to_chat(user, "<span class='notice'>I disassemble [src].</span>")
+		to_chat(user, "<span class='notice'>You disassemble [src].</span>")
 
 		bombassembly.forceMove(user.loc)
 		bombassembly.master = null
@@ -93,11 +93,11 @@
 		return
 
 	if(!M.drop_item(S))
-		return		//Remove the assembly from my hands
+		return		//Remove the assembly from your hands
 
 	var/obj/item/device/onetankbomb/R = new /obj/item/device/onetankbomb(loc)
 
-	M.remove_from_mob(src)	//Remove the tank from my character,in case you were holding it
+	M.remove_from_mob(src)	//Remove the tank from your character,in case you were holding it
 	M.put_in_hands(R)		//Equips the bomb if possible, or puts it on the floor.
 
 	R.bombassembly = S	//Tell the bomb about its assembly part

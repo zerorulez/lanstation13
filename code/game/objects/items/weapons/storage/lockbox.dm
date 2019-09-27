@@ -29,12 +29,12 @@
 			src.locked = !( src.locked )
 			if(src.locked)
 				src.icon_state = src.icon_locked
-				to_chat(user, "<span class='rose'>I lock the [src.name]!</span>")
+				to_chat(user, "<span class='rose'>You lock the [src.name]!</span>")
 				tracked_access = "The tracker reads: 'Last locked by [ID.registered_name].'"
 				return
 			else
 				src.icon_state = src.icon_closed
-				to_chat(user, "<span class='rose'>I unlock the [src.name]!</span>")
+				to_chat(user, "<span class='rose'>You unlock the [src.name]!</span>")
 				tracked_access = "The tracker reads: 'Last unlocked by [ID.registered_name].'"
 				if(oneuse)
 					for(var/atom/movable/A in src)
@@ -224,12 +224,12 @@
 			src.locked = !( src.locked )
 			if(src.locked)
 				src.icon_state = src.icon_locked
-				to_chat(user, "<span class='rose'>I lock the [src.name]!</span>")
+				to_chat(user, "<span class='rose'>You lock the [src.name]!</span>")
 				tracked_access = "The tracker reads: 'Last locked by [ID.registered_name]'."
 				return
 			else
 				src.icon_state = src.icon_closed
-				to_chat(user, "<span class='rose'>I unlock the [src.name]!</span>")
+				to_chat(user, "<span class='rose'>You unlock the [src.name]!</span>")
 				tracked_access = "The tracker reads: 'Last unlocked by [ID.registered_name].'"
 				return
 	else

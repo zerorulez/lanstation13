@@ -400,7 +400,7 @@ var/list/advance_cures = 	list(
 
 	if(D.symptoms.len > 0)
 
-		var/new_name = copytext(sanitize(input(user, "Name my new disease.", "New Name")),1,MAX_NAME_LEN)
+		var/new_name = copytext(sanitize(input(user, "Name your new disease.", "New Name")),1,MAX_NAME_LEN)
 		D.AssignName(new_name)
 		D.Refresh()
 

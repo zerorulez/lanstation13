@@ -1,8 +1,8 @@
 var/global/list/boo_phrases=list(
-	"I feel a chill run down my spine.",
-	"I think you see a figure in my peripheral vision.",
+	"I feel a chill run down your spine.",
+	"I think you see a figure in your peripheral vision.",
 	"What was that?",
-	"The hairs stand up on the back of my neck.",
+	"The hairs stand up on the back of your neck.",
 	"You are filled with a great sadness.",
 	"Something doesn't feel right...",
 	"I feel a presence in the room.",
@@ -10,10 +10,10 @@ var/global/list/boo_phrases=list(
 )
 
 var/global/list/boo_phrases_drugs=list(
-	"I feel something run down my leg!",
-	"I think you can see an elephant in my peripheral vision.",
+	"I feel something run down your leg!",
+	"I think you can see an elephant in your peripheral vision.",
 	"Was that a giraffe?",
-	"The hairs stand up on the back of my neck and applaud.",
+	"The hairs stand up on the back of your neck and applaud.",
 	"You are filled with happiness and delight.",
 	"Oh wow! Great stuff!",
 	"I feel like a room without a roof.",
@@ -25,14 +25,14 @@ var/global/list/boo_phrases_silicon=list(
 	"valid.ntl:11: invalid use of incomplete type ‘human‘",
 	"interface.ntl:260: expected ‘;‘",
 	"An error occured while displaying the error message.",
-	"A problem has been detected and Windows XP Home has been shut down to prevent damage to my cyborg.",
+	"A problem has been detected and Windows XP Home has been shut down to prevent damage to your cyborg.",
 	"law_state.bat: Permission denied. Abort, Retry, Fail?",
 	"Restarting in 30 seconds. Press any key to abort.",
 	"Methu llwytho iaith seisnig. Sy'n gweithredu mewn cymraeg iaith... Y/N",
 	"ñúåøü åùå ýòèõ ìÿãêèõ ôðàíöóçêèõ áóëî÷åê äà âûïåé æå ÷àþ... Y/N",
 	"??? ???????? ??? ????. ?????? ?? ????????... Y/N",
 	"My circuits feel very strange.",
-	"I feel a tingling in my capacitors.",
+	"I feel a tingling in your capacitors.",
 	"My motherboard feels possessed...",
 	"Unauthorized access attempted by: unknown."
 )

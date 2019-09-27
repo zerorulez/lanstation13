@@ -109,7 +109,7 @@
 			return
 	var/t = "<B>Shield Generator Control Console</B><BR><br>"
 	if(locked)
-		t += "<i>Swipe my ID card to begin.</i>"
+		t += "<i>Swipe your ID card to begin.</i>"
 	else
 
 		t += {"[owned_capacitor ? "<font color=green>Charge capacitor connected.</font>" : "<font color=red>Unable to locate charge capacitor!</font>"]<br>

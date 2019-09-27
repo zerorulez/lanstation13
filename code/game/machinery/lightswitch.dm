@@ -42,7 +42,7 @@
 				to_chat(user, "I begin unscrewing \the [src].")
 				playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 				if(do_after(user, src,10) && buildstage == 2)
-					to_chat(user, "<span class='notice'>I unscrew the cover blocking the inner wiring of \the [src].</span>")
+					to_chat(user, "<span class='notice'>You unscrew the cover blocking the inner wiring of \the [src].</span>")
 					buildstage = 1
 					on = areaMaster.lightswitch
 			return
@@ -51,7 +51,7 @@
 				to_chat(user, "I begin screwing closed \the [src].")
 				playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 				if(do_after(user, src,10) && buildstage == 1)
-					to_chat(user, "<span class='notice'>I tightly screw closed the cover of \the [src].</span>")
+					to_chat(user, "<span class='notice'>You tightly screw closed the cover of \the [src].</span>")
 					buildstage = 2
 					power_change()
 				return
@@ -59,7 +59,7 @@
 				to_chat(user, "I begin cutting the wiring from \the [src].")
 				playsound(get_turf(src), 'sound/items/Wirecutter.ogg', 50, 1)
 				if(do_after(user, src,10) && buildstage == 1)
-					to_chat(user, "<span class='notice'>I cut the wiring to the lighting power line.</span>")
+					to_chat(user, "<span class='notice'>You cut the wiring to the lighting power line.</span>")
 					new /obj/item/stack/cable_coil(get_turf(src),3)
 					buildstage = 0
 				return
@@ -67,11 +67,11 @@
 			if(iscoil(W))
 				var/obj/item/stack/cable_coil/coil = W
 				if(coil.amount < 3)
-					to_chat(user, "<span class='warning'>I need at least two wire pieces for this!</span>")
+					to_chat(user, "<span class='warning'>You need at least two wire pieces for this!</span>")
 					return
 				to_chat(user, "I begin wiring \the [src].")
 				if(do_after(user, src,10) && buildstage == 0)
-					to_chat(user, "<span class='notice'>I wire \the [src]!.</span>")
+					to_chat(user, "<span class='notice'>You wire \the [src]!.</span>")
 					coil.use(3)
 					buildstage = 1
 				return
@@ -79,7 +79,7 @@
 				to_chat(user, "I begin prying \the [src] off the wall.")
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 				if(do_after(user, src,10) && buildstage == 0)
-					to_chat(user, "<span class='notice'>I pry the frame off of the wall.</span>")
+					to_chat(user, "<span class='notice'>You pry the frame off of the wall.</span>")
 					new /obj/item/mounted/frame/light_switch(get_turf(user))
 					qdel(src)
 				return

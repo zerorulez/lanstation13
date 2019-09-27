@@ -250,7 +250,7 @@
 					dispense_cash(win_value, get_turf(src))
 					playsound(get_turf(src), "polaroid", 50, 1)
 
-					to_chat(user, "<span class='notice'>I win $[win_value]!</span>")
+					to_chat(user, "<span class='notice'>You win $[win_value]!</span>")
 				else
 					src.visible_message("<span class='danger'>[src]'s screen flashes red.</span>")
 
@@ -277,7 +277,7 @@
 		dat += {"There are <span style="color:[stored_money<spin_cost?"red":"green"]"><b>$[num2septext(stored_money)]</b>
 			space credits inserted. <span style="color:blue"><a href='?src=\ref[src];reclaim=1'>Reclaim</a></span><br>"}
 	else
-		dat += {"I need at least <b>$[spin_cost]</b> credits to play. Use a nearby ATM and retrieve some cash from my money account!<br>"}
+		dat += {"I need at least <b>$[spin_cost]</b> credits to play. Use a nearby ATM and retrieve some cash from your money account!<br>"}
 
 	if(can_play())
 		if(stored_money >= spin_cost)
@@ -314,7 +314,7 @@
 
 	if(istype(I,/obj/item/weapon/spacecash))
 		if(!can_play())
-			to_chat(user, "<span class='notice'>[src] rejects my money.</span>")
+			to_chat(user, "<span class='notice'>[src] rejects your money.</span>")
 			return
 
 		var/obj/item/weapon/spacecash/S = I

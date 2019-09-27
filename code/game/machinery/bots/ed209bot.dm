@@ -257,7 +257,7 @@ Auto Patrol: []"},
 	..()
 	if(open && !locked)
 		if(user)
-			to_chat(user, "<span class='warning'>I short out [src]'s target assessment circuits.</span>")
+			to_chat(user, "<span class='warning'>You short out [src]'s target assessment circuits.</span>")
 		spawn(0)
 			for(var/mob/O in hearers(src, null))
 				O.show_message("<span class='danger'>[src] buzzes oddly!</span>", 1)
@@ -965,7 +965,7 @@ Auto Patrol: []"},
 				if(user.drop_item(W))
 					qdel(W)
 					build_step++
-					to_chat(user, "<span class='notice'>I add the robot leg to [src].</span>")
+					to_chat(user, "<span class='notice'>You add the robot leg to [src].</span>")
 					name = "legs/frame assembly"
 					if(build_step == 1)
 						item_state = "ed209_leg"
@@ -983,7 +983,7 @@ Auto Patrol: []"},
 				if(user.drop_item(W))
 					qdel(W)
 					build_step++
-					to_chat(user, "<span class='notice'>I add the armor to [src].</span>")
+					to_chat(user, "<span class='notice'>You add the armor to [src].</span>")
 					name = "vest/legs/frame assembly"
 					item_state = "[lasercolor]ed209_shell"
 					icon_state = "[lasercolor]ed209_shell"
@@ -994,13 +994,13 @@ Auto Patrol: []"},
 				if(WT.remove_fuel(0,user))
 					build_step++
 					name = "shielded frame assembly"
-					to_chat(user, "<span class='notice'>I welded the vest to [src].</span>")
+					to_chat(user, "<span class='notice'>You welded the vest to [src].</span>")
 		if(4)
 			if( istype(W, /obj/item/clothing/head/helmet/tactical/sec) )
 				if(user.drop_item(W))
 					qdel(W)
 					build_step++
-					to_chat(user, "<span class='notice'>I add the helmet to [src].</span>")
+					to_chat(user, "<span class='notice'>You add the helmet to [src].</span>")
 					name = "covered and shielded frame assembly"
 					item_state = "[lasercolor]ed209_hat"
 					icon_state = "[lasercolor]ed209_hat"
@@ -1010,7 +1010,7 @@ Auto Patrol: []"},
 				if(user.drop_item(W))
 					qdel(W)
 					build_step++
-					to_chat(user, "<span class='notice'>I add the prox sensor to [src].</span>")
+					to_chat(user, "<span class='notice'>You add the prox sensor to [src].</span>")
 					name = "covered, shielded and sensored frame assembly"
 					item_state = "[lasercolor]ed209_prox"
 					icon_state = "[lasercolor]ed209_prox"
@@ -1019,12 +1019,12 @@ Auto Patrol: []"},
 			if( istype(W, /obj/item/stack/cable_coil) )
 				var/obj/item/stack/cable_coil/coil = W
 				var/turf/T = get_turf(user)
-				to_chat(user, "<span class='notice'>I start to wire [src]...</span>")
+				to_chat(user, "<span class='notice'>You start to wire [src]...</span>")
 				sleep(40)
 				if(get_turf(user) == T)
 					coil.use(1)
 					build_step++
-					to_chat(user, "<span class='notice'>I wire the ED-209 assembly.</span>")
+					to_chat(user, "<span class='notice'>You wire the ED-209 assembly.</span>")
 					name = "wired ED-209 assembly"
 
 		if(7)
@@ -1047,7 +1047,7 @@ Auto Patrol: []"},
 				else
 					return
 			build_step++
-			to_chat(user, "<span class='notice'>I add [W] to [src].</span>")
+			to_chat(user, "<span class='notice'>You add [W] to [src].</span>")
 			src.item_state = "[lasercolor]ed209_taser"
 			src.icon_state = "[lasercolor]ed209_taser"
 			qdel(W)
@@ -1069,7 +1069,7 @@ Auto Patrol: []"},
 					return
 
 				build_step++
-				to_chat(user, "<span class='notice'>I complete the ED-209.</span>")
+				to_chat(user, "<span class='notice'>You complete the ED-209.</span>")
 				var/turf/T = get_turf(src)
 				new /obj/machinery/bot/ed209(T,created_name,lasercolor)
 				qdel(W)

@@ -168,7 +168,7 @@ var/global/list/autolathe_recipes_hidden = list( \
 		wires_win(user,50)
 		return
 	if(src.disabled)
-		to_chat(user, "<span class='warning'>I press the button, but nothing happens.</span>")
+		to_chat(user, "<span class='warning'>You press the button, but nothing happens.</span>")
 		return
 	regular_win(user)
 	return
@@ -183,12 +183,12 @@ var/global/list/autolathe_recipes_hidden = list( \
 		return 1
 	if(isrobot(user))
 		if(!isMoMMI(user))
-			to_chat(user, "<span class='warning'>\The [src] refuses my inbuilt module.</span>")
+			to_chat(user, "<span class='warning'>\The [src] refuses your inbuilt module.</span>")
 			return 1
 		else
 			var/mob/living/silicon/robot/mommi/M = user
 			if(M.is_in_modules(O, permit_sheets=1))
-				to_chat(user, "<span class='warning'>\The [src] refuses my inbuilt module.</span>")
+				to_chat(user, "<span class='warning'>\The [src] refuses your inbuilt module.</span>")
 				return 1
 	if (src.m_amount + O.m_amt > max_m_amount)
 		to_chat(user, "<span class='warning'>\The [src] is full. Please remove metal from \the [src] in order to insert more.</span>")
@@ -332,10 +332,10 @@ var/global/list/autolathe_recipes_hidden = list( \
 			var/temp_wire = href_list["wire"]
 			if(href_list["act"] == "pulse")
 				if (!istype(usr.get_active_hand(), /obj/item/device/multitool))
-					to_chat(usr, "<span class='warning'>I need a multitool!</span>")
+					to_chat(usr, "<span class='warning'>You need a multitool!</span>")
 				else
 					if(src.wires[temp_wire])
-						to_chat(usr, "<span class='warning'>I can't pulse a cut wire.</span>")
+						to_chat(usr, "<span class='warning'>You can't pulse a cut wire.</span>")
 					else
 						if(src.hack_wire == temp_wire && !emagged)
 							src.hacked = !src.hacked
@@ -350,7 +350,7 @@ var/global/list/autolathe_recipes_hidden = list( \
 							spawn(100) src.shocked = !src.shocked
 			if(href_list["act"] == "wire")
 				if (!istype(usr.get_active_hand(), /obj/item/weapon/wirecutters))
-					to_chat(usr, "<span class='warning'>I need wirecutters!</span>")
+					to_chat(usr, "<span class='warning'>You need wirecutters!</span>")
 				else
 					wires[temp_wire] = !wires[temp_wire]
 					if(src.hack_wire == temp_wire && !emagged)

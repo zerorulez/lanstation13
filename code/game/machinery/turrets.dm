@@ -350,7 +350,7 @@
 
 /obj/machinery/turretid/emag(mob/user)
 	if(!emagged)
-		to_chat(user, "<span class='warning'>I short out the turret controls' access analysis module.</span>")
+		to_chat(user, "<span class='warning'>You short out the turret controls' access analysis module.</span>")
 		emagged = 1
 		locked = 0
 		if(user.machine==src)
@@ -373,7 +373,7 @@
 				return
 
 			locked = !locked
-			to_chat(user, "<span class='notice'>I [ locked ? "lock" : "unlock"] the panel.</span>")
+			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the panel.</span>")
 			if (locked)
 				if (user.machine==src)
 					user.unset_machine()
@@ -394,7 +394,7 @@
 /obj/machinery/turretid/attack_hand(mob/user as mob)
 	if ( get_dist(src, user) > 0 )
 		if ( !issilicon(user) )
-			to_chat(user, "<span class='notice'>I am too far away.</span>")
+			to_chat(user, "<span class='notice'>You are too far away.</span>")
 			user.unset_machine()
 			user << browse(null, "window=turretid")
 			return

@@ -240,7 +240,7 @@
 		to_chat(user, "Waving around a badge before swiping an ID would be pretty pointless.")
 		return
 	if(isliving(user))
-		user.visible_message("<span class='warning'>[user] displays their Nanotrasen Internal Security Legal Authorization Badge.\nIt reads: [stored_name], NT Security.</span>","<span class='warning'>I display my Nanotrasen Internal Security Legal Authorization Badge.\nIt reads: [stored_name], NT Security.</span>")
+		user.visible_message("<span class='warning'>[user] displays their Nanotrasen Internal Security Legal Authorization Badge.\nIt reads: [stored_name], NT Security.</span>","<span class='warning'>You display your Nanotrasen Internal Security Legal Authorization Badge.\nIt reads: [stored_name], NT Security.</span>")
 
 /obj/item/clothing/accessory/holobadge/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
@@ -250,7 +250,7 @@
 			return
 		else
 			emagged = 1
-			to_chat(user, "<span class='warning'>I swipe [O] and crack the holobadge security checks.</span>")
+			to_chat(user, "<span class='warning'>You swipe [O] and crack the holobadge security checks.</span>")
 			return
 
 	else if(istype(O, /obj/item/weapon/card/id) || istype(O, /obj/item/device/pda))
@@ -264,16 +264,16 @@
 			id_card = pda.id
 
 		if(access_security in id_card.access || emagged)
-			to_chat(user, "I imprint my ID details onto the badge.")
+			to_chat(user, "I imprint your ID details onto the badge.")
 			stored_name = id_card.registered_name
 			name = "holobadge ([stored_name])"
 			desc = "This glowing blue badge marks [stored_name] as THE LAW."
 		else
-			to_chat(user, "[src] rejects my insufficient access rights.")
+			to_chat(user, "[src] rejects your insufficient access rights.")
 		return
 	..()
 
 /obj/item/clothing/accessory/holobadge/attack(mob/living/carbon/human/M, mob/living/user)
 	if(isliving(user))
-		user.visible_message("<span class='warning'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>I invade [M]'s personal space, thrusting [src] into their face insistently. You are the law.</span>")
+		user.visible_message("<span class='warning'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>You invade [M]'s personal space, thrusting [src] into their face insistently. You are the law.</span>")
 

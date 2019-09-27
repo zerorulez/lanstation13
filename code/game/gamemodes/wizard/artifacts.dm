@@ -8,7 +8,7 @@
 	var/price = Sp_BASE_PRICE
 
 /datum/spellbook_artifact/proc/purchased(mob/living/user)
-	to_chat(user, "<span class='info'>I have purchased [name].</span>")
+	to_chat(user, "<span class='info'>You have purchased [name].</span>")
 	for(var/T in spawned_items)
 		new T(get_turf(user))
 
@@ -58,14 +58,14 @@
 
 /datum/spellbook_artifact/staff_of_necro
 	name = "Staff of Necromancy"
-	desc = "An arcane staff capable of summoning undying minions from the corpses of my enemies. This magic doesn't affect machines."
+	desc = "An arcane staff capable of summoning undying minions from the corpses of your enemies. This magic doesn't affect machines."
 	abbreviation = "SN"
 	spawned_items = list(/obj/item/weapon/gun/energy/staff/necro)
 
 #define APPRENTICE_PRICE 5
 /datum/spellbook_artifact/apprentice
 	name = "Contract of Apprenticeship"
-	desc = "A magical contract binding an apprentice wizard to my service, using it will summon them to my side."
+	desc = "A magical contract binding an apprentice wizard to your service, using it will summon them to your side."
 	abbreviation = "CT"
 	spawned_items = list(/obj/item/weapon/antag_spawner/contract)
 	price = APPRENTICE_PRICE
@@ -113,7 +113,7 @@
 	..()
 
 	H.rightandwrong(0)
-	to_chat(H, "<span class='userdanger'>I have summoned guns.</span>")
+	to_chat(H, "<span class='userdanger'>You have summoned guns.</span>")
 
 //SUMMON MAGIC
 /datum/spellbook_artifact/summon_magic
@@ -129,7 +129,7 @@
 	..()
 
 	H.rightandwrong(1)
-	to_chat(H, "<span class='userdanger'>I have shared the gift of magic with everyone.</span>")
+	to_chat(H, "<span class='userdanger'>You have shared the gift of magic with everyone.</span>")
 
 //SANTA BUNDLE
 

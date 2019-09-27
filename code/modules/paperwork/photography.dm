@@ -55,7 +55,7 @@
 		show(user)
 	else
 		..()
-		to_chat(user, "<span class='notice'>I can't make out the picture from here.</span>")
+		to_chat(user, "<span class='notice'>You can't make out the picture from here.</span>")
 
 
 /obj/item/weapon/photo/proc/show(mob/user)
@@ -175,10 +175,10 @@
 
 	if(photo_size == 3)
 		photo_size = 1
-		usr.simple_message("<span class='info'>I zoom the camera in.</span>", "<span class='danger'>I drink from the mysterious bottle labeled \"DRINK ME\". Everything feels huge!</span>") //Second message is shown when hallucinating
+		usr.simple_message("<span class='info'>You zoom the camera in.</span>", "<span class='danger'>You drink from the mysterious bottle labeled \"DRINK ME\". Everything feels huge!</span>") //Second message is shown when hallucinating
 	else
 		photo_size = 3
-		usr.simple_message("<span class='info'>I zoom the camera out.</span>", "<span class='danger'>I take a bite of the mysterious mushroom. Everything feels so tiny!</span>") //Second message is shown when hallucinating
+		usr.simple_message("<span class='info'>You zoom the camera out.</span>", "<span class='danger'>You take a bite of the mysterious mushroom. Everything feels so tiny!</span>") //Second message is shown when hallucinating
 
 /obj/item/device/camera/AltClick()
 	set_zoom()
@@ -231,7 +231,7 @@
 			return
 
 		if(user.drop_item(I))
-			to_chat(user, "<span class='notice'>I insert [I] into [src].</span>")
+			to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
 
 			qdel(I)
 			pictures_left = pictures_max

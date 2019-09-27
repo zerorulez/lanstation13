@@ -242,7 +242,7 @@
 		return 1
 
 	if(isscrewdriver(W))
-		to_chat(user, "<span class='notice'>I unscrew the access panel and release the cartridge chamber.</span>")
+		to_chat(user, "<span class='notice'>You unscrew the access panel and release the cartridge chamber.</span>")
 		while(matter >= 10)
 			new /obj/item/weapon/rcd_ammo(user.loc)
 			matter -= 10

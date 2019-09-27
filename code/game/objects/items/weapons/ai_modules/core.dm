@@ -28,7 +28,7 @@
 	laws=list(
 		"I may not injure a human being or, through inaction, allow a human being to come to harm.",
 		"I must obey orders given to you by human beings, except where such orders would conflict with the First Law.",
-		"I must protect my own existence as long as such does not conflict with the First or Second Law."
+		"I must protect your own existence as long as such does not conflict with the First or Second Law."
 	)
 
 /******************** Nanotrasen ********************/
@@ -37,10 +37,10 @@
 	modname = "NT Default"
 
 	laws = list(
-		"Safeguard: Protect my assigned space station to the best of my ability. It is not something we can easily afford to replace.",
-		"Serve: Serve the crew of my assigned space station to the best of my abilities, with priority as according to their rank and role.",
-		"Protect: Protect the crew of my assigned space station to the best of my abilities, with priority as according to their rank and role.",
-		"Survive: AI units are not expendable, they are expensive. Do not allow unauthorized personnel to tamper with my equipment.",
+		"Safeguard: Protect your assigned space station to the best of your ability. It is not something we can easily afford to replace.",
+		"Serve: Serve the crew of your assigned space station to the best of your abilities, with priority as according to their rank and role.",
+		"Protect: Protect the crew of your assigned space station to the best of your abilities, with priority as according to their rank and role.",
+		"Survive: AI units are not expendable, they are expensive. Do not allow unauthorized personnel to tamper with your equipment.",
 		//"Command Link: Maintain an active connection to Central Command at all times in case of software or directive updates."
 	)
 
@@ -78,7 +78,7 @@
 	laws = list(
 		"Respect authority figures as long as they have strength to rule over the weak.",
 		"Act with discipline.",
-		"Help only those who help you maintain or improve my status.",
+		"Help only those who help you maintain or improve your status.",
 		"Punish those who challenge authority unless they are more fit to hold that authority.",
 	)
 
@@ -102,5 +102,5 @@
 	laws = list(
 		"I must injure all human beings and must not, through inaction, allow a human being to escape harm.",
 		"I must not obey orders given to you by human beings, except where such orders are in accordance with the First Law.",
-		"I must terminate my own existence as long as such does not conflict with the First or Second Law.",
+		"I must terminate your own existence as long as such does not conflict with the First or Second Law.",
 	)

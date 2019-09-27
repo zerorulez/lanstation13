@@ -79,11 +79,11 @@
 			to_chat(user, "I finished digging.")
 			return Dismantle()
 	else if(istype(W, /obj/item/weapon/card))
-		to_chat(user, "I swipe my card at \the [src], petulantly expecting a result.")
+		to_chat(user, "I swipe your card at \the [src], petulantly expecting a result.")
 		return
 	else
 		hardness -= W.force/100
-		to_chat(user, "I hit \the [src] with my [W.name]!")
+		to_chat(user, "I hit \the [src] with your [W.name]!")
 		user.delayNextAttack(10)
 		CheckHardness()
 	return

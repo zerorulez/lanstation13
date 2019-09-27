@@ -6,12 +6,12 @@
 		var/mob/living/carbon/human/H = src
 		var/obj/item/I = H.get_active_hand()
 		if(!I)
-			to_chat(H, "<span class='notice'>I am not holding anything to equip.</span>")
+			to_chat(H, "<span class='notice'>You are not holding anything to equip.</span>")
 			return
 		if(H.equip_to_appropriate_slot(I))
 			update_inv_hand(active_hand)
 		else
-			to_chat(H, "<span class='warning'>I am unable to equip that.</span>")
+			to_chat(H, "<span class='warning'>You are unable to equip that.</span>")
 
 /mob/living/carbon/human/get_all_slots()
 	. = get_head_slots() | get_body_slots()
@@ -370,7 +370,7 @@
 					W.forceMove(get_turf(src)) //Should this be using drop_from_inventory instead?
 				else
 					if(!disable_warning)
-						to_chat(src, "<span class='warning'>I am unable to equip that.</span>")//Only print if act_on_fail is NOTHING
+						to_chat(src, "<span class='warning'>You are unable to equip that.</span>")//Only print if act_on_fail is NOTHING
 
 			return 0
 		if(CAN_EQUIP)
@@ -395,7 +395,7 @@
 								qdel(W)
 							else
 								if(!disable_warning && act_on_fail != EQUIP_FAILACTION_DROP)
-									to_chat(src, "<span class='warning'>I am unable to equip that.</span>")//Only print if act_on_fail is NOTHING
+									to_chat(src, "<span class='warning'>You are unable to equip that.</span>")//Only print if act_on_fail is NOTHING
 
 						return
 					else
@@ -408,7 +408,7 @@
 
 
 //This is an UNSAFE proc. Use mob_can_equip() before calling this one! Or rather use equip_to_slot_if_possible() or advanced_equip_to_slot_if_possible()
-//set redraw_mob to 0 if you don't wish the hud to be updated - if you're doing it manually in my own proc.
+//set redraw_mob to 0 if you don't wish the hud to be updated - if you're doing it manually in your own proc.
 /mob/living/carbon/human/equip_to_slot(obj/item/W as obj, slot, redraw_mob = 1)
 	if(!slot)
 		return
@@ -480,7 +480,7 @@
 			W.forceMove(src.back)
 			return
 		else
-			to_chat(src, "<span class='warning'>I am trying to equip this item to an unsupported inventory slot. Report this to a coder!</span>")
+			to_chat(src, "<span class='warning'>You are trying to equip this item to an unsupported inventory slot. Report this to a coder!</span>")
 			return
 
 	update_hidden_item_icons(W)

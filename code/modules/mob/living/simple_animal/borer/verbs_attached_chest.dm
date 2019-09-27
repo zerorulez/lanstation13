@@ -1,7 +1,7 @@
 /obj/item/verbs/borer/attached_chest/verb/borer_speak(var/message as text)
 	set category = "Alien"
 	set name = "Borer Speak"
-	set desc = "Communicate with my bretheren"
+	set desc = "Communicate with your bretheren"
 
 	if(!message)
 		return
@@ -17,7 +17,7 @@
 /obj/item/verbs/borer/attached_chest/verb/evolve()
 	set category = "Alien"
 	set name = "Evolve"
-	set desc = "Upgrade yourself or my host."
+	set desc = "Upgrade yourself or your host."
 
 	var/mob/living/simple_animal/borer/B=loc
 	if(!istype(B))
@@ -27,7 +27,7 @@
 /obj/item/verbs/borer/attached_chest/verb/secrete_chemicals()
 	set category = "Alien"
 	set name = "Secrete Chemicals"
-	set desc = "Push some chemicals into my host's bloodstream."
+	set desc = "Push some chemicals into your host's bloodstream."
 
 	var/mob/living/simple_animal/borer/B=loc
 	if(!istype(B))
@@ -37,7 +37,7 @@
 /obj/item/verbs/borer/attached_chest/verb/abandon_host()
 	set category = "Alien"
 	set name = "Abandon Host"
-	set desc = "Slither out of my host."
+	set desc = "Slither out of your host."
 
 	var/mob/living/simple_animal/borer/B=loc
 	if(!istype(B))
@@ -62,7 +62,7 @@
 	if(!check_can_do())
 		return
 
-	to_chat(src, "<span class='info'>I listen to the song of my host's nervous system, hunting for dischordant notes...</span>")
+	to_chat(src, "<span class='info'>You listen to the song of your host's nervous system, hunting for dischordant notes...</span>")
 	spawn(5 SECONDS)
 		var/dat
 		dat = format_host_data(get_host_data())
@@ -73,7 +73,7 @@
 	if (!host)
 		return
 	if(!istype(host, /mob/living/carbon/human))
-		to_chat(src, "<span class='warning'>I can't seem to interpret my host's strange biology.</span>")
+		to_chat(src, "<span class='warning'>You can't seem to interpret your host's strange biology.</span>")
 		return
 	var/mob/living/carbon/human/H = host
 	var/list/host_data = list(
@@ -274,7 +274,7 @@
 /obj/item/verbs/borer/attached_chest/brute_resist/verb/brute_resist()
 	set category = "Alien"
 	set name = "Brute Damage Resistance"
-	set desc = "Expend chemicals constantly in order to mitigate brute damage done to my host."
+	set desc = "Expend chemicals constantly in order to mitigate brute damage done to your host."
 
 	var/mob/living/simple_animal/borer/B=loc
 	if(!istype(B))
@@ -284,7 +284,7 @@
 /mob/living/simple_animal/borer/proc/brute_resist()
 	set category = "Alien"
 	set name = "Brute Damage Resistance"
-	set desc = "Expend chemicals constantly in order to mitigate brute damage done to my host."
+	set desc = "Expend chemicals constantly in order to mitigate brute damage done to your host."
 
 	var/damage_reduction = 0.25
 
@@ -292,17 +292,17 @@
 		return
 
 	if(channeling && !channeling_brute_resist)
-		to_chat(src, "<span class='warning'>I can't do this while my focus is directed elsewhere.</span>")
+		to_chat(src, "<span class='warning'>You can't do this while your focus is directed elsewhere.</span>")
 		return
 	else if(channeling)
-		to_chat(src, "I cease my efforts to elevate my host's physical damage resistance.")
+		to_chat(src, "I cease your efforts to elevate your host's physical damage resistance.")
 		channeling = 0
 		channeling_brute_resist = 0
 	else if(chemicals < 5)
-		to_chat(src, "<span class='warning'>I don't have enough chemicals stored to do this.</span>")
+		to_chat(src, "<span class='warning'>You don't have enough chemicals stored to do this.</span>")
 		return
 	else
-		to_chat(src, "I begin to focus my efforts on elevating my host's resistance to physical damage.")
+		to_chat(src, "I begin to focus your efforts on elevating your host's resistance to physical damage.")
 		channeling = 1
 		channeling_brute_resist = 1
 		host.brute_damage_modifier -= damage_reduction
@@ -317,7 +317,7 @@
 			channeling_brute_resist = 0
 			var/showmessage = 0
 			if(chemicals < 5)
-				to_chat(src, "<span class='warning'>I lose consciousness as the last of my chemicals are expended.</span>")
+				to_chat(src, "<span class='warning'>You lose consciousness as the last of your chemicals are expended.</span>")
 			else
 				showmessage = 1
 			passout(time_spent_channeling, showmessage)
@@ -325,7 +325,7 @@
 /obj/item/verbs/borer/attached_chest/burn_resist/verb/burn_resist()
 	set category = "Alien"
 	set name = "Burn Damage Resistance"
-	set desc = "Expend chemicals constantly in order to mitigate burn damage done to my host."
+	set desc = "Expend chemicals constantly in order to mitigate burn damage done to your host."
 
 	var/mob/living/simple_animal/borer/B=loc
 	if(!istype(B))
@@ -335,7 +335,7 @@
 /mob/living/simple_animal/borer/proc/burn_resist()
 	set category = "Alien"
 	set name = "Burn Damage Resistance"
-	set desc = "Expend chemicals constantly in order to mitigate burn damage done to my host."
+	set desc = "Expend chemicals constantly in order to mitigate burn damage done to your host."
 
 	var/damage_reduction = 0.25
 
@@ -343,17 +343,17 @@
 		return
 
 	if(channeling && !channeling_burn_resist)
-		to_chat(src, "<span class='warning'>I can't do this while my focus is directed elsewhere.</span>")
+		to_chat(src, "<span class='warning'>You can't do this while your focus is directed elsewhere.</span>")
 		return
 	else if(channeling)
-		to_chat(src, "I cease my efforts to elevate my host's physical damage resistance.")
+		to_chat(src, "I cease your efforts to elevate your host's physical damage resistance.")
 		channeling = 0
 		channeling_burn_resist = 0
 	else if(chemicals < 5)
-		to_chat(src, "<span class='warning'>I don't have enough chemicals stored to do this.</span>")
+		to_chat(src, "<span class='warning'>You don't have enough chemicals stored to do this.</span>")
 		return
 	else
-		to_chat(src, "I begin to focus my efforts on elevating my host's resistance to physical damage.")
+		to_chat(src, "I begin to focus your efforts on elevating your host's resistance to physical damage.")
 		channeling = 1
 		channeling_burn_resist = 1
 		host.burn_damage_modifier -= damage_reduction
@@ -368,7 +368,7 @@
 			channeling_burn_resist = 0
 			var/showmessage = 0
 			if(chemicals < 5)
-				to_chat(src, "<span class='warning'>I lose consciousness as the last of my chemicals are expended.</span>")
+				to_chat(src, "<span class='warning'>You lose consciousness as the last of your chemicals are expended.</span>")
 			else
 				showmessage = 1
 			passout(time_spent_channeling, showmessage)

@@ -172,7 +172,7 @@
 						busy = FALSE
 						return
 
-					to_chat(user, "<span class='notice'>I welded the [glass] plating off!</span>")
+					to_chat(user, "<span class='notice'>You welded the [glass] plating off!</span>")
 
 					var/M = text2path("/obj/item/stack/sheet/mineral/[glass]")
 					new M(src.loc, 2)
@@ -186,7 +186,7 @@
 						busy = FALSE
 						return
 
-					to_chat(user, "<span class='notice'>I welded the glass panel out!</span>")
+					to_chat(user, "<span class='notice'>You welded the glass panel out!</span>")
 					new /obj/item/stack/sheet/glass/rglass(src.loc)
 					glass = 0
 			else if (!anchored)
@@ -197,7 +197,7 @@
 						busy = FALSE
 						return
 
-					to_chat(user, "<span class='notice'>I dissasembled the airlock assembly!</span>")
+					to_chat(user, "<span class='notice'>You dissasembled the airlock assembly!</span>")
 
 					var/obj/item/stack/sheet/metal/M = getFromPool(/obj/item/stack/sheet/metal, get_turf(src))
 					M.amount = 4
@@ -206,7 +206,7 @@
 
 			busy = FALSE
 		else
-			to_chat(user, "<span class='notice'>I need more welding fuel.</span>")
+			to_chat(user, "<span class='notice'>You need more welding fuel.</span>")
 			return
 	else if(iswrench(W) && state == 0)
 		busy = 1
@@ -219,7 +219,7 @@
 		if(do_after(user, src, 40))
 			if(!src)
 				return
-			to_chat(user, "<span class='notice'>I [anchored? "un" : ""]secured the airlock assembly!</span>")
+			to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured the airlock assembly!</span>")
 			anchored = !anchored
 		busy = 0
 
@@ -232,7 +232,7 @@
 				return
 			coil.use(1)
 			src.state = 1
-			to_chat(user, "<span class='notice'>I wire the Airlock!</span>")
+			to_chat(user, "<span class='notice'>You wire the Airlock!</span>")
 		busy = 0
 
 	else if(iswirecutter(W) && state == 1 )
@@ -243,7 +243,7 @@
 		if(do_after(user, src, 40))
 			if(!src)
 				return
-			to_chat(user, "<span class='notice'>I cut the airlock wires.!</span>")
+			to_chat(user, "<span class='notice'>You cut the airlock wires.!</span>")
 			new/obj/item/stack/cable_coil(src.loc, 1)
 			src.state = 0
 		busy = 0
@@ -259,7 +259,7 @@
 				return
 			var/obj/item/weapon/circuitboard/airlock/electronic = W
 			electronic.installed = 1
-			to_chat(user, "<span class='notice'>I installed the airlock electronics!</span>")
+			to_chat(user, "<span class='notice'>You installed the airlock electronics!</span>")
 			src.state = 2
 			src.name = "Near finished Airlock Assembly"
 			src.electronics = W
@@ -275,7 +275,7 @@
 		if(do_after(user, src, 40))
 			if(!src)
 				return
-			to_chat(user, "<span class='notice'>I removed the airlock electronics!</span>")
+			to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
 			src.state = 1
 			src.name = "Wired Airlock Assembly"
 			var/obj/item/weapon/circuitboard/airlock/ae
@@ -297,7 +297,7 @@
 					playsound(get_turf(src), 'sound/items/Crowbar.ogg', 100, 1)
 					user.visible_message("[user] adds [S.name] to the airlock assembly.", "I start to install [S.name] into the airlock assembly.")
 					if(do_after(user, src, 40))
-						to_chat(user, "<span class='notice'>I installed reinforced glass windows into the airlock assembly!</span>")
+						to_chat(user, "<span class='notice'>You installed reinforced glass windows into the airlock assembly!</span>")
 						S.use(1)
 						glass = 1
 				else if(istype(S, /obj/item/stack/sheet/mineral) && S.sheettype)
@@ -306,7 +306,7 @@
 						playsound(get_turf(src), 'sound/items/Crowbar.ogg', 100, 1)
 						user.visible_message("[user] adds [S.name] to the airlock assembly.", "I start to install [S.name] into the airlock assembly.")
 						if(do_after(user, src, 40))
-							to_chat(user, "<span class='notice'>I installed [M] plating into the airlock assembly!</span>")
+							to_chat(user, "<span class='notice'>You installed [M] plating into the airlock assembly!</span>")
 							S.use(2)
 							glass = "[M]"
 				busy = 0
@@ -319,7 +319,7 @@
 		if(do_after(user, src, 40))
 			if(!src)
 				return
-			to_chat(user, "<span class='notice'>I finish the airlock!</span>")
+			to_chat(user, "<span class='notice'>You finish the airlock!</span>")
 			var/path
 			if(istext(glass))
 				path = text2path("/obj/machinery/door/airlock/[glass]")

@@ -53,7 +53,7 @@ var/global/disable_vents     = 0
 #define COLD_PRESSUREFACTOR_MAX (PRESSUREFACTOR_NO_LINEAR)/((-1/PRESSUREFACTOR_NO_LINEAR)+1)    // The highest that heat loss can be multiplied by due to pressure. Depends on where non linear starts.
 
 #define BODYTEMP_HEAT_DIVISOR 80 //Similar to the BODYTEMP_AUTORECOVERY_DIVISOR, but this is the divisor which is applied at the stage that follows autorecovery. This is the divisor which comes into play when the human's loc temperature is higher than their body temperature. Make it lower to gain bodytemp faster.
-#define BODYTEMP_HEATING_MAX 10 //The maximum number of degrees that my body can heat up in 1 tick, when in a hot area.
+#define BODYTEMP_HEATING_MAX 10 //The maximum number of degrees that your body can heat up in 1 tick, when in a hot area.
 
 #define BODYTEMP_HEAT_DAMAGE_LIMIT 360.15 // The limit the human body can take before it starts taking damage from heat.
 #define BODYTEMP_COLD_DAMAGE_LIMIT 220.15 // The limit the human body can take before it starts taking damage from coldness.
@@ -838,7 +838,7 @@ SEE_PIXELS	256
 // for secHUDs and medHUDs and variants. The number is the location of the image on the list hud_list of humans.
 #define HEALTH_HUD          1 // a simple line rounding the mob's number health
 #define STATUS_HUD          2 // alive, dead, diseased, etc.
-#define ID_HUD              3 // the job asigned to my ID
+#define ID_HUD              3 // the job asigned to your ID
 #define WANTED_HUD          4 // wanted, released, parroled, security status
 #define IMPLOYAL_HUD		5 // loyality implant
 #define IMPCHEM_HUD		    6 // chemical implant
@@ -925,7 +925,7 @@ var/default_colour_matrix = list(1,0,0,0,\
 #define RESTRICTED 2   // Language can only be accquired by spawning or an admin.
 
 // Hairstyle flags
-#define HAIRSTYLE_CANTRIP 1 // 5% chance of tripping my stupid ass if you're running.
+#define HAIRSTYLE_CANTRIP 1 // 5% chance of tripping your stupid ass if you're running.
 
 // equip_to_slot_if_possible flags
 #define EQUIP_FAILACTION_NOTHING 0
@@ -1046,13 +1046,13 @@ var/default_colour_matrix = list(1,0,0,0,\
 ///////RESEARCH////////
 ///////////////////////
 //used in rdmachines, to define certain behaviours
-//bitflags are my waifu - Comic
+//bitflags are your waifu - Comic
 
 //NB TRUELOCKS should ONLY be used for machines that produce stuff that's not good in an emergency i.e. a gun fabricator. Be very careful with it
 #define CONSOLECONTROL		1	//does the console control it? can't be interacted if not linked
 #define HASOUTPUT			2	//does it have an output? - mainly for fabricators
 #define TAKESMATIN			4	//does it takes materials (sheets) - mainly for fabricators
-#define NANOTOUCH			8	//does it have a nanoui when you smack it with my hand? - mainly for fabricators
+#define NANOTOUCH			8	//does it have a nanoui when you smack it with your hand? - mainly for fabricators
 #define HASMAT_OVER			16	//does it have overlays for when you load materials in? - mainly for fabricators
 #define ACCESS_EMAG			32	//does it lose all its access when smacked by an emag? incompatible with CONSOLECONTROl, for obvious reasons
 #define LOCKBOXES			64	//does it spawn a lockbox around a design which is said to be locked? - for fabricators

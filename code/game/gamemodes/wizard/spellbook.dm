@@ -73,9 +73,9 @@
 	if(istype(O, /obj/item/weapon/antag_spawner/contract))
 		var/obj/item/weapon/antag_spawner/contract/contract = O
 		if(contract.used)
-			to_chat(user, "The contract has been used, you can't get my points back now.")
+			to_chat(user, "The contract has been used, you can't get your points back now.")
 		else
-			to_chat(user, "I feed the contract back into the spellbook, refunding my points.")
+			to_chat(user, "I feed the contract back into the spellbook, refunding your points.")
 			src.uses += APPRENTICE_PRICE
 			qdel (O)
 			O = null
@@ -89,7 +89,7 @@
 		return
 
 	if(user.is_blind())
-		to_chat(user, "<span class='info'>I open \the [src] and run my fingers across the parchment. Suddenly, the pages coalesce in my mind!</span>")
+		to_chat(user, "<span class='info'>You open \the [src] and run your fingers across the parchment. Suddenly, the pages coalesce in your mind!</span>")
 
 	user.set_machine(src)
 
@@ -97,7 +97,7 @@
 	dat += "<head><title>Spellbook ([uses] REMAINING)</title></head><body style=\"background-color:[book_background_color]\">"
 	dat += "<h1>A Wizard's Catalogue Of Spells And Artifacts</h1><br>"
 	dat += "<h2>[uses] point\s remaining (<a href='?src=\ref[src];refund=1'>Get a refund</a>)</h2><br>"
-	dat += "<em>This book contains a list of many useful things that you'll need in my journey.</em><br>"
+	dat += "<em>This book contains a list of many useful things that you'll need in your journey.</em><br>"
 	dat += "<strong>KNOWN SPELLS:</strong><br><br>"
 
 	var/list/shown_spells = get_available_spells()
@@ -240,14 +240,14 @@
 
 /obj/item/weapon/spellbook/proc/refund(mob/user)
 	if(!istype(get_area(user), /area/wizard_station))
-		to_chat(user, "<span class='notice'>No refunds once you leave my den.</span>")
+		to_chat(user, "<span class='notice'>No refunds once you leave your den.</span>")
 		return
 
 	for(var/spell/S in user.spell_list)
 		if(S.refund_price <= 0)
 			continue
 
-		to_chat(user, "<span class='info'>I forget [S.name] and receive [S.refund_price] additional spell points.</span>")
+		to_chat(user, "<span class='info'>You forget [S.name] and receive [S.refund_price] additional spell points.</span>")
 
 		user.remove_spell(S)
 		uses += S.refund_price
@@ -261,7 +261,7 @@
 		return
 
 	if(L.mind.special_role == "apprentice")
-		to_chat(L, "If you got caught sneaking a peak from my teacher's spellbook, you'd likely be expelled from the Wizard Academy. Better not.")
+		to_chat(L, "If you got caught sneaking a peak from your teacher's spellbook, you'd likely be expelled from the Wizard Academy. Better not.")
 		return
 
 	if(href_list["refund"])
@@ -274,7 +274,7 @@
 
 		if(ispath(buy_type, /spell)) //Passed a spell typepath
 			if(locate(buy_type) in usr.spell_list)
-				to_chat(usr, "<span class='notice'>I already know that spell. Perhaps you'd like to upgrade it instead?</span>")
+				to_chat(usr, "<span class='notice'>You already know that spell. Perhaps you'd like to upgrade it instead?</span>")
 
 			else if(buy_type in get_available_spells())
 				var/spell/S = buy_type
@@ -282,7 +282,7 @@
 					var/spell/added = new buy_type
 					added.refund_price = added.price
 					add_spell(added, L)
-					to_chat(usr, "<span class='info'>I have learned [added.name].</span>")
+					to_chat(usr, "<span class='info'>You have learned [added.name].</span>")
 					feedback_add_details("wizard_spell_learned", added.abbreviation)
 
 		else //Passed an artifact reference
@@ -348,7 +348,7 @@
 		if(knownspell.type == S.type)
 			if(user.mind)
 				if(user.mind.special_role == "apprentice" || user.mind.special_role == "Wizard")
-					to_chat(user, "<span class='notice'>I am already far more versed in this spell than this flimsy how-to book can provide.</span>")
+					to_chat(user, "<span class='notice'>You are already far more versed in this spell than this flimsy how-to book can provide.</span>")
 				else
 					to_chat(user, "<span class='notice'>I've already read this one.</span>")
 			return
@@ -389,7 +389,7 @@
 
 /obj/item/weapon/spellbook/oneuse/smoke/recoil(mob/living/user as mob)
 	..()
-	to_chat(user, "<span class='caution'>My stomach rumbles...</span>")
+	to_chat(user, "<span class='caution'>Your stomach rumbles...</span>")
 	if(user.nutrition)
 		user.nutrition = max(user.nutrition - 200,0)
 
@@ -401,7 +401,7 @@
 
 /obj/item/weapon/spellbook/oneuse/blind/recoil(mob/user as mob)
 	..()
-	to_chat(user, "<span class='warning'>I go blind!</span>")
+	to_chat(user, "<span class='warning'>You go blind!</span>")
 	user.eye_blind = 10
 
 /obj/item/weapon/spellbook/oneuse/mindswap
@@ -426,7 +426,7 @@
 		to_chat(user, "<span class='warning'>For a moment you feel like you don't even know who you are anymore.</span>")
 		return
 	if(stored_swap == user)
-		to_chat(user, "<span class='notice'>I stare at the book some more, but there doesn't seem to be anything else to learn...</span>")
+		to_chat(user, "<span class='notice'>You stare at the book some more, but there doesn't seem to be anything else to learn...</span>")
 		return
 
 	if(user.mind.special_verbs.len)
@@ -455,7 +455,7 @@
 		for(var/V in user.mind.special_verbs)
 			user.verbs += V
 
-	to_chat(stored_swap, "<span class='warning'>I am suddenly somewhere else... and someone else?!</span>")
+	to_chat(stored_swap, "<span class='warning'>You are suddenly somewhere else... and someone else?!</span>")
 	to_chat(user, "<span class='warning'>Suddenly you're staring at [src] again... where are you, who are you?!</span>")
 	stored_swap = null
 
@@ -467,7 +467,7 @@
 
 /obj/item/weapon/spellbook/oneuse/forcewall/recoil(mob/user as mob)
 	..()
-	to_chat(user, "<span class='warning'>I suddenly feel very solid!</span>")
+	to_chat(user, "<span class='warning'>You suddenly feel very solid!</span>")
 	var/obj/structure/closet/statue/S = new /obj/structure/closet/statue(user.loc, user)
 	S.timer = 30
 	user.drop_item()
@@ -481,14 +481,14 @@
 
 /obj/item/weapon/spellbook/oneuse/knock/recoil(mob/user as mob)
 	..()
-	to_chat(user, "<span class='warning'>I am knocked down!</span>")
+	to_chat(user, "<span class='warning'>You are knocked down!</span>")
 	user.Knockdown(20)
 
 /obj/item/weapon/spellbook/oneuse/horsemask
 	spell = /spell/targeted/equip_item/horsemask
 	spellname = "horses"
 	icon_state ="bookhorses"
-	desc = "This book is more horse than my mind has room for."
+	desc = "This book is more horse than your mind has room for."
 
 /obj/item/weapon/spellbook/oneuse/horsemask/recoil(mob/living/carbon/user as mob)
 	if(istype(user, /mob/living/carbon/human))
@@ -500,7 +500,7 @@
 		user.equip_to_slot_if_possible(magichead, slot_wear_mask, 1, 1)
 		qdel(src)
 	else
-		to_chat(user, "<span class='notice'>I say thee neigh</span>")
+		to_chat(user, "<span class='notice'>You say thee neigh</span>")
 
 /obj/item/weapon/spellbook/oneuse/charge
 	spell = /spell/aoe_turf/charge
@@ -521,7 +521,7 @@
 
 /obj/item/weapon/spellbook/oneuse/clown/recoil(mob/living/carbon/user as mob)
 	if(istype(user, /mob/living/carbon/human))
-		to_chat(user, "<span class ='warning'>I suddenly feel funny!</span>")
+		to_chat(user, "<span class ='warning'>You suddenly feel funny!</span>")
 		var/obj/item/clothing/mask/gas/clown_hat/magicclown = new /obj/item/clothing/mask/gas/clown_hat/stickymagic
 		user.flash_eyes(visual = 1)
 		user.dna.SetSEState(CLUMSYBLOCK,1)
@@ -539,7 +539,7 @@
 
 /obj/item/weapon/spellbook/oneuse/mime/recoil(mob/living/carbon/user as mob)
 	if(istype(user, /mob/living/carbon/human))
-		to_chat(user, "<span class ='warning'>I suddenly feel very quiet.</span>")
+		to_chat(user, "<span class ='warning'>You suddenly feel very quiet.</span>")
 		var/obj/item/clothing/mask/gas/mime/magicmime = new /obj/item/clothing/mask/gas/mime/stickymagic
 		user.flash_eyes(visual = 1)
 		user.drop_from_inventory(user.wear_mask)
@@ -550,12 +550,12 @@
 	spell = /spell/targeted/shoesnatch
 	spellname = "shoe snatching"
 	icon_state = "bookshoe"
-	desc = "This book will knock you off my feet."
+	desc = "This book will knock you off your feet."
 
 /obj/item/weapon/spellbook/oneuse/shoesnatch/recoil(mob/living/carbon/user as mob)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/victim = user
-		to_chat(user, "<span class ='warning'>My feet feel funny!</span>")
+		to_chat(user, "<span class ='warning'>Your feet feel funny!</span>")
 		var/obj/item/clothing/shoes/clown_shoes/magicshoes = new /obj/item/clothing/shoes/clown_shoes/stickymagic
 		user.flash_eyes(visual = 1)
 		user.drop_from_inventory(victim.shoes)
@@ -572,7 +572,7 @@
 /obj/item/weapon/spellbook/oneuse/robesummon/recoil(mob/living/carbon/user as mob)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/victim = user
-		to_chat(user, "<span class ='warning'>I suddenly feel very restrained!</span>")
+		to_chat(user, "<span class ='warning'>You suddenly feel very restrained!</span>")
 		var/obj/item/clothing/suit/straight_jacket/magicjacket = new/obj/item/clothing/suit/straight_jacket
 		user.drop_from_inventory(victim.wear_suit)
 		user.equip_to_slot(magicjacket, slot_wear_suit, 1, 1)
@@ -588,7 +588,7 @@
 /obj/item/weapon/spellbook/oneuse/disabletech/recoil(mob/living/carbon/user as mob)
 	if(istype(user, /mob/living/carbon/human))
 		user.contract_disease(new /datum/disease/robotic_transformation(0), 1)
-		to_chat(user, "<span class ='warning'>I feel a closer connection to technology...</span>")
+		to_chat(user, "<span class ='warning'>You feel a closer connection to technology...</span>")
 		qdel(src)
 
 /obj/item/weapon/spellbook/oneuse/magicmissle
@@ -600,7 +600,7 @@
 /obj/item/weapon/spellbook/oneuse/magicmissle/recoil(mob/living/carbon/user as mob)
 	if(istype(user, /mob/living/carbon/human))
 		user.adjustBrainLoss(100)
-		to_chat(user, "<span class = 'warning'>I can't cast this spell when it isn't my turn! 	You feel very stupid.</span>")
+		to_chat(user, "<span class = 'warning'>You can't cast this spell when it isn't your turn! 	You feel very stupid.</span>")
 		qdel(src)
 
 
@@ -615,7 +615,7 @@
 		user.dna.SetSEState(HEADACHEBLOCK,1)
 		genemutcheck(user,HEADACHEBLOCK,null,MUTCHK_FORCED)
 		user.update_mutations()
-		to_chat(user, "<span class = 'warning'>I feel like you've been pushing yourself too hard! </span>")
+		to_chat(user, "<span class = 'warning'>You feel like you've been pushing yourself too hard! </span>")
 		qdel(src)
 
 /obj/item/weapon/spellbook/oneuse/subjugate
@@ -627,7 +627,7 @@
 /obj/item/weapon/spellbook/oneuse/subjugate/recoil(mob/living/carbon/user as mob)
 	if(istype(user, /mob/living/carbon/human))
 		user.reagents.add_reagent(RUM, 200)
-		to_chat(user, "<span class = 'warning'>I feel very drunk all of a sudden.</span>")
+		to_chat(user, "<span class = 'warning'>You feel very drunk all of a sudden.</span>")
 		qdel(src)
 
 /obj/item/weapon/spellbook/oneuse/teleport
@@ -643,7 +643,7 @@
 		for(var/datum/organ/external/E in H.get_organs(LIMB_LEFT_LEG, LIMB_RIGHT_LEG))
 			E.droplimb(1)
 
-		to_chat(user, "<span class = 'warning'>My legs fall off!</span>")
+		to_chat(user, "<span class = 'warning'>Your legs fall off!</span>")
 		qdel(src)
 
 /obj/item/weapon/spellbook/oneuse/teleport/blink //sod coding different effects for each teleport spell
@@ -666,7 +666,7 @@
 			var/obj/item/clothing/head/butt/B = new(C.loc)
 			B.transfer_buttdentity(C)
 			C.op_stage.butt = 4
-			to_chat(user, "<span class='warning'>My ass just blew up!</span>")
+			to_chat(user, "<span class='warning'>Your ass just blew up!</span>")
 		playsound(get_turf(src), 'sound/effects/superfart.ogg', 50, 1)
 		C.apply_damage(40, BRUTE, LIMB_GROIN)
 		C.apply_damage(10, BURN, LIMB_GROIN)
@@ -681,7 +681,7 @@
 	if(istype(user, /mob/living/carbon/human))
 		user.apply_damage(25, BURN, LIMB_LEFT_HAND)
 		user.apply_damage(25, BURN, LIMB_RIGHT_HAND)
-		to_chat(user, "<span class = 'warning'>The book heats up and burns my hands!</span>")
+		to_chat(user, "<span class = 'warning'>The book heats up and burns your hands!</span>")
 		qdel(src)
 
 /obj/item/weapon/spellbook/oneuse/timestop
@@ -694,7 +694,7 @@
 	if(istype(user, /mob/living/carbon/human))
 		user.stunned = 5
 		user.flash_eyes(visual = 1)
-		to_chat(user, "<span class = 'warning'>I have been turned into a statue!</span>")
+		to_chat(user, "<span class = 'warning'>You have been turned into a statue!</span>")
 		new /obj/structure/closet/statue(user.loc, user) //makes the statue
 		qdel(src)
 	return
@@ -725,16 +725,16 @@
 
 /obj/item/weapon/spellbook/oneuse/mirror_of_pain/recoil(mob/living/carbon/user as mob)
 	scramble(1, user, 100)
-	to_chat(user, "<span class = 'warning'>My reflection becomes warped and distorted!</span>")
+	to_chat(user, "<span class = 'warning'>Your reflection becomes warped and distorted!</span>")
 
 /obj/item/weapon/spellbook/oneuse/bound_object
 	spell = /spell/targeted/bound_object
 	spellname = "binding"
 	icon_state = "bookbound"
-	desc = "This book seems like it's already in my hands."
+	desc = "This book seems like it's already in your hands."
 
 /obj/item/weapon/spellbook/oneuse/bound_object/recoil(mob/living/carbon/user as mob)
-	to_chat(user, "<span class = 'warning'>My surroundings are drawn to you!</span>")
+	to_chat(user, "<span class = 'warning'>Your surroundings are drawn to you!</span>")
 	var/counter = 0
 	for(var/obj/item/I in oview(5))
 		if(!I.anchored && counter <= 10)

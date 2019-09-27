@@ -138,7 +138,7 @@ var/global/ingredientLimit = 10
 					src.icon_state = initial(src.icon_state)
 					src.ingredient.mouse_opacity = 1
 					user.put_in_hands(src.ingredient)
-					to_chat(user, "<span class='notice'>I remove \the [src.ingredient.name] from \the [src.name].</span>")
+					to_chat(user, "<span class='notice'>You remove \the [src.ingredient.name] from \the [src.name].</span>")
 					src.ingredient = null
 				else
 					to_chat(user, "You are too far away from [src.name].")
@@ -213,10 +213,10 @@ var/global/ingredientLimit = 10
 		if(user.drop_item(I, src))
 			src.ingredient = I
 			spawn() src.cook(.)
-			to_chat(user, "<span class='notice'>I add \the [I.name] to \the [src.name].</span>")
+			to_chat(user, "<span class='notice'>You add \the [I.name] to \the [src.name].</span>")
 			return 1
 	else
-		to_chat(user, "<span class='warning'>I can't put that in \the [src.name]. \n[.]</span>")
+		to_chat(user, "<span class='warning'>You can't put that in \the [src.name]. \n[.]</span>")
 	return 0
 
 /obj/machinery/cooking/proc/transfer_reagents_to_food(var/obj/item/I)
@@ -551,7 +551,7 @@ var/global/ingredientLimit = 10
 /obj/machinery/cooking/grill/spit/attackby(obj/item/I, mob/user)
 	user.delayNextAttack(30)
 	if(istype(I,/obj/item/weapon/crowbar) && do_after(user,src,30))
-		user.visible_message("<span class='notice'>[user] dissassembles the [src].</span>", "<span class='notice'>I dissassemble \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] dissassembles the [src].</span>", "<span class='notice'>You dissassemble \the [src].</span>")
 		if(src.ingredient)
 			ingredient.forceMove(src.loc)
 			src.ingredient = null

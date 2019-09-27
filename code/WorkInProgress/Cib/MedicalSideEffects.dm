@@ -58,21 +58,21 @@
 /datum/medical_effect/headache/on_life(mob/living/carbon/human/H, strength)
 	switch(strength)
 		if(1 to 10)
-			H.custom_pain("I feel a light pain in my head.",0)
+			H.custom_pain("I feel a light pain in your head.",0)
 		if(11 to 30)
-			H.custom_pain("I feel a throbbing pain in my head!",1)
+			H.custom_pain("I feel a throbbing pain in your head!",1)
 		if(31 to 50)
-			H.custom_pain("I feel an excrutiating pain in my head!",1)
+			H.custom_pain("I feel an excrutiating pain in your head!",1)
 			H.adjustBrainLoss(1)
 		if(51 to INFINITY)
-			H.custom_pain("It feels like my head is about to split open!",1)
+			H.custom_pain("It feels like your head is about to split open!",1)
 			H.adjustBrainLoss(3)
 			var/datum/organ/external/O = H.organs_by_name[LIMB_HEAD]
 			O.take_damage(0, 1, 0, "Headache")
 
 /datum/medical_effect/headache/cure(mob/living/carbon/human/H)
 	if(H.reagents.has_reagent(ALKYSINE) || H.reagents.has_reagent(TRAMADOL))
-//		to_chat(H, "<span class='warning'>My head stops throbbing..</span>")// Halt spam.
+//		to_chat(H, "<span class='warning'>Your head stops throbbing..</span>")// Halt spam.
 
 		return 1
 	return 0
@@ -95,7 +95,7 @@
 
 /datum/medical_effect/bad_stomach/cure(mob/living/carbon/human/H)
 	if(H.reagents.has_reagent(ANTI_TOXIN))
-		to_chat(H, "<span class='warning'>My stomach feels a little better now..</span>")
+		to_chat(H, "<span class='warning'>Your stomach feels a little better now..</span>")
 		return 1
 	return 0
 
@@ -106,16 +106,16 @@
 /datum/medical_effect/cramps/on_life(mob/living/carbon/human/H, strength)
 	switch(strength)
 		if(1 to 10)
-			H.custom_pain("The muscles in my body hurt a little.",0)
+			H.custom_pain("The muscles in your body hurt a little.",0)
 		if(11 to 30)
-			H.custom_pain("The muscles in my body cramp up painfully.",0)
+			H.custom_pain("The muscles in your body cramp up painfully.",0)
 		if(31 to 50)
 			H.emote("me",1,"flinches as all the muscles in their body cramp up.")
-			H.custom_pain("There's pain all over my body.",1)
+			H.custom_pain("There's pain all over your body.",1)
 			H.adjustToxLoss(1)
 		if(51 to INFINITY)
 			H.emote("me",1,"flinches as all the muscles in their body cramp up.")
-			H.custom_pain("It feels as though my muscles are being ripped apart!",1)
+			H.custom_pain("It feels as though your muscles are being ripped apart!",1)
 			H.apply_damage(1, used_weapon = "Cramps")
 
 /datum/medical_effect/cramps/cure(mob/living/carbon/human/H)
@@ -132,7 +132,7 @@
 		if(1 to 10)
 			H.custom_pain("I feel a slight itch.",0)
 		if(11 to 30)
-			H.custom_pain("I want to scratch my itch badly.",0)
+			H.custom_pain("I want to scratch your itch badly.",0)
 		if(31 to 50)
 			H.emote("me",1,"shivers slightly.")
 			H.custom_pain("This itch makes it really hard to concentrate.",1)

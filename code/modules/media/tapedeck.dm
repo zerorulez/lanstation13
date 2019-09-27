@@ -81,10 +81,10 @@
 
 /obj/machinery/media/tapedeck/attack_hand(var/mob/user)
 	if(stat & NOPOWER)
-		to_chat(usr, "<span class='warning'>I don't see anything to mess with.</span>")
+		to_chat(usr, "<span class='warning'>You don't see anything to mess with.</span>")
 		return
 	if(stat & BROKEN && playlist!=null)
-		user.visible_message("<span class='danger'>[user.name] smacks the side of \the [src.name].</span>","<span class='warning'>I hammer the side of \the [src.name].</span>")
+		user.visible_message("<span class='danger'>[user.name] smacks the side of \the [src.name].</span>","<span class='warning'>You hammer the side of \the [src.name].</span>")
 		stat &= ~BROKEN
 		playlist=null
 		playing=emagged
@@ -122,7 +122,7 @@
 			else
 				t += "<i>Please wait before changing playlists.</i>"
 		else
-			t += "<i>I cannot change the playlist.</i>"
+			t += "<i>You cannot change the playlist.</i>"
 		t += "<br />"
 
 		////////////////////////////
@@ -202,24 +202,24 @@
 			loop_mode = JUKEMODE_SHUFFLE
 			emagged = 1
 			playing = 1
-			user.visible_message("<span class='warning'>[user.name] slides something into the [src.name]'s card-reader.</span>","<span class='warning'>I short out the [src.name].</span>")
+			user.visible_message("<span class='warning'>[user.name] slides something into the [src.name]'s card-reader.</span>","<span class='warning'>You short out the [src.name].</span>")
 			update_icon()
 			update_music()
 			return 1
 	else if(istype(W,/obj/item/weapon/wrench))
 		var/un = !anchored ? "" : "un"
-		user.visible_message("<span class='notice'>[user.name] begins [un]locking \the [src.name]'s casters.</span>","<span class='notice'>I begin [un]locking \the [src.name]'s casters.</span>")
+		user.visible_message("<span class='notice'>[user.name] begins [un]locking \the [src.name]'s casters.</span>","<span class='notice'>You begin [un]locking \the [src.name]'s casters.</span>")
 		if(do_after(user, src,30))
 			playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 			anchored = !anchored
-			user.visible_message("<span class='notice'>[user.name] [un]locks \the [src.name]'s casters.</span>","<span class='warning'>I [un]lock \the [src.name]'s casters.</span>")
+			user.visible_message("<span class='notice'>[user.name] [un]locks \the [src.name]'s casters.</span>","<span class='warning'>You [un]lock \the [src.name]'s casters.</span>")
 			playing = emagged
 			update_music()
 			update_icon()
 
 /obj/machinery/media/jukebox/Topic(href, href_list)
 	if(isobserver(usr) && !isAdminGhost(usr))
-		to_chat(usr, "<span class='warning'>I can't push buttons when my fingers go right through them, dummy.</span>")
+		to_chat(usr, "<span class='warning'>You can't push buttons when your fingers go right through them, dummy.</span>")
 		return
 
 	if(..())
@@ -254,7 +254,7 @@
 
 	if (href_list["playlist"])
 		if(!check_reload())
-			to_chat(usr, "<span class='warning'>I must wait 60 seconds between playlist reloads.</span>")
+			to_chat(usr, "<span class='warning'>You must wait 60 seconds between playlist reloads.</span>")
 			return
 		playlist_id=href_list["playlist"]
 		last_reload=world.time
@@ -290,7 +290,7 @@
 		if(response)
 			var/json = file2text(response["CONTENT"])
 			if("/>" in json)
-				visible_message("<span class='warning'>\icon[src] \The [src] buzzes, unable to update its playlist.</span>","<em>I hear a buzz.</em>")
+				visible_message("<span class='warning'>\icon[src] \The [src] buzzes, unable to update its playlist.</span>","<em>You hear a buzz.</em>")
 				stat &= BROKEN
 				update_icon()
 				return
@@ -301,11 +301,11 @@
 			for(var/list/record in songdata)
 				playlist += new /datum/song_info(record)
 			if(playlist.len==0)
-				visible_message("<span class='warning'>\icon[src] \The [src] buzzes, unable to update its playlist.</span>","<em>I hear a buzz.</em>")
+				visible_message("<span class='warning'>\icon[src] \The [src] buzzes, unable to update its playlist.</span>","<em>You hear a buzz.</em>")
 				stat &= BROKEN
 				update_icon()
 				return
-			visible_message("<span class='notice'>\icon[src] \The [src] beeps, and the menu on its front fills with [playlist.len] items.</span>","<em>I hear a beep.</em>")
+			visible_message("<span class='notice'>\icon[src] \The [src] beeps, and the menu on its front fills with [playlist.len] items.</span>","<em>You hear a beep.</em>")
 			if(autoplay)
 				playing=1
 				autoplay=0
@@ -340,7 +340,7 @@
 		var/datum/song_info/song = playlist[current_song]
 		media_url = song.url
 		media_start_time = world.time
-		visible_message("<span class='notice'>\icon[src] \The [src] begins to play [song.display()].</span>","<em>I hear music.</em>")
+		visible_message("<span class='notice'>\icon[src] \The [src] begins to play [song.display()].</span>","<em>You hear music.</em>")
 		//visible_message("<span class='notice'>\icon[src] \The [src] warbles: [song.length/10]s @ [song.url]</notice>")
 	else
 		media_url=""
@@ -358,7 +358,7 @@
 	req_access = list(access_bar)
 
 	playlist_id="bar"
-	// Must be defined on my server.
+	// Must be defined on your server.
 	playlists=list(
 		"bar"  = "Bar Mix",
 		"jazz" = "Jazz",
@@ -373,7 +373,7 @@
 
 	id_tag="DJ Satellite" // For autolink
 
-	// Must be defined on my server.
+	// Must be defined on your server.
 	playlists=list(
 		"bar"  = "Bar Mix",
 		"jazz" = "Jazz",
@@ -391,7 +391,7 @@
 	change_cost = 0
 
 	playlist_id="bar"
-	// Must be defined on my server.
+	// Must be defined on your server.
 	playlists=list(
 		"bar"  = "Bar Mix",
 		"jazz" = "Jazz",
@@ -406,13 +406,13 @@
 /obj/machinery/media/jukebox/superjuke/attackby(obj/item/W, mob/user)
 	// NO FUN ALLOWED.  Emag list is included, anyway.
 	if(istype(W, /obj/item/weapon/card/emag))
-		to_chat(user, "<span class='warning'>My [W] refuses to touch \the [src]!</span>")
+		to_chat(user, "<span class='warning'>Your [W] refuses to touch \the [src]!</span>")
 		return
 	..()
 
 /obj/machinery/media/jukebox/shuttle
 	playlist_id="shuttle"
-	// Must be defined on my server.
+	// Must be defined on your server.
 	playlists=list(
 		"shuttle"  = "Shuttle Mix"
 	)

@@ -11,13 +11,13 @@
 		return //Can't receive items while cuffed
 	var/obj/item/I
 	if(user.get_active_hand() == null)
-		to_chat(user, "I don't have anything in my [user.get_index_limb_name(user.active_hand)] to give to [src].")
+		to_chat(user, "I don't have anything in your [user.get_index_limb_name(user.active_hand)] to give to [src].")
 		return
 	I = user.get_active_hand()
 	if(!I)
 		return
 	if(src == user) //Shouldn't happen
-		to_chat(user, "<span class='warning'>I tried to give myself \the [I], but I didn't want it</span>")
+		to_chat(user, "<span class='warning'>You tried to give yourself \the [I], but I didn't want it</span>")
 		return
 	if(find_empty_hand_index())
 		give_check = TRUE
@@ -27,21 +27,21 @@
 				if(!I)
 					return
 				if(!Adjacent(user))
-					to_chat(user, "<span class='warning'>I need to stay still while giving an object</span>")
+					to_chat(user, "<span class='warning'>You need to stay still while giving an object</span>")
 					to_chat(src, "<span class='warning'>[user] moved away</span>")//What an asshole
 
 					return
 				if(user.get_active_hand() != I)
-					to_chat(user, "<span class='warning'>I need to keep the item in my hand</span>")
+					to_chat(user, "<span class='warning'>You need to keep the item in your hand</span>")
 					to_chat(src, "<span class='warning'>[user] has put \the [I] away</span>")
 					return
 				if(!find_empty_hand_index())
-					to_chat(src, "<span class='warning'>My hands are full</span>")
+					to_chat(src, "<span class='warning'>Your hands are full</span>")
 					to_chat(user, "<span class='warning'>Their hands are full</span>")
 					return
 				if(!user.drop_item(I))
 					src << "<span class='warning'>[user] can't let go of \the [I].</span>"
-					user << "<span class='warning'>I can't seem to let go of \the [I]</span>"
+					user << "<span class='warning'>You can't seem to let go of \the [I]</span>"
 					return
 
 				src.put_in_hands(I)

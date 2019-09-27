@@ -84,7 +84,7 @@
 	// DNA sample from syringe.
 	if(!prints_prosthetics && istype(W, /obj/item/weapon/reagent_containers/syringe))
 		//Finish the feature first, muh immulsions
-//		to_chat(user, "<span class='notice'>I inject the blood sample into \the [src], but it simply drains away through a tube in the back.</span>.")
+//		to_chat(user, "<span class='notice'>You inject the blood sample into \the [src], but it simply drains away through a tube in the back.</span>.")
 		return
 	// Meat for biomass.
 	else if(!prints_prosthetics && istype(W, /obj/item/weapon/reagent_containers/food/snacks/meat))
@@ -102,10 +102,10 @@
 			returnToPool(M)
 			return
 	else if(iswrench(W))
-		user.visible_message("<span class='notice'>[user] begins to [anchored? "unfasten" : "fasten"] \the [src].</span>", "<span class='notice'>I begin to [anchored? "unfasten" : "fasten"] \the [src].</span>", "<span class='notice'>I hear a ratchet.</span>")
+		user.visible_message("<span class='notice'>[user] begins to [anchored? "unfasten" : "fasten"] \the [src].</span>", "<span class='notice'>You begin to [anchored? "unfasten" : "fasten"] \the [src].</span>", "<span class='notice'>You hear a ratchet.</span>")
 		playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 		if(do_after(user, src, 30))
-			user.visible_message("<span class='notice'>[user] begins to [anchored? "unfasten" : "fasten"] \the [src].</span>", "<span class='notice'>I [anchored? "unfasten" : "fasten"] \the [src].</span>", "<span class='notice'>I hear a ratchet.</span>")
+			user.visible_message("<span class='notice'>[user] begins to [anchored? "unfasten" : "fasten"] \the [src].</span>", "<span class='notice'>You [anchored? "unfasten" : "fasten"] \the [src].</span>", "<span class='notice'>You hear a ratchet.</span>")
 			if(anchored)
 				src.anchored = 0
 			else

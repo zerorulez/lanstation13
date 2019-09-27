@@ -182,7 +182,7 @@
 			to_chat(user, "<span class='warning'>That beaker is too large to fit into \the [src]'s beaker port.</span>")
 			return
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 			return 1
 		beaker = W
 		to_chat(user, "I insert \the [W] into \the [src]'s beaker port.")
@@ -216,7 +216,7 @@
 		update_color()
 		return
 
-	to_chat(M, "<span class='warning'>The blade's coating seeps into my wound!</span>")
+	to_chat(M, "<span class='warning'>The blade's coating seeps into your wound!</span>")
 
 	B.reagents.reaction(M, INGEST)
 
@@ -284,5 +284,5 @@
 					H.update_inv_hands()
 					H.update_inv_back()
 		else
-			to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 			return

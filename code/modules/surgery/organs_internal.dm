@@ -41,7 +41,7 @@
 	var/msg = "[user] starts to pull something out from [target]'s ribcage with \the [tool]."
 	var/self_msg = "I start to pull something out from [target]'s ribcage with \the [tool]."
 	user.visible_message(msg, self_msg)
-	target.custom_pain("Something hurts horribly in my chest!",1)
+	target.custom_pain("Something hurts horribly in your chest!",1)
 	..()
 
 /datum/surgery_step/internal/remove_embryo/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -81,7 +81,7 @@
 			break
 	if(..())
 		if(!has_damaged_organic_organ && has_damaged_robot_organ)
-			to_chat(user, "<span class='warning'>I cannot fix robotic organs with this tool.</span>")
+			to_chat(user, "<span class='warning'>You cannot fix robotic organs with this tool.</span>")
 			return
 		return has_damaged_organic_organ
 
@@ -105,7 +105,7 @@
 				user.visible_message("[user] starts treating damage to [target]'s [I.name] with [tool_name].", \
 				"I start treating damage to [target]'s [I.name] with [tool_name]." )
 
-	target.custom_pain("The pain in my [affected.display_name] is living hell!",1)
+	target.custom_pain("The pain in your [affected.display_name] is living hell!",1)
 	..()
 
 /datum/surgery_step/internal/fix_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -126,7 +126,7 @@
 		if(I && I.damage > 0)
 			if(I.robotic < 2)
 				user.visible_message("<span class='notice'>[user] treats damage to [target]'s [I.name] with [tool_name].</span>", \
-				"<span class='notice'>I treat damage to [target]'s [I.name] with [tool_name].</span>" )
+				"<span class='notice'>You treat damage to [target]'s [I.name] with [tool_name].</span>" )
 				I.damage = 0
 		if(I)
 			I.status &= ~ORGAN_BROKEN
@@ -139,7 +139,7 @@
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 
 	user.visible_message("<span class='warning'>[user]'s hand slips, getting mess and tearing the inside of [target]'s [affected.display_name] with \the [tool]!</span>", \
-	"<span class='warning'>My hand slips, getting mess and tearing the inside of [target]'s [affected.display_name] with \the [tool]!</span>")
+	"<span class='warning'>Your hand slips, getting mess and tearing the inside of [target]'s [affected.display_name] with \the [tool]!</span>")
 	var/dam_amt = 2
 
 	if (istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
@@ -194,7 +194,7 @@
 			user.visible_message("[user] starts carefully removing the cancerous growths in [target]'s [I.name] with \the [tool].", \
 			"I start carefully removing the cancerous growths in [target]'s [I.name] with \the [tool]." )
 
-	target.custom_pain("The pain in my [affected.display_name] is living hell!", 1)
+	target.custom_pain("The pain in your [affected.display_name] is living hell!", 1)
 	..()
 
 /datum/surgery_step/internal/fix_organ_cancer/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -216,7 +216,7 @@
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 
 	user.visible_message("<span class='warning'>[user]'s hand slips, getting mess on and tearing the inside of [target]'s [affected.display_name] with \the [tool]!</span>", \
-	"<span class='warning'>My hand slips, getting mess on and tearing the inside of [target]'s [affected.display_name] with \the [tool]!</span>")
+	"<span class='warning'>Your hand slips, getting mess on and tearing the inside of [target]'s [affected.display_name] with \the [tool]!</span>")
 	affected.createwound(CUT, 10)
 */
 
@@ -247,7 +247,7 @@
 			break
 	if(..())
 		if(!has_damaged_robot_organ && has_damaged_organic_organ)
-			to_chat(user, "<span class='warning'>I cannot fix organic organs with this tool.</span>")
+			to_chat(user, "<span class='warning'>You cannot fix organic organs with this tool.</span>")
 			return
 		return has_damaged_robot_organ
 
@@ -263,7 +263,7 @@
 				user.visible_message("[user] starts mending the damage to [target]'s [I.name]'s mechanisms.", \
 				"I start mending the damage to [target]'s [I.name]'s mechanisms." )
 
-	target.custom_pain("The pain in my [affected.display_name] is living hell!",1)
+	target.custom_pain("The pain in your [affected.display_name] is living hell!",1)
 	..()
 
 /datum/surgery_step/internal/fix_organ_robotic/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -277,7 +277,7 @@
 		if(I && I.damage > 0)
 			if(I.robotic >= 2)
 				user.visible_message("<span class='notice'>[user] repairs [target]'s [I.name] with [tool].</span>", \
-				"<span class='notice'>I repair [target]'s [I.name] with [tool].</span>" )
+				"<span class='notice'>You repair [target]'s [I.name] with [tool].</span>" )
 				I.damage = 0
 		if(I)
 			I.status &= ~ORGAN_BROKEN
@@ -290,7 +290,7 @@
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 
 	user.visible_message("<span class='warning'>[user]'s hand slips, gumming up the mechanisms inside of [target]'s [affected.display_name] with \the [tool]!</span>", \
-	"<span class='warning'>My hand slips, gumming up the mechanisms inside of [target]'s [affected.display_name] with \the [tool]!</span>")
+	"<span class='warning'>Your hand slips, gumming up the mechanisms inside of [target]'s [affected.display_name] with \the [tool]!</span>")
 
 	target.adjustToxLoss(5)
 	affected.createwound(CUT, 5)
@@ -345,12 +345,12 @@
 
 	user.visible_message("[user] starts to separate [target]'s [target.op_stage.current_organ] with \the [tool].", \
 	"I start to separate [target]'s [target.op_stage.current_organ] with \the [tool]." )
-	target.custom_pain("The pain in my [affected.display_name] is living hell!",1)
+	target.custom_pain("The pain in your [affected.display_name] is living hell!",1)
 	..()
 
 /datum/surgery_step/internal/detatch_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='notice'>[user] has separated [target]'s [target.op_stage.current_organ] with \the [tool].</span>" , \
-	"<span class='notice'>I have separated [target]'s [target.op_stage.current_organ] with \the [tool].</span>")
+	"<span class='notice'>You have separated [target]'s [target.op_stage.current_organ] with \the [tool].</span>")
 
 	var/datum/organ/internal/I = target.internal_organs_by_name[target.op_stage.current_organ]
 	if(I && istype(I) && I.CanRemove(target, user, quiet=1))
@@ -360,7 +360,7 @@
 /datum/surgery_step/internal/detatch_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!</span>", \
-	"<span class='warning'>My hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!</span>")
+	"<span class='warning'>Your hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!</span>")
 	affected.createwound(CUT, rand(30,50), 1)
 
 
@@ -400,12 +400,12 @@
 /datum/surgery_step/internal/remove_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("[user] starts removing [target]'s [target.op_stage.current_organ] with \the [tool].", \
 	"I start removing [target]'s [target.op_stage.current_organ] with \the [tool].")
-	target.custom_pain("Someone's ripping out my [target.op_stage.current_organ]!",1)
+	target.custom_pain("Someone's ripping out your [target.op_stage.current_organ]!",1)
 	..()
 
 /datum/surgery_step/internal/remove_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='notice'>[user] has removed [target]'s [target.op_stage.current_organ] with \the [tool].</span>", \
-	"<span class='notice'>I have removed [target]'s [target.op_stage.current_organ] with \the [tool].</span>")
+	"<span class='notice'>You have removed [target]'s [target.op_stage.current_organ] with \the [tool].</span>")
 
 	// Extract the organ!
 	if(target.op_stage.current_organ)
@@ -438,7 +438,7 @@
 /datum/surgery_step/internal/remove_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!</span>", \
-	"<span class='warning'>My hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!</span>")
+	"<span class='warning'>Your hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!</span>")
 	affected.createwound(BRUISE, 20)
 
 
@@ -464,7 +464,7 @@
 		return 0
 
 	if(!target.species)
-		to_chat(user, "<span class='warning'>I have no idea what species this person is. Report this on the bug tracker.</span>")
+		to_chat(user, "<span class='warning'>You have no idea what species this person is. Report this on the bug tracker.</span>")
 		return 0
 
 	var/o_is = (O.gender == PLURAL) ? "are" : "is"
@@ -498,13 +498,13 @@
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("[user] starts transplanting \the [tool] into [target]'s [affected.display_name].", \
 	"I start transplanting \the [tool] into [target]'s [affected.display_name].")
-	target.custom_pain("Someone's rooting around in my [affected.display_name]!",1)
+	target.custom_pain("Someone's rooting around in your [affected.display_name]!",1)
 	..()
 
 /datum/surgery_step/internal/replace_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has transplanted \the [tool] into [target]'s [affected.display_name].</span>", \
-	"<span class='notice'>I have transplanted \the [tool] into [target]'s [affected.display_name].</span>")
+	"<span class='notice'>You have transplanted \the [tool] into [target]'s [affected.display_name].</span>")
 	user.drop_item()
 	var/obj/item/organ/internal/O = tool
 
@@ -535,7 +535,7 @@
 
 /datum/surgery_step/internal/replace_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='warning'>[user]'s hand slips, damaging \the [tool]!</span>", \
-	"<span class='warning'>My hand slips, damaging \the [tool]!</span>")
+	"<span class='warning'>Your hand slips, damaging \the [tool]!</span>")
 	var/obj/item/organ/internal/I = tool
 	if(istype(I))
 		I.organ_data.take_damage(rand(3,5),0)
@@ -576,12 +576,12 @@
 /datum/surgery_step/internal/attach_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("[user] begins reattaching [target]'s [target.op_stage.current_organ] with \the [tool].", \
 	"I start reattaching [target]'s [target.op_stage.current_organ] with \the [tool].")
-	target.custom_pain("Someone's digging needles into my [target.op_stage.current_organ]!",1)
+	target.custom_pain("Someone's digging needles into your [target.op_stage.current_organ]!",1)
 	..()
 
 /datum/surgery_step/internal/attach_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='notice'>[user] has reattached [target]'s [target.op_stage.current_organ] with \the [tool].</span>" , \
-	"<span class='notice'>I have reattached [target]'s [target.op_stage.current_organ] with \the [tool].</span>")
+	"<span class='notice'>You have reattached [target]'s [target.op_stage.current_organ] with \the [tool].</span>")
 
 	var/datum/organ/internal/I = target.internal_organs_by_name[target.op_stage.current_organ]
 	if(I && istype(I))
@@ -590,7 +590,7 @@
 /datum/surgery_step/internal/attach_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!</span>", \
-	"<span class='warning'>My hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!</span>")
+	"<span class='warning'>Your hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!</span>")
 	affected.createwound(BRUISE, 20)
 
 //////////////////////////////////////////////////////////////////

@@ -56,13 +56,13 @@
 	else if(iscrowbar(O) && user.a_intent == I_HELP) //Only way to deconstruct, needs help intent
 		playsound(get_turf(src), 'sound/items/Crowbar.ogg', 75, 1)
 		user.visible_message("<span class='warning'>[user] starts disassembling \the [src].</span>", \
-		"<span class='notice'>I start disassembling \the [src].</span>")
+		"<span class='notice'>You start disassembling \the [src].</span>")
 		busy = 1
 
 		if(do_after(user, src, 50))
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 75, 1)
 			user.visible_message("<span class='warning'>[user] disassembles \the [src].</span>", \
-			"<span class='notice'>I disassemble \the [src].</span>")
+			"<span class='notice'>You disassemble \the [src].</span>")
 			busy = 0
 			getFromPool(/obj/item/stack/sheet/wood, get_turf(src), 5)
 			qdel(src)
@@ -74,14 +74,14 @@
 		anchored = !anchored
 		playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)
 		user.visible_message("<span class='warning'>[user] [anchored ? "":"un"]anchors \the [src] [anchored ? "to":"from"] the floor.</span>", \
-		"<span class='notice'>I [anchored ? "":"un"]anchor the [src] [anchored ? "to":"from"] the floor.</span>")
+		"<span class='notice'>You [anchored ? "":"un"]anchor the [src] [anchored ? "to":"from"] the floor.</span>")
 	else if(istype(O, /obj/item/weapon/pen))
 		set_tiny_label(user)
 	else if(O.damtype == BRUTE || O.damtype == BURN)
 		user.delayNextAttack(10) //We are attacking the bookshelf
 		health -= O.force
 		user.visible_message("<span class='warning'>\The [user] hits \the [src] with \the [O].</span>", \
-		"<span class='warning'>I hit \the [src] with \the [O].</span>")
+		"<span class='warning'>You hit \the [src] with \the [O].</span>")
 		healthcheck()
 	else
 		return ..() //Weapon checks for weapons without brute or burn damage type and grab check
@@ -248,7 +248,7 @@
 			if(W.w_class < W_CLASS_MEDIUM)
 				if(user.drop_item(W, src))
 					store = W
-					to_chat(user, "<span class='notice'>I put [W] in [title].</span>")
+					to_chat(user, "<span class='notice'>You put [W] in [title].</span>")
 					return
 			else
 				to_chat(user, "<span class='notice'>[W] won't fit in [title].</span>")
@@ -271,7 +271,7 @@
 					src.name = newtitle
 					src.title = newtitle
 			if("Contents")
-				var/content = sanitize(input(usr, "Write my book's contents (HTML NOT allowed):") as message|null)
+				var/content = sanitize(input(usr, "Write your book's contents (HTML NOT allowed):") as message|null)
 				if(!content)
 					to_chat(usr, "The content is invalid.")
 					return
@@ -318,9 +318,9 @@
 	else if(istype(W, /obj/item/weapon/kitchen/utensil/knife/large) || iswirecutter(W))
 		if(carved)
 			return
-		to_chat(user, "<span class='notice'>I begin to carve out [title].</span>")
+		to_chat(user, "<span class='notice'>You begin to carve out [title].</span>")
 		if(do_after(user, src, 30))
-			to_chat(user, "<span class='notice'>I carve out the pages from [title]! You didn't want to read it anyway.</span>")
+			to_chat(user, "<span class='notice'>You carve out the pages from [title]! You didn't want to read it anyway.</span>")
 			carved = 1
 			return
 	else

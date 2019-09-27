@@ -16,7 +16,7 @@
 	//	var/obj/item/weapon/storage/box/box=new(loc)
 	//	new typepath(box)
 	//	box.name="[name] package"
-	//	box.desc="A special gift for doing my job."
+	//	box.desc="A special gift for doing your job."
 	//	user.put_in_hands(box)
 	else
 		new typepath(merchcomp.loc)
@@ -78,7 +78,7 @@
 
 /datum/storeitem/beachball
 	name = "Beach Ball"
-	desc = "Summer up my office with this cheap vinyl beachball made by prisoners!"
+	desc = "Summer up your office with this cheap vinyl beachball made by prisoners!"
 	typepath = /obj/item/weapon/beach_ball
 	cost = 50
 
@@ -87,7 +87,7 @@
 /////////////////////////////
 /datum/storeitem/robotnik_labcoat
 	name = "Robotnik's Research Labcoat"
-	desc = "Join the empire and display my hatred for woodland animals."
+	desc = "Join the empire and display your hatred for woodland animals."
 	typepath = /obj/item/clothing/suit/storage/labcoat/custom/N3X15/robotics
 	cost = 200
 
@@ -108,7 +108,7 @@
 
 /datum/storeitem/photo_album
 	name = "Photo Album"
-	desc = "Clearly all my photos of the clown's shenanigans deserve this investment."
+	desc = "Clearly all your photos of the clown's shenanigans deserve this investment."
 	typepath = /obj/item/weapon/storage/photo_album
 	cost = 300
 

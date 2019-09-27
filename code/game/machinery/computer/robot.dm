@@ -32,7 +32,7 @@
 	if(..())
 		return
 	if (src.z > 6)
-		to_chat(user, "<span class='danger'>Unable to establish a connection: </span>I am too far away from the station!")
+		to_chat(user, "<span class='danger'>Unable to establish a connection: </span>You are too far away from the station!")
 		return
 	user.set_machine(src)
 	var/dat

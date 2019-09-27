@@ -83,7 +83,7 @@ var/specops_shuttle_timeleft = 0
 
 	for(var/turf/T in get_area_turfs(end_location) )
 		var/mob/M = locate(/mob) in T
-		to_chat(M, "<span class='warning'>I have arrived at Central Command. Operation has ended!</span>")
+		to_chat(M, "<span class='warning'>You have arrived at Central Command. Operation has ended!</span>")
 
 	specops_shuttle_at_station = 0
 
@@ -236,7 +236,7 @@ var/specops_shuttle_timeleft = 0
 
 	for(var/turf/T in get_area_turfs(end_location) )
 		var/mob/M = locate(/mob) in T
-		to_chat(M, "<span class='warning'>I have arrived to [station_name]. Commence operation!</span>")
+		to_chat(M, "<span class='warning'>You have arrived to [station_name]. Commence operation!</span>")
 
 	for(var/obj/machinery/computer/specops_shuttle/S in machines)
 		S.specops_shuttle_timereset = world.time + SPECOPS_RETURN_DELAY
@@ -259,7 +259,7 @@ var/specops_shuttle_timeleft = 0
 	return attack_hand(user)
 
 /obj/machinery/computer/specops_shuttle/emag(mob/user as mob)
-	to_chat(user, "<span class='notice'>The electronic systems in this console are far too advanced for my primitive hacking peripherals.</span>")
+	to_chat(user, "<span class='notice'>The electronic systems in this console are far too advanced for your primitive hacking peripherals.</span>")
 	return
 
 /obj/machinery/computer/specops_shuttle/attack_hand(var/mob/user as mob)
@@ -502,7 +502,7 @@ var/specops_shuttle_timeleft = 0
 
 	for(var/turf/T in get_area_turfs(end_location) )
 		var/mob/M = locate(/mob) in T
-		to_chat(M, "<span class='warning'>I have arrived to [station_name]. Commence operation!</span>")
+		to_chat(M, "<span class='warning'>You have arrived to [station_name]. Commence operation!</span>")
 
 /proc/specops_can_move()
 	if(specops_shuttle_moving_to_station || specops_shuttle_moving_to_centcom)
@@ -521,7 +521,7 @@ var/specops_shuttle_timeleft = 0
 
 /obj/machinery/computer/specops_shuttle/attackby(I as obj, user as mob)
 	if(istype(I,/obj/item/weapon/card/emag))
-		to_chat(user, "<span class='notice'>The electronic systems in this console are far too advanced for my primitive hacking peripherals.</span>")
+		to_chat(user, "<span class='notice'>The electronic systems in this console are far too advanced for your primitive hacking peripherals.</span>")
 	else
 		return attack_hand(user)
 

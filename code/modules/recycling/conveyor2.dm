@@ -261,8 +261,8 @@
 			playsound(get_turf(src), 'sound/items/Welder2.ogg', 50, 1)
 			if(do_after(user, src, 30))
 				user.visible_message("<span class='warning'>Plates of metal are cut off \the [src] by [user.name] with the welding tool.</span>", \
-				"<span class='warning'>I cut the metal plates off \the [src] with the welding tool.</span>", \
-				"<span class='warning'>I hear welding.</span>")
+				"<span class='warning'>You cut the metal plates off \the [src] with the welding tool.</span>", \
+				"<span class='warning'>You hear welding.</span>")
 				new /obj/structure/conveyor_assembly(loc,dir)
 				getFromPool(/obj/item/stack/sheet/metal, loc, 3)
 				qdel(src)
@@ -307,7 +307,7 @@
 		<li><b>Frequency:</b> <a href="?src=\ref[src];set_freq=-1">[format_frequency(frequency)] GHz</a> (<a href="?src=\ref[src];set_freq=1367">Reset</a>)</li>
 		<li><b>ID Tag:</b> <a href="?src=\ref[src];set_id=1">[dis_id_tag]</a></li>
 
-		<li>To quickly copy configuration: Add a Conveyor or a Conveyor Switch into buffer, activate the Multitool in my hand to enable Cloning Mode, then use it on another Conveyor.</li>
+		<li>To quickly copy configuration: Add a Conveyor or a Conveyor Switch into buffer, activate the Multitool in your hand to enable Cloning Mode, then use it on another Conveyor.</li>
 		<li>To make counter-clockwise corners: Use the Reverse Direction button in this menu. Diagonals will attempt to auto set direction based on connected straight line segments.</li>
 	</ul>"}
 
@@ -535,7 +535,7 @@
 		to_chat(user, "<span class='notice'>Deconstructing \the [src]...</span>")
 		playsound(get_turf(src), 'sound/items/Ratchet.ogg', 100, 1)
 		if(do_after(user, src,50))
-			to_chat(user, "<span class='notice'>I disassemble \the [src].</span>")
+			to_chat(user, "<span class='notice'>You disassemble \the [src].</span>")
 			var/turf/T=get_turf(src)
 			new /obj/item/device/assembly/signaler(T)
 			new /obj/item/stack/rods(T,1)
@@ -555,7 +555,7 @@
 				[convdir ==  0 ? "<b>No</b>" 	 : {"<a href="?src=\ref[src];setconvdir= 0">No</a>"}]
 				[convdir ==  1 ? "<b>&rarr;</b>" : {"<a href="?src=\ref[src];setconvdir= 1">&rarr;</a>"}]
 			</li>
-			<li>To quickly copy configuration: Add a Conveyor or a Conveyor Switch into buffer, activate the Multitool in my hand to enable Cloning Mode, then use it on another Conveyor.</li>
+			<li>To quickly copy configuration: Add a Conveyor or a Conveyor Switch into buffer, activate the Multitool in your hand to enable Cloning Mode, then use it on another Conveyor.</li>
 			<li><i>Cloning from a Conveyor Switch will only copy the Frequency and ID Tag, not direction.</i></li>
 		</ul>"}
 

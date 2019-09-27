@@ -60,7 +60,7 @@
 			to_chat(usr, "<span class='warning'>\The [src] has no reagent container. It's pointless trying to attach it to \the [H].</span>")
 			return
 		if(H.species && (H.species.chem_flags & NO_INJECT))
-			H.visible_message("<span class='warning'>[usr] struggles to place the IV into [H] but fails.</span>","<span class='notice'>[usr] tries to place the IV into my arm but is unable to.</span>")
+			H.visible_message("<span class='warning'>[usr] struggles to place the IV into [H] but fails.</span>","<span class='notice'>[usr] tries to place the IV into your arm but is unable to.</span>")
 			return
 		visible_message("[usr] attaches \the [src] to \the [H].")
 		src.attached = over_object
@@ -78,7 +78,7 @@
 		if(src.beaker)
 			src.beaker.forceMove(get_turf(src))
 			src.beaker = null
-		to_chat(user, "<span class='notice'>I dismantle \the [name].</span>")
+		to_chat(user, "<span class='notice'>You dismantle \the [name].</span>")
 		qdel(src)
 	if (istype(W, /obj/item/weapon/reagent_containers))
 		var/obj/item/weapon/reagent_containers/R = W
@@ -176,7 +176,7 @@
 	set src in view(1)
 
 	if(!istype(usr, /mob/living))
-		to_chat(usr, "<span class='warning'>I can't do that.</span>")
+		to_chat(usr, "<span class='warning'>You can't do that.</span>")
 		return
 
 	if(usr.isUnconscious())

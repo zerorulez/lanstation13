@@ -36,14 +36,14 @@
 	if(H.mind)
 		H.mind.transfer_to(brainmob)
 
-	to_chat(brainmob, "<span class='notice'>I feel slightly disoriented. That's normal when you're just a brain.</span>")
+	to_chat(brainmob, "<span class='notice'>You feel slightly disoriented. That's normal when you're just a brain.</span>")
 	callHook("debrain", list(brainmob))
 
 /obj/item/organ/internal/brain/examine(mob/user)
 	..()
 	if(brainmob)
 		if(brainmob.client)
-			to_chat(user, "<span class='notice'>I can feel the small spark of life still left in this one.</span>")
+			to_chat(user, "<span class='notice'>You can feel the small spark of life still left in this one.</span>")
 			return
 		var/mob/dead/observer/ghost = mind_can_reenter(brainmob.mind)
 		if(ghost)

@@ -12,7 +12,7 @@
 		if(Controller)
 			mind = Controller
 			ckey = ckey(mind.key)
-			to_chat(src, "<big><span class='warning'>I have been risen from the dead by my new master, [Owner]. Do his bidding so long as he lives, for when he falls so do you.</span></big>")
+			to_chat(src, "<big><span class='warning'>You have been risen from the dead by your new master, [Owner]. Do his bidding so long as he lives, for when he falls so do you.</span></big>")
 		var/ref = "\ref[Owner.mind]"
 		var/list/necromancers
 		if(!(Owner.mind in ticker.mode.necromancer))
@@ -402,7 +402,7 @@
 		if(can_open_door(A))
 			force_door(A)
 		else
-			visible_message("\The [src] looks over \the [A] for a moment.", "<span class='notice'>I don't think you can get \the [A] open.</span>")
+			visible_message("\The [src] looks over \the [A] for a moment.", "<span class='notice'>You don't think you can get \the [A] open.</span>")
 	if(istype(A, /mob/living/carbon/human))
 		if(check_edibility(A))
 			eat(A)
@@ -434,7 +434,7 @@
 	if(stat == DEAD) //Can only attempt to unzombify if they're dead
 		if(istype (W, /obj/item/weapon/storage/bible)) //This calls for divine intervention
 			var/obj/item/weapon/storage/bible/bible = W
-			user.visible_message("\The [user] begins whacking at [src] repeatedly with a bible for some reason.", "<span class='notice'>I attempt to invoke the power of [bible.deity_name] to bring this poor soul back from the brink.</span>")
+			user.visible_message("\The [user] begins whacking at [src] repeatedly with a bible for some reason.", "<span class='notice'>You attempt to invoke the power of [bible.deity_name] to bring this poor soul back from the brink.</span>")
 
 			var/chaplain = 0 //Are we the Chaplain ? Used for simplification
 			if(user.mind && (user.mind.assigned_role == "Chaplain"))

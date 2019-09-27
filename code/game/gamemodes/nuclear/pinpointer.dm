@@ -24,13 +24,13 @@
 	if(!active)
 		active = 1
 		workdisk()
-		to_chat(usr,"<span class='notice'>I activate \the [src]</span>")
+		to_chat(usr,"<span class='notice'>You activate \the [src]</span>")
 		playsound(get_turf(src), 'sound/items/healthanalyzer.ogg', 30, 1)
 		processing_objects += src
 	else
 		active = 0
 		icon_state = "pinoff"
-		to_chat(usr,"<span class='notice'>I deactivate \the [src]</span>")
+		to_chat(usr,"<span class='notice'>You deactivate \the [src]</span>")
 		processing_objects -= src
 
 /obj/item/weapon/pinpointer/proc/workdisk()
@@ -96,12 +96,12 @@
 		active = 1
 		processing_objects += src
 		process()
-		to_chat(usr,"<span class='notice'>I activate the pinpointer</span>")
+		to_chat(usr,"<span class='notice'>You activate the pinpointer</span>")
 	else
 		processing_objects -= src
 		active = 0
 		icon_state = "pinoff"
-		to_chat(usr,"<span class='notice'>I deactivate the pinpointer</span>")
+		to_chat(usr,"<span class='notice'>You deactivate the pinpointer</span>")
 
 /obj/item/weapon/pinpointer/advpinpointer/process()
 	switch(mode)
@@ -201,7 +201,7 @@
 	else
 		active = 0
 		icon_state = "pinoff"
-		to_chat(user,"<span class='notice'>I deactivate the pinpointer.</span>")
+		to_chat(user,"<span class='notice'>You deactivate the pinpointer.</span>")
 		processing_objects -= src
 
 
@@ -245,12 +245,12 @@
 		active = 1
 		process()
 		processing_objects += src
-		to_chat(usr,"<span class='notice'>I activate the pinpointer</span>")
+		to_chat(usr,"<span class='notice'>You activate the pinpointer</span>")
 	else
 		active = 0
 		processing_objects -= src
 		icon_state = "pinoff"
-		to_chat(usr,"<span class='notice'>I deactivate the pinpointer</span>")
+		to_chat(usr,"<span class='notice'>You deactivate the pinpointer</span>")
 
 /obj/item/weapon/pinpointer/pdapinpointer/process()
 	point_at(target)

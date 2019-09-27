@@ -75,23 +75,23 @@
 				health = 10
 				nutrilevel = min(10,nutrilevel+10)
 				qdel(O)
-				to_chat(user, "<span class='notice'>I carefully insert the queen into [src], she gets busy making a hive.</span>")
+				to_chat(user, "<span class='notice'>You carefully insert the queen into [src], she gets busy making a hive.</span>")
 				bees_in_hive = 0
 	else if(istype(O, /obj/item/beezeez))
 		beezeez += 100
 		nutrilevel += 10
 		user.drop_item(O)
 		if(health > 0)
-			to_chat(user, "<span class='notice'>I insert [O] into [src]. A relaxed humming appears to pick up.</span>")
+			to_chat(user, "<span class='notice'>You insert [O] into [src]. A relaxed humming appears to pick up.</span>")
 		else
-			to_chat(user, "<span class='notice'>I insert [O] into [src]. Now it just needs some bees.</span>")
+			to_chat(user, "<span class='notice'>You insert [O] into [src]. Now it just needs some bees.</span>")
 		qdel(O)
 	else if(istype(O, /obj/item/weapon/hatchet))
 		if(health > 0)
-			user.visible_message("<span class='danger'>\the [user] begins harvesting the honeycombs, the bees don't like that.</span>","<span class='danger'>I begin harvesting the honeycombs, the bees don't like that.</span>")
+			user.visible_message("<span class='danger'>\the [user] begins harvesting the honeycombs, the bees don't like that.</span>","<span class='danger'>You begin harvesting the honeycombs, the bees don't like that.</span>")
 			angry_swarm(user)
 		else
-			to_chat(user, "<span class='notice'>I begin to dislodge the dead apiary from the tray.</span>")
+			to_chat(user, "<span class='notice'>You begin to dislodge the dead apiary from the tray.</span>")
 		if(do_after(user, src, 50))
 			var/obj/machinery/created_tray = new hydrotray_type(src.loc)
 			created_tray.component_parts = list()
@@ -111,20 +111,20 @@
 						H.reagents.add_reagent(TOXIN, toxic)
 				if(honey_level >= 3)
 					new/obj/item/queen_bee(src.loc)
-				to_chat(user, "<span class='notice'>I successfully harvest the honeycombs. The empty apiary can be relocated.</span>")
+				to_chat(user, "<span class='notice'>You successfully harvest the honeycombs. The empty apiary can be relocated.</span>")
 			else
-				to_chat(user, "<span class='notice'>I dislodge the apiary from the tray.</span>")
+				to_chat(user, "<span class='notice'>You dislodge the apiary from the tray.</span>")
 			qdel(src)
 	else if(istype(O, /obj/item/weapon/bee_net))
 		var/obj/item/weapon/bee_net/N = O
 		if(N.caught_bees > 0)
-			to_chat(user, "<span class='notice'>I empty the bees into the apiary.</span>")
+			to_chat(user, "<span class='notice'>You empty the bees into the apiary.</span>")
 			bees_in_hive += N.caught_bees
 			N.caught_bees = 0
 		else
 			to_chat(user, "<span class='notice'>There are no more bees in the net.</span>")
 	else
-		user.visible_message("<span class='warning'>\the [user] hits \the [src] with \the [O]!</span>","<span class='warning'>I hit \the [src] with \the [O]!</span>")
+		user.visible_message("<span class='warning'>\the [user] hits \the [src] with \the [O]!</span>","<span class='warning'>You hit \the [src] with \the [O]!</span>")
 		angry_swarm(user)
 
 /obj/machinery/apiary/Cross(atom/movable/mover, turf/target, height=1.5, air_group = 0)

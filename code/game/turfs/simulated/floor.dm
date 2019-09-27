@@ -509,15 +509,15 @@ turf/simulated/floor/update_icon()
 
 	if(iscrowbar(C) && (!(is_plating())))
 		if (user.a_intent != I_HELP) //We assume the user is fighting
-			to_chat(user, "<span class='notice'>I swing the crowbar in front of you.</span>")
+			to_chat(user, "<span class='notice'>You swing the crowbar in front of you.</span>")
 			return
 		if(broken || burnt)
-			to_chat(user, "<span class='warning'>I remove the broken plating.</span>")
+			to_chat(user, "<span class='warning'>You remove the broken plating.</span>")
 		else
 			if(is_wood_floor())
-				to_chat(user, "<span class='warning'>I forcefully pry off the planks, destroying them in the process.</span>")
+				to_chat(user, "<span class='warning'>You forcefully pry off the planks, destroying them in the process.</span>")
 			else
-				to_chat(user, "<span class='notice'>I remove the [floor_tile.name].</span>")
+				to_chat(user, "<span class='notice'>You remove the [floor_tile.name].</span>")
 				floor_tile.forceMove(src)
 				floor_tile = null
 
@@ -532,7 +532,7 @@ turf/simulated/floor/update_icon()
 				return
 			else
 				if(is_wood_floor())
-					to_chat(user, "<span class='notice'>I unscrew the planks.</span>")
+					to_chat(user, "<span class='notice'>You unscrew the planks.</span>")
 					new floor_tile.type(src)
 
 			make_plating()
@@ -549,9 +549,9 @@ turf/simulated/floor/update_icon()
 					R.use(2)
 					return
 			else
-				to_chat(user, "<span class='warning'>I need more rods.</span>")
+				to_chat(user, "<span class='warning'>You need more rods.</span>")
 		else
-			to_chat(user, "<span class='warning'>I must remove the plating first.</span>")
+			to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return
 	else if(istype(C, /obj/item/stack/tile))
 		if(is_plating())
@@ -592,27 +592,27 @@ turf/simulated/floor/update_icon()
 			var/obj/item/stack/cable_coil/coil = C
 			coil.turf_place(src, user)
 		else
-			to_chat(user, "<span class='warning'>I must remove the plating first.</span>")
+			to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 	else if(istype(C, /obj/item/weapon/pickaxe/shovel))
 		if(is_grass_floor())
 			playsound(src, 'sound/items/shovel.ogg', 50, 1)
 			drop_stack(/obj/item/stack/ore/glass, src, 2) //Make some sand if you shovel grass
-			to_chat(user, "<span class='notice'>I shovel the grass.</span>")
+			to_chat(user, "<span class='notice'>You shovel the grass.</span>")
 			make_plating()
 		else
-			to_chat(user, "<span class='warning'>I cannot shovel this.</span>")
+			to_chat(user, "<span class='warning'>You cannot shovel this.</span>")
 	else if(iswelder(C))
 		var/obj/item/weapon/weldingtool/welder = C
 		if(welder.isOn() && (is_plating()))
 			if(broken || burnt)
 				if(welder.remove_fuel(0,user))
-					to_chat(user, "<span class='warning'>I fix some dents on the broken plating.</span>")
+					to_chat(user, "<span class='warning'>You fix some dents on the broken plating.</span>")
 					playsound(src, 'sound/items/Welder.ogg', 80, 1)
 					icon_state = "plating"
 					burnt = 0
 					broken = 0
 				else
-					to_chat(user, "<span class='notice'>I need more welding fuel to complete this task.</span>")
+					to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 
 /turf/simulated/floor/Enter(mob/AM)
 	.=..()

@@ -9,12 +9,12 @@
 			if(!M.can_suck(src))
 				return 0
 			if(mind && mind.vampire && (mind in ticker.mode.vampires))
-				to_chat(M, "<span class='warning'>My fangs fail to pierce [src.name]'s cold flesh.</span>")
+				to_chat(M, "<span class='warning'>Your fangs fail to pierce [src.name]'s cold flesh.</span>")
 				return 0
 			//we're good to suck the blood, blaah
 
 			playsound(loc, 'sound/weapons/bite.ogg', 50, 1, -1)
-			src.visible_message("<span class='danger'>\The [M] has bitten \the [src]!</span>", "<span class='userdanger'>I was bitten by \the [M]!</span>")
+			src.visible_message("<span class='danger'>\The [M] has bitten \the [src]!</span>", "<span class='userdanger'>You were bitten by \the [M]!</span>")
 			M.handle_bloodsucking(src)
 			return
 //end vampire codes
@@ -41,7 +41,7 @@
 		return 0
 
 	playsound(loc, 'sound/weapons/bite.ogg', 50, 1, -1)
-	src.visible_message("<span class='danger'>\The [M] has bitten \the [src]!</span>", "<span class='userdanger'>I was bitten by \the [M]!</span>")
+	src.visible_message("<span class='danger'>\The [M] has bitten \the [src]!</span>", "<span class='userdanger'>You were bitten by \the [M]!</span>")
 
 	M.do_attack_animation(src, M)
 
@@ -160,7 +160,7 @@
 
 	var/datum/organ/external/temp = M.get_active_hand_organ()
 	if(temp && !temp.is_usable())
-		to_chat(M, "<span class='warning'>I can't use my [temp.display_name].</span>")
+		to_chat(M, "<span class='warning'>You can't use your [temp.display_name].</span>")
 		return
 
 	..()

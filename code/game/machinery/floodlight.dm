@@ -52,7 +52,7 @@
 			cell.updateicon()
 			cell = null
 			user.visible_message("<span class='notice'>[user] removes \the [src]'s power cell</span>", \
-			"<span class='notice'>I remove \the [src]'s power cell</span>")
+			"<span class='notice'>You remove \the [src]'s power cell</span>")
 			update_icon()
 			return
 
@@ -66,7 +66,7 @@
 		set_light(brightness_on)
 
 	user.visible_message("<span class='notice'>[user] turns \the [src] [on ? "on":"off"].</span>", \
-	"<span class='notice'>I turn \the [src] [on ? "on":"off"].</span>")
+	"<span class='notice'>You turn \the [src] [on ? "on":"off"].</span>")
 
 	update_icon()
 
@@ -91,5 +91,5 @@
 				if(user.drop_item(W, src))
 					cell = W
 					user.visible_message("<span class='notice'>[user] inserts \the [src] into \the [src].</span>", \
-					"<span class='notice'>I insert \the [src] into \the [src].</span>")
+					"<span class='notice'>You insert \the [src] into \the [src].</span>")
 					update_icon()

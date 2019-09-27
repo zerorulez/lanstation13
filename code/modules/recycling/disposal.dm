@@ -82,7 +82,7 @@
 		return
 
 	if(!user.has_hand_check())
-		to_chat(user, "<span class='warning'>I don't have any hands!</span>")
+		to_chat(user, "<span class='warning'>You don't have any hands!</span>")
 		return
 
 	src.add_fingerprint(user)
@@ -133,9 +133,9 @@
 		var/obj/item/weapon/storage/bag/B = I
 		if(B.contents.len == 0)
 			if(user.drop_item(I, src))
-				to_chat(user, "<span class='notice'>I throw away the empty [B].</span>")
+				to_chat(user, "<span class='notice'>You throw away the empty [B].</span>")
 				return
-		to_chat(user, "<span class='notice'>I empty the [B].</span>")
+		to_chat(user, "<span class='notice'>You empty the [B].</span>")
 		B.mass_remove(src)
 		B.update_icon()
 		update_icon()
@@ -153,7 +153,7 @@
 					GM.client.perspective = EYE_PERSPECTIVE
 					GM.client.eye = src
 				GM.forceMove(src)
-				user.visible_message("<span class='warning'>[GM.name] has been placed in \the [src] by [user].</span>", "<span class='warning'>[GM.name] has been placed in \the [src] by you.</span>", "<span class='warning'>I hear a loud clunk.</span>")
+				user.visible_message("<span class='warning'>[GM.name] has been placed in \the [src] by [user].</span>", "<span class='warning'>[GM.name] has been placed in \the [src] by you.</span>", "<span class='warning'>You hear a loud clunk.</span>")
 				qdel(G)
 				log_attack("<font color='red'>[usr] ([usr.ckey]) placed [GM] ([GM.ckey]) in a disposals unit.</font>")
 		return
@@ -206,7 +206,7 @@
 // human interact with machine
 /obj/machinery/disposal/attack_hand(mob/user as mob)
 	if(user && user.loc == src)
-		to_chat(usr, "<span class='warning'>I cannot reach the controls from inside.</span>")
+		to_chat(usr, "<span class='warning'>You cannot reach the controls from inside.</span>")
 		return
 	/*
 	if(mode==-1)
@@ -241,7 +241,7 @@
 // handle machine interaction
 /obj/machinery/disposal/Topic(href, href_list)
 	if(usr.loc == src)
-		to_chat(usr, "<span class='warning'>I cannot reach the controls from inside.</span>")
+		to_chat(usr, "<span class='warning'>You cannot reach the controls from inside.</span>")
 		return
 
 	if(mode==-1 && !href_list["eject"]) // only allow ejecting if mode is -1

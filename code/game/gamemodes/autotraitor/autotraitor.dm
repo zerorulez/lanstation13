@@ -199,10 +199,10 @@
 					ticker.mode.traitors |= character.mind
 					ticker.mode.modePlayer |= character.mind
 				var/wikiroute = role_wiki[ROLE_TRAITOR]
-				to_chat(character, "<span class='danger'>I am the traitor.</span> <span class='info'><a HREF='?src=\ref[character];getwiki=[wikiroute]'>(Wiki Guide)</a></span>")
+				to_chat(character, "<span class='danger'>You are the traitor.</span> <span class='info'><a HREF='?src=\ref[character];getwiki=[wikiroute]'>(Wiki Guide)</a></span>")
 				character.mind.special_role = "traitor"
 				var/obj_count = 1
-				to_chat(character, "<span class='notice'>My current objectives:</span>")
+				to_chat(character, "<span class='notice'>Your current objectives:</span>")
 				for(var/datum/objective/objective in character.mind.objectives)
 					to_chat(character, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 					obj_count++

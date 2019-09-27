@@ -344,7 +344,7 @@
 
 /spell/targeted/oathbreak
 	name = "Break Oath of Silence"
-	desc = "Break my oath of silence."
+	desc = "Break your oath of silence."
 	school = "mime"
 	panel = "Mime"
 	charge_max = 10
@@ -357,7 +357,7 @@
 
 /spell/targeted/oathbreak/cast(list/targets)
 	for(var/mob/living/carbon/human/M in targets)
-		var/response = alert(M, "Are you -sure- you want to break my oath of silence?\n(This removes my ability to create invisible walls and cannot be undone!)","Are you sure you want to break my oath?","Yes","No")
+		var/response = alert(M, "Are you -sure- you want to break your oath of silence?\n(This removes your ability to create invisible walls and cannot be undone!)","Are you sure you want to break your oath?","Yes","No")
 		if(response != "Yes")
 			return
 		M.miming=0
@@ -381,7 +381,7 @@
 	access = list(access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
 
-	alt_titles = list("Maid") // just like my animes
+	alt_titles = list("Maid") // just like your animes
 
 	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/janitor

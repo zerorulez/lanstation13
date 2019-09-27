@@ -8,7 +8,7 @@
 
 //Optional area: Spider Caverns. Contains a spider queen and a hermit wizard's house. If you defeat the spider queen, the hermit and the spider hunters, you gain access to a staff of animation
 
-//Optional area: Tower of Madness. Contains many mummy priests and faithless, in the end there's an altar. Praying at the altar will cause you to completely lose my mind and gain many superpowers.
+//Optional area: Tower of Madness. Contains many mummy priests and faithless, in the end there's an altar. Praying at the altar will cause you to completely lose your mind and gain many superpowers.
 
 
 /area/awaymission/tomb/outside
@@ -40,8 +40,8 @@
 	name = "Water Gallery"
 
 /obj/effect/narration/tomb/intro
-	msg = {"<span class='info'>I appear on the surface of an unknown to you planet. This appears to be a desert; trees are few and scarce and there's no water in sight. The sun is setting.
-	The first thing that catches my eye is the massive pyramid in front of you. Behind it you see an expedition camp of some sort.
+	msg = {"<span class='info'>You appear on the surface of an unknown to you planet. This appears to be a desert; trees are few and scarce and there's no water in sight. The sun is setting.
+	The first thing that catches your eye is the massive pyramid in front of you. Behind it you see an expedition camp of some sort.
 	To the left, you see a massive cliff with what looks like an entrance in it.</span>"}
 
 /obj/effect/trap/cage_trap //When triggered, spawns a cage and unleashes monsters
@@ -156,7 +156,7 @@
 
 	if(!C)
 		return
-	to_chat(C, "<span class='danger'>I was sacrificed to Riniel, ruler of the Underworld.</span>")
+	to_chat(C, "<span class='danger'>You were sacrificed to Riniel, ruler of the Underworld.</span>")
 
 /obj/structure/sacrificial_altar/attack_hand(mob/user)
 	var/mob_amount = 0
@@ -208,7 +208,7 @@
 
 /obj/machinery/door/mineral/sandstone/tomb/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weapon/coin/adamantine))
-		to_chat(user, "<span class='info'>I unseal \the [src].</span>")
+		to_chat(user, "<span class='info'>You unseal \the [src].</span>")
 		unlocked = 1
 
 	//no ..() to prevent peopel from being able to damage this door
@@ -330,7 +330,7 @@
 	..()
 
 /obj/structure/button/door_switch/activate(force = 0)
-	//Get my area's list of button presses. If no such list exists, create one
+	//Get your area's list of button presses. If no such list exists, create one
 	var/list/L = last_pressed[get_area(src)]
 	if(!L)
 		L = list()
@@ -359,11 +359,11 @@
 
 /obj/item/weapon/paper/tomb_notes
 	name = "paper- 'My Notes'"
-	info = {"<i>I can't go through this room without a partner, so I can't advance any further. I hope these notes will help you.<BR>
+	info = {"<i>You can't go through this room without a partner, so I can't advance any further. I hope these notes will help you.<BR>
 	The water is powered by magic, there is no better explanation for its behaviour. I can't touch it or jump into it. In the water there are metal platforms that you can walk on. There are also 6 buttons on the wall.<BR>
 	There are also 7 groups of platforms, one for each button, plus to one rogue group. Pressing a button raises its group of platforms above the water. Only two platform groups can be raised at once; pressing a third button will cause one group to lower. I think the one which was raised the earlier is lowered, but maybe not.<BR>
 	There are <s>5 6</s> 7 rogue platforms, they are lowered and raised whenever a button is pressed. Any button. You may want to find them immediately, because they look exactly like normal platforms<BR>
-	To get to the other side, one man must control the buttons while the other one must hop from platform to platform. Coordination is required - I don't know what would happen if a platform is lowered from beneath my feet, and frankly I'd rather not.</i>"}
+	To get to the other side, one man must control the buttons while the other one must hop from platform to platform. Coordination is required - I don't know what would happen if a platform is lowered from beneath your feet, and frankly I'd rather not.</i>"}
 
 /obj/effect/landmark/water_puzzle
 	name = "water puzzle sewers"

@@ -133,7 +133,7 @@
 	if(!loaded_matter_bin)
 		return
 	else if(stored_items.len)
-		to_chat(usr, "<span class='warning'>I can't remove the matter bin while there are still objects inside it!</span>")
+		to_chat(usr, "<span class='warning'>You can't remove the matter bin while there are still objects inside it!</span>")
 		return
 	else
 		var/obj/item/weapon/stock_parts/matter_bin/M = loaded_matter_bin
@@ -150,7 +150,7 @@
 			var/obj/item/bluespace_crystal/B = loaded_crystal
 			to_chat(user, "<span class='warning'>There is already \a [B.name] loaded into \the [src].</span>")
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 			return 1
 		loaded_crystal = W
 		user.visible_message("[user] inserts \the [W] into \the [src].","I insert \the [W] into \the [src].")
@@ -160,7 +160,7 @@
 			to_chat(user, "<span class='warning'>There is already \a [M.name] attached to \the [src].</span>")
 			return
 		if(!user.drop_item(W, src))
-			to_chat(user, "<span class='warning'>I can't let go of \the [W]!</span>")
+			to_chat(user, "<span class='warning'>You can't let go of \the [W]!</span>")
 			return 1
 		loaded_matter_bin = W
 		user.visible_message("[user] attaches \the [W] into \the [src].","I attach \the [W] into \the [src].")
@@ -219,7 +219,7 @@
 		stored_item_mass -= mass
 		stored_items -= O
 		if(user)
-			user.visible_message("<span class='warning'>[user] ejects \the [O] from \his [src.name] through a subspace rift!</span>","I eject \the [O] from my [src.name] through a subspace rift.")
+			user.visible_message("<span class='warning'>[user] ejects \the [O] from \his [src.name] through a subspace rift!</span>","I eject \the [O] from your [src.name] through a subspace rift.")
 		playsound(O, 'sound/effects/phasein.ogg', 50, 1)
 		anim(location = T,a_icon = 'icons/obj/weaponsmithing.dmi',flick_anim = "subspace_rift",name = "subspace rift")
 
@@ -306,13 +306,13 @@
 			to_chat(user, "<span class='warning'>\The [src]'s [M.name] is too full to retrieve that object!</span>")
 			return
 		else
-			user.visible_message("<span class='warning'>[user] pulls \the [O] into \his [src.name] through a subspace rift!</span>","I pull \the [O] into my [src.name] through a subspace rift.")
+			user.visible_message("<span class='warning'>[user] pulls \the [O] into \his [src.name] through a subspace rift!</span>","I pull \the [O] into your [src.name] through a subspace rift.")
 			playsound(O, 'sound/effects/phasein.ogg', 50, 1)
 			var/turf/T = O.loc
 			anim(location = T,a_icon = 'icons/obj/weaponsmithing.dmi',flick_anim = "subspace_rift",name = "subspace rift")
 			if(istype(O, /obj/machinery/singularity))
 				O.forceMove(user.loc)
-				user.visible_message("<span class='danger'>[user]'s [src.name] implodes, failing to contain the power of \the [O]!</span>","<span class='danger'>My [src.name] implodes, failing to contain the power of \the [O]!</span>")
+				user.visible_message("<span class='danger'>[user]'s [src.name] implodes, failing to contain the power of \the [O]!</span>","<span class='danger'>Your [src.name] implodes, failing to contain the power of \the [O]!</span>")
 				qdel(src)
 				return
 			stored_items += O

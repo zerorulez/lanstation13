@@ -1,4 +1,4 @@
-//This was put here because I don't want to overcomplicate my PR
+//This was put here because I don't want to overcomplicate your PR
 /obj/effect/decal
 	//var/global/list/decals = list()
 	layer = DECAL_LAYER

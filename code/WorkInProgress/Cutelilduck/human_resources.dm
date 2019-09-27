@@ -1,13 +1,13 @@
 /obj/item/weapon/paper/demotion_key
 	name = "Human Resources: Demotion Fax Key"
-	info = "<center><B>Fax Machine Demotion Key</B></center><BR><BR>This document is intended for use in the station fax machines sent to NANOTRASEN HR.  Demotion keys sent to Centcomm will result in insults and allegations of incompetence.<br><ol><li>Insert into fax with my Internal Affairs ID.</li><li>Select NANOTRASEN HR to send to; Requires official Agent authorization.</li><li>Use the printed chip to carefully set a name.</li></ol> Remember to match capitalization of the employee name. Acquire Heads of Staff stamps to bar respective access, and once you have completed gathering authorizations you can apply the chip to the intended ID card.<br><br>In case of a mistake, acquire a new ID card as Identification Computers cannot bypass the chip."
+	info = "<center><B>Fax Machine Demotion Key</B></center><BR><BR>This document is intended for use in the station fax machines sent to NANOTRASEN HR.  Demotion keys sent to Centcomm will result in insults and allegations of incompetence.<br><ol><li>Insert into fax with your Internal Affairs ID.</li><li>Select NANOTRASEN HR to send to; Requires official Agent authorization.</li><li>Use the printed chip to carefully set a name.</li></ol> Remember to match capitalization of the employee name. Acquire Heads of Staff stamps to bar respective access, and once you have completed gathering authorizations you can apply the chip to the intended ID card.<br><br>In case of a mistake, acquire a new ID card as Identification Computers cannot bypass the chip."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper"
 	stamps = "<br><br><i>This document has an intricate Nanontrasen logo in magnetic ink. It looks impossible to forge.</i>"
 
 /obj/item/weapon/paper/commendation_key
 	name = "Human Resources: Commendation Fax Key"
-	info = "<center><B>Fax Machine Commendation Key</B></center><BR><BR>This document is intended for use in the station fax machines sent to NANOTRASEN HR.  Commendation keys sent to Centcomm will result in insults and allegations of incompetence.<br><ol><li>Insert into fax with my Internal Affairs ID.</li><li>Select NANOTRASEN HR to send to; Requires official Agent authorization.</li><li>Take the printed poster and give cordially to valued employee.</li></ol> Commendations should only be given to outstanding crew members and those who exhibit positive, productive qualities."
+	info = "<center><B>Fax Machine Commendation Key</B></center><BR><BR>This document is intended for use in the station fax machines sent to NANOTRASEN HR.  Commendation keys sent to Centcomm will result in insults and allegations of incompetence.<br><ol><li>Insert into fax with your Internal Affairs ID.</li><li>Select NANOTRASEN HR to send to; Requires official Agent authorization.</li><li>Take the printed poster and give cordially to valued employee.</li></ol> Commendations should only be given to outstanding crew members and those who exhibit positive, productive qualities."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper"
 	stamps = "<br><br><i>This document has an intricate Nanontrasen logo in magnetic ink. It looks impossible to forge.</i>"
@@ -57,37 +57,37 @@
 				if(cap == 0)
 					desc = desc + "/Captain"
 				cap = 1
-				to_chat(user, "<span class='notice'>I stamp the demotion microchip of [target_name].</span>")
+				to_chat(user, "<span class='notice'>You stamp the demotion microchip of [target_name].</span>")
 			if(istype(S, /obj/item/weapon/stamp/hop))
 				if(hop == 0)
 					desc = desc + "/HoP"
 				hop = 1
-				to_chat(user, "<span class='notice'>I stamp the demotion microchip of [target_name].</span>")
+				to_chat(user, "<span class='notice'>You stamp the demotion microchip of [target_name].</span>")
 			if(istype(S, /obj/item/weapon/stamp/hos))
 				if(hos == 0)
 					desc = desc + "/HoS"
 				hos = 1
-				to_chat(user, "<span class='notice'>I stamp the demotion microchip of [target_name].</span>")
+				to_chat(user, "<span class='notice'>You stamp the demotion microchip of [target_name].</span>")
 			if(istype(S, /obj/item/weapon/stamp/ce))
 				if(ce == 0)
 					desc = desc + "/CE"
 				ce = 1
-				to_chat(user, "<span class='notice'>I stamp the demotion microchip of [target_name].</span>")
+				to_chat(user, "<span class='notice'>You stamp the demotion microchip of [target_name].</span>")
 			if(istype(S, /obj/item/weapon/stamp/rd))
 				if(rd == 0)
 					desc = desc + "/RD"
 				rd = 1
-				to_chat(user, "<span class='notice'>I stamp the demotion microchip of [target_name].</span>")
+				to_chat(user, "<span class='notice'>You stamp the demotion microchip of [target_name].</span>")
 			if(istype(S, /obj/item/weapon/stamp/cmo))
 				if(cmo == 0)
 					desc = desc + "/CMO"
 				cmo = 1
-				to_chat(user, "<span class='notice'>I stamp the demotion microchip of [target_name].</span>")
+				to_chat(user, "<span class='notice'>You stamp the demotion microchip of [target_name].</span>")
 			if(istype(S, /obj/item/weapon/stamp/clown))
 				if(clown == 0)
 					desc = desc + "/HONK"
 				clown = 1
-				to_chat(user, "<span class='notice'>I stamp the demotion microchip of [target_name].</span>")
+				to_chat(user, "<span class='notice'>You stamp the demotion microchip of [target_name].</span>")
 		else
 			to_chat(user, "<span class='notice'>The chip has not been initialized.</span>")
 	else
@@ -140,7 +140,7 @@
 				access -= get_region_accesses(2)
 				bans = bans + "2"
 			if(bans == null)
-				to_chat(user, "<span class='notice'>I require at least one stamp.</span>")
+				to_chat(user, "<span class='notice'>You require at least one stamp.</span>")
 				return
 			icon_state = "centcom_old"
 			del(D)

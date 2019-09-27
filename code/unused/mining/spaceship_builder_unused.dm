@@ -123,13 +123,13 @@
 		return
 
 	if (!usr.dexterity_check())
-		to_chat(usr, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 
 	if (istype(W, /obj/item/stack/sheet/metal))
 
 		var/obj/item/stack/sheet/metal/M = W
-		to_chat(user, "<span class='notice'>I insert all the metal into the machine.</span>")
+		to_chat(user, "<span class='notice'>You insert all the metal into the machine.</span>")
 		metal_amount += M.amount * 100
 		del(M)
 
@@ -148,7 +148,7 @@
 
 	if (currentShuttleArea)
 		dat += text("<b>Currently building</b><br><br>[currentShuttleName]<br><br>")
-		dat += text("<b>Build the shuttle to my liking.</b><br>This shuttle will be sent to the station in the event of an emergency along with a centcom emergency shuttle.")
+		dat += text("<b>Build the shuttle to your liking.</b><br>This shuttle will be sent to the station in the event of an emergency along with a centcom emergency shuttle.")
 		dat += text("<br><br><br><A href='?src=\ref[src];scrap=1'>Scrap current shuttle</A>")
 	else
 		dat += text("<b>Available ships to build:</b><br><br>")

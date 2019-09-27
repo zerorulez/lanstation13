@@ -38,7 +38,7 @@
 /obj/effect/plantsegment/Destroy()
 	if(plant_controller)
 		plant_controller.remove_plant(src)
-	for(var/obj/effect/plantsegment/neighbor in range(1,src)) //i ded, tell my neighbors to wake up so they can take up my space
+	for(var/obj/effect/plantsegment/neighbor in range(1,src)) //i ded, tell your neighbors to wake up so they can take up your space
 		plant_controller.add_plant(neighbor)
 	..()
 
@@ -162,7 +162,7 @@
 			to_chat(user, "<span class='warning'>There is nothing to take a sample from.</span>")
 			return
 		if(sampled)
-			to_chat(user, "<span class='danger'>I cannot take another sample from \the [src].</span>")
+			to_chat(user, "<span class='danger'>You cannot take another sample from \the [src].</span>")
 			return
 		if(prob(70))
 			sampled = 1

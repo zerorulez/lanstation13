@@ -117,7 +117,7 @@
 					if(user.drop_item(C, src))
 						cell = C
 						C.add_fingerprint(usr)
-						user.visible_message("<span class='notice'>[user] inserts a power cell into [src].</span>", "<span class='notice'>I insert the power cell into [src].</span>")
+						user.visible_message("<span class='notice'>[user] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
 		else
 			to_chat(user, "The hatch must be open to insert a power cell.")
 			return
@@ -156,7 +156,7 @@
 		woodnumber = Clamp(woodnumber,0,4)
 		var/obj/item/stack/sheet/wood/woody = I
 		woody.use(woodnumber)
-		user.visible_message("<span class='notice'>[user] adds some wood to \the [src].</span>", "<span class='notice'>I add some wood to \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] adds some wood to \the [src].</span>", "<span class='notice'>You add some wood to \the [src].</span>")
 		cell.charge = min(cell.charge+woodnumber*250,cell.maxcharge)
 		update_icon()
 	if(on && istype(I,/obj/item/clothing/mask/cigarette))
@@ -212,7 +212,7 @@
 
 	else
 		on = !on
-		user.visible_message("<span class='notice'>[user] switches [on ? "on" : "off"] the [src].</span>","<span class='notice'>I switch [on ? "on" : "off"] the [src].</span>")
+		user.visible_message("<span class='notice'>[user] switches [on ? "on" : "off"] the [src].</span>","<span class='notice'>You switch [on ? "on" : "off"] the [src].</span>")
 		update_icon()
 	return
 
@@ -221,12 +221,12 @@
 		user.delayNextAttack(50)
 		if(do_after(user,src,50))
 			var/mob/living/M = user
-			if (clumsy_check(M) && (prob(50)))
-				user.visible_message("<span class='danger'>[user] slides \his hands straight into \the [src]!</span>", "<span class='danger'>I accidentally slide my hands into \the [src]!</span>")
+			if (clumsy_check(M))
+				user.visible_message("<span class='danger'>[user] slides \his hands straight into \the [src]!</span>", "<span class='danger'>You accidentally slide your hands into \the [src]!</span>")
 
 				M.apply_damage(10,BURN,pick(LIMB_LEFT_HAND, LIMB_RIGHT_HAND))
 			else
-				user.visible_message("<span class='notice'>[user] warms \his hands around \the [src].</span>", "<span class='notice'>I warm my hands around \the [src].</span>")
+				user.visible_message("<span class='notice'>[user] warms \his hands around \the [src].</span>", "<span class='notice'>You warm your hands around \the [src].</span>")
 			M.bodytemperature += 2
 
 /obj/machinery/space_heater/Topic(href, href_list)
@@ -249,7 +249,7 @@
 					usr.put_in_hands(cell)
 					cell.add_fingerprint(usr)
 					cell = null
-					usr.visible_message("<span class='notice'>[usr] removes the power cell from \the [src].</span>", "<span class='notice'>I remove the power cell from \the [src].</span>")
+					usr.visible_message("<span class='notice'>[usr] removes the power cell from \the [src].</span>", "<span class='notice'>You remove the power cell from \the [src].</span>")
 
 			if("cellinstall")
 				if(panel_open && !cell)
@@ -259,7 +259,7 @@
 							cell = C
 							C.add_fingerprint(usr)
 
-							usr.visible_message("<span class='notice'>[usr] inserts a power cell into \the [src].</span>", "<span class='notice'>I insert the power cell into \the [src].</span>")
+							usr.visible_message("<span class='notice'>[usr] inserts a power cell into \the [src].</span>", "<span class='notice'>You insert the power cell into \the [src].</span>")
 
 		updateDialog()
 	else
@@ -326,7 +326,7 @@
 		var/mob/living/carbon/absolutemadman = user
 		absolutemadman.adjust_fire_stacks(1)
 		if(absolutemadman.IgniteMob())
-			absolutemadman.visible_message("<span class='danger'>[user] walks into \the [src], and is set alight!</span>", "<span class='danger'>I walk into \the [src], and are set alight!</span>")
+			absolutemadman.visible_message("<span class='danger'>[user] walks into \the [src], and is set alight!</span>", "<span class='danger'>You walk into \the [src], and are set alight!</span>")
 
 /obj/machinery/space_heater/campfire/stove/fireplace
 	name = "fireplace"

@@ -536,7 +536,7 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 				if(!S.reagents.total_volume)
 					to_chat(user, "<span class='warning'>The syringe is empty.</span>")
 					return
-				to_chat(user, "<span class='warning'>I inject the [myseed.plantname] with a chemical solution.</span>")
+				to_chat(user, "<span class='warning'>You inject the [myseed.plantname] with a chemical solution.</span>")
 
 				// There needs to be a good amount of mutagen to actually work
 
@@ -788,7 +788,7 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	else if (istype(O, /obj/item/weapon/minihoe))  // The minihoe
 		//var/deweeding
 		if(weedlevel > 0)
-			user.visible_message("<span class='warning'>[user] starts uprooting the weeds.</span>", "<span class='warning'>I remove the weeds from the [src].</span>")
+			user.visible_message("<span class='warning'>[user] starts uprooting the weeds.</span>", "<span class='warning'>You remove the weeds from the [src].</span>")
 			weedlevel = 0
 			updateicon()
 			src.updateicon()
@@ -1000,7 +1000,7 @@ obj/machinery/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	harvest = 0
 	lastproduce = age
 	if((yieldmod * myseed.yield) <= 0 || istype(myseed,/obj/item/seeds/dionanode))
-		to_chat(user, text("<span class='warning'>I fail to harvest anything useful.</span>"))
+		to_chat(user, text("<span class='warning'>You fail to harvest anything useful.</span>"))
 	else
 		to_chat(user, text("I harvest from the [myseed.plantname]."))
 	if(myseed.oneharvest)

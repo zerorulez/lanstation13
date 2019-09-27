@@ -87,7 +87,7 @@
 						occupant_message("<font color='blue'>[target] successfully loaded.</font>")
 						log_message("Loaded [O]. Cargo compartment capacity: [W.cargo_capacity - W.cargo.len]")
 					else
-						occupant_message("<font color='red'>I must hold still while handling objects.</font>")
+						occupant_message("<font color='red'>You must hold still while handling objects.</font>")
 						O.anchored = initial(O.anchored) //WHY??
 			else
 				occupant_message("<font color='red'>Not enough room in cargo compartment.</font>")
@@ -104,7 +104,7 @@
 				return //we killed some sort of simple animal and the corpse was deleted.
 			M.adjustOxyLoss(round(dam_force/2))
 			M.updatehealth()
-			occupant_message("<span class='warning'>I squeeze [target] with [src.name]. Something cracks.</span>")
+			occupant_message("<span class='warning'>You squeeze [target] with [src.name]. Something cracks.</span>")
 			chassis.visible_message("<span class='warning'>[chassis] squeezes [target].</span>")
 			M.attack_log +="\[[time_stamp()]\]<font color='orange'> Mech Squeezed by [chassis.occupant.name] ([chassis.occupant.ckey]) with [src.name]</font>"
 			chassis.occupant.attack_log += "\[[time_stamp()]\]<font color='red'> Mech Squeezed [M.name] ([M.ckey]) with [src.name]</font>"
@@ -135,7 +135,7 @@
 			return
 	set_ready_state(0)
 	chassis.visible_message("<font color='red'><b>[chassis] starts to drill [target]!</b></font>", "I hear a drill.")
-	occupant_message("<font color='red'><b>I start to drill [target]!</b></font>")
+	occupant_message("<font color='red'><b>You start to drill [target]!</b></font>")
 	var/C = chassis.loc
 	var/T = target.loc	//why were these backwards? we may never know -Pete & Bauds, years apart
 
@@ -147,7 +147,7 @@
 			var/delay = istype(target, /turf/simulated/wall/r_wall) ? 10 : 2
 			if(do_after_cooldown(target, delay) && C == chassis.loc && src == chassis.selected)
 				log_message("Drilled through [target]")
-				occupant_message("<font color='red'><b>My powerful drill screeches as it tears through the last of \the [target], leaving nothing but a girder!</b></font>")
+				occupant_message("<font color='red'><b>Your powerful drill screeches as it tears through the last of \the [target], leaving nothing but a girder!</b></font>")
 				chassis.visible_message("<font color='red'><b>[chassis] drills through \the [target]!</b></font>", "I hear a drill tearing through plating.")
 				//target.ex_act(3) //Why
 				target.mech_drill_act(3)
@@ -158,7 +158,7 @@
 	else if(istype(target, /obj/structure/girder))
 		if(do_after_cooldown(target) && C == chassis.loc && src == chassis.selected)
 			log_message("Drilled through [target]")
-			occupant_message("<font color='red'><b>My drill destroys \the [target]!</b></font>")
+			occupant_message("<font color='red'><b>Your drill destroys \the [target]!</b></font>")
 			chassis.visible_message("<font color='red'><b>[chassis] destroys \the [target]!</b></font>", "I hear a drill breaking something.")
 			target.mech_drill_act(2)
 
@@ -213,7 +213,7 @@
 				else
 					M.LAssailant = chassis.occupant
 			log_message("Drilled through [target]")
-			occupant_message("<font color='red'><b>I drill into \the [target].</b></font>")
+			occupant_message("<font color='red'><b>You drill into \the [target].</b></font>")
 			chassis.visible_message("<font color='red'><b>[chassis] drills into \the [target]!</b></font>", "I hear a drill breaking something.")
 			target.mech_drill_act(2)
 
@@ -264,7 +264,7 @@
 		set_ready_state(0)
 		if(do_after_cooldown(target, 1/2))
 			chassis.visible_message("<font color='red'><b>[chassis] smashes apart \the [target]!</b></font>", "I hear a pneumatic screeching and something being smashed apart.")
-			occupant_message("<font color='red'><b>I smash apart \the [target]!</b></font>")
+			occupant_message("<font color='red'><b>You smash apart \the [target]!</b></font>")
 			log_message("Destroyed [target].")
 			var/obj/machinery/portable_atmospherics/hydroponics/tray = target
 			playsound(target, 'sound/mecha/mechsmash.ogg', 50, 1)
@@ -296,7 +296,7 @@
 		if(chassis.occupant.a_intent == I_HURT)
 			set_ready_state(0)
 			M.apply_damage(dam_force, BRUTE)
-			occupant_message("<span class='danger'>I slash [target] with [src.name].</span>")
+			occupant_message("<span class='danger'>You slash [target] with [src.name].</span>")
 			chassis.visible_message("<span class='danger'>[chassis] slashes at [target] with [src.name]!</span>")
 			M.attack_log +="\[[time_stamp()]\]<font color='orange'> Mech Scythed by [chassis.occupant.name] ([chassis.occupant.ckey]) with [src.name]</font>"
 			chassis.occupant.attack_log += "\[[time_stamp()]\]<font color='red'> Slashed [M.name] ([M.ckey]) with [src.name]</font>"
@@ -799,7 +799,7 @@
 		chassis.log_append_to_last("Armor saved.")
 	else
 		chassis.occupant_message("<font color='red'><b>[user] hits [chassis] with [W].</b></font>")
-		user.visible_message("<font color='red'><b>[user] hits [chassis] with [W].</b></font>", "<font color='red'><b>I hit [src] with [W].</b></font>")
+		user.visible_message("<font color='red'><b>[user] hits [chassis] with [W].</b></font>", "<font color='red'><b>You hit [src] with [W].</b></font>")
 		chassis.take_damage(round(W.force*damage_coeff),W.damtype)
 		chassis.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	set_ready_state(0)
@@ -1289,7 +1289,7 @@
 						chassis.occupant_message("<font color='blue'>[target] successfully loaded.</font>")
 						chassis.log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - cargo_holder.cargo.len]")
 					else
-						chassis.occupant_message("<font color='red'>I must hold still while handling objects.</font>")
+						chassis.occupant_message("<font color='red'>You must hold still while handling objects.</font>")
 						O.anchored = initial(O.anchored)
 			else
 				chassis.occupant_message("<font color='red'>Not enough room in cargo compartment.</font>")
@@ -1301,10 +1301,10 @@
 		if(M.stat>1)
 			return
 		if(chassis.occupant.a_intent == I_HURT)
-			chassis.occupant_message("<span class='warning'>I obliterate [target] with [src.name], leaving blood and guts everywhere.</span>")
+			chassis.occupant_message("<span class='warning'>You obliterate [target] with [src.name], leaving blood and guts everywhere.</span>")
 			chassis.visible_message("<span class='warning'>[chassis] destroys [target] in an unholy fury.</span>")
 		if(chassis.occupant.a_intent == I_DISARM)
-			chassis.occupant_message("<span class='warning'>I tear [target]'s limbs off with [src.name].</span>")
+			chassis.occupant_message("<span class='warning'>You tear [target]'s limbs off with [src.name].</span>")
 			chassis.visible_message("<span class='warning'>[chassis] rips [target]'s arms off.</span>")
 		else
 			step_away(M,chassis)

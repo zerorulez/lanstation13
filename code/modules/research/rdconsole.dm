@@ -219,7 +219,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			to_chat(user, "<span class='warning'>Machine cannot accept disks in that format.</span>")
 			return
 
-		to_chat(user, "<span class='notice'>I add the disk to the machine!</span>")
+		to_chat(user, "<span class='notice'>You add the disk to the machine!</span>")
 
 	src.updateUsrDialog()
 	return
@@ -227,7 +227,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 /obj/machinery/computer/rdconsole/emag(mob/user)
 	playsound(get_turf(src), 'sound/effects/sparks4.ogg', 75, 1)
 	emagged = 1
-	to_chat(user, "<span class='notice'>I disable the security protocols</span>")
+	to_chat(user, "<span class='notice'>You disable the security protocols</span>")
 
 /obj/machinery/computer/rdconsole/Topic(href, href_list)
 	if(..())
@@ -381,7 +381,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	else if(href_list["sync"]) //Sync the research holder with all the R&D consoles in the game that aren't sync protected.
 		screen = 0.0
 		if(!sync)
-			to_chat(usr, "<span class='warning'>I must connect to the network first!</span>")
+			to_chat(usr, "<span class='warning'>You must connect to the network first!</span>")
 		else
 			griefProtection() //Putting this here because I dont trust the sync process
 			spawn(30)

@@ -165,9 +165,9 @@
 				src.chest = W
 				src.updateicon()
 		else if(!W:wires)
-			to_chat(user, "<span class='notice'>I need to attach wires to it first!</span>")
+			to_chat(user, "<span class='notice'>You need to attach wires to it first!</span>")
 		else
-			to_chat(user, "<span class='notice'>I need to attach a cell to it first!</span>")
+			to_chat(user, "<span class='notice'>You need to attach a cell to it first!</span>")
 
 	if(istype(W, /obj/item/robot_parts/head))
 		if(src.head)
@@ -177,14 +177,14 @@
 				src.head = W
 				src.updateicon()
 		else
-			to_chat(user, "<span class='notice'>I need to attach a flash to it first!</span>")
+			to_chat(user, "<span class='notice'>You need to attach a flash to it first!</span>")
 
 	if(istype(W, /obj/item/device/mmi) || istype(W, /obj/item/device/mmi/posibrain))
 		var/obj/item/device/mmi/M = W
 		var/turf/T = get_turf(src)
 		if(check_completion())
 			if(!istype(loc,/turf))
-				to_chat(user, "<span class='warning'>I can't put the [W] in, the frame has to be standing on the ground to be perfectly precise.</span>")
+				to_chat(user, "<span class='warning'>You can't put the [W] in, the frame has to be standing on the ground to be perfectly precise.</span>")
 				return
 			if(!M.brainmob)
 				to_chat(user, "<span class='warning'>Sticking an empty [W] into the frame would sort of defeat the purpose.</span>")
@@ -264,40 +264,40 @@
 	..()
 	if(istype(W, /obj/item/weapon/cell))
 		if(src.cell)
-			to_chat(user, "<span class='notice'>I have already inserted a cell!</span>")
+			to_chat(user, "<span class='notice'>You have already inserted a cell!</span>")
 			return
 		else
 			if(user.drop_item(W, src))
 				src.cell = W
-				to_chat(user, "<span class='notice'>I insert the cell!</span>")
+				to_chat(user, "<span class='notice'>You insert the cell!</span>")
 	if(istype(W, /obj/item/stack/cable_coil))
 		if(src.wires)
-			to_chat(user, "<span class='notice'>I have already inserted wire!</span>")
+			to_chat(user, "<span class='notice'>You have already inserted wire!</span>")
 			return
 		else
 			var/obj/item/stack/cable_coil/coil = W
 			coil.use(1)
 			src.wires = 1.0
-			to_chat(user, "<span class='notice'>I insert the wire!</span>")
+			to_chat(user, "<span class='notice'>You insert the wire!</span>")
 	return
 
 /obj/item/robot_parts/head/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/device/flash))
 		if(src.flash1 && src.flash2)
-			to_chat(user, "<span class='notice'>I have already inserted the eyes!</span>")
+			to_chat(user, "<span class='notice'>You have already inserted the eyes!</span>")
 			return
 		else if(src.flash1)
 			if(user.drop_item(W, src))
 				src.flash2 = W
-				to_chat(user, "<span class='notice'>I insert the flash into the eye socket!</span>")
+				to_chat(user, "<span class='notice'>You insert the flash into the eye socket!</span>")
 		else
 			if(user.drop_item(W, src))
 				src.flash1 = W
-				to_chat(user, "<span class='notice'>I insert the flash into the eye socket!</span>")
+				to_chat(user, "<span class='notice'>You insert the flash into the eye socket!</span>")
 	else if(istype(W, /obj/item/weapon/stock_parts/manipulator))
 		if(user.drop_item(W))
-			to_chat(user, "<span class='notice'>I install some manipulators and modify the head, creating a functional spider-bot!</span>")
+			to_chat(user, "<span class='notice'>You install some manipulators and modify the head, creating a functional spider-bot!</span>")
 			new /mob/living/simple_animal/spiderbot(get_turf(loc))
 			qdel(W)
 			W = null
@@ -310,7 +310,7 @@
 		if(sabotaged)
 			to_chat(user, "<span class='warning'>[src] is already sabotaged!</span>")
 		else
-			to_chat(user, "<span class='warning'>I slide [W] into the dataport on [src] and short out the safeties.</span>")
+			to_chat(user, "<span class='warning'>You slide [W] into the dataport on [src] and short out the safeties.</span>")
 			sabotaged = 1
 		return
 	..()

@@ -124,7 +124,7 @@
 				score["disc"] = 0
 
 		if(score["nuked"])
-			nukedpenalty = 50000 //Congratulations, my score was nuked
+			nukedpenalty = 50000 //Congratulations, your score was nuked
 
 			for(var/obj/machinery/nuclearbomb/nuke in machines)
 				if(nuke.r_code == "Nope")

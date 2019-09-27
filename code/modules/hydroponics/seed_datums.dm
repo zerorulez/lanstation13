@@ -533,7 +533,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 		return
 
 	if(isnull(products) || !products.len || yield <= 0)
-		to_chat(user, "<span class='warning'>I fail to harvest anything useful.</span>")
+		to_chat(user, "<span class='warning'>You fail to harvest anything useful.</span>")
 	else
 		to_chat(user, "I harvest from the [display_name].")
 
@@ -604,14 +604,14 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 								H.updatehealth()
 							else
 								H.adjustBruteLoss(5+carnivorous*5)
-							to_chat(H, "<span class='danger'>I am prickled by the sharp thorns on \the [seed_name]!</span>")
+							to_chat(H, "<span class='danger'>You are prickled by the sharp thorns on \the [seed_name]!</span>")
 							if(H.feels_pain())
 								success = 0
 						if(stinging)
 							if(chems && chems.len)
 								for(var/rid in chems)
 									H.reagents.add_reagent(rid, Clamp(1, 5, potency/10))
-								to_chat(H, "<span class='danger'>I am stung by \the [seed_name]!</span>")
+								to_chat(H, "<span class='danger'>You are stung by \the [seed_name]!</span>")
 								if(hematophage)
 									if(tray && H.species && !(H.species.anatomy_flags & NO_BLOOD)) //the indentation gap doesn't stop from getting wider
 										var/drawing = min(15, H.vessel.get_reagent_amount(BLOOD))
@@ -626,7 +626,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 					break
 
 			if(!success)
-				to_chat(M, "<span class='warning'>The stems on this plant are too tough to cut by hand, you'll need something sharp in one of my hands to harvest it.</span>")
+				to_chat(M, "<span class='warning'>The stems on this plant are too tough to cut by hand, you'll need something sharp in one of your hands to harvest it.</span>")
 
 	return success
 

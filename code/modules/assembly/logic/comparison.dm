@@ -144,7 +144,7 @@ var/global/list/comparison_circuit_operations = list("EQUAL TO", "LESS THAN", "M
 		if(..())
 			return
 
-		to_chat(usr, "<span class='info'>I change the check from [check_type] to [choice].</span>")
+		to_chat(usr, "<span class='info'>You change the check from [check_type] to [choice].</span>")
 
 		check_type = choice
 

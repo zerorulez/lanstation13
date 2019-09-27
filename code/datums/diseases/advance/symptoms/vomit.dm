@@ -11,7 +11,7 @@ Vomiting
 
 Bonus
 	Forces the affected mob to vomit!
-	Meaning my disease can spread via
+	Meaning your disease can spread via
 	people walking on vomit.
 	Makes the affected mob lose nutrition and
 	heal toxin damage.
@@ -34,7 +34,7 @@ Bonus
 		var/mob/living/M = A.affected_mob
 		switch(A.stage)
 			if(1, 2, 3, 4)
-				to_chat(M, "[pick("<span class='warning'>I feel nauseous...", "<span class='danger'>I feel like you're going to throw up!")]</span>")
+				to_chat(M, "[pick("<span class='warning'>You feel nauseous...", "<span class='danger'>You feel like you're going to throw up!")]</span>")
 			else
 				Vomit(M)
 
@@ -64,7 +64,7 @@ Vomiting Blood
 
 Bonus
 	Forces the affected mob to vomit blood!
-	Meaning my disease can spread via
+	Meaning your disease can spread via
 	people walking on the blood.
 	Makes the affected mob lose health.
 

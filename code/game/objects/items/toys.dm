@@ -43,7 +43,7 @@
 /obj/item/toy/waterballoon/afterattack(atom/A as mob|obj, mob/user as mob)
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, "<span class = 'notice'>I fill the balloon with the contents of \the [A].</span>")
+		to_chat(user, "<span class = 'notice'>You fill the balloon with the contents of \the [A].</span>")
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
 		src.update_icon()
 	return
@@ -61,7 +61,7 @@
 					return
 				else
 					src.desc = "A translucent balloon with some form of liquid sloshing around in it."
-					to_chat(user, "<span class = 'info'>I fill the balloon with the contents of \the [O].</span>")
+					to_chat(user, "<span class = 'info'>You fill the balloon with the contents of \the [O].</span>")
 					O.reagents.trans_to(src, 10)
 	src.update_icon()
 	return
@@ -155,10 +155,10 @@
 			return 1
 		if (A.amount_left < (7 - src.bullets))
 			src.bullets += A.amount_left
-			to_chat(user, text("<span class = 'warning'>I reload [] caps\s!</span>", A.amount_left))
+			to_chat(user, text("<span class = 'warning'>You reload [] caps\s!</span>", A.amount_left))
 			A.amount_left = 0
 		else
-			to_chat(user, text("<span class = 'warning'>I reload [] caps\s!</span>", 7 - src.bullets))
+			to_chat(user, text("<span class = 'warning'>You reload [] caps\s!</span>", 7 - src.bullets))
 			A.amount_left -= 7 - src.bullets
 			src.bullets = 7
 		A.update_icon()
@@ -169,7 +169,7 @@
 	if (flag)
 		return
 	if (!user.dexterity_check())
-		to_chat(user, "<span class = 'warning'>I don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class = 'warning'>You don't have the dexterity to do this!</span>")
 		return
 	src.add_fingerprint(user)
 	if (src.bullets < 1)
@@ -179,7 +179,7 @@
 	playsound(user, 'sound/weapons/Gunshot.ogg', 100, 1)
 	src.bullets--
 	for(var/mob/O in viewers(user, null))
-		O.show_message("<span class = 'danger'><B>[user] fires \the [src] at \the [target]!</B></span>", 1, "<span class = 'danger'>I hear a gunshot</span>", 2)
+		O.show_message("<span class = 'danger'><B>[user] fires \the [src] at \the [target]!</B></span>", 1, "<span class = 'danger'>You hear a gunshot</span>", 2)
 
 /obj/item/toy/ammo/gun
 	name = "ammo-caps"
@@ -231,7 +231,7 @@
 				qdel(I)
 				I = null
 				bullets++
-				to_chat(user, "<span class = 'info'>I load the foam dart into \the [src].</span>")
+				to_chat(user, "<span class = 'info'>You load the foam dart into \the [src].</span>")
 		else
 			to_chat(usr, "<span class = 'warning'>It's already fully loaded.</span>")
 
@@ -302,7 +302,7 @@
 
 		for(var/mob/O in viewers(M, null))
 			if(O.client)
-				O.show_message(text("<span class = 'danger'><B>[] casually lines up a shot with []'s head and pulls the trigger!</B></span>", user, M), 1, "<span class = 'danger'>I hear the sound of foam against skull.</span>", 2)
+				O.show_message(text("<span class = 'danger'><B>[] casually lines up a shot with []'s head and pulls the trigger!</B></span>", user, M), 1, "<span class = 'danger'>You hear the sound of foam against skull.</span>", 2)
 				O.show_message(text("<span class = 'danger'>[] was hit in the head by the foam dart!</span>", M), 1)
 
 		playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
@@ -311,7 +311,7 @@
 	else if (M.lying && src.bullets == 0)
 		for(var/mob/O in viewers(M, null))
 			if (O.client)
-				O.show_message(text("<span class = 'danger'><B>[] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B></span>", user, M), 1, "<span class = 'danger'>I hear someone fall</span>", 2)
+				O.show_message(text("<span class = 'danger'><B>[] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B></span>", user, M), 1, "<span class = 'danger'>You hear someone fall</span>", 2)
 		user.Knockdown(5)
 	return
 
@@ -349,13 +349,13 @@
 	attack_self(mob/user as mob)
 		src.active = !( src.active )
 		if (src.active)
-			to_chat(user, "<span class = 'info'>I extend the plastic blade with a quick flick of my wrist.</span>")
+			to_chat(user, "<span class = 'info'>You extend the plastic blade with a quick flick of your wrist.</span>")
 			playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 			src.icon_state = "swordblue"
 			src.item_state = "swordblue"
 			src.w_class = W_CLASS_LARGE
 		else
-			to_chat(user, "<span class = 'info'>I push the plastic blade back down into the handle.</span>")
+			to_chat(user, "<span class = 'info'>You push the plastic blade back down into the handle.</span>")
 			playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
 			src.icon_state = "sword0"
 			src.item_state = "sword0"
@@ -467,7 +467,7 @@
 /obj/item/toy/snappop/Crossed(var/mob/living/M)
 	if(istype(M) && M.size > SIZE_SMALL) //i guess carp and shit shouldn't set them off
 		if(M.m_intent == "run" && M.on_foot())
-			to_chat(M, "<span class = 'warning'>I step on \the [src.name]!</span>")
+			to_chat(M, "<span class = 'warning'>You step on \the [src.name]!</span>")
 			pop()
 
 /obj/item/toy/snappop/proc/pop()
@@ -475,7 +475,7 @@
 	s.set_up(2, 0, src)
 	s.start()
 	new /obj/effect/decal/cleanable/ash(src.loc)
-	src.visible_message("<span class = 'danger'>\The [src.name] explodes!</span>","<span class = 'danger'>I hear a snap!</span>")
+	src.visible_message("<span class = 'danger'>\The [src.name] explodes!</span>","<span class = 'danger'>You hear a snap!</span>")
 	playsound(src, 'sound/effects/snap.ogg', 50, 1)
 	qdel(src)
 
@@ -497,7 +497,7 @@
 	s.set_up(3, 1, src)
 	s.start()
 	new /obj/effect/decal/cleanable/ash(src.loc)
-	src.visible_message("<span class = 'danger'>\The [src.name] explodes!</span>","</span class = 'danger'>I hear a bang!</span>")
+	src.visible_message("<span class = 'danger'>\The [src.name] explodes!</span>","</span class = 'danger'>You hear a bang!</span>")
 	playsound(src, 'sound/effects/snap.ogg', 50, 1)
 	qdel(src)
 
@@ -551,12 +551,12 @@
 
 	else if (istype(A, /obj/structure/reagent_dispensers) && proximity_flag)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, "<span class = 'notice'>I refill my flower!</span>")
+		to_chat(user, "<span class = 'notice'>You refill your flower!</span>")
 		return
 
 	else if (src.reagents.total_volume < 1)
 		src.empty = 1
-		to_chat(user, "<span class = 'notice'>My flower has run dry!</span>")
+		to_chat(user, "<span class = 'notice'>Your flower has run dry!</span>")
 		return
 
 	else
@@ -603,14 +603,14 @@
 //all credit to skasi for toy mech fun ideas
 /obj/item/toy/prize/attack_self(mob/user as mob)
 	if(cooldown < world.time - 8)
-		to_chat(user, "<span class='notice'>I play with \the [src].</span>")
+		to_chat(user, "<span class='notice'>You play with \the [src].</span>")
 		playsound(user, 'sound/mecha/mechstep.ogg', 20, 1)
 		cooldown = world.time
 
 /obj/item/toy/prize/attack_hand(mob/user as mob)
 	if(loc == user)
 		if(cooldown < world.time - 8)
-			to_chat(user, "<span class='notice'>I play with \the [src].</span>")
+			to_chat(user, "<span class='notice'>You play with \the [src].</span>")
 			playsound(user, 'sound/mecha/mechturn.ogg', 20, 1)
 			cooldown = world.time
 			return
@@ -698,7 +698,7 @@
 
 /obj/item/device/whisperphone
 	name = "whisperphone"
-	desc = "A device used to project my voice. Quietly."
+	desc = "A device used to project your voice. Quietly."
 	icon_state = "megaphone"
 	item_state = "radio"
 	w_class = W_CLASS_TINY
@@ -710,13 +710,13 @@
 /obj/item/device/whisperphone/attack_self(mob/living/user as mob)
 	if (user.client)
 		if(user.client.prefs.muted & MUTE_IC)
-			to_chat(src, "<span class = 'warning'>I cannot speak in IC (muted).</span>")
+			to_chat(src, "<span class = 'warning'>You cannot speak in IC (muted).</span>")
 			return
 	if(!ishuman(user))
-		to_chat(user, "<span class = 'warning'>I don't know how to use this!</span>")
+		to_chat(user, "<span class = 'warning'>You don't know how to use this!</span>")
 		return
 	if(user:miming || user.silent)
-		to_chat(user, "<span class = 'warning'>I find yourself unable to speak at all.</span>")
+		to_chat(user, "<span class = 'warning'>You find yourself unable to speak at all.</span>")
 		return
 	if(spamcheck)
 		to_chat(user, "<span class = 'warning'>\The [src] needs to recharge!</span>")
@@ -1015,7 +1015,7 @@
 
 /obj/item/toy/gasha/minislime
 	name = "Pygmy Grey Slime"
-	desc = "If you experience a tingling sensation in my hands, please stop playing with my pygmy slime immediately."
+	desc = "If you experience a tingling sensation in your hands, please stop playing with your pygmy slime immediately."
 	icon_state = "minislime"
 
 /obj/item/toy/gasha/AI/attack_self(mob/user as mob)

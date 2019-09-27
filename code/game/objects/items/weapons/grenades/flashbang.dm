@@ -98,19 +98,19 @@
 		var/mob/living/carbon/human/H = M
 		var/datum/organ/internal/eyes/E = H.internal_organs_by_name["eyes"]
 		if (E && E.damage >= E.min_bruised_damage)
-			to_chat(M, "<span class='warning'>My eyes start to burn badly!</span>")
+			to_chat(M, "<span class='warning'>Your eyes start to burn badly!</span>")
 			if(!banglet && !(istype(src , /obj/item/weapon/grenade/flashbang/clusterbang)))
 				if (E.damage >= E.min_broken_damage)
-					to_chat(M, "<span class='warning'>I can't see anything!</span>")
+					to_chat(M, "<span class='warning'>You can't see anything!</span>")
 	if (M.ear_damage >= 15)
-		to_chat(M, "<span class='warning'>My ears start to ring badly!</span>")
+		to_chat(M, "<span class='warning'>Your ears start to ring badly!</span>")
 		if(!banglet && !(istype(src , /obj/item/weapon/grenade/flashbang/clusterbang)))
 			if (prob(M.ear_damage - 10 + 5))
-				to_chat(M, "<span class='warning'>I can't hear anything!</span>")
+				to_chat(M, "<span class='warning'>You can't hear anything!</span>")
 				M.sdisabilities |= DEAF
 	else
 		if (M.ear_damage >= 5)
-			to_chat(M, "<span class='warning'>My ears start to ring!</span>")
+			to_chat(M, "<span class='warning'>Your ears start to ring!</span>")
 	M.update_icons()
 
 /obj/effect/effect/smoke/flashbang
@@ -124,7 +124,7 @@
 	set_light(15)
 
 /obj/item/weapon/grenade/flashbang/clusterbang//Created by Polymorph, fixed by Sieve
-	desc = "Use of this weapon may constiute a war crime in my area, consult my local captain."
+	desc = "Use of this weapon may constiute a war crime in your area, consult your local captain."
 	name = "clusterbang"
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "clusterbang"
@@ -162,7 +162,7 @@
 	banglet = 1
 	var/stepdist = rand(1,4)//How far to step
 	var/temploc = src.loc//Saves the current location to know where to step away from
-	walk_away(src,temploc,stepdist)//I must go, my people need me
+	walk_away(src,temploc,stepdist)//I must go, your people need me
 	var/dettime = rand(15,60)
 	spawn(dettime)
 		prime()

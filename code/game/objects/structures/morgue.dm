@@ -117,8 +117,8 @@
 					if(ghost)
 						var/mob/ghostmob = ghost.get_top_transmogrification()
 						if(ghostmob)
-							to_chat(ghostmob, "<span class='interface'><span class='big bold'>My corpse has been placed into a morgue tray.</span> \
-								Re-entering my corpse will cause the tray's lights to turn green, which will let people know you're still there, and just maybe improve my chances of being revived. No promises.</span>")
+							to_chat(ghostmob, "<span class='interface'><span class='big bold'>Your corpse has been placed into a morgue tray.</span> \
+								Re-entering your corpse will cause the tray's lights to turn green, which will let people know you're still there, and just maybe improve your chances of being revived. No promises.</span>")
 	qdel(connected)
 
 
@@ -151,8 +151,8 @@
 		if(ghost)
 			var/mob/ghostmob = ghost.get_top_transmogrification()
 			if(ghostmob)
-				to_chat(ghostmob, "<span class='interface'><span class='big bold'>My corpse has been placed into a morgue tray.</span> \
-					Re-entering my corpse will cause the tray's lights to turn green, which will let people know you're still there, and just maybe improve my chances of being revived. No promises.</span>")
+				to_chat(ghostmob, "<span class='interface'><span class='big bold'>Your corpse has been placed into a morgue tray.</span> \
+					Re-entering your corpse will cause the tray's lights to turn green, which will let people know you're still there, and just maybe improve your chances of being revived. No promises.</span>")
 
 /obj/structure/morgue/on_logout(var/mob/M)
 	update()
@@ -324,23 +324,23 @@
 
 	if(contents.len <= 0)
 		for (var/mob/M in viewers(src))
-			M.show_message("<span class='warning'>I hear a hollow crackle.</span>", 1)
+			M.show_message("<span class='warning'>You hear a hollow crackle.</span>", 1)
 			return
 
 	else
 		var/inside = get_contents_in_object(src)
 
 		if (locate(/obj/item/weapon/disk/nuclear) in inside)
-			to_chat(user, "<SPAN CLASS='warning'>I get the feeling that you shouldn't cremate one of the items in the cremator.</SPAN>")
+			to_chat(user, "<SPAN CLASS='warning'>You get the feeling that you shouldn't cremate one of the items in the cremator.</SPAN>")
 			return
 		if(locate(/mob/living/simple_animal/sculpture) in inside)
-			to_chat(user, "<span class='warning'>I try to toggle the crematorium on, but all you hear is scrapping stone.</span>")
+			to_chat(user, "<span class='warning'>You try to toggle the crematorium on, but all you hear is scrapping stone.</span>")
 			return
 		for (var/mob/M in viewers(src))
 			if(!M.hallucinating())
-				M.show_message("<span class='warning'>I hear a roar as the crematorium activates.</span>", 1)
+				M.show_message("<span class='warning'>You hear a roar as the crematorium activates.</span>", 1)
 			else
-				M.show_message("<span class='notice'>I hear chewing as the crematorium consumes its meal.</span>", 1)
+				M.show_message("<span class='notice'>You hear chewing as the crematorium consumes its meal.</span>", 1)
 				M << 'sound/items/eatfood.ogg'
 
 		locked = 1

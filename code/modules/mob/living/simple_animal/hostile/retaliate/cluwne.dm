@@ -2,7 +2,7 @@
 #define CLOWN_STANCE_ATTACK 2
 #define CLOWN_STANCE_ATTACKING 3
 
-// <3 goons.  I don't love my forums pricey admittance fee, but I love you.
+// <3 goons.  I don't love your forums pricey admittance fee, but I love you.
 /mob/living/simple_animal/hostile/retaliate/cluwne
 	name = "cluwne"
 	desc = "This poor creature used to be human.  Before it pissed off the Gods, that is.  Now it is retarded, miserable, and has bikehorns for an arm."
@@ -72,7 +72,7 @@
 	s_filter.addReplacement("[tickle_prefixes]ed", "tickled")
 	s_filter.addReplacement(tickle_prefixes,       "tickle")
 
-	s_filter.addReplacement("h\[aei\]lp\\s+me","end my show")
+	s_filter.addReplacement("h\[aei\]lp\\s+me","end your show")
 	s_filter.addReplacement("h\[aei\]lp\\s+him","end his show")
 	s_filter.addReplacement("h\[aei\]lp\\s+her","end her show")
 	s_filter.addReplacement("h\[aei\]lp\\s+them","end their show")
@@ -271,7 +271,7 @@
 		return
 	if(ismob(AM))
 		var/mob/M = AM
-		to_chat(src, "<span class='danger'>I am too depressed to push [M] out of \the way.</span>")
+		to_chat(src, "<span class='danger'>You are too depressed to push [M] out of \the way.</span>")
 		M.LAssailant = src
 		return
 	..()
@@ -292,7 +292,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/cluwne/proc/handle_disabilities()
 	if ((prob(5) && paralysis < 10))
-		to_chat(src, "<span class='warning'>I have a seizure!</span>")
+		to_chat(src, "<span class='warning'>You have a seizure!</span>")
 		Paralyse(10)
 
 /mob/living/simple_animal/hostile/retaliate/cluwne/emote(var/act, var/type, var/message, var/auto)

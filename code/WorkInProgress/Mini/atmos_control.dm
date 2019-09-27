@@ -79,7 +79,7 @@ var/global/list/atmos_controllers = list()
 /obj/machinery/computer/atmoscontrol/attackby(var/obj/item/I as obj, var/mob/user as mob)
 	if(istype(I, /obj/item/weapon/card/emag) && !emagged)
 		user.visible_message("<span class='warning'>\The [user] swipes \a [I] through \the [src], causing the screen to flash!</span>",\
-			"<span class='warning'>I swipe my [I] through \the [src], the screen flashing as you gain full control.</span>",\
+			"<span class='warning'>You swipe your [I] through \the [src], the screen flashing as you gain full control.</span>",\
 			"I hear the swipe of a card through a reader, and an electronic warble.")
 		emagged = 1
 		overridden = 1

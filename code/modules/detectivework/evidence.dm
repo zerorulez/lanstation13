@@ -19,7 +19,7 @@
 		return ..()
 
 	if(istype(I, /obj/item/weapon/evidencebag))
-		to_chat(user, "<span class='notice'>I find putting an evidence bag in another evidence bag to be slightly absurd.</span>")
+		to_chat(user, "<span class='notice'>You find putting an evidence bag in another evidence bag to be slightly absurd.</span>")
 		return
 
 	if(I.w_class > W_CLASS_MEDIUM)

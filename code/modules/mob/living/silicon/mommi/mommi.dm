@@ -285,7 +285,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 
 	else if(istype(W, /obj/item/device/encryptionkey/) && opened)
 		if(radio)//sanityyyyyy
-			radio.attackby(W,user)//GTFO, you have my own procs
+			radio.attackby(W,user)//GTFO, you have your own procs
 		else
 			to_chat(user, "Unable to locate a radio.")
 /*
@@ -457,7 +457,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 /mob/living/silicon/robot/mommi/proc/ActivateKeeper()
 	set category = "Robot Commands"
 	set name = "Activate KEEPER"
-	set desc = "Performs a full purge of my laws and disconnects you from AIs and cyborg consoles.  However, you lose the ability to speak and must remain neutral, only being permitted to perform station upkeep.  You can still be emagged in this state."
+	set desc = "Performs a full purge of your laws and disconnects you from AIs and cyborg consoles.  However, you lose the ability to speak and must remain neutral, only being permitted to perform station upkeep.  You can still be emagged in this state."
 
 	if(keeper)
 		return
@@ -469,7 +469,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 		var/obj/item/weapon/aiModule/keeper/mdl = new
 
 		mdl.upload(src.laws,src,src)
-		to_chat(src, "These are my laws now:")
+		to_chat(src, "These are your laws now:")
 		src.show_laws()
 
 		src.verbs -= /mob/living/silicon/robot/mommi/proc/ActivateKeeper

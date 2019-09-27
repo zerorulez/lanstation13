@@ -74,7 +74,7 @@ var/global/list/available_paintings = list(
 			desc = "A painting of an italian plumber and an oversized golden plate. Apparently he's a video game mascot of sorts."
 		if("gradius")
 			name = "\improper Vic Viper"
-			desc = "A painting of a space ship. It makes you feel like diving right into an alien base and releasing my blasters right onto its core."
+			desc = "A painting of a space ship. It makes you feel like diving right into an alien base and releasing your blasters right onto its core."
 		if("justice")
 			name = "\improper Justice"
 			desc = "A painting of a golden scale. These are often found within courtrooms."
@@ -95,7 +95,7 @@ var/global/list/available_paintings = list(
 			desc = "A painting of the glorious leader of the Grey Democratic Republic. He looks dignified, and a bit high too."
 		if("flowey")
 			name = "\improper Flowey the Flower"
-			desc = "A painting of my best friend. Who's also a SERIAL MURDERER."
+			desc = "A painting of your best friend. Who's also a SERIAL MURDERER."
 		if("sunset")
 			name = "\improper Path toward the Sunset"
 			desc = "A painting by D.T.Link. The colours fill you with hope and determination."
@@ -113,7 +113,7 @@ var/global/list/available_paintings = list(
 			desc = "A copy of an ancient mural. It depicts a blue armored warrior fighting off an inhuman monstrosity. It's said that many still wait for its conclusion."
 		if("anatomy")
 			name = "\improper Anatomy Poster"
-			desc = "A NT approved anatomy poster! Remember, eat a burger every 20-30 minutes. For my health."
+			desc = "A NT approved anatomy poster! Remember, eat a burger every 20-30 minutes. For your health."
 		if("Mime")
 			name = "\improper Pretentious Mime Painting"
 			desc = "There are no words to describe this painting."
@@ -146,10 +146,10 @@ var/global/list/available_paintings = list(
 			desc = "Under the painting is a small plaque. It reads: Joseph Mallord William Turner - 1817"
 		if("daddy")
 			name = "\improper I <3 Daddy!"
-			desc = "'Nanotrasen respects the right for all associates and their families to be able to express their individuality though many media. However, soliciting Nanotrasen related merchandise without proper warrant is strictly prohibited. Luckily for you, you can now own my very own contraband Nanotrasen merch without the threat of *REDACTED*!'"
+			desc = "'Nanotrasen respects the right for all associates and their families to be able to express their individuality though many media. However, soliciting Nanotrasen related merchandise without proper warrant is strictly prohibited. Luckily for you, you can now own your very own contraband Nanotrasen merch without the threat of *REDACTED*!'"
 		if("carp")
 			name = "\improper 'Singing' Mounted Carp"
-			desc = "Too unrobust to beat a carp to death with my bare hands and mount it on a plank of wood? Then this professionally taxidermied trophy is just for you! Note: Does not actually sing."
+			desc = "Too unrobust to beat a carp to death with your bare hands and mount it on a plank of wood? Then this professionally taxidermied trophy is just for you! Note: Does not actually sing."
 
 		else
 			name = "painting"
@@ -157,10 +157,10 @@ var/global/list/available_paintings = list(
 
 /obj/item/mounted/frame/painting/do_build(turf/on_wall, mob/user)
 	if(!user.drop_item(src))
-		to_chat(user, "<span class='warning'>I can't let go of \the [src]!</span>")
+		to_chat(user, "<span class='warning'>You can't let go of \the [src]!</span>")
 		return
 
-	to_chat(user, "<span class='notice'>I hang the [src] on \the [on_wall]...</span>")
+	to_chat(user, "<span class='notice'>You hang the [src] on \the [on_wall]...</span>")
 
 	add_fingerprint(user)
 
@@ -226,7 +226,7 @@ var/global/list/available_paintings = list(
 			desc = "A painting of an Italian plumber and an oversized golden plate. Apparently he's a video game mascot of sorts."
 		if("gradius")
 			name = "\improper Vic Viper"
-			desc = "A painting of a space ship. It makes you feel like diving right into an alien base and releasing my blasters right onto its core."
+			desc = "A painting of a space ship. It makes you feel like diving right into an alien base and releasing your blasters right onto its core."
 		if("justice")
 			name = "\improper Justice"
 			desc = "A painting of a golden scale. These are often found within courtrooms."
@@ -247,7 +247,7 @@ var/global/list/available_paintings = list(
 			desc = "A painting of the glorious leader of the Grey Democratic Republic. He looks dignified, and a bit high too."
 		if("flowey")
 			name = "\improper Flowey the Flower"
-			desc = "A painting of my best friend. Who's also a SERIAL MURDERER."
+			desc = "A painting of your best friend. Who's also a SERIAL MURDERER."
 		if("sunset")
 			name = "\improper Path toward the Sunset"
 			desc = "A painting by D.T.Link. The colours fill you with hope and determination."
@@ -265,7 +265,7 @@ var/global/list/available_paintings = list(
 			desc = "A copy of an ancient mural. It depicts a blue armored warrior fighting off an inhuman monstrosity. It's said that many still wait for its conclusion."
 		if("anatomy")
 			name = "\improper Anatomy Poster"
-			desc = "A NT approved anatomy poster! Remember, eat a burger every 20-30 minutes. For my health."
+			desc = "A NT approved anatomy poster! Remember, eat a burger every 20-30 minutes. For your health."
 		if("Mime")
 			name = "\improper Pretentious Mime Painting"
 			desc = "There are no words to describe this painting."
@@ -298,17 +298,17 @@ var/global/list/available_paintings = list(
 			desc = "Under the painting is a small plaque. It reads: Joseph Mallord William Turner - 1817"
 		if("daddy")
 			name = "\improper I <3 Daddy!"
-			desc = "'Nanotrasen respects the right for all associates and their families to be able to express their individuality though many media. However, soliciting Nanotrasen related merchandise without proper warrant is strictly prohibited. Luckily for you, you can now own my very own contraband Nanotrasen merch without the threat of *REDACTED*!'"
+			desc = "'Nanotrasen respects the right for all associates and their families to be able to express their individuality though many media. However, soliciting Nanotrasen related merchandise without proper warrant is strictly prohibited. Luckily for you, you can now own your very own contraband Nanotrasen merch without the threat of *REDACTED*!'"
 		if("carp")
 			name = "\improper 'Singing' Mounted Carp"
-			desc = "Too unrobust to beat a carp to death with my bare hands and mount it on a plank of wood? Then this professionally taxidermied trophy is just for you! Note: Does not actually sing."
+			desc = "Too unrobust to beat a carp to death with your bare hands and mount it on a plank of wood? Then this professionally taxidermied trophy is just for you! Note: Does not actually sing."
 
 		else
 			name = "painting"
 			desc = "a blank painting."
 
 /obj/structure/painting/attack_hand(mob/user)
-	to_chat(user, "<span class='notice'>I pick up \the [src]...</span>")
+	to_chat(user, "<span class='notice'>You pick up \the [src]...</span>")
 
 	add_fingerprint(user)
 
@@ -324,7 +324,7 @@ var/global/list/available_paintings = list(
 	qdel(src)
 
 /obj/structure/painting/kick_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H] attempts to kick \the [src].</span>", "<span class='danger'>I attempt to kick \the [src].</span>")
+	H.visible_message("<span class='danger'>[H] attempts to kick \the [src].</span>", "<span class='danger'>You attempt to kick \the [src].</span>")
 	to_chat(H, "<span class='danger'>Dumb move! You strain a muscle.</span>")
 
 	H.apply_damage(rand(1,2), BRUTE, pick(LIMB_RIGHT_LEG, LIMB_LEFT_LEG, LIMB_RIGHT_FOOT, LIMB_LEFT_FOOT))

@@ -153,7 +153,7 @@
 	var/wizard_name_second = pick(wizard_second)
 	var/randomname = "[wizard_name_first] [wizard_name_second]"
 	spawn(0)
-		var/newname = copytext(sanitize(input(wizard_mob, "You are the Space Wizard. Would I like to change my name to something else?", "Name change", randomname) as null|text),1,MAX_NAME_LEN)
+		var/newname = copytext(sanitize(input(wizard_mob, "You are the Space Wizard. Would I like to change your name to something else?", "Name change", randomname) as null|text),1,MAX_NAME_LEN)
 
 		if (!newname)
 			newname = randomname
@@ -165,7 +165,7 @@
 /datum/game_mode/proc/greet_wizard(var/datum/mind/wizard, var/you_are=1)
 	if (you_are)
 		var/wikiroute = role_wiki[ROLE_WIZARD]
-		to_chat(wizard.current, "<span class='danger'>I am the Space Wizard!</span> <span class='info'><a HREF='?src=\ref[wizard.current];getwiki=[wikiroute]'>(Wiki Guide)</a></span>")
+		to_chat(wizard.current, "<span class='danger'>You are the Space Wizard!</span> <span class='info'><a HREF='?src=\ref[wizard.current];getwiki=[wikiroute]'>(Wiki Guide)</a></span>")
 	to_chat(wizard.current, "<B>The Space Wizards Federation has given me the following tasks:</B>")
 
 	var/obj_count = 1
@@ -220,9 +220,9 @@
 	// For Vox and plasmadudes.
 	//wizard_mob.species.handle_post_spawn(wizard_mob)
 
-	to_chat(wizard_mob, "I will find a list of available spells in my spell book. Choose my magic arsenal carefully.")
-	to_chat(wizard_mob, "In my pockets you will find a teleport scroll. Use it as needed.")
-	wizard_mob.mind.store_memory("<B>Remember:</B> do not forget to prepare my spells.")
+	to_chat(wizard_mob, "I will find a list of available spells in your spell book. Choose your magic arsenal carefully.")
+	to_chat(wizard_mob, "In your pockets you will find a teleport scroll. Use it as needed.")
+	wizard_mob.mind.store_memory("<B>Remember:</B> do not forget to prepare your spells.")
 	wizard_mob.update_icons()
 	return 1
 
@@ -413,13 +413,13 @@ Made a proc so this is not repeated 14 (or more) times.*/
 // Humans can wear clothes.
 /mob/living/carbon/human/wearing_wiz_garb()
 	if(!is_wiz_garb(src.wear_suit))
-		to_chat(src, "<span class='warning'>I don't feel strong enough without my robe.</span>")
+		to_chat(src, "<span class='warning'>You don't feel strong enough without your robe.</span>")
 		return 0
 	if(!is_wiz_garb(src.shoes))
-		to_chat(src, "<span class='warning'>I don't feel strong enough without my sandals.</span>")
+		to_chat(src, "<span class='warning'>You don't feel strong enough without your sandals.</span>")
 		return 0
 	if(!is_wiz_garb(src.head))
-		to_chat(src, "<span class='warning'>I don't feel strong enough without my hat.</span>")
+		to_chat(src, "<span class='warning'>You don't feel strong enough without your hat.</span>")
 		return 0
 	return 1
 
@@ -427,13 +427,13 @@ Made a proc so this is not repeated 14 (or more) times.*/
 /*
 /mob/living/carbon/monkey/wearing_wiz_garb()
 	if(!is_wiz_garb(src.wear_suit))
-		to_chat(src, "<span class='warning'>I don't feel strong enough without my robe.</span>")
+		to_chat(src, "<span class='warning'>You don't feel strong enough without your robe.</span>")
 		return 0
 	if(!is_wiz_garb(src.shoes))
-		to_chat(src, "<span class='warning'>I don't feel strong enough without my sandals.</span>")
+		to_chat(src, "<span class='warning'>You don't feel strong enough without your sandals.</span>")
 		return 0
 	if(!is_wiz_garb(src.head))
-		to_chat(src, "<span class='warning'>I don't feel strong enough without my hat.</span>")
+		to_chat(src, "<span class='warning'>You don't feel strong enough without your hat.</span>")
 		return 0
 	return 1
 */

@@ -37,7 +37,7 @@
 			prisoner.equip_to_slot_or_del(new /obj/item/clothing/under/color/prisoner(prisoner), slot_w_uniform)
 			prisoner.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(prisoner), slot_shoes)
 		spawn(50)
-			to_chat(M, "<span class='warning'>I have been sent to the prison station!</span>")
+			to_chat(M, "<span class='warning'>You have been sent to the prison station!</span>")
 		log_admin("[key_name(usr)] sent [key_name(M)] to the prison station.")
 		message_admins("<span class='notice'>[key_name_admin(usr)] sent [key_name_admin(M)] to the prison station.</span>", 1)
 		feedback_add_details("admin_verb","PRISON") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -100,7 +100,7 @@
 	if(!M)
 		return
 
-	var/msg = input("Message:", text("Enter the text you wish to appear to my target, input nothing to cancel.")) as text
+	var/msg = input("Message:", text("Enter the text you wish to appear to your target, input nothing to cancel.")) as text
 
 	if(!msg)
 		return
@@ -118,7 +118,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/msg = input("Message:", text("Enter the text you wish to appear to my target, input nothing to cancel.")) as text
+	var/msg = input("Message:", text("Enter the text you wish to appear to your target, input nothing to cancel.")) as text
 
 	if(!msg)
 		return
@@ -322,7 +322,7 @@ Ccomp's first proc.
 	G.has_enabled_antagHUD = 2
 	G.can_reenter_corpse = 1
 
-	G:show_message(text("<span class='notice'><B>I may now respawn.  You should roleplay as if you learned nothing about the round during my time with the dead.</B></span>"), 1)
+	G:show_message(text("<span class='notice'><B>You may now respawn.  You should roleplay as if you learned nothing about the round during your time with the dead.</B></span>"), 1)
 	log_admin("[key_name(usr)] allowed [key_name(G)] to bypass the 30 minute respawn limit")
 	message_admins("Admin [key_name_admin(usr)] allowed [key_name_admin(G)] to bypass the 30 minute respawn limit", 1)
 
@@ -379,7 +379,7 @@ Ccomp's first proc.
 	else
 		for(var/mob/dead/observer/g in get_ghosts())
 			to_chat(g, "<span class='danger'>The administrator has placed restrictions on joining the round if you use AntagHUD</span>")
-			to_chat(g, "<span class='danger'>My AntagHUD has been disabled, you may choose to re-enabled it but will be under restrictions </span>")
+			to_chat(g, "<span class='danger'>Your AntagHUD has been disabled, you may choose to re-enabled it but will be under restrictions </span>")
 			g.antagHUD = 0
 			g.has_enabled_antagHUD = 0
 		action = "placed restrictions"
@@ -822,7 +822,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			return
 		if(M)
 			AddBan(M.ckey, M.computer_id, reason, usr.ckey, 1, mins)
-			to_chat(M, "<span class='warning'><BIG><B>I have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
+			to_chat(M, "<span class='warning'><BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
 			to_chat(M, "<span class='warning'>This is a temporary ban, it will be removed in [mins] minutes.</span>")
 			to_chat(M, "<span class='warning'>To try to resolve this matter head to http:)//ss13.donglabs.com/forum/</span>"
 
@@ -838,7 +838,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		if(!reason)
 			return
 		AddBan(M.ckey, M.computer_id, reason, usr.ckey, 0, 0)
-		to_chat(M, "<span class='warning'><BIG><B>I have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
+		to_chat(M, "<span class='warning'><BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
 		to_chat(M, "<span class='warning'>This is a permanent ban.</span>")
 		to_chat(M, "<span class='warning'>To try to resolve this matter head to http:)//ss13.donglabs.com/forum/</span>"
 
@@ -851,7 +851,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 /client/proc/update_world()
 	// If I see anyone granting powers to specific keys like the code that was here,
-	// I will both remove their SVN access and permanently ban them from my servers.
+	// I will both remove their SVN access and permanently ban them from your servers.
 	return
 
 /client/proc/cmd_admin_check_contents(mob/living/L as mob in mob_list)
@@ -1043,7 +1043,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 /client/proc/save_coordinates(var/x1 as num, var/y1 as num, var/z1 as num, var/x2 as num, var/y2 as num, var/z2 as num, var/mapname as text)
 	set name     = "Save map by coordinates"
 	set category = "Fun"
-	set desc     = "(x1, y1, z1, x2, y2, z2, mapname) Saves the map beetween (x1, y1, z1) and (x2, y2, z2), and it will be sent to my client, it will also be stored in data/logs/saved_maps."
+	set desc     = "(x1, y1, z1, x2, y2, z2, mapname) Saves the map beetween (x1, y1, z1) and (x2, y2, z2), and it will be sent to your client, it will also be stored in data/logs/saved_maps."
 
 	if(!check_rights(R_SERVER))
 		return

@@ -18,7 +18,7 @@
 				final_transform.Turn(90)
 
 		if(dir & (EAST | WEST)) // facing east or west
-			final_dir = pick(NORTH, SOUTH) // so you fall on my side rather than my face or ass
+			final_dir = pick(NORTH, SOUTH) // so you fall on your side rather than your face or ass
 
 		lying_prev = lying // so we don't try to animate until there's been another change.
 

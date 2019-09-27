@@ -156,7 +156,7 @@ var/global/list/all_graffitis = list(
 					animate(alpha = 255, 10, -1)
 
 					user.client.images.Add(I)
-					var/continue_drawing = alert(user, "This is how my drawing will look. Continue?", "Crayon scribbles", "Yes", "Cancel")
+					var/continue_drawing = alert(user, "This is how your drawing will look. Continue?", "Crayon scribbles", "Yes", "Cancel")
 
 					user.client.images.Remove(I)
 					animate(I) //Cancel the animation so that the image gets garbage collected
@@ -171,7 +171,7 @@ var/global/list/all_graffitis = list(
 		if(!user.Adjacent(target))
 			return
 		if(target.density && !cardinal.Find(get_dir(user, target))) //Drawing on a wall and not standing in a cardinal direction - don't draw
-			to_chat(user, "<span class='warning'>I can't reach \the [target] from here!</span>")
+			to_chat(user, "<span class='warning'>You can't reach \the [target] from here!</span>")
 			return
 
 		if(instant || do_after(user,target, drawtime))
@@ -202,7 +202,7 @@ var/global/list/all_graffitis = list(
 			if(uses)
 				uses--
 				if(!uses)
-					to_chat(user, "<span class='warning'>I used up my crayon!</span>")
+					to_chat(user, "<span class='warning'>You used up your crayon!</span>")
 					qdel(src)
 	return
 
@@ -216,7 +216,7 @@ var/global/list/all_graffitis = list(
 		if(uses)
 			uses -= 5
 			if(uses <= 0)
-				to_chat(user, "<span class='warning'>I ate my crayon!</span>")
+				to_chat(user, "<span class='warning'>You ate your crayon!</span>")
 				qdel(src)
 	else
 		..()

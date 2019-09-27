@@ -331,7 +331,7 @@ var/const/POS_HEADER = {"<html>
 			<textarea name="csv"></textarea>
 			<p>Data must be in the form of a CSV, with no headers or quotation marks.</p>
 			<p>First column must be product names, second must be prices as an unformatted number (####.##)</p>
-			<p>Deviations from this format will result in my import being rejected.</p>
+			<p>Deviations from this format will result in your import being rejected.</p>
 			<input type="submit" name="act" value="Add Products" />
 		</form>
 		</fieldset>"}
@@ -435,7 +435,7 @@ var/const/POS_HEADER = {"<html>
 						subtotal += LI.units*LI.price
 				var/taxes = POS_TAX_RATE*subtotal
 				credits_needed=taxes+subtotal
-				say("My total is $[num2septext(credits_needed)].  Please insert credit chips or swipe my ID.")
+				say("My total is $[num2septext(credits_needed)].  Please insert credit chips or swipe your ID.")
 				screen=POS_SCREEN_FINALIZE
 			if("Add Product")
 				var/line_item/LI = new
@@ -515,7 +515,7 @@ var/const/POS_HEADER = {"<html>
 				flick(src,"pos-error")
 				return
 			if(screen!=POS_SCREEN_FINALIZE)
-				visible_message("<span class='notice'>The machine buzzes.</span>","<span class='warning'>I hear a buzz.</span>")
+				visible_message("<span class='notice'>The machine buzzes.</span>","<span class='warning'>You hear a buzz.</span>")
 				flick(src,"pos-error")
 				return
 			var/datum/money_account/acct = get_card_account(I)
@@ -539,7 +539,7 @@ var/const/POS_HEADER = {"<html>
 			flick(src,"pos-error")
 			return
 		if(!logged_in || screen!=POS_SCREEN_FINALIZE)
-			visible_message("<span class='notice'>The machine buzzes.</span>","<span class='warning'>I hear a buzz.</span>")
+			visible_message("<span class='notice'>The machine buzzes.</span>","<span class='warning'>You hear a buzz.</span>")
 			flick(src,"pos-error")
 			return
 		var/obj/item/weapon/spacecash/C=A

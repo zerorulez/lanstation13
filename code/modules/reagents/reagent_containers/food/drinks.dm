@@ -40,7 +40,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/attack_self(mob/user as mob)
 	if(!is_open_container())
-		to_chat(user, "<span class='warning'>I can't, \the [src] is closed.</span>")//Added this here and elsewhere to prevent drinking, etc. from closed drink containers. - Hinaichigo
+		to_chat(user, "<span class='warning'>You can't, \the [src] is closed.</span>")//Added this here and elsewhere to prevent drinking, etc. from closed drink containers. - Hinaichigo
 
 		return 0
 
@@ -143,7 +143,7 @@
 		return
 
 	else if(!is_open_container())
-		to_chat(user, "<span class='warning'>I can't, \the [src] is closed.</span>")//Added this here and elsewhere to prevent drinking, etc. from closed drink containers. - Hinaichigo
+		to_chat(user, "<span class='warning'>You can't, \the [src] is closed.</span>")//Added this here and elsewhere to prevent drinking, etc. from closed drink containers. - Hinaichigo
 
 		return 0
 
@@ -157,12 +157,12 @@
 
 	else if(istype(M, /mob/living/carbon/human))
 
-		user.visible_message("<span class='danger'>[user] attempts to feed [M] \the [src].</span>", "<span class='danger'>I attempt to feed [M] \the [src].</span>")
+		user.visible_message("<span class='danger'>[user] attempts to feed [M] \the [src].</span>", "<span class='danger'>You attempt to feed [M] \the [src].</span>")
 
 		if(!do_mob(user, M))
 			return
 
-		user.visible_message("<span class='danger'>[user] feeds [M] \the [src].</span>", "<span class='danger'>I feed [M] \the [src].</span>")
+		user.visible_message("<span class='danger'>[user] feeds [M] \the [src].</span>", "<span class='danger'>You feed [M] \the [src].</span>")
 
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [reagentlist(src)]</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [M.name] ([M.ckey]) Reagents: [reagentlist(src)]</font>")
@@ -237,7 +237,7 @@
 	else
 		to_chat(user, "\icon[src] That's \a [src].")
 		to_chat(user, desc)
-		to_chat(user, "<span class='info'>I can't quite make out its content!</span>")
+		to_chat(user, "<span class='info'>You can't quite make out its content!</span>")
 
 	if(!reagents || reagents.total_volume == 0)
 		to_chat(user, "<span class='info'>\The [src] is empty!</span>")
@@ -377,7 +377,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/dry_ramen
 	name = "Cup Ramen"
-	desc = "Just add 10ml water, self heats! A taste that reminds you of my school years."
+	desc = "Just add 10ml water, self heats! A taste that reminds you of your school years."
 	icon_state = "ramen"
 /obj/item/weapon/reagent_containers/food/drinks/dry_ramen/New()
 	..()
@@ -426,7 +426,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/filk
 	name = "Filk"
-	desc = "Only the best Filk for my crew."
+	desc = "Only the best Filk for your crew."
 	icon_state = "filk"
 /obj/item/weapon/reagent_containers/food/drinks/filk/New()
 	..()
@@ -562,7 +562,7 @@
 	src.pixel_y = rand(-10, 10) * PIXEL_MULTIPLIER
 
 /obj/item/weapon/reagent_containers/food/drinks/discount_ramen/attack_self(mob/user as mob)
-	to_chat(user, "I pull the tab, you feel the drink heat up in my hands, and its horrible fumes hits my nose like a ton of bricks. You drop the soup in disgust.")
+	to_chat(user, "I pull the tab, you feel the drink heat up in your hands, and its horrible fumes hits your nose like a ton of bricks. You drop the soup in disgust.")
 	var/turf/T = get_turf(user.loc)
 	var/obj/item/weapon/reagent_containers/food/drinks/discount_ramen_hot/A = new /obj/item/weapon/reagent_containers/food/drinks/discount_ramen_hot(T)
 	A.desc += " It feels warm.." //This is required
@@ -664,7 +664,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/soda_cans/space_up
 	name = "Space-Up"
-	desc = "Tastes like a hull breach in my mouth."
+	desc = "Tastes like a hull breach in your mouth."
 	icon_state = "space-up"
 /obj/item/weapon/reagent_containers/food/drinks/soda_cans/space_up/New()
 	..()
@@ -833,7 +833,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/plastic/cola
 	name = "space cola bottle"
-	desc = "During hard times, place my trust in mega corporations, and their sponsored drinks."
+	desc = "During hard times, place your trust in mega corporations, and their sponsored drinks."
 	icon_state = "colaplasticbottle"
 
 /obj/item/weapon/reagent_containers/food/drinks/plastic/cola/New()
@@ -1142,7 +1142,7 @@
 	..()
 	if(isGlass)
 		isGlass = 0 //to avoid it from hitting the wall, then hitting the floor, which would cause two broken bottles to appear
-		src.visible_message("<span  class='warning'>The [smashtext][src.name] shatters!</span>","<span  class='warning'>I hear a shatter!</span>")
+		src.visible_message("<span  class='warning'>The [smashtext][src.name] shatters!</span>","<span  class='warning'>You hear a shatter!</span>")
 		playsound(src, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)
 		if(reagents.total_volume)
 			src.reagents.reaction(get_turf(src), TOUCH) //splat the floor AND the thing we hit, otherwise fuel wouldn't ignite when hitting anything that wasn't a floor
@@ -1192,7 +1192,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/attackby(var/obj/item/I, mob/user as mob)
 	if(istype(I, /obj/item/weapon/reagent_containers/glass/rag) && molotov == -1)  //check if it is a molotovable drink - just beer and ale for now - other bottles require different rag overlay positions - if you can figure this out then go for it
-		to_chat(user, "<span  class='notice'>I stuff the [I] into the mouth of the [src].</span>")
+		to_chat(user, "<span  class='notice'>You stuff the [I] into the mouth of the [src].</span>")
 		qdel(I)
 		I = null //??
 		molotov = 1

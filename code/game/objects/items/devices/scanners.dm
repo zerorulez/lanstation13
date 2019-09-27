@@ -108,7 +108,7 @@ REAGENT SCANNER
 	if(.)
 		return
 	if(!user.dexterity_check())
-		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 	if(last_reading)
 		to_chat(user, "<span class='bnotice'>Accessing Prior Scan Result</span>")
@@ -118,9 +118,9 @@ REAGENT SCANNER
 proc/healthanalyze(mob/living/M as mob, mob/living/user as mob, var/mode = 0, var/skip_checks = 0, var/silent = 0)
 	var/message = ""
 	if(!skip_checks)
-		if(((M_CLUMSY in user.mutations) || user.getBrainLoss() >= 60) && prob(50))
+		if(((M_CLUMSY in user.mutations) || user.getBrainLoss() >= 60))
 			user.visible_message("<span class='warning'>[user] analyzes the floor's vitals!</span>", \
-			"<span class='warning'>I analyze the floor's vitals!</span>")
+			"<span class='warning'>You analyze the floor's vitals!</span>")
 			playsound(user, 'sound/items/healthanalyzer.ogg', 50, 1)
 			to_chat(user, {"<span class='notice'>Analyzing Results for the floor:<br>Overall Status: Healthy</span>
 Key: <font color='blue'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font>
@@ -134,7 +134,7 @@ Subject's pulse: ??? BPM"})
 			return
 	if(!silent)
 		user.visible_message("<span class='notice'>[user] analyzes [M]'s vitals.</span>", \
-		"<span class='notice'>I analyze [M]'s vitals.</span>")
+		"<span class='notice'>You analyze [M]'s vitals.</span>")
 		playsound(user, 'sound/items/healthanalyzer.ogg', 50, 1)
 	var/fake_oxy = max(rand(1, 40), M.getOxyLoss(), (300 - (M.getToxLoss() + M.getFireLoss() + M.getBruteLoss())))
 	var/OX = M.getOxyLoss() > 50   ? "<b>[M.getOxyLoss()]</b>"   : M.getOxyLoss()
@@ -291,7 +291,7 @@ Subject's pulse: ??? BPM"})
 		return
 
 	if(!user.dexterity_check())
-		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 
 	var/turf/location = get_turf(user)
@@ -381,7 +381,7 @@ Subject's pulse: ??? BPM"})
 			to_chat(user, "<span class='warning'>This device already has a blood sample!</span>")
 			return
 		if(!user.dexterity_check())
-			to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
+			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 			return
 		if(!C.dna)
 			return
@@ -392,7 +392,7 @@ Subject's pulse: ??? BPM"})
 		if(B)
 			update_icon()
 			user.visible_message("<span class='warning'>[user] takes a blood sample from [C].</span>", \
-			"<span class='notice'>I take a blood sample from [C]</span>")
+			"<span class='notice'>You take a blood sample from [C]</span>")
 			playsound(get_turf(src), 'sound/items/hypospray.ogg', 50, 1) //It uses the same thing as the hypospray, in reverse. SCIENCE!
 
 /obj/item/device/mass_spectrometer/attack_self(mob/user as mob)
@@ -401,7 +401,7 @@ Subject's pulse: ??? BPM"})
 		return
 
 	if(!user.dexterity_check())
-		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 	if(reagents.total_volume)
 		var/list/blood_traces = list()
@@ -455,7 +455,7 @@ Subject's pulse: ??? BPM"})
 	if(!istype(O)) //Wrong type sent
 		return
 	if(!user.dexterity_check())
-		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 	if(O.reagents)
 		var/dat = ""

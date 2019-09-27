@@ -85,7 +85,7 @@
 
 /datum/game_mode/cult/announce()
 	to_chat(world, "<B>The current game mode is - Cult!</B>")
-	to_chat(world, "<B>Some crewmembers are attempting to start a cult!<BR>\nCultists - complete my objectives. Convert crewmembers to my cause by using the convert rune. Remember - there is no you, there is only the cult.<BR>\nPersonnel - Do not let the cult succeed in its mission. Brainwashing them with the chaplain's bible reverts them to whatever CentCom-allowed faith they had.</B>")
+	to_chat(world, "<B>Some crewmembers are attempting to start a cult!<BR>\nCultists - complete your objectives. Convert crewmembers to your cause by using the convert rune. Remember - there is no you, there is only the cult.<BR>\nPersonnel - Do not let the cult succeed in its mission. Brainwashing them with the chaplain's bible reverts them to whatever CentCom-allowed faith they had.</B>")
 
 
 /datum/game_mode/cult/pre_setup()
@@ -159,8 +159,8 @@
 		update_cult_icons_added(cult_mind)
 		cult_mind.special_role = "Cultist"
 		var/wikiroute = role_wiki[ROLE_CULTIST]
-		to_chat(cult_mind.current, "<span class='sinister'>I am a member of the cult!</span> <span class='info'><a HREF='?src=\ref[cult_mind.current];getwiki=[wikiroute]'>(Wiki Guide)</a></span>")
-		to_chat(cult_mind.current, "<span class='sinister'>I can now speak and understand the forgotten tongue of Nar-Sie.</span>")
+		to_chat(cult_mind.current, "<span class='sinister'>You are a member of the cult!</span> <span class='info'><a HREF='?src=\ref[cult_mind.current];getwiki=[wikiroute]'>(Wiki Guide)</a></span>")
+		to_chat(cult_mind.current, "<span class='sinister'>You can now speak and understand the forgotten tongue of Nar-Sie.</span>")
 		cult_mind.current.add_language(LANGUAGE_CULT)
 		//memoize_cult_objectives(cult_mind)
 
@@ -221,7 +221,7 @@
 				explanation = "We need to sacrifice [sacrifice_target.name], the [sacrifice_target.assigned_role=="MODE" ? (sacrifice_target.special_role) : (sacrifice_target.assigned_role)], for his blood is the key that will lead our master to this realm. You will need 3 cultists around a Sacrifice rune (Hell Blood Join) to perform the ritual."
 
 		for(var/datum/mind/cult_mind in cult)
-			to_chat(cult_mind.current, "<span class='sinister'>I and my acolytes have completed my task, but this place requires yet more preparation!</span>")
+			to_chat(cult_mind.current, "<span class='sinister'>You and your acolytes have completed your task, but this place requires yet more preparation!</span>")
 			to_chat(cult_mind.current, "<B>Objective #[current_objective]</B>: [explanation]")
 			cult_mind.memory += "<B>Objective #[current_objective]</B>: [explanation]<BR>"
 
@@ -238,7 +238,7 @@
 	var/explanation = "Summon Nar-Sie on the Station via the use of the Tear Reality rune (Hell Join Self). You will need 9 cultists standing on and around the rune to summon Him."
 
 	for(var/datum/mind/cult_mind in cult)
-		to_chat(cult_mind.current, "<span class='sinister'>I and my acolytes have succeeded in preparing the station for the ultimate ritual!</span>")
+		to_chat(cult_mind.current, "<span class='sinister'>You and your acolytes have succeeded in preparing the station for the ultimate ritual!</span>")
 		to_chat(cult_mind.current, "<B>Objective #[current_objective]</B>: [explanation]")
 		cult_mind.memory += "<B>Objective #[current_objective]</B>: [explanation]<BR>"
 
@@ -394,7 +394,7 @@
 	if (!where)
 		to_chat(mob, "<span class='sinister'>Unfortunately, you weren't able to sneak in a talisman. Pray, and He most likely shall get you one.</span>")
 	else
-		to_chat(mob, "<span class='sinister'>I have a talisman in my [where], one that will help you start the cult on this station. Use it well and remember - there are others.</span>")
+		to_chat(mob, "<span class='sinister'>You have a talisman in your [where], one that will help you start the cult on this station. Use it well and remember - there are others.</span>")
 		mob.update_icons()
 		return 1
 
@@ -413,8 +413,8 @@
 	if (!word)
 		word=pick(allwords)
 	var/wordexp = "[cultwords[word]] is [word]..."
-	to_chat(cult_mob, "<span class='sinister'>I remember one thing from the dark teachings of my master... [wordexp]</span>")
-	cult_mob.mind.store_memory("<B>I remember that</B> [wordexp]", 0, 0)
+	to_chat(cult_mob, "<span class='sinister'>You remember one thing from the dark teachings of your master... [wordexp]</span>")
+	cult_mob.mind.store_memory("<B>You remember that</B> [wordexp]", 0, 0)
 
 
 /datum/game_mode/proc/add_cultist(datum/mind/cult_mind) //BASE
@@ -443,8 +443,8 @@
 	if(cult_mind in cult)
 		update_cult_icons_removed(cult_mind)
 		cult -= cult_mind
-		to_chat(cult_mind.current, "<span class='danger'><FONT size = 3>An unfamiliar white light flashes through my mind, cleansing the taint of the dark-one and removing all of the memories of my time as his servant, except the one who converted you, with it.</FONT></span>")
-		to_chat(cult_mind.current, "<span class='danger'>I find yourself unable to mouth the words of the forgotten...</span>")
+		to_chat(cult_mind.current, "<span class='danger'><FONT size = 3>An unfamiliar white light flashes through your mind, cleansing the taint of the dark-one and removing all of the memories of your time as his servant, except the one who converted you, with it.</FONT></span>")
+		to_chat(cult_mind.current, "<span class='danger'>You find yourself unable to mouth the words of the forgotten...</span>")
 		cult_mind.current.remove_language(LANGUAGE_CULT)
 		cult_mind.memory = ""
 

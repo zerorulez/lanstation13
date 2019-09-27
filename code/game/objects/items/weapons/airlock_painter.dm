@@ -61,7 +61,7 @@
 			to_chat(user, "<span class='notice'>\the [name] already contains \a [ink].</span>")
 			return
 		if(user.drop_item(W, src))
-			to_chat(user, "<span class='notice'>I install \the [W] into \the [name].</span>")
+			to_chat(user, "<span class='notice'>You install \the [W] into \the [name].</span>")
 			ink = W
 			playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 
@@ -70,7 +70,7 @@
 		playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 		ink.forceMove(user.loc)
 		user.put_in_hands(ink)
-		to_chat(user, "<span class='notice'>I remove \the [ink] from \the [name].</span>")
+		to_chat(user, "<span class='notice'>You remove \the [ink] from \the [name].</span>")
 		ink = null
 
 /obj/item/weapon/airlock_painter/New()

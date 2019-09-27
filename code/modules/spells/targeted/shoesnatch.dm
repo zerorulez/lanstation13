@@ -30,12 +30,12 @@
 			sparks_amt = 4
 			target.drop_from_inventory(old_shoes)
 			target.visible_message(	"<span class='danger'>[target]'s shoes suddenly vanish!</span>", \
-									"<span class='danger'>My shoes suddenly vanish!</span>")
+									"<span class='danger'>Your shoes suddenly vanish!</span>")
 			user.put_in_active_hand(old_shoes)
 
 		else if(spawn_shards) //Spawn shards if the target isn't wearing shoes
-			to_chat("<span class='danger'>I conjure several glass shards around \the [target].</span>")
-			target.show_message("<span class='danger'>I am surrounded by glass shards!</span>", MESSAGE_SEE)
+			to_chat("<span class='danger'>You conjure several glass shards around \the [target].</span>")
+			target.show_message("<span class='danger'>You are surrounded by glass shards!</span>", MESSAGE_SEE)
 			summon_shards(get_turf(target), cardinal)
 
 /spell/targeted/shoesnatch/proc/summon_shards(turf/T, list/dirlist)

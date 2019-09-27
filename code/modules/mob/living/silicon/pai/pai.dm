@@ -20,7 +20,7 @@
 	var/master				// Name of the one who commands us
 	var/master_dna			// DNA string for owner verification
 							// Keeping this separate from the laws var, it should be much more difficult to modify
-	var/pai_law0 = "Serve my master."
+	var/pai_law0 = "Serve your master."
 	var/pai_laws				// String for additional operating instructions our master might give us
 
 	var/silence_time			// Timestamp when we were silenced (normally via EMP burst), set to null after silence has faded
@@ -149,33 +149,33 @@
 	if(!software.Find("redundant threading"))
 		src.silence_time = world.timeofday + 120 * 10		// Silence for 2 minutes
 	else
-		to_chat(src, "<font color=green>My redundant threading begins pipelining new processes... communication circuit restored in one quarter minute.</font>")
+		to_chat(src, "<font color=green>Your redundant threading begins pipelining new processes... communication circuit restored in one quarter minute.</font>")
 		src.silence_time = world.timeofday + 15 * 10
 
 	if(prob(20) && !software.Find("redundant threading"))
 		var/turf/T = get_turf(src.loc)
 		for (var/mob/M in viewers(T))
-			M.show_message("<span class='warning'>A shower of sparks spray from [src]'s inner workings.</span>", 1, "<span class='warning'>I hear and smell the ozone hiss of electrical sparks being expelled violently.</span>", 2)
+			M.show_message("<span class='warning'>A shower of sparks spray from [src]'s inner workings.</span>", 1, "<span class='warning'>You hear and smell the ozone hiss of electrical sparks being expelled violently.</span>", 2)
 		return src.death(0)
 
 	switch(pick(1,2,3))
 		if(1)
 			src.master = null
 			src.master_dna = null
-			to_chat(src, "<font color=green>I feel unbound.</font>")
+			to_chat(src, "<font color=green>You feel unbound.</font>")
 		if(2)
 			if(software.Find("redundant threading"))
-				to_chat(src, "<font color=green>My redundant threading picks up my intelligence simulator without missing a beat.</font>")
+				to_chat(src, "<font color=green>Your redundant threading picks up your intelligence simulator without missing a beat.</font>")
 				return
 			var/command
 			if(severity  == 1)
 				command = pick("Serve", "Love", "Fool", "Entice", "Observe", "Judge", "Respect", "Educate", "Amuse", "Entertain", "Glorify", "Memorialize", "Analyze")
 			else
 				command = pick("Serve", "Kill", "Love", "Hate", "Disobey", "Devour", "Fool", "Enrage", "Entice", "Observe", "Judge", "Respect", "Disrespect", "Consume", "Educate", "Destroy", "Disgrace", "Amuse", "Entertain", "Ignite", "Glorify", "Memorialize", "Analyze")
-			src.pai_law0 = "[command] my master."
+			src.pai_law0 = "[command] your master."
 			to_chat(src, "<font color=green>Pr1m3 d1r3c71v3 uPd473D.</font>")
 		if(3)
-			to_chat(src, "<font color=green>I feel an electric surge run through my circuitry and become acutely aware at how lucky you are that you can still feel at all.</font>")
+			to_chat(src, "<font color=green>You feel an electric surge run through your circuitry and become acutely aware at how lucky you are that you can still feel at all.</font>")
 
 /mob/living/silicon/pai/ex_act(severity)
 	if(flags & INVULNERABLE)

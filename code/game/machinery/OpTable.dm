@@ -51,7 +51,7 @@
 
 /obj/machinery/optable/attack_hand(mob/user as mob)
 	if (M_HULK in usr.mutations)
-		to_chat(usr, text("<span class='notice'>I destroy the table.</span>"))
+		to_chat(usr, text("<span class='notice'>You destroy the table.</span>"))
 		visible_message("<span class='warning'>[usr] destroys the operating table!</span>")
 		src.density = 0
 		qdel(src)
@@ -77,7 +77,7 @@
 	else
 		if(!ismob(O)) //humans only
 			return
-		if(O.loc == user || !isturf(O.loc) || !isturf(user.loc)) //no you can't pull things out of my ass
+		if(O.loc == user || !isturf(O.loc) || !isturf(user.loc)) //no you can't pull things out of your ass
 			return
 		if(user.incapacitated() || user.lying) //are you cuffed, dying, lying, stunned or other
 			return

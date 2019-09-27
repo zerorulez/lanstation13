@@ -22,7 +22,7 @@
 			else if(prob(5))
 				affected_mob.emote("gasp")
 			if(prob(10))
-				to_chat(affected_mob, "<span class='warning'>I am starting to feel very weak...</span>")
+				to_chat(affected_mob, "<span class='warning'>You are starting to feel very weak...</span>")
 		if(4)
 			if(prob(10))
 				affected_mob.audible_cough()

@@ -12,7 +12,7 @@
 		return
 
 	if(silent)
-		to_chat(src, "<span class='warning'>I can't speak while silenced.</span>")
+		to_chat(src, "<span class='warning'>You can't speak while silenced.</span>")
 		return
 
 	var/datum/speech/speech = create_speech(message)
@@ -39,7 +39,7 @@
 
 	if (src.client)
 		if (src.client.prefs.muted & MUTE_IC)
-			to_chat(src, "<span class='danger'>I cannot whisper (muted).</span>")
+			to_chat(src, "<span class='danger'>You cannot whisper (muted).</span>")
 			return
 
 	//var/alt_name = get_alt_name()
@@ -53,7 +53,7 @@
 
 	log_whisper("[key_name(src)] ([formatLocation(src)]): [message]")
 
-	// If whispering my last words, limit the whisper based on how close you are to death.
+	// If whispering your last words, limit the whisper based on how close you are to death.
 	if(critical && !said_last_words)
 		var/health_diff = round(-config.health_threshold_dead + health)
 		// If we cut our message short, abruptly end it with a-..

@@ -31,11 +31,11 @@
 		else
 			loaded.preattack(W,user,1)
 		update_icon()
-		to_chat(user, "<span class='notice'>I add the cables to the [src]. It now contains [loaded.amount].</span>")
+		to_chat(user, "<span class='notice'>You add the cables to the [src]. It now contains [loaded.amount].</span>")
 	else if(isscrewdriver(W))
 		if(!loaded)
 			return
-		to_chat(user, "<span class='notice'>I loosen the securing screws on the side, allowing you to lower the guiding edge and retrieve the wires.</span>")
+		to_chat(user, "<span class='notice'>You loosen the securing screws on the side, allowing you to lower the guiding edge and retrieve the wires.</span>")
 		while(loaded.amount>30) //There are only two kinds of situations: "nodiff" (60,90), or "diff" (31-59, 61-89)
 			var/diff = loaded.amount % 30
 			if(diff)
@@ -110,7 +110,7 @@
 
 /obj/item/weapon/rcl/attack_self(mob/user as mob)
 	active = !active
-	to_chat(user, "<span class='notice'>I turn \the [src] [active ? "on" : "off"].<span>")
+	to_chat(user, "<span class='notice'>You turn \the [src] [active ? "on" : "off"].<span>")
 	set_move_event(user)
 
 /obj/item/weapon/rcl/proc/holder_moved(var/list/args)

@@ -12,9 +12,9 @@
 /obj/item/weapon/wire/attack_self(mob/user as mob)
 	if (src.laying)
 		src.laying = 0
-		to_chat(user, "<span class='notice'>I am done laying wire!</span>")
+		to_chat(user, "<span class='notice'>You are done laying wire!</span>")
 	else
-		to_chat(user, "<span class='notice'>I am not using this to lay wire...</span>")
+		to_chat(user, "<span class='notice'>You are not using this to lay wire...</span>")
 	return
 
 

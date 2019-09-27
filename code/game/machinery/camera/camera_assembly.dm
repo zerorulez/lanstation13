@@ -86,12 +86,12 @@
 
 				var/input = strip_html(input(usr, "Which networks would you like to connect this camera to? seperate networks with a comma. No Spaces!\nFor example: SS13,Security,Secret ", "Set Network", "SS13"))
 				if(!input)
-					to_chat(usr, "No input found, please hang up and try my call again.")
+					to_chat(usr, "No input found, please hang up and try your call again.")
 					return
 
 				var/list/tempnetwork = splittext(input, ",")
 				if(tempnetwork.len < 1)
-					to_chat(usr, "No network found, please hang up and try my call again.")
+					to_chat(usr, "No network found, please hang up and try your call again.")
 					return
 
 				state = 4
@@ -167,7 +167,7 @@
 	if(!WT.isOn())
 		return 0
 
-	to_chat(user, "<span class='notice'>I start to weld the [src]...</span>")
+	to_chat(user, "<span class='notice'>You start to weld the [src]...</span>")
 	playsound(get_turf(src), 'sound/items/Welder.ogg', 50, 1)
 	WT.eyecheck(user)
 	busy = 1

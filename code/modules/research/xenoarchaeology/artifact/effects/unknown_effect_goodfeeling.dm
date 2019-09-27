@@ -8,7 +8,7 @@
 		"My instincts tell me everything is going to get better.",\
 		"There's a good feeling in the air.",\
 		"Something smells... good.",\
-		"The tips of my fingers feel tingly.",\
+		"The tips of your fingers feel tingly.",\
 		"I've got a good feeling about this.",\
 		"I feel happy.",\
 		"I fight the urge to smile.",\

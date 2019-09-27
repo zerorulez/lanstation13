@@ -216,7 +216,7 @@
 		toxins -= toxin_uptake * (1+bees)
 		if(BEE && BEE.parent)
 			var/obj/machinery/apiary/A = BEE.parent
-			A.toxic = Clamp(A.toxic + toxin_uptake/2, 0, 25) //gotta be careful where you let my bees hang around
+			A.toxic = Clamp(A.toxic + toxin_uptake/2, 0, 25) //gotta be careful where you let your bees hang around
 		if(draw_warnings)
 			update_icon_after_process = 1
 

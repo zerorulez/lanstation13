@@ -13,7 +13,7 @@
 
 	if(usr.client)
 		if(usr.client.prefs.muted & MUTE_PRAY)
-			to_chat(usr, "<span class='warning'>I cannot pray (muted).</span>")
+			to_chat(usr, "<span class='warning'>You cannot pray (muted).</span>")
 			return
 		if(src.client.handle_spam_prevention(msg, MUTE_PRAY))
 			return

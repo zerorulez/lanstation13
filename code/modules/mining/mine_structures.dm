@@ -38,7 +38,7 @@
 
 	if(lantern)
 		user.visible_message("<span class='notice'>[user] takes \the [lantern] off of the \the [src].</span>", \
-		"<span class='notice'>I take \the [lantern] off of the \the [src].</span>")
+		"<span class='notice'>You take \the [lantern] off of the \the [src].</span>")
 		playsound(get_turf(src), 'sound/machines/click.ogg', 20, 1)
 		lantern.forceMove(user.loc)
 		lantern.add_fingerprint(user)
@@ -66,11 +66,11 @@
 		busy = 1
 		playsound(get_turf(src), 'sound/items/Ratchet.ogg', 75, 1)
 		user.visible_message("<span class='warning'>[user] begins deconstructing \the [src].</span>", \
-		"<span class='notice'>I begin deconstructing \the [src].</span>")
+		"<span class='notice'>You begin deconstructing \the [src].</span>")
 		if(do_after(user, src, 30))
 			new /obj/item/mounted/frame/hanging_lantern_hook(get_turf(user))
 			user.visible_message("<span class='warning'>[user] deconstructs \the [src].</span>", \
-			"<span class='notice'>I deconstruct \the [src].</span>")
+			"<span class='notice'>You deconstruct \the [src].</span>")
 			busy = 0
 			qdel(src)
 		else
@@ -82,7 +82,7 @@
 			return 1
 		if(user.drop_item(W, src))
 			user.visible_message("<span class='notice'>[user] puts \a [W.name] on the \the [src].</span>", \
-			"<span class='notice'>I put \a [W.name] on the \the [src].</span>")
+			"<span class='notice'>You put \a [W.name] on the \the [src].</span>")
 			playsound(get_turf(src), 'sound/machines/click.ogg', 20, 1)
 			lantern = W
 			update_brightness()
@@ -137,13 +137,13 @@
 	if(!isliving(usr))
 		return 0
 	if(!usr.dexterity_check())
-		to_chat(usr, "<span class='warning>I don't have the dexterity to do this!</span>")
+		to_chat(usr, "<span class='warning>You don't have the dexterity to do this!</span>")
 		return 0
 
 	lantern.on = !lantern.on
 	lantern.update_brightness()
 	usr.visible_message("<span class='notice'>[usr] toggles \the [lantern] hanging on \the [src] [lantern.on ? "on":"off"].</span>", \
-						"<span class='notice'>I toggle \the [lantern] hanging on \the [src] [lantern.on ? "on":"off"].</span>")
+						"<span class='notice'>You toggle \the [lantern] hanging on \the [src] [lantern.on ? "on":"off"].</span>")
 
 /obj/structure/hanging_lantern/spook(mob/dead/observer/ghost)
 	if(..(ghost, TRUE))

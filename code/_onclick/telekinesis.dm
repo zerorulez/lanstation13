@@ -36,7 +36,7 @@ var/const/tk_maxrange = 15
 		O.host = user
 		O.focus_object(src)
 	else
-		to_chat(user, "<span class='warning'>I have to wave my hands around to use the Force.</span>")
+		to_chat(user, "<span class='warning'>You have to wave your hands around to use the Force.</span>")
 	return
 
 /obj/item/attack_tk(mob/user)
@@ -48,7 +48,7 @@ var/const/tk_maxrange = 15
 			O.host = user
 			O.focus_object(src)
 		else
-			to_chat(user, "<span class='warning'>I have to wave my hands around to use the Force.</span>")
+			to_chat(user, "<span class='warning'>You have to wave your hands around to use the Force.</span>")
 	else
 		warning("Strange attack_tk(): TK([M_TK in user.mutations]) empty hand([!user.get_active_hand()])")
 
@@ -60,7 +60,7 @@ var/const/tk_maxrange = 15
 	* If you have not grabbed something, do a normal tk attack
 	* If you have something, throw it at the target.  If it is already adjacent, do a normal attackby()
 	* If you click what you are holding, or attack_self(), do an attack_self_tk() on it.
-	* Deletes itself if it is ever not in my hand, or if you should have no access to TK.
+	* Deletes itself if it is ever not in your hand, or if you should have no access to TK.
 */
 /obj/item/tk_grab
 	name = "The Force"
@@ -126,11 +126,11 @@ var/const/tk_maxrange = 15
 		if(8 to tk_maxrange)
 			user.next_move += 10
 		else
-			to_chat(user, "<span class='notice'>My mind won't reach that far.</span>")
+			to_chat(user, "<span class='notice'>Your mind won't reach that far.</span>")
 			return*/
 
 	if(d > tk_maxrange)
-		to_chat(user, "<span class='warning'>My mind won't reach that far.</span>")
+		to_chat(user, "<span class='warning'>Your mind won't reach that far.</span>")
 		return
 
 	if(!focus)

@@ -65,7 +65,7 @@
 
 /obj/machinery/radiocarbon_spectrometer/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(scanning)
-		to_chat(user, "<span class='warning'>I can't do that while [src] is scanning!</span>")
+		to_chat(user, "<span class='warning'>You can't do that while [src] is scanning!</span>")
 	else
 		if(istype(I, /obj/item/stack/nanopaste))
 			var/choice = alert("What do you want to do with the nanopaste?","Radiometric Scanner","Scan nanopaste","Fix seal integrity")
@@ -81,14 +81,14 @@
 				var/obj/item/weapon/reagent_containers/glass/G = I
 				var/amount_transferred = min(src.reagents.maximum_volume - src.reagents.total_volume, G.reagents.total_volume)
 				G.reagents.trans_to(src, amount_transferred)
-				to_chat(user, "<span class='info'>I empty [amount_transferred]u of coolant into [src].</span>")
+				to_chat(user, "<span class='info'>You empty [amount_transferred]u of coolant into [src].</span>")
 				update_coolant()
 				return
 			else if(choice == "Empty coolant")
 				var/obj/item/weapon/reagent_containers/glass/G = I
 				var/amount_transferred = min(G.reagents.maximum_volume - G.reagents.total_volume, src.reagents.total_volume)
 				src.reagents.trans_to(G, amount_transferred)
-				to_chat(user, "<span class='info'>I remove [amount_transferred]u of coolant from [src].</span>")
+				to_chat(user, "<span class='info'>You remove [amount_transferred]u of coolant from [src].</span>")
 				update_coolant()
 				return
 		user.drop_item()

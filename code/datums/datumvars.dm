@@ -4,7 +4,7 @@
 	set name = "Add Reagent"
 
 	if(!usr.client || !usr.client.holder)
-		to_chat(usr, "<span class='warning'>I need to be an administrator to access this.</span>")
+		to_chat(usr, "<span class='warning'>You need to be an administrator to access this.</span>")
 		return
 
 	if(!D)
@@ -27,7 +27,7 @@
 
 
 	if(!usr.client || !usr.client.holder)
-		to_chat(usr, "<span class='warning'>I need to be an administrator to access this.</span>")
+		to_chat(usr, "<span class='warning'>You need to be an administrator to access this.</span>")
 		return
 
 

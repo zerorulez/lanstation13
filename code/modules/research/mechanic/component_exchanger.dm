@@ -33,9 +33,9 @@
 			if(src.contents.len < storage_slots)
 				src.contents += S
 			else
-				to_chat(user, "<span class='notice'>I fill \the [src] to its capacity with \the [G]'s contents.</span>")
+				to_chat(user, "<span class='notice'>You fill \the [src] to its capacity with \the [G]'s contents.</span>")
 				return
-		to_chat(user, "<span class='notice'>I fill up \the [src] with \the [G]'s contents.</span>")
+		to_chat(user, "<span class='notice'>You fill up \the [src] with \the [G]'s contents.</span>")
 		return 1
 	else
 		. = ..()
@@ -55,11 +55,11 @@
 			return 1
 
 		if(working) //We are already using the RMCE
-			to_chat(user, "<span class='warning'>I am aleady using \the [src] on another machine. You'll have to pull it out or wait.</span>")
+			to_chat(user, "<span class='warning'>You are aleady using \the [src] on another machine. You'll have to pull it out or wait.</span>")
 			return 1
 
 		user.visible_message("<span class='notice'>[user] starts setting up \the [src] in \the [M]'s maintenance hatch</span>", \
-		"<span class='notice'>I carefully insert \the [src] through \the [M]'s maintenance hatch, it starts scanning the machine's components.</span>")
+		"<span class='notice'>You carefully insert \the [src] through \the [M]'s maintenance hatch, it starts scanning the machine's components.</span>")
 
 		working = 1
 

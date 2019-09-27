@@ -49,7 +49,7 @@
 	if(user.a_intent == I_HURT)
 		user.delayNextAttack(8)
 		user.visible_message("<span class='danger'>[user.name] claws at the [src]!</span>", \
-			"<span class='danger'>I claw at the [src]!</span>", \
+			"<span class='danger'>You claw at the [src]!</span>", \
 			"I hear something tear.")
 		health -= 2
 		healthcheck()
@@ -59,7 +59,7 @@
 		if(I && ishuman(I))
 			some_suffix = "one"
 		user.visible_message("<span class='notice'>[user] rubs their hands all over \the [src]!</span>", \
-			"<span class='notice'>I rub my hands over \the [src] [I && ", you think you can feel some[some_suffix] in there!"]</span>")
+			"<span class='notice'>You rub your hands over \the [src] [I && ", you think you can feel some[some_suffix] in there!"]</span>")
 
 
 /obj/effect/spider/bullet_act(var/obj/item/projectile/Proj)
@@ -92,7 +92,7 @@
 		return 1
 	else if(istype(mover, /mob/living))
 		if(prob(50))
-			to_chat(mover, "<span class='warning'>I get stuck in \the [src] for a moment.</span>")
+			to_chat(mover, "<span class='warning'>You get stuck in \the [src] for a moment.</span>")
 			return 0
 	else if(istype(mover, /obj/item/projectile))
 		return prob(30)

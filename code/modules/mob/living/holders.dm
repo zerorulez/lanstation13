@@ -143,7 +143,7 @@
 //SLIMES
 /obj/item/weapon/holder/animal/slime
 	name = "slime holder"
-	desc = "It seeps through my fingers"
+	desc = "It seeps through your fingers"
 
 /obj/item/weapon/holder/animal/slime/proc/unfreeze()
 	var/mob/living/simple_animal/slime/S = stored_mob

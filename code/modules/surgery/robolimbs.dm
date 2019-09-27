@@ -44,7 +44,7 @@
 /datum/surgery_step/limb/cut/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] cuts away flesh where [target]'s [affected.display_name] used to be with \the [tool].</span>",	\
-	"<span class='notice'>I cut away flesh where [target]'s [affected.display_name] used to be with \the [tool].</span>")
+	"<span class='notice'>You cut away flesh where [target]'s [affected.display_name] used to be with \the [tool].</span>")
 	affected.status |= ORGAN_CUT_AWAY
 
 /datum/surgery_step/limb/cut/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -52,7 +52,7 @@
 	if (affected.parent)
 		affected = affected.parent
 		user.visible_message("<span class='warning'>[user]'s hand slips, cutting [target]'s [affected.display_name] open!</span>", \
-		"<span class='warning'>My hand slips,  cutting [target]'s [affected.display_name] open!</span>")
+		"<span class='warning'>Your hand slips,  cutting [target]'s [affected.display_name] open!</span>")
 		affected.createwound(CUT, 10)
 
 
@@ -81,7 +81,7 @@
 /datum/surgery_step/limb/mend/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has finished repositioning flesh and nerve endings where [target]'s [affected.display_name] used to be with [tool].</span>",	\
-	"<span class='notice'>I have finished repositioning flesh and nerve endings where [target]'s [affected.display_name] used to be with [tool].</span>")
+	"<span class='notice'>You have finished repositioning flesh and nerve endings where [target]'s [affected.display_name] used to be with [tool].</span>")
 	affected.open = 3
 
 /datum/surgery_step/limb/mend/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -89,7 +89,7 @@
 	if (affected.parent)
 		affected = affected.parent
 		user.visible_message("<span class='warning'>[user]'s hand slips, tearing flesh on [target]'s [affected.display_name]!</span>", \
-		"<span class='warning'>My hand slips, tearing flesh on [target]'s [affected.display_name]!</span>")
+		"<span class='warning'>Your hand slips, tearing flesh on [target]'s [affected.display_name]!</span>")
 		target.apply_damage(10, BRUTE, affected)
 
 
@@ -126,7 +126,7 @@
 /datum/surgery_step/limb/prepare/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has finished adjusting the area around [target]'s [affected.display_name] with \the [tool].</span>",	\
-	"<span class='notice'>I have finished adjusting the area around [target]'s [affected.display_name] with \the [tool].</span>")
+	"<span class='notice'>You have finished adjusting the area around [target]'s [affected.display_name] with \the [tool].</span>")
 	affected.status |= ORGAN_ATTACHABLE
 	affected.amputated = 1
 	affected.setAmputatedTree()
@@ -137,7 +137,7 @@
 	if (affected.parent)
 		affected = affected.parent
 		user.visible_message("<span class='warning'>[user]'s hand slips, searing [target]'s [affected.display_name]!</span>", \
-		"<span class='warning'>My hand slips, searing [target]'s [affected.display_name]!</span>")
+		"<span class='warning'>Your hand slips, searing [target]'s [affected.display_name]!</span>")
 		target.apply_damage(10, BURN, affected)
 
 
@@ -163,7 +163,7 @@
 		if (!(target_zone in p.part))
 			return 0
 	if(isslimeperson(target))
-		to_chat(user, "<span class='info'>I am not even sure how to secure this to \the [target].</span>")
+		to_chat(user, "<span class='info'>You are not even sure how to secure this to \the [target].</span>")
 		return 0
 	return ..()
 
@@ -175,13 +175,13 @@
 /datum/surgery_step/limb/attach/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has attached [tool] where [target]'s [affected.display_name] used to be.</span>",	\
-	"<span class='notice'>I have attached [tool] where [target]'s [affected.display_name] used to be.</span>")
+	"<span class='notice'>You have attached [tool] where [target]'s [affected.display_name] used to be.</span>")
 	affected.attach(tool)
 
 /datum/surgery_step/limb/attach/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, damaging connectors on [target]'s [affected.display_name]!</span>", \
-	"<span class='warning'>My hand slips, damaging connectors on [target]'s [affected.display_name]!</span>")
+	"<span class='warning'>Your hand slips, damaging connectors on [target]'s [affected.display_name]!</span>")
 	target.apply_damage(10, BRUTE, affected)
 
 
@@ -200,7 +200,7 @@
 /datum/surgery_step/limb/attach_plank/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	if(isslimeperson(target))
-		to_chat(user, "<span class='info'>I am not even sure how to secure this to \the [target].</span>")
+		to_chat(user, "<span class='info'>You are not even sure how to secure this to \the [target].</span>")
 		return 0
 	return ..() && affected.status & ORGAN_ATTACHABLE
 
@@ -212,13 +212,13 @@
 /datum/surgery_step/limb/attach_plank/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has attached [tool] where [target]'s [affected.display_name] used to be.</span>",	\
-	"<span class='notice'>I have attached [tool] where [target]'s [affected.display_name] used to be.</span>")
+	"<span class='notice'>You have attached [tool] where [target]'s [affected.display_name] used to be.</span>")
 	affected.attach(tool)
 
 /datum/surgery_step/limb/attach_plank/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, damaging connectors on [target]'s [affected.display_name]!</span>", \
-	"<span class='warning'>My hand slips, damaging connectors on [target]'s [affected.display_name]!</span>")
+	"<span class='warning'>Your hand slips, damaging connectors on [target]'s [affected.display_name]!</span>")
 	target.apply_damage(10, BRUTE, affected)
 
 
@@ -244,7 +244,7 @@
 		if (!(target_zone == o.part))
 			return 0
 	if(isslimeperson(target))
-		to_chat(user, "<span class='info'>I am not even sure how to secure this to \the [target].</span>")
+		to_chat(user, "<span class='info'>You are not even sure how to secure this to \the [target].</span>")
 		return 0
 	return ..()
 
@@ -256,12 +256,12 @@
 /datum/surgery_step/limb/attach_flesh/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has attached [tool] where [target]'s [affected.display_name] used to be.</span>",	\
-	"<span class='notice'>I have attached [tool] where [target]'s [affected.display_name] used to be.</span>")
+	"<span class='notice'>You have attached [tool] where [target]'s [affected.display_name] used to be.</span>")
 
 	affected.attach(tool)
 
 /datum/surgery_step/limb/attach_flesh/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, damaging connectors on [target]'s [affected.display_name]!</span>", \
-	"<span class='warning'>My hand slips, damaging connectors on [target]'s [affected.display_name]!</span>")
+	"<span class='warning'>Your hand slips, damaging connectors on [target]'s [affected.display_name]!</span>")
 	target.apply_damage(10, BRUTE, affected)

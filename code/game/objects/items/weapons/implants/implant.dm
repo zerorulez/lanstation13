@@ -34,7 +34,7 @@
 	return 0
 
 /obj/item/weapon/implant/proc/meltdown()	//breaks it down, making implant unrecongizible
-	to_chat(imp_in, "<span class = 'warning'>I feel something melting inside [part ? "your [part.display_name]" : "you"]!</span>")
+	to_chat(imp_in, "<span class = 'warning'>You feel something melting inside [part ? "your [part.display_name]" : "you"]!</span>")
 	if (part)
 		part.take_damage(burn = 15, used_weapon = "Electronics meltdown")
 	else
@@ -238,7 +238,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	src.reagents.trans_to(R, cause)
 	to_chat(R, "I hear a faint *beep*.")
 	if(!src.reagents.total_volume)
-		to_chat(R, "I hear a faint click from my chest.")
+		to_chat(R, "I hear a faint click from your chest.")
 		spawn(0)
 			qdel(src)
 	return
@@ -286,11 +286,11 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		return 0
 	var/mob/living/carbon/H = M
 	if(H.mind in ticker.mode.head_revolutionaries)
-		H.visible_message("[H] seems to resist the implant!", "I feel the corporate tendrils of Nanotrasen try to invade my mind!")
+		H.visible_message("[H] seems to resist the implant!", "I feel the corporate tendrils of Nanotrasen try to invade your mind!")
 		return 0
 	else if(H.mind in ticker.mode:revolutionaries)
 		ticker.mode:remove_revolutionary(H.mind)
-	to_chat(H, "<span class = 'notice'>I feel a surge of loyalty towards Nanotrasen.</span>")
+	to_chat(H, "<span class = 'notice'>You feel a surge of loyalty towards Nanotrasen.</span>")
 	return 1
 
 /obj/item/weapon/implant/traitor
@@ -320,18 +320,18 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		return 0
 	var/mob/living/carbon/H = M
 	if(M == user)
-		to_chat(user, "<span class='notice'>I feel quite stupid for doing that.</span>")
+		to_chat(user, "<span class='notice'>You feel quite stupid for doing that.</span>")
 		if(isliving(user))
 			user:brainloss += 10
 		return
 	if(locate(/obj/item/weapon/implant/traitor) in H.contents || locate(/obj/item/weapon/implant/loyalty) in H.contents)
-		H.visible_message("[H] seems to resist the implant!", "I feel a strange sensation in my head that quickly dissipates.")
+		H.visible_message("[H] seems to resist the implant!", "I feel a strange sensation in your head that quickly dissipates.")
 		return 0
 	else if(H.mind in ticker.mode.traitors)
-		H.visible_message("[H] seems to resist the implant!", "I feel a familiar sensation in my head that quickly dissipates.")
+		H.visible_message("[H] seems to resist the implant!", "I feel a familiar sensation in your head that quickly dissipates.")
 		return 0
 	H.implanting = 1
-	to_chat(H, "<span class = 'notice'>I feel a surge of loyalty towards [user.name].</span>")
+	to_chat(H, "<span class = 'notice'>You feel a surge of loyalty towards [user.name].</span>")
 	if(!(user.mind in ticker.mode:implanter))
 		ticker.mode:implanter[ref] = list()
 	implanters = ticker.mode:implanter[ref]
@@ -342,7 +342,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	ticker.mode:implanter[ref] = implanters
 	ticker.mode.traitors += H.mind
 	H.mind.special_role = "traitor"
-	to_chat(H, "<B><span class = 'warning'>I've been shown the Greytide by [user.name]!</B> You now must lay down my life to protect them and assist in their goals at any cost.</span>")
+	to_chat(H, "<B><span class = 'warning'>I've been shown the Greytide by [user.name]!</B> You now must lay down your life to protect them and assist in their goals at any cost.</span>")
 	var/datum/objective/protect/p = new
 	p.owner = H.mind
 	p.target = user:mind
@@ -378,7 +378,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		return 0
 	if (emote == "pale")
 		src.uses--
-		to_chat(source, "<span class = 'notice'>I feel a sudden surge of energy!</span>")
+		to_chat(source, "<span class = 'notice'>You feel a sudden surge of energy!</span>")
 		source.SetStunned(0)
 		source.SetKnockdown(0)
 		source.SetParalysis(0)

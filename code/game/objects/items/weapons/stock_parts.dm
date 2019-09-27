@@ -47,7 +47,7 @@
 			to_chat(user, "<span class='warning'>\The [src] needs to be on the ground to be secured.</span>")
 			return
 		if(!istype(src.loc, /turf/simulated/floor)) //Prevent from anchoring this to shuttles / space
-			to_chat(user, "<span class='notice'>I can't secure \the [src] to [istype(src.loc,/turf/space) ? "space" : "this"]!</span>")
+			to_chat(user, "<span class='notice'>You can't secure \the [src] to [istype(src.loc,/turf/space) ? "space" : "this"]!</span>")
 			return
 		to_chat(user, "I discharge \the [src] and secure it to the floor.")
 		playsound(get_turf(src), 'sound/items/Ratchet.ogg', 50, 1)

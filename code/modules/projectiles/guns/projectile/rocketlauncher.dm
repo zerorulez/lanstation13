@@ -36,7 +36,7 @@
 /obj/item/weapon/gun/projectile/rocketlauncher/attack(mob/living/M as mob, mob/living/user as mob, def_zone)
 	if(M == user && user.zone_sel.selecting == "mouth") //Are we trying to suicide by shooting our head off ?
 		user.visible_message("<span class='warning'>[user] tries to fit \the [src] into \his mouth but quickly reconsiders it</span>", \
-		"<span class='warning'>I try to fit \the [src] into my mouth. You feel silly and pull it out</span>")
+		"<span class='warning'>You try to fit \the [src] into your mouth. You feel silly and pull it out</span>")
 		return // Nope
 	..()
 
@@ -95,7 +95,7 @@
 /obj/item/weapon/gun/projectile/rocketlauncher/nikita/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/weapon/card/emag) && !emagged)
 		emagged = 1
-		to_chat(user, "<span class='warning'>I disable \the [src]'s idiot security!</span>")
+		to_chat(user, "<span class='warning'>You disable \the [src]'s idiot security!</span>")
 	else
 		..()
 

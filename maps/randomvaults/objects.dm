@@ -361,7 +361,7 @@
 			I'm stepping through the door<br>
 			And I'm floating in the most peculiar way<br>
 			And the stars look very different today<br>
-			For here am I sitting in my tin can<br>
+			For here am I sitting in your tin can<br>
 			Far above the world<br>
 			Planet Earth is blue<br>
 			And there's nothing I can do.

@@ -185,7 +185,7 @@ var/list/camera_messages = list()
 
 	// DECONSTRUCTION
 	if(isscrewdriver(W))
-//		to_chat(user, "<span class='notice'>I start to [panel_open ? "close" : "open"] the camera's panel.</span>")
+//		to_chat(user, "<span class='notice'>You start to [panel_open ? "close" : "open"] the camera's panel.</span>")
 		//if(toggle_panel(user)) // No delay because no one likes screwdrivers trying to be hip and have a duration cooldown
 		togglePanelOpen(W, user, icon_state, icon_state)
 
@@ -272,9 +272,9 @@ var/list/camera_messages = list()
 			if(!O.client)
 				continue
 			if(U.name == "Unknown")
-				to_chat( O, "<span class='name'>[U]</span> holds a <a href='byond://?src=\ref[src];picturename=[html_encode(W.name)]'>[W]</a> up to one of my cameras ...")
+				to_chat( O, "<span class='name'>[U]</span> holds a <a href='byond://?src=\ref[src];picturename=[html_encode(W.name)]'>[W]</a> up to one of your cameras ...")
 			else
-				to_chat(O, "<span class='name'><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></span> holds a <a href='byond://?src=\ref[src];picturename=[html_encode(W.name)]'>[W]</a> up to one of my cameras ...")
+				to_chat(O, "<span class='name'><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></span> holds a <a href='byond://?src=\ref[src];picturename=[html_encode(W.name)]'>[W]</a> up to one of your cameras ...")
 
 		for(var/mob/O in player_list)
 			if (istype(O.machine, /obj/machinery/computer/security))
@@ -403,7 +403,7 @@ var/list/camera_messages = list()
 		return 0
 
 	// Do after stuff here
-	to_chat(user, "<span class='notice'>I start to weld the [src].</span>")
+	to_chat(user, "<span class='notice'>You start to weld the [src].</span>")
 	playsound(get_turf(src), 'sound/items/Welder.ogg', 50, 1)
 	WT.eyecheck(user)
 	busy = 1
@@ -466,11 +466,11 @@ var/list/camera_messages = list()
 	if(isscrewdriver(W))
 		to_chat(user, "<span class='warning'>There aren't any visible screws to unscrew.</span>")
 	else
-		user.visible_message("<span class='warning'>\The [user] hits \the [src] with \the [W] but it doesn't seem to affect it in the least.</span>","<span class='warning'>I hit \the [src] with \the [W] but it doesn't seem to affect it in the least</span>")
+		user.visible_message("<span class='warning'>\The [user] hits \the [src] with \the [W] but it doesn't seem to affect it in the least.</span>","<span class='warning'>You hit \the [src] with \the [W] but it doesn't seem to affect it in the least</span>")
 	return
 
 /obj/machinery/camera/arena/attack_paw(mob/living/carbon/alien/humanoid/user as mob)
-	user.visible_message("<span class='warning'>\The [user] slashes at \the [src], but that didn't affect it at all.</span>","<span class='warning'>I slash at \the [src], but that didn't affect it at all.</span>")
+	user.visible_message("<span class='warning'>\The [user] slashes at \the [src], but that didn't affect it at all.</span>","<span class='warning'>You slash at \the [src], but that didn't affect it at all.</span>")
 	return
 
 /obj/machinery/camera/arena/update_icon()
@@ -495,7 +495,7 @@ var/list/camera_messages = list()
 	return
 
 /obj/machinery/camera/kick_act(mob/living/carbon/human/H)
-	H.visible_message("<span class='danger'>[H] attempts to kick \the [src].</span>", "<span class='danger'>I attempt to kick \the [src].</span>")
+	H.visible_message("<span class='danger'>[H] attempts to kick \the [src].</span>", "<span class='danger'>You attempt to kick \the [src].</span>")
 	to_chat(H, "<span class='danger'>Dumb move! You strain a muscle.</span>")
 
 	H.apply_damage(rand(1,2), BRUTE, pick(LIMB_RIGHT_LEG, LIMB_LEFT_LEG, LIMB_RIGHT_FOOT, LIMB_LEFT_FOOT))

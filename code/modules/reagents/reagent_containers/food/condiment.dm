@@ -8,7 +8,7 @@
 //To clarify, these are special containers used to hold reagents specific to cooking, produced from the Kitchen CondiMaster
 /obj/item/weapon/reagent_containers/food/condiment
 	name = "condiment container"
-	desc = "Just my average condiment container."
+	desc = "Just your average condiment container."
 	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/drinkingglass.dmi', "right_hand" = 'icons/mob/in-hand/right/drinkingglass.dmi')
 	icon = 'icons/obj/food_condiment.dmi'
 	icon_state = "emptycondiment"
@@ -38,9 +38,9 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(H.check_body_part_coverage(MOUTH))
-				to_chat(H, "<span class='notice'><B>Remove my [H.get_body_part_coverage(MOUTH)]!</B></span>")
+				to_chat(H, "<span class='notice'><B>Remove your [H.get_body_part_coverage(MOUTH)]!</B></span>")
 				return
-		to_chat(M, "<span class='notice'>I swallow some of the contents of \the [src].</span>")
+		to_chat(M, "<span class='notice'>You swallow some of the contents of \the [src].</span>")
 		if(reagents.total_volume) //Deal with the reagents in the food
 			reagents.reaction(M, INGEST)
 			spawn(5)
@@ -101,7 +101,7 @@
 			return
 
 		var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
-		to_chat(user, "<span class='notice'>I fill [src] with [trans] units of the contents of [target].</span>")
+		to_chat(user, "<span class='notice'>You fill [src] with [trans] units of the contents of [target].</span>")
 
 	//Something like a glass or a food item. Player probably wants to transfer TO it.
 	else if(target.is_open_container() || istype(target, /obj/item/weapon/reagent_containers/food/snacks))
@@ -109,10 +109,10 @@
 			to_chat(user, "<span class='warning'>\The [src] is empty.</span>")
 			return
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			to_chat(user, "<span class='warning'>I can't add anymore to \the [target].</span>")
+			to_chat(user, "<span class='warning'>You can't add anymore to \the [target].</span>")
 			return
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-		to_chat(user, "<span class='notice'>I transfer [trans] units of the condiment to \the [target].</span>")
+		to_chat(user, "<span class='notice'>You transfer [trans] units of the condiment to \the [target].</span>")
 
 /obj/item/weapon/reagent_containers/food/condiment/on_reagent_change() //Due to the way condiment bottles work, we define "special types" here
 
@@ -197,7 +197,7 @@
 				icon_state = GRAVY
 			else
 				name = "misc condiment bottle"
-				desc = "Just my average condiment container."
+				desc = "Just your average condiment container."
 				icon_state = "emptycondiment"
 
 				if(reagents.reagent_list.len == 1)

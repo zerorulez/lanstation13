@@ -60,7 +60,7 @@
 
 	nuclear
 		name = "Miniaturized nuclear generator"
-		desc = "For all my radioactive needs."
+		desc = "For all your radioactive needs."
 		slowdown = 0.3.5
 
 		process()
@@ -68,17 +68,17 @@
 				if (prob(src.reliability))
 					return 1 //No failure
 				if (prob(src.reliability))
-					for (var/mob/M in range(0,src.parent)) //Only a minor failure, enjoy my radiation.
+					for (var/mob/M in range(0,src.parent)) //Only a minor failure, enjoy your radiation.
 						if (src.parent in M.contents)
-							to_chat(M, "<span class='warning'>My armor feels pleasantly warm for a moment.</span>")
+							to_chat(M, "<span class='warning'>Your armor feels pleasantly warm for a moment.</span>")
 						else
-							to_chat(M, "<span class='warning'>I feel a warm sensation.</span>")
+							to_chat(M, "<span class='warning'>You feel a warm sensation.</span>")
 						M.radiation += rand(1,40)
 				else
 					for (var/mob/M in range(rand(1,4),src.parent)) //Big failure, TIME FOR RADIATION BITCHES
 						if (src.parent in M.contents)
-							to_chat(M, "<span class='warning'>My armor's reactor overloads!</span>")
-						to_chat(M, "<span class='warning'>I feel a wave of heat wash over you.</span>")
+							to_chat(M, "<span class='warning'>Your armor's reactor overloads!</span>")
+						to_chat(M, "<span class='warning'>You feel a wave of heat wash over you.</span>")
 						M.radiation += 100
 					crit_fail = 1 //broken~
 					parent.powerdown(1)
@@ -194,7 +194,7 @@
 
 	optional
 		name = "Togglable power armor atmospheric seals"
-		desc = "Keeps the bad stuff out, but lets you remove my helmet without having to turn the whole suit off."
+		desc = "Keeps the bad stuff out, but lets you remove your helmet without having to turn the whole suit off."
 
 		proc/helmtoggle(sudden = 0, manual = 0)
 			var/mob/living/carbon/human/user = usr

@@ -194,7 +194,7 @@
 
 /mob/living/carbon/human/proc/perform_cpr(mob/living/target)
 	if(src.check_body_part_coverage(MOUTH))
-		to_chat(src, "<span class='notice'><B>Remove my [src.get_body_part_coverage(MOUTH)]!</B></span>")
+		to_chat(src, "<span class='notice'><B>Remove your [src.get_body_part_coverage(MOUTH)]!</B></span>")
 		return 0
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
@@ -211,6 +211,6 @@
 	if(do_after(src, target, 3 SECONDS))
 		target.adjustOxyLoss(-min(target.getOxyLoss(), 7))
 		src.visible_message("<span class='danger'>\The [src] performs CPR on \the [target]!</span>")
-		to_chat(target, "<span class='notice'>I feel a breath of fresh air enter my lungs. It feels good.</span>")
+		to_chat(target, "<span class='notice'>You feel a breath of fresh air enter your lungs. It feels good.</span>")
 		to_chat(src, "<span class='warning'>Repeat at least every 7 seconds.</span>")
 	target.cpr_time = 1

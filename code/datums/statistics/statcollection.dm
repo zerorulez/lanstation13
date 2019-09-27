@@ -1,7 +1,7 @@
 /* THE GREAT BIG STATISTICS COLLECTION project
 	The objective of all this shitcode is to collect important/interesting events in a round
 	and write it to a really dumb text file, which will then be processed by an external server,
-	whichi will generate a pretty, web-viewable version (if I get my shit together)
+	whichi will generate a pretty, web-viewable version (if I get your shit together)
 	by the public.
 
 	Gamemode-specific stat collection is separated off into its own files because why not

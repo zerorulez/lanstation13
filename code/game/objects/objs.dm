@@ -81,7 +81,7 @@ var/global/list/reagents_to_log = list(FUEL, PLASMA, PACID, SACID, AMUTATIONTOXI
 			state_controls_pai(W)
 			playsound(src, 'sound/misc/cartridge_in.ogg', 25)
 
-/obj/proc/state_controls_pai(obj/item/device/paicard/P) //text the pAI receives when is inserted into something. EXAMPLE: to_chat(P.pai, "Welcome to my new body")
+/obj/proc/state_controls_pai(obj/item/device/paicard/P) //text the pAI receives when is inserted into something. EXAMPLE: to_chat(P.pai, "Welcome to your new body")
 	return
 
 /obj/proc/attack_integrated_pai(mob/living/silicon/pai/user)	//called when integrated pAI clicks on the object, or uses the attack_self() hotkey
@@ -442,10 +442,10 @@ a {
 	if(!anchored)
 		if(!istype(src.loc, /turf/simulated/floor)) //Prevent from anchoring shit to shuttles / space
 			if(istype(src.loc, /turf/simulated/shuttle) && !can_wrench_shuttle()) //If on the shuttle and not wrenchable to shuttle
-				to_chat(user, "<span class = 'notice'>I can't secure \the [src] to this!</span>")
+				to_chat(user, "<span class = 'notice'>You can't secure \the [src] to this!</span>")
 				return -1
 			if(istype(src.loc, /turf/space)) //if on a space tile
-				to_chat(user, "<span class = 'notice'>I can't secure \the [src] to space!</span>")
+				to_chat(user, "<span class = 'notice'>You can't secure \the [src] to space!</span>")
 				return -1
 	user.visible_message(	"[user] begins to [anchored ? "unbolt" : "bolt"] \the [src] [anchored ? "from" : "to" ] the floor.",
 							"I begin to [anchored ? "unbolt" : "bolt"] \the [src] [anchored ? "from" : "to" ] the floor.")
@@ -456,7 +456,7 @@ a {
 		anchored = !anchored
 		user.visible_message(	"<span class='notice'>[user] [anchored ? "wrench" : "unwrench"]es \the [src] [anchored ? "in place" : "from its fixture"]</span>",
 								"<span class='notice'>\icon[src] You [anchored ? "wrench" : "unwrench"] \the [src] [anchored ? "in place" : "from its fixture"].</span>",
-								"<span class='notice'>I hear a ratchet.</span>")
+								"<span class='notice'>You hear a ratchet.</span>")
 		return 1
 	return -1
 

@@ -44,7 +44,7 @@
 		if(user.drop_item(I, src))
 			src.beaker = I
 			. = 1
-			to_chat(user, "<span class='notice'>I add the [I.name] to the [src.name].</span>")
+			to_chat(user, "<span class='notice'>You add the [I.name] to the [src.name].</span>")
 			src.updateUsrDialog()
 
 	else if(istype(I,/obj/item/weapon/reagent_containers/food/snacks/icecream))

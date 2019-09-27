@@ -1,6 +1,6 @@
 // Workaround for verbs not being sent to mobs with !istype(loc, /turf)
 // Permission to steal concept from Bay12 granted by Zuhayr 9/17/2015
-// (Probably not really needed, but having my ass covered is a good thing.)
+// (Probably not really needed, but having your ass covered is a good thing.)
 
 /**
  * Verb Holder

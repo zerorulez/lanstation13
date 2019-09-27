@@ -6,7 +6,7 @@
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "<span class='warning'>I cannot speak in IC (muted).</span>")
+			to_chat(src, "<span class='warning'>You cannot speak in IC (muted).</span>")
 			return
 		if (src.client.handle_spam_prevention(message,MUTE_IC))
 			return

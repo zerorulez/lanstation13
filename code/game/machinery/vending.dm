@@ -172,10 +172,10 @@ var/global/num_vending_terminals = 1
 	if(istype(O,/obj/structure/vendomatpack))
 		var/obj/structure/vendomatpack/P = O
 		if(!anchored)
-			to_chat(user, "<span class='warning'>I need to anchor the vending machine before you can refill it.</span>")
+			to_chat(user, "<span class='warning'>You need to anchor the vending machine before you can refill it.</span>")
 			return
 		if(!pack)
-			to_chat(user, "<span class='notice'>I start filling the vending machine with the recharge pack's materials.</span>")
+			to_chat(user, "<span class='notice'>You start filling the vending machine with the recharge pack's materials.</span>")
 			var/user_loc = user.loc
 			var/pack_loc = P.loc
 			var/self_loc = src.loc
@@ -205,7 +205,7 @@ var/global/num_vending_terminals = 1
 				qdel(src)
 		else
 			if(istype(P,pack))
-				to_chat(user, "<span class='notice'>I start refilling the vending machine with the recharge pack's materials.</span>")
+				to_chat(user, "<span class='notice'>You start refilling the vending machine with the recharge pack's materials.</span>")
 				var/user_loc = user.loc
 				var/pack_loc = P.loc
 				var/self_loc = src.loc
@@ -346,7 +346,7 @@ var/global/num_vending_terminals = 1
 	if(stat & (BROKEN))
 		if(istype(W, /obj/item/stack/sheet/glass/rglass))
 			var/obj/item/stack/sheet/glass/rglass/G = W
-			to_chat(user, "<span class='notice'>I replace the broken glass.</span>")
+			to_chat(user, "<span class='notice'>You replace the broken glass.</span>")
 			G.use(1)
 			stat &= ~BROKEN
 			src.health = 100
@@ -362,7 +362,7 @@ var/global/num_vending_terminals = 1
 		var/obj/item/stack/sheet/cardboard/C = W
 		if(C.amount>=4)
 			C.use(4)
-			to_chat(user, "<span class='notice'>I slot some cardboard into \the [src].</span>")
+			to_chat(user, "<span class='notice'>You slot some cardboard into \the [src].</span>")
 			cardboard = 1
 			src.updateUsrDialog()
 	if(iswiretool(W))
@@ -373,7 +373,7 @@ var/global/num_vending_terminals = 1
 		if (isnull(coin))
 			if(user.drop_item(W, src))
 				coin = W
-				to_chat(user, "<span class='notice'>I insert a coin into [src].</span>")
+				to_chat(user, "<span class='notice'>You insert a coin into [src].</span>")
 				src.updateUsrDialog()
 		else
 			to_chat(user, "<SPAN CLASS='notice'>There's already a coin in [src].</SPAN>")
@@ -384,7 +384,7 @@ var/global/num_vending_terminals = 1
 	else if(istype(W, /obj/item/voucher))
 		if(can_accept_voucher(W, user))
 			if(user.drop_item(W, src))
-				to_chat(user, "<span class='notice'>I insert [W] into [src].</span>")
+				to_chat(user, "<span class='notice'>You insert [W] into [src].</span>")
 				return voucher_act(W, user)
 				src.updateUsrDialog()
 		else
@@ -400,7 +400,7 @@ var/global/num_vending_terminals = 1
 				objects_loaded++
 		if(objects_loaded)
 			user.visible_message("<span class='notice'>[user] loads \the [src] with \the [bag].</span>", \
-								 "<span class='notice'>I load \the [src] with \the [bag].</span>")
+								 "<span class='notice'>You load \the [src] with \the [bag].</span>")
 			if(bag.contents.len > 0)
 				to_chat(user, "<span class='notice'>Some items are refused.</span>")
 			src.updateUsrDialog()
@@ -481,15 +481,15 @@ var/global/num_vending_terminals = 1
 				D = linked_db.attempt_account_access(C.associated_account_number, 0, 2, 0)
 				using_account = "Bank Account"
 				if(!D)								//first we check if there IS a bank account in the first place
-					to_chat(usr, "\icon[src]<span class='warning'>I don't have that much money on my virtual wallet!</span>")
-					to_chat(usr, "\icon[src]<span class='warning'>Unable to access my bank account.</span>")
+					to_chat(usr, "\icon[src]<span class='warning'>You don't have that much money on your virtual wallet!</span>")
+					to_chat(usr, "\icon[src]<span class='warning'>Unable to access your bank account.</span>")
 					return 0
 				else if(D.security_level > 0)		//next we check if the security is low enough to pay directly from it
-					to_chat(usr, "\icon[src]<span class='warning'>I don't have that much money on my virtual wallet!</span>")
-					to_chat(usr, "\icon[src]<span class='warning'>Lower my bank account's security settings if you wish to pay directly from it.</span>")
+					to_chat(usr, "\icon[src]<span class='warning'>You don't have that much money on your virtual wallet!</span>")
+					to_chat(usr, "\icon[src]<span class='warning'>Lower your bank account's security settings if you wish to pay directly from it.</span>")
 					return 0
 				else if(D.money < transaction_amount)//and lastly we check if there's enough money on it, duh
-					to_chat(usr, "\icon[src]<span class='warning'>I don't have that much money on my bank account!</span>")
+					to_chat(usr, "\icon[src]<span class='warning'>You don't have that much money on your bank account!</span>")
 					return 0
 
 			//transfer the money
@@ -604,7 +604,7 @@ var/global/num_vending_terminals = 1
 	if(prob(2))
 		src.TurnOff(600) //A whole minute
 	/*if(prob(1))
-		to_chat(usr, "<span class='warning'>I fall down and break my leg!</span>")
+		to_chat(usr, "<span class='warning'>You fall down and break your leg!</span>")
 		user.emote("scream",,, 1)
 		shake_camera(user, 2, 1)*/
 
@@ -619,7 +619,7 @@ var/global/num_vending_terminals = 1
 
 	if(M_TK in user.mutations && user.a_intent == "hurt" && iscarbon(user))
 		if(!Adjacent(user))
-			to_chat(user, "<span class='danger'>I slam the [src] with my mind!</span>")
+			to_chat(user, "<span class='danger'>You slam the [src] with your mind!</span>")
 			visible_message("<span class='danger'>[src] dents slightly, as if it was struck!</span>")
 			damaged()
 
@@ -641,7 +641,7 @@ var/global/num_vending_terminals = 1
 	if(src.currently_vending)
 		var/dat = "<TT><center><b>[vendorname]</b></center><hr /><br>" //display the name, and added a horizontal rule
 
-		dat += {"<b>I have selected [currently_vending.product_name].<br>Please ensure my ID is in my ID holder or hand.</b><br>
+		dat += {"<b>You have selected [currently_vending.product_name].<br>Please ensure your ID is in your ID holder or hand.</b><br>
 			<a href='byond://?src=\ref[src];buy=1'>Pay</a> |
 			<a href='byond://?src=\ref[src];cancel_buying=1'>Cancel</a>"}
 		user << browse(dat, "window=vending")
@@ -750,7 +750,7 @@ var/global/num_vending_terminals = 1
 		coin.forceMove(get_turf(src))
 		if(!usr.get_active_hand())
 			usr.put_in_hands(coin)
-		to_chat(usr, "<span class='notice'>I remove the [coin] from the [src]</span>")
+		to_chat(usr, "<span class='notice'>You remove the [coin] from the [src]</span>")
 		coin = null
 	usr.set_machine(src)
 
@@ -836,7 +836,7 @@ var/global/num_vending_terminals = 1
 
 	if (!by_voucher && (R in coin_records))
 		if (isnull(coin))
-			to_chat(user, "<SPAN CLASS='notice'>I need to insert a coin to get this item.</SPAN>")
+			to_chat(user, "<SPAN CLASS='notice'>You need to insert a coin to get this item.</SPAN>")
 			return
 
 		var/return_coin = 0
@@ -844,10 +844,10 @@ var/global/num_vending_terminals = 1
 			var/obj/item/weapon/coin/real_coin = coin
 			if(real_coin.string_attached)
 				if(prob(50))
-					to_chat(user, "<SPAN CLASS='notice'>I successfully pulled the coin out before the [src] could swallow it.</SPAN>")
+					to_chat(user, "<SPAN CLASS='notice'>You successfully pulled the coin out before the [src] could swallow it.</SPAN>")
 					return_coin = 1
 				else
-					to_chat(user, "<SPAN CLASS='notice'>I wasn't able to pull the coin out fast enough, the machine ate it, string and all.</SPAN>")
+					to_chat(user, "<SPAN CLASS='notice'>You weren't able to pull the coin out fast enough, the machine ate it, string and all.</SPAN>")
 
 		if(return_coin)
 			user.put_in_hands(coin)
@@ -1111,7 +1111,7 @@ var/global/num_vending_terminals = 1
 	name = "Getmore Chocolate Corp"
 	desc = "A vending machine containing snacks."
 	product_slogans = "Try our new nougat bar!;Half the calories for double the price!;It's better than Dan's!"
-	product_ads = "The healthiest!;Award-winning chocolate bars!;Mmm! So good!;Oh my god it's so juicy!;Have a snack.;Snacks are good for you!;Have some more Getmore!;Best quality snacks straight from mars.;We love chocolate!;Try our new jerky!"
+	product_ads = "The healthiest!;Award-winning chocolate bars!;Mmm! So good!;Oh your god it's so juicy!;Have a snack.;Snacks are good for you!;Have some more Getmore!;Best quality snacks straight from mars.;We love chocolate!;Try our new jerky!"
 	icon_state = "snack"
 	products = list(
 		/obj/item/weapon/reagent_containers/food/snacks/candy = 6,
@@ -1171,12 +1171,13 @@ var/global/num_vending_terminals = 1
 //This one's from bay12
 /obj/machinery/vending/cart
 	name = "PTech"
-	desc = "A vending machine containing Personal Data Assistant cartridges."
+	desc = "A vending machine containing Personal Data Assistant microcomputers and cartridges."
 	req_access = list(access_change_ids)
 	product_slogans = "Carts to go!"
 	icon_state = "cart"
 	icon_deny = "cart-deny"
 	products = list(
+		/obj/item/device/pda = 5,
 		/obj/item/weapon/cartridge/captain = 3,
 		/obj/item/weapon/cartridge/hop = 3,
 		/obj/item/weapon/cartridge/cmo = 3,
@@ -1233,7 +1234,7 @@ var/global/num_vending_terminals = 1
 	req_access = list(access_medical)
 	icon_state = "med"
 	icon_deny = "med-deny"
-	product_ads = "Go save some lives!;The best stuff for my medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
+	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
 	products = list(
 		/obj/item/weapon/reagent_containers/glass/bottle/antitoxin = 4,
 		/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline = 4,
@@ -1281,7 +1282,7 @@ var/global/num_vending_terminals = 1
 	name = "NanoMed"
 	desc = "Wall-mounted medical equipment dispenser."
 	//req_access = list(access_medical)
-	product_ads = "Go save some lives!;The best stuff for my medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?"
+	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?"
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
@@ -1397,7 +1398,7 @@ var/global/num_vending_terminals = 1
 			if(isscrewdriver(W))
 				to_chat(usr, "I begin removing screws from \the [src] backplate...")
 				if(do_after(user, src, 50))
-					to_chat(usr, "<span class='notice'>I unscrew \the [src] from the wall.</span>")
+					to_chat(usr, "<span class='notice'>You unscrew \the [src] from the wall.</span>")
 					playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 					new /obj/item/mounted/frame/wallmed(get_turf(src))
 					qdel(src)
@@ -1405,12 +1406,12 @@ var/global/num_vending_terminals = 1
 			if(istype(W, /obj/item/weapon/circuitboard))
 				var/obj/item/weapon/circuitboard/C=W
 				if(!(istype(C,/obj/item/weapon/circuitboard/vendomat)))
-					to_chat(user, "<span class='warning'>I cannot install this type of board into a NanoMed frame.</span>")
+					to_chat(user, "<span class='warning'>You cannot install this type of board into a NanoMed frame.</span>")
 					return
 				to_chat(usr, "I begin to insert \the [C] into \the [src].")
 				if(do_after(user, src, 10))
 					if(user.drop_item(C, src))
-						to_chat(usr, "<span class='notice'>I secure \the [C]!</span>")
+						to_chat(usr, "<span class='notice'>You secure \the [C]!</span>")
 						_circuitboard=C
 						playsound(get_turf(src), 'sound/effects/pop.ogg', 50, 0)
 						build++
@@ -1482,7 +1483,7 @@ var/global/num_vending_terminals = 1
 	if(build==3)
 		if(istype(O,/obj/structure/vendomatpack))
 			if(istype(O,/obj/structure/vendomatpack/medical))
-				to_chat(user, "<span class='notice'>I start refilling the vending machine with the recharge pack's materials.</span>")
+				to_chat(user, "<span class='notice'>You start refilling the vending machine with the recharge pack's materials.</span>")
 				var/user_loc = user.loc
 				var/pack_loc = O.loc
 				var/self_loc = src.loc
@@ -1657,7 +1658,7 @@ var/global/num_vending_terminals = 1
 	name = "MagiVend"
 	desc = "A mystical vending machine containing magical garments and magic supplies."
 	icon_state = "MagiVend"
-	product_slogans = "Sling spells the proper way with MagiVend!;Be my own Houdini! Use MagiVend!"
+	product_slogans = "Sling spells the proper way with MagiVend!;Be your own Houdini! Use MagiVend!"
 	vend_delay = 15
 	vend_reply = "Have an enchanted evening!"
 	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH!;Destroy the station!;Admin conspiracies since forever!;Space-time bending hardware!"
@@ -1700,7 +1701,7 @@ var/global/num_vending_terminals = 1
 /obj/machinery/vending/dinnerware
 	name = "Dinnerware"
 	desc = "A vending machine containing kitchen and restaurant equipment."
-	product_ads = "Mm, food stuffs!;Food and food accessories.;Get my plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
+	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
 	icon_state = "dinnerware"
 	products = list(
 		/obj/item/weapon/tray = 8,
@@ -1730,7 +1731,7 @@ var/global/num_vending_terminals = 1
 	desc = "An old vending machine containing sweet water."
 	icon_state = "sovietsoda"
 	product_slogans = "BODA: We sell drink.;BODA: Drink today.;BODA: We're better then Comrade Dan."
-	product_ads = "For Tsar and Country.;Have you fulfilled my nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
+	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
 	products = list(
 		/obj/item/weapon/reagent_containers/food/drinks/plastic/water = 10,
 		/obj/item/weapon/reagent_containers/food/drinks/plastic/water/small = 20,
@@ -1867,7 +1868,7 @@ var/global/num_vending_terminals = 1
 //This one's from bay12
 /obj/machinery/vending/robotics
 	name = "Robotech Deluxe"
-	desc = "A vending machine containing roboticizing supplies. A label reads: \"All the tools you need to create my own robot army.\""
+	desc = "A vending machine containing roboticizing supplies. A label reads: \"All the tools you need to create your own robot army.\""
 	req_access = list(access_robotics)
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
@@ -2063,8 +2064,8 @@ var/global/num_vending_terminals = 1
 	desc = "A vending machine containing jumpsuits and dress garments."
 	icon_state = "suits"
 	vend_reply = "Come again!"
-	product_ads = "Skinny? Looking for some clothes? Suitlord is the machine for you!;BUY MY PRODUCT!"
-	product_slogans = "Pre-Ironed, Pre-Washed, Pre-Wor-*BZZT*;Blood of my enemies washes right out!;Who are YOU wearing?;Look dapper! Look like an idiot!;Don't carry my size? How about you shave off some pounds you fat lazy- *BZZT*"
+	product_ads = "Skinny? Looking for some clothes? Suitlord is the machine for you!;BUY your PRODUCT!"
+	product_slogans = "Pre-Ironed, Pre-Washed, Pre-Wor-*BZZT*;Blood of your enemies washes right out!;Who are YOU wearing?;Look dapper! Look like an idiot!;Don't carry your size? How about you shave off some pounds you fat lazy- *BZZT*"
 	products = list(
 		/obj/item/clothing/under/color/black = 10,
 		/obj/item/clothing/under/color/blue = 10,
@@ -2110,9 +2111,9 @@ var/global/num_vending_terminals = 1
 	name = "Shoelord 9000"
 	desc = "A vending machine containing footwear."
 	icon_state = "shoes"
-	vend_reply = "Enjoy my pair!"
+	vend_reply = "Enjoy your pair!"
 	product_ads = "Dont be a hobbit: Choose Shoelord.;Shoes snatched? Get on it with Shoelord."
-	product_slogans = "Put my foot down!;One size fits all!;IM WALKING ON SUNSHINE!;No hobbits allowed.;NO PLEASE WILLY, DONT HURT ME- *BZZT*"
+	product_slogans = "Put your foot down!;One size fits all!;IM WALKING ON SUNSHINE!;No hobbits allowed.;NO PLEASE WILLY, DONT HURT ME- *BZZT*"
 	products = list(
 		/obj/item/clothing/shoes/black = 10,
 		/obj/item/clothing/shoes/brown = 10,
@@ -2285,7 +2286,7 @@ var/global/num_vending_terminals = 1
 /obj/machinery/vending/discount
 	name = "Discount Dan's"
 	desc = "A vending machine containing discount snacks. It is owned by the infamous 'Discount Dan' franchise."
-	product_slogans = "Discount Dan, he's the man!;There 'aint nothing better in this world than a bite of mystery.;Don't listen to those other machines, buy my product!;Quantity over Quality!;Don't listen to those eggheads at the CDC, buy now!;Discount Dan's: We're good for you! Nope, couldn't say it with a straight face.;Discount Dan's: Only the best quality produ-*BZZT*"
+	product_slogans = "Discount Dan, he's the man!;There 'aint nothing better in this world than a bite of mystery.;Don't listen to those other machines, buy your product!;Quantity over Quality!;Don't listen to those eggheads at the CDC, buy now!;Discount Dan's: We're good for you! Nope, couldn't say it with a straight face.;Discount Dan's: Only the best quality produ-*BZZT*"
 	product_ads = "Discount Dan(tm) is not responsible for any damages caused by misuse of his product."
 	vend_reply = "No refunds."
 	icon_state = DISCOUNT
@@ -2394,7 +2395,7 @@ var/global/num_vending_terminals = 1
 	name = "Trader Supply"
 	desc = "Its coin groove has been modified."
 	product_slogans = "Profits."
-	product_ads = "When you charge a customer $100, and he pays you by mistake $200, you have an ethical dilemma — should you tell my partner?"
+	product_ads = "When you charge a customer $100, and he pays you by mistake $200, you have an ethical dilemma — should you tell your partner?"
 	vend_reply = "Money money money!"
 	icon_state = "voxseed"
 	products = list (

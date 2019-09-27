@@ -192,7 +192,7 @@
 		if(!locked)
 			to_chat(user, "\icon[src] <span class='notice'>\The [src] clicks as locks release, and it slowly opens for you.</span>")
 		else
-			to_chat(user, "\icon[src] <span class='notice'>I close \the [src] and swipe my card, locking it.</span>")
+			to_chat(user, "\icon[src] <span class='notice'>You close \the [src] and swipe your card, locking it.</span>")
 		update_icon()
 	else if(iscrowbar(W) && (!locked || destroyed))
 		user.visible_message("[user.name] pries \the [src] apart.", \
@@ -232,7 +232,7 @@
 			to_chat(user, "<span class='rose'>It's locked, you can't put anything into it.</span>")
 		else if(!occupant)
 			if(user.drop_item(W, src))
-				to_chat(user, "<span class='notice'>I insert \the [W] into \the [src], and it floats as the hoverfield activates.</span>")
+				to_chat(user, "<span class='notice'>You insert \the [W] into \the [src], and it floats as the hoverfield activates.</span>")
 				occupant=W
 				update_icon()
 
@@ -246,28 +246,28 @@
 	if (destroyed)
 		if(occupant)
 			dump()
-			to_chat(user, "<span class='danger'>I smash my fist into the delicate electronics at the bottom of the case, and deactivate the hoverfield permanently.</span>")
+			to_chat(user, "<span class='danger'>You smash your fist into the delicate electronics at the bottom of the case, and deactivate the hoverfield permanently.</span>")
 			src.add_fingerprint(user)
 			update_icon()
 	else
 		if(user.a_intent == I_HURT)
 			user.delayNextAttack(8)
 			user.visible_message("<span class='danger'>[user.name] kicks \the [src]!</span>", \
-				"<span class='danger'>I kick \the [src]!</span>", \
+				"<span class='danger'>You kick \the [src]!</span>", \
 				"I hear glass crack.")
 			src.health -= 2
 			healthcheck()
 		else if(!locked)
 			if(ishuman(user))
 				if(!ue)
-					to_chat(user, "<span class='notice'>I press my thumb against the fingerprint scanner, registering my identity with the case.</span>")
+					to_chat(user, "<span class='notice'>You press your thumb against the fingerprint scanner, registering your identity with the case.</span>")
 					ue = getPrint(user)
 					return
 				if(ue!=getPrint(user))
 					to_chat(user, "<span class='rose'>Access denied.</span>")
 					return
 
-				to_chat(user, "<span class='notice'>I press my thumb against the fingerprint scanner, and deactivate the hoverfield built into the case.</span>")
+				to_chat(user, "<span class='notice'>You press your thumb against the fingerprint scanner, and deactivate the hoverfield built into the case.</span>")
 				if(occupant)
 					dump()
 					update_icon()
@@ -276,7 +276,7 @@
 		else
 			user.delayNextAttack(10) // prevent spam
 			user.visible_message("[user.name] gently runs their hands over \the [src] in appreciation of its contents.", \
-				"I gently run my hands over \the [src] in appreciation of its contents.", \
+				"I gently run your hands over \the [src] in appreciation of its contents.", \
 				"I hear someone streaking glass with their greasy hands.")
 
 /obj/structure/displaycase/acidable()

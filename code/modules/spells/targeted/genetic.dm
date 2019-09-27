@@ -39,7 +39,7 @@ code\game\\dna\genes\goon_powers.dm
 	spell_flags = WAIT_FOR_CLICK
 	invocation = "STI KALY"
 	invocation_type = SpI_WHISPER
-	message = "<span class='danger'>My eyes cry out in pain!</span>"
+	message = "<span class='danger'>Your eyes cry out in pain!</span>"
 	cooldown_min = 50
 
 	range = 7
@@ -60,7 +60,7 @@ code\game\\dna\genes\goon_powers.dm
 	spell_flags = NEEDSCLOTHES | INCLUDEUSER
 	invocation = "BIRUZ BENNAR"
 	invocation_type = SpI_SHOUT
-	message = "<span class='notice'>I feel strong! You feel a pressure building behind my eyes!</span>"
+	message = "<span class='notice'>You feel strong! You feel a pressure building behind your eyes!</span>"
 	range = 0
 	max_targets = 1
 

@@ -251,7 +251,7 @@
 
 /obj/item/weapon/storage/box/boxen
 	name = "boxen ranching kit"
-	desc = "Everything you need to engage in my own horrific flesh cloning."
+	desc = "Everything you need to engage in your own horrific flesh cloning."
 
 /obj/item/weapon/storage/box/boxen/New()
 	..()

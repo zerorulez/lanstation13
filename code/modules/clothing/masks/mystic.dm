@@ -15,7 +15,7 @@
 		return
 	if(H.wear_mask == src)
 		flick("happiest_flash", src)
-		to_chat(H, "<span class='sinister'>My thoughts are bombarded by incessant laughter.</span>")
+		to_chat(H, "<span class='sinister'>Your thoughts are bombarded by incessant laughter.</span>")
 		H << sound('sound/effects/hellclown.ogg')
 		canremove = 0
 
@@ -69,7 +69,7 @@
 		S.cancel_camera()
 		flick("happiest_flash", src)
 		to_chat(H, "<span class='sinister'>Oh joy! [M.real_name]'s decided to join the party!</span>")
-		to_chat(S, "<span class='sinister'>I have been given form by the power of the happiest mask! Go forth and cause joyful chaos for [H.real_name]!</span>")
+		to_chat(S, "<span class='sinister'>You have been given form by the power of the happiest mask! Go forth and cause joyful chaos for [H.real_name]!</span>")
 
 /obj/item/clothing/mask/happy/acidable()
 	return 0

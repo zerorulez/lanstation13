@@ -207,10 +207,10 @@
 
 	var/datum/organ/external/S = M.get_organ(user.zone_sel.selecting)
 	if(!S)
-		to_chat(usr, "<b>I can't scan this body part.</b>")
+		to_chat(usr, "<b>You can't scan this body part.</b>")
 		return
 	if(!S.open)
-		to_chat(usr, "<b>I have to cut the limb open first!</b>")
+		to_chat(usr, "<b>You have to cut the limb open first!</b>")
 		return
 	for(var/mob/O in viewers(M))
 		O.show_message("<span class='warning'>[user.name] scans the wounds on [M.name]'s [S.display_name] with \the [src.name]</span>", 1)

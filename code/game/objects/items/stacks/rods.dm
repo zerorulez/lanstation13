@@ -53,22 +53,22 @@
 			var/obj/structure/lattice/L = T.canBuildCatwalk(src)
 			if(istype(L))
 				if(amount < 2)
-					to_chat(user, "<span class='warning'>I need atleast 2 rods to build a catwalk!</span>")
+					to_chat(user, "<span class='warning'>You need atleast 2 rods to build a catwalk!</span>")
 					return
 				if(busy) //We are already building a catwalk, avoids stacking catwalks
 					return
-				to_chat(user, "<span class='notice'>I begin to build a catwalk.</span>")
+				to_chat(user, "<span class='notice'>You begin to build a catwalk.</span>")
 				busy = 1
 				if(do_after(user, Target, 30))
 					busy = 0
 					if(amount < 2)
-						to_chat(user, "<span class='warning'>I ran out of rods!</span>")
+						to_chat(user, "<span class='warning'>You ran out of rods!</span>")
 						return
 					if(!istype(L) || L.loc != T)
-						to_chat(user, "<span class='warning'>I need a lattice first!</span>")
+						to_chat(user, "<span class='warning'>You need a lattice first!</span>")
 						return
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-					to_chat(user, "<span class='notice'>I build a catwalk!</span>")
+					to_chat(user, "<span class='notice'>You build a catwalk!</span>")
 					use(2)
 					new /obj/structure/catwalk(T)
 					qdel(L)
@@ -86,7 +86,7 @@
 		var/obj/item/weapon/weldingtool/WT = W
 
 		if(amount < 2)
-			to_chat(user, "<span class='warning'>I need at least two rods to do this.</span>")
+			to_chat(user, "<span class='warning'>You need at least two rods to do this.</span>")
 			return
 
 		if(WT.remove_fuel(0,user))
@@ -94,8 +94,8 @@
 			M.amount = 1
 			M.forceMove(get_turf(usr)) //This is because new() doesn't call forceMove, so we're forcemoving the new sheet to make it stack with other sheets on the ground.
 			user.visible_message("<span class='warning'>[src] is shaped into metal by [user.name] with the welding tool.</span>", \
-			"<span class='warning'>I shape the [src] into metal with the welding tool.</span>", \
-			"<span class='warning'>I hear welding.</span>")
+			"<span class='warning'>You shape the [src] into metal with the welding tool.</span>", \
+			"<span class='warning'>You hear welding.</span>")
 			var/obj/item/stack/rods/R = src
 			src = null
 			var/replace = (user.get_inactive_hand()==R)
@@ -129,7 +129,7 @@
 				return 1
 	else
 		if(amount < 2)
-			to_chat(user, "<span class='notice'>I need at least two rods to do this.</span>")
+			to_chat(user, "<span class='notice'>You need at least two rods to do this.</span>")
 			return
 
 		to_chat(user, "<span class='notice'>Assembling grille...</span>")
@@ -140,6 +140,6 @@
 		var/obj/structure/grille/Grille = getFromPool(/obj/structure/grille, user.loc)
 		if(!Grille)
 			Grille = new(user.loc)
-		to_chat(user, "<span class='notice'>I assembled a grille!</span>")
+		to_chat(user, "<span class='notice'>You assembled a grille!</span>")
 		Grille.add_fingerprint(user)
 		use(2)

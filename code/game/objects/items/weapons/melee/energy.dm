@@ -88,8 +88,8 @@
 	update_icon()
 
 /obj/item/weapon/melee/energy/sword/attack_self(mob/living/user as mob)
-	if (clumsy_check(user) && prob(50) && active) //only an on blade can cut
-		to_chat(user, "<span class='danger'>I accidentally cut yourself with [src].</span>")
+	if (clumsy_check(user) && active) //only an on blade can cut
+		to_chat(user, "<span class='danger'>You accidentally cut yourself with [src].</span>")
 		user.take_organ_damage(5,5)
 		return
 	toggleActive(user)
@@ -131,7 +131,7 @@
 /obj/item/weapon/melee/energy/sword/attackby(obj/item/weapon/W, mob/living/user)
 	..()
 	if(istype(W, /obj/item/weapon/melee/energy/sword))
-		to_chat(user, "<span class='notice'>I attach the ends of the two energy swords, making a single double-bladed weapon! You're cool.</span>")
+		to_chat(user, "<span class='notice'>You attach the ends of the two energy swords, making a single double-bladed weapon! You're cool.</span>")
 		new /obj/item/weapon/dualsaber(user.loc)
 		qdel(W)
 		W = null
@@ -166,7 +166,7 @@
 
 /obj/item/weapon/melee/energy/sword/bsword/attackby(obj/item/weapon/W, mob/living/user)
 	if(istype(W, /obj/item/weapon/melee/energy/sword/bsword))
-		to_chat(user, "<span class='notice'>I attach the ends of the two energized bananium swords, making a bushel bruiser! That's dangerous.</span>")
+		to_chat(user, "<span class='notice'>You attach the ends of the two energized bananium swords, making a bushel bruiser! That's dangerous.</span>")
 		new /obj/item/weapon/dualsaber/bananabunch(user.loc)
 		qdel(W)
 		qdel(src)

@@ -99,19 +99,19 @@
 				M.visible_message(\
 					"<span class='notice'>[user.name] frees [M.name] from \the [src].</span>",\
 					"<span class='notice'>[user.name] frees you from [src].</span>",\
-					"<span class='warning'>I hear shredding and ripping.</span>")
+					"<span class='warning'>You hear shredding and ripping.</span>")
 			else
 				M.visible_message(\
 					"<span class='notice'>[M.name] struggles free of [src].</span>",\
-					"<span class='notice'>I untangle [src] from around yourself.</span>",\
-					"<span class='warning'>I hear shredding and ripping.</span>")
+					"<span class='notice'>You untangle [src] from around yourself.</span>",\
+					"<span class='warning'>You hear shredding and ripping.</span>")
 			unlock_atom(M)
 		else
 			var/text = pick("rips","tears","pulls")
 			user.visible_message(\
 				"<span class='notice'>[user.name] [text] at \the [src].</span>",\
-				"<span class='notice'>I [text] at \the [src].</span>",\
-				"<span class='warning'>I hear shredding and ripping.</span>")
+				"<span class='notice'>You [text] at \the [src].</span>",\
+				"<span class='warning'>You hear shredding and ripping.</span>")
 
 /obj/effect/plantsegment/proc/grow()
 
@@ -160,7 +160,7 @@
 
 				// Drink some blood/cause some brute.
 				if(seed.carnivorous == 2)
-					to_chat(V, "<span class='danger'>\The [src] pierces my flesh greedily!</span>")
+					to_chat(V, "<span class='danger'>\The [src] pierces your flesh greedily!</span>")
 
 					var/damage = rand(round(seed.potency/2),round(seed.potency))
 					if(!istype(H))
@@ -181,7 +181,7 @@
 
 				// Inject some chems.
 				if(seed.chems && seed.chems.len && istype(H))
-					to_chat(H, "<span class='danger'>I feel something seeping into my skin!</span>")
+					to_chat(H, "<span class='danger'>You feel something seeping into your skin!</span>")
 					for(var/rid in seed.chems)
 						var/injecting = min(5,max(1,seed.potency/5))
 						H.reagents.add_reagent(rid,injecting)

@@ -12,7 +12,7 @@
 /datum/poster/bay_3
 	icon_state="bsposter3"
 	name = "Paranoia"
-	desc = "This particular one warns of the dangers of trusting my co-workers too much."
+	desc = "This particular one warns of the dangers of trusting your co-workers too much."
 
 /datum/poster/bay_4
 	icon_state="bsposter4"
@@ -87,7 +87,7 @@
 /datum/poster/bay_18
 	icon_state="bsposter18"
 	name = "Derpman, Enforcer of the State"
-	desc = "Here to protect and serve... my donuts! A generously proportioned man, he teaches you the value of hiding my snacks."
+	desc = "Here to protect and serve... your donuts! A generously proportioned man, he teaches you the value of hiding your snacks."
 
 /datum/poster/bay_19
 	icon_state="bsposter19"

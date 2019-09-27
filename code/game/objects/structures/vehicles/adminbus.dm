@@ -292,7 +292,7 @@
 			to_chat(M, "<span class='warning'>\the [src] picks you up!</span>")
 			if(occupant)
 				to_chat(occupant, "[M.name] captured!")
-		to_chat(M, "<span class='notice'>Welcome aboard \the [src]. Please keep my hands and arms inside the bus at all times.</span>")
+		to_chat(M, "<span class='notice'>Welcome aboard \the [src]. Please keep your hands and arms inside the bus at all times.</span>")
 		src.add_fingerprint(M)
 	else if(isbot(A))
 		var/obj/machinery/bot/B = A
@@ -321,7 +321,7 @@
 				capture_mob(user,1)
 				return
 			else
-				to_chat(user, "<span class='notice'>I may not climb into \the [src] while its door is closed.</span>")
+				to_chat(user, "<span class='notice'>You may not climb into \the [src] while its door is closed.</span>")
 
 	else
 		if(occupant)//if you are a Test Dummy and there is already a driver, you'll climb in as a passenger.
@@ -329,11 +329,11 @@
 			return
 		else
 			if(!(user.check_rights(R_ADMINBUS)))
-				to_chat(user, "<span class='notice'>Oh you are a god alright, but you don't seem to have my Adminbus driver license!</span>")
+				to_chat(user, "<span class='notice'>Oh you are a god alright, but you don't seem to have your Adminbus driver license!</span>")
 				return
 			user.visible_message(
 				"<span class='notice'>[user] climbs onto \the [src]!</span>",
-				"<span class='notice'>I climb onto \the [src]!</span>")
+				"<span class='notice'>You climb onto \the [src]!</span>")
 			lock_atom(user, /datum/locking_category/adminbus)
 			add_fingerprint(user)
 			playsound(src, 'sound/machines/hiss.ogg', 50, 0, 0)
@@ -364,10 +364,10 @@
 					return
 			else
 				if(locate(user) in passengers)
-					to_chat(user, "<span class='notice'>I may not leave the Adminbus at the current time.</span>")
+					to_chat(user, "<span class='notice'>You may not leave the Adminbus at the current time.</span>")
 					return
 				else
-					to_chat(user, "<span class='notice'>I may not climb into \the [src] while its door is closed.</span>")
+					to_chat(user, "<span class='notice'>You may not climb into \the [src] while its door is closed.</span>")
 					return
 
 /obj/structure/bed/chair/vehicle/adminbus/proc/add_HUD(var/mob/M)
@@ -560,7 +560,7 @@
 
 /////ROADLIGHTS/////////
 
-/obj/structure/buslight//the things you have to do to pretend that my bus has directional lights...
+/obj/structure/buslight//the things you have to do to pretend that your bus has directional lights...
 	name = ""
 	desc = ""
 	anchored = 1

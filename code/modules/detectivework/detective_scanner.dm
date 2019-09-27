@@ -162,7 +162,7 @@
 		return 0
 	else
 		user.visible_message("\The [user] scans \the [A] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]\n[user.gender == MALE ? "He" : "She"] seems to perk up slightly at the readout." ,\
-		"The results of the scan pique my interest.",\
+		"The results of the scan pique your interest.",\
 		"I hear a faint hum of electrical equipment, and someone making a thoughtful noise.")
 		return 0
 	return
@@ -222,7 +222,7 @@
 	var/list/customfiber = list()
 	var/list/customblood = list()
 	if(forging)
-		to_chat(user, "<span class='warning'>I am already forging evidence</span>")
+		to_chat(user, "<span class='warning'>You are already forging evidence</span>")
 		return 0
 	clear_forgery()
 	//fingerprint loop

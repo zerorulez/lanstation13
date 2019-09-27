@@ -45,13 +45,13 @@
 			src.body_parts_covered = FACE
 			eyeprot = 3
 			icon_state = initial(icon_state)
-			to_chat(usr, "I flip the [src] down to protect my eyes.")
+			to_chat(usr, "I flip the [src] down to protect your eyes.")
 		else
 			src.up = !src.up
 			src.body_parts_covered = HEAD
 			icon_state = "[initial(icon_state)]up"
 			eyeprot = 0
-			to_chat(usr, "I push the [src] up out of my face.")
+			to_chat(usr, "I push the [src] up out of your face.")
 		usr.update_inv_head()	//so our mob-overlays update
 		usr.update_inv_wear_mask()
 		usr.update_inv_glasses()

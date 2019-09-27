@@ -100,12 +100,13 @@
 			H.equip_or_collect(new /obj/item/clothing/under/rank/medical(H), slot_w_uniform)
 			H.equip_or_collect(new /obj/item/clothing/suit/storage/labcoat(H), slot_wear_suit)
 		H.equip_or_collect(new /obj/item/clothing/shoes/white(H), slot_shoes)
-		//H.equip_or_collect(new /obj/item/device/pda/medical(H), slot_belt)
+		H.equip_or_collect(new /obj/item/weapon/storage/belt/medical(H), slot_belt)
 		H.put_in_hands(new /obj/item/weapon/storage/firstaid/regular(H))
-		H.equip_or_collect(new /obj/item/device/flashlight/pen(H), slot_s_store)
+		H.equip_or_collect(new /obj/item/weapon/switchtool/surgery(H), slot_s_store)
 		if(H.backbag == 1)
 			H.put_in_hand(GRASP_RIGHT_HAND, new H.species.survival_gear(H))
 		else
+			H.equip_or_collect(new /obj/item/device/flashlight/pen, slot_in_backpack)
 			H.equip_or_collect(new H.species.survival_gear(H.back), slot_in_backpack)
 		return 1
 

@@ -24,7 +24,7 @@
 	if(isturf(hit_atom))
 		new/obj/effect/decal/cleanable/egg_smudge(loc)
 		splat_reagent_reaction(hit_atom)
-		visible_message("<span class='warning'>\The [src] has been squashed.</span>","<span class='warning'>I hear a smack.</span>")
+		visible_message("<span class='warning'>\The [src] has been squashed.</span>","<span class='warning'>You hear a smack.</span>")
 		playsound(loc, 'sound/items/egg_squash.ogg', 50, 1)
 		qdel(src)
 
@@ -77,7 +77,7 @@
 			to_chat(user, "<span class='notice'>[src] refuses to take on this colour!</span>")
 			return
 
-		to_chat(user, "<span class='notice'>I colour [src] [clr].</span>")
+		to_chat(user, "<span class='notice'>You colour [src] [clr].</span>")
 		icon_state = "egg-[clr]"
 		_color = clr
 	else

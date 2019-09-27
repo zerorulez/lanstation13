@@ -92,7 +92,7 @@
 /obj/machinery/bodyscanner/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
 	if(!ismob(O)) //humans only
 		return
-	if(O.loc == user || !isturf(O.loc) || !isturf(user.loc)) //no you can't pull things out of my ass
+	if(O.loc == user || !isturf(O.loc) || !isturf(user.loc)) //no you can't pull things out of your ass
 		return
 	if(user.incapacitated() || user.lying) //are you cuffed, dying, lying, stunned or other
 		return
@@ -110,7 +110,7 @@
 	if(isrobot(user))
 		var/mob/living/silicon/robot/robit = usr
 		if(istype(robit) && !istype(robit.module, /obj/item/weapon/robot_module/medical))
-			to_chat(user, "<span class='warning'>I do not have the means to do this!</span>")
+			to_chat(user, "<span class='warning'>You do not have the means to do this!</span>")
 			return
 	var/mob/living/L = O
 	if(!istype(L) || L.locked_to)
@@ -148,7 +148,7 @@
 	if(isrobot(usr))
 		var/mob/living/silicon/robot/robit = usr
 		if(istype(robit) && !istype(robit.module, /obj/item/weapon/robot_module/medical))
-			to_chat(usr, "<span class='warning'>I do not have the means to do this!</span>")
+			to_chat(usr, "<span class='warning'>You do not have the means to do this!</span>")
 			return
 	if(!istype(over_location) || over_location.density)
 		return
@@ -228,7 +228,7 @@
 
 /obj/machinery/bodyscanner/crowbarDestroy(mob/user)
 	if(occupant)
-		to_chat(user, "<span class='warning'>I cannot disassemble \the [src], it's occupado.</span>")
+		to_chat(user, "<span class='warning'>You cannot disassemble \the [src], it's occupado.</span>")
 		return
 	return ..()
 

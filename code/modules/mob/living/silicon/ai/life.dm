@@ -162,7 +162,7 @@
 									//bring up APC dialog
 									theAPC.attack_ai(src)
 									aiRestorePowerRoutine = 3
-									to_chat(src, "Here are my current laws:")
+									to_chat(src, "Here are your current laws:")
 									show_laws()
 							spawn(50)
 							theAPC = null

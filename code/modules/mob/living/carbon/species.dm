@@ -43,7 +43,7 @@ var/global/list/whitelisted_species = list("Human")
 	var/list/known_languages = list(LANGUAGE_GALACTIC_COMMON)	// Languages that this species innately knows.
 	var/default_language = LANGUAGE_GALACTIC_COMMON				// Default language is used when 'say' is used without modifiers.
 	var/attack_verb = "punches"									// Empty hand hurt intent verb.
-	var/punch_damage = 7										// Extra empty hand attack damage.
+	var/punch_damage = 0										// Extra empty hand attack damage.
 	var/punch_sharpness = 0										// Slicing/cutting force of punches. Independent of the sharpness added by claws.
 	var/punch_throw_range = 0
 	var/punch_throw_speed = 1
@@ -472,7 +472,7 @@ var/global/list/whitelisted_species = list("Human")
 		if (prob(50))
 			speech.message = pick("GOD, PLEASE", "NO, GOD", "AGGGGGGGH") + " "
 
-		speech.message += pick("KILL ME", "END MY SUFFERING", "You CAN'T DO THIS ANYMORE")
+		speech.message += pick("KILL ME", "END your SUFFERING", "You CAN'T DO THIS ANYMORE")
 
 		return ..()
 
@@ -727,7 +727,7 @@ var/global/list/whitelisted_species = list("Human")
 		H.equip_or_collect(new/obj/item/weapon/tank/nitrogen(H), tank_slot)
 	else
 		H.put_in_hands(new/obj/item/weapon/tank/nitrogen(H))
-	to_chat(H, "<span class='info'>You am now running on nitrogen internals from the [H.s_store] in my [tank_slot_name]. Your species finds oxygen toxic, so <b>you must breathe nitrogen (AKA N<sub>2</sub>) only</b>.</span>")
+	to_chat(H, "<span class='info'>You are now running on nitrogen internals from the [H.s_store] in your [tank_slot_name]. Your species finds oxygen toxic, so <b>you must breathe nitrogen (AKA N<sub>2</sub>) only</b>.</span>")
 	H.internal = H.get_item_by_slot(tank_slot)
 	if (H.internals)
 		H.internals.icon_state = "internal1"
@@ -896,7 +896,7 @@ var/global/list/whitelisted_species = list("Human")
 						var/mob/ghostmob = ghost.get_top_transmogrification()
 						if(ghostmob)
 							ghostmob << 'sound/effects/adminhelp.ogg'
-							to_chat(ghostmob, "<span class='interface big'><span class='bold'>Someone is trying to resurrect you. Return to my body if you want to live again!</span> \
+							to_chat(ghostmob, "<span class='interface big'><span class='bold'>Someone is trying to resurrect you. Return to your body if you want to live again!</span> \
 								(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)</span>")
 				else
 					anim(target = src, a_icon = 'icons/mob/mob.dmi', flick_anim = "reverse-dust-g", sleeptime = 15)
@@ -912,7 +912,7 @@ var/global/list/whitelisted_species = list("Human")
 					dustmind.current = G
 					mind = null
 					G.key = key
-					to_chat(G, "You am an adamantine golem. You move slowly, but are highly resistant to heat and cold as well as impervious to burn damage. You are unable to wear most clothing, but can still use most tools. Serve [user], and assist them in completing their goals at any cost.")
+					to_chat(G, "You are an adamantine golem. You move slowly, but are highly resistant to heat and cold as well as impervious to burn damage. You are unable to wear most clothing, but can still use most tools. Serve [user], and assist them in completing their goals at any cost.")
 					qdel(src)
 		else
 			to_chat(user, "<span class='warning'>The used extract doesn't have any effect on \the [src].</span>")

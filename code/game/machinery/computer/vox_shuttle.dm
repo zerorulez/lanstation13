@@ -90,7 +90,7 @@ var/global/vox_shuttle_location
 	switch(href_list["move"])
 		if("start")
 			if(ticker && istype(ticker.mode, /datum/game_mode/heist))
-				switch(alert("OOC INFO: Returning to dark space will end my raid and report my success or failure.", "Confirmation", "Yes", "No"))
+				switch(alert("OOC INFO: Returning to dark space will end your raid and report your success or failure.", "Confirmation", "Yes", "No"))
 					if("Yes")
 						var/location = get_turf(user)
 						message_admins("[key_name_admin(user)] attempts to end the raid - [formatJumpTo(location)]")

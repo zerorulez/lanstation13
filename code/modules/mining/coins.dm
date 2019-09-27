@@ -102,7 +102,7 @@
 
 		overlays += image('icons/obj/items.dmi',"coin_string_overlay")
 		string_attached = 1
-		to_chat(user, "<span class='notice'>I attach a string to the coin.</span>")
+		to_chat(user, "<span class='notice'>You attach a string to the coin.</span>")
 		CC.use(1)
 	else if(istype(W,/obj/item/weapon/wirecutters) )
 		if(!string_attached)
@@ -114,6 +114,6 @@
 		CC.update_icon()
 		overlays = list()
 		string_attached = null
-		to_chat(user, "<span class='notice'>I detach the string from the coin.</span>")
+		to_chat(user, "<span class='notice'>You detach the string from the coin.</span>")
 	else
 		..()

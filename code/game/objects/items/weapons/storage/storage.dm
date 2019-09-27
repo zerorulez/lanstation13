@@ -21,7 +21,7 @@
 	var/storage_slots = 0 //The number of storage slots in this container.
 	var/obj/screen/storage/boxes = null
 	var/obj/screen/close/closer = null
-	var/use_to_pickup	//Set this to make it possible to use this item in an inverse way, so you can have the item in my hand and click items on the floor to pick them up.
+	var/use_to_pickup	//Set this to make it possible to use this item in an inverse way, so you can have the item in your hand and click items on the floor to pick them up.
 	var/display_contents_with_number	//Set this to make the storage item group contents of the same type and display them as a number.
 	var/allow_quick_empty	//Set this variable to allow the object to have the 'empty' verb, which dumps all the contents on the floor.
 	var/allow_quick_gather	//Set this variable to allow the object to have the 'toggle mode' verb, which quickly collects all items from a tile.
@@ -122,7 +122,7 @@
 	user.s_active = null
 	return
 
-//This proc draws out the inventory and places the items on it. tx and ty are the upper left tile and mx, my are the bottm right.
+//This proc draws out the inventory and places the items on it. tx and ty are the upper left tile and mx, your are the bottm right.
 //The numbers are calculated from the bottom-left The bottom-left slot being 1,1.
 /obj/item/weapon/storage/proc/orient_objs(tx, ty, mx, my)
 	var/cx = tx
@@ -224,7 +224,7 @@
 		return 0 //Storage item is full
 	if(usr && (W.cant_drop > 0))
 		if(!stop_messages)
-			usr << "<span class='notice'>I can't let go of \the [W]!</span>"
+			usr << "<span class='notice'>You can't let go of \the [W]!</span>"
 		return 0 //Item is stuck to our hands
 
 	if(W.wielded || istype(W, /obj/item/offhand))
@@ -335,7 +335,7 @@
 		if(!prevent_warning && !istype(W, /obj/item/weapon/gun/energy/crossbow))
 			for(var/mob/M in viewers(usr, null))
 				if (M == usr)
-					to_chat(usr, "<span class='notice'>I put \the [W] into \the [src].</span>")
+					to_chat(usr, "<span class='notice'>You put \the [W] into \the [src].</span>")
 				else if (M in range(1)) //If someone is standing close enough, they can tell what it is...
 					M.show_message("<span class='notice'>[usr] puts \the [W] into \the [src].</span>")
 				else if (W.w_class >= W_CLASS_MEDIUM) //Otherwise they can only see large or normal items from a distance...
@@ -422,10 +422,10 @@
 		if(isMoMMI(user))
 			var/mob/living/silicon/robot/mommi/M = user
 			if(M.is_in_modules(W))
-				to_chat(user, "<span class='notice'>I can't throw away something built into you.</span>")
+				to_chat(user, "<span class='notice'>You can't throw away something built into you.</span>")
 				return //Mommis cant give away their modules but can place other items
 		else
-			to_chat(user, "<span class='notice'>I am a robot. No.</span>")
+			to_chat(user, "<span class='notice'>You are a robot. No.</span>")
 			return //Robots can't interact with storage items.
 
 
@@ -586,7 +586,7 @@
 	if ( !found )	// User is too far away
 		return
 	// Now make the cardboard
-	to_chat(user, "<span class='notice'>I fold \the [src] flat.</span>")
+	to_chat(user, "<span class='notice'>You fold \the [src] flat.</span>")
 	new src.foldable(get_turf(src),foldable_amount)
 	qdel(src)
 //BubbleWrap END
@@ -645,13 +645,13 @@
 				success = 1
 				handle_item_insertion(I, 1)	//The 1 stops the "I put the [target] into [src]" insertion message from being displayed.
 			if(success && !failure)
-				to_chat(user, "<span class='notice'>I put everything into \the [src].</span>")
+				to_chat(user, "<span class='notice'>You put everything into \the [src].</span>")
 				return 1
 			else if(success)
-				to_chat(user, "<span class='notice'>I put some things into \the [src].</span>")
+				to_chat(user, "<span class='notice'>You put some things into \the [src].</span>")
 				return 1
 			else
-				to_chat(user, "<span class='notice'>I fail to pick anything up with \the [src].</span>")
+				to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
 				return 0
 
 		else if(can_be_inserted(target))

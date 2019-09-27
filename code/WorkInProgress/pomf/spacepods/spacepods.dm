@@ -112,7 +112,7 @@
 			if(H)
 				H.forceMove(get_turf(src))
 				H.ex_act(severity + 1)
-				to_chat(H, "<span class='warning'>I am forcefully thrown from \the [src]!</span>")
+				to_chat(H, "<span class='warning'>You are forcefully thrown from \the [src]!</span>")
 			del(ion_trail)
 			del(src)
 		if(2)
@@ -124,7 +124,7 @@
 /obj/spacepod/attackby(obj/item/W as obj, mob/user as mob)
 	if(iscrowbar(W))
 		hatch_open = !hatch_open
-		to_chat(user, "<span class='notice'>I [hatch_open ? "open" : "close"] the maintenance hatch.</span>")
+		to_chat(user, "<span class='notice'>You [hatch_open ? "open" : "close"] the maintenance hatch.</span>")
 	if(istype(W, /obj/item/weapon/cell))
 		if(!hatch_open)
 			return ..()
@@ -146,7 +146,7 @@
 				return
 			else
 				if(user.drop_item(W, src))
-					to_chat(user, "<span class='notice'>I insert \the [W] into the equipment system.</span>")
+					to_chat(user, "<span class='notice'>You insert \the [W] into the equipment system.</span>")
 					equipment_system.weapon_system = W
 					equipment_system.weapon_system.my_atom = src
 					new/obj/item/device/spacepod_equipment/weaponry/proc/fire_weapon_system(src, equipment_system.weapon_system.verb_name, equipment_system.weapon_system.verb_desc) //Yes, it has to be referenced like that. W.verb_name/desc doesn't compile.
@@ -173,32 +173,32 @@
 	switch(input(user, "Remove which equipment?", null, null) as null|anything in possible)
 		if("Energy Cell")
 			if(user.put_in_any_hand_if_possible(battery))
-				to_chat(user, "<span class='notice'>I remove \the [battery] from the space pod</span>")
+				to_chat(user, "<span class='notice'>You remove \the [battery] from the space pod</span>")
 				battery = null
 		if("Weapon System")
 			SPE = equipment_system.weapon_system
 			if(user.put_in_any_hand_if_possible(SPE))
-				to_chat(user, "<span class='notice'>I remove \the [SPE] from the equipment system.</span>")
+				to_chat(user, "<span class='notice'>You remove \the [SPE] from the equipment system.</span>")
 				SPE.my_atom = null
 				equipment_system.weapon_system = null
 				verbs -= typesof(/obj/item/device/spacepod_equipment/weaponry/proc)
 			else
-				to_chat(user, "<span class='warning'>I need an open hand to do that.</span>")
+				to_chat(user, "<span class='warning'>You need an open hand to do that.</span>")
 		/*
 		if("engine system")
 			SPE = equipment_system.engine_system
 			if(user.put_in_any_hand_if_possible(SPE))
-				to_chat(user, "<span class='notice'>I remove \the [SPE] from the equipment system.</span>")
+				to_chat(user, "<span class='notice'>You remove \the [SPE] from the equipment system.</span>")
 				equipment_system.engine_system = null
 			else
-				to_chat(user, "<span class='warning'>I need an open hand to do that.</span>")
+				to_chat(user, "<span class='warning'>You need an open hand to do that.</span>")
 		if("shield system")
 			SPE = equipment_system.shield_system
 			if(user.put_in_any_hand_if_possible(SPE))
-				to_chat(user, "<span class='notice'>I remove \the [SPE] from the equipment system.</span>")
+				to_chat(user, "<span class='notice'>You remove \the [SPE] from the equipment system.</span>")
 				equipment_system.shield_system = null
 			else
-				to_chat(user, "<span class='warning'>I need an open hand to do that.</span>")
+				to_chat(user, "<span class='warning'>You need an open hand to do that.</span>")
 		*/
 
 	return
@@ -332,7 +332,7 @@
 		inertia_dir = 0 // engage reverse thruster and power down pod
 		occupant.forceMove(exit_loc)
 		occupant = null
-		to_chat(usr, "<span class='notice'>I climb out of the pod.</span>")
+		to_chat(usr, "<span class='notice'>You climb out of the pod.</span>")
 
 /obj/spacepod/verb/move_inside()
 	set category = "Object"

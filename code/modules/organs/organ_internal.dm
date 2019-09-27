@@ -123,10 +123,10 @@
 	var/datum/organ/external/parent = owner.get_organ(parent_organ)
 
 	switch(cancer_stage)
-		if(CANCER_STAGE_SMALL_TUMOR to CANCER_STAGE_LARGE_TUMOR) //Small tumors will not damage my organ, but might flash pain
+		if(CANCER_STAGE_SMALL_TUMOR to CANCER_STAGE_LARGE_TUMOR) //Small tumors will not damage your organ, but might flash pain
 			if(prob(1))
-				owner.custom_pain("Something inside my [parent.display_name] hurts a lot.", 1)
-		if(CANCER_STAGE_LARGE_TUMOR to CANCER_STAGE_METASTASIS) //Large tumors will start damaging my organ and give the owner DNA damage (bodywide, can't go per limb)
+				owner.custom_pain("Something inside your [parent.display_name] hurts a lot.", 1)
+		if(CANCER_STAGE_LARGE_TUMOR to CANCER_STAGE_METASTASIS) //Large tumors will start damaging your organ and give the owner DNA damage (bodywide, can't go per limb)
 			if(prob(20))
 				take_damage(0.25)
 			if(prob(1))
@@ -149,7 +149,7 @@
 
 	var/datum/organ/external/parent = owner.get_organ(parent_organ)
 	if (!silent)
-		owner.custom_pain("Something inside my [parent.display_name] hurts a lot.", 1)
+		owner.custom_pain("Something inside your [parent.display_name] hurts a lot.", 1)
 
 
 /datum/organ/internal/proc/emp_act(severity)

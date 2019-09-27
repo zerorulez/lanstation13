@@ -15,7 +15,7 @@
 		if(equipment && equipment.pressure_resistance >= pressure_difference)
 			body_parts_protected |= equipment.body_parts_covered
 	pressure_difference = max(pressure_difference - species_difference,0)
-	pressure_difference *= (1 - ((return_cover_protection(body_parts_protected))**5)) // if one part of my suit's not up to scratch, we can assume the rest of the suit isn't as effective.
+	pressure_difference *= (1 - ((return_cover_protection(body_parts_protected))**5)) // if one part of your suit's not up to scratch, we can assume the rest of the suit isn't as effective.
 	if(pressure > ONE_ATMOSPHERE)
 		return ONE_ATMOSPHERE + pressure_difference
 	else
