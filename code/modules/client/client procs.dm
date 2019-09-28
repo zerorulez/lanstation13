@@ -217,7 +217,7 @@
 	if(!tooltips)
 		tooltips = new /datum/tooltip(src)
 
-	fullscreen()
+//	fullscreen()
 
 	//////////////
 	//DISCONNECT//
