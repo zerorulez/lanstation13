@@ -80,7 +80,7 @@
 	name = "Creatine"
 	id = CREATINE
 	result = CREATINE
-	required_reagents = list(NUTRIMENT = 1, BICARIDINE = 1, HYPERZINE = 1, MUTAGEN = 1)
+	required_reagents = list(NUTRIMENT = 1, BICARIDINE = 1, SUGAR = 1, MUTAGEN = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/discount

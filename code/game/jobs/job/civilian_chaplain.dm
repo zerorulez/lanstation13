@@ -18,6 +18,7 @@
 	H.add_language("Spooky") //SPOOK
 	var/obj/item/weapon/storage/bible/B = new /obj/item/weapon/storage/bible(H) //BS12 EDIT
 	H.put_in_hands(B)
+	H.equip_or_collect(new /obj/item/device/radio/headset/headset_service(H), slot_ears)
 	H.equip_or_collect(new /obj/item/clothing/under/rank/chaplain(H), slot_w_uniform)
 	//H.equip_or_collect(new /obj/item/device/pda/chaplain(H), slot_belt)
 	H.equip_or_collect(new /obj/item/clothing/shoes/black(H), slot_shoes)

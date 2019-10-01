@@ -759,13 +759,15 @@
 		return CANNOT_EQUIP //Unsupported slot
 		//END MOMMI
 
-/obj/item/can_pickup(mob/living/user)
+/obj/item/can_pickup(mob/living/user, var/actually_picking_up = TRUE, var/silent = FALSE)
 	if(!(user) || !isliving(user)) //BS12 EDIT
 		return 0
+	if(actually_picking_up && prepickup(user))
+		return FALSE
 	if(user.incapacitated() || !Adjacent(user))
 		return 0
 	if((!istype(user, /mob/living/carbon) && !isMoMMI(user)) || istype(user, /mob/living/carbon/brain)) //Is not a carbon being, MoMMI, or is a brain
-		to_chat(user, "I can't pick things up!")
+		to_chat(user, "You can't pick things up!")
 	if(src.anchored) //Object isn't anchored
 		to_chat(user, "<span class='warning'>You can't pick that up!</span>")
 		return 0

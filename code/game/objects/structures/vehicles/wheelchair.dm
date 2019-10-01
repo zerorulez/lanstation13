@@ -251,9 +251,6 @@
 	desc = "A high-riding wheelchair fitted with a powerful cell and blades under the carriage. Better get a table between you and it."
 	var/attack_cooldown = 0
 
-/obj/structure/bed/chair/vehicle/wheelchair/motorized/syndicate/getMovementDelay()
-	return (..() + 1) //Somewhat slower
-
 /obj/structure/bed/chair/vehicle/wheelchair/motorized/syndicate/to_bump(var/atom/A)
 	if(isliving(A) && !attack_cooldown)
 		var/mob/living/L = A

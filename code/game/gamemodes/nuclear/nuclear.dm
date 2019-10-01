@@ -22,9 +22,6 @@
 	var/nuke_off_station = 0 //Used for tracking if the syndies actually haul the nuke to the station
 	var/syndies_didnt_escape = 0 //Used for tracking if the syndies got the shuttle off of the z-level
 
-	title_icon = "nukeops"
-
-
 /datum/game_mode/nuclear/announce()
 	to_chat(world, "<B>The current game mode is - Nuclear Emergency!</B>")
 	to_chat(world, "<B>A [syndicate_name()] Strike Force is approaching [station_name()]!</B>")

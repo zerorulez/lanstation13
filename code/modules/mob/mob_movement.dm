@@ -371,8 +371,10 @@
 		if(mob.movement_speed_modifier)
 			move_delay *= (1/mob.movement_speed_modifier)
 
-		mob.set_glide_size(DELAY2GLIDESIZE(move_delay))
 		mob.delayNextMove(move_delay)
+
+		mob.set_glide_size(DELAY2GLIDESIZE(move_delay))
+
 		//Something with pulling things
 		if(Findgrab)
 			var/list/L = mob.ret_grab()

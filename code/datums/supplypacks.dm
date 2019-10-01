@@ -1497,7 +1497,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	containertype = /obj/structure/closet/crate/medical
 	containername = "wheelchair crate"
 	group = "Medical"
-
+/*
 /datum/supply_packs/wheelchair_motorized
 	name = "Motorized Wheelchair Crate"
 	contains = list(/obj/structure/bed/chair/vehicle/wheelchair/motorized)
@@ -1506,7 +1506,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	containername = "motorized wheelchair crate"
 	access = access_cmo
 	group = "Medical"
-
+*/
 //////SCIENCE//////
 
 /datum/supply_packs/research_parts

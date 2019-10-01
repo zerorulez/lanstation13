@@ -415,14 +415,6 @@ var/datum/controller/gameticker/ticker
 	if(!mode.explosion_in_progress && mode_finished)
 		current_state = GAME_STATE_FINISHED
 //		SSpersistence.CollectData()
-		for(var/client/C in clients)
-			if(!C.holder && iscarbon(C.mob))
-				var/mob/living/carbon/CA = C.mob
-				CA.Paralyse(1000)
-				CA.silent += 1000
-		qdel(SSmob)
-		RollCredits()
-		sleep(130)
 		spawn
 			declare_completion()
 			if(config.map_voting)

@@ -317,9 +317,6 @@ var/global/datum/controller/occupations/job_master
 	unassigned |= assistant_candidates
 	Debug("DO, AC1 end")
 
-	for(var/mob/new_player/player in unassigned)
-		if(player.client.prefs.alternate_option == GET_RANDOM_JOB)
-			GiveRandomJob(player)
 	/*
 	Old job system
 	for(var/level = 1 to 3)
@@ -342,27 +339,11 @@ var/global/datum/controller/occupations/job_master
 
 	Debug("DO, Running AC2")
 
-	// For those who wanted to be assistant if their preferences were filled, here you go.
-	for(var/mob/new_player/player in unassigned)
-		if(player.client.prefs.alternate_option == BE_ASSISTANT)
-			if(config.assistantlimit)
-				count = (officer.current_positions + hop.current_positions + captain.current_positions)
-				if(master_assistant.current_positions > (config.assistantratio * count))
-					if(count < 5) // if theres more than 5 security on the station just let assistants join regardless, they should be able to handle the tide
-						to_chat(player, "I have been returned to lobby because there's not enough security to make you an assistant.")
-						player.ready = 0
-						unassigned -= player
-						continue
-
-			Debug("AC2 Assistant located, Player: [player]")
-			AssignRole(player, "Assistant")
-
 	//For ones returning to lobby
 	for(var/mob/new_player/player in unassigned)
-		if(player.client.prefs.alternate_option == RETURN_TO_LOBBY)
-			to_chat(player, "<span class='danger'>You have been returned to lobby due to your job preferences being filled.")
-			player.ready = 0
-			unassigned -= player
+		to_chat(player, "<span class='danger'>You have been returned to lobby due to your job preferences being filled.")
+		player.ready = 0
+		unassigned -= player
 	return 1
 
 

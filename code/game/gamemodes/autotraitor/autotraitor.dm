@@ -9,8 +9,7 @@
 	var/list/possible_traitors
 	var/num_players = 0
 	can_be_mixed = TRUE
-	title_icon = "traitor"
-
+	
 /datum/game_mode/traitor/autotraitor/announce()
 	..()
 	to_chat(world, "<B>Game mode is AutoTraitor. Traitors will be added to the round automagically as needed.<br>Expect bugs.</B>")

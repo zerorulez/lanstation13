@@ -433,9 +433,9 @@
 			if(!M.locked_to)
 				shake_camera(M, 10, 1) // unbuckled, HOLY SHIT SHAKE THE ROOM
 
-		/*		if(!src.stable)
+				if(!src.stable)
 					if(istype(M, /mob/living/carbon))
-						M.Knockdown(3)*/
+						M.Knockdown(3)
 			else
 				shake_camera(M, 3, 1) // buckled, not a lot of shaking
 

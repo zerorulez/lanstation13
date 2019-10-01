@@ -31,9 +31,7 @@ var/list/blob_overminds = list()
 
 	var/list/infected_crew = list()
 	var/list/pre_escapees = list()
-
-	title_icon = "blob"
-
+	
 /datum/game_mode/blob/pre_setup()
 
 	var/list/possible_blobs = get_players_for_role(ROLE_BLOB)

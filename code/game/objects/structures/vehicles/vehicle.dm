@@ -130,6 +130,7 @@
 
 	var/movedelay = getMovementDelay()
 	set_glide_size(DELAY2GLIDESIZE(movedelay))
+	occupant.glide_size = glide_size
 	step(src, direction)
 	delayNextMove(movedelay)
 

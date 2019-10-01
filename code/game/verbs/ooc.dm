@@ -8,9 +8,6 @@
 
 	if(!mob)
 		return
-	if(IsGuestKey(key))
-		to_chat(src, "Guests may not use OOC.")
-		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	if(!msg)
@@ -112,13 +109,17 @@
 
 	if(!mob)
 		return
-	if(IsGuestKey(key))
-		to_chat(src, "Guests may not use OOC.")
-		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	if(!msg)
 		return
+
+	if((isobserver(mob) || mob.isUnconscious()) && !holder )
+		to_chat(src, "<b>N&#227;o.</b>")
+		for(var/client/C in admins)
+			to_chat(C, "<font color='#6699CC'><span class='ooc'><span class='prefix'>FAILED LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></span></font>")
+		return
+
 
 	if(!(prefs.toggles & CHAT_LOOC))
 		to_chat(src, "<span class='warning'>You have LOOC muted.</span>")

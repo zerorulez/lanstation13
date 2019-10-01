@@ -68,9 +68,7 @@ var/list/role_wiki=list(
 var/const/MAX_SAVE_SLOTS = 8
 
 //used for alternate_option
-#define GET_RANDOM_JOB 0
-#define BE_ASSISTANT 1
-#define RETURN_TO_LOBBY 2
+#define RETURN_TO_LOBBY 0
 #define POLLED_LIMIT	100
 
 /datum/preferences
@@ -146,7 +144,7 @@ var/const/MAX_SAVE_SLOTS = 8
 	var/job_engsec_low = 0
 
 	//Keeps track of preferrence for not getting any wanted jobs
-	var/alternate_option = 0
+	var/alternate_option = RETURN_TO_LOBBY
 
 	var/used_skillpoints = 0
 	var/skill_specialization = null
@@ -167,7 +165,7 @@ var/const/MAX_SAVE_SLOTS = 8
 	var/nanotrasen_relation = "Neutral"
 
 	// 0 = character settings, 1 = game preferences
-	var/current_tab = 0
+	var/current_tab = CHARACTER_SETUP
 
 		// OOC Metadata:
 	var/metadata = ""
@@ -202,12 +200,12 @@ var/const/MAX_SAVE_SLOTS = 8
 			if(!IsGuestKey(thekey))
 				var/load_pref = load_preferences_sqlite(theckey)
 				if(load_pref)
-					while(!speciesinit)
+					while(!SS_READY(SShumans))
 						sleep(1)
 					try_load_save_sqlite(theckey, C, default_slot)
 					return
 
-			while(!speciesinit)
+			while(!SS_READY(SShumans))
 				sleep(1)
 			randomize_appearance_for()
 			real_name = random_name(gender)
@@ -544,13 +542,11 @@ var/const/MAX_SAVE_SLOTS = 8
 		HTML += "<tr bgcolor='[lastJob.selection_color]'><td width='60%' align='right'>&nbsp</td><td>&nbsp</td></tr>"
 	HTML += {"</td'></tr></table>
 		</center></table>"}
-	switch(alternate_option)
+/*	switch(alternate_option)
 		if(GET_RANDOM_JOB)
 			HTML += "<center><br><a href='?_src_=prefs;preference=job;task=random'>Get random job if preferences unavailable</a></center><br>"
-		if(BE_ASSISTANT)
-			HTML += "<center><br><a href='?_src_=prefs;preference=job;task=random'>Be assistant if preference unavailable</a></center><br>"
 		if(RETURN_TO_LOBBY)
-			HTML += "<center><br><a href='?_src_=prefs;preference=job;task=random'>Return to lobby if preference unavailable</a></center><br>"
+			HTML += "<center><br><a href='?_src_=prefs;preference=job;task=random'>Return to lobby if preference unavailable</a></center><br>"*/
 
 
 	HTML += {"<center><a href='?_src_=prefs;preference=job;task=reset'>Reset</a></center>
@@ -942,14 +938,6 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 				ShowChoices(user)
 			if("reset")
 				ResetJobs()
-				SetChoices(user)
-			if("random")
-				if(alternate_option == GET_RANDOM_JOB || alternate_option == BE_ASSISTANT)
-					alternate_option += 1
-				else if(alternate_option == RETURN_TO_LOBBY)
-					alternate_option = 0
-				else
-					return 0
 				SetChoices(user)
 			if ("alt_title")
 				var/datum/job/job = locate(href_list["job"])
@@ -1378,8 +1366,8 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 						gender = FEMALE
 					else
 						gender = MALE
-					f_style = random_facial_hair_style(gender)
-					h_style = random_hair_style(gender)
+					f_style = random_facial_hair_style(gender, species)
+					h_style = random_hair_style(gender, species)
 
 				if("hear_adminhelps")
 					toggles ^= SOUND_ADMINHELP
@@ -1500,7 +1488,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 						save_character_sqlite(user.ckey, user, default_slot)
 						lastPolled = world.timeofday
 					else
-						to_chat(user, "I need to wait [round((((lastPolled + POLLED_LIMIT) - world.timeofday) / 10))] seconds before you can save again.")
+						to_chat(user, "You need to wait [round((((lastPolled + POLLED_LIMIT) - world.timeofday) / 10))] seconds before you can save again.")
 					//random_character_sqlite(user, user.ckey)
 
 				if("reload")
@@ -1825,12 +1813,11 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 			return SetRole(usr, href_list)
 
 /client/verb/modify_preferences()
-	set name = "Modify Preferences"
+	set name = "Setup"
 	set category = "OOC"
+
 	if(!prefs.saveloaded)
 		to_chat(src, "<span class='warning'>Your character preferences have not yet loaded.</span>")
 		return
-
-	prefs.current_tab = GENERAL_SETUP
 
 	prefs.ShowChoices(usr)

@@ -377,7 +377,7 @@
 					else
 						var/sqltitle = sanitizeSQL(scanner.cache.name)
 						var/sqlauthor = sanitizeSQL(scanner.cache.author)
-						var/sqlcontent = sanitizeSQL(scanner.cache.dat)
+						var/sqlcontent = sanitizeSQL(html_encode(scanner.cache.dat))
 						var/sqlcategory = sanitizeSQL(upload_category)
 						var/DBQuery/query = dbcon_old.NewQuery("INSERT INTO library (author, title, content, category, ckey) VALUES ('[sqlauthor]', '[sqltitle]', '[sqlcontent]', '[sqlcategory]', '[ckey(usr.key)]')")
 						var/response = query.Execute()
@@ -456,7 +456,7 @@
 
 	B.name = "Book: [newbook.title]"
 	B.title = newbook.title
-	B.dat = newbook.content
+	B.dat = html_decode(newbook.content)
 	B.author = newbook.author
 	B.icon_state = "book[rand(1,9)]"
 

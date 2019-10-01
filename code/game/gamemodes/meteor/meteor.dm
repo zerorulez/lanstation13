@@ -7,14 +7,13 @@
 
 	var/const/meteor_announce_delay_l = 2100 //Lower interval on announcement, here 3 minutes and 30 seconds
 	var/const/meteor_announce_delay_h = 3000 //Upper interval on announcement, here 5 minutes
-	var/meteor_announce_delay = 2400 //Default final announcement delay
+	var/meteor_announce_delay = 600 //Default final announcement delay
 
 	required_players = 0
 	required_players_secret = 1
 
 	uplink_welcome = "EVIL METEOR Uplink Console:"
 	uplink_uses = 20
-	title_icon = "meteor"
 
 /datum/game_mode/meteor/announce()
 	to_chat(world, "<B>The current game mode is - Meteor!</B>")

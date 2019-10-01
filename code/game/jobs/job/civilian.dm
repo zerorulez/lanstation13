@@ -264,6 +264,7 @@
 		if(!H)
 			return 0
 		//H.equip_or_collect(new /obj/item/device/pda/clown(H), slot_belt)
+		H.equip_or_collect(new /obj/item/device/radio/headset/headset_service(H), slot_ears)
 		if (H.mind.role_alt_title)
 			switch(H.mind.role_alt_title)
 				if("Jester")
@@ -315,6 +316,7 @@
 	equip(var/mob/living/carbon/human/H)
 		if(!H)
 			return 0
+		H.equip_or_collect(new /obj/item/device/radio/headset/headset_service(H), slot_ears)
 		if(H.backbag == 2)
 			H.equip_or_collect(new /obj/item/weapon/storage/backpack(H), slot_back)
 		if(H.backbag == 3)
@@ -374,8 +376,8 @@
 	flag = JANITOR
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "the lieutenant"
 	selection_color = "#dddddd"
 	access = list(access_janitor, access_maint_tunnels)
@@ -389,6 +391,7 @@
 	equip(var/mob/living/carbon/human/H)
 		if(!H)
 			return 0
+		H.equip_or_collect(new /obj/item/device/radio/headset/headset_service(H), slot_ears)
 		if(H.mind.role_alt_title)
 			switch(H.mind.role_alt_title)
 				if("Janitor")
@@ -434,6 +437,7 @@
 	equip(var/mob/living/carbon/human/H)
 		if(!H)
 			return 0
+		H.equip_or_collect(new /obj/item/device/radio/headset/headset_service(H), slot_ears)
 		H.equip_or_collect(new /obj/item/clothing/under/suit_jacket/red(H), slot_w_uniform)
 		//H.equip_or_collect(new /obj/item/device/pda/librarian(H), slot_belt)
 		H.equip_or_collect(new /obj/item/clothing/shoes/black(H), slot_shoes)

@@ -17,8 +17,6 @@
 	uplink_welcome = "Syndicate Uplink Console:"
 	uplink_uses = 20
 
-	title_icon = "vampire"
-
 	var/const/prob_int_murder_target = 50 // intercept names the assassination target half the time
 	var/const/prob_right_murder_target_l = 25 // lower bound on probability of naming right assassination target
 	var/const/prob_right_murder_target_h = 50 // upper bound on probability of naimg the right assassination target
@@ -41,14 +39,6 @@
 
 	var/vampire_amount = 4
 	can_be_mixed = TRUE
-
-/datum/game_mode/vampire/credittext()
-	global.end_titles += "<center><h1>Vampiros:</h1></center><br><br>"
-	for(var/datum/mind/vamp in vampires)
-		global.end_titles += "<center><h2>[vamp.name] como vampiro.</h2>"
-	for(var/datum/mind/enthrall in enthralled)
-		global.end_titles += "<center><h2>[enthrall.name] como escravo.</h2>"
-	global.end_titles += "<br>"
 
 /datum/game_mode/vampire/announce()
 	to_chat(world, "<B>The current game mode is - Vampires!</B>")

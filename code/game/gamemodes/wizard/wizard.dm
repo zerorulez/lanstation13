@@ -24,17 +24,6 @@
 
 	can_be_mixed = TRUE
 
-	title_icon = "wizard"
-
-/datum/game_mode/wizards/credittext()
-	global.end_titles += "<center><h1>Magos:</h1></center><br><br>"
-	for(var/datum/mind/wizard in wizards)
-		global.end_titles += "<center><h2>[wizard.name] como mago.</h2>"
-	for(var/datum/mind/apprentice in apprentices)
-		global.end_titles += "<center><h2>[apprentice.name] como aprendiz de mago.</h2>"
-	global.end_titles += "<br>"
-	return
-
 /datum/game_mode/wizard/announce()
 	to_chat(world, "<B>The current game mode is - Wizard!</B>")
 	to_chat(world, "<B>There is a <span class='danger'>SPACE WIZARD on the station. You can't let him achieve his objective!</span>")

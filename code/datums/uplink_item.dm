@@ -213,15 +213,6 @@ var/list/uplink_items = list()
 	cost = 4
 	job = list("Janitor")
 
-
-//Assistant
-/datum/uplink_item/jobspecific/pickpocketgloves
-	name = "Pickpocket's Gloves"
-	desc = "A pair of sleek gloves to aid in pickpocketing, while wearing these you can sneakily strip any item without the other person being alerted. Pickpocketed items will also be put into your hand rather than fall to the ground."
-	item = /obj/item/clothing/gloves/black/thief
-	cost = 6
-	job = list("Assistant")
-
 /datum/uplink_item/jobspecific/greytide
 	name = "Greytide Implant"
 	desc = "A box containing an implanter filled with a greytide implant when injected into another person makes them loyal to the greytide and your cause, unless they're already implanted by someone else. Loyalty ends if he or she no longer has the implant."
@@ -264,7 +255,7 @@ var/list/uplink_items = list()
 	desc = "30 units of Bicarodyne, a chemical that causes a devastating explosion when exposed to endorphins released in the body by a hug. Metabolizes quite slowly."
 	item = /obj/item/weapon/storage/box/syndie_kit/explosive_hug //Had to be put in a box because it didn't play well with reagent creation
 	cost = 8
-	job = list("Chemist", "Chief Medical Officer")
+	job = list("Chemist", "Medical Doctor", "Chief Medical Officer")
 
 //Medical Doctor
 /datum/uplink_item/jobspecific/wheelchair
@@ -279,7 +270,7 @@ var/list/uplink_items = list()
 	name = "Power Gloves"
 	desc = "Insulated gloves that can utilize the power of the station to deliver a short arc of electricity at a target. Must be standing on a powered cable to use."
 	item = /obj/item/clothing/gloves/yellow/power
-	cost = 8
+	cost = 4
 	job = list("Station Engineer", "Chief Engineer")
 
 /datum/uplink_item/jobspecific/contortionist
@@ -302,7 +293,7 @@ var/list/uplink_items = list()
 	name = "Radgun"
 	desc = "An experimental energy gun that fires radioactive projectiles that burn, irradiate, and scramble DNA, giving the victim a different appearance and name, and potentially harmful or beneficial mutations. Recharges on its own."
 	item = /obj/item/weapon/gun/energy/radgun
-	cost = 14
+	cost = 16
 	job = list("Geneticist", "Chief Medical Officer")
 
 //Mechanic
@@ -362,7 +353,7 @@ var/list/uplink_items = list()
 	name = "Fully Loaded Revolver"
 	desc = "A traditional handgun which fires .357 rounds. Has 7 chambers. Can down an unarmored target with two shots."
 	item = /obj/item/weapon/gun/projectile
-	cost = 13
+	cost = 14
 
 /datum/uplink_item/dangerous/ammo
 	name = "Ammo-357"
@@ -393,7 +384,7 @@ var/list/uplink_items = list()
 	name = "Viscerator Grenade"
 	desc = "A single grenade containing a pair of incredibly destructive viscerators. Be aware that they will attack any nearby targets, including yourself. Emits a blinding flash upon detonation."
 	item = /obj/item/weapon/grenade/spawnergrenade/manhacks/syndicate
-	cost = 6
+	cost = 8
 
 /datum/uplink_item/dangerous/gatling
 	name = "Gatling Gun"
@@ -460,7 +451,7 @@ var/list/uplink_items = list()
 	name = "Voice Changer"
 	desc = "A conspicuous gas mask that mimics the voice named on your identification card. When no identification is worn, the mask will render your voice distinguishably unrecognizable."
 	item = /obj/item/clothing/mask/gas/voice
-	cost = 5
+	cost = 4
 	excludefrom = list("nuclear emergency")
 
 /datum/uplink_item/stealthy_tools/dnascrambler
@@ -479,8 +470,13 @@ var/list/uplink_items = list()
 	name = "Instant Smoke Bombs"
 	desc = "A package of eight instant-action smoke bombs, cleverly disguised as harmless snap-pops. The cover of smoke they create is large enough to cover most of a room. Pair well with thermal imaging glasses."
 	item = /obj/item/weapon/storage/box/syndie_kit/smokebombs
-	cost = 3
+	cost = 4
 
+/datum/uplink_item/pickpocketgloves
+	name = "Pickpocket's Gloves"
+	desc = "A pair of sleek gloves to aid in pickpocketing, while wearing these you can sneakily strip any item without the other person being alerted. Pickpocketed items will also be put into your hand rather than fall to the ground."
+	item = /obj/item/clothing/gloves/black/thief
+	cost = 4
 
 // DEVICE AND TOOLS
 
