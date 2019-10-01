@@ -10,7 +10,7 @@
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 700000
 	intact = 0 //No seriously, that's not a joke. Allows cable to be laid properLY on catwalks
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 	luminosity = 1
 	can_border_transition = 1
 
@@ -29,7 +29,7 @@
 	if(loc)
 		var/area/A = loc
 		A.area_turfs += src
-		if(!A.dynamic_lighting || !dynamic_lighting)
+		if(!A.lighting_use_dynamic || !lighting_use_dynamic)
 			overlays.Add(/obj/effect/fullbright)
 
 /turf/space/spawned_by_map_element(var/datum/map_element/ME, var/list/objects)

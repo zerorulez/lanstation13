@@ -16,7 +16,7 @@
 	nitrogen = MOLES_N2STANDARD_ARCTIC
 	light_color = "#e5ffff"
 	can_border_transition = 1
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 	luminosity = 1
 
 	var/snowballs = 0

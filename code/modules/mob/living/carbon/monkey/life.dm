@@ -515,7 +515,7 @@
 		var/light_amount = 0 //how much light there is in the place, affects receiving nutrition and healing
 		if(isturf(loc)) //else, there's considered to be no light
 			var/turf/T = loc
-			if(T.dynamic_lighting)
+			if(T.lighting_use_dynamic)
 				light_amount = T.get_lumcount() * 10
 			else
 				light_amount = 5

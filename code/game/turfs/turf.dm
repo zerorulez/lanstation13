@@ -77,7 +77,7 @@
 	if(loc)
 		var/area/A = loc
 		A.area_turfs += src
-		if(!A.dynamic_lighting || !dynamic_lighting)
+		if(!A.lighting_use_dynamic || !lighting_use_dynamic)
 			overlays.Add(/obj/effect/fullbright)
 	for(var/atom/movable/AM as mob|obj in src)
 		spawn( 0 )
@@ -328,9 +328,10 @@
 	var/datum/gas_mixture/env
 
 	var/old_opacity = opacity
-	var/old_dynamic_lighting = dynamic_lighting
+	var/old_lighting_use_dynamic = lighting_use_dynamic
 	var/old_affecting_lights = affecting_lights
 	var/old_lighting_overlay = lighting_overlay
+	var/old_corners = corners
 
 //	to_chat(world, "Replacing [src.type] with [N]")
 
@@ -398,12 +399,14 @@
 
 	recalc_atom_opacity()
 	if (SSlighting && SSlighting.initialized)
+		recalc_atom_opacity()
 		lighting_overlay = old_lighting_overlay
 		affecting_lights = old_affecting_lights
-		if((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting) || force_lighting_update)
+		corners = old_corners
+		if((old_opacity != opacity) || (lighting_use_dynamic != old_lighting_use_dynamic) || force_lighting_update)
 			reconsider_lights()
-		if(dynamic_lighting != old_dynamic_lighting)
-			if(dynamic_lighting)
+		if(lighting_use_dynamic != old_lighting_use_dynamic)
+			if(lighting_use_dynamic)
 				lighting_build_overlay()
 			else
 				lighting_clear_overlay()

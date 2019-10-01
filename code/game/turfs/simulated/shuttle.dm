@@ -4,7 +4,7 @@
 	icon = 'icons/turf/shuttle.dmi'
 	thermal_conductivity = 0.05
 	heat_capacity = 0
-	dynamic_lighting = 1 //We dynamic lighting now // maybe one day // maybe today
+	lighting_use_dynamic = 1 //We dynamic lighting now // maybe one day // maybe today
 	soot_type = null
 	melt_temperature = 0 // Doesn't melt.
 	footstep_sounds = list("human" = list(\

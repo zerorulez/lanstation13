@@ -14,14 +14,14 @@
 /area/awaymission/tomb/outside
 	name = "desert"
 	base_turf_type = /turf/unsimulated/beach/sand
-	dynamic_lighting = 0
+	lighting_use_dynamic = 0
 
 /area/awaymission/tomb/outside/expedition_camp
 	name = "expedition camp"
 
 /area/awaymission/tomb/outside/pyramid_outside
 	name = "great pyramid"
-	dynamic_lighting = 1
+	lighting_use_dynamic = 1
 
 
 /area/awaymission/tomb
@@ -36,7 +36,7 @@
 /area/awaymission/tomb/tower_of_madness
 	name = "Tower of Madness"
 
-/area/awaymission/tomb/sewers
+/area/awaymission/tomb/sewerss
 	name = "Water Gallery"
 
 /obj/effect/narration/tomb/intro

@@ -52,7 +52,7 @@
 		var/light_amount = 0
 		if(isturf(loc))
 			var/turf/T = loc
-			if(T.dynamic_lighting)
+			if(T.lighting_use_dynamic)
 				light_amount = T.get_lumcount() * 10
 			else
 				light_amount = 10

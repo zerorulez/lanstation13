@@ -6,11 +6,11 @@
 	ASSERT(zlevel)
 
 	for (var/turf/T in block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel)))
-		if (!T.dynamic_lighting)
+		if (!T.lighting_use_dynamic)
 			continue
 
 		var/area/A = T.loc
-		if (!A.dynamic_lighting)
+		if (!A.lighting_use_dynamic)
 			continue
 
-		T.lighting_overlay = new /atom/movable/lighting_overlay(T)
+		getFromPool(/atom/movable/lighting_overlay, T, TRUE)

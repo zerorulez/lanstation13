@@ -26,7 +26,7 @@ var/area/space_area
 	if(isspace(src))	// override defaults for space. TODO: make space areas of type /area/space rather than /area
 		requires_power = 1
 		always_unpowered = 1
-		dynamic_lighting = 0
+		lighting_use_dynamic = 0
 		power_light = 0
 		power_equip = 0
 		power_environ = 0
@@ -39,7 +39,7 @@ var/area/space_area
 		power_equip = 1
 		power_environ = 1
 
-	if(!dynamic_lighting)
+	if(!lighting_use_dynamic)
 		overlays.Add()
 
 	..()

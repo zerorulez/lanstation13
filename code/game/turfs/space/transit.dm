@@ -7,7 +7,7 @@
 	if(loc)
 		var/area/A = loc
 		A.area_turfs += src
-		if(!A.dynamic_lighting || !dynamic_lighting)
+		if(!A.lighting_use_dynamic || !lighting_use_dynamic)
 			overlays.Add(/obj/effect/fullbright)
 
 	update_icon()

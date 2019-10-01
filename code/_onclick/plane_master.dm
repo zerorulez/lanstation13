@@ -35,7 +35,7 @@
 				 0,0,1,0,
 				 0,0,0,1)
 	appearance_flags = NO_CLIENT_COLOR|PLANE_MASTER
-/*
+
 /obj/screen/plane_master/ambient_occlusion
 	name = "ambient occlusion master"
 	plane = OBJ_PLANE
@@ -65,4 +65,4 @@
 	plane = ABOVE_HUMAN_PLANE
 
 /obj/screen/plane_master/ambient_occlusion/effects_plane
-	plane = EFFECTS_PLANE*/
+	plane = EFFECTS_PLANE

@@ -194,7 +194,7 @@
 	// Handle light requirements.
 
 	var/light_available = 5
-	if(T.dynamic_lighting)
+	if(T.lighting_use_dynamic)
 		light_available = T.get_lumcount() * 10
 
 	if(!seed.biolum && abs(light_available - seed.ideal_light) > seed.light_tolerance)

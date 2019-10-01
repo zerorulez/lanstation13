@@ -1,27 +1,25 @@
 /area
 	luminosity           = TRUE
-	var/dynamic_lighting = TRUE
+	var/lighting_use_dynamic = TRUE
 
 /area/New()
 	. = ..()
 
-	if (dynamic_lighting)
+	if (lighting_use_dynamic)
 		luminosity = FALSE
 
-/area/proc/set_dynamic_lighting(var/new_dynamic_lighting = TRUE)
-	if (new_dynamic_lighting == dynamic_lighting)
+/area/proc/set_lighting_use_dynamic(var/new_lighting_use_dynamic = TRUE)
+	if (new_lighting_use_dynamic == lighting_use_dynamic)
 		return FALSE
 
-	dynamic_lighting = new_dynamic_lighting
+	lighting_use_dynamic = new_lighting_use_dynamic
 
-	if (new_dynamic_lighting)
-		overlays.Remove(/obj/effect/fullbright)
+	if (new_lighting_use_dynamic)
 		for (var/turf/T in world)
-			if (T.dynamic_lighting)
+			if (T.lighting_use_dynamic)
 				T.lighting_build_overlay()
 
 	else
-		overlays.Add(/obj/effect/fullbright)
 		for (var/turf/T in world)
 			if (T.lighting_overlay)
 				T.lighting_clear_overlay()
