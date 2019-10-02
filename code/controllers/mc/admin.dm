@@ -2,6 +2,12 @@
 /obj/effect/statclick
 	var/target
 
+/obj/effect/statclick/MouseExited()
+	return
+
+/obj/effect/statclick/MouseEntered()
+	return
+
 /obj/effect/statclick/New(text, target)
 	name = text
 	src.target = target

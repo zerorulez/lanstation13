@@ -928,6 +928,8 @@ var/list/slot_equipment_priority = list( \
 		if(point)
 			qdel(point)
 
+	face_atom(A)
+
 	return 1
 
 /mob/proc/has_hand_check()
@@ -1076,7 +1078,7 @@ var/list/slot_equipment_priority = list( \
 
 	face_atom(I)
 	I.verb_pickup(src)
-	
+
 /proc/acquirable_objects_in_view(var/mob/living/L, var/range)
 	var/list/obj_list = list()
 	for(var/turf/T in view(L, range))

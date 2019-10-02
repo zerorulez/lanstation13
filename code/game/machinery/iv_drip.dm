@@ -114,17 +114,13 @@
 		// Give blood
 		if(mode)
 			if(src.beaker.volume > 0)
-				var/transfer_amount = REAGENTS_METABOLISM
-				if(beaker.reagents.reagent_list.len == 1 && beaker.reagents.has_reagent(BLOOD))
-					// speed up transfer if the container has ONLY blood
-					transfer_amount = 4
-				src.beaker.reagents.trans_to(src.attached, transfer_amount)
+				src.beaker.reagents.trans_to(src.attached, 12)
 				update_icon()
 
 		// Take blood
 		else
 			var/amount = beaker.reagents.maximum_volume - beaker.reagents.total_volume
-			amount = min(amount, 4)
+			amount = min(amount, 12)
 			// If the beaker is full, ping
 			if(amount == 0)
 				if(prob(5))
@@ -152,22 +148,21 @@
 			if(B)
 				update_icon()
 
-/obj/machinery/iv_drip/attack_hand(mob/user as mob)
+/obj/machinery/iv_drip/attack_hand(mob/user)
 	if(isobserver(usr) || user.incapacitated())
 		return
 	if(attached)
 		visible_message("[src.attached] is detached from \the [src].")
-		src.attached = null
-		src.update_icon()
+		detach()
 	else if(src.beaker)
-		src.beaker.forceMove(get_turf(src))
-		if(istype(beaker, /obj/item/weapon/reagent_containers/glass/beaker/large/cyborg))
-			var/obj/item/weapon/reagent_containers/glass/beaker/large/cyborg/borgbeak = beaker
-			borgbeak.return_to_modules()
-		src.beaker = null
-		update_icon()
+		remove_container()
 	else
 		return ..()
+
+/obj/machinery/iv_drip/proc/remove_container()
+	src.beaker.forceMove(get_turf(src))
+	src.beaker = null
+	update_icon()
 
 
 /obj/machinery/iv_drip/verb/toggle_mode()

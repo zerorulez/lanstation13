@@ -242,8 +242,10 @@
 
 	light_color = LIGHT_COLOR_FIRE
 
-	force = 6
-	on_damage = 12
+	force = 5
+	on_damage = 14
+
+	attack_verbs = list("burns")
 
 	produce_heat = 10000
 

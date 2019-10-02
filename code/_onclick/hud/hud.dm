@@ -194,7 +194,6 @@ var/global/obj/screen/clicker/catcher = new()
 	if(!mymob.client)
 		return 0
 
-
 	var/ui_style
 	var/ui_color
 	var/ui_alpha
@@ -252,8 +251,10 @@ var/global/obj/screen/clicker/catcher = new()
 	holomap_obj.screen_loc = "SOUTH,WEST"
 	holomap_obj.mouse_opacity = 0
 	holomap_obj.alpha = 255
-
 	mymob.client.screen += src.holomap_obj
+
+	mymob.item_name = getFromPool(/obj/screen/itemname)
+	mymob.client.screen += mymob.item_name
 
 	for(var/thing in plane_masters)
 		mymob.client.screen += plane_masters[thing]

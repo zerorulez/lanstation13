@@ -942,3 +942,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	movespeed = 1/speed
 
 /datum/locking_category/observer
+
+/mob/dead/observer/GetAccess()
+	return isAdminGhost(src) ? get_all_accesses() : list()

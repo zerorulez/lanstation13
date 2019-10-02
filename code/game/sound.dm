@@ -20,6 +20,12 @@ var/list/lightning_sound = list('sound/effects/lightning/chainlightning1.ogg', '
 var/list/soulstone_sound = list('sound/hallucinations/far_noise.ogg', 'sound/hallucinations/veryfar_noise.ogg', 'sound/hallucinations/wail.ogg')
 var/list/fracture_sound = list('sound/effects/bonebreak1.ogg','sound/effects/bonebreak2.ogg','sound/effects/bonebreak3.ogg','sound/effects/bonebreak4.ogg')
 
+// ----- Machines -----
+// Keystroke
+var/global/list/soundin_keyboard = list('sound/machines/keyboard/keyboard1.ogg', 'sound/machines/keyboard/keyboard2.ogg', 'sound/machines/keyboard/keyboard3.ogg', 'sound/machines/keyboard/keyboard4.ogg', 'sound/machines/keyboard/keyboard5.ogg')
+// PDA's taps
+var/list/soundin_pda_taps = list('sound/machines/keyboard/pda1.ogg', 'sound/machines/keyboard/pda2.ogg', 'sound/machines/keyboard/pda3.ogg', 'sound/machines/keyboard/pda4.ogg', 'sound/machines/keyboard/pda5.ogg')
+
 //var/list/gun_sound = list('sound/weapons/Gunshot.ogg', 'sound/weapons/Gunshot2.ogg','sound/weapons/Gunshot3.ogg','sound/weapons/Gunshot4.ogg')
 
 //gas_modified controls if a sound is affected by how much gas there is in the atmosphere of the source
@@ -185,5 +191,9 @@ var/const/SURROUND_CAP = 7
 				soundin = pick(soulstone_sound)
 			if ("fracture")
 				soundin = pick(fracture_sound)
+			if ("keyboard")
+				soundin = pick(soundin_keyboard)
+			if ("pda")
+				soundin = pick(soundin_pda_taps)
 			//if ("gunshot") soundin = pick(gun_sound)
 	return soundin

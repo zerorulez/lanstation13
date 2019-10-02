@@ -42,6 +42,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	var/tnote = null //Current Texts
 	var/last_text //No text spamming
 	var/last_honk //Also no honk spamming that's bad too
+	var/last_tap_sound = 0 // prevents tap sounds spam
 	var/ttone = "beep" //The ringtone!
 	var/lock_code = "" // Lockcode to unlock uplink
 	var/honkamt = 0 //How many honks left when infected with honk.exe
@@ -1344,6 +1345,11 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	if(can_use(U)) //Why reinvent the wheel? There's a proc that does exactly that.
 		add_fingerprint(U)
 		U.set_machine(src)
+
+		if(iscarbon(usr))
+			if(href_list && (last_tap_sound <= world.time))
+				playsound(src, "pda", 15, 0)
+				last_tap_sound = world.time + 8
 
 		switch(href_list["choice"])
 

@@ -1,7 +1,7 @@
 //The ultimate in green energy, a treadmill generates very low power each time it is bumped, which also updates its icon
 //to move. You can still optimize this, though, by making yourself a workout machine -- be full, have sugar,
 //have sports drink, have a high movespeed, have HULK as a mutation.
-//Doesn't consume any idle power, you must to_bump() it from its own square. to_bump works like a window.
+//Doesn't consume any idle power, you must to_bump() it from its own square. Bump works like a window.
 //Using a treadmill uses up hunger faster
 
 #define DEFAULT_BUMP_ENERGY 400
@@ -59,7 +59,7 @@
 	var/cached_temp = runner.bodytemperature
 	if(runner.burn_calories(HUNGER_FACTOR*2))
 		flick("treadmill-running", src)
-		playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
+		playsound(src, 'sound/machines/click.ogg', 50, 1)
 		var/calc = DEFAULT_BUMP_ENERGY * power_efficiency * runner.treadmill_speed
 		if(runner.reagents) //Sanity
 			for(var/datum/reagent/R in runner.reagents.reagent_list)
@@ -81,18 +81,14 @@
 						runner.apply_damage(5, BRUTE, LIMB_RIGHT_LEG)
 				runner.bodytemperature = max(T0C + 100,cached_temp)
 	else
-		to_chat(runner,"<span class='warning'>You are exhausted! You can't run anymore!</span>")
+		to_chat(runner,"<span class='warning'>You're exhausted! You can't run anymore!</span>")
 
 /obj/machinery/power/treadmill/Uncross(var/atom/movable/mover, var/turf/target)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return 1
-	if(flags & ON_BORDER)
-		if(target) //Are we doing a manual check to see
-			if(get_dir(loc, target) == dir)
-				return !density
-		else if(mover.dir == dir) //Or are we using move code
-			powerwalk(mover)
-			return !density
+	if((flags & ON_BORDER) && (mover.dir == dir))
+		powerwalk(mover)
+		return !density
 	return 1
 
 /obj/machinery/power/treadmill/Cross(atom/movable/mover, turf/target, height=1.5, air_group = 0)
@@ -105,8 +101,10 @@
 	else
 		return 1
 
-/obj/machinery/power/treadmill/wrenchAnchor(mob/user)
-	..()
+/obj/machinery/power/treadmill/wrenchAnchor(var/mob/user)
+	. = ..()
+	if(!.)
+		return
 	if(anchored)
 		connect_to_network()
 	else
@@ -117,3 +115,24 @@
 	emagged = 1
 	name = "\improper DREADMILL"
 	desc = "FEEL THE BURN"
+
+/obj/machinery/power/treadmill/verb/rotate_clock()
+	set category = "Object"
+	set name = "Rotate Treadmill (Clockwise)"
+	set src in view(1)
+
+	if (usr.isUnconscious() || usr.restrained()  || anchored)
+		return
+
+	src.dir = turn(src.dir, -90)
+
+/obj/machinery/power/treadmill/verb/rotate_anticlock()
+	set category = "Object"
+	set name = "Rotate Treadmill (Counterclockwise)"
+	set src in view(1)
+
+	if (usr.isUnconscious() || usr.restrained()  || anchored)
+		to_chat(usr, "It is fastened to the floor!")
+		return
+
+	src.dir = turn(src.dir, 90)

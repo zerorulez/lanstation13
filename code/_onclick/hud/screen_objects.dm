@@ -28,6 +28,25 @@
 	maptext_height = 480
 	maptext_width = 480
 
+/obj/screen/itemname
+	icon = null
+	icon_state = null
+	mouse_opacity = 0
+	screen_loc = "LEFT, TOP"
+	maptext_height = 480
+	maptext_width = 480
+	maptext_y = 10
+	var/last_update = 0
+
+/obj/screen/itemname/proc/update_maptext(var/txt = "")
+	maptext = "<center><span style=\'color: white;-dm-text-outline:1px #000;font-family:\"Small Fonts\";font-size:6pt;'>[uppertext(txt)]</span></center>"
+
+/atom/MouseEntered()
+	usr.item_name.update_maptext(name)
+
+/atom/MouseExited()
+	usr.item_name.update_maptext()
+
 /obj/screen/adminbus
 
 /obj/screen/specialblob

@@ -37,6 +37,8 @@
 	var/obj/screen/gun/run/gun_run_icon = null
 	var/obj/screen/gun/mode/gun_setting_icon = null
 
+	var/obj/screen/itemname/item_name = null
+
 	var/obj/screen/leap_icon = null
 
 	//monkey inventory icons

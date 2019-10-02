@@ -444,6 +444,7 @@ window "mainwindow"
 		icon = 'icons\\ss13_64.png'
 		macro = "macro"
 		menu = "menu"
+		statusbar = false
 	elem "asset_cache_browser"
 		type = BROWSER
 		pos = 424,208
@@ -464,6 +465,7 @@ window "mainwindow"
 		left = "mapwindow"
 		right = "rpane"
 		is-vert = true
+		splitter = 75
 	elem "tooltip"
 		type = BROWSER
 		pos = 849,57
@@ -585,6 +587,7 @@ window "rpane"
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
+		splitter = 50
 	elem "hosttracker"
 		type = BROWSER
 		pos = 392,25

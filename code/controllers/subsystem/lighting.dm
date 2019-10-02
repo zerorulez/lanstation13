@@ -13,7 +13,7 @@ var/list/lighting_update_overlays  = list() // List of lighting overlays queued 
 	name          = "Lighting"
 	init_order    = SS_INIT_LIGHTING
 	display_order = SS_DISPLAY_LIGHTING
-	wait          = 1
+	wait          = 2
 	priority      = SS_PRIORITY_LIGHTING
 	flags         = SS_TICKER
 

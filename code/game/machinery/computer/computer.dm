@@ -14,6 +14,8 @@
 	light_power_on = 0.75
 	light_range_on = 3
 
+	var/last_keyboard_sound = 0 // prevents keyboard sounds spam
+
 /obj/machinery/computer/cultify()
 	new /obj/structure/cult/tome(loc)
 	..()
@@ -31,6 +33,13 @@
 /obj/machinery/computer/initialize()
 	..()
 	power_change()
+
+/obj/machinery/computer/Topic(href, href_list)
+	. = ..()
+	if(href_list && (last_keyboard_sound <= world.time) && usr.Adjacent(src))
+		if(iscarbon(usr))
+			playsound(src, pick(global.soundin_keyboard), 50, null, FALSE)
+			last_keyboard_sound = world.time + 8
 
 /obj/machinery/computer/process()
 	if(stat & (NOPOWER|BROKEN))

@@ -284,8 +284,10 @@
 
 		if( href_list["view"] )
 			usr.client.eye = src.compressor
+			src.updateDialog()
 		else if( href_list["str"] )
 			src.compressor.starter = !src.compressor.starter
+			src.updateDialog()
 		else if (href_list["doors"])
 			for(var/obj/machinery/door/poddoor/D in src.doors)
 				if (door_status == 0)
@@ -296,15 +298,14 @@
 					spawn( 0 )
 						D.close()
 						door_status = 0
+			src.updateDialog()
 		else if( href_list["close"] )
 			usr << browse(null, "window=computer")
 			usr.machine = null
 			return
 
 		src.add_fingerprint(usr)
-	src.updateUsrDialog()
 	return
 
 /obj/machinery/computer/turbine_computer/process()
-	src.updateDialog()
 	return

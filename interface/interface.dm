@@ -150,7 +150,6 @@ Admin:
 
 	winset(src, "mainwindow", {"
 				titlebar     = [fullscreen ? "false" : "true"];
-				statusbar    = [fullscreen ? "false" : "true"];
 				can-resize   = [fullscreen ? "false" : "true"];
 				is-maximized = false;
 				"})

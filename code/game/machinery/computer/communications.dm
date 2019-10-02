@@ -82,17 +82,12 @@ var/shuttle_call/shuttle_calls[0]
 			setMenuState(usr,COMM_SCREEN_MAIN)
 		if("login")
 			var/mob/M = usr
-			var/obj/item/weapon/card/id/I = M.get_active_hand()
-			if (istype(I, /obj/item/device/pda))
-				var/obj/item/device/pda/pda = I
-				I = pda.id
-			if (istype(I,/obj/item/weapon/card/emag))
-				emag(usr)
-			if (I && istype(I))
-				if(src.check_access(I))
-					authenticated = 1
-				if(20 in I.access)
+			if(allowed(M))
+				authenticated = 1
+				if(access_captain in M.GetAccess())
 					authenticated = 2
+			if(emagged) //Login regardless if you have an ID
+				authenticated = 2
 		if("logout")
 			authenticated = 0
 			setMenuState(usr,COMM_SCREEN_MAIN)
@@ -105,12 +100,8 @@ var/shuttle_call/shuttle_calls[0]
 				return
 			tmp_alertlevel = text2num(href_list["level"])
 			var/mob/M = usr
-			var/obj/item/weapon/card/id/I = M.get_active_hand()
-			if (istype(I, /obj/item/device/pda))
-				var/obj/item/device/pda/pda = I
-				I = pda.id
-			if (I && istype(I))
-				if(access_heads in I.access) //Let heads change the alert level.
+			if (allowed(M) || emagged)
+				if(isAdminGhost(usr) || (access_heads in M.GetAccess()) || emagged) //Let heads change the alert level. Works while emagged
 					var/old_level = security_level
 					if(!tmp_alertlevel)
 						tmp_alertlevel = SEC_LEVEL_GREEN
@@ -135,7 +126,7 @@ var/shuttle_call/shuttle_calls[0]
 					tmp_alertlevel = 0
 				setMenuState(usr,COMM_SCREEN_MAIN)
 			else
-				to_chat(usr, "I need to swipe your ID.")
+				to_chat(usr, "You need to have a valid ID.")
 
 		if("announce")
 			if(src.authenticated==2 && !issilicon(usr))

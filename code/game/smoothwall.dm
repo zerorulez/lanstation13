@@ -129,3 +129,8 @@ var/list/smoothable_unsims = list(
 /turf/unsimulated/wall/relativewall()
 	var/junction=findSmoothingNeighbors()
 	icon_state = "[walltype][junction]"
+
+/turf/unsimulated/MouseEntered()
+	return
+/turf/unsimulated/MouseExited()
+	return

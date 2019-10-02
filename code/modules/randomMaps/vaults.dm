@@ -7,7 +7,7 @@
 //3. the game will handle the rest
 
 #define MINIMUM_VAULT_AMOUNT 5 //Amount of guaranteed vault spawns
-#define MAXIMUM_VAULT_AMOUNT 5
+#define MAXIMUM_VAULT_AMOUNT 15
 
 #define MAX_VAULT_WIDTH  80 //Vaults bigger than that have a slight chance of overlapping with other vaults
 #define MAX_VAULT_HEIGHT 80
@@ -21,20 +21,20 @@
 //#define SPAWN_MAX_VAULTS //Uncomment to spawn as many vaults as the code supports
 
 #ifdef SPAWN_MAX_VAULTS
-#warning Spawning maximum amount of vaults!
+#warn Spawning maximum amount of vaults!
 #undef MINIMUM_VAULT_AMOUNT
 #define MINIMUM_VAULT_AMOUNT MAXIMUM_VAULT_AMOUNT
 #endif
 
 //List of spawnable vaults is in code/modules/randomMaps/vault_definitions.dm
 
+//This a random vault spawns somewhere in this area. Then this area is replaced with space!
 /area/random_vault
 	name = "random vault area"
 	desc = "Spawn a vault in there somewhere"
 	icon_state = "random_vault"
 
-//This a random vault spawns somewhere in this area. Then this area is replaced with space!
-/area/random_vault
+/area/vault
 
 /proc/get_map_element_objects(base_type = /datum/map_element/vault)
 	var/list/list_of_vaults = typesof(base_type) - base_type
@@ -70,7 +70,7 @@
 	var/vault_number = rand(MINIMUM_VAULT_AMOUNT, min(list_of_vaults.len, MAXIMUM_VAULT_AMOUNT))
 
 	#ifdef SPAWN_ALL_VAULTS
-	#warning Spawning ALL vaults!
+	#warn Spawning ALL vaults!
 	vault_number = list_of_vaults.len
 	#endif
 
@@ -83,8 +83,21 @@
 		TURF.set_area(space)
 
 	message_admins("<span class='info'>Loaded [result] out of [vault_number] vaults.</span>")
+/*
+/proc/generate_asteroid_secrets()
+	var/list/list_of_surprises = get_map_element_objects(/datum/map_element/mining_surprise)
 
+	var/surprise_number = rand(1, min(list_of_surprises.len, max_secret_rooms))
 
+	var/result = populate_area_with_vaults(/area/mine/unexplored, list_of_surprises, surprise_number, filter_function=/proc/asteroid_can_be_placed)
+
+	message_admins("<span class='info'>Loaded [result] out of [surprise_number] mining surprises.</span>")
+
+/proc/asteroid_can_be_placed(var/datum/map_element/E, var/turf/start_turf)
+	var/list/dimensions = E.get_dimensions()
+	var/result = check_complex_placement(start_turf,dimensions[1], dimensions[2])
+	return result
+*/
 //Proc that populates a single area with many vaults, randomly
 //A is the area OR a list of turfs where the placement happens
 //map_element_objects is a list of vaults that have to be placed. Defaults to subtypes of /datum/map_element/vault (meaning all vaults are spawned)
@@ -93,7 +106,7 @@
 //POPULATION_SCARCE is cheaper but may not do the job as well
 //NOTE: Vaults may be placed partially outside of the area. Only the lower left corner is guaranteed to be in the area
 
-/proc/populate_area_with_vaults(area/A, list/map_element_objects, var/amount = -1, population_density = POPULATION_DENSE)
+/proc/populate_area_with_vaults(area/A, list/map_element_objects, var/amount = -1, population_density = POPULATION_DENSE, filter_function)
 	var/list/area_turfs
 
 	if(ispath(A, /area))
@@ -120,6 +133,7 @@
 			continue
 
 		var/list/dimensions = ME.get_dimensions() //List with the element's width and height
+
 		var/new_width = dimensions[1]
 		var/new_height = dimensions[2]
 
@@ -157,8 +171,19 @@
 
 			//POPULATION_DENSE respects every vault's true size, so it's possible that another vault may fit in there - continue trying to place vaults
 			continue
-
-		var/turf/new_spawn_point = pick(valid_spawn_points)
+		var/sanity = 0
+		var/turf/new_spawn_point
+		do
+			sanity++
+			new_spawn_point = pick(valid_spawn_points)
+			valid_spawn_points.Remove(new_spawn_point)
+			if(filter_function && !call(filter_function)(ME, new_spawn_point))
+				new_spawn_point = null
+				continue
+			break
+		while(sanity < 100)
+		if(!new_spawn_point)
+			continue
 		var/vault_x = new_spawn_point.x
 		var/vault_y = new_spawn_point.y
 		var/vault_z = new_spawn_point.z
