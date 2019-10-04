@@ -360,7 +360,7 @@
 
 /obj/structure/table/MouseDrop_T(atom/movable/O as obj, mob/user as mob)
 	if(O == user)
-		if(!ishuman(user) || !Adjacent(user) || user.incapacitated() || user.lying) // Doesn't work if you're not dragging yourself, not a human, not in range or incapacitated
+		if(!ishuman(user) || !Adjacent(user) || user.incapacitated() || user.lying || flipped) // Doesn't work if you're not dragging yourself, not a human, not in range or incapacitated
 			return
 		visible_message("<span class='warning'>[user.name] starts climbing onto the [src]!</span>")
 		if(do_after(user, src, 30))

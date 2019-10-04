@@ -99,7 +99,7 @@ var/global/list/all_graffitis = list(
 	return
 
 #define FONT_SIZE "6pt"
-#define FONT_NAME "Comic Sans MS"
+#define FONT_NAME "Small Fonts"
 /obj/item/toy/crayon/afterattack(atom/target, mob/user as mob, proximity)
 	if(!proximity)
 		return
@@ -150,7 +150,7 @@ var/global/list/all_graffitis = list(
 
 				if(user.client)
 					var/image/I = image(icon = null) //Create an empty image. You can't just do "image()" for some reason, at least one argument is needed
-					I.maptext = {"<span style="color:[colour];font-size:[FONT_SIZE];font-family:'[FONT_NAME]';" valign="[alignment]">[preference]</span>"}
+					I.maptext = {"<span style="color:[colour];font-size:[FONT_SIZE];font-family:'[FONT_NAME]';" valign="[alignment]">[uppertext(preference)]</span>"}
 					I.loc = get_turf(target)
 					animate(I, alpha = 100, 10, -1)
 					animate(alpha = 255, 10, -1)

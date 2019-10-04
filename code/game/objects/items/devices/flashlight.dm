@@ -245,7 +245,7 @@
 	force = 5
 	on_damage = 14
 
-	attack_verbs = list("burns")
+	attack_verb = list("burns")
 
 	produce_heat = 10000
 

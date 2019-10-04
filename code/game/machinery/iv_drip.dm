@@ -153,7 +153,8 @@
 		return
 	if(attached)
 		visible_message("[src.attached] is detached from \the [src].")
-		detach()
+		src.attached = null
+		src.update_icon()
 	else if(src.beaker)
 		remove_container()
 	else
