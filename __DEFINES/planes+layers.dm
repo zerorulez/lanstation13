@@ -172,6 +172,7 @@ What is the naming convention for planes or layers?
 	#define CLOSED_CURTAIN_LAYER	5
 	#define LIGHTBULB_LAYER			6
 	#define TURF_FIRE_LAYER			7
+	#define OBJ_ABOVE_HUMAN_LAYER	8
 
 #define BLOB_PLANE 				-3			// For Blobs, which are above humans.
 

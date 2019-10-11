@@ -224,52 +224,35 @@
 	var/datum/zLevel/L = get_z_level(src)
 	if(!L || L.teleJammed)
 		return 0
-
-	var/outer_teleport_radius = potency/10 //Plant potency determines radius of teleport.
-	var/inner_teleport_radius = potency/15 //At base potency, nothing will happen, since the radius is 0.
-	if(inner_teleport_radius < 1)
-		return 0
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
-
-	var/list/turfs = new/list()
-	//This could likely use some standardization but I have no idea how to not break it.
-	for(var/turf/T in trange(outer_teleport_radius, get_turf(hit_atom)))
-		if(get_dist(T, hit_atom) <= inner_teleport_radius)
-			continue
-		if(is_blocked_turf(T) || istype(T, /turf/space))
-			continue
-		if(T.x > world.maxx-outer_teleport_radius || T.x < outer_teleport_radius)
-			continue
-		if(T.y > world.maxy-outer_teleport_radius || T.y < outer_teleport_radius)
-			continue
-		turfs += T
-	if(!turfs.len)
-		var/list/turfs_to_pick_from = list()
-		for(var/turf/T in trange(outer_teleport_radius, get_turf(hit_atom)))
-			if(get_dist(T, hit_atom) > inner_teleport_radius)
-				turfs_to_pick_from += T
-		turfs += pick(/turf in turfs_to_pick_from)
-	var/turf/picked = pick(turfs)
+	var/picked = pick_rand_tele_turf(hit_atom, potency/15, potency/10) // Does nothing at base potency since inner_radius == 0
 	if(!isturf(picked))
 		return 0
-	switch(rand(1, 2)) //50-50 % chance to teleport the thrower or the target.
-		if(1) //Teleports the person who threw the fruit
-			s.set_up(3, 1, M)
-			s.start()
-			new/obj/effect/decal/cleanable/molten_item(M.loc) //Leaves a pile of goo behind for dramatic effect.
-			M.forceMove(picked) //Send then to that location we picked previously
+	var/turf/hit_turf = get_turf(hit_atom)
+	var/turf_has_mobs = locate(/mob) in hit_turf
+	var/datum/effect/effect/system/spark_spread/sparks
+	if((!istype(M) || prob(50)) && turf_has_mobs) //50% chance to teleport the person who was hit by the fruit
+		sparks = new /datum/effect/effect/system/spark_spread()
+		sparks.set_up(3, 0, hit_turf) //no idea what the 0 is
+		sparks.start()
+		new/obj/effect/decal/cleanable/molten_item(hit_turf) //Leave a pile of goo behind for dramatic effect...
+		for(var/mob/A in hit_turf) //For the mobs in the tile that was hit...
+			A.unlock_from()
+			A.forceMove(picked) //And teleport them to the chosen location.
 			spawn()
-				s.set_up(3, 1, M)
-				s.start() //Two set of sparks, one before the teleport and one after. //Sure then ?
-		if(2) //Teleports the target instead.
-			s.set_up(3, 1, hit_atom)
-			s.start()
-			new/obj/effect/decal/cleanable/molten_item(get_turf(hit_atom)) //Leave a pile of goo behind for dramatic effect...
-			for(var/mob/A in get_turf(hit_atom)) //For the mobs in the tile that was hit...
-				A.forceMove(picked) //And teleport them to the chosen location.
-				spawn()
-					s.set_up(3, 1, A)
-					s.start()
+				sparks = new /datum/effect/effect/system/spark_spread()
+				sparks.set_up(3, 0, get_turf(A)) //no idea what the 0 is
+				sparks.start()
+	else //Teleports the thrower instead.
+		sparks = new /datum/effect/effect/system/spark_spread()
+		sparks.set_up(3, 0, get_turf(M)) //no idea what the 0 is
+		sparks.start()
+		new/obj/effect/decal/cleanable/molten_item(M.loc) //Leaves a pile of goo behind for dramatic effect.
+		M.unlock_from()
+		M.forceMove(picked) //Send then to that location we picked previously
+		spawn()
+			sparks = new /datum/effect/effect/system/spark_spread()
+			sparks.set_up(3, 0, get_turf(M))
+			sparks.start()
 	return 1
 
 

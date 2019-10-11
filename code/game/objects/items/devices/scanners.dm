@@ -208,7 +208,7 @@ Subject's pulse: ??? BPM"})
 	if(M.has_brain_worms())
 		message += "<br><span class='warning'>Strange MRI readout. Subject needs further scanning.</span>"
 	else if(M.getBrainLoss() >= 100 || !M.has_brain())
-		message += "<br><span class='warning'>No brain activity has been detected. Subject is braindead.</span>"
+		message += "<br><span class='warning'>No brain activity has been detected. Subject has Space Sleeping Disorder.</span>"
 	else if(M.getBrainLoss() >= 60)
 		message += "<br><span class='warning'>Severe brain damage detected. Subject likely to have mental retardation.</span>"
 	else if(M.getBrainLoss() >= 10)

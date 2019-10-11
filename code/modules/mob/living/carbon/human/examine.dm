@@ -256,7 +256,7 @@
 		if(!key)
 			msg += "<span class='deadsay'>[t_He] [t_is] totally catatonic. The stresses of life in deep space must have been too much for [t_him]. Any recovery is unlikely.</span>\n"
 		else if(!client)
-			msg += "<span class='deadsay'>[t_He] [t_has] a vacant, braindead stare...</span>\n"
+			msg += "<span class='deadsay'>[t_He] [t_has] Space Sleeping Disorder.</span>\n"
 
 	var/list/wound_flavor_text = list()
 	var/list/is_destroyed = list()

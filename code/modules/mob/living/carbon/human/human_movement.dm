@@ -77,7 +77,7 @@
 		if(isslimeperson(src))
 			tally *= 2
 		else
-			tally -= 10
+			tally -= 5
 
 	if(reagents.has_reagent(FROSTOIL) && isslimeperson(src))
 		tally *= 5

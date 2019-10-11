@@ -5,6 +5,8 @@
 	icon_state = "compressor"
 	anchored = 1
 	density = 1
+	plane = ABOVE_HUMAN_PLANE
+	layer = OBJ_ABOVE_HUMAN_LAYER
 	var/obj/machinery/power/turbine/turbine
 	var/datum/gas_mixture/gas_contained
 	var/turf/simulated/inturf
@@ -12,7 +14,9 @@
 	var/rpm = 0
 	var/rpmtarget = 0
 	var/capacity = 1e6
-	var/comp_id = 0
+	var/comp_id = "disvent"
+
+	var/obj/machinery/computer/turbine_computer/turbinecomputer
 
 /obj/machinery/power/turbine
 	name = "gas turbine generator"
@@ -21,23 +25,14 @@
 	icon_state = "turbine"
 	anchored = 1
 	density = 1
+	plane = ABOVE_HUMAN_PLANE
+	layer = OBJ_ABOVE_HUMAN_LAYER
 	var/obj/machinery/compressor/compressor
 	var/turf/simulated/outturf
 	var/lastgen
+	var/comp_id = "disvent"
 
-/obj/machinery/computer/turbine_computer
-	name = "Gas turbine control computer"
-	desc = "A computer to remotely control a gas turbine"
-	icon = 'icons/obj/computer.dmi'
-	icon_state = "airtunnel0e"
-	anchored = 1
-	density = 1
-	var/obj/machinery/compressor/compressor
-	var/list/obj/machinery/door/poddoor/doors
-	var/id_tag = 0
-	var/door_status = 0
-
-	light_color = LIGHT_COLOR_BLUE
+	var/obj/machinery/computer/turbine_computer/turbinecomputer
 
 // the inlet stage of the gas turbine electricity generator
 
@@ -45,10 +40,12 @@
 	..()
 
 	gas_contained = new
-	inturf = get_step(src, dir)
 
-	spawn(5)
+	spawn(10)
+		inturf = get_step(src, dir)
+
 		turbine = locate() in get_step(src, get_dir(inturf, src))
+
 		if(!turbine)
 			stat |= BROKEN
 
@@ -98,11 +95,11 @@
 /obj/machinery/power/turbine/New()
 	..()
 
-	outturf = get_step(src, dir)
-
-	spawn(5)
+	spawn(10)
+		outturf = get_step(src, dir)
 
 		compressor = locate() in get_step(src, get_dir(outturf, src))
+
 		if(!compressor)
 			stat |= BROKEN
 
@@ -133,6 +130,7 @@
 		var/oamount = min(compressor.gas_contained.total_moles(), (compressor.rpm+100)/35000*compressor.capacity)
 		var/datum/gas_mixture/removed = compressor.gas_contained.remove(oamount)
 		outturf.assume_air(removed)
+		turbinecomputer.updateDialog()
 
 	if(lastgen > 100)
 		overlays += image('icons/obj/pipes.dmi', "turb-o", FLY_LAYER)
@@ -144,7 +142,6 @@
 	AutoUpdateAI(src)
 
 /obj/machinery/power/turbine/interact(mob/user)
-
 	if ( (get_dist(src, user) > 1 ) || (stat & (NOPOWER|BROKEN)) && (!istype(user, /mob/living/silicon/ai)) )
 		user.machine = null
 		user << browse(null, "window=turbine")
@@ -207,14 +204,34 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+/obj/machinery/computer/turbine_computer
+	name = "Gas turbine control computer"
+	desc = "A computer to remotely control a gas turbine"
+	icon = 'icons/obj/computer.dmi'
+	icon_state = "airtunnel0e"
+	anchored = 1
+	density = 1
+	var/obj/machinery/compressor/compressor
+	var/obj/machinery/power/turbine/turbine
+	var/list/obj/machinery/door/poddoor/doors
+	var/id_tag = "disvent"
+	var/door_status = 0
+
+	light_color = LIGHT_COLOR_BLUE
 
 /obj/machinery/computer/turbine_computer/New()
 	..()
-	spawn(5)
+	spawn(50)
 		for(var/obj/machinery/compressor/C in machines)
-			if(id_tag == C.comp_id)
+			if(C && (id_tag == C.comp_id))
 				compressor = C
+				C.turbinecomputer = src
+				C.turbine.turbinecomputer = src
+				turbine = C.turbine
+			break
+
 		doors = new /list()
+
 		for(var/obj/machinery/door/poddoor/P in poddoors)
 			if(P.id_tag == id_tag)
 				doors += P

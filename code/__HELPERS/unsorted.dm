@@ -1623,3 +1623,23 @@ Game Mode config tags:
 
 /proc/to_chat(var/thing, var/output)
 	thing << output
+
+
+/proc/pick_rand_tele_turf(atom/hit_atom, var/inner_teleport_radius, var/outer_teleport_radius)
+	if((inner_teleport_radius < 1) || (outer_teleport_radius < inner_teleport_radius))
+		return 0
+
+	var/list/turfs = new/list()
+	var/turf/hit_turf = get_turf(hit_atom)
+	//This could likely use some standardization but I have no idea how to not break it.
+	for(var/turf/T in trange(outer_teleport_radius, hit_turf))
+		if(get_dist(T, hit_atom) <= inner_teleport_radius)
+			continue
+		if(is_blocked_turf(T) || istype(T, /turf/space))
+			continue
+		if(T.x > world.maxx-outer_teleport_radius || T.x < outer_teleport_radius)
+			continue
+		if(T.y > world.maxy-outer_teleport_radius || T.y < outer_teleport_radius)
+			continue
+		turfs += T
+	return pick(turfs)

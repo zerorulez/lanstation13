@@ -8,7 +8,7 @@
 	anchored = 0
 	density = 1
 
-	movement_delay = 6
+	movement_delay = 3.5
 
 	health = 50
 	max_health = 50
@@ -87,42 +87,6 @@
 
 	return available_hands
 
-	return 1
-	/*var/left_hand_exists = 1
-	var/right_hand_exists = 1
-
-	if(M.handcuffed)
-		return 0
-
-	if(ishuman(M)) //Human check - 0 to 4
-		var/mob/living/carbon/human/H = user
-
-		if(H.l_hand == null)
-			left_hand_exists++ //Check to see if left hand is holding anything
-		var/datum/organ/external/left_hand = H.get_organ(LIMB_LEFT_HAND)
-		if(!left_hand)
-			left_hand_exists = 0
-		else if(left_hand.status & ORGAN_DESTROYED)
-			left_hand_exists = 0
-
-		if(H.r_hand == null)
-			right_hand_exists++
-		var/datum/organ/external/right_hand = H.get_organ(LIMB_RIGHT_HAND)
-		if(!right_hand)
-			right_hand_exists = 0
-		else if(right_hand.status & ORGAN_DESTROYED)
-			right_hand_exists = 0
-	else if( ismonkey(M) || isalien(M) ) //Monkey and alien check - 0 to 2
-		left_hand_exists = 0
-		if(user.l_hand == null)
-			left_hand_exists++
-
-		right_hand_exists = 0
-		if(user.r_hand == null)
-			right_hand_exists++
-
-	return ( left_hand_exists + right_hand_exists )*/
-
 /obj/structure/bed/chair/vehicle/wheelchair/getMovementDelay()
 	//Speed is determined by amount of usable hands and whether they're carrying something
 	var/hands = check_hands(occupant) //See check_hands() proc above
@@ -195,6 +159,7 @@
 	name = "motorized wheelchair"
 	nick = "cripplin' revenge"
 	desc = "A chair with fitted wheels which is powered by an internal cell. It propels itself without the need for hands as long as it is charged."
+	movement_delay = 2
 	var/maintenance = 0
 	var/const/default_cell_path = /obj/item/weapon/cell/high
 	var/obj/item/weapon/cell/internal_battery = null
@@ -218,7 +183,7 @@
 
 /obj/structure/bed/chair/vehicle/wheelchair/motorized/getMovementDelay()
 	if(internal_battery && internal_battery.charge)
-		return 0
+		return movement_delay
 	else
 		return (..() * 2) //It's not designed to move this way!
 
