@@ -498,3 +498,13 @@ var/list/number_units=list(
 
 ///mob/verb/test_num2words(var/number as num)
 //	to_chat(usr, "\"[jointext(num2words(number), " ")]\"")
+
+//Adds a dot at the end of the text unless there already is a dot, question mark, or exclamation point
+/proc/add_dot(var/t)
+	var/ending = copytext(t, length(t)) //Copies the last letter of the text
+	if(!length(ending)) //Don't bother with text if the length is 0
+		return
+	if((ending == "?") || (ending == "!") || (ending == ".") || (ending == "-") || (ending == ";") || (ending == ","))
+		return t
+	else
+		return t + "."

@@ -4,7 +4,7 @@
 //Doesn't consume any idle power, you must to_bump() it from its own square. Bump works like a window.
 //Using a treadmill uses up hunger faster
 
-#define DEFAULT_BUMP_ENERGY 400
+#define DEFAULT_BUMP_ENERGY 4000
 
 /obj/machinery/power/treadmill
 	name = "treadmill generator"

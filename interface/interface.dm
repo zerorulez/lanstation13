@@ -42,15 +42,13 @@
 	set desc = "Mostra as regras do servidor."
 	set category = "OOC"
 
-	src << browse(file(RULES_FILE), "window=rules;size=1280x720")
+	src << browse(file(RULES_FILE), "window=rules;size=640x720")
 
 	if(!prefs.viu_regras)
 		var/database/query/q = new
-
-		q.Add("UPDATE client SET viu_regras = ? WHERE ckey = ?", 1, ckey)
+		q.Add("UPDATE client SET viu_regras = ? WHERE ckey = ?", TRUE, ckey)
 		q.Execute(prefs.db)
-
-		prefs.viu_regras = 1
+		prefs.viu_regras = TRUE
 #undef RULES_FILE
 
 /client/verb/hotkeys_help()

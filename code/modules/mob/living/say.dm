@@ -120,6 +120,7 @@ var/list/department_radio_keys = list(
 		return //under the effects of time magick
 	message = trim(copytext(message, 1, MAX_MESSAGE_LEN))
 	message = capitalize(message)
+	message = add_dot(message)
 
 	say_testing(src, "Say start, message=[message]")
 	if(!message)
@@ -138,7 +139,7 @@ var/list/department_radio_keys = list(
 		say_testing(src, "ur ded kid")
 		say_dead(message)
 		return
-	if (stat) // Unconcious.
+	if (stat) // Unconscious.
 		if(message_mode == MODE_WHISPER) //Lets us say our last words.
 			say_testing(src, "message mode was whisper.")
 			whisper(copytext(message, 3))

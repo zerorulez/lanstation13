@@ -13,6 +13,8 @@
 //	starting_materials = list(MAT_IRON = 5) //What?
 	w_type = RECYK_METAL
 
+	var/can_dissolve = FALSE
+
 /obj/item/weapon/reagent_containers/pill/New()
 	..()
 	if(!icon_state)

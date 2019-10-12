@@ -149,9 +149,9 @@ var/datum/controller/gameticker/ticker
 
 	job_master.predict_manifest()
 
-	if(!job_master.crystal_ball["Captain"] && !job_master.crystal_ball["Lieutenant"])
+	if(!job_master.crystal_ball["Captain"])
 		delay_difference = -2400
-		to_chat(world, "<B>A estação precisa de um Capitão ou um Tenente para começar o expediente. Voltando ao lobby.")
+		to_chat(world, "<B>A estação precisa de um Capitão para começar o expediente. Voltando ao lobby.")
 		current_state = GAME_STATE_PREGAME
 		return 0
 

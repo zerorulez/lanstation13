@@ -28,10 +28,10 @@
 	//(/vg/ EDIT disabling for now) handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
 
 	if(reagents.has_reagent(NUKA_COLA))
-		tally -= 10
+		tally -= 2
 
 	if((M_RUN in mutations))
-		tally -= 10
+		tally -= 2
 
 	var/health_deficiency = (100 - health - halloss)
 	if(health_deficiency >= 40)
@@ -77,7 +77,7 @@
 		if(isslimeperson(src))
 			tally *= 2
 		else
-			tally -= 5
+			tally -= 2
 
 	if(reagents.has_reagent(FROSTOIL) && isslimeperson(src))
 		tally *= 5

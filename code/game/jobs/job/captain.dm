@@ -3,7 +3,7 @@
 	flag = CAPTAIN
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 0
+	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Nanotrasen"
 	selection_color = "#ccccff"
@@ -11,7 +11,7 @@
 	req_admin_notify = 1
 	access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
-	minimal_player_age = 3
+	minimal_player_age = 7
 
 	species_whitelist = list("Human")
 
@@ -68,7 +68,7 @@
 	selection_color = "#ddddff"
 	idtype = /obj/item/weapon/card/id/silver
 	req_admin_notify = 1
-	minimal_player_age = 2
+	minimal_player_age = 7
 
 	species_whitelist = list("Human")
 

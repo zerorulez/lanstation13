@@ -238,7 +238,6 @@ datum/emergency_shuttle/proc/shuttle_phase(var/phase, var/casual = 1)
 
 			if (!casual)
 				settimeleft(SHUTTLELEAVETIME)
-				//send2mainirc("The Emergency Shuttle has docked with the station.")
 				send2mainirc("The **Emergency Shuttle** has docked with the station.")
 				captain_announce("The Emergency Shuttle has docked with the station. You have [round(timeleft()/60,1)] minutes to board the Emergency Shuttle.")
 				world << sound('sound/AI/shuttledock.ogg')

@@ -9,7 +9,7 @@
 	selection_color = "#ccffcc"
 	supervisors = "your laws"
 	req_admin_notify = 2
-	minimal_player_age = 3
+	minimal_player_age = 7
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)
@@ -27,7 +27,7 @@
 	supervisors = "your laws and the AI"	//Nodrak
 	selection_color = "#ddffdd"
 	no_id = 1
-	minimal_player_age = 3
+	minimal_player_age = 7
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)

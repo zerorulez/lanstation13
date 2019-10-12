@@ -361,16 +361,9 @@ var/savefile/panicfile
 /world/proc/update_status()
 	var/s = ""
 
-	if (config && config.server_name)
-		s += "<b>[config.server_name]</b> &#8212; "
+	s += "<b>/LAN/STATION 13 - SERVIDOR BRASILEIRO DE SPACE STATION 13</b> "
 
-
-	s += {"<b>[station_name()]</b>"
-		(
-		<a href=\"http://\">" //Change this to wherever you want the hub to link to
-		Default"  //Replace this with something else. Or ever better, delete it and uncomment the game version
-		</a>
-		)"}
+//	s += "(<a href=\"https://discord.gg/63jSy2R\">"DISCORD"</a>"
 	var/list/features = list()
 
 	if(ticker)
@@ -382,35 +375,25 @@ var/savefile/panicfile
 	if (!enter_allowed)
 		features += "closed"
 
-	features += abandon_allowed ? "respawn" : "no respawn"
-
-	if (config && config.allow_vote_mode)
-		features += "vote"
-
-	if (config && config.allow_ai)
-		features += "AI allowed"
-
 	var/n = 0
 	for (var/mob/M in player_list)
 		if (M.client)
 			n++
 
 	if (n > 1)
-		features += "~[n] players"
+		features += "~[n] jogadores"
 	else if (n > 0)
-		features += "~[n] player"
+		features += "~[n] jogador"
 
-	/*
-	is there a reason for this? the byond site shows 'hosted by X' when there is a proper host already.
+
+//	is there a reason for this? the byond site shows 'hosted by X' when there is a proper host already.
 	if (host)
-		features += "hosted by <b>[host]</b>"
-	*/
-
-	if (!host && config && config.hostedby)
-		features += "hosted by <b>[config.hostedby]</b>"
+		features += "hosteado por <b>[host]</b>."
 
 	if (features)
 		s += ": [jointext(features, ", ")]"
+
+	s += "<img src=\"https://i.imgur.com/zF1vjkm.png\">" //Banner image
 
 	/* does this help? I do not know */
 	if (src.status != s)

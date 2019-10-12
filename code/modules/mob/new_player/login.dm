@@ -31,7 +31,7 @@
 	spawn(0)
 		if(client)
 			//If the changelog has changed, show it to them
-			if(client.prefs.lastchangelog != changelog_hash)
+		/*	if(client.prefs.lastchangelog != changelog_hash)
 				// Need to send them the CSS and images :V
 				client.getFiles(
 					'html/postcardsmall.jpg',
@@ -58,8 +58,28 @@
 				client.prefs.lastchangelog = changelog_hash
 				client.prefs.save_preferences()
 				winset(client, "rpane.changelog", "background-color=none;font-style=;")
-
+*/
 			if(!client.prefs.viu_regras)
 				client.rules()
 
+			if(!client.check_whitelist())
+				var/n = 0
+				for (var/mob/M in player_list)
+					if (M.client)
+						n++
+				to_chat(src, "<b>Sua conta não está na brancolista.</b>")
+				if(n > 14)
+					to_chat(src, "<b>Como sua conta não está na brancolista e o servidor tem 15 ou mais jogadores online, você foi desconectado.</b>")
+					Logout()
+					return
+			else
+				to_chat(src, "<b>Sua conta está na brancolista.</b>")
+
 			client.playtitlemusic()
+
+
+
+/client/proc/check_whitelist()
+	if(ckey in global.ckey_whitelist)
+		return TRUE
+	return FALSE

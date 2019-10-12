@@ -53,6 +53,8 @@ var/list/all_doors = list()
 
 	var/explosion_block = 0 //regular airlocks are 1, blast doors are 3, higher values mean increasingly effective at blocking explosions.
 
+	var/last_denied = 0
+
 /obj/machinery/door/projectile_check()
 	if(opacity)
 		return PROJREACT_WALLS
@@ -398,9 +400,14 @@ var/list/all_doors = list()
 
 // Flash denied and such.
 /obj/machinery/door/proc/denied()
+	if(last_denied > world.time)
+		return
+
 	playsound(loc, 'sound/machines/denied.ogg', 50, 1)
 	if (density) //Why are we playing a denied animation on an OPEN DOOR
 		door_animate("deny")
+
+	last_denied = world.time + 10
 
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/morgue.dmi'

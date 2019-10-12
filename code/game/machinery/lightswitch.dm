@@ -106,6 +106,8 @@
 	areaMaster.lightswitch = on
 	areaMaster.updateicon()
 
+	playsound(src, 'sound/items/buttonclick.ogg', 50, 1)
+
 	for(var/obj/machinery/light_switch/L in areaMaster)
 		L.on = on
 		L.updateicon()
