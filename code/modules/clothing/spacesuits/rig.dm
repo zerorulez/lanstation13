@@ -17,6 +17,8 @@
 	eyeprot = 3
 	species_fit = list(GREY_SHAPED)
 	species_restricted = list("exclude",VOX_SHAPED)
+	can_remove = FALSE
+	var/obj/item/clothing/suit/space/rig/rig
 
 /obj/item/clothing/head/helmet/space/rig/New()
 	..()
@@ -35,7 +37,17 @@
 	eyeprot = 0
 	species_fit = list(GREY_SHAPED)
 
+/obj/item/clothing/head/helmet/space/rig/Destroy()
+	rig = null
+	..()
 
+/obj/item/clothing/head/helmet/space/rig/unequipped(mob/living/carbon/human/user, var/from_slot = null)
+	..()
+	if(from_slot == slot_head && istype(user))
+		if(rig && rig.is_worn_by(user))
+			if(on)
+				update_brightness(user)
+			rig = null
 /obj/item/clothing/head/helmet/space/rig/examine(mob/user)
 
 	..()
@@ -83,6 +95,51 @@
 		set_light(0)
 	user.update_inv_head()
 
+/obj/item/clothing/suit/space/rig/New()
+	..()
+	H = new head_type
+
+/obj/item/clothing/suit/space/rig/Destroy()
+	if(H.loc == src || !H.loc)
+		qdel(H)
+	H = null
+	..()
+
+/obj/item/clothing/suit/space/rig/ui_action_click()
+	if(ismob(loc))
+		var/mob/M = loc
+		if(M.is_wearing_item(src, slot_wear_suit))
+			toggle_helmet(M)
+
+/obj/item/clothing/suit/space/rig/proc/toggle_helmet(mob/living/carbon/human/user)
+	if(stupid_delay + 10 > world.time)
+		return
+	if(!user.is_wearing_item(src, slot_wear_suit))
+		return
+	if(H)
+		if(!user.head)
+			to_chat(user, "<b>\The [H] extends from \the [src].</b>")
+			user.equip_to_slot(H, slot_head)
+			H.rig = src
+			H = null
+			playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, TRUE)
+	else
+		if(user.head && istype(user.head, head_type))
+			var/obj/I = user.head
+			to_chat(user, "<b>\The [I] retracts into \the [src].</b>")
+			user.u_equip(I,0)
+			I.forceMove(src)
+			H = I
+			playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, TRUE)
+	stupid_delay = world.time
+
+/obj/item/clothing/suit/space/rig/attackby(obj/W, mob/user)
+	if(!H && istype(W, head_type) && user.drop_item(W, src, force_drop = 1))
+		to_chat(user, "<span class = 'notice'>You attach \the [W] to \the [src].</span>")
+		H = W
+		return
+	..()
+
 /obj/item/clothing/suit/space/rig
 	name = "engineering hardsuit"
 	desc = "A special suit that protects against hazardous, low pressure environments. Has radiation shielding."
@@ -95,6 +152,11 @@
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/weapon/storage/bag/ore,/obj/item/device/t_scanner,/obj/item/weapon/pickaxe, /obj/item/device/rcd, /obj/item/weapon/wrench/socket)
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	pressure_resistance = 200 * ONE_ATMOSPHERE
+	action_button_name = "Toggle Rig Helmet"
+	var/obj/item/clothing/head/helmet/space/rig/H = null
+	var/head_type = /obj/item/clothing/head/helmet/space/rig
+	var/stupid_delay = 0
+
 
 /obj/item/clothing/suit/space/rig/ghettorig
 	name = "jury-rigged firesuit"
@@ -117,6 +179,7 @@
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 	clothing_flags = PLASMAGUARD
 
+
 /obj/item/clothing/suit/space/rig/elite
 	icon_state = "rig-white"
 	name = "advanced hardsuit"
@@ -126,6 +189,7 @@
 	item_state = "ce_hardsuit"
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	clothing_flags = PLASMAGUARD
+	head_type = /obj/item/clothing/head/helmet/space/rig/elite
 
 
 //Mining rig
@@ -148,6 +212,7 @@
 	species_restricted = list("exclude",VOX_SHAPED)
 	pressure_resistance = 40 * ONE_ATMOSPHERE
 	goliath_reinforce = TRUE
+	head_type = /obj/item/clothing/head/helmet/space/rig/mining
 
 //Syndicate rig
 /obj/item/clothing/head/helmet/space/rig/syndi
@@ -195,6 +260,7 @@
 	pressure_resistance = 40 * ONE_ATMOSPHERE
 
 	species_restricted = null
+	head_type = /obj/item/clothing/head/helmet/space/rig/syndi
 
 //Wizard Rig
 /obj/item/clothing/head/helmet/space/rig/wizard
@@ -230,6 +296,8 @@
 	wizard_garb = 1
 
 	species_restricted = null
+	head_type = /obj/item/clothing/head/helmet/space/rig/wizard
+
 
 /obj/item/clothing/suit/space/rig/wizard/acidable()
 	return 0
@@ -254,6 +322,7 @@
 	species_restricted = list("exclude",VOX_SHAPED)
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/weapon/storage/firstaid,/obj/item/device/healthanalyzer,/obj/item/stack/medical)
 	pressure_resistance = 40 * ONE_ATMOSPHERE
+	head_type = /obj/item/clothing/head/helmet/space/rig/medical
 
 
 	//Security
@@ -280,6 +349,7 @@
 	allowed = list(/obj/item/weapon/gun,/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/weapon/melee/baton)
 	siemens_coefficient = 0.7
 	pressure_resistance = 40 * ONE_ATMOSPHERE
+	head_type = /obj/item/clothing/head/helmet/space/rig/security
 
 	// stormtroopers
 
@@ -294,6 +364,7 @@
 	icon_state = "rig-storm"
 	name = "stormtrooper hardsuit"
 	desc = "Even with the finest vision enhancement tech, you still can't hit shit."
+	head_type = /obj/item/clothing/head/helmet/space/rig/security/stormtrooper
 
 //Atmospherics Rig (BS12)
 /obj/item/clothing/head/helmet/space/rig/atmos
@@ -318,6 +389,7 @@
 	species_fit = list(GREY_SHAPED)
 	armor = list(melee = 40, bullet = 0, laser = 0, energy = 0, bomb = 25, bio = 100, rad = 0)
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
+	head_type = /obj/item/clothing/head/helmet/space/rig/atmos
 
 //Firefighting/Atmos RIG (old /vg/)
 /obj/item/clothing/head/helmet/space/rig/atmos/gold
@@ -343,7 +415,7 @@
 	species_fit = list(GREY_SHAPED)
 	armor = list(melee = 30, bullet = 5, laser = 40,energy = 5, bomb = 35, bio = 100, rad = 60)
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/weapon/storage/backpack/satchel_norm,/obj/item/device/t_scanner,/obj/item/weapon/pickaxe, /obj/item/device/rcd, /obj/item/weapon/extinguisher, /obj/item/weapon/)
-
+	head_type = /obj/item/clothing/head/helmet/space/rig/atmos/gold
 //ADMINBUS RIGS. SOVIET + NAZI
 /obj/item/clothing/head/helmet/space/rig/nazi
 	name = "nazi hardhelmet"
@@ -367,6 +439,7 @@
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 20)
 	allowed = list(/obj/item/weapon/gun,/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/weapon/melee/)
 	pressure_resistance = 40 * ONE_ATMOSPHERE
+	head_type = /obj/item/clothing/head/helmet/space/rig/nazi
 
 /obj/item/clothing/head/helmet/space/rig/soviet
 	name = "soviet hardhelmet"
@@ -390,6 +463,7 @@
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 20)
 	allowed = list(/obj/item/weapon/gun,/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/weapon/melee/)
 	pressure_resistance = 40 * ONE_ATMOSPHERE
+	head_type = /obj/item/clothing/head/helmet/space/rig/soviet
 
 //Death squad rig
 /obj/item/clothing/head/helmet/space/rig/deathsquad
@@ -417,6 +491,7 @@
 	species_fit = list(GREY_SHAPED)
 	species_restricted = list("exclude",VOX_SHAPED)
 	clothing_flags = PLASMAGUARD
+	head_type = /obj/item/clothing/head/helmet/space/rig/deathsquad
 
 
 //Knight armour rigs
@@ -446,6 +521,7 @@
 	species_fit = list(GREY_SHAPED)
 	species_restricted = list("exclude",VOX_SHAPED)
 	clothing_flags = PLASMAGUARD
+	head_type = /obj/item/clothing/head/helmet/space/rig/knight
 
 /obj/item/clothing/head/helmet/space/rig/knight/black
 	name = "Black Knight's helm"
@@ -463,6 +539,7 @@
 	item_state = "rig-blackknight"
 	armor = list(melee = 70, bullet = 65, laser = 50,energy = 25, bomb = 60, bio = 100, rad = 60)
 	species_fit = list(GREY_SHAPED)
+	head_type = /obj/item/clothing/head/helmet/space/rig/knight/black
 
 /obj/item/clothing/head/helmet/space/rig/knight/solaire
 	name = "Solar helm"
@@ -478,6 +555,7 @@
 	icon_state = "rig-solaire"
 	item_state = "rig-solaire"
 	armor = list(melee = 60, bullet = 65, laser = 90,energy = 30, bomb = 60, bio = 100, rad = 100)
+	head_type = /obj/item/clothing/head/helmet/space/rig/knight/solaire
 
 
 /obj/item/clothing/suit/space/rig/t51b
@@ -486,6 +564,7 @@
 	icon_state = "rig-t51b"
 	item_state = "rig-t51b"
 	armor = list(melee = 35, bullet = 35, laser = 40, energy = 40, bomb = 80, bio = 100, rad = 100)
+	head_type = /obj/item/clothing/head/helmet/space/rig/t51b
 
 /obj/item/clothing/head/helmet/space/rig/t51b
 	name = "T-51b Power Armor Helmet"

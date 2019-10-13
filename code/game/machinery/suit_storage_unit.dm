@@ -44,7 +44,7 @@
 	name = "Atmospheric Suit Storage Unit"
 	department = "atmos"
 	SUIT_TYPE = /obj/item/clothing/suit/space/rig/atmos
-	HELMET_TYPE = /obj/item/clothing/head/helmet/space/rig/atmos
+//	HELMET_TYPE = /obj/item/clothing/head/helmet/space/rig/atmos
 	MASK_TYPE = /obj/item/clothing/mask/breath
 	BOOT_TYPE = /obj/item/clothing/shoes/magboots/atmos
 
@@ -52,7 +52,7 @@
 	name = "Engineering Suit Storage Unit"
 	department = "engie"
 	SUIT_TYPE = /obj/item/clothing/suit/space/rig
-	HELMET_TYPE = /obj/item/clothing/head/helmet/space/rig
+//	HELMET_TYPE = /obj/item/clothing/head/helmet/space/rig
 	MASK_TYPE = /obj/item/clothing/mask/breath
 	BOOT_TYPE = /obj/item/clothing/shoes/magboots
 
@@ -60,7 +60,7 @@
 	name = "Advanced Suit Storage Unit"
 	department = "ce"
 	SUIT_TYPE = /obj/item/clothing/suit/space/rig/elite
-	HELMET_TYPE = /obj/item/clothing/head/helmet/space/rig/elite
+//	HELMET_TYPE = /obj/item/clothing/head/helmet/space/rig/elite
 	MASK_TYPE = /obj/item/clothing/mask/breath
 	BOOT_TYPE = /obj/item/clothing/shoes/magboots/elite
 
@@ -68,7 +68,7 @@
 	name = "Miners Suit Storage Unit"
 	department = "mine"
 	SUIT_TYPE = /obj/item/clothing/suit/space/rig/mining
-	HELMET_TYPE = /obj/item/clothing/head/helmet/space/rig/mining
+//	HELMET_TYPE = /obj/item/clothing/head/helmet/space/rig/mining
 	MASK_TYPE = /obj/item/clothing/mask/breath
 	BOOT_TYPE = /obj/item/clothing/shoes/magboots
 
@@ -84,7 +84,7 @@
 	name = "Security Suit Storage Unit"
 	department = "sec"
 	SUIT_TYPE = /obj/item/clothing/suit/space/rig/security
-	HELMET_TYPE = /obj/item/clothing/head/helmet/space/rig/security
+//	HELMET_TYPE = /obj/item/clothing/head/helmet/space/rig/security
 	MASK_TYPE = /obj/item/clothing/mask/breath
 	BOOT_TYPE = /obj/item/clothing/shoes/magboots
 
@@ -92,7 +92,7 @@
 	name = "Medical Suit Storage Unit"
 	department = "med"
 	SUIT_TYPE = /obj/item/clothing/suit/space/rig/medical
-	HELMET_TYPE = /obj/item/clothing/head/helmet/space/rig/medical
+//	HELMET_TYPE = /obj/item/clothing/head/helmet/space/rig/medical
 	MASK_TYPE = /obj/item/clothing/mask/breath
 	BOOT_TYPE = /obj/item/clothing/shoes/magboots
 

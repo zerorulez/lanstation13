@@ -625,4 +625,7 @@ BLIND     // can't see anything
 	throwforce = 2
 	slot_flags = SLOT_BACK
 
-
+/obj/item/clothing/proc/is_worn_by(mob/user)
+	if(user.is_wearing_item(src))
+		return TRUE
+	return FALSE

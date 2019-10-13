@@ -237,6 +237,7 @@
 		return 0
 	var/success
 	var/index = is_holding_item(W)
+
 	if(index)
 		held_items[index] = null
 		success = 1
