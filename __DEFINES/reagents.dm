@@ -189,6 +189,8 @@
 #define PWINE 			"pwine"
 #define RUM 			"rum"
 #define VODKA 			"vodka"
+#define PINGA			"pinga"
+#define CAIPIRINHA 			"caipirinha"
 #define SAKE 			"sake"
 #define TEQUILA 			"tequila"
 #define VERMOUTH 			"vermouth"

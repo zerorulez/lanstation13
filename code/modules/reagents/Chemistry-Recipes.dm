@@ -2179,6 +2179,14 @@
 	required_catalysts = list(ENZYME = 5)
 	result_amount = 10
 
+/datum/chemical_reaction/pinga
+	name = "Pinga"
+	id = PINGA
+	result = PINGA
+	required_reagents = list(POTATO = 10)
+	required_catalysts = list(ENZYME = 5)
+	result_amount = 10
+
 /datum/chemical_reaction/sake
 	name = "Sake"
 	id = SAKE
@@ -2221,6 +2229,13 @@
 	id = VODKAMARTINI
 	result = VODKAMARTINI
 	required_reagents = list(VODKA = 2, VERMOUTH = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/caipirinha
+	name = "Caipirinha"
+	id = CAIPIRINHA
+	result = CAIPIRINHA
+	required_reagents = list(PINGA = 2, LIMEJUICE = 1, ICE = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/white_russian

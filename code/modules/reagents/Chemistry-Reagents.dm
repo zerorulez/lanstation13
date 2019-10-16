@@ -4449,6 +4449,18 @@
 	description = "Number one drink AND fueling choice for Russians worldwide."
 	color = "#664300" //rgb: 102, 67, 0
 
+/datum/reagent/ethanol/deadrum/pinga
+	name = "Pinga"
+	id = PINGA
+	description = "Pinga, cachaça, cana ou caninha é o nome dado à aguardente de cana-de-açúcar produzida no Brasil"
+	color = "#D7EEE5"
+
+/datum/reagent/ethanol/deadrum/caipirinha
+	name = "Caipirinha"
+	id = CAIPIRINHA
+	description = "Caipira, sô."
+	color = "#D7EEF5"
+
 /datum/reagent/ethanol/deadrum/sake
 	name = "Sake"
 	id = SAKE
