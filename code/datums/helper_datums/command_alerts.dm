@@ -1,7 +1,7 @@
 /datum/command_alert
 	var/name //Descriptive name - it's not shown to anybody, so feel free to make it OOC
 
-	var/alert_title = "Central Command"
+	var/alert_title = "Comando Central" //Traduzido por Anaonimo, FrostBleidd, Stingray e zero
 	var/message
 
 	var/force_report = 0
@@ -14,8 +14,8 @@
 //////BIOHAZARD
 
 /datum/command_alert/biohazard_alert
-	name = "Biohazard Alert"
-	alert_title = "Biohazard Alert"
+	name = "Alerta de Risco Biológico"
+	alert_title = "Alerta de Risco Biológico"
 	noalert = 1
 	force_report = 1
 
@@ -23,7 +23,7 @@
 
 /datum/command_alert/biohazard_alert/announce()
 	level = rand(4,7)
-	message = "Confirmed outbreak of level [level] biohazard aboard [station_name()]. All personnel must contain the outbreak."
+	message = "Confirmado surto de risco biológico nível [level] a bordo da [station_name()]. Toda a tripulação deve conter o surto."
 
 	..()
 
@@ -39,148 +39,148 @@
 ///////BIOHAZARD UPDATED
 
 /datum/command_alert/biohazard_station_lockdown
-	name = "Biohazard Level Updated - Station Locked Down"
-	alert_title = "Directive 7-10 Initiated"
+	name = "Nível de Risco Biológico Atualizado - Estação Trancada"
+	alert_title = "Diretiva 7-10 Iniciada"
 	alert = 'sound/AI/blob_confirmed.ogg'
 	force_report = 1
 
 /datum/command_alert/biohazard_station_lockdown/announce()
-	message = "Biohazard outbreak alert status upgraded to level 9.  [station_name()] is now locked down, under Directive 7-10, until further notice."
+	message = "Alerta de surto de risco biológico elevado para o nível 9. [station_name()] está agora trancada, sob a Diretiva 7-10, até nova ordem."
 
 	..()
 
 /datum/command_alert/biohazard_station_nuke
-	name = "Biohazard Level Updated - Nuclear Force Authorized"
-	alert_title = "Final Measure"
+	name = "Nível de Perigo Biológico Atualizado - Força Nuclear Autorizada"
+	alert_title = "Medida Final"
 	noalert = 1
 
 /datum/command_alert/biohazard_station_nuke/announce()
-	message = "Biohazard outbreak containment status reaching critical mass, total quarantine failure is now possibile. As such, Directive 7-12 has now been authorized for [station_name()]."
+	message = "O estado de contenção do surto de risco biológico atingirá uma massa crítica, sendo agora possível uma falha total da quarentena. Como tal, a Diretiva 7-12 foi agora autorizada para [station_name()]."
 
 	..()
 
 ////////BLOB (mini)
 
 /datum/command_alert/biohazard_level_5
-	name = "Biohazard Alert (level 5)"
-	alert_title = "Biohazard Alert"
+	name = "Alerta de Risco Biológico (nível 5)"
+	alert_title = "Alerta de Risco Biológico"
 	alert = 'sound/AI/outbreak5.ogg'
 	force_report = 1
 
 /datum/command_alert/biohazard_level_5/announce()
-	message = "Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak."
+	message = "Confirmado surto de risco biológico de nível 5 a bordo da [station_name()]. Toda a tripulação deve conter o surto."
 
 	..()
 
 /////////ERT
 
 /datum/command_alert/ert_fail
-	name = "ERT - Unable To Send"
+	name = "ERT - Incapaz de Enviar"
 
 /datum/command_alert/ert_fail/announce()
-	message = "It would appear that an emergency response team was requested for [station_name()]. Unfortunately, we were unable to send one at this time."
+	message = "Parece que foi solicitada uma equipa de resposta a emergências para [station_name()]. Infelizmente, não conseguimos enviar uma neste momento."
 
 	..()
 
 /datum/command_alert/ert_success
-	name = "ERT - Team Sent"
+	name = "ERT - Time Enviado"
 
 /datum/command_alert/ert_success/announce()
-	message = "It would appear that an emergency response team was requested for [station_name()]. We will prepare and send one as soon as possible."
+	message = "Parece que foi solicitada uma equipa de resposta a emergências para a [station_name()]. Vamos preparar e enviar uma o mais rápido possível."
 
 	..()
 
 ////////AYY
 
 /datum/command_alert/xenomorphs
-	name = "Unidentified Lifesigns Alert"
-	alert_title = "Lifesign Alert"
+	name = "Alerta de sinais de vida não identificados"
+	alert_title = "Alerta de sinais de vida"
 	alert = 'sound/AI/aliens.ogg'
 
 /datum/command_alert/xenomorphs/announce()
-	message = "Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation."
+	message = "Sinais de vida não identificados detectados a bordo da [station_name()]. Proteger qualquer acesso exterior, incluindo dutos e ventilação."
 
 	..()
 
 ///////RADIATION
 
 /datum/command_alert/radiation_storm
-	name = "Radiation Storm - Warning"
-	alert_title = "Anomaly Alert"
+	name = "Tempestade de Radiação - Aviso"
+	alert_title = "Alerta de Anomalia"
 	alert = 'sound/AI/radiation.ogg'
-	message = "High levels of radiation detected near the station, ETA in 30 seconds. Please evacuate into one of the shielded maintenance tunnels."
+	message = "Níveis elevados de radiação detectados perto da estação, ETA em 30 segundos. Por favor, evacuar para um dos túneis de manutenção blindados."
 
 /datum/command_alert/radiation_storm/start
-	name = "Radiation Storm - Start"
+	name = "Tempestade de Radiação - Início"
 	alert = null
-	message = "The station has entered the radiation belt. Please remain in a sheltered area until we have passed the radiation belt."
+	message = "A estação entrou no cinturão de radiação. Por favor, permaneça em uma área protegida até que tenhamos passado pelo cinturão de radiação."
 
 /datum/command_alert/radiation_storm/end
-	name = "Radiation Storm - End"
+	name = "Tempestade de Radiação - Fim"
 	alert = null
-	message = "The station has passed the radiation belt. Please report to medbay if you experience any unusual symptoms. Maintenance will lose all access again shortly."
+	message = "A estação passou o cinturão de radiação. Por favor, dirija-se à Medbay se tiver quaisquer sintomas incomuns. A manutenção perderá todo o acesso novamente em breve."
 
 /datum/command_alert/radiation
-	name = "High Levels Of Radiation"
-	alert_title = "Anomaly Alert"
+	name = "Altos Níveis de Radiação"
+	alert_title = "Alerta de Anomalia"
 	alert = 'sound/AI/radiation.ogg'
 
-	message = "High levels of radiation detected near the station. Please report to the Med-bay if you feel strange."
+	message = "Altos níveis de radiação detectados perto da estação. Se você se sentir estranho, dirija-se à Enfermaria Médica."
 
 
 ///////GRAYTIDE VIRUS
 
 /datum/command_alert/graytide
-	name = "Gr3y.T1d3 virus"
-	alert_title = "Security Alert"
+	name = "Gr3y.T1d3 vírus"
+	alert_title = "Alerta de Segurança"
 
 /datum/command_alert/graytide/announce()
-	message = "[pick("Gr3y.T1d3 virus","Malignant trojan")] detected in [station_name()] imprisonment subroutines. Recommend station AI involvement."
+	message = "[pick("Gr3y.T1d3 virus", "Trojan Maligno")] detectado nas subrotinas de aprisionamento da [station_name()]. Recomendamos o envolvimento da IA da estação."
 
 	..()
 
 //////CARP
 
 /datum/command_alert/carp
-	name = "Carp Migration"
-	alert_title = "Lifesign Alert"
+	name = "Migração de Carpas"
+	alert_title = "Alerta de sinais de vida"
 
 /datum/command_alert/carp/announce()
-	message = "Unknown biological entities have been detected near [station_name()], please stand-by."
+	message = "Entidades biológicas desconhecidas foram detectadas perto da [station_name()], por favor aguarde."
 
 	..()
 
 ////////ELECTRICAL STORM
 
 /datum/command_alert/electrical_storm
-	name = "Electrical Storm"
-	alert_title = "Electrical Storm Alert"
-	message = "An Electrical storm has been detected in your area, please repair potential electronic overloads."
+	name = "Tempestade Elétrica"
+	alert_title = "Alerta de Tempestade Elétrica"
+	message = "Foi detectada uma tempestade eléctrica na sua área, por favor repare potenciais sobrecargas eletrônicas."
 
 ///////SUMMARY DOWNLOADED AND PRINTED AT COMMS
 
 /datum/command_alert/enemy_comms_interception
-	name = "Enemy Communications Intercepted"
-	alert_title = "Enemy communications intercept"
-	message = "Summary downloaded and printed out at all communications consoles."
+	name = "Comunicações Inimigas Interceptadas"
+	alert_title = "Intercepção de comunicações inimigas"
+	message = "Resumo baixado e impresso em todos os consoles de comunicação."
 
 //////////SUPERMATTER CASCADE
 
 /datum/command_alert/supermatter_cascade
-	name = "Supermatter Cascade Start"
-	alert_title = "SUPERMATTER CASCADE DETECTED"
+	name = "Início da Cascata de Supermatéria"
+	alert_title = "CASCATA DE SUPERMATÉRIA DETECTADA"
 
 /datum/command_alert/supermatter_cascade/announce()
 	message = {"
-There's been a galaxy-wide electromagnetic pulse.  All of our systems are heavily damaged and many personnel are dead or dying. We are seeing increasing indications of the universe itself beginning to unravel.
+Ocorreu um pulso eletromagnético intergaláctico. Todos os nossos sistemas foram severamente danificados e muitos da equipe estão mortos ou morrendo. Estamos observando indicações crescentes de que o próprio universo está começando a se desfazer.
 
-[station_name()], you are the only facility nearby a bluespace rift, which is near your research outpost.  You are hereby directed to enter the rift using all means necessary, quite possibly as the last humans alive.
+[station_name()], você é a única instalação perto de uma fenda no Bluespace, a qual é perto do seu posto avançado de pesquisa. Vocês foram designados a entrar na fenda usando todos os meios necessários, possivelmente como os últimos humanos vivos.
 
-You have five minutes before the universe collapses. Good l\[\[###!!!-
+Vocês tem cinco minutos antes do universo entrar em colapso. Boa s\[\[###!!!-
 
-AUTOMATED ALERT: Link to [command_name()] lost.
+ALERTA AUTOMATIZADO: O link para [command_name()] foi perdido.
 
-The access requirements on the Asteroid Shuttles' consoles have now been revoked.
+Os requisitos de acesso aos consoles das Shuttles do Asteróide foram revogados.
 "}
 
 	..()
@@ -188,56 +188,56 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 /////////////POWER OUTAGE
 
 /datum/command_alert/power_outage
-	name = "Power Outage - Start"
-	alert_title = "Critical Power Failure"
+	name = "Queda de Energia - Início"
+	alert_title = "Falha de Energia Crítica"
 	alert ='sound/AI/poweroff.ogg'
 
 /datum/command_alert/power_outage/announce()
-	message = "Abnormal activity detected in [station_name()]'s powernet. As a precautionary measure, the station's power will be shut off for an indeterminate duration."
+	message = "Atividade anormal detectada na rede de energia de [station_name()]. Como medida precautória, a energia da estação será desligada por duração indeterminada."
 
 	..()
 
 /datum/command_alert/power_restored
-	name = "Power Outage - End"
-	alert_title = "Power Systems Nominal"
+	name = "Queda de Energia - Fim"
+	alert_title = "Sistemas de Energia Nominais"
 	alert = 'sound/AI/poweron.ogg'
 
 /datum/command_alert/power_restored/announce()
-	message = "Power has been restored to [station_name()]. We apologize for the inconvenience."
+	message = "A energia foi restaurada na [station_name()]. Nos desculpamos pela inconveniência."
 
 	..()
 
 /datum/command_alert/smes_charged
-	name = "SMES Recharged"
-	alert_title = "Power Systems Nominal"
+	name = "SMES Recarregada"
+	alert_title = "Sistemas de Energia Nominais"
 	alert = 'sound/AI/poweron.ogg'
 
 /datum/command_alert/smes_charged/announce()
-	message = "All SMESs on [station_name()] have been recharged. We apologize for the inconvenience."
+	message = "Todas as SMES na [station_name()] foram recarregadas. Nos desculpamos pela inconveniência."
 
 	..()
 
 ////////////////WORMHOLES
 
 /datum/command_alert/wormholes
-	name = "Space-Time Anomalities Detected"
-	alert_title = "Anomaly Alert"
+	name = "Anomalias no Espaço-Tempo Detectadas"
+	alert_title = "Alerta de Anomalia"
 	alert = 'sound/AI/spanomalies.ogg'
-	message = "Space-time anomalies detected on the station. There is no additional data."
+	message = "Anomalias no espaço-tempo detectadas na estação. Não há dados adicionais."
 
 //////////////MALF ANNOUNCEMENT
 
 /datum/command_alert/malf_announce
-	name = "AI Malfunctioning Warning"
-	alert_title = "Anomaly Alert"
+	name = "Aviso de AI Defeituosa"
+	alert_title = "Alerta de Anomalia"
 	alert = 'sound/AI/aimalf.ogg'
-	message = "Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core."
+	message = "Programas hostis detectados em todos os sistemas da estação, favor desativar a AI para prevenir possível dano ao seu núcleo moral."
 
 /////////////METEOR STORM
 
 /datum/command_alert/meteor_round
-	name = "Major Meteor Storm Warning"
-	alert_title = "Space Weather Automated Announcements"
+	name = "Aviso de Tempestade de Meteoros Grave"
+	alert_title = "Anúncios Automatizados de Meteorologia Espacial"
 	alert = 'sound/AI/meteorround.ogg'
 
 	var/meteor_delay = 2000
@@ -246,212 +246,212 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 /datum/command_alert/meteor_round/announce()
 	meteor_delay = rand(4500, 6000)
 	if(prob(70)) //slightly off-scale
-		message = "A meteor storm has been detected in proximity of [station_name()] and is expected to strike within [round((rand(meteor_delay - 600, meteor_delay + 600))/600)] minutes. A backup emergency shuttle is being dispatched and emergency gear should be teleported into your station's Bar area in [supply_delay/10] seconds."
+		message = "Uma tempestade de meteoros foi detectada na proximidade da [station_name()] e espera-se que a atinja dentro de [round((rand(meteor_delay - 600, meteor_delay + 600))/600)] minutos. Uma shuttle emergencial reserva está sendo despachada e o equipamento de emergência deve ser teletransportado para a área do Bar de sua estação em [supply_delay/10] segundos."
 	else
-		message = "A meteor storm has been detected in proximity of [station_name()] and is expected to strike within [round((rand(meteor_delay - 1800, meteor_delay + 1800))/600)] minutes. A backup emergency shuttle is being dispatched and emergency gear should be teleported into your station's Bar area in [supply_delay/10] seconds."
+		message = "Uma tempestade de meteoros foi detectada na proximidade da [station_name()] e espera-se que a atinja dentro de [round((rand(meteor_delay - 1800, meteor_delay + 1800))/600)] minutos. Uma shuttle emergencial reserva está sendo despachada e o equipamento de emergência deve ser teletransportado para a área do Bar de sua estação em [supply_delay/10] segundos."
 
 	..()
 
 ////small meteor storm
 
 /datum/command_alert/meteor_wave
-	name = "Meteor Storm Warning"
-	alert_title = "Meteor Alert"
+	name = "Aviso de Tempestade de Meteoros"
+	alert_title = "Alerta de Meteoro"
 	alert = 'sound/AI/meteors.ogg'
-	message = "A meteor storm has been detected on collision course with the station. Seek shelter within the core of the station immediately."
+	message = "Uma tempestade de meteoros foi detectada em rota de colisão com a estação. Procure abrigo dentro do núcleo da estação imediatamente."
 
 
 /////meteor storm end
 /datum/command_alert/meteor_wave_end
-	name = "Meteor Storm Cleared"
-	alert_title = "Meteor Alert"
-	message = "The station has cleared the meteor storm."
+	name = "Tempestade de Meteoros Eliminada"
+	alert_title = "Alerta de Meteoro"
+	message = "A estação eliminou a tempestade de meteoros."
 
 /datum/command_alert/meteor_storm
-	name = "Small-Intensity Meteor Storm Warning"
-	alert_title = "Meteor Alert"
-	message = "The station is about to be hit by a small-intensity meteor storm. Seek shelter within the core of the station immediately."
+	name = "Aviso de Tempestade de Meteoros de Pequena Intensidade"
+	alert_title = "Alerta de Meteoro"
+	message = "A estação está prestes a ser atingida por uma pequena tempestade de meteoros. Procure abrigo dentro do núcleo da estação imediatamente."
 
 //////blob storm
 /datum/command_alert/blob_storm
-	name = "Meteor Blob Cluster - No Overminds"
-	alert_title = "Blob Cluster"
-	message = "The station is about to pass through a Blob cluster. No overmind brainwaves detected."
+	name = "Meteoro com aglomerado de Blob - Sem Overminds"
+	alert_title = "Aglomerado de Blob"
+	message = "A estação está prestes a passar por um aglomerado de Blob. Nenhuma onda cerebral do Overmind detectadas."
 
 /datum/command_alert/blob_storm/end
-	name = "Meteor Blob Cluster Ended (No Overminds)"
-	message = "The station has cleared the Blob cluster. Eradicate the blob from hit areas."
+	name = "Meteoro com aglomerado de Blob encerrado (Zero Overminds)"
+	message = "A estação limpou o aglomerado de Blob. Erradicar o Blob das áreas atingidas."
 
 /datum/command_alert/blob_storm/overminds
-	name = "Meteor Blob Cluster - Overminds!"
-	alert_title = "Blob Conglomerate"
-	message = "The station is about to pass through a Blob conglomerate. Overmind brainwaves possibly detected."
+	name = "Meteoro com aglomerado de Blob - Overminds!"
+	alert_title = "Conglomerado de Blob"
+	message = "A estação está prestes a passar por um conglomerado de Blob. Ondas cerebrais do Overmind possivelmente detectadas."
 
 /datum/command_alert/blob_storm/overminds/end
-	name = "Meteor Blob Cluster Ended (Overminds!)"
-	message = "The station has cleared the Blob conglomerate. Investigate the hit areas at once and clear the blob. Beware for possible Overmind presence."
+	name = "Meteoro com aglomerado de Blob encerrado (Overminds!)"
+	message = "A estação eliminou o conglomerado de Blob. Investigue as áreas atingidas imediatamente e limpe-as. Seja cuidadoso com a possível presença de Overmind."
 
 /////////////GRAVITY
 
 /datum/command_alert/gravity_enabled
-	name = "Gravity - Enabled"
-	message = "Gravity generators are again functioning within normal parameters. Sorry for any inconvenience."
+	name = "Gravidade - Ativada"
+	message = "Geradores de gravidade estão novamente funcionando dentro dos parâmetros normais. Sinceras desculpas por qualquer inconveniência."
 
 /datum/command_alert/gravity_disabled
-	name = "Gravity - Disabled"
-	message = "Feedback surge detected in mass-distributions systems. Artifical gravity has been disabled whilst the system reinitializes. Further failures may result in a gravitational collapse and formation of blackholes. Have a nice day."
+	name = "Gravidade - Desativada"
+	message = "Surtos de realimentação detectados em sistemas de distribuição de massa. A gravidade artificial foi desativada enquanto o sistema reinicializa. Outras falhas podem resultar em colapso gravitacional e formação de buracos negros. Tenha um bom dia."
 
 //////////////////////////////ION STORM
 
 /datum/command_alert/ion_storm
-	name = "Ion Storm - AI affected"
-	alert_title = "Anomaly Alert"
+	name = "Tempestade Iônica - IA afetado"
+	alert_title = "Alerta de Anomalia"
 	alert = 'sound/AI/ionstorm.ogg'
-	message = "Ion storm detected near the station. Please check all AI-controlled equipment for errors."
+	message = "Tempestade iónica detectada perto da estação. Por favor, verifique se há erros em todos os equipamentos controlados por AI."
 
 /datum/command_alert/ion_storm_large
-	name = "Ion Storm - All Affected"
-	alert_title = "Anomaly Alert"
-	message = "It has come to our attention that the station passed through an ion storm.  Please monitor all electronic equipment for malfunctions."
+	name = "Tempestade Iônica - Todos os equipamentos afetados"
+	alert_title = "Alerta de Anomalia"
+	message = "Nós detectamos que a estação acabou de passar por uma tempestade iônica. Por favor, monitore todos os equipamentos eletrônicos por erros em potencial."
 
 ///////////BLUESPACE ANOMALY
 
 /datum/command_alert/bluespace_anomaly
-	name = "Bluespace Anomaly"
-	alert_title = "Anomaly Alert"
+	name = "Anomalia de Bluespace"
+	alert_title = "Alerta de Anomalia"
 
 /datum/command_alert/bluespace_anomaly/New(impact_area_name)
-	message = "Bluespace anomaly detected in the vicinity of [station_name()]. [impact_area_name || "An unknown area"] has been affected."
+	message = "Anomalia de Bluespace detectada nos arredores da [station_name()]. [impact_area_name || "Uma área desconhecida"] foi afetada."
 	..()
 
 //////////POWER DISABLED
 
 /datum/command_alert/power_disabled
-	name = "Station Power - Disabled"
-	alert_title = "Automated Grid Check"
+	name = "Energia da Estação - Desativada"
+	alert_title = "Exame de Rede Automatizado"
 	alert = 'sound/AI/poweroff.ogg'
 
 /datum/command_alert/power_disabled/announce()
-	message = "Abnormal activity detected in [station_name()]'s powernet. As a precautionary measure, the station's power will be shut off for an indeterminate duration."
+	message = "Atividade anormal foi detectada na rede de energia da [station_name()]. A energia será desligada por tempo indeterminado por questões de segurança."
 	..()
 
 /datum/command_alert/power_restored
-	name = "Station Power - Restored"
-	alert_title = "Power Nominal"
+	name = "Energia da Estação - Restaurada"
+	alert_title = "Potência Nominal"
 	alert = 'sound/AI/poweron.ogg'
 
 /datum/command_alert/power_restored/announce()
-	message = "Power has been restored to [station_name()]. We apologize for the inconvenience."
+	message = "Energia foi restaurada na [station_name()]. Sinceras desculpas pela inconveniência."
 	..()
 
 //////////////CENTCOM LINK
 
 /datum/command_alert/command_link_lost
-	name = "Centcom Link Lost"
-	alert_title = "Automated Announcement"
+	name = "Conexão Perdida com a CentCom"
+	alert_title = "Alerta Automático"
 	alert = 'sound/AI/loss.ogg'
-	message = "This is an automated announcement. The link with central command has been lost. Repeat: The link with central command has been lost. Attempting to re-establish communications in T-10."
+	message = "Isso é um alerta automático. A conexão com o comando central foi perdida. Novamente: A conexão com o comando central foi perdida. Tentando a re-estabelecer comunicações em T-10."
 
 /datum/command_alert/command_link_restored
-	name = "Centcom Link Restored"
-	alert_title = "Link Established"
+	name = "Conexão com a CentCom Restaurada"
+	alert_title = "Conexão Estabelecida"
 
 /datum/command_alert/command_link_restored/announce()
-	message = "A link to Central Command has been established on [station_name()]."
+	message = "Conexão com o comando central foi estabelecida na [station_name()]."
 	..()
 
 /////////HOSTILE CREATURES
 
 /datum/command_alert/hostile_creatures
-	name = "Hostile Creatures Alert"
-	alert_title = "WARNING: Hostile Creature(s)"
+	name = "Alerta de Criaturas Hostis"
+	alert_title = "AVISO: Criatura(s) Hostis"
 
-/datum/command_alert/hostile_creatures/New(localestring = "an unknown location", monsterstring = "malicious intent")
+/datum/command_alert/hostile_creatures/New(localestring = "um local desconhecido", monsterstring = "intenção maliciosa")
 	..()
 
-	message = "One or more hostile creatures have entered the station in [localestring]. External security cameras indicate that the creature has [monsterstring]."
+	message = "Uma ou mais criatura(s) hostil(is) invadiram a estação em [localestring]. Câmeras de segurança externas indicam que a criatura possui [monsterstring]."
 
 /datum/command_alert/vermin
-	name = "Vermin Alert"
-	alert_title = "Vermin infestation"
+	name = "Alerta de Vermes"
+	alert_title = "Infestação de Vermes"
 
-/datum/command_alert/vermin/New(vermstring = "various vermin", locstring = "the station's maintenance tunnels")
+/datum/command_alert/vermin/New(vermstring = "vários vermes", locstring = "túneis de manutenção da estação")
 	..()
 
-	message = "Bioscans indicate that [vermstring] have been breeding in [locstring]. Clear them out, before this starts to affect productivity."
+	message = "Bioscans indicam que [vermstring] tem se reproduzido nos [locstring]. Esvazie-os, antes que isso comece a afetar a produtividade."
 
 /datum/command_alert/mob_swarm
-	name = "Mob Swarm"
+	name = "Enxame de Criaturas"
 
-/datum/command_alert/mob_swarm/New(mob_name = "animals")
+/datum/command_alert/mob_swarm/New(mob_name = "animais")
 	..()
 
-	message = "Due to timespace anomalies of unknown origin, [station_name] is now host to several [mob_name]\s more than there were a moment ago."
+	message = "Devido a anomalias de origem desconhecidas no espaço-tempo, a [station_name] agora é a hospedeira de vários [mob_name], mais do que havia há pouco."
 
 ////////MISC STUFF
 
 /datum/command_alert/eagles
-	name = "Airlock Access Removed"
-	message = "Centcomm airlock control override activated. Please take this time to get acquainted with your coworkers."
+	name = "Acesso da Airlock Removido"
+	message = "Controle da Airlock da Centcomm sobreposto. Por favor, tome este tempo para se familiarizar com seus colegas de trabalho."
 
 /datum/command_alert/bluespace_artillery
-	name = "Bluespace Artillery Strike Detected"
-	message = "Bluespace artillery fire detected. Brace for impact."
+	name = "Ataque de Artilharia Bluespace Detectado"
+	message = "Fogo de artilharia Bluespace detectado. Preparar para impacto."
 
 /datum/command_alert/vending_machines
-	name = "Rampant Brand Intelligence Detected"
-	alert_title = "Machine Learning Alert"
+	name = "Inteligência de Marca Rampante Detectada"
+	alert_title = "Alerta de aprendizado de máquina"
 
 /datum/command_alert/vending_machines/announce()
-	message = "Rampant brand intelligence has been detected aboard [station_name()], please stand-by."
+	message = "A inteligência da marca Rampant foi detectada a bordo de [station_name()], por favor, aguarde."
 
 /datum/command_alert/comms_blackout
-	name = "Ionospheric Anomalies - Telecommunications Failure"
-	message = "Ionospheric anomalies detected. Temporary telecommunication failure imminent. Please contact you-BZZT"
+	name = "Anomalias Ionosféricas - Falha nas Telecomunicações"
+	message = "Anomalias ionosféricas detectadas. Falha temporária de telecomunicações iminente. Favor entrar em contato com seu-BZZT"
 
 /datum/command_alert/comms_blackout/announce()
-	message = pick(	"Ionospheric anomalies detected. Temporary telecommunication failure imminent. Please contact you*%fj00)`5vc-BZZT", \
-						"Ionospheric anomalies detected. Temporary telecommunication failu*3mga;b4;'1vÂ¬-BZZZT", \
-						"Ionospheric anomalies detected. Temporary telec#MCi46:5.;@63-BZZZZT", \
-						"Ionospheric anomalies dete'fZ\\kg5_0-BZZZZZT", \
-						"Ionospheri:%Â£ MCayj^j<.3-BZZZZZZT", \
-						"#4nd%;f4y6,>Â£%-BZZZZZZZT")
+	message = pick(	"Anomalias ionosféricas detectadas. Falha temporária na telecomunicação iminente. Por favor contate seu%fj00)`5vc-BZZT", \
+						"Anomalias ionosféricas detectadas. Falha temporária na telecomun3mga;b4;'1v¬-BZZZT", \
+						"Anomalias ionosféricas detectadas. Falha temporár#MCi46:5.;@63-BZZZZT", \
+						"Anomalias ionosféricas detec'fZ\\kg5_0-BZZZZZT", \
+						"Anomali:%£ MCayj^j<.3-BZZZZZZT", \
+						"#4nd%;f4y6,>£%-BZZZZZZZT")
 	..()
 
 /datum/command_alert/electrical_storm
-	name = "Electrical Storm Alert"
-	alert_title = "Electrical Storm Alert"
-	message = "An electrical storm has been detected in your area, please repair potential electronic overloads."
+	name = "Alerta de Tempestade Elétrica"
+	alert_title = "Alerta de Tempestade Elétrica"
+	message = "Uma tempestade eléctrica foi detectada na sua área, por favor repare potenciais sobrecargas eletrônicas."
 
 /datum/command_alert/immovable_rod
-	name = "Immovable Rod (\"What The Fuck Was That?\")"
-	alert_title = "General Alert"
-	message = "What the fuck was that?!"
+	name = "Haste Imóvel (\"Que diabos foi isso?\")"
+	alert_title = "Alerta Geral"
+	message = "Que diabos foi isso?!"
 
 /datum/command_alert/rogue_drone
-	name = "Rogue Drones - Alert"
-	alert_title = "Rogue Drone Alert"
+	name = "Drones Rebeldes - Alerta"
+	alert_title = "Alerta de Drones Rebeldes"
 
 /datum/command_alert/rogue_drone/announce()
 	if(prob(33))
-		message = "A combat drone wing operating out of the NMV Icarus has failed to return from a sweep of this sector, if any are sighted approach with caution."
+		message = "Um drone de combate operando fora da NMV Icarus falhou em retornar de uma varredura nesse setor, se algum for avistado aproxime-se com cuidado."
 	else if(prob(50))
-		message = "Contact has been lost with a combat drone wing operating out of the NMV Icarus. If any are sighted in the area, approach with caution."
+		message = "Contato foi perdido com um drone de combate operando fora da NMV Icarus. Se alguma for avistada na área, aproxime-se com cuidado."
 	else
-		message = "Unidentified hackers have targeted a combat drone wing deployed from the NMV Icarus. If any are sighted in the area, approach with caution."
+		message = "Hackers não identificados atacaram um drone de combate enviado da NMV Icarus. Se algum for avistado, aproxime-se com cuidado."
 
 	..()
 
 /datum/command_alert/drones_recovered
-	name = "Rogue Drones - Recovered Successfully"
-	alert_title = "Rogue Drone Alert"
-	message = "Icarus drone control reports the malfunctioning wing has been recovered safely."
+	name = "Drones Rebeldes - Recuperados com Sucesso"
+	alert_title = "Alerta de Drones Rebeldes"
+	message = "Icarus reporta que seu drone com malfuncionamento foi recuperado com segurança."
 
 /datum/command_alert/drones_recovered/failure
-	name = "Rogue Drones - Failed To Recover"
-	message = "Icarus drone control registers disappointment at the loss of the drones, but the survivors have been recovered."
+	name = "Drones Rebeldes - Falha em recuperar"
+	message = "Icarus registra desapontamento pela perda de seus drones, mas os sobreviventes foram recuperados."
 
 /datum/command_alert/wall_fungi
-	name = "Wall Fungi"
-	alert_title = "Biohazard Alert"
-	message = "Harmful fungi detected on station. Station structures may be contaminated."
+	name = "Parede de Fungos"
+	alert_title = "Alerta de Risco Biológico"
+	message = "Fungos perigosos detectados na estação. Estruturas da estação podem estar contaminadas."
