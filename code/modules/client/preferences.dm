@@ -125,6 +125,9 @@ var/const/MAX_SAVE_SLOTS = 8
 	var/species = "Human"
 	var/language = "None"				//Secondary language
 
+	var/virgin = TRUE
+	var/anal_virgin = TRUE
+
 		//Mob preview
 	var/icon/preview_icon = null
 	var/icon/preview_icon_front = null
@@ -250,9 +253,9 @@ var/const/MAX_SAVE_SLOTS = 8
 	<b>Handicaps:</b> <a href='byond://?src=\ref[user];task=input;preference=disabilities'><b>Set</a></b><br>
 	<b>Limbs:</b> <a href='byond://?src=\ref[user];preference=limbs;task=input'>Set</a><br>
 	<b>Organs:</b> <a href='byond://?src=\ref[user];preference=organs;task=input'>Set</a><br>
-	<b>Underwear:</b> [gender == MALE ? "<a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_m[underwear]]</a>" : "<a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_f[underwear]]</a>"]<br>
 	<b>Backpack:</b> <a href ='?_src_=prefs;preference=bag;task=input'><b>[backbaglist[backbag]]</a><br>
-	<b>Flavor Text:</b><a href='byond://?src=\ref[user];preference=flavor_text;task=input'>Set</a><br>
+	<b>Virgin:</b> <a href ='?_src_=prefs;preference=virgin;task=normal'>[virgin ? "Yes" : "No"]</a><BR>
+	<b>Anal Virgin:</b> <a href ='?_src_=prefs;preference=virgin;task=anal'>[anal_virgin ? "Yes" : "No"]</a><BR>
 	</td><td valign='top' width='21%'>
 	<h3>Hair Style</h3>
 	<a href='?_src_=prefs;preference=h_style;task=input'>[h_style]</a><BR>
@@ -607,7 +610,7 @@ var/const/MAX_SAVE_SLOTS = 8
 		</center></body></html>"}
 
 	//user << browse(dat, "window=preferences;size=560x580")
-	var/datum/browser/popup = new(user, "preferences", "<div align='center'>Character Setup</div>", 680, 640)
+	var/datum/browser/popup = new(user, "preferences", "<div align='center'>Character Setup</div>", 700, 640)
 	popup.set_content(dat)
 	popup.open(0)
 
@@ -1006,6 +1009,12 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 				gen_record = genmsg
 				SetRecords(user)
 
+	else if(href_list["preference"] == "virgin")
+		if(href_list["task"] == "normal")
+			virgin = !virgin
+		else if(href_list["task"] == "anal")
+			anal_virgin = !anal_virgin
+
 	else if(href_list["preference"] == "set_roles")
 		return SetRoles(user,href_list)
 
@@ -1029,7 +1038,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 				if("f_style")
 					f_style = random_facial_hair_style(gender, species)
 				if("underwear")
-					underwear = rand(1,underwear_m.len)
+					underwear = underwear_m.len
 					ShowChoices(user)
 				if("eyes")
 					r_eyes = rand(0,255)
@@ -1585,6 +1594,8 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 	character.h_style = h_style
 	character.f_style = f_style
 
+	character.virgin = virgin
+	character.anal_virgin = anal_virgin
 
 	character.skills = skills
 
@@ -1630,13 +1641,17 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 	if(disabilities & DISABILITY_FLAG_TOURETTES)
 		character.sdisabilities|=TOURETTES Still working on it. - Angelite */
 
-	if(underwear > underwear_m.len || underwear < 1)
-		underwear = 0 //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
-	character.underwear = underwear
+/*	if(underwear > underwear_m.len || underwear < 1)
+		underwear = underwear_m.len //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
+*/
+	character.underwear = underwear_m.len
 
 	if(backbag > 4 || backbag < 1)
 		backbag = 1 //Same as above
 	character.backbag = backbag
+
+	character.virgin = virgin
+	character.anal_virgin = anal_virgin
 
 	//Debugging report to track down a bug, which randomly assigned the plural gender to people.
 	if(character.gender in list(PLURAL, NEUTER))

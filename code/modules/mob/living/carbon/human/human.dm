@@ -127,6 +127,8 @@
 
 	create_reagents(1000)
 
+	penis_size = rand(5, 22)
+
 	if(!dna)
 		dna = new /datum/dna(null)
 		dna.species=species.name
@@ -669,6 +671,12 @@
 	else if (href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
 		usr.examination(I)
+
+	else if(ishuman(usr))
+		var/mob/living/carbon/human/H = usr
+		if(process_erp_href(href_list, H))
+			return nanomanager.update_uis(src)
+
 	/*else if (href_list["lookmob"])
 		var/mob/M = locate(href_list["lookmob"])
 		usr.examination(M)*/

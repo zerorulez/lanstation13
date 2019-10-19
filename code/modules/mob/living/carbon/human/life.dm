@@ -149,6 +149,8 @@ var/global/list/organ_damage_overlays = list(
 			domutcheck(src,null,MUTCHK_FORCED)
 			update_mutations()
 			check_mutations = 0
+		//Lust
+		handle_lust()
 		//Updates the number of stored chemicals for powers
 		handle_changeling()
 		//Mutations and radiation

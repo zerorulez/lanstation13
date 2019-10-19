@@ -81,7 +81,7 @@
 		if (!M.client)
 			continue //skip leavers
 		if(isobserver(M) && M.client.prefs && (M.client.prefs.toggles & CHAT_GHOSTSIGHT) && !(M in viewers(user)))
-			M.show_message("<a href='?src=\ref[M];follow=\ref[user]'>(Follow)</a> " + msg)
+			M.show_message("<a href='?src=\ref[M];follow=\ref[user]'>(F)</a> " + msg)
 
 	if (emote_type == EMOTE_VISIBLE)
 		user.visible_message(msg)

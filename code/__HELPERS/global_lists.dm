@@ -55,6 +55,8 @@ var/global/list/sec_hud_users = list() //list of all entities using a security H
 		var/datum/emote/E = new path()
 		E.emote_list[E.key] = E
 
+	init_datum_subtypes(/datum/forbidden/action, forbidden_actions, null, "name")
+	init_datum_subtypes(/datum/forbidden/emote, forbidden_emotes, null, "name")
 
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()
@@ -70,3 +72,16 @@ var/global/list/sec_hud_users = list() //list of all entities using a security H
 */
 
 var/global/list/escape_list = list()
+
+
+/proc/init_datum_subtypes(prototype, list/L, list/pexempt, assocvar)
+	if(!istype(L))	L = list()
+	for(var/path in subtypesof(prototype) - pexempt)
+		var/datum/D = new path()
+		if(istype(D))
+			var/assoc
+			if(D.vars["[assocvar]"]) //has the var
+				assoc = D.vars["[assocvar]"] //access value of var
+			if(assoc) //value gotten
+				L["[assoc]"] = D //put in association
+	return L

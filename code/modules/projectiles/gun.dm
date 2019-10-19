@@ -394,6 +394,7 @@
 		return TRUE
 
 /obj/item/weapon/gun/attackby(var/obj/item/A, mob/user)
+	/*
 	if(istype(A, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = A
 		if(isHandgun() && G.isHandgun())
@@ -404,4 +405,5 @@
 			else
 				to_chat(user, "<span class = 'warning'>You can not combine \the [G] and \the [src].</span>")
 				qdel(AA)
+	*/			
 	..()

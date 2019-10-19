@@ -7,6 +7,8 @@ em						{font-style: normal;	font-weight: bold;}
 						{color: #638500;	text-decoration: underline;}
 .motd a, .motd a:link, .motd a:visited, .motd a:active, .motd a:hover
 						{color: #638500;}
+.erp					{color: #AA00AA;}
+.cum					{font-size: 120%;	color: #AA00AA; font-weight: bold;}
 .prefix					{					font-weight: bold;}
 .ooc					{					font-weight: bold;}
 .adminobserverooc		{color: #0099cc;	font-weight: bold;}
@@ -92,4 +94,5 @@ h1.alert, h2.alert		{color: #000000;}
 .whisper				{font-style:italic;color:#333333;}
 /* Recruiting stuff */
 .recruit 				{color: #5c00e6; font-weight: bold; font-style: italic;}
+
 "}

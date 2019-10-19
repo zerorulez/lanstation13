@@ -492,17 +492,23 @@
 
 		msg += {"<span class = 'deptradio'>Physical status:</span> <a href='?src=\ref[src];medical=1'>\[[medical]\]</a>\n
 			<span class = 'deptradio'>Medical records:</span> <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>\n"}
-
+/*
 	var/flavor_text = print_flavor_text(user)
 	if(flavor_text)
 		msg += "[flavor_text]\n"
+*/
+	if(is_nude() && species.genitals)
+		if(has_penis())
+			msg += "<span class='erp'>Penis size: [penis_size] cm.</span>\n"
+		else if(has_vagina() && virgin)
+			msg += "<span class='erp'>[t_He] is a virgin!</span>\n"
 
 	msg += "*---------*</span>"
-	if (pose)
+/*	if (pose)
 		if( findtext(pose,".",length(pose)) == 0 && findtext(pose,"!",length(pose)) == 0 && findtext(pose,"?",length(pose)) == 0 )
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		msg += "\n[t_He] is [pose]"
-
+*/
 	to_chat(user, msg)
 	user.heard(src)
 

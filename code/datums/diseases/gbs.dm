@@ -38,3 +38,7 @@
 				affected_mob.gib()
 		else
 			return
+
+/datum/disease/gbs/curable
+	name = "Non-Contagious GBS"
+	spread_type = NON_CONTAGIOUS

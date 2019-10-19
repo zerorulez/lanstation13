@@ -142,6 +142,9 @@ var/global/list/whitelisted_species = list("Human")
 
 	var/silent_steps = 0          // Stops step noises
 
+	var/genitals = TRUE
+	var/anus = TRUE
+
 /datum/species/New()
 	..()
 	if(all_species[name])

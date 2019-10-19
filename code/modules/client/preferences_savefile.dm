@@ -329,7 +329,9 @@ SELECT
     body.eyes_green,
     body.eyes_blue,
     body.underwear,
-    body.backbag
+    body.backbag,
+    body.virgin,
+    body.anal_virgin
 FROM
     players
 INNER JOIN
@@ -410,6 +412,8 @@ AND players.player_slot = ? ;"}, ckey, slot)
 
 	underwear			= text2num(preference_list["underwear"])
 	backbag				= text2num(preference_list["backbag"])
+	virgin				= text2num(preference_list["virgin"])
+	anal_virgin			= text2num(preference_list["anal_virgin"])
 
 	organ_data[LIMB_LEFT_ARM] = preference_list[LIMB_LEFT_ARM]
 	organ_data[LIMB_RIGHT_ARM] = preference_list[LIMB_RIGHT_ARM]
@@ -543,6 +547,8 @@ AND players.player_slot = ? ;"}, ckey, slot)
 	S["eyes_blue"]			>> b_eyes
 	S["underwear"]			>> underwear
 	S["backbag"]			>> backbag
+	S["virgin"]				>> virgin
+	S["anal_virgin"]		>> anal_virgin
 
 	//Jobs
 	S["alternate_option"]	>> alternate_option
@@ -600,6 +606,8 @@ AND players.player_slot = ? ;"}, ckey, slot)
 	b_eyes			= sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
 	underwear		= sanitize_integer(underwear, 1, underwear_m.len, initial(underwear))
 	backbag			= sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
+	virgin			= sanitize_integer(virgin, 0, 1, initial(virgin))
+	anal_virgin		= sanitize_integer(anal_virgin, 0, 1, initial(anal_virgin))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
 	job_civilian_high = sanitize_integer(job_civilian_high, 0, 65535, initial(job_civilian_high))
@@ -726,16 +734,16 @@ AND players.player_slot = ? ;"}, ckey, slot)
 	check.Add("SELECT player_ckey FROM body WHERE player_ckey = ? AND player_slot = ?", ckey, slot)
 	if(check.Execute(db))
 		if(!check.NextRow())
-			q.Add("INSERT INTO body (player_ckey,player_slot,hair_red,hair_green,hair_blue,facial_red,facial_green,facial_blue,skin_tone,hair_style_name,facial_style_name,eyes_red,eyes_green,eyes_blue,underwear,backbag) \
-					VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", ckey, slot, r_hair, g_hair, b_hair, r_facial, g_facial, b_facial, s_tone, h_style, f_style, r_eyes, g_eyes, b_eyes, underwear, backbag)
+			q.Add("INSERT INTO body (player_ckey,player_slot,hair_red,hair_green,hair_blue,facial_red,facial_green,facial_blue,skin_tone,hair_style_name,facial_style_name,eyes_red,eyes_green,eyes_blue,underwear,backbag,virgin,anal_virgin) \
+					VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", ckey, slot, r_hair, g_hair, b_hair, r_facial, g_facial, b_facial, s_tone, h_style, f_style, r_eyes, g_eyes, b_eyes, underwear, backbag, virgin, anal_virgin)
 			if(!q.Execute(db))
 				message_admins("Error #:[q.Error()] - [q.ErrorMsg()]")
 				WARNING("Error #:[q.Error()] - [q.ErrorMsg()]")
 				return 0
 			to_chat(user, "Created Body")
 		else
-			q.Add("UPDATE body SET hair_red=?,hair_green=?,hair_blue=?,facial_red=?,facial_green=?,facial_blue=?,skin_tone=?,hair_style_name=?,facial_style_name=?,eyes_red=?,eyes_green=?,eyes_blue=?,underwear=?,backbag=? WHERE player_ckey = ? AND player_slot = ?",\
-									r_hair, g_hair, b_hair, r_facial, g_facial, b_facial, s_tone, h_style, f_style, r_eyes, g_eyes, b_eyes, underwear, backbag, ckey, slot)
+			q.Add("UPDATE body SET hair_red=?,hair_green=?,hair_blue=?,facial_red=?,facial_green=?,facial_blue=?,skin_tone=?,hair_style_name=?,facial_style_name=?,eyes_red=?,eyes_green=?,eyes_blue=?,underwear=?,backbag=?, virgin=?, anal_virgin=? WHERE player_ckey = ? AND player_slot = ?",\
+									r_hair, g_hair, b_hair, r_facial, g_facial, b_facial, s_tone, h_style, f_style, r_eyes, g_eyes, b_eyes, underwear, backbag, virgin, anal_virgin, ckey, slot)
 			if(!q.Execute(db))
 				message_admins("Error #:[q.Error()] - [q.ErrorMsg()]")
 				WARNING("Error #:[q.Error()] - [q.ErrorMsg()]")
@@ -856,6 +864,9 @@ AND players.player_slot = ? ;"}, ckey, slot)
 	S["eyes_blue"]             << b_eyes
 	S["underwear"]             << underwear
 	S["backbag"]               << backbag
+	S["virgin"]					<< virgin
+	S["anal_virgin"]			<< anal_virgin
+
 
 	//Jobs
 	S["alternate_option"]      << alternate_option

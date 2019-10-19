@@ -68,8 +68,8 @@
 					if (M.client)
 						n++
 				to_chat(src, "<b>Sua conta não está na brancolista.</b>")
-				if(n > 14)
-					to_chat(src, "<b>Como sua conta não está na brancolista e o servidor tem 15 ou mais jogadores online, você foi desconectado.</b>")
+				if(n > 16)
+					to_chat(src, "<b>Como sua conta não está na brancolista e o servidor tem 17 ou mais jogadores online, você foi desconectado.</b>")
 					Logout()
 					return
 			else
