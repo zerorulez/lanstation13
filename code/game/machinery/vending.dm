@@ -1027,6 +1027,7 @@ var/global/num_vending_terminals = 1
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey = 5,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/tequila = 5,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka = 5,
+		/obj/item/weapon/reagent_containers/food/drinks/bottle/cinquentaeum = 5,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth = 5,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/rum = 5,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/wine = 5,

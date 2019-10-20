@@ -373,7 +373,7 @@ USE THIS CHEMISTRY DISPENSER FOR MAPS SO THEY START AT 100 ENERGY
 /obj/machinery/chem_dispenser/booze_dispenser/
 	name = "Booze Dispenser"
 	icon_state = "booze_dispenser"
-	dispensable_reagents = list(BEER, WHISKEY, TEQUILA, VODKA, VERMOUTH, RUM, COGNAC, WINE, KAHLUA, ALE, ICE, WATER, GIN, SODAWATER, COLA, CREAM,TOMATOJUICE,ORANGEJUICE,LIMEJUICE,TONIC)
+	dispensable_reagents = list(BEER, WHISKEY, TEQUILA, VODKA, PINGA, VERMOUTH, RUM, COGNAC, WINE, KAHLUA, ALE, ICE, WATER, GIN, SODAWATER, COLA, CREAM,TOMATOJUICE,ORANGEJUICE,LIMEJUICE,TONIC)
 /obj/machinery/chem_dispenser/booze_dispenser/New()
 	. = ..()
 	component_parts = newlist(

@@ -944,6 +944,17 @@
 	..()
 	reagents.add_reagent(VODKA, 100)
 
+/obj/item/weapon/reagent_containers/food/drinks/bottle/cinquentaeum
+	name = "Cachaça 51"
+	desc = "Uma boa ideia."
+	icon_state = "cinquentaeum"
+	vending_cat = "spirits"
+	isGlass = 1
+	molotov = -1
+/obj/item/weapon/reagent_containers/food/drinks/bottle/cinquentaeum/New()
+	..()
+	reagents.add_reagent(PINGA, 100)
+
 /obj/item/weapon/reagent_containers/food/drinks/bottle/tequila
 	name = "Caccavo Guaranteed Quality Tequila"
 	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
