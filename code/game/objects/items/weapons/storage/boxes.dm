@@ -55,6 +55,7 @@
 	item_state = "Dpacket"
 	w_class = W_CLASS_TINY
 	foldable = null
+	needs_to_hold = FALSE
 
 /obj/item/weapon/storage/box/surveillance/New()
 	..()

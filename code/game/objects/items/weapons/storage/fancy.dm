@@ -248,8 +248,10 @@
 
 /obj/item/weapon/storage/fancy/matchbox/attackby(obj/item/weapon/match/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/match) && !W.lit)
-		W.lit = 1
-		W.update_brightness()
+		playsound(src, 'sound/items/matchstrike.ogg', 50, 1, 1)
+		spawn(10)
+			W.lit = 1
+			W.update_brightness()
 	return
 
 /obj/item/weapon/storage/fancy/matchbox/strike_anywhere
@@ -279,6 +281,7 @@
 	icon_type = "cigarette"
 	starting_materials = list(MAT_CARDBOARD = 370)
 	w_type=RECYK_MISC
+	needs_to_hold = FALSE
 
 /obj/item/weapon/storage/fancy/cigarettes/New()
 	..()
@@ -301,9 +304,9 @@
 /obj/item/weapon/storage/fancy/cigarettes/remove_from_storage(obj/item/W as obj, atom/new_location)
 	var/obj/item/clothing/mask/cigarette/C = W
 	if(!istype(C))
-		return // what
+		return ..()// what
 	reagents.trans_to(C, (reagents.total_volume/contents.len))
-	..()
+	. = ..()
 
 /obj/item/weapon/storage/fancy/cigarettes/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M, /mob))
@@ -442,7 +445,7 @@
 	return
 
 /obj/item/weapon/storage/fancy/food_box/chicken_bucket/remove_from_storage(obj/item/W as obj, atom/new_location)
-	..()
+	. = ..()
 	if(!contents.len)
 		new/obj/item/trash/chicken_bucket(get_turf(src.loc))
 		if(istype(src.loc,/mob/living/carbon))

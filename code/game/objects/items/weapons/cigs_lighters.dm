@@ -237,25 +237,32 @@ MATCHBOXES ARE ALSO IN FANCY.DM
 		var/obj/item/weapon/lighter/zippo/Z = W
 		if(Z.is_hot())
 			light("<span class='rose'>With a single flick of their wrist, [user] smoothly lights \his [name] with \the [W]. Damn, that's cool.</span>")
+			playsound(src, 'sound/items/smoking.ogg', 20, 1, 1)
 
 	else if(istype(W, /obj/item/weapon/lighter))
 		var/obj/item/weapon/lighter/L = W
 		if(L.is_hot())
 			light("<span class='notice'>After some fiddling, [user] manages to light \his [name] with \the [W].</span>")
+			playsound(src, 'sound/items/smoking.ogg', 20, 1, 1)
 
 	else if(istype(W, /obj/item/weapon/melee/energy/sword))
 		var/obj/item/weapon/melee/energy/sword/S = W
 		if(S.is_hot())
 			light("<span class='warning'>[user] raises \his [W.name], lighting \the [src]. Holy fucking shit.</span>")
+			playsound(src, 'sound/items/smoking.ogg', 20, 1, 1)
 
 	else if(istype(W, /obj/item/device/assembly/igniter))
 		var/obj/item/device/assembly/igniter/I = W
 		if(I.is_hot())
 			light("<span class='notice'>[user] fiddles with \his [W.name], and manages to light their [name].</span>")
+			playsound(src, 'sound/items/smoking.ogg', 20, 1, 1)
 
 	//All other items are included here, any item that is hot can light the cigarette
 	else if(W.is_hot())
 		light("<span class='notice'>[user] lights \his [name] with \the [W].</span>")
+		playsound(src, 'sound/items/smoking.ogg', 20, 1, 1)
+
+
 	return
 
 

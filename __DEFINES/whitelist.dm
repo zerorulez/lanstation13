@@ -4,4 +4,4 @@ var/global/list/ckey_whitelist = list("morphi", 	"peekaboom",	"lordepardo",		"ai
 									  "laln",		"agatodemo",	"tet33",			"archangel178",	"lordcheetos",	\
 									  "archangel178","dasmoke",		"pumphbolt",		"oveislot990",	"wfgbd",\
 									  "eers",		"walker9",		"venomyamazaki",	"solidsnake301","stormrager",\
-									  "titanio")
+									  "titanio",	"curumim",		"krowes",			"hughquim")

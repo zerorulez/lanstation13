@@ -474,6 +474,8 @@ AND players.player_slot = ? ;"}, ckey, slot)
 
 	underwear		= sanitize_integer(underwear, 1, underwear_m.len, initial(underwear))
 	backbag			= sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
+	virgin 			= sanitize_integer(virgin, 0, 1, initial(virgin))
+	anal_virgin 	= sanitize_integer(anal_virgin, 0, 1, initial(anal_virgin))
 	//be_special      = sanitize_integer(be_special, 0, 65535, initial(be_special))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
@@ -864,8 +866,8 @@ AND players.player_slot = ? ;"}, ckey, slot)
 	S["eyes_blue"]             << b_eyes
 	S["underwear"]             << underwear
 	S["backbag"]               << backbag
-	S["virgin"]					<< virgin
-	S["anal_virgin"]			<< anal_virgin
+	S["virgin"]				   << virgin
+	S["anal_virgin"]		   << anal_virgin
 
 
 	//Jobs
