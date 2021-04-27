@@ -65,7 +65,7 @@
 	affected.open = 1
 	affected.status |= ORGAN_BLEEDING
 	affected.createwound(CUT, 1)
-	affected.clamp()
+	affected.clampDamage()
 	//spread_germs_to_organ(affected, user) //a laser scalpel shouldn't spread germs.
 
 /datum/surgery_step/generic/cut_with_laser/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -117,7 +117,7 @@
 	affected.open = 1
 	affected.status |= ORGAN_BLEEDING
 	affected.createwound(CUT, 1)
-	affected.clamp()
+	affected.clampDamage()
 	affected.open = 2
 	tool.icon_state = "[initial(tool.icon_state)]_off"
 
@@ -214,7 +214,7 @@
 	var/datum/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] clamps bleeders in [target]'s [affected.display_name] with \the [tool].</span>",	\
 	"<span class='notice'>You clamp bleeders in [target]'s [affected.display_name] with \the [tool].</span>")
-	affected.clamp()
+	affected.clampDamage()
 	spread_germs_to_organ(affected, user)
 
 /datum/surgery_step/generic/clamp_bleeders/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

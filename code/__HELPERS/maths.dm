@@ -20,9 +20,9 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 	var/invcos = arccos(x / sqrt(x * x + y * y))
 	return y >= 0 ? invcos : -invcos
 
-proc/arctan(x)
+/*proc/arctan(x)
 	var/y=arcsin(x/sqrt(1+x*x))
-	return y
+	return y*/
 
 /proc/Ceiling(x, y = 1)
 	. = -round(-x / y) * y
