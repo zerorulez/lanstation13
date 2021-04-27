@@ -2439,7 +2439,7 @@
 		var/mob/living/carbon/human/H = M
 		for(var/datum/organ/external/temp in H.organs)
 			if(temp.status & ORGAN_BLEEDING)
-				temp.clamp()
+				temp.clampDamage()
 
 	if(M.losebreath >= 10)
 		M.losebreath = max(10, M.losebreath - 5)
